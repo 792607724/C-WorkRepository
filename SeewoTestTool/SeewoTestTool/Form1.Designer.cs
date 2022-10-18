@@ -254,6 +254,7 @@
             this.stop_rg_flicker_button.TabIndex = 1;
             this.stop_rg_flicker_button.Text = "关闭交替闪烁";
             this.stop_rg_flicker_button.UseVisualStyleBackColor = true;
+            this.stop_rg_flicker_button.Click += new System.EventHandler(this.stop_rg_flicker_button_Click);
             // 
             // start_rg_flicker_button
             // 
@@ -263,6 +264,7 @@
             this.start_rg_flicker_button.TabIndex = 0;
             this.start_rg_flicker_button.Text = "打开交替闪烁";
             this.start_rg_flicker_button.UseVisualStyleBackColor = true;
+            this.start_rg_flicker_button.Click += new System.EventHandler(this.start_rg_flicker_button_Click);
             // 
             // groupBox3
             // 
@@ -379,6 +381,7 @@
             // 
             // device_disconnect_button
             // 
+            this.device_disconnect_button.Enabled = false;
             this.device_disconnect_button.Location = new System.Drawing.Point(112, 107);
             this.device_disconnect_button.Name = "device_disconnect_button";
             this.device_disconnect_button.Size = new System.Drawing.Size(75, 31);

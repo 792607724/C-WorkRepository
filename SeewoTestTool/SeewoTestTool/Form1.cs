@@ -80,18 +80,14 @@ namespace SeewoTestTool
         // 断开设备连接
         private void device_disconnect_button_Click(object sender, EventArgs e)
         {
+            //if (true)
             if (clientSocket != null && clientSocket.Connected)
             {
-                device_disconnect_button.Enabled = true;
+                device_disconnect_button.Enabled = false;
+                device_connect_button.Enabled = true;
                 clientSocket.Close();
                 MessageBox.Show("设备连接已关闭！");
             }
-            else
-            {
-                device_disconnect_button.Enabled = false;
-                MessageBox.Show("设备未连接，无需关闭，望悉知！");
-            }
-
         }
 
         // 选择升级的固件路径
@@ -150,6 +146,36 @@ namespace SeewoTestTool
             if (clientSocket != null && clientSocket.Connected)
             {
                 string currentFirmware = null;
+            }
+            else
+            {
+                MessageBox.Show("设备连接已断开，请先连接设备！");
+            }
+        }
+
+        // 打开红绿灯交替闪烁
+        private void start_rg_flicker_button_Click(object sender, EventArgs e)
+        {
+            //if (true)
+            if (clientSocket != null && clientSocket.Connected)
+            {
+                stop_rg_flicker_button.Enabled = true;
+                start_rg_flicker_button.Enabled = false;
+            }
+            else
+            {
+                MessageBox.Show("设备连接已断开，请先连接设备！");
+            }
+        }
+
+        // 关闭红绿灯交替闪烁
+        private void stop_rg_flicker_button_Click(object sender, EventArgs e)
+        {
+            //if (true)
+            if (clientSocket != null && clientSocket.Connected)
+            {
+                stop_rg_flicker_button.Enabled = false;
+                start_rg_flicker_button.Enabled = true;
             }
             else
             {
