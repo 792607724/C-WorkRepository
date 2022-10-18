@@ -89,5 +89,32 @@ namespace SeewoTestTool
             }
 
         }
+
+        // 选择升级的固件路径
+        private void choose_upgrade_firmware_button_Click(object sender, EventArgs e)
+        {
+            if(true)
+            //if (clientSocket != null && clientSocket.Connected)
+            {
+                string filePath = null;
+                FolderBrowserDialog dialog = new FolderBrowserDialog();
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    filePath = dialog.SelectedPath;
+                    if (filePath != null)
+                    {
+                        upgrade_firmware_textbox.Text = filePath;
+                    }
+                    else
+                    {
+                        upgrade_firmware_textbox.Text = "未选择正确的固件路径";
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("设备连接已断开，请先连接设备！");
+            }
+        }
     }
 }

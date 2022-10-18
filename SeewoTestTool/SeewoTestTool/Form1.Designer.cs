@@ -297,6 +297,7 @@
             this.choose_upgrade_firmware_button.TabIndex = 5;
             this.choose_upgrade_firmware_button.Text = "选择升级固件";
             this.choose_upgrade_firmware_button.UseVisualStyleBackColor = true;
+            this.choose_upgrade_firmware_button.Click += new System.EventHandler(this.choose_upgrade_firmware_button_Click);
             // 
             // upgrade_firmware_textbox
             // 
