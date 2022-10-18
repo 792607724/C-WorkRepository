@@ -382,6 +382,7 @@
             this.device_disconnect_button.TabIndex = 5;
             this.device_disconnect_button.Text = "断开设备";
             this.device_disconnect_button.UseVisualStyleBackColor = true;
+            this.device_disconnect_button.Click += new System.EventHandler(this.device_disconnect_button_Click);
             // 
             // device_connect_button
             // 
