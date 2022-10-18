@@ -1712,7 +1712,7 @@ namespace HIDTool
                 device.Close();
 
                 int currentFocusLocation = int.Parse(responseBuffer[7].ToString()) << 8 + int.Parse(responseBuffer[8].ToString());
-                currentFocusLocationLabel.Text = "当前对焦位置：" + currentFocusLocation;
+                currentFocusLocationLabel.Text = "当前对焦位置：" + currentFocusLocation.ToString();
                 // MessageBox.Show(": " + currentFocusLocation);
             }
         }

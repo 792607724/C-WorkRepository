@@ -14,3 +14,9 @@ D:\C#version\HIDTool\HIDInterface\bin\Debug\HIDInterface.pdb
 D:\C#version\HIDTool\HIDInterface\obj\Debug\HIDInterface.csproj.CoreCompileInputs.cache
 D:\C#version\HIDTool\HIDInterface\obj\Debug\HIDInterface.dll
 D:\C#version\HIDTool\HIDInterface\obj\Debug\HIDInterface.pdb
+D:\C#version\C-WorkRepository\HIDTool\HIDInterface\bin\Debug\HIDInterface.dll
+D:\C#version\C-WorkRepository\HIDTool\HIDInterface\bin\Debug\HIDInterface.pdb
+D:\C#version\C-WorkRepository\HIDTool\HIDInterface\obj\Debug\HIDInterface.csproj.AssemblyReference.cache
+D:\C#version\C-WorkRepository\HIDTool\HIDInterface\obj\Debug\HIDInterface.csproj.CoreCompileInputs.cache
+D:\C#version\C-WorkRepository\HIDTool\HIDInterface\obj\Debug\HIDInterface.dll
+D:\C#version\C-WorkRepository\HIDTool\HIDInterface\obj\Debug\HIDInterface.pdb
