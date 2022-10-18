@@ -33,6 +33,8 @@ namespace SeewoTestTool
                     IPEndPoint ipe = new IPEndPoint(ip, port_int);
                     clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                     clientSocket.Connect(ipe);
+                    device_connect_button.Enabled = false;
+                    device_disconnect_button.Enabled = true;
                 }
                 catch(Exception ex)
                 {
@@ -80,11 +82,13 @@ namespace SeewoTestTool
         {
             if (clientSocket != null && clientSocket.Connected)
             {
+                device_disconnect_button.Enabled = true;
                 clientSocket.Close();
                 MessageBox.Show("设备连接已关闭！");
             }
             else
             {
+                device_disconnect_button.Enabled = false;
                 MessageBox.Show("设备未连接，无需关闭，望悉知！");
             }
 
@@ -93,15 +97,15 @@ namespace SeewoTestTool
         // 选择升级的固件路径
         private void choose_upgrade_firmware_button_Click(object sender, EventArgs e)
         {
-            if(true)
-            //if (clientSocket != null && clientSocket.Connected)
+            //if(true)
+            if (clientSocket != null && clientSocket.Connected)
             {
                 string filePath = null;
                 FolderBrowserDialog dialog = new FolderBrowserDialog();
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     filePath = dialog.SelectedPath;
-                    if (filePath != null)
+                    if (string.IsNullOrEmpty(filePath))
                     {
                         upgrade_firmware_textbox.Text = filePath;
                     }
@@ -110,6 +114,42 @@ namespace SeewoTestTool
                         upgrade_firmware_textbox.Text = "未选择正确的固件路径";
                     }
                 }
+            }
+            else
+            {
+                MessageBox.Show("设备连接已断开，请先连接设备！");
+            }
+        }
+
+        // 固件升级操作
+        private void upgrade_button_Click(object sender, EventArgs e)
+        {
+            //if (true)
+            if (clientSocket != null && clientSocket.Connected)
+            {
+                string filePath = upgrade_firmware_textbox.Text;
+                if (string.IsNullOrEmpty(filePath))
+                {
+                    upgrade_firmware_textbox.Text = "未选择正确的固件路径";
+                }
+                else
+                { 
+                    
+                }
+            }
+            else
+            {
+                MessageBox.Show("设备连接已断开，请先连接设备！");
+            }
+        }
+
+        // 校验当前固件
+        private void check_current_firmware_button_Click(object sender, EventArgs e)
+        {
+            //if (true)
+            if (clientSocket != null && clientSocket.Connected)
+            {
+                string currentFirmware = null;
             }
             else
             {

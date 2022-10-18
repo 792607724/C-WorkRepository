@@ -288,6 +288,7 @@
             this.upgrade_button.TabIndex = 6;
             this.upgrade_button.Text = "开始升级";
             this.upgrade_button.UseVisualStyleBackColor = true;
+            this.upgrade_button.Click += new System.EventHandler(this.upgrade_button_Click);
             // 
             // choose_upgrade_firmware_button
             // 
@@ -323,6 +324,7 @@
             this.check_current_firmware_button.TabIndex = 2;
             this.check_current_firmware_button.Text = "校验当前设备固件";
             this.check_current_firmware_button.UseVisualStyleBackColor = true;
+            this.check_current_firmware_button.Click += new System.EventHandler(this.check_current_firmware_button_Click);
             // 
             // checked_firmware_textbox
             // 
