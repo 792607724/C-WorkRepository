@@ -1,0 +1,16 @@
+D:\vs\HIDTool\HIDInterface\bin\Debug\HIDInterface.dll
+D:\vs\HIDTool\HIDInterface\bin\Debug\HIDInterface.pdb
+D:\vs\HIDTool\HIDInterface\obj\Debug\HIDInterface.csproj.CoreCompileInputs.cache
+D:\vs\HIDTool\HIDInterface\obj\Debug\HIDInterface.dll
+D:\vs\HIDTool\HIDInterface\obj\Debug\HIDInterface.pdb
+D:\Tools\HIDTool\HIDInterface\bin\Debug\HIDInterface.dll
+D:\Tools\HIDTool\HIDInterface\bin\Debug\HIDInterface.pdb
+D:\Tools\HIDTool\HIDInterface\obj\Debug\HIDInterface.csprojAssemblyReference.cache
+D:\Tools\HIDTool\HIDInterface\obj\Debug\HIDInterface.csproj.CoreCompileInputs.cache
+D:\Tools\HIDTool\HIDInterface\obj\Debug\HIDInterface.dll
+D:\Tools\HIDTool\HIDInterface\obj\Debug\HIDInterface.pdb
+D:\C#version\HIDTool\HIDInterface\bin\Debug\HIDInterface.dll
+D:\C#version\HIDTool\HIDInterface\bin\Debug\HIDInterface.pdb
+D:\C#version\HIDTool\HIDInterface\obj\Debug\HIDInterface.csproj.CoreCompileInputs.cache
+D:\C#version\HIDTool\HIDInterface\obj\Debug\HIDInterface.dll
+D:\C#version\HIDTool\HIDInterface\obj\Debug\HIDInterface.pdb

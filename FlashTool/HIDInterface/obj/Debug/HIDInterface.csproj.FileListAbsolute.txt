@@ -1,0 +1,11 @@
+D:\339\Tools\FlashTest\FlashTest\HIDInterface\bin\Debug\HIDInterface.dll
+D:\339\Tools\FlashTest\FlashTest\HIDInterface\bin\Debug\HIDInterface.pdb
+D:\339\Tools\FlashTest\FlashTest\HIDInterface\obj\Debug\HIDInterface.csproj.CoreCompileInputs.cache
+D:\339\Tools\FlashTest\FlashTest\HIDInterface\obj\Debug\HIDInterface.dll
+D:\339\Tools\FlashTest\FlashTest\HIDInterface\obj\Debug\HIDInterface.pdb
+E:\workplace\339\Tools\FlashTool\HIDInterface\bin\Debug\HIDInterface.dll
+E:\workplace\339\Tools\FlashTool\HIDInterface\bin\Debug\HIDInterface.pdb
+E:\workplace\339\Tools\FlashTool\HIDInterface\obj\Debug\HIDInterface.csproj.CoreCompileInputs.cache
+E:\workplace\339\Tools\FlashTool\HIDInterface\obj\Debug\HIDInterface.dll
+E:\workplace\339\Tools\FlashTool\HIDInterface\obj\Debug\HIDInterface.pdb
+E:\workplace\339\Tools\FlashTool\HIDInterface\obj\Debug\HIDInterface.csprojAssemblyReference.cache

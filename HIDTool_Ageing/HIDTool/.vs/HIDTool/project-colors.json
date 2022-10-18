@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "ac41b4fe-18af-4f83-bacd-ff33d1e93312": {
+      "ProjectGuid": "ac41b4fe-18af-4f83-bacd-ff33d1e93312",
+      "DisplayName": "HIDTool",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "7c3d7e8d-64c1-412e-8fc6-67df4490390c": {
+      "ProjectGuid": "7c3d7e8d-64c1-412e-8fc6-67df4490390c",
+      "DisplayName": "SwitchResolutionTest",
+      "ColorIndex": 0
+    },
+    "a80de893-1110-4cbf-b5c4-07890b11ccd1": {
+      "ProjectGuid": "a80de893-1110-4cbf-b5c4-07890b11ccd1",
+      "DisplayName": "VideoCapture",
+      "ColorIndex": 1
+    },
+    "0a6d67e0-04f2-4407-86ef-1509c9dde776": {
+      "ProjectGuid": "0a6d67e0-04f2-4407-86ef-1509c9dde776",
+      "DisplayName": "DirectShow",
+      "ColorIndex": 2
+    }
+  },
+  "NextColorIndex": 3
+}

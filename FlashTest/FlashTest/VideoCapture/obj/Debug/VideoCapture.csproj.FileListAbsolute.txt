@@ -1,0 +1,9 @@
+D:\C#version\FlashTest\FlashTest\VideoCapture\bin\Debug\VideoCapture.dll
+D:\C#version\FlashTest\FlashTest\VideoCapture\bin\Debug\VideoCapture.pdb
+D:\C#version\FlashTest\FlashTest\VideoCapture\bin\Debug\DirectShow.dll
+D:\C#version\FlashTest\FlashTest\VideoCapture\bin\Debug\DirectShow.pdb
+D:\C#version\FlashTest\FlashTest\VideoCapture\obj\Debug\VideoCapture.csproj.AssemblyReference.cache
+D:\C#version\FlashTest\FlashTest\VideoCapture\obj\Debug\VideoCapture.csproj.CoreCompileInputs.cache
+D:\C#version\FlashTest\FlashTest\VideoCapture\obj\Debug\VideoCapture.csproj.CopyComplete
+D:\C#version\FlashTest\FlashTest\VideoCapture\obj\Debug\VideoCapture.dll
+D:\C#version\FlashTest\FlashTest\VideoCapture\obj\Debug\VideoCapture.pdb

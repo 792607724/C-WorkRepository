@@ -1,0 +1,6 @@
+D:\C#version\RebootTest\RebootTest\HIDInterface\bin\Release\HIDInterface.dll
+D:\C#version\RebootTest\RebootTest\HIDInterface\bin\Release\HIDInterface.pdb
+D:\C#version\RebootTest\RebootTest\HIDInterface\obj\Release\HIDInterface.csproj.AssemblyReference.cache
+D:\C#version\RebootTest\RebootTest\HIDInterface\obj\Release\HIDInterface.csproj.CoreCompileInputs.cache
+D:\C#version\RebootTest\RebootTest\HIDInterface\obj\Release\HIDInterface.dll
+D:\C#version\RebootTest\RebootTest\HIDInterface\obj\Release\HIDInterface.pdb

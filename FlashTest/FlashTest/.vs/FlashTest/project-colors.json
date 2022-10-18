@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "7c3d7e8d-64c1-412e-8fc6-67df4490390c": {
+      "ProjectGuid": "7c3d7e8d-64c1-412e-8fc6-67df4490390c",
+      "DisplayName": "FlashTest",
+      "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "杂项文件",
+      "ColorIndex": -1
+    },
+    "1c1683f3-72e3-4fa3-ba2c-fc9a75307fc2": {
+      "ProjectGuid": "1c1683f3-72e3-4fa3-ba2c-fc9a75307fc2",
+      "DisplayName": "HIDInterface",
+      "ColorIndex": 1
+    },
+    "a80de893-1110-4cbf-b5c4-07890b11ccd1": {
+      "ProjectGuid": "a80de893-1110-4cbf-b5c4-07890b11ccd1",
+      "DisplayName": "VideoCapture",
+      "ColorIndex": 2
+    }
+  },
+  "NextColorIndex": 3
+}

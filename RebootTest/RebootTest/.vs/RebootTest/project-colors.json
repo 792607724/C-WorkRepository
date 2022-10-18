@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "7c3d7e8d-64c1-412e-8fc6-67df4490390c": {
+      "ProjectGuid": "7c3d7e8d-64c1-412e-8fc6-67df4490390c",
+      "DisplayName": "RebootTest",
+      "ColorIndex": 0
+    },
+    "0a6d67e0-04f2-4407-86ef-1509c9dde776": {
+      "ProjectGuid": "0a6d67e0-04f2-4407-86ef-1509c9dde776",
+      "DisplayName": "DirectShow",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}
