@@ -13,7 +13,7 @@ namespace SeewoTestTool
 
         Socket clientSocket = null;
 
-        // 保证设备在连接状态
+        // 保证设备在连接状态 网口通信
         private void device_connect_button_Click(object sender, EventArgs e)
         {
             string host = device_ip_textbox.Text;
@@ -25,7 +25,7 @@ namespace SeewoTestTool
             else
             {
                 // Socket Connection Build
-                try 
+                try
                 {
                     int port_int = Convert.ToInt32(port);
                     MessageBox.Show($"IP：{host} PORT：{port_int}");
@@ -36,7 +36,7 @@ namespace SeewoTestTool
                     device_connect_button.Enabled = false;
                     device_disconnect_button.Enabled = true;
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show("设备网口IP地址和端口号错误，请检查是否输入正确！");
                 }
@@ -52,9 +52,9 @@ namespace SeewoTestTool
                 byte[] sendBytes = Encoding.ASCII.GetBytes(sendStr);
                 clientSocket.Send(sendBytes);
             }
-            else 
+            else
             {
-                MessageBox.Show("设备连接已断开，请先连接设备！"); 
+                MessageBox.Show("设备连接已断开，请先连接设备！");
             }
         }
 
@@ -129,8 +129,8 @@ namespace SeewoTestTool
                     upgrade_firmware_textbox.Text = "未选择正确的固件路径";
                 }
                 else
-                { 
-                    
+                {
+
                 }
             }
             else
@@ -189,7 +189,7 @@ namespace SeewoTestTool
             //if (true)
             if (clientSocket != null && clientSocket.Connected)
             {
-
+                
             }
             else
             {
