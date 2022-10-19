@@ -97,6 +97,7 @@
             this.device_reset_button.TabIndex = 6;
             this.device_reset_button.Text = "设备复位";
             this.device_reset_button.UseVisualStyleBackColor = true;
+            this.device_reset_button.Click += new System.EventHandler(this.device_reset_button_Click);
             // 
             // groupBox7
             // 
@@ -126,6 +127,7 @@
             this.array_mic_audio_level_test_button.TabIndex = 0;
             this.array_mic_audio_level_test_button.Text = "阵列MIC音量值测试";
             this.array_mic_audio_level_test_button.UseVisualStyleBackColor = true;
+            this.array_mic_audio_level_test_button.Click += new System.EventHandler(this.array_mic_audio_level_test_button_Click);
             // 
             // groupBox6
             // 
@@ -166,6 +168,7 @@
             this.audioin2_test_button.TabIndex = 1;
             this.audioin2_test_button.Text = "Audio IN2口测试";
             this.audioin2_test_button.UseVisualStyleBackColor = true;
+            this.audioin2_test_button.Click += new System.EventHandler(this.audioin2_test_button_Click);
             // 
             // audioin1_test_button
             // 
@@ -175,6 +178,7 @@
             this.audioin1_test_button.TabIndex = 0;
             this.audioin1_test_button.Text = "Audio IN1口测试";
             this.audioin1_test_button.UseVisualStyleBackColor = true;
+            this.audioin1_test_button.Click += new System.EventHandler(this.audioin1_test_button_Click);
             // 
             // groupBox5
             // 
@@ -198,6 +202,7 @@
             this.get_poe_mic_info_button.TabIndex = 4;
             this.get_poe_mic_info_button.Text = "获取吊麦信息";
             this.get_poe_mic_info_button.UseVisualStyleBackColor = true;
+            this.get_poe_mic_info_button.Click += new System.EventHandler(this.get_poe_mic_info_button_Click);
             // 
             // poe_mic_hardware_info_label
             // 

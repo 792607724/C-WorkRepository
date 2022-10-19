@@ -182,5 +182,75 @@ namespace SeewoTestTool
                 MessageBox.Show("设备连接已断开，请先连接设备！");
             }
         }
+
+        // 获取吊麦信息
+        private void get_poe_mic_info_button_Click(object sender, EventArgs e)
+        {
+            //if (true)
+            if (clientSocket != null && clientSocket.Connected)
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("设备连接已断开，请先连接设备！");
+            }
+        }
+
+        // Audio IN 1口测试
+        private void audioin1_test_button_Click(object sender, EventArgs e)
+        {
+            //if (true)
+            if (clientSocket != null && clientSocket.Connected)
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("设备连接已断开，请先连接设备！");
+            }
+        }
+
+        // Audio IN 2口测试
+        private void audioin2_test_button_Click(object sender, EventArgs e)
+        {
+            //if (true)
+            if (clientSocket != null && clientSocket.Connected)
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("设备连接已断开，请先连接设备！");
+            }
+        }
+
+        // 阵列MIC音量值测试
+        private void array_mic_audio_level_test_button_Click(object sender, EventArgs e)
+        {
+            //if (true)
+            if (clientSocket != null && clientSocket.Connected)
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("设备连接已断开，请先连接设备！");
+            }
+        }
+
+        // 设备复位
+        private void device_reset_button_Click(object sender, EventArgs e)
+        {
+            //if (true)
+            if (clientSocket != null && clientSocket.Connected)
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("设备连接已断开，请先连接设备！");
+            }
+        }
     }
 }
