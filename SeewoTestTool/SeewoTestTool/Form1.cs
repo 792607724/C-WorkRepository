@@ -36,6 +36,9 @@ namespace SeewoTestTool
                     device_connect_button.Enabled = false;
                     device_disconnect_button.Enabled = true;
                     device_status_label.Text = "已连接";
+                    send_Str("am start com.android.browser");
+                    string rec_Str = receive_Str();
+                    MessageBox.Show(rec_Str);
                 }
                 catch (Exception ex)
                 {
@@ -64,12 +67,31 @@ namespace SeewoTestTool
         {
             if (clientSocket != null && clientSocket.Connected)
             {
-                string recStr = "";
-                byte[] recBytes = new byte[4096];
-                int bytes = clientSocket.Receive(recBytes, recBytes.Length, 0);
-                recStr += Encoding.ASCII.GetString(recBytes, 0, bytes);
-
-                return recStr;
+                while (true)
+                {
+                    try
+                    {
+                        string recStr = "";
+                        byte[] recBytes = new byte[4096];
+                        MessageBox.Show("1");
+                        //  以阻塞的方式接收，在收到数据前无响应。
+                        int bytes = clientSocket.Receive(recBytes, recBytes.Length, 0);
+                        MessageBox.Show("2");
+                        recStr += Encoding.ASCII.GetString(recBytes, 0, bytes);
+                        return recStr;
+                    }
+                    catch (Exception ex)
+                    {
+                        clientSocket.Shutdown(SocketShutdown.Both);
+                        clientSocket.Close();
+                        device_disconnect_button.Enabled = false;
+                        device_connect_button.Enabled = true;
+                        device_status_label.Text = "已断开";
+                        MessageBox.Show("设备连接已关闭！");
+                        break;
+                    }
+                }
+                return "";
             }
             else
             {
