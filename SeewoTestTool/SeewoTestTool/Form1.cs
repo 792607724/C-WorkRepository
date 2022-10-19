@@ -76,6 +76,10 @@ namespace SeewoTestTool
                         MessageBox.Show("1");
                         //  以阻塞的方式接收，在收到数据前无响应。
                         int bytes = clientSocket.Receive(recBytes, recBytes.Length, 0);
+                        if (bytes == 0)
+                        {
+                            break;
+                        }
                         MessageBox.Show("2");
                         recStr += Encoding.ASCII.GetString(recBytes, 0, bytes);
                         return recStr;
