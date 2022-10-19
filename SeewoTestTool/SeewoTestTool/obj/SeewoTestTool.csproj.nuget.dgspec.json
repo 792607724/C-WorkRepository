@@ -1,24 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "D:\\MicrosoftVisualStudio\\GithubSync\\C-WorkRepository\\SeewoTestTool\\SeewoTestTool\\SeewoTestTool.csproj": {}
+    "D:\\C#version\\C-WorkRepository\\SeewoTestTool\\SeewoTestTool\\SeewoTestTool.csproj": {}
   },
   "projects": {
-    "D:\\MicrosoftVisualStudio\\GithubSync\\C-WorkRepository\\SeewoTestTool\\SeewoTestTool\\SeewoTestTool.csproj": {
+    "D:\\C#version\\C-WorkRepository\\SeewoTestTool\\SeewoTestTool\\SeewoTestTool.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\MicrosoftVisualStudio\\GithubSync\\C-WorkRepository\\SeewoTestTool\\SeewoTestTool\\SeewoTestTool.csproj",
+        "projectUniqueName": "D:\\C#version\\C-WorkRepository\\SeewoTestTool\\SeewoTestTool\\SeewoTestTool.csproj",
         "projectName": "SeewoTestTool",
-        "projectPath": "D:\\MicrosoftVisualStudio\\GithubSync\\C-WorkRepository\\SeewoTestTool\\SeewoTestTool\\SeewoTestTool.csproj",
+        "projectPath": "D:\\C#version\\C-WorkRepository\\SeewoTestTool\\SeewoTestTool\\SeewoTestTool.csproj",
         "packagesPath": "C:\\Users\\CHENGUANGTAO\\.nuget\\packages\\",
-        "outputPath": "D:\\MicrosoftVisualStudio\\GithubSync\\C-WorkRepository\\SeewoTestTool\\SeewoTestTool\\obj\\",
+        "outputPath": "D:\\C#version\\C-WorkRepository\\SeewoTestTool\\SeewoTestTool\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "D:\\visualStudioTools\\NuGetPackages"
+        ],
         "configFilePaths": [
           "C:\\Users\\CHENGUANGTAO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0-windows"
+          "net6.0-windows7.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -45,8 +49,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -58,7 +61,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

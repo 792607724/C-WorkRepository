@@ -28,13 +28,14 @@ namespace SeewoTestTool
                 try
                 {
                     int port_int = Convert.ToInt32(port);
-                    MessageBox.Show($"IP：{host} PORT：{port_int}");
+                    // MessageBox.Show($"IP：{host} PORT：{port_int}");
                     IPAddress ip = IPAddress.Parse(host);
                     IPEndPoint ipe = new IPEndPoint(ip, port_int);
                     clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                     clientSocket.Connect(ipe);
                     device_connect_button.Enabled = false;
                     device_disconnect_button.Enabled = true;
+                    device_status_label.Text = "已连接";
                 }
                 catch (Exception ex)
                 {
@@ -86,6 +87,7 @@ namespace SeewoTestTool
                 device_disconnect_button.Enabled = false;
                 device_connect_button.Enabled = true;
                 clientSocket.Close();
+                device_status_label.Text = "已断开";
                 MessageBox.Show("设备连接已关闭！");
             }
         }
