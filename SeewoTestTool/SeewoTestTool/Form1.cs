@@ -20,7 +20,7 @@ namespace SeewoTestTool
             string port = device_port_textbox.Text;
             if (string.IsNullOrEmpty(host) || string.IsNullOrEmpty(port))
             {
-                MessageBox.Show("设备网口IP地址和端口号不能为空！");
+                output_rich_textbox.Text = "设备网口IP地址和端口号不能为空！";
             }
             else
             {
@@ -38,12 +38,12 @@ namespace SeewoTestTool
                     device_status_label.Text = "已连接";
                     send_Str("am start com.android.browser");
                     string rec_Str = receive_Str();
-                    MessageBox.Show(rec_Str);
+                    output_rich_textbox.Text = rec_Str;
                 }
                 catch (Exception ex)
                 {
                     device_status_label.Text = "已断开";
-                    MessageBox.Show("设备网口IP地址和端口号错误，请检查是否输入正确！");
+                    output_rich_textbox.Text = "设备网口IP地址和端口号错误，请检查是否输入正确！";
                 }
 
             }
@@ -60,7 +60,7 @@ namespace SeewoTestTool
             else
             {
                 device_status_label.Text = "已断开";
-                MessageBox.Show("设备连接已断开，请先连接设备！");
+                output_rich_textbox.Text = "设备连接已断开，请先连接设备！";
             }
         }
 
@@ -91,7 +91,7 @@ namespace SeewoTestTool
                         device_disconnect_button.Enabled = false;
                         device_connect_button.Enabled = true;
                         device_status_label.Text = "已断开";
-                        MessageBox.Show("设备连接已关闭！");
+                        output_rich_textbox.Text = "设备连接已关闭！";
                         break;
                     }
                 }
@@ -100,7 +100,7 @@ namespace SeewoTestTool
             else
             {
                 device_status_label.Text = "已断开";
-                MessageBox.Show("设备连接已断开，请先连接设备！");
+                output_rich_textbox.Text = "设备连接已断开，请先连接设备！";
                 return "";
             }
         }
@@ -143,7 +143,7 @@ namespace SeewoTestTool
             else
             {
                 device_status_label.Text = "已断开";
-                MessageBox.Show("设备连接已断开，请先连接设备！");
+                output_rich_textbox.Text = "设备连接已断开，请先连接设备！";
             }
         }
 
@@ -166,7 +166,7 @@ namespace SeewoTestTool
             else
             {
                 device_status_label.Text = "已断开";
-                MessageBox.Show("设备连接已断开，请先连接设备！");
+                output_rich_textbox.Text = "设备连接已断开，请先连接设备！";
             }
         }
 
@@ -181,7 +181,7 @@ namespace SeewoTestTool
             else
             {
                 device_status_label.Text = "已断开";
-                MessageBox.Show("设备连接已断开，请先连接设备！");
+                output_rich_textbox.Text = "设备连接已断开，请先连接设备！";
             }
         }
 
@@ -197,7 +197,7 @@ namespace SeewoTestTool
             else
             {
                 device_status_label.Text = "已断开";
-                MessageBox.Show("设备连接已断开，请先连接设备！");
+                output_rich_textbox.Text = "设备连接已断开，请先连接设备！";
             }
         }
 
@@ -213,7 +213,7 @@ namespace SeewoTestTool
             else
             {
                 device_status_label.Text = "已断开";
-                MessageBox.Show("设备连接已断开，请先连接设备！");
+                output_rich_textbox.Text = "设备连接已断开，请先连接设备！";
             }
         }
 
@@ -228,7 +228,7 @@ namespace SeewoTestTool
             else
             {
                 device_status_label.Text = "已断开";
-                MessageBox.Show("设备连接已断开，请先连接设备！");
+                output_rich_textbox.Text = "设备连接已断开，请先连接设备！";
             }
         }
 
@@ -243,7 +243,7 @@ namespace SeewoTestTool
             else
             {
                 device_status_label.Text = "已断开";
-                MessageBox.Show("设备连接已断开，请先连接设备！");
+                output_rich_textbox.Text = "设备连接已断开，请先连接设备！";
             }
         }
 
@@ -258,7 +258,7 @@ namespace SeewoTestTool
             else
             {
                 device_status_label.Text = "已断开";
-                MessageBox.Show("设备连接已断开，请先连接设备！");
+                output_rich_textbox.Text = "设备连接已断开，请先连接设备！";
             }
         }
 
@@ -273,7 +273,7 @@ namespace SeewoTestTool
             else
             {
                 device_status_label.Text = "已断开";
-                MessageBox.Show("设备连接已断开，请先连接设备！");
+                output_rich_textbox.Text = "设备连接已断开，请先连接设备！";
             }
         }
 
@@ -288,7 +288,7 @@ namespace SeewoTestTool
             else
             {
                 device_status_label.Text = "已断开";
-                MessageBox.Show("设备连接已断开，请先连接设备！");
+                output_rich_textbox.Text = "设备连接已断开，请先连接设备！";
             }
         }
 
