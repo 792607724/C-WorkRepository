@@ -33,17 +33,21 @@ namespace SeewoTestTool
                     IPEndPoint ipe = new IPEndPoint(ip, port_int);
                     clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                     clientSocket.Connect(ipe);
+                    if (clientSocket.Connected)
+                    {
+                        output_rich_textbox.Text = $"设备ip:{host}:{port}已连接上！";
+                    }
                     device_connect_button.Enabled = false;
                     device_disconnect_button.Enabled = true;
                     device_status_label.Text = "已连接";
                     send_Str("am start com.android.browser");
                     string rec_Str = receive_Str();
-                    output_rich_textbox.Text = rec_Str;
+                    //output_rich_textbox.Text = rec_Str;
                 }
                 catch (Exception ex)
                 {
                     device_status_label.Text = "已断开";
-                    output_rich_textbox.Text = "设备网口IP地址和端口号错误，请检查是否输入正确！";
+                    output_rich_textbox.Text = $"设备网口IP地址和端口号错误，请检查是否输入正确！\n问题Log如下：{ex.ToString()}";
                 }
 
             }
