@@ -112,7 +112,7 @@ namespace SeewoTestTool
                 device_connect_button.Enabled = true;
                 clientSocket.Close();
                 device_status_label.Text = "已断开";
-                MessageBox.Show("设备连接已关闭！");
+                //MessageBox.Show("设备连接已关闭！");
             }
         }
 
