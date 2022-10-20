@@ -129,11 +129,11 @@ namespace SeewoTestTool
                     filePath = dialog.SelectedPath;
                     if (string.IsNullOrEmpty(filePath))
                     {
-                        upgrade_firmware_textbox.Text = filePath;
+                        upgrade_firmware_textbox.Text = "未选择正确的固件路径";
                     }
                     else
                     {
-                        upgrade_firmware_textbox.Text = "未选择正确的固件路径";
+                        upgrade_firmware_textbox.Text = filePath;
                     }
                 }
             }
