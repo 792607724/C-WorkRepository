@@ -278,5 +278,14 @@ namespace SeewoTestTool
                 MessageBox.Show("设备连接已断开，请先连接设备！");
             }
         }
+
+        // 窗体关闭事件，将设备socket连接释放掉
+        private void FormClosingEvent(object sender, FormClosingEventArgs e)
+        {
+            if (clientSocket != null && clientSocket.Connected)
+            {
+                clientSocket.Close();
+            }
+        }
     }
 }
