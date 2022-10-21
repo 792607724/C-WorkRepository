@@ -1,4 +1,6 @@
+using System.Linq;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Text;
 
@@ -210,7 +212,14 @@ namespace SeewoTestTool
                     try
                     {
                         output_rich_textbox.AppendText("开始升级，请耐心等待完成！\n");
-
+                        // 使用后台线程去升级操作，防止UI阻塞卡死
+                        upgrade_progressbar.Value = 0;
+                        upgrade_button.Enabled = false;
+                        if (backgroundworker_firmwareupgrade.IsBusy)
+                        {
+                            return;
+                        }
+                        backgroundworker_firmwareupgrade.RunWorkerAsync("Hello");
                     }
                     catch (Exception ex)
                     {
@@ -506,6 +515,82 @@ namespace SeewoTestTool
             if (!string.IsNullOrEmpty(output_rich_textbox.Text))
             {
                 output_rich_textbox.Text = "";
+            }
+        }
+
+        // 新建backgroundworker给固件升级操作，防止UI阻塞交互卡死
+        private void backgroundworker_firmwareupgrade_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            for (int i = 0; i < 101; i++)
+            {
+                if (backgroundworker_firmwareupgrade.CancellationPending)
+                { 
+                    e.Cancel = true;
+                    return;
+                }
+                else
+                {
+                    backgroundworker_firmwareupgrade.ReportProgress(i, "Working\n");
+                    System.Threading.Thread.Sleep(100);
+                }
+            }
+        }
+        private void backgroundworker_firmwareupgrade_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
+        {
+            upgrade_progressbar.Value = e.ProgressPercentage;
+            output_rich_textbox.AppendText($"升级进度：{Convert.ToString(e.ProgressPercentage)}%\n");
+        }
+        private void backgroundworker_firmwareupgrade_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            if (e.Error!=null)
+            {
+                output_rich_textbox.AppendText(e.Error.ToString());
+                return;
+            }
+            if (!e.Cancelled)
+            {
+                output_rich_textbox.AppendText("升级完毕！\n");
+                upgrade_button.Enabled = true;
+
+            }
+            else
+            {
+                output_rich_textbox.AppendText("升级终止！\n");
+            }
+        }
+        
+        // 获取当前电脑连接的所有设备的网口并筛选出Seewo的设备
+        private void getSeewoDevice_Click(object sender, EventArgs e)
+        {
+            //if (true)
+            output_rich_textbox.AppendText("获取当前电脑连接的所有设备的网口并筛选出Seewo的设备\n");
+            try
+            {
+                
+                foreach (NetworkInterface netItem in NetworkInterface.GetAllNetworkInterfaces())
+                {
+                    output_rich_textbox.AppendText($"接口名：{netItem.Name}，接口类型：{netItem.NetworkInterfaceType}，" +
+                        $"接口MAC：{netItem.GetPhysicalAddress().ToString()}\n");
+                    foreach (UnicastIPAddressInformation ipIntProp in netItem.GetIPProperties().UnicastAddresses.ToArray<UnicastIPAddressInformation>())
+                    {
+                        output_rich_textbox.AppendText($"   接口名：{netItem.Name}，IP：{ipIntProp.Address.ToString()}，IP类型：{ipIntProp.Address.AddressFamily}\n");
+                    }
+                }
+
+                IPGlobalProperties ipGlobalProperties = IPGlobalProperties.GetIPGlobalProperties();
+                IPEndPoint[] endPoints = ipGlobalProperties.GetActiveTcpListeners();
+                foreach (IPEndPoint endPoint in endPoints)
+                {
+                    output_rich_textbox.AppendText($"端口：{endPoint.Port}，IP：{endPoint.Address.ToString()}，IP类型：{endPoint.Address.AddressFamily.ToString()}\n");
+                }
+            }
+            catch (Exception ex)
+            {
+                output_rich_textbox.AppendText($"获取设备失败，当前未连接设备：\n{ex.ToString()}\n");
+            }
+            finally
+            {
+
             }
         }
     }

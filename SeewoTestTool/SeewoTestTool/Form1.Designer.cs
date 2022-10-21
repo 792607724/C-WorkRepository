@@ -48,6 +48,7 @@
             this.stop_rg_flicker_button = new System.Windows.Forms.Button();
             this.start_rg_flicker_button = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.upgrade_progressbar = new System.Windows.Forms.ProgressBar();
             this.upgrade_button = new System.Windows.Forms.Button();
             this.choose_upgrade_firmware_button = new System.Windows.Forms.Button();
             this.upgrade_firmware_textbox = new System.Windows.Forms.TextBox();
@@ -67,6 +68,8 @@
             this.output_rich_textbox = new System.Windows.Forms.RichTextBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.clear_output_button = new System.Windows.Forms.Button();
+            this.backgroundworker_firmwareupgrade = new System.ComponentModel.BackgroundWorker();
+            this.getSeewoDevice = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -97,10 +100,10 @@
             // 
             // device_reset_button
             // 
-            this.device_reset_button.Location = new System.Drawing.Point(296, 472);
+            this.device_reset_button.Location = new System.Drawing.Point(301, 469);
             this.device_reset_button.Margin = new System.Windows.Forms.Padding(4);
             this.device_reset_button.Name = "device_reset_button";
-            this.device_reset_button.Size = new System.Drawing.Size(683, 44);
+            this.device_reset_button.Size = new System.Drawing.Size(678, 44);
             this.device_reset_button.TabIndex = 6;
             this.device_reset_button.Text = "设备复位";
             this.device_reset_button.UseVisualStyleBackColor = true;
@@ -301,6 +304,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.upgrade_progressbar);
             this.groupBox3.Controls.Add(this.upgrade_button);
             this.groupBox3.Controls.Add(this.choose_upgrade_firmware_button);
             this.groupBox3.Controls.Add(this.upgrade_firmware_textbox);
@@ -317,12 +321,19 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "固件升级校验";
             // 
+            // upgrade_progressbar
+            // 
+            this.upgrade_progressbar.Location = new System.Drawing.Point(16, 90);
+            this.upgrade_progressbar.Name = "upgrade_progressbar";
+            this.upgrade_progressbar.Size = new System.Drawing.Size(670, 29);
+            this.upgrade_progressbar.TabIndex = 7;
+            // 
             // upgrade_button
             // 
-            this.upgrade_button.Location = new System.Drawing.Point(12, 116);
+            this.upgrade_button.Location = new System.Drawing.Point(16, 126);
             this.upgrade_button.Margin = new System.Windows.Forms.Padding(4);
             this.upgrade_button.Name = "upgrade_button";
-            this.upgrade_button.Size = new System.Drawing.Size(678, 44);
+            this.upgrade_button.Size = new System.Drawing.Size(670, 34);
             this.upgrade_button.TabIndex = 6;
             this.upgrade_button.Text = "开始升级";
             this.upgrade_button.UseVisualStyleBackColor = true;
@@ -330,10 +341,10 @@
             // 
             // choose_upgrade_firmware_button
             // 
-            this.choose_upgrade_firmware_button.Location = new System.Drawing.Point(540, 73);
+            this.choose_upgrade_firmware_button.Location = new System.Drawing.Point(541, 53);
             this.choose_upgrade_firmware_button.Margin = new System.Windows.Forms.Padding(4);
             this.choose_upgrade_firmware_button.Name = "choose_upgrade_firmware_button";
-            this.choose_upgrade_firmware_button.Size = new System.Drawing.Size(149, 36);
+            this.choose_upgrade_firmware_button.Size = new System.Drawing.Size(149, 34);
             this.choose_upgrade_firmware_button.TabIndex = 5;
             this.choose_upgrade_firmware_button.Text = "选择升级固件";
             this.choose_upgrade_firmware_button.UseVisualStyleBackColor = true;
@@ -341,7 +352,7 @@
             // 
             // upgrade_firmware_textbox
             // 
-            this.upgrade_firmware_textbox.Location = new System.Drawing.Point(153, 78);
+            this.upgrade_firmware_textbox.Location = new System.Drawing.Point(153, 58);
             this.upgrade_firmware_textbox.Margin = new System.Windows.Forms.Padding(4);
             this.upgrade_firmware_textbox.Name = "upgrade_firmware_textbox";
             this.upgrade_firmware_textbox.Size = new System.Drawing.Size(378, 27);
@@ -350,7 +361,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 81);
+            this.label5.Location = new System.Drawing.Point(13, 60);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(84, 20);
@@ -362,7 +373,7 @@
             this.check_current_firmware_button.Location = new System.Drawing.Point(540, 19);
             this.check_current_firmware_button.Margin = new System.Windows.Forms.Padding(4);
             this.check_current_firmware_button.Name = "check_current_firmware_button";
-            this.check_current_firmware_button.Size = new System.Drawing.Size(149, 36);
+            this.check_current_firmware_button.Size = new System.Drawing.Size(149, 34);
             this.check_current_firmware_button.TabIndex = 2;
             this.check_current_firmware_button.Text = "校验当前设备固件";
             this.check_current_firmware_button.UseVisualStyleBackColor = true;
@@ -388,6 +399,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.getSeewoDevice);
             this.groupBox2.Controls.Add(this.device_status_label);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.device_disconnect_button);
@@ -408,7 +420,7 @@
             // device_status_label
             // 
             this.device_status_label.AutoSize = true;
-            this.device_status_label.Location = new System.Drawing.Point(144, 94);
+            this.device_status_label.Location = new System.Drawing.Point(99, 94);
             this.device_status_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.device_status_label.Name = "device_status_label";
             this.device_status_label.Size = new System.Drawing.Size(54, 20);
@@ -517,6 +529,24 @@
             this.clear_output_button.UseVisualStyleBackColor = true;
             this.clear_output_button.Click += new System.EventHandler(this.clear_output_button_Click);
             // 
+            // backgroundworker_firmwareupgrade
+            // 
+            this.backgroundworker_firmwareupgrade.WorkerReportsProgress = true;
+            this.backgroundworker_firmwareupgrade.WorkerSupportsCancellation = true;
+            this.backgroundworker_firmwareupgrade.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundworker_firmwareupgrade_DoWork);
+            this.backgroundworker_firmwareupgrade.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundworker_firmwareupgrade_ProgressChanged);
+            this.backgroundworker_firmwareupgrade.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundworker_firmwareupgrade_RunWorkerCompleted);
+            // 
+            // getSeewoDevice
+            // 
+            this.getSeewoDevice.Location = new System.Drawing.Point(160, 90);
+            this.getSeewoDevice.Name = "getSeewoDevice";
+            this.getSeewoDevice.Size = new System.Drawing.Size(79, 29);
+            this.getSeewoDevice.TabIndex = 8;
+            this.getSeewoDevice.Text = "刷新网口";
+            this.getSeewoDevice.UseVisualStyleBackColor = true;
+            this.getSeewoDevice.Click += new System.EventHandler(this.getSeewoDevice_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -588,5 +618,8 @@
         private GroupBox groupBox8;
         private RichTextBox output_rich_textbox;
         private Button clear_output_button;
+        private System.ComponentModel.BackgroundWorker backgroundworker_firmwareupgrade;
+        private ProgressBar upgrade_progressbar;
+        private Button getSeewoDevice;
     }
 }
