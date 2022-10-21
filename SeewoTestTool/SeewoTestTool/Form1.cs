@@ -499,5 +499,14 @@ namespace SeewoTestTool
             // 滚动到光标位置
             output_rich_textbox.ScrollToCaret();
         }
+
+        // 清空输出内容
+        private void clear_output_button_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(output_rich_textbox.Text))
+            {
+                output_rich_textbox.Text = "";
+            }
+        }
     }
 }
