@@ -11,7 +11,7 @@ namespace SeewoTestTool
             InitializeComponent();
         }
 
-        Socket clientSocket = null;
+        Socket clientSocket;
 
         // 保证设备在连接状态 网口通信
         private void device_connect_button_Click(object sender, EventArgs e)
@@ -20,7 +20,7 @@ namespace SeewoTestTool
             string port = device_port_textbox.Text;
             if (string.IsNullOrEmpty(host) || string.IsNullOrEmpty(port))
             {
-                output_rich_textbox.Text = "设备网口IP地址和端口号不能为空！";
+                output_rich_textbox.AppendText("设备网口IP地址和端口号不能为空！\n");
             }
             else
             {
@@ -34,7 +34,7 @@ namespace SeewoTestTool
                     clientSocket.Connect(ipe);
                     if (clientSocket.Connected)
                     {
-                        output_rich_textbox.Text = $"设备ip:{host}:{port}已连接上！";
+                        output_rich_textbox.AppendText($"设备ip:{host}:{port}已连接上！\n");
                     }
                     device_connect_button.Enabled = false;
                     device_disconnect_button.Enabled = true;
@@ -49,7 +49,7 @@ namespace SeewoTestTool
                     device_status_label.Text = "已断开";
                     device_ip_textbox.Enabled = true;
                     device_port_textbox.Enabled = true;
-                    output_rich_textbox.Text = $"设备网口IP地址和端口号错误，请检查是否输入正确！\n问题Log如下：{ex.ToString()}";
+                    output_rich_textbox.AppendText($"设备网口IP地址和端口号错误，请检查是否输入正确！\n问题Log如下：{ex.ToString()}\n");
                 }
 
             }
@@ -64,13 +64,13 @@ namespace SeewoTestTool
                 // Socket发送命令
                 try
                 {
-                    output_rich_textbox.Text = $"指令发送:{sendStr}";
+                    output_rich_textbox.AppendText($"指令发送:{sendStr}\n");
                     byte[] sendBytes = Encoding.ASCII.GetBytes(sendStr);
                     clientSocket.Send(sendBytes);
                 }
                 catch (Exception ex)
                 {
-                    output_rich_textbox.Text = $"Socket发送命令执行失败：\n{ex.ToString()}";
+                    output_rich_textbox.AppendText($"Socket发送命令执行失败：\n{ex.ToString()}\n");
                 }
                 finally
                 {
@@ -82,7 +82,7 @@ namespace SeewoTestTool
                 device_ip_textbox.Enabled = true;
                 device_port_textbox.Enabled = true;
                 device_status_label.Text = "已断开";
-                output_rich_textbox.Text = "设备连接已断开，请先连接设备！";
+                output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
             }
         }
 
@@ -105,7 +105,7 @@ namespace SeewoTestTool
                             break;
                         }
                         recStr += Encoding.ASCII.GetString(recBytes, 0, bytes);
-                        output_rich_textbox.Text = $"接收内容：{recStr}";
+                        output_rich_textbox.AppendText($"接收内容：{recStr}\n");
                         return recStr;
                     }
                     catch (Exception ex)
@@ -117,7 +117,7 @@ namespace SeewoTestTool
                         device_ip_textbox.Enabled = true;
                         device_port_textbox.Enabled = true;
                         device_status_label.Text = "已断开";
-                        output_rich_textbox.Text = $"Socket接收命令执行失败：\n{ex.ToString()}";
+                        output_rich_textbox.AppendText($"Socket接收命令执行失败：\n{ex.ToString()}\n");
                         break;
                     }
                 }
@@ -128,7 +128,7 @@ namespace SeewoTestTool
                 device_ip_textbox.Enabled = true;
                 device_port_textbox.Enabled = true;
                 device_status_label.Text = "已断开";
-                output_rich_textbox.Text = "设备连接已断开，请先连接设备！";
+                output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
                 return "";
             }
         }
@@ -141,7 +141,7 @@ namespace SeewoTestTool
             {
                 try
                 {
-                    output_rich_textbox.Text = "断开当前已连接设备";
+                    output_rich_textbox.AppendText("断开当前已连接设备\n");
                     device_disconnect_button.Enabled = false;
                     device_connect_button.Enabled = true;
                     clientSocket.Close();
@@ -151,7 +151,7 @@ namespace SeewoTestTool
                 }
                 catch (Exception ex)
                 {
-                    output_rich_textbox.Text = $"断开设备连接失败：\n{ex.ToString()}";
+                    output_rich_textbox.AppendText($"断开设备连接失败：\n{ex.ToString()}\n");
                 }
                 finally
                 {
@@ -168,7 +168,7 @@ namespace SeewoTestTool
             {
                 string filePath = null;
                 FolderBrowserDialog dialog = new FolderBrowserDialog();
-                output_rich_textbox.Text = "选择升级固件！";
+                output_rich_textbox.AppendText("选择升级固件！\n");
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     filePath = dialog.SelectedPath;
@@ -179,6 +179,8 @@ namespace SeewoTestTool
                     else
                     {
                         upgrade_firmware_textbox.Text = filePath;
+                        output_rich_textbox.AppendText($"当前选择的固件路径为：\n{filePath}\n");
+
                     }
                 }
             }
@@ -187,7 +189,7 @@ namespace SeewoTestTool
                 device_ip_textbox.Enabled = true;
                 device_port_textbox.Enabled = true;
                 device_status_label.Text = "已断开";
-                output_rich_textbox.Text = "设备连接已断开，请先连接设备！";
+                output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
             }
         }
 
@@ -207,12 +209,12 @@ namespace SeewoTestTool
                     // 固件开始升级
                     try
                     {
-                        output_rich_textbox.Text = "开始升级，请耐心等待完成！";
+                        output_rich_textbox.AppendText("开始升级，请耐心等待完成！\n");
 
                     }
                     catch (Exception ex)
                     {
-                        output_rich_textbox.Text = $"固件升级操作失败：\n{ex.ToString()}";
+                        output_rich_textbox.AppendText($"固件升级操作失败：\n{ex.ToString()}\n");
                     }
                     finally
                     {
@@ -225,7 +227,7 @@ namespace SeewoTestTool
                 device_ip_textbox.Enabled = true;
                 device_port_textbox.Enabled = true;
                 device_status_label.Text = "已断开";
-                output_rich_textbox.Text = "设备连接已断开，请先连接设备！";
+                output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
             }
         }
 
@@ -235,7 +237,7 @@ namespace SeewoTestTool
             //if (true)
             if (clientSocket != null && clientSocket.Connected)
             {
-                output_rich_textbox.Text = "校验固件测试！";
+                output_rich_textbox.AppendText("校验固件测试！");
                 string currentFirmware = null;
                 try
                 {
@@ -244,7 +246,7 @@ namespace SeewoTestTool
                 }
                 catch (Exception ex)
                 {
-                    output_rich_textbox.Text = $"校验固件测试失败：\n{ex.ToString()}";
+                    output_rich_textbox.AppendText($"校验固件测试失败：\n{ex.ToString()}\n");
                 }
                 finally
                 { 
@@ -256,7 +258,7 @@ namespace SeewoTestTool
                 device_ip_textbox.Enabled = true;
                 device_port_textbox.Enabled = true;
                 device_status_label.Text = "已断开";
-                output_rich_textbox.Text = "设备连接已断开，请先连接设备！";
+                output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
             }
         }
 
@@ -264,7 +266,7 @@ namespace SeewoTestTool
         private void start_rg_flicker_button_Click(object sender, EventArgs e)
         {
             //if (true)
-            output_rich_textbox.Text = "打开红绿灯交替闪烁";
+            output_rich_textbox.AppendText("打开红绿灯交替闪烁\n");
             if (clientSocket != null && clientSocket.Connected)
             {
                 try
@@ -275,7 +277,7 @@ namespace SeewoTestTool
                 }
                 catch (Exception ex)
                 {
-                    output_rich_textbox.Text = $"打开红绿灯交替闪烁功能失败：\n{ex.ToString()}";
+                    output_rich_textbox.AppendText($"打开红绿灯交替闪烁功能失败：\n{ex.ToString()}\n");
                 }
                 finally
                 {
@@ -287,7 +289,7 @@ namespace SeewoTestTool
                 device_ip_textbox.Enabled = true;
                 device_port_textbox.Enabled = true;
                 device_status_label.Text = "已断开";
-                output_rich_textbox.Text = "设备连接已断开，请先连接设备！";
+                output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
             }
         }
 
@@ -295,7 +297,7 @@ namespace SeewoTestTool
         private void stop_rg_flicker_button_Click(object sender, EventArgs e)
         {
             //if (true)
-            output_rich_textbox.Text = "关闭红绿灯交替闪烁";
+            output_rich_textbox.AppendText("关闭红绿灯交替闪烁\n");
             if (clientSocket != null && clientSocket.Connected)
             {
                 try
@@ -306,7 +308,7 @@ namespace SeewoTestTool
                 }
                 catch (Exception ex)
                 {
-                    output_rich_textbox.Text = $"关闭红绿灯交替闪烁功能失败：\n{ex.ToString()}";
+                    output_rich_textbox.AppendText($"关闭红绿灯交替闪烁功能失败：\n{ex.ToString()}\n");
                 }
                 finally
                 {
@@ -318,7 +320,7 @@ namespace SeewoTestTool
                 device_ip_textbox.Enabled = true;
                 device_port_textbox.Enabled = true;
                 device_status_label.Text = "已断开";
-                output_rich_textbox.Text = "设备连接已断开，请先连接设备！";
+                output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
             }
         }
 
@@ -326,7 +328,7 @@ namespace SeewoTestTool
         private void get_poe_mic_info_button_Click(object sender, EventArgs e)
         {
             //if (true)
-            output_rich_textbox.Text = "获取吊麦信息";
+            output_rich_textbox.AppendText("获取吊麦信息\n");
             if (clientSocket != null && clientSocket.Connected)
             {
                 try
@@ -335,7 +337,7 @@ namespace SeewoTestTool
                 }
                 catch (Exception ex)
                 {
-                    output_rich_textbox.Text = $"获取吊麦信息失败：\n{ex.ToString()}";
+                    output_rich_textbox.AppendText($"获取吊麦信息失败：\n{ex.ToString()}\n");
                 }
                 finally
                 {
@@ -347,7 +349,7 @@ namespace SeewoTestTool
                 device_ip_textbox.Enabled = true;
                 device_port_textbox.Enabled = true;
                 device_status_label.Text = "已断开";
-                output_rich_textbox.Text = "设备连接已断开，请先连接设备！";
+                output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
             }
         }
 
@@ -355,7 +357,7 @@ namespace SeewoTestTool
         private void audioin1_test_button_Click(object sender, EventArgs e)
         {
             //if (true)
-            output_rich_textbox.Text = "Audio IN 1口测试";
+            output_rich_textbox.AppendText("Audio IN 1口测试\n");
             if (clientSocket != null && clientSocket.Connected)
             {
                 try
@@ -364,7 +366,7 @@ namespace SeewoTestTool
                 }
                 catch (Exception ex)
                 {
-                    output_rich_textbox.Text = $"Audio IN 1口测试失败：\n{ex.ToString()}";
+                    output_rich_textbox.AppendText($"Audio IN 1口测试失败：\n{ex.ToString()}\n");
                 }
                 finally
                 {
@@ -376,7 +378,7 @@ namespace SeewoTestTool
                 device_ip_textbox.Enabled = true;
                 device_port_textbox.Enabled = true;
                 device_status_label.Text = "已断开";
-                output_rich_textbox.Text = "设备连接已断开，请先连接设备！";
+                output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
             }
         }
 
@@ -384,7 +386,7 @@ namespace SeewoTestTool
         private void audioin2_test_button_Click(object sender, EventArgs e)
         {
             //if (true)
-            output_rich_textbox.Text = "Audio IN 2口测试";
+            output_rich_textbox.AppendText("Audio IN 2口测试\n");
             if (clientSocket != null && clientSocket.Connected)
             {
                 try
@@ -393,7 +395,7 @@ namespace SeewoTestTool
                 }
                 catch (Exception ex)
                 {
-                    output_rich_textbox.Text = $"Audio IN 2口测试失败：\n{ex.ToString()}";
+                    output_rich_textbox.AppendText($"Audio IN 2口测试失败：\n{ex.ToString()}\n");
                 }
                 finally
                 {
@@ -405,7 +407,7 @@ namespace SeewoTestTool
                 device_ip_textbox.Enabled = true;
                 device_port_textbox.Enabled = true;
                 device_status_label.Text = "已断开";
-                output_rich_textbox.Text = "设备连接已断开，请先连接设备！";
+                output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
             }
         }
 
@@ -413,7 +415,7 @@ namespace SeewoTestTool
         private void array_mic_audio_level_test_button_Click(object sender, EventArgs e)
         {
             //if (true)
-            output_rich_textbox.Text = "阵列MIC音量值测试";
+            output_rich_textbox.AppendText("阵列MIC音量值测试\n");
             if (clientSocket != null && clientSocket.Connected)
             {
                 try
@@ -422,7 +424,7 @@ namespace SeewoTestTool
                 }
                 catch (Exception ex)
                 {
-                    output_rich_textbox.Text = $"阵列MIC音量值测试失败：\n{ex.ToString()}";
+                    output_rich_textbox.AppendText($"阵列MIC音量值测试失败：\n{ex.ToString()}\n");
                 }
                 finally
                 {
@@ -434,7 +436,7 @@ namespace SeewoTestTool
                 device_ip_textbox.Enabled = true;
                 device_port_textbox.Enabled = true;
                 device_status_label.Text = "已断开";
-                output_rich_textbox.Text = "设备连接已断开，请先连接设备！";
+                output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
             }
         }
 
@@ -442,7 +444,7 @@ namespace SeewoTestTool
         private void device_reset_button_Click(object sender, EventArgs e)
         {
             //if (true)
-            output_rich_textbox.Text = "设备复位";
+            output_rich_textbox.AppendText("设备复位\n");
             if (clientSocket != null && clientSocket.Connected)
             {
                 try
@@ -451,7 +453,7 @@ namespace SeewoTestTool
                 }
                 catch (Exception ex)
                 {
-                    output_rich_textbox.Text = $"设备复位失败：\n{ex.ToString()}";
+                    output_rich_textbox.AppendText($"设备复位失败：\n{ex.ToString()}\n");
                 }
                 finally
                 {
@@ -463,7 +465,7 @@ namespace SeewoTestTool
                 device_ip_textbox.Enabled = true;
                 device_port_textbox.Enabled = true;
                 device_status_label.Text = "已断开";
-                output_rich_textbox.Text = "设备连接已断开，请先连接设备！";
+                output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
             }
         }
 
@@ -471,7 +473,7 @@ namespace SeewoTestTool
         private void FormClosingEvent(object sender, FormClosingEventArgs e)
         {
             //if (true)
-            output_rich_textbox.Text = "窗体关闭事件，将设备socket连接释放掉";
+            output_rich_textbox.AppendText("窗体关闭事件，将设备socket连接释放掉\n");
             if (clientSocket != null && clientSocket.Connected)
             {
                 try
@@ -480,13 +482,22 @@ namespace SeewoTestTool
                 }
                 catch (Exception ex)
                 {
-                    output_rich_textbox.Text = $"窗体关闭将设备socket连接释放掉失败：\n{ex.ToString()}";
+                    output_rich_textbox.AppendText($"窗体关闭将设备socket连接释放掉失败：\n{ex.ToString()}\n");
                 }
                 finally
                 {
 
                 }
             }
+        }
+
+        // 输出列表始终显示最新内容Log
+        private void richTextChanged_to(object sender, EventArgs e)
+        {
+            // 将光标位置设置到当前内容的末尾
+            output_rich_textbox.SelectionStart = output_rich_textbox.Text.Length;
+            // 滚动到光标位置
+            output_rich_textbox.ScrollToCaret();
         }
     }
 }
