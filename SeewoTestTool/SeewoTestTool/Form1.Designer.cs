@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.device_reset_button = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
@@ -57,6 +58,7 @@
             this.checked_firmware_textbox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.getSeewoDevice = new System.Windows.Forms.Button();
             this.device_status_label = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.device_disconnect_button = new System.Windows.Forms.Button();
@@ -69,7 +71,6 @@
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.clear_output_button = new System.Windows.Forms.Button();
             this.backgroundworker_firmwareupgrade = new System.ComponentModel.BackgroundWorker();
-            this.getSeewoDevice = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -417,6 +418,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "连接设备";
             // 
+            // getSeewoDevice
+            // 
+            this.getSeewoDevice.Location = new System.Drawing.Point(160, 90);
+            this.getSeewoDevice.Name = "getSeewoDevice";
+            this.getSeewoDevice.Size = new System.Drawing.Size(79, 29);
+            this.getSeewoDevice.TabIndex = 8;
+            this.getSeewoDevice.Text = "刷新网口";
+            this.getSeewoDevice.UseVisualStyleBackColor = true;
+            this.getSeewoDevice.Click += new System.EventHandler(this.getSeewoDevice_Click);
+            // 
             // device_status_label
             // 
             this.device_status_label.AutoSize = true;
@@ -537,16 +548,6 @@
             this.backgroundworker_firmwareupgrade.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundworker_firmwareupgrade_ProgressChanged);
             this.backgroundworker_firmwareupgrade.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundworker_firmwareupgrade_RunWorkerCompleted);
             // 
-            // getSeewoDevice
-            // 
-            this.getSeewoDevice.Location = new System.Drawing.Point(160, 90);
-            this.getSeewoDevice.Name = "getSeewoDevice";
-            this.getSeewoDevice.Size = new System.Drawing.Size(79, 29);
-            this.getSeewoDevice.TabIndex = 8;
-            this.getSeewoDevice.Text = "刷新网口";
-            this.getSeewoDevice.UseVisualStyleBackColor = true;
-            this.getSeewoDevice.Click += new System.EventHandler(this.getSeewoDevice_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -554,7 +555,10 @@
             this.ClientSize = new System.Drawing.Size(1029, 740);
             this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximumSize = new System.Drawing.Size(1047, 787);
+            this.MinimumSize = new System.Drawing.Size(1047, 787);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Seewo测试工具";
