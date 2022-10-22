@@ -39,3 +39,17 @@ D:\C#version\C-WorkRepository\HIDTool\HIDTool\obj\Debug\HIDTool.csproj.CoreCompi
 D:\C#version\C-WorkRepository\HIDTool\HIDTool\obj\Debug\HIDTool.csproj.CopyComplete
 D:\C#version\C-WorkRepository\HIDTool\HIDTool\obj\Debug\HIDTool.exe
 D:\C#version\C-WorkRepository\HIDTool\HIDTool\obj\Debug\HIDTool.pdb
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\HIDTool\HIDTool\bin\Debug\HIDTool.exe.config
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\HIDTool\HIDTool\bin\Debug\HIDTool.exe
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\HIDTool\HIDTool\bin\Debug\HIDTool.pdb
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\HIDTool\HIDTool\bin\Debug\HIDInterface.dll
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\HIDTool\HIDTool\bin\Debug\HIDInterface.pdb
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\HIDTool\HIDTool\obj\Debug\HIDTool.csproj.AssemblyReference.cache
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\HIDTool\HIDTool\obj\Debug\HIDTool.csproj.SuggestedBindingRedirects.cache
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\HIDTool\HIDTool\obj\Debug\HIDTool.HIDToolForm.resources
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\HIDTool\HIDTool\obj\Debug\HIDTool.Properties.Resources.resources
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\HIDTool\HIDTool\obj\Debug\HIDTool.csproj.GenerateResource.cache
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\HIDTool\HIDTool\obj\Debug\HIDTool.csproj.CoreCompileInputs.cache
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\HIDTool\HIDTool\obj\Debug\HIDTool.csproj.CopyComplete
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\HIDTool\HIDTool\obj\Debug\HIDTool.exe
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\HIDTool\HIDTool\obj\Debug\HIDTool.pdb

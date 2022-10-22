@@ -531,7 +531,7 @@ namespace SeewoTestTool
                 else
                 {
                     backgroundworker_firmwareupgrade.ReportProgress(i, "Working\n");
-                    System.Threading.Thread.Sleep(100);
+                    System.Threading.Thread.Sleep(50);
                 }
             }
         }
