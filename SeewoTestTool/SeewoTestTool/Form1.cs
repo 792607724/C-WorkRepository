@@ -1,9 +1,13 @@
+using System.Diagnostics;
+using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
+using System.Text.RegularExpressions;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace SeewoTestTool
 {
@@ -101,6 +105,25 @@ namespace SeewoTestTool
                 }
 
             }
+        }
+
+        // 在cmd中执行命令操作
+        private string executeCMDCommand(string command)
+        {
+            Process process_cmd = new Process();
+            process_cmd.StartInfo.FileName = "cmd.exe";
+            process_cmd.StartInfo.RedirectStandardInput = true;
+            process_cmd.StartInfo.RedirectStandardOutput = true;
+            process_cmd.StartInfo.CreateNoWindow = false;
+            process_cmd.StartInfo.UseShellExecute = false;
+            process_cmd.Start();
+            process_cmd.StandardInput.WriteLine(command + "&exit");
+            process_cmd.StandardInput.AutoFlush = true;
+            string output_string = process_cmd.StandardOutput.ReadToEnd();
+            process_cmd.WaitForExit();
+            process_cmd.Close();
+            return output_string;
+
         }
 
         // Socket发送命令函数
@@ -208,18 +231,18 @@ namespace SeewoTestTool
             }
         }
 
+        string filePath = null;
         // 选择升级的固件路径
         private void choose_upgrade_firmware_button_Click(object sender, EventArgs e)
         {
             //if(true)
             if (clientSocket != null && clientSocket.Connected)
             {
-                string filePath = null;
-                FolderBrowserDialog dialog = new FolderBrowserDialog();
+                OpenFileDialog dialog = new OpenFileDialog();
                 output_rich_textbox.AppendText("选择升级固件！\n");
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    filePath = dialog.SelectedPath;
+                    filePath = dialog.FileName;
                     if (string.IsNullOrEmpty(filePath))
                     {
                         upgrade_firmware_textbox.Text = "未选择正确的固件路径";
@@ -292,11 +315,66 @@ namespace SeewoTestTool
             //if (true)
             if (clientSocket != null && clientSocket.Connected)
             {
-                output_rich_textbox.AppendText("校验固件测试！");
+                output_rich_textbox.AppendText("校验固件测试！\n");
                 string currentFirmware = null;
                 try
                 {
-                    // 校验固件
+                    // 校验固件 - 登录操作获取session - 后续IP以后续输入为主，当前暂定
+                    string loginCommand = "curl -X POST \"http://10.66.30.69/json_api\" -H \"Content-Type: application/json\" -d \"{\\\"method\\\": \\\"login\\\", \\\"username\\\": \\\"admin\\\",\\\"password\\\": \\\"8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92\\\"}\"";
+                    output_string = executeCMDCommand(loginCommand);
+                    MatchCollection results = Regex.Matches(output_string, "\"session\" : (.*)"); 
+                    string session = results[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
+                    output_rich_textbox.AppendText("当前固件校验Session是：" + session + "\n");
+
+
+                    // 校验固件 - 从session中获取固件当前版本
+                    string checkVersionCommand = $"curl -X POST \"http://10.66.30.69/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\":\\\"getParam\\\",\\\"session\\\":\\\"{session}\\\",\\\"name\\\":\\\"DevInfo\\\"}}\"";
+                    output_string = executeCMDCommand(checkVersionCommand);
+                    MatchCollection results_2 = Regex.Matches(output_string, "\"SoftwaveVersion\" : (.*)");
+                    string currentVersion = results_2[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
+                    output_rich_textbox.AppendText("当前版本是：" + currentVersion + "\n");
+
+                    // 将本地Firmware压缩包解压从info.txt中获取需要升级的版本进行核对
+                    if (string.IsNullOrEmpty(filePath))
+                    {
+                        output_rich_textbox.AppendText("请先点击【选择升级固件】后再进行核对操作！\n");
+                    }
+                    else
+                    {
+                        using (var zip = ZipFile.OpenRead(filePath))
+                        {
+                            foreach (var entry in zip.Entries)
+                            {
+                                if (entry.FullName == "info.txt")
+                                {
+                                    output_rich_textbox.AppendText($"当前解包的固件文件为：{entry.FullName}\n");
+                                    using (var stream = entry.Open())
+                                    using (var reader = new StreamReader(stream))
+                                    {
+                                        var content_get = reader.ReadToEnd();
+                                        MatchCollection results_3 = Regex.Matches(content_get.ToString(), "project=(.*)");
+                                        string toProduct = results_3[0].ToString().Split("=")[1];
+                                        MatchCollection results_4 = Regex.Matches(content_get.ToString(), "version=(.*)");
+                                        string toVersion = results_4[0].ToString().Split("=")[1];
+                                        output_rich_textbox.AppendText($"当前核对的版本为：{toVersion}, 项目为：{toProduct}\n");
+
+                                        if (currentVersion == toVersion && toProduct == "SXW0301")
+                                        {
+                                            checked_firmware_textbox.Text = $"固件校验成功，当前固件版本：{currentVersion}";
+                                            output_rich_textbox.AppendText($"固件校验成功，当前固件版本：{currentVersion}\n");
+                                        }
+                                        else
+                                        {
+                                            checked_firmware_textbox.Text = $"固件校验失败，当前固件版本：{currentVersion}";
+                                            output_rich_textbox.AppendText($"固件校验失败，当前固件版本：{currentVersion}\n");
+                                        }
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                    
 
                 }
                 catch (Exception ex)
@@ -564,27 +642,53 @@ namespace SeewoTestTool
             }
         }
 
+        string output_string = "";
         // 新建backgroundworker给固件升级操作，防止UI阻塞交互卡死
         private void backgroundworker_firmwareupgrade_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
-            for (int i = 0; i < 101; i++)
+            if (backgroundworker_firmwareupgrade.CancellationPending)
+            { 
+                e.Cancel = true;
+                return;
+            }
+            else
             {
-                if (backgroundworker_firmwareupgrade.CancellationPending)
-                { 
-                    e.Cancel = true;
-                    return;
-                }
-                else
+                int progress_i = 0;
+                // 升级操作 - 将固件推进去 后面确定下来了，这个ip从输入框里面获取
+                output_string = executeCMDCommand($"curl -T {filePath} \"ftp://10.66.30.69/\"");
+                progress_i += 50;
+                backgroundworker_firmwareupgrade.ReportProgress(progress_i, "Pushing\n");
+                System.Threading.Thread.Sleep(1000);
+
+                // 升级操作 - 创建文件夹 need_upgrade
+                if (!System.IO.Directory.Exists("need_upgrade"))
                 {
-                    backgroundworker_firmwareupgrade.ReportProgress(i, "Working\n");
-                    System.Threading.Thread.Sleep(50);
+                    output_string = executeCMDCommand("touch need_upgrade");
+                    progress_i += 10;
+                    backgroundworker_firmwareupgrade.ReportProgress(progress_i, "Createing\n");
+                    System.Threading.Thread.Sleep(1000);
                 }
+
+                // 升级操作 - 开始升级
+                output_string = executeCMDCommand("curl -T need_upgrade \"ftp://10.66.30.69/\"");
+                progress_i += 40;
+                backgroundworker_firmwareupgrade.ReportProgress(progress_i, "Upgrading\n");
+                System.Threading.Thread.Sleep(1000);
+
+
+
+
+
             }
         }
         private void backgroundworker_firmwareupgrade_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
         {
             upgrade_progressbar.Value = e.ProgressPercentage;
             output_rich_textbox.AppendText($"升级进度：{Convert.ToString(e.ProgressPercentage)}%\n");
+
+
+            // 临时增加执行cmd命令验证
+            output_rich_textbox.AppendText(output_string);
         }
         private void backgroundworker_firmwareupgrade_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
@@ -639,5 +743,6 @@ namespace SeewoTestTool
 
             }
         }
+
     }
 }
