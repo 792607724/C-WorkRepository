@@ -43,8 +43,10 @@ namespace SeewoTestTool
                     device_status_label.Text = "ÒÑÁ¬½Ó";
                     device_ip_textbox.Enabled = false;
                     device_port_textbox.Enabled = false;
+                    /*
                     send_Str("am start com.android.browser");
                     string rec_Str = receive_Str();
+                    */
                 }
                 catch (Exception ex)
                 {
