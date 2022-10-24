@@ -2,18 +2,44 @@ using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 
 namespace SeewoTestTool
 {
     public partial class Form1 : Form
     {
+        Socket clientSocket;
+        Dictionary<string, InternetPort> internetPorts = new Dictionary<string, InternetPort>();
         public Form1()
         {
             InitializeComponent();
-        }
 
-        Socket clientSocket;
+            FileStream fs = new FileStream("data.bin", FileMode.OpenOrCreate);
+            if (fs.Length > 0)
+            {
+                BinaryFormatter bf = new BinaryFormatter();
+                internetPorts = bf.Deserialize(fs) as Dictionary<string, InternetPort>;
+                foreach (InternetPort internetPort in internetPorts.Values)
+                {
+                    device_ip_textbox.Text = internetPort.Deviceip;
+                    for (int i = 0; i < internetPorts.Count; i++)
+                    {
+                        if (device_ip_textbox.Text != "")
+                        {
+                            if (internetPorts.ContainsKey(device_ip_textbox.Text))
+                            {
+                                device_port_textbox.Text = internetPorts[device_ip_textbox.Text].Deviceport;
+                                rememberCheckBox.Checked = true;
+                            }
+                        }
+                    }
+                }
+            }
+            fs.Close();
+            // 增加自动连接设备功能
+            device_connect_button_Click(null, null);
+        }
 
         // 保证设备在连接状态 网口通信
         private void device_connect_button_Click(object sender, EventArgs e)
@@ -37,12 +63,29 @@ namespace SeewoTestTool
                     if (clientSocket.Connected)
                     {
                         output_rich_textbox.AppendText($"设备ip:{host}:{port}已连接上！\n");
+                        device_connect_button.Enabled = false;
+                        device_disconnect_button.Enabled = true;
+                        device_status_label.Text = "已连接";
+                        device_ip_textbox.Enabled = false;
+                        device_port_textbox.Enabled = false;
+                        // 增加记住IP和端口功能
+                        if (rememberCheckBox.Checked == true)
+                        {
+                            FileStream fileStream = new FileStream("data.bin", FileMode.OpenOrCreate);
+                            BinaryFormatter binaryFormatter = new BinaryFormatter();
+                            InternetPort internetPort = new InternetPort();
+                            internetPort.Deviceip = host;
+                            internetPort.Deviceport = port;
+                            if (internetPorts.ContainsKey(internetPort.Deviceip))
+                            {
+                                // 如果存在就清除掉
+                                internetPorts.Remove(internetPort.Deviceip);
+                            }
+                            internetPorts.Add(internetPort.Deviceip, internetPort);
+                            binaryFormatter.Serialize(fileStream, internetPorts);
+                            fileStream.Close();
+                        }
                     }
-                    device_connect_button.Enabled = false;
-                    device_disconnect_button.Enabled = true;
-                    device_status_label.Text = "已连接";
-                    device_ip_textbox.Enabled = false;
-                    device_port_textbox.Enabled = false;
                     /*
                     send_Str("am start com.android.browser");
                     string rec_Str = receive_Str();
@@ -54,6 +97,7 @@ namespace SeewoTestTool
                     device_ip_textbox.Enabled = true;
                     device_port_textbox.Enabled = true;
                     output_rich_textbox.AppendText($"设备网口IP地址和端口号错误，请检查是否输入正确！\n问题Log如下：{ex.ToString()}\n");
+                    MessageBox.Show($"设备未连接，请检查！\nIP:{host}， PORT:{port}");
                 }
 
             }
