@@ -8,6 +8,7 @@ namespace HIDDemo
     public partial class Form1 : Form
     {
         private static readonly int TARGET_HID_VID = 9546;
+        private static readonly int TARGET_SHH0105_HID_VID = 2757;
         //private static readonly int TARGET_HID_PID = 3074;
         private static readonly int TARGET_REPORT_BUFFER_SIZE = 64;
 
@@ -40,7 +41,7 @@ namespace HIDDemo
             HIDDeviceInfo targetDeviceInfo = null;
             for (int ki = 0; ki < deviceInfos.Length; ki++)
             {
-                if (/*deviceInfos[ki].PID == TARGET_HID_PID &&*/ deviceInfos[ki].VID == TARGET_HID_VID
+                if (/*deviceInfos[ki].PID == TARGET_HID_PID &&*/ (deviceInfos[ki].VID == TARGET_HID_VID || deviceInfos[ki].VID == TARGET_SHH0105_HID_VID)
                         && deviceInfos[ki].OUT_reportByteLength == TARGET_REPORT_BUFFER_SIZE)
                 {
                     targetDeviceInfo = deviceInfos[ki];
