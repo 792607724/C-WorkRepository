@@ -358,13 +358,18 @@ namespace SeewoTestTool
                                         string toVersion = results_4[0].ToString().Split("=")[1];
                                         output_rich_textbox.AppendText($"当前核对的版本为：{toVersion}, 项目为：{toProduct}\n");
 
+                                        Font font = new Font(FontFamily.GenericMonospace, 15, FontStyle.Bold);
                                         if (currentVersion == toVersion && toProduct == "SXW0301")
                                         {
+                                            output_rich_textbox.ForeColor = Color.Green;
+                                            output_rich_textbox.SelectionFont = font;
                                             checked_firmware_textbox.Text = $"固件校验成功，当前固件版本：{currentVersion}";
                                             output_rich_textbox.AppendText($"固件校验成功，当前固件版本：{currentVersion}\n");
                                         }
                                         else
                                         {
+                                            output_rich_textbox.ForeColor = Color.Red;
+                                            output_rich_textbox.SelectionFont = font;
                                             checked_firmware_textbox.Text = $"固件校验失败，当前固件版本：{currentVersion}";
                                             output_rich_textbox.AppendText($"固件校验失败，当前固件版本：{currentVersion}\n");
                                         }
@@ -639,6 +644,9 @@ namespace SeewoTestTool
             if (!string.IsNullOrEmpty(output_rich_textbox.Text))
             {
                 output_rich_textbox.Text = "";
+                output_rich_textbox.ForeColor = Color.Black;
+                Font font2 = new Font(FontFamily.GenericMonospace, 9, FontStyle.Regular);
+                output_rich_textbox.Font = font2;
             }
         }
 
@@ -646,41 +654,108 @@ namespace SeewoTestTool
         // 新建backgroundworker给固件升级操作，防止UI阻塞交互卡死
         private void backgroundworker_firmwareupgrade_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
-            if (backgroundworker_firmwareupgrade.CancellationPending)
-            { 
-                e.Cancel = true;
-                return;
-            }
-            else
+            try
             {
-                int progress_i = 0;
-                // 升级操作 - 将固件推进去 后面确定下来了，这个ip从输入框里面获取
-                output_string = executeCMDCommand($"curl -T {filePath} \"ftp://10.66.30.69/\"");
-                progress_i += 50;
-                backgroundworker_firmwareupgrade.ReportProgress(progress_i, "Pushing\n");
-                System.Threading.Thread.Sleep(1000);
-
-                // 升级操作 - 创建文件夹 need_upgrade
-                if (!System.IO.Directory.Exists("need_upgrade"))
+                if (backgroundworker_firmwareupgrade.CancellationPending)
                 {
-                    output_string = executeCMDCommand("touch need_upgrade");
-                    progress_i += 10;
-                    backgroundworker_firmwareupgrade.ReportProgress(progress_i, "Createing\n");
-                    System.Threading.Thread.Sleep(1000);
+                    e.Cancel = true;
+                    return;
                 }
+                else
+                {
+                    int progress_i = 0;
+                    //升级操作 - 增加固件检验，检测压缩包中的info.txt的项目名称是否正确
+                    using (var zip = ZipFile.OpenRead(filePath))
+                    {
+                        foreach (var entry in zip.Entries)
+                        {
+                            if (entry.FullName == "info.txt")
+                            {
+                                using (var stream = entry.Open())
+                                using (var reader = new StreamReader(stream))
+                                {
+                                    var content_get = reader.ReadToEnd();
+                                    MatchCollection results_3 = Regex.Matches(content_get.ToString(), "project=(.*)");
+                                    string toProduct = results_3[0].ToString().Split("=")[1];
+                                    MatchCollection results_4 = Regex.Matches(content_get.ToString(), "version=(.*)");
+                                    string toVersion = results_4[0].ToString().Split("=")[1];
+                                    if (toProduct != "SXW0301")
+                                    {
+                                        backgroundworker_firmwareupgrade.CancelAsync();
+                                        output_string = $"当前所选固件异常，非本项目固件当前固件属于：【{toProduct}】，升级失败！\n";
+                                    }
+                                    else
+                                    {
+                                        // 升级操作 - 将固件推进去 后面确定下来了，这个ip从输入框里面获取
+                                        output_string = executeCMDCommand($"curl -T {filePath} \"ftp://10.66.30.69/\"");
+                                        progress_i += 50;
+                                        backgroundworker_firmwareupgrade.ReportProgress(progress_i, "Pushing\n");
+                                        System.Threading.Thread.Sleep(1000);
 
-                // 升级操作 - 开始升级
-                output_string = executeCMDCommand("curl -T need_upgrade \"ftp://10.66.30.69/\"");
-                progress_i += 40;
-                backgroundworker_firmwareupgrade.ReportProgress(progress_i, "Upgrading\n");
-                System.Threading.Thread.Sleep(1000);
+                                        // 升级操作 - 创建文件夹 need_upgrade
+                                        if (!System.IO.Directory.Exists("need_upgrade"))
+                                        {
+                                            output_string = executeCMDCommand("touch need_upgrade");
+                                            progress_i += 10;
+                                            backgroundworker_firmwareupgrade.ReportProgress(progress_i, "Createing\n");
+                                            System.Threading.Thread.Sleep(1000);
+                                        }
 
+                                        // 升级操作 - 开始升级
+                                        output_string = executeCMDCommand("curl -T need_upgrade \"ftp://10.66.30.69/\"");
+                                        progress_i += 5;
+                                        backgroundworker_firmwareupgrade.ReportProgress(progress_i, "Upgrading\n");
+                                        System.Threading.Thread.Sleep(1000);
 
+                                        // 升级操作 - 检测升级状态
+                                        bool upgradeDone = false;
+                                        if (System.IO.File.Exists("upgrade_result"))
+                                        {
+                                            output_string = executeCMDCommand("rm -rf upgrade_result");
+                                        }
+                                        while (!upgradeDone)
+                                        {
+                                            output_string = executeCMDCommand("curl \"ftp://10.66.30.69/upgrade_result\" -o upgrade_result");
+                                            if (!System.IO.File.Exists("upgrade_result"))
+                                            {
+                                                // 如果2s内没有获取到这个文件直接报升级失败
+                                                backgroundworker_firmwareupgrade.CancelAsync();
+                                                output_string = "未检测到upgrade_result文件，升级失败！\n";
+                                                break;
+                                            }
+                                            // 检测到该文件，进行cat读取内容
+                                            output_string = executeCMDCommand("cat upgrade_result");
+                                            if (output_string.Contains("start"))
+                                            {
+                                                continue;
+                                            }
+                                            if (output_string.Contains("success") || output_string.Contains("fail"))
+                                            {
+                                                progress_i = 100;
+                                                backgroundworker_firmwareupgrade.ReportProgress(progress_i, "Upgrading\n");
+                                                backgroundworker_firmwareupgrade.CancelAsync();
+                                                break;
+                                            }
+                                            progress_i += 5;
+                                            System.Threading.Thread.Sleep(500);
+                                            output_string = "正在升级中，请稍后！";
+                                            backgroundworker_firmwareupgrade.ReportProgress(progress_i, "Upgrading\n");
+                                        }
+                                    }
+                                }
+                            }
 
-
-
+                        }
+                    }
+                }
             }
+            catch (Exception ex)
+            {
+                output_string = $"升级操作异常，异常报错Log如下：\n{ex.ToString()}\n";
+            }
+            
         }
+
         private void backgroundworker_firmwareupgrade_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
         {
             upgrade_progressbar.Value = e.ProgressPercentage;
@@ -699,7 +774,27 @@ namespace SeewoTestTool
             }
             if (!e.Cancelled)
             {
-                output_rich_textbox.AppendText("升级完毕！\n");
+                output_rich_textbox.AppendText("升级操作结束，请查看结果！\n");
+                Font font = new Font(FontFamily.GenericMonospace, 15, FontStyle.Bold);
+                if (output_string.Contains("success"))
+                {
+                    output_rich_textbox.ForeColor = Color.Green;
+                    output_rich_textbox.SelectionFont = font;
+                }
+                else if (output_string.Contains("fail"))
+                {
+                    output_rich_textbox.ForeColor = Color.Red;
+                    output_rich_textbox.SelectionFont = font;
+                }
+                output_rich_textbox.AppendText(output_string);
+                if (output_string.Contains("Upgrade finish"))
+                {
+                    output_rich_textbox.AppendText("等待20s设备正在重启中，期间无法操作工具……\n");
+                    System.Threading.Thread.Sleep(20000);
+                    // 这里升级完重启，需要重新连接设备，设备状态那边需要同步更新
+                    device_disconnect_button_Click(null, null);
+                }
+                output_rich_textbox.AppendText("设备重启完成！\n");
                 upgrade_button.Enabled = true;
 
             }
