@@ -114,7 +114,7 @@ namespace SeewoTestTool
             process_cmd.StartInfo.FileName = "cmd.exe";
             process_cmd.StartInfo.RedirectStandardInput = true;
             process_cmd.StartInfo.RedirectStandardOutput = true;
-            process_cmd.StartInfo.CreateNoWindow = false;
+            process_cmd.StartInfo.CreateNoWindow = true;
             process_cmd.StartInfo.UseShellExecute = false;
             process_cmd.Start();
             process_cmd.StandardInput.WriteLine(command + "&exit");
@@ -839,5 +839,114 @@ namespace SeewoTestTool
             }
         }
 
+        // 获取当前设备的SN号
+        private void getCurrentSN_button_Click(object sender, EventArgs e)
+        {
+            //if (true)
+            output_rich_textbox.AppendText("获取当前设备的SN号:\n");
+            try
+            {
+                if (clientSocket != null && clientSocket.Connected)
+                {
+                    // 获取当前设备的SN号 - 登录操作获取session - 后续IP以后续输入为主，当前暂定
+                    string loginCommand = "curl -X POST \"http://10.66.30.69/json_api\" -H \"Content-Type: application/json\" -d \"{\\\"method\\\": \\\"login\\\", \\\"username\\\": \\\"admin\\\",\\\"password\\\": \\\"8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92\\\"}\"";
+                    output_string = executeCMDCommand(loginCommand);
+                    MatchCollection results = Regex.Matches(output_string, "\"session\" : (.*)");
+                    string session = results[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
+                    output_rich_textbox.AppendText("当前固件校验Session是：" + session + "\n");
+
+                    // 获取SN号
+                    string fetchDeviceInfoCommand = $"curl -X POST \"http://10.66.30.69/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"SerialNumber\\\"}}\"";
+                    output_string = executeCMDCommand(fetchDeviceInfoCommand);
+                    MatchCollection results_1 = Regex.Matches(output_string, "\"SN\" : (.*)");
+                    string currentSN = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
+                    output_rich_textbox.AppendText("获取当前设备的SN号：" + currentSN + "\n");
+                    currentSN_textbox.Text = currentSN;
+                }
+                else
+                {
+                    device_ip_textbox.Enabled = true;
+                    device_port_textbox.Enabled = true;
+                    device_status_label.Text = "已断开";
+                    output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                output_rich_textbox.AppendText($"获取当前设备的SN号失败，当前未连接设备：\n{ex.ToString()}\n");
+            }
+            finally
+            {
+
+            }
+        }
+
+        // 写入指定的设备SN号
+        private void writeIn_button_Click(object sender, EventArgs e)
+        {
+            //if (true)
+            output_rich_textbox.AppendText("写入指定的设备SN号:\n");
+            try
+            {
+                if (clientSocket != null && clientSocket.Connected)
+                {
+                    // 写入指定的设备SN号 - 登录操作获取session - 后续IP以后续输入为主，当前暂定
+                    string loginCommand = "curl -X POST \"http://10.66.30.69/json_api\" -H \"Content-Type: application/json\" -d \"{\\\"method\\\": \\\"login\\\", \\\"username\\\": \\\"admin\\\",\\\"password\\\": \\\"8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92\\\"}\"";
+                    output_string = executeCMDCommand(loginCommand);
+                    MatchCollection results = Regex.Matches(output_string, "\"session\" : (.*)");
+                    string session = results[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
+                    output_rich_textbox.AppendText("当前固件校验Session是：" + session + "\n");
+
+                    // 写入指定的设备SN号
+                    string writeINSN = writeInSN_textbox.Text;
+                    if (string.IsNullOrEmpty(writeINSN) || writeINSN.Length != 22 || !new Regex("^[A-Z|0-9]+$").IsMatch(writeINSN))
+                    {
+                        writeInSN_textbox.Text = "请写入正确的SN号再进行刷入，示例：FCSC03V000019179E00001，只能包含大写字母和数字，且长度为22位！\n";
+                        output_rich_textbox.AppendText("请写入正确的SN号再进行刷入，示例：FCSC03V000019179E00001，只能包含大写字母和数字，且长度为22位！\n");
+                    }
+                    else 
+                    {
+                        output_rich_textbox.AppendText(session);
+                        string writeDeviceInfoCommand = $"curl -X POST \"http://10.66.30.69/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"setParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"SerialNumber\\\",\\\"value\\\": {{\\\"SN\\\": \\\"{writeINSN}\\\"}}}}\"";
+                        output_string = executeCMDCommand(writeDeviceInfoCommand);
+                        MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
+                        string backCode = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
+
+                        // 获取SN号
+                        string fetchDeviceInfoCommand = $"curl -X POST \"http://10.66.30.69/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"SerialNumber\\\"}}\"";
+                        output_string = executeCMDCommand(fetchDeviceInfoCommand);
+                        MatchCollection results_2 = Regex.Matches(output_string, "\"SN\" : (.*)");
+                        string currentSN = results_2[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
+                        output_rich_textbox.AppendText("获取当前设备的SN号：" + currentSN + "\n");
+                        if (currentSN == writeINSN && Int32.Parse(backCode) == 0)
+                        {
+                            output_rich_textbox.AppendText($"当前写入结果为：PASS，当前SN号：{currentSN}\n");
+                            writeInSN_textbox.Text = currentSN;
+                        }
+                        else
+                        {
+                            output_rich_textbox.AppendText($"当前写入结果为：FAIL，当前SN号：{currentSN}\n");
+                            writeInSN_textbox.Text = currentSN;
+                        }
+                    }
+                }
+                else
+                {
+                    device_ip_textbox.Enabled = true;
+                    device_port_textbox.Enabled = true;
+                    device_status_label.Text = "已断开";
+                    output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
+                }
+            }
+            catch (Exception ex)
+            {
+                output_rich_textbox.AppendText($"写入指定的设备SN号失败，当前未连接设备：\n{ex.ToString()}\n");
+            }
+            finally
+            {
+
+            }
+        }
     }
 }
