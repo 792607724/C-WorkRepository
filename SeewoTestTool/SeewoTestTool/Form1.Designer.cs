@@ -38,8 +38,10 @@
             this.currentPCBA_textbox = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.gain_array_mic_audio_level_button = new System.Windows.Forms.Button();
+            this.stop_array_mic_audio_level_test_button = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.array_mic_audio_level_test_button = new System.Windows.Forms.Button();
+            this.start_array_mic_audio_level_test_button = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.audioin2_result_label = new System.Windows.Forms.Label();
             this.audioin1_result_label = new System.Windows.Forms.Label();
@@ -192,14 +194,38 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.gain_array_mic_audio_level_button);
+            this.groupBox7.Controls.Add(this.stop_array_mic_audio_level_test_button);
             this.groupBox7.Controls.Add(this.label8);
-            this.groupBox7.Controls.Add(this.array_mic_audio_level_test_button);
+            this.groupBox7.Controls.Add(this.start_array_mic_audio_level_test_button);
             this.groupBox7.Location = new System.Drawing.Point(228, 180);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(596, 210);
             this.groupBox7.TabIndex = 5;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "阵列MIC测试";
+            // 
+            // gain_array_mic_audio_level_button
+            // 
+            this.gain_array_mic_audio_level_button.Enabled = false;
+            this.gain_array_mic_audio_level_button.Location = new System.Drawing.Point(6, 139);
+            this.gain_array_mic_audio_level_button.Name = "gain_array_mic_audio_level_button";
+            this.gain_array_mic_audio_level_button.Size = new System.Drawing.Size(583, 23);
+            this.gain_array_mic_audio_level_button.TabIndex = 3;
+            this.gain_array_mic_audio_level_button.Text = "获取各路MIC音频音量值";
+            this.gain_array_mic_audio_level_button.UseVisualStyleBackColor = true;
+            this.gain_array_mic_audio_level_button.Click += new System.EventHandler(this.gain_array_mic_audio_level_button_Click);
+            // 
+            // stop_array_mic_audio_level_test_button
+            // 
+            this.stop_array_mic_audio_level_test_button.Enabled = false;
+            this.stop_array_mic_audio_level_test_button.Location = new System.Drawing.Point(7, 183);
+            this.stop_array_mic_audio_level_test_button.Name = "stop_array_mic_audio_level_test_button";
+            this.stop_array_mic_audio_level_test_button.Size = new System.Drawing.Size(583, 23);
+            this.stop_array_mic_audio_level_test_button.TabIndex = 2;
+            this.stop_array_mic_audio_level_test_button.Text = "停止阵列MIC音量值测试";
+            this.stop_array_mic_audio_level_test_button.UseVisualStyleBackColor = true;
+            this.stop_array_mic_audio_level_test_button.Click += new System.EventHandler(this.stop_array_mic_audio_level_test_button_Click);
             // 
             // label8
             // 
@@ -210,15 +236,16 @@
             this.label8.TabIndex = 1;
             this.label8.Text = "各路MIC接收音频音量值展示";
             // 
-            // array_mic_audio_level_test_button
+            // start_array_mic_audio_level_test_button
             // 
-            this.array_mic_audio_level_test_button.Location = new System.Drawing.Point(6, 181);
-            this.array_mic_audio_level_test_button.Name = "array_mic_audio_level_test_button";
-            this.array_mic_audio_level_test_button.Size = new System.Drawing.Size(583, 23);
-            this.array_mic_audio_level_test_button.TabIndex = 0;
-            this.array_mic_audio_level_test_button.Text = "阵列MIC音量值测试";
-            this.array_mic_audio_level_test_button.UseVisualStyleBackColor = true;
-            this.array_mic_audio_level_test_button.Click += new System.EventHandler(this.array_mic_audio_level_test_button_Click);
+            this.start_array_mic_audio_level_test_button.Enabled = false;
+            this.start_array_mic_audio_level_test_button.Location = new System.Drawing.Point(7, 161);
+            this.start_array_mic_audio_level_test_button.Name = "start_array_mic_audio_level_test_button";
+            this.start_array_mic_audio_level_test_button.Size = new System.Drawing.Size(583, 23);
+            this.start_array_mic_audio_level_test_button.TabIndex = 0;
+            this.start_array_mic_audio_level_test_button.Text = "开启阵列MIC音量值测试";
+            this.start_array_mic_audio_level_test_button.UseVisualStyleBackColor = true;
+            this.start_array_mic_audio_level_test_button.Click += new System.EventHandler(this.array_mic_audio_level_test_button_Click);
             // 
             // groupBox6
             // 
@@ -829,7 +856,7 @@
         private Label audioin1_result_label;
         private Label audioin2_result_label;
         private GroupBox groupBox7;
-        private Button array_mic_audio_level_test_button;
+        private Button start_array_mic_audio_level_test_button;
         private Label label8;
         private Button device_reset_button;
         private RichTextBox richTextBox1;
@@ -862,5 +889,7 @@
         private Button getCurrentPCBA_button;
         private TextBox currentPCBA_textbox;
         private Label label14;
+        private Button stop_array_mic_audio_level_test_button;
+        private Button gain_array_mic_audio_level_button;
     }
 }

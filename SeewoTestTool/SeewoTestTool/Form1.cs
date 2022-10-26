@@ -279,6 +279,9 @@ namespace SeewoTestTool
                     login_button.Enabled = false;
                     getCurrentPCBA_button.Enabled = false;
                     writeInPCBA_button.Enabled = false;
+                    start_array_mic_audio_level_test_button.Enabled = false;
+                    stop_array_mic_audio_level_test_button.Enabled = false;
+                    gain_array_mic_audio_level_button.Enabled = false;
                 }
                 catch (Exception ex)
                 {
@@ -609,11 +612,99 @@ namespace SeewoTestTool
             }
         }
 
-        // 阵列MIC音量值测试
+        // 开启阵列MIC音量值测试
         private void array_mic_audio_level_test_button_Click(object sender, EventArgs e)
         {
             //if (true)
-            output_rich_textbox.AppendText("阵列MIC音量值测试\n");
+            output_rich_textbox.AppendText("开启阵列MIC音量值测试\n");
+            if (clientSocket != null && clientSocket.Connected)
+            {
+                try
+                {
+                    // 开启阵列MIC音量值测试
+                    output_rich_textbox.AppendText(session);
+                    string beginDeviceMICVolumeTestCommand = $"curl -X POST \"http://10.66.30.69/testAudioJson_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"startAudioTest\\\",\\\"format\\\": 0,\\\"soundmode\\\": 8,\\\"samplerate\\\": 16000,\\\"periodsize\\\": 1024}}\"";
+                    output_string = executeCMDCommand(beginDeviceMICVolumeTestCommand);
+                    MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
+                    string backCode = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
+                    
+                    if (Int32.Parse(backCode) == 0)
+                    {
+                        output_rich_textbox.AppendText($"执行结果为：PASS，已开启阵列MIC音量值测试，backCode:[{backCode}]\n");
+                    }
+                    else if(Int32.Parse(backCode) == -1)
+                    {
+                        output_rich_textbox.AppendText($"执行结果为：FAIL，未开启阵列MIC音量值测试，backCode:[{backCode}]\n");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    output_rich_textbox.AppendText($"开启阵列MIC音量值测试失败：\n{ex.ToString()}\n");
+                }
+                finally
+                {
+
+                }
+            }
+            else
+            {
+                device_ip_textbox.Enabled = true;
+                radioButton_80.Enabled = true;
+                radioButton_8080.Enabled = true;
+                device_status_label.Text = "已断开";
+                output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
+            }
+        }
+
+        // 停止阵列MIC音量值测试
+        private void stop_array_mic_audio_level_test_button_Click(object sender, EventArgs e)
+        {
+            //if (true)
+            output_rich_textbox.AppendText("停止阵列MIC音量值测试\n");
+            if (clientSocket != null && clientSocket.Connected)
+            {
+                try
+                {
+                    // 停止阵列MIC音量值测试
+                    output_rich_textbox.AppendText(session);
+                    string stopDeviceMICVolumeTestCommand = $"curl -X POST \"http://10.66.30.69/testAudioJson_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"stopAudioTest\\\"}}\"";
+                    output_string = executeCMDCommand(stopDeviceMICVolumeTestCommand);
+                    MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
+                    string backCode = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
+
+                    if (Int32.Parse(backCode) == 0)
+                    {
+                        output_rich_textbox.AppendText($"执行结果为：PASS，已停止阵列MIC音量值测试，backCode:[{backCode}]\n");
+                    }
+                    else if (Int32.Parse(backCode) == -1)
+                    {
+                        output_rich_textbox.AppendText($"执行结果为：FAIL，无法关闭阵列MIC音量值测试，backCode:[{backCode}]\n");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    output_rich_textbox.AppendText($"停止阵列MIC音量值测试失败：\n{ex.ToString()}\n");
+                }
+                finally
+                {
+
+                }
+            }
+            else
+            {
+                device_ip_textbox.Enabled = true;
+                radioButton_80.Enabled = true;
+                radioButton_8080.Enabled = true;
+                device_status_label.Text = "已断开";
+                output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
+            }
+        }
+
+        // 获取各路MIC音频音量值
+        private void gain_array_mic_audio_level_button_Click(object sender, EventArgs e)
+        {
+            //if (true)
+            output_rich_textbox.AppendText("获取各路MIC音频音量值\n");
             if (clientSocket != null && clientSocket.Connected)
             {
                 try
@@ -622,7 +713,7 @@ namespace SeewoTestTool
                 }
                 catch (Exception ex)
                 {
-                    output_rich_textbox.AppendText($"阵列MIC音量值测试失败：\n{ex.ToString()}\n");
+                    output_rich_textbox.AppendText($"获取各路MIC音频音量值失败：\n{ex.ToString()}\n");
                 }
                 finally
                 {
@@ -863,6 +954,9 @@ namespace SeewoTestTool
                 writeIn_button.Enabled = false;
                 getCurrentPCBA_button.Enabled = false;
                 writeInPCBA_button.Enabled = false;
+                start_array_mic_audio_level_test_button.Enabled = false;
+                stop_array_mic_audio_level_test_button.Enabled = false;
+                gain_array_mic_audio_level_button.Enabled = false;
             }
             else
             {
@@ -1062,7 +1156,7 @@ namespace SeewoTestTool
                         string password_sha256 = SHA256EncryptString(password);
                         output_rich_textbox.AppendText($"登录成功，可以进行固件升级检测：{password_sha256}\n");
                         // 登录操作获取session - 后续IP以后续输入为主，当前暂定
-                        string loginCommand = $"curl -X POST \"http://10.66.30.69/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"login\\\", \\\"{username}\\\": \\\"admin\\\",\\\"password\\\": \\\"{password_sha256}\\\"}}\"";
+                        string loginCommand = $"curl -X POST \"http://10.66.30.69/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"login\\\", \\\"username\\\": \\\"{username}\\\",\\\"password\\\": \\\"{password_sha256}\\\"}}\"";
                         output_string = executeCMDCommand(loginCommand);
                         MatchCollection results = Regex.Matches(output_string, "\"session\" : (.*)");
                         session = results[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
@@ -1073,6 +1167,9 @@ namespace SeewoTestTool
                         writeIn_button.Enabled = true;
                         getCurrentPCBA_button.Enabled = true;
                         writeInPCBA_button.Enabled = true;
+                        start_array_mic_audio_level_test_button.Enabled = true;
+                        stop_array_mic_audio_level_test_button.Enabled = true;
+                        gain_array_mic_audio_level_button.Enabled = true;
                         // 增加记住username和password功能
                         if (rememberCheckBox.Checked == true)
                         {
@@ -1213,5 +1310,7 @@ namespace SeewoTestTool
 
             }
         }
+
+        
     }
 }
