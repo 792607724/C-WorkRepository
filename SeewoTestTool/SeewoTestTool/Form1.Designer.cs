@@ -86,6 +86,13 @@
             this.getCurrentSN_button = new System.Windows.Forms.Button();
             this.currentSN_textbox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.writeInPCBA_button = new System.Windows.Forms.Button();
+            this.writeINPCBA_textbox = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.getCurrentPCBA_button = new System.Windows.Forms.Button();
+            this.currentPCBA_textbox = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -95,10 +102,12 @@
             this.groupBox2.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox9.SuspendLayout();
+            this.groupBox10.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.groupBox10);
             this.groupBox1.Controls.Add(this.groupBox7);
             this.groupBox1.Controls.Add(this.groupBox6);
             this.groupBox1.Controls.Add(this.groupBox5);
@@ -118,7 +127,7 @@
             this.groupBox7.Controls.Add(this.array_mic_audio_level_test_button);
             this.groupBox7.Location = new System.Drawing.Point(228, 180);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(596, 287);
+            this.groupBox7.Size = new System.Drawing.Size(596, 210);
             this.groupBox7.TabIndex = 5;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "阵列MIC测试";
@@ -126,7 +135,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(207, 19);
+            this.label8.Location = new System.Drawing.Point(216, 19);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(164, 17);
             this.label8.TabIndex = 1;
@@ -134,9 +143,9 @@
             // 
             // array_mic_audio_level_test_button
             // 
-            this.array_mic_audio_level_test_button.Location = new System.Drawing.Point(6, 244);
+            this.array_mic_audio_level_test_button.Location = new System.Drawing.Point(6, 181);
             this.array_mic_audio_level_test_button.Name = "array_mic_audio_level_test_button";
-            this.array_mic_audio_level_test_button.Size = new System.Drawing.Size(583, 37);
+            this.array_mic_audio_level_test_button.Size = new System.Drawing.Size(583, 23);
             this.array_mic_audio_level_test_button.TabIndex = 0;
             this.array_mic_audio_level_test_button.Text = "阵列MIC音量值测试";
             this.array_mic_audio_level_test_button.UseVisualStyleBackColor = true;
@@ -682,6 +691,75 @@
             this.label9.TabIndex = 0;
             this.label9.Text = "当前序列号为：";
             // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.writeInPCBA_button);
+            this.groupBox10.Controls.Add(this.writeINPCBA_textbox);
+            this.groupBox10.Controls.Add(this.label13);
+            this.groupBox10.Controls.Add(this.getCurrentPCBA_button);
+            this.groupBox10.Controls.Add(this.currentPCBA_textbox);
+            this.groupBox10.Controls.Add(this.label14);
+            this.groupBox10.Location = new System.Drawing.Point(228, 396);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(596, 71);
+            this.groupBox10.TabIndex = 6;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "PCBA号刷写";
+            // 
+            // writeInPCBA_button
+            // 
+            this.writeInPCBA_button.Enabled = false;
+            this.writeInPCBA_button.Location = new System.Drawing.Point(394, 42);
+            this.writeInPCBA_button.Name = "writeInPCBA_button";
+            this.writeInPCBA_button.Size = new System.Drawing.Size(184, 23);
+            this.writeInPCBA_button.TabIndex = 5;
+            this.writeInPCBA_button.Text = "写入PCBA号";
+            this.writeInPCBA_button.UseVisualStyleBackColor = true;
+            this.writeInPCBA_button.Click += new System.EventHandler(this.writeInPCBA_button_Click);
+            // 
+            // writeINPCBA_textbox
+            // 
+            this.writeINPCBA_textbox.Location = new System.Drawing.Point(104, 45);
+            this.writeINPCBA_textbox.Name = "writeINPCBA_textbox";
+            this.writeINPCBA_textbox.Size = new System.Drawing.Size(255, 23);
+            this.writeINPCBA_textbox.TabIndex = 4;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(6, 48);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(87, 17);
+            this.label13.TabIndex = 3;
+            this.label13.Text = "写入PCBA号：";
+            // 
+            // getCurrentPCBA_button
+            // 
+            this.getCurrentPCBA_button.Enabled = false;
+            this.getCurrentPCBA_button.Location = new System.Drawing.Point(394, 16);
+            this.getCurrentPCBA_button.Name = "getCurrentPCBA_button";
+            this.getCurrentPCBA_button.Size = new System.Drawing.Size(184, 23);
+            this.getCurrentPCBA_button.TabIndex = 2;
+            this.getCurrentPCBA_button.Text = "获取当前设备PCBA号";
+            this.getCurrentPCBA_button.UseVisualStyleBackColor = true;
+            this.getCurrentPCBA_button.Click += new System.EventHandler(this.getCurrentPCBA_button_Click);
+            // 
+            // currentPCBA_textbox
+            // 
+            this.currentPCBA_textbox.Location = new System.Drawing.Point(104, 16);
+            this.currentPCBA_textbox.Name = "currentPCBA_textbox";
+            this.currentPCBA_textbox.Size = new System.Drawing.Size(255, 23);
+            this.currentPCBA_textbox.TabIndex = 1;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(6, 19);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(99, 17);
+            this.label14.TabIndex = 0;
+            this.label14.Text = "当前PCBA号为：";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -713,6 +791,8 @@
             this.groupBox8.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -777,5 +857,12 @@
         private Label explainLabel;
         private RadioButton radioButton_8080;
         private RadioButton radioButton_80;
+        private GroupBox groupBox10;
+        private Button writeInPCBA_button;
+        private TextBox writeINPCBA_textbox;
+        private Label label13;
+        private Button getCurrentPCBA_button;
+        private TextBox currentPCBA_textbox;
+        private Label label14;
     }
 }

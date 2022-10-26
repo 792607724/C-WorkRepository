@@ -250,6 +250,8 @@ namespace SeewoTestTool
                     getCurrentSN_button.Enabled = false;
                     writeIn_button.Enabled = false;
                     login_button.Enabled = false;
+                    getCurrentPCBA_button.Enabled = false;
+                    writeInPCBA_button.Enabled = false;
                 }
                 catch (Exception ex)
                 {
@@ -832,6 +834,8 @@ namespace SeewoTestTool
                 upgrade_button.Enabled = false;
                 getCurrentSN_button.Enabled = false;
                 writeIn_button.Enabled = false;
+                getCurrentPCBA_button.Enabled = false;
+                writeInPCBA_button.Enabled = false;
             }
             else
             {
@@ -1037,7 +1041,9 @@ namespace SeewoTestTool
                         check_current_firmware_button.Enabled = true;
                         upgrade_button.Enabled = true;
                         getCurrentSN_button.Enabled = true;
-                        writeIn_button.Enabled = true;  
+                        writeIn_button.Enabled = true;
+                        getCurrentPCBA_button.Enabled = true;
+                        writeInPCBA_button.Enabled = true;
                     }
                     catch (Exception ex)
                     {
@@ -1060,6 +1066,105 @@ namespace SeewoTestTool
                 radioButton_8080.Enabled = true;
                 device_status_label.Text = "已断开";
                 output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
+            }
+        }
+
+        // 获取当前设备PCBA号
+        private void getCurrentPCBA_button_Click(object sender, EventArgs e)
+        {
+            //if (true)
+            output_rich_textbox.AppendText("获取当前设备PCBA号:\n");
+            try
+            {
+                if (clientSocket != null && clientSocket.Connected)
+                {
+                    // 获取当前设备PCBA号
+                    string fetchDeviceInfoCommand = $"curl -X POST \"http://10.66.30.69/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"SerialNumber\\\"}}\"";
+                    output_string = executeCMDCommand(fetchDeviceInfoCommand);
+                    MatchCollection results_1 = Regex.Matches(output_string, "\"PCBA\" : (.*)");
+                    string currentPCBA = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "").Replace(",", "");
+                    output_rich_textbox.AppendText("获取当前设备PCBA号：" + currentPCBA + "\n");
+                    currentPCBA_textbox.Text = currentPCBA;
+                }
+                else
+                {
+                    device_ip_textbox.Enabled = true;
+                    radioButton_80.Enabled = true;
+                    radioButton_8080.Enabled = true;
+                    device_status_label.Text = "已断开";
+                    output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                output_rich_textbox.AppendText($"获取当前设备PCBA号失败，当前未连接设备：\n{ex.ToString()}\n");
+            }
+            finally
+            {
+
+            }
+        }
+
+        // 写入指定PCBA号
+        private void writeInPCBA_button_Click(object sender, EventArgs e)
+        {
+            //if (true)
+            output_rich_textbox.AppendText("写入指定PCBA号:\n");
+            try
+            {
+                if (clientSocket != null && clientSocket.Connected)
+                {
+
+                    // 写入指定PCBA号
+                    string writeINPCBA = writeINPCBA_textbox.Text;
+                    if (string.IsNullOrEmpty(writeINPCBA) || writeINPCBA.Length != 19 || !new Regex("^[A-Z|0-9]+$").IsMatch(writeINPCBA))
+                    {
+                        writeINPCBA_textbox.Text = "请写入正确的PCBA号再进行刷入，示例：ABCDEFGHI0123456789，只能包含大写字母和数字，且长度为19位！\n";
+                        output_rich_textbox.AppendText("请写入正确的PCBA号再进行刷入，示例：ABCDEFGHI0123456789，只能包含大写字母和数字，且长度为19位！\n");
+                    }
+                    else
+                    {
+                        output_rich_textbox.AppendText(session);
+                        string writeDeviceInfoCommand = $"curl -X POST \"http://10.66.30.69/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"setParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"SerialNumber\\\",\\\"value\\\": {{\\\"PCBA\\\": \\\"{writeINPCBA}\\\"}}}}\"";
+                        output_string = executeCMDCommand(writeDeviceInfoCommand);
+                        MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
+                        string backCode = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
+
+                        // 获取PCBA号
+                        string fetchDeviceInfoCommand = $"curl -X POST \"http://10.66.30.69/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"SerialNumber\\\"}}\"";
+                        output_string = executeCMDCommand(fetchDeviceInfoCommand);
+                        MatchCollection results_2 = Regex.Matches(output_string, "\"PCBA\" : (.*)");
+                        string currentPCBA = results_2[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "").Replace(",", "");
+                        output_rich_textbox.AppendText("获取当前设备的PCBA号：" + currentPCBA + "\n");
+                        if (currentPCBA == writeINPCBA && Int32.Parse(backCode) == 0)
+                        {
+                            output_rich_textbox.AppendText($"当前写入结果为：PASS，当前PCBA号：{currentPCBA}\n");
+                            writeINPCBA_textbox.Text = currentPCBA;
+                        }
+                        else
+                        {
+                            output_rich_textbox.AppendText($"当前写入结果为：FAIL，当前SN号，超过3次写入也会失败，硬件只能写三次：{currentPCBA}\n");
+                            writeINPCBA_textbox.Text = currentPCBA;
+                        }
+                    }
+                }
+                else
+                {
+                    device_ip_textbox.Enabled = true;
+                    radioButton_80.Enabled = true;
+                    radioButton_8080.Enabled = true;
+                    device_status_label.Text = "已断开";
+                    output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
+                }
+            }
+            catch (Exception ex)
+            {
+                output_rich_textbox.AppendText($"写入指定PCBA号失败，当前未连接设备：\n{ex.ToString()}\n");
+            }
+            finally
+            {
+
             }
         }
     }
