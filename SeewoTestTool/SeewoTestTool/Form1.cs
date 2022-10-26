@@ -736,6 +736,18 @@ namespace SeewoTestTool
                         volume7_value_label.Text = volume7;
                         volume8_value_label.Text = volume8;
                         output_rich_textbox.AppendText($"volume1£º{volume1}\nvolume2£º{volume2}\nvolume3£º{volume3}\nvolume4£º{volume4}\nvolume5£º{volume5}\nvolume6£º{volume6}\nvolume7£º{volume7}\nvolume8£º{volume8}\n");
+
+                        if ((Int32.Parse(volume1) > 0) && (Int32.Parse(volume2) > 0) && (Int32.Parse(volume3) > 0) && (Int32.Parse(volume4) > 0) && (Int32.Parse(volume5) > 0) && (Int32.Parse(volume6) > 0) && (Int32.Parse(volume7) > 0) && (Int32.Parse(volume8) > 0))
+                        {
+                            audioin1_result_label.Text = "PASS";
+                            audioin2_result_label.Text = "PASS";
+                        }
+                        else
+                        {
+                            audioin1_result_label.Text = "FAIL";
+                            audioin2_result_label.Text = "FAIL";
+                        }
+
                     }
                     else if (Int32.Parse(backCode) == -1)
                     {
@@ -1341,7 +1353,5 @@ namespace SeewoTestTool
 
             }
         }
-
-        
     }
 }
