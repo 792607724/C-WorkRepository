@@ -63,13 +63,14 @@
             this.upgrade_firmware_textbox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.radioButton_8080 = new System.Windows.Forms.RadioButton();
+            this.radioButton_80 = new System.Windows.Forms.RadioButton();
             this.rememberCheckBox = new System.Windows.Forms.CheckBox();
             this.getSeewoDevice = new System.Windows.Forms.Button();
             this.device_status_label = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.device_disconnect_button = new System.Windows.Forms.Button();
             this.device_connect_button = new System.Windows.Forms.Button();
-            this.device_port_textbox = new System.Windows.Forms.TextBox();
             this.device_ip_textbox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -322,6 +323,8 @@
             this.password_textbox.Name = "password_textbox";
             this.password_textbox.Size = new System.Drawing.Size(114, 23);
             this.password_textbox.TabIndex = 12;
+            this.password_textbox.Text = "123456";
+            this.password_textbox.UseSystemPasswordChar = true;
             // 
             // label12
             // 
@@ -347,6 +350,7 @@
             this.username_textbox.Name = "username_textbox";
             this.username_textbox.Size = new System.Drawing.Size(114, 23);
             this.username_textbox.TabIndex = 9;
+            this.username_textbox.Text = "username";
             // 
             // label11
             // 
@@ -429,13 +433,14 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.radioButton_8080);
+            this.groupBox2.Controls.Add(this.radioButton_80);
             this.groupBox2.Controls.Add(this.rememberCheckBox);
             this.groupBox2.Controls.Add(this.getSeewoDevice);
             this.groupBox2.Controls.Add(this.device_status_label);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.device_disconnect_button);
             this.groupBox2.Controls.Add(this.device_connect_button);
-            this.groupBox2.Controls.Add(this.device_port_textbox);
             this.groupBox2.Controls.Add(this.device_ip_textbox);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
@@ -445,6 +450,28 @@
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "连接设备";
+            // 
+            // radioButton_8080
+            // 
+            this.radioButton_8080.AutoSize = true;
+            this.radioButton_8080.Location = new System.Drawing.Point(133, 49);
+            this.radioButton_8080.Name = "radioButton_8080";
+            this.radioButton_8080.Size = new System.Drawing.Size(54, 21);
+            this.radioButton_8080.TabIndex = 11;
+            this.radioButton_8080.Text = "8080";
+            this.radioButton_8080.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_80
+            // 
+            this.radioButton_80.AutoSize = true;
+            this.radioButton_80.Checked = true;
+            this.radioButton_80.Location = new System.Drawing.Point(87, 49);
+            this.radioButton_80.Name = "radioButton_80";
+            this.radioButton_80.Size = new System.Drawing.Size(40, 21);
+            this.radioButton_80.TabIndex = 10;
+            this.radioButton_80.TabStop = true;
+            this.radioButton_80.Text = "80";
+            this.radioButton_80.UseVisualStyleBackColor = true;
             // 
             // rememberCheckBox
             // 
@@ -460,10 +487,10 @@
             // 
             // getSeewoDevice
             // 
-            this.getSeewoDevice.Location = new System.Drawing.Point(124, 103);
+            this.getSeewoDevice.Location = new System.Drawing.Point(114, 103);
             this.getSeewoDevice.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.getSeewoDevice.Name = "getSeewoDevice";
-            this.getSeewoDevice.Size = new System.Drawing.Size(61, 25);
+            this.getSeewoDevice.Size = new System.Drawing.Size(71, 25);
             this.getSeewoDevice.TabIndex = 8;
             this.getSeewoDevice.Text = "刷新网口";
             this.getSeewoDevice.UseVisualStyleBackColor = true;
@@ -472,7 +499,7 @@
             // device_status_label
             // 
             this.device_status_label.AutoSize = true;
-            this.device_status_label.Location = new System.Drawing.Point(77, 107);
+            this.device_status_label.Location = new System.Drawing.Point(65, 107);
             this.device_status_label.Name = "device_status_label";
             this.device_status_label.Size = new System.Drawing.Size(44, 17);
             this.device_status_label.TabIndex = 7;
@@ -507,14 +534,6 @@
             this.device_connect_button.Text = "连接设备";
             this.device_connect_button.UseVisualStyleBackColor = true;
             this.device_connect_button.Click += new System.EventHandler(this.device_connect_button_Click);
-            // 
-            // device_port_textbox
-            // 
-            this.device_port_textbox.Location = new System.Drawing.Point(87, 49);
-            this.device_port_textbox.Name = "device_port_textbox";
-            this.device_port_textbox.Size = new System.Drawing.Size(100, 23);
-            this.device_port_textbox.TabIndex = 3;
-            this.device_port_textbox.Text = "80";
             // 
             // device_ip_textbox
             // 
@@ -699,7 +718,6 @@
         private Label label1;
         private Label label2;
         private TextBox device_ip_textbox;
-        private TextBox device_port_textbox;
         private Button device_connect_button;
         private Button device_disconnect_button;
         private Label label3;
@@ -751,5 +769,7 @@
         private TextBox password_textbox;
         private Label label12;
         private Label explainLabel;
+        private RadioButton radioButton_8080;
+        private RadioButton radioButton_80;
     }
 }

@@ -27,19 +27,29 @@ namespace SeewoTestTool
                 foreach (InternetPort internetPort in internetPorts.Values)
                 {
                     device_ip_textbox.Text = internetPort.Deviceip;
-                    for (int i = 0; i < internetPorts.Count; i++)
+                }
+                for (int i = 0; i < internetPorts.Count; i++)
+                {
+                    if (device_ip_textbox.Text != "")
                     {
-                        if (device_ip_textbox.Text != "")
+                        if (internetPorts.ContainsKey(device_ip_textbox.Text))
                         {
-                            if (internetPorts.ContainsKey(device_ip_textbox.Text))
+                            string port_temp = internetPorts[device_ip_textbox.Text].Deviceport;
+                            if (int.Parse(port_temp) == 80)
                             {
-                                device_port_textbox.Text = internetPorts[device_ip_textbox.Text].Deviceport;
-                                rememberCheckBox.Checked = true;
+                                radioButton_80.Checked = true;
                             }
+                            else
+                            {
+                                radioButton_8080.Checked = true;
+
+                            }
+                            rememberCheckBox.Checked = true;
                         }
                     }
                 }
             }
+            
             fs.Close();
             // 增加自动连接设备功能
             device_connect_button_Click(null, null);
@@ -49,8 +59,16 @@ namespace SeewoTestTool
         private void device_connect_button_Click(object sender, EventArgs e)
         {
             string host = device_ip_textbox.Text;
-            string port = device_port_textbox.Text;
-            if (string.IsNullOrEmpty(host) || string.IsNullOrEmpty(port))
+            string port;
+            if (radioButton_80.Checked)
+            {
+                port = radioButton_80.Text;
+            }
+            else 
+            {
+                port = radioButton_8080.Text;
+            }
+            if (string.IsNullOrEmpty(host))
             {
                 output_rich_textbox.AppendText("设备网口IP地址和端口号不能为空！\n");
             }
@@ -59,9 +77,8 @@ namespace SeewoTestTool
                 // Socket Connection Build
                 try
                 {
-                    int port_int = Convert.ToInt32(port);
                     IPAddress ip = IPAddress.Parse(host);
-                    IPEndPoint ipe = new IPEndPoint(ip, port_int);
+                    IPEndPoint ipe = new IPEndPoint(ip, int.Parse(port));
                     clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                     clientSocket.Connect(ipe);
                     if (clientSocket.Connected)
@@ -71,7 +88,8 @@ namespace SeewoTestTool
                         device_disconnect_button.Enabled = true;
                         device_status_label.Text = "已连接";
                         device_ip_textbox.Enabled = false;
-                        device_port_textbox.Enabled = false;
+                        radioButton_80.Enabled = false;
+                        radioButton_8080.Enabled = false;
                         // 增加记住IP和端口功能
                         if (rememberCheckBox.Checked == true)
                         {
@@ -83,7 +101,8 @@ namespace SeewoTestTool
                             if (internetPorts.ContainsKey(internetPort.Deviceip))
                             {
                                 // 如果存在就清除掉
-                                internetPorts.Remove(internetPort.Deviceip);
+                                //internetPorts.Remove(internetPort.Deviceip);
+                                internetPorts.Clear();
                             }
                             internetPorts.Add(internetPort.Deviceip, internetPort);
                             binaryFormatter.Serialize(fileStream, internetPorts);
@@ -99,7 +118,8 @@ namespace SeewoTestTool
                 {
                     device_status_label.Text = "已断开";
                     device_ip_textbox.Enabled = true;
-                    device_port_textbox.Enabled = true;
+                    radioButton_80.Enabled = true;
+                    radioButton_8080.Enabled = true;
                     output_rich_textbox.AppendText($"设备网口IP地址和端口号错误，请检查是否输入正确！\n问题Log如下：{ex.ToString()}\n");
                     MessageBox.Show($"设备未连接，请检查！\nIP:{host}， PORT:{port}");
                 }
@@ -151,7 +171,8 @@ namespace SeewoTestTool
             else
             {
                 device_ip_textbox.Enabled = true;
-                device_port_textbox.Enabled = true;
+                radioButton_80.Enabled = true;
+                radioButton_8080.Enabled = true;
                 device_status_label.Text = "已断开";
                 output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
             }
@@ -186,7 +207,8 @@ namespace SeewoTestTool
                         device_disconnect_button.Enabled = false;
                         device_connect_button.Enabled = true;
                         device_ip_textbox.Enabled = true;
-                        device_port_textbox.Enabled = true;
+                        radioButton_80.Enabled = true;
+                        radioButton_8080.Enabled = true;
                         device_status_label.Text = "已断开";
                         output_rich_textbox.AppendText($"Socket接收命令执行失败：\n{ex.ToString()}\n");
                         break;
@@ -197,7 +219,8 @@ namespace SeewoTestTool
             else
             {
                 device_ip_textbox.Enabled = true;
-                device_port_textbox.Enabled = true;
+                radioButton_80.Enabled = true;
+                radioButton_8080.Enabled = true;
                 device_status_label.Text = "已断开";
                 output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
                 return "";
@@ -218,7 +241,8 @@ namespace SeewoTestTool
                     clientSocket.Close();
                     device_status_label.Text = "已断开";
                     device_ip_textbox.Enabled = true;
-                    device_port_textbox.Enabled = true;
+                    radioButton_80.Enabled = true;
+                    radioButton_8080.Enabled = true;
                 }
                 catch (Exception ex)
                 {
@@ -258,7 +282,8 @@ namespace SeewoTestTool
             else
             {
                 device_ip_textbox.Enabled = true;
-                device_port_textbox.Enabled = true;
+                radioButton_80.Enabled = true;
+                radioButton_8080.Enabled = true;
                 device_status_label.Text = "已断开";
                 output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
             }
@@ -303,7 +328,8 @@ namespace SeewoTestTool
             else
             {
                 device_ip_textbox.Enabled = true;
-                device_port_textbox.Enabled = true;
+                radioButton_80.Enabled = true;
+                radioButton_8080.Enabled = true;
                 device_status_label.Text = "已断开";
                 output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
             }
@@ -394,7 +420,8 @@ namespace SeewoTestTool
             else
             {
                 device_ip_textbox.Enabled = true;
-                device_port_textbox.Enabled = true;
+                radioButton_80.Enabled = true;
+                radioButton_8080.Enabled = true;
                 device_status_label.Text = "已断开";
                 output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
             }
@@ -425,7 +452,8 @@ namespace SeewoTestTool
             else
             {
                 device_ip_textbox.Enabled = true;
-                device_port_textbox.Enabled = true;
+                radioButton_80.Enabled = true;
+                radioButton_8080.Enabled = true;
                 device_status_label.Text = "已断开";
                 output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
             }
@@ -456,7 +484,8 @@ namespace SeewoTestTool
             else
             {
                 device_ip_textbox.Enabled = true;
-                device_port_textbox.Enabled = true;
+                radioButton_80.Enabled = true;
+                radioButton_8080.Enabled = true;
                 device_status_label.Text = "已断开";
                 output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
             }
@@ -485,7 +514,8 @@ namespace SeewoTestTool
             else
             {
                 device_ip_textbox.Enabled = true;
-                device_port_textbox.Enabled = true;
+                radioButton_80.Enabled = true;
+                radioButton_8080.Enabled = true;
                 device_status_label.Text = "已断开";
                 output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
             }
@@ -514,7 +544,8 @@ namespace SeewoTestTool
             else
             {
                 device_ip_textbox.Enabled = true;
-                device_port_textbox.Enabled = true;
+                radioButton_80.Enabled = true;
+                radioButton_8080.Enabled = true;
                 device_status_label.Text = "已断开";
                 output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
             }
@@ -543,7 +574,8 @@ namespace SeewoTestTool
             else
             {
                 device_ip_textbox.Enabled = true;
-                device_port_textbox.Enabled = true;
+                radioButton_80.Enabled = true;
+                radioButton_8080.Enabled = true;
                 device_status_label.Text = "已断开";
                 output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
             }
@@ -572,7 +604,8 @@ namespace SeewoTestTool
             else
             {
                 device_ip_textbox.Enabled = true;
-                device_port_textbox.Enabled = true;
+                radioButton_80.Enabled = true;
+                radioButton_8080.Enabled = true;
                 device_status_label.Text = "已断开";
                 output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
             }
@@ -601,7 +634,8 @@ namespace SeewoTestTool
             else
             {
                 device_ip_textbox.Enabled = true;
-                device_port_textbox.Enabled = true;
+                radioButton_80.Enabled = true;
+                radioButton_8080.Enabled = true;
                 device_status_label.Text = "已断开";
                 output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
             }
@@ -866,7 +900,8 @@ namespace SeewoTestTool
                 else
                 {
                     device_ip_textbox.Enabled = true;
-                    device_port_textbox.Enabled = true;
+                    radioButton_80.Enabled = true;
+                    radioButton_8080.Enabled = true;
                     device_status_label.Text = "已断开";
                     output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
                 }
@@ -934,7 +969,8 @@ namespace SeewoTestTool
                 else
                 {
                     device_ip_textbox.Enabled = true;
-                    device_port_textbox.Enabled = true;
+                    radioButton_80.Enabled = true;
+                    radioButton_8080.Enabled = true;
                     device_status_label.Text = "已断开";
                     output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
                 }
