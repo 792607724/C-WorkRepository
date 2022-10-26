@@ -30,6 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.writeInPCBA_button = new System.Windows.Forms.Button();
+            this.writeINPCBA_textbox = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.getCurrentPCBA_button = new System.Windows.Forms.Button();
+            this.currentPCBA_textbox = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
             this.array_mic_audio_level_test_button = new System.Windows.Forms.Button();
@@ -86,14 +93,8 @@
             this.getCurrentSN_button = new System.Windows.Forms.Button();
             this.currentSN_textbox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.writeInPCBA_button = new System.Windows.Forms.Button();
-            this.writeINPCBA_textbox = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.getCurrentPCBA_button = new System.Windows.Forms.Button();
-            this.currentPCBA_textbox = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
+            this.groupBox10.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -102,7 +103,6 @@
             this.groupBox2.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox9.SuspendLayout();
-            this.groupBox10.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -120,6 +120,75 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "希沃测试工具面板";
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.writeInPCBA_button);
+            this.groupBox10.Controls.Add(this.writeINPCBA_textbox);
+            this.groupBox10.Controls.Add(this.label13);
+            this.groupBox10.Controls.Add(this.getCurrentPCBA_button);
+            this.groupBox10.Controls.Add(this.currentPCBA_textbox);
+            this.groupBox10.Controls.Add(this.label14);
+            this.groupBox10.Location = new System.Drawing.Point(228, 396);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(596, 71);
+            this.groupBox10.TabIndex = 6;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "PCBA号刷写";
+            // 
+            // writeInPCBA_button
+            // 
+            this.writeInPCBA_button.Enabled = false;
+            this.writeInPCBA_button.Location = new System.Drawing.Point(394, 42);
+            this.writeInPCBA_button.Name = "writeInPCBA_button";
+            this.writeInPCBA_button.Size = new System.Drawing.Size(184, 23);
+            this.writeInPCBA_button.TabIndex = 5;
+            this.writeInPCBA_button.Text = "写入PCBA号";
+            this.writeInPCBA_button.UseVisualStyleBackColor = true;
+            this.writeInPCBA_button.Click += new System.EventHandler(this.writeInPCBA_button_Click);
+            // 
+            // writeINPCBA_textbox
+            // 
+            this.writeINPCBA_textbox.Location = new System.Drawing.Point(104, 45);
+            this.writeINPCBA_textbox.Name = "writeINPCBA_textbox";
+            this.writeINPCBA_textbox.Size = new System.Drawing.Size(255, 23);
+            this.writeINPCBA_textbox.TabIndex = 4;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(6, 48);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(87, 17);
+            this.label13.TabIndex = 3;
+            this.label13.Text = "写入PCBA号：";
+            // 
+            // getCurrentPCBA_button
+            // 
+            this.getCurrentPCBA_button.Enabled = false;
+            this.getCurrentPCBA_button.Location = new System.Drawing.Point(394, 16);
+            this.getCurrentPCBA_button.Name = "getCurrentPCBA_button";
+            this.getCurrentPCBA_button.Size = new System.Drawing.Size(184, 23);
+            this.getCurrentPCBA_button.TabIndex = 2;
+            this.getCurrentPCBA_button.Text = "获取当前设备PCBA号";
+            this.getCurrentPCBA_button.UseVisualStyleBackColor = true;
+            this.getCurrentPCBA_button.Click += new System.EventHandler(this.getCurrentPCBA_button_Click);
+            // 
+            // currentPCBA_textbox
+            // 
+            this.currentPCBA_textbox.Location = new System.Drawing.Point(104, 16);
+            this.currentPCBA_textbox.Name = "currentPCBA_textbox";
+            this.currentPCBA_textbox.Size = new System.Drawing.Size(255, 23);
+            this.currentPCBA_textbox.TabIndex = 1;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(6, 19);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(99, 17);
+            this.label14.TabIndex = 0;
+            this.label14.Text = "当前PCBA号为：";
             // 
             // groupBox7
             // 
@@ -332,7 +401,6 @@
             this.password_textbox.Name = "password_textbox";
             this.password_textbox.Size = new System.Drawing.Size(114, 23);
             this.password_textbox.TabIndex = 12;
-            this.password_textbox.Text = "123456";
             this.password_textbox.UseSystemPasswordChar = true;
             // 
             // label12
@@ -361,7 +429,6 @@
             this.username_textbox.Name = "username_textbox";
             this.username_textbox.Size = new System.Drawing.Size(114, 23);
             this.username_textbox.TabIndex = 9;
-            this.username_textbox.Text = "username";
             // 
             // label11
             // 
@@ -691,75 +758,6 @@
             this.label9.TabIndex = 0;
             this.label9.Text = "当前序列号为：";
             // 
-            // groupBox10
-            // 
-            this.groupBox10.Controls.Add(this.writeInPCBA_button);
-            this.groupBox10.Controls.Add(this.writeINPCBA_textbox);
-            this.groupBox10.Controls.Add(this.label13);
-            this.groupBox10.Controls.Add(this.getCurrentPCBA_button);
-            this.groupBox10.Controls.Add(this.currentPCBA_textbox);
-            this.groupBox10.Controls.Add(this.label14);
-            this.groupBox10.Location = new System.Drawing.Point(228, 396);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(596, 71);
-            this.groupBox10.TabIndex = 6;
-            this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "PCBA号刷写";
-            // 
-            // writeInPCBA_button
-            // 
-            this.writeInPCBA_button.Enabled = false;
-            this.writeInPCBA_button.Location = new System.Drawing.Point(394, 42);
-            this.writeInPCBA_button.Name = "writeInPCBA_button";
-            this.writeInPCBA_button.Size = new System.Drawing.Size(184, 23);
-            this.writeInPCBA_button.TabIndex = 5;
-            this.writeInPCBA_button.Text = "写入PCBA号";
-            this.writeInPCBA_button.UseVisualStyleBackColor = true;
-            this.writeInPCBA_button.Click += new System.EventHandler(this.writeInPCBA_button_Click);
-            // 
-            // writeINPCBA_textbox
-            // 
-            this.writeINPCBA_textbox.Location = new System.Drawing.Point(104, 45);
-            this.writeINPCBA_textbox.Name = "writeINPCBA_textbox";
-            this.writeINPCBA_textbox.Size = new System.Drawing.Size(255, 23);
-            this.writeINPCBA_textbox.TabIndex = 4;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(6, 48);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(87, 17);
-            this.label13.TabIndex = 3;
-            this.label13.Text = "写入PCBA号：";
-            // 
-            // getCurrentPCBA_button
-            // 
-            this.getCurrentPCBA_button.Enabled = false;
-            this.getCurrentPCBA_button.Location = new System.Drawing.Point(394, 16);
-            this.getCurrentPCBA_button.Name = "getCurrentPCBA_button";
-            this.getCurrentPCBA_button.Size = new System.Drawing.Size(184, 23);
-            this.getCurrentPCBA_button.TabIndex = 2;
-            this.getCurrentPCBA_button.Text = "获取当前设备PCBA号";
-            this.getCurrentPCBA_button.UseVisualStyleBackColor = true;
-            this.getCurrentPCBA_button.Click += new System.EventHandler(this.getCurrentPCBA_button_Click);
-            // 
-            // currentPCBA_textbox
-            // 
-            this.currentPCBA_textbox.Location = new System.Drawing.Point(104, 16);
-            this.currentPCBA_textbox.Name = "currentPCBA_textbox";
-            this.currentPCBA_textbox.Size = new System.Drawing.Size(255, 23);
-            this.currentPCBA_textbox.TabIndex = 1;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(6, 19);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(99, 17);
-            this.label14.TabIndex = 0;
-            this.label14.Text = "当前PCBA号为：";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -777,6 +775,8 @@
             this.Text = "Seewo测试工具";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormClosingEvent);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             this.groupBox6.ResumeLayout(false);
@@ -791,8 +791,6 @@
             this.groupBox8.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
-            this.groupBox10.ResumeLayout(false);
-            this.groupBox10.PerformLayout();
             this.ResumeLayout(false);
 
         }

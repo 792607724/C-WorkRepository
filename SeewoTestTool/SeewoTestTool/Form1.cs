@@ -16,6 +16,7 @@ namespace SeewoTestTool
     {
         Socket clientSocket;
         Dictionary<string, InternetPort> internetPorts = new Dictionary<string, InternetPort>();
+        Dictionary<string, User> users = new Dictionary<string, User>();
         public Form1()
         {
             InitializeComponent();
@@ -49,11 +50,37 @@ namespace SeewoTestTool
                         }
                     }
                 }
+
+                
+                
             }
-            
+            FileStream fs1 = new FileStream("data1.bin", FileMode.OpenOrCreate);
+            if (fs1.Length > 0)
+            {
+                BinaryFormatter bf = new BinaryFormatter();
+                users = bf.Deserialize(fs1) as Dictionary<string, User>;
+                foreach (User user in users.Values)
+                {
+                    username_textbox.Text = user.Username;
+                }
+                for (int i = 0; i < users.Count; i++)
+                {
+                    if (username_textbox.Text != "")
+                    {
+                        if (users.ContainsKey(username_textbox.Text))
+                        {
+                            string password_temp = users[username_textbox.Text].Password;
+                            password_textbox.Text = password_temp;
+                        }
+                    }
+                }
+            }
             fs.Close();
+            fs1.Close();
             // 增加自动连接设备功能
             device_connect_button_Click(null, null);
+
+            login_button_Click(null, null);
         }
 
         // 保证设备在连接状态 网口通信
@@ -1030,10 +1057,12 @@ namespace SeewoTestTool
                 {
                     try
                     {
-                        string password_sha256 = SHA256EncryptString(password_textbox.Text);
+                        string username = username_textbox.Text;
+                        string password = password_textbox.Text;
+                        string password_sha256 = SHA256EncryptString(password);
                         output_rich_textbox.AppendText($"登录成功，可以进行固件升级检测：{password_sha256}\n");
                         // 登录操作获取session - 后续IP以后续输入为主，当前暂定
-                        string loginCommand = $"curl -X POST \"http://10.66.30.69/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"login\\\", \\\"{username_textbox.Text}\\\": \\\"admin\\\",\\\"password\\\": \\\"{password_sha256}\\\"}}\"";
+                        string loginCommand = $"curl -X POST \"http://10.66.30.69/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"login\\\", \\\"{username}\\\": \\\"admin\\\",\\\"password\\\": \\\"{password_sha256}\\\"}}\"";
                         output_string = executeCMDCommand(loginCommand);
                         MatchCollection results = Regex.Matches(output_string, "\"session\" : (.*)");
                         session = results[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
@@ -1044,6 +1073,23 @@ namespace SeewoTestTool
                         writeIn_button.Enabled = true;
                         getCurrentPCBA_button.Enabled = true;
                         writeInPCBA_button.Enabled = true;
+                        // 增加记住username和password功能
+                        if (rememberCheckBox.Checked == true)
+                        {
+                            FileStream fileStream = new FileStream("data1.bin", FileMode.OpenOrCreate);
+                            BinaryFormatter binaryFormatter = new BinaryFormatter();
+                            User user = new User();
+                            user.Username = username;
+                            user.Password = password;
+                            if (users.ContainsKey(user.Username))
+                            {
+                                // 如果存在就清除掉
+                                users.Clear();
+                            }
+                            users.Add(user.Username, user);
+                            binaryFormatter.Serialize(fileStream, users);
+                            fileStream.Close();
+                        }
                     }
                     catch (Exception ex)
                     {
