@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.device_reset_button = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
             this.array_mic_audio_level_test_button = new System.Windows.Forms.Button();
@@ -49,6 +48,12 @@
             this.stop_rg_flicker_button = new System.Windows.Forms.Button();
             this.start_rg_flicker_button = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.explainLabel = new System.Windows.Forms.Label();
+            this.password_textbox = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.login_button = new System.Windows.Forms.Button();
+            this.username_textbox = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.upgrade_progressbar = new System.Windows.Forms.ProgressBar();
             this.upgrade_button = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -68,6 +73,7 @@
             this.device_ip_textbox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.device_reset_button = new System.Windows.Forms.Button();
             this.output_rich_textbox = new System.Windows.Forms.RichTextBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.clear_output_button = new System.Windows.Forms.Button();
@@ -92,29 +98,18 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.device_reset_button);
             this.groupBox1.Controls.Add(this.groupBox7);
             this.groupBox1.Controls.Add(this.groupBox6);
             this.groupBox1.Controls.Add(this.groupBox5);
             this.groupBox1.Controls.Add(this.groupBox4);
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.groupBox2);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(776, 476);
+            this.groupBox1.Size = new System.Drawing.Size(831, 484);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "希沃测试工具面板";
-            // 
-            // device_reset_button
-            // 
-            this.device_reset_button.Location = new System.Drawing.Point(234, 430);
-            this.device_reset_button.Name = "device_reset_button";
-            this.device_reset_button.Size = new System.Drawing.Size(527, 37);
-            this.device_reset_button.TabIndex = 6;
-            this.device_reset_button.Text = "设备复位";
-            this.device_reset_button.UseVisualStyleBackColor = true;
-            this.device_reset_button.Click += new System.EventHandler(this.device_reset_button_Click);
             // 
             // groupBox7
             // 
@@ -122,7 +117,7 @@
             this.groupBox7.Controls.Add(this.array_mic_audio_level_test_button);
             this.groupBox7.Location = new System.Drawing.Point(228, 180);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(540, 244);
+            this.groupBox7.Size = new System.Drawing.Size(596, 287);
             this.groupBox7.TabIndex = 5;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "阵列MIC测试";
@@ -130,7 +125,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(179, 19);
+            this.label8.Location = new System.Drawing.Point(207, 19);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(164, 17);
             this.label8.TabIndex = 1;
@@ -138,9 +133,9 @@
             // 
             // array_mic_audio_level_test_button
             // 
-            this.array_mic_audio_level_test_button.Location = new System.Drawing.Point(6, 201);
+            this.array_mic_audio_level_test_button.Location = new System.Drawing.Point(6, 244);
             this.array_mic_audio_level_test_button.Name = "array_mic_audio_level_test_button";
-            this.array_mic_audio_level_test_button.Size = new System.Drawing.Size(527, 37);
+            this.array_mic_audio_level_test_button.Size = new System.Drawing.Size(583, 37);
             this.array_mic_audio_level_test_button.TabIndex = 0;
             this.array_mic_audio_level_test_button.Text = "阵列MIC音量值测试";
             this.array_mic_audio_level_test_button.UseVisualStyleBackColor = true;
@@ -290,6 +285,12 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.explainLabel);
+            this.groupBox3.Controls.Add(this.password_textbox);
+            this.groupBox3.Controls.Add(this.label12);
+            this.groupBox3.Controls.Add(this.login_button);
+            this.groupBox3.Controls.Add(this.username_textbox);
+            this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Controls.Add(this.upgrade_progressbar);
             this.groupBox3.Controls.Add(this.upgrade_button);
             this.groupBox3.Controls.Add(this.label4);
@@ -300,24 +301,75 @@
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Location = new System.Drawing.Point(228, 28);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(542, 144);
+            this.groupBox3.Size = new System.Drawing.Size(596, 144);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "固件升级校验";
             // 
+            // explainLabel
+            // 
+            this.explainLabel.AutoSize = true;
+            this.explainLabel.Location = new System.Drawing.Point(6, 72);
+            this.explainLabel.MaximumSize = new System.Drawing.Size(180, 40);
+            this.explainLabel.Name = "explainLabel";
+            this.explainLabel.Size = new System.Drawing.Size(176, 34);
+            this.explainLabel.TabIndex = 13;
+            this.explainLabel.Text = "固件升级校验，需要用户名密码与服务器进行通信获取相应信息";
+            // 
+            // password_textbox
+            // 
+            this.password_textbox.Location = new System.Drawing.Point(68, 46);
+            this.password_textbox.Name = "password_textbox";
+            this.password_textbox.Size = new System.Drawing.Size(114, 23);
+            this.password_textbox.TabIndex = 12;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(6, 49);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(44, 17);
+            this.label12.TabIndex = 11;
+            this.label12.Text = "密码：";
+            // 
+            // login_button
+            // 
+            this.login_button.Location = new System.Drawing.Point(6, 112);
+            this.login_button.Name = "login_button";
+            this.login_button.Size = new System.Drawing.Size(176, 23);
+            this.login_button.TabIndex = 10;
+            this.login_button.Text = "登录";
+            this.login_button.UseVisualStyleBackColor = true;
+            // 
+            // username_textbox
+            // 
+            this.username_textbox.Location = new System.Drawing.Point(68, 20);
+            this.username_textbox.Name = "username_textbox";
+            this.username_textbox.Size = new System.Drawing.Size(114, 23);
+            this.username_textbox.TabIndex = 9;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 23);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(56, 17);
+            this.label11.TabIndex = 8;
+            this.label11.Text = "用户名：";
+            // 
             // upgrade_progressbar
             // 
-            this.upgrade_progressbar.Location = new System.Drawing.Point(12, 76);
+            this.upgrade_progressbar.Location = new System.Drawing.Point(207, 72);
             this.upgrade_progressbar.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.upgrade_progressbar.Name = "upgrade_progressbar";
-            this.upgrade_progressbar.Size = new System.Drawing.Size(521, 25);
+            this.upgrade_progressbar.Size = new System.Drawing.Size(382, 25);
             this.upgrade_progressbar.TabIndex = 7;
             // 
             // upgrade_button
             // 
-            this.upgrade_button.Location = new System.Drawing.Point(12, 107);
+            this.upgrade_button.Location = new System.Drawing.Point(207, 103);
             this.upgrade_button.Name = "upgrade_button";
-            this.upgrade_button.Size = new System.Drawing.Size(521, 29);
+            this.upgrade_button.Size = new System.Drawing.Size(382, 29);
             this.upgrade_button.TabIndex = 6;
             this.upgrade_button.Text = "开始升级";
             this.upgrade_button.UseVisualStyleBackColor = true;
@@ -326,7 +378,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 52);
+            this.label4.Location = new System.Drawing.Point(203, 48);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(104, 17);
             this.label4.TabIndex = 0;
@@ -334,7 +386,7 @@
             // 
             // choose_upgrade_firmware_button
             // 
-            this.choose_upgrade_firmware_button.Location = new System.Drawing.Point(419, 15);
+            this.choose_upgrade_firmware_button.Location = new System.Drawing.Point(473, 13);
             this.choose_upgrade_firmware_button.Name = "choose_upgrade_firmware_button";
             this.choose_upgrade_firmware_button.Size = new System.Drawing.Size(116, 29);
             this.choose_upgrade_firmware_button.TabIndex = 5;
@@ -344,14 +396,14 @@
             // 
             // checked_firmware_textbox
             // 
-            this.checked_firmware_textbox.Location = new System.Drawing.Point(117, 49);
+            this.checked_firmware_textbox.Location = new System.Drawing.Point(312, 45);
             this.checked_firmware_textbox.Name = "checked_firmware_textbox";
-            this.checked_firmware_textbox.Size = new System.Drawing.Size(295, 23);
+            this.checked_firmware_textbox.Size = new System.Drawing.Size(155, 23);
             this.checked_firmware_textbox.TabIndex = 1;
             // 
             // check_current_firmware_button
             // 
-            this.check_current_firmware_button.Location = new System.Drawing.Point(418, 45);
+            this.check_current_firmware_button.Location = new System.Drawing.Point(473, 42);
             this.check_current_firmware_button.Name = "check_current_firmware_button";
             this.check_current_firmware_button.Size = new System.Drawing.Size(116, 29);
             this.check_current_firmware_button.TabIndex = 2;
@@ -361,15 +413,15 @@
             // 
             // upgrade_firmware_textbox
             // 
-            this.upgrade_firmware_textbox.Location = new System.Drawing.Point(117, 20);
+            this.upgrade_firmware_textbox.Location = new System.Drawing.Point(312, 16);
             this.upgrade_firmware_textbox.Name = "upgrade_firmware_textbox";
-            this.upgrade_firmware_textbox.Size = new System.Drawing.Size(295, 23);
+            this.upgrade_firmware_textbox.Size = new System.Drawing.Size(155, 23);
             this.upgrade_firmware_textbox.TabIndex = 4;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 21);
+            this.label5.Location = new System.Drawing.Point(204, 17);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(68, 17);
             this.label5.TabIndex = 3;
@@ -462,6 +514,7 @@
             this.device_port_textbox.Name = "device_port_textbox";
             this.device_port_textbox.Size = new System.Drawing.Size(100, 23);
             this.device_port_textbox.TabIndex = 3;
+            this.device_port_textbox.Text = "80";
             // 
             // device_ip_textbox
             // 
@@ -488,11 +541,21 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "设备IP地址：";
             // 
+            // device_reset_button
+            // 
+            this.device_reset_button.Location = new System.Drawing.Point(574, 494);
+            this.device_reset_button.Name = "device_reset_button";
+            this.device_reset_button.Size = new System.Drawing.Size(269, 76);
+            this.device_reset_button.TabIndex = 6;
+            this.device_reset_button.Text = "设备复位";
+            this.device_reset_button.UseVisualStyleBackColor = true;
+            this.device_reset_button.Click += new System.EventHandler(this.device_reset_button_Click);
+            // 
             // output_rich_textbox
             // 
             this.output_rich_textbox.Location = new System.Drawing.Point(5, 22);
             this.output_rich_textbox.Name = "output_rich_textbox";
-            this.output_rich_textbox.Size = new System.Drawing.Size(765, 167);
+            this.output_rich_textbox.Size = new System.Drawing.Size(819, 167);
             this.output_rich_textbox.TabIndex = 1;
             this.output_rich_textbox.Text = "";
             this.output_rich_textbox.TextChanged += new System.EventHandler(this.richTextChanged_to);
@@ -503,17 +566,17 @@
             this.groupBox8.Controls.Add(this.output_rich_textbox);
             this.groupBox8.Location = new System.Drawing.Point(12, 576);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(776, 195);
+            this.groupBox8.Size = new System.Drawing.Size(831, 195);
             this.groupBox8.TabIndex = 2;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "输出：";
             // 
             // clear_output_button
             // 
-            this.clear_output_button.Location = new System.Drawing.Point(725, 0);
+            this.clear_output_button.Location = new System.Drawing.Point(703, 0);
             this.clear_output_button.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.clear_output_button.Name = "clear_output_button";
-            this.clear_output_button.Size = new System.Drawing.Size(38, 27);
+            this.clear_output_button.Size = new System.Drawing.Size(59, 27);
             this.clear_output_button.TabIndex = 2;
             this.clear_output_button.Text = "清空";
             this.clear_output_button.UseVisualStyleBackColor = true;
@@ -537,14 +600,14 @@
             this.groupBox9.Controls.Add(this.label9);
             this.groupBox9.Location = new System.Drawing.Point(12, 494);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(776, 76);
+            this.groupBox9.Size = new System.Drawing.Size(556, 76);
             this.groupBox9.TabIndex = 3;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "SN号刷写";
             // 
             // writeIn_button
             // 
-            this.writeIn_button.Location = new System.Drawing.Point(577, 45);
+            this.writeIn_button.Location = new System.Drawing.Point(365, 45);
             this.writeIn_button.Name = "writeIn_button";
             this.writeIn_button.Size = new System.Drawing.Size(184, 23);
             this.writeIn_button.TabIndex = 5;
@@ -556,7 +619,7 @@
             // 
             this.writeInSN_textbox.Location = new System.Drawing.Point(104, 45);
             this.writeInSN_textbox.Name = "writeInSN_textbox";
-            this.writeInSN_textbox.Size = new System.Drawing.Size(467, 23);
+            this.writeInSN_textbox.Size = new System.Drawing.Size(255, 23);
             this.writeInSN_textbox.TabIndex = 4;
             // 
             // label10
@@ -570,7 +633,7 @@
             // 
             // getCurrentSN_button
             // 
-            this.getCurrentSN_button.Location = new System.Drawing.Point(577, 16);
+            this.getCurrentSN_button.Location = new System.Drawing.Point(365, 16);
             this.getCurrentSN_button.Name = "getCurrentSN_button";
             this.getCurrentSN_button.Size = new System.Drawing.Size(184, 23);
             this.getCurrentSN_button.TabIndex = 2;
@@ -582,7 +645,7 @@
             // 
             this.currentSN_textbox.Location = new System.Drawing.Point(104, 16);
             this.currentSN_textbox.Name = "currentSN_textbox";
-            this.currentSN_textbox.Size = new System.Drawing.Size(467, 23);
+            this.currentSN_textbox.Size = new System.Drawing.Size(255, 23);
             this.currentSN_textbox.TabIndex = 1;
             // 
             // label9
@@ -598,13 +661,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(802, 783);
+            this.ClientSize = new System.Drawing.Size(851, 776);
+            this.Controls.Add(this.device_reset_button);
             this.Controls.Add(this.groupBox9);
             this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(818, 822);
-            this.MinimumSize = new System.Drawing.Size(818, 822);
+            this.MaximumSize = new System.Drawing.Size(867, 815);
+            this.MinimumSize = new System.Drawing.Size(867, 815);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Seewo测试工具";
@@ -681,5 +745,11 @@
         private Button writeIn_button;
         private TextBox writeInSN_textbox;
         private Label label10;
+        private Label label11;
+        private Button login_button;
+        private TextBox username_textbox;
+        private TextBox password_textbox;
+        private Label label12;
+        private Label explainLabel;
     }
 }
