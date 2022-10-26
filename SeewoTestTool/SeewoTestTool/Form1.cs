@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using static System.Net.Mime.MediaTypeNames;
@@ -90,6 +91,7 @@ namespace SeewoTestTool
                         device_ip_textbox.Enabled = false;
                         radioButton_80.Enabled = false;
                         radioButton_8080.Enabled = false;
+                        login_button.Enabled = true;
                         // 增加记住IP和端口功能
                         if (rememberCheckBox.Checked == true)
                         {
@@ -243,6 +245,11 @@ namespace SeewoTestTool
                     device_ip_textbox.Enabled = true;
                     radioButton_80.Enabled = true;
                     radioButton_8080.Enabled = true;
+                    check_current_firmware_button.Enabled = false;
+                    upgrade_button.Enabled = false;
+                    getCurrentSN_button.Enabled = false;
+                    writeIn_button.Enabled = false;
+                    login_button.Enabled = false;
                 }
                 catch (Exception ex)
                 {
@@ -345,14 +352,6 @@ namespace SeewoTestTool
                 string currentFirmware = null;
                 try
                 {
-                    // 校验固件 - 登录操作获取session - 后续IP以后续输入为主，当前暂定
-                    string loginCommand = "curl -X POST \"http://10.66.30.69/json_api\" -H \"Content-Type: application/json\" -d \"{\\\"method\\\": \\\"login\\\", \\\"username\\\": \\\"admin\\\",\\\"password\\\": \\\"8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92\\\"}\"";
-                    output_string = executeCMDCommand(loginCommand);
-                    MatchCollection results = Regex.Matches(output_string, "\"session\" : (.*)"); 
-                    string session = results[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
-                    output_rich_textbox.AppendText("当前固件校验Session是：" + session + "\n");
-
-
                     // 校验固件 - 从session中获取固件当前版本
                     string checkVersionCommand = $"curl -X POST \"http://10.66.30.69/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\":\\\"getParam\\\",\\\"session\\\":\\\"{session}\\\",\\\"name\\\":\\\"DevInfo\\\"}}\"";
                     output_string = executeCMDCommand(checkVersionCommand);
@@ -829,8 +828,10 @@ namespace SeewoTestTool
                     device_disconnect_button_Click(null, null);
                 }
                 output_rich_textbox.AppendText("设备重启完成！\n");
-                upgrade_button.Enabled = true;
-
+                check_current_firmware_button.Enabled = false;
+                upgrade_button.Enabled = false;
+                getCurrentSN_button.Enabled = false;
+                writeIn_button.Enabled = false;
             }
             else
             {
@@ -882,13 +883,6 @@ namespace SeewoTestTool
             {
                 if (clientSocket != null && clientSocket.Connected)
                 {
-                    // 获取当前设备的SN号 - 登录操作获取session - 后续IP以后续输入为主，当前暂定
-                    string loginCommand = "curl -X POST \"http://10.66.30.69/json_api\" -H \"Content-Type: application/json\" -d \"{\\\"method\\\": \\\"login\\\", \\\"username\\\": \\\"admin\\\",\\\"password\\\": \\\"8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92\\\"}\"";
-                    output_string = executeCMDCommand(loginCommand);
-                    MatchCollection results = Regex.Matches(output_string, "\"session\" : (.*)");
-                    string session = results[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
-                    output_rich_textbox.AppendText("当前固件校验Session是：" + session + "\n");
-
                     // 获取SN号
                     string fetchDeviceInfoCommand = $"curl -X POST \"http://10.66.30.69/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"SerialNumber\\\"}}\"";
                     output_string = executeCMDCommand(fetchDeviceInfoCommand);
@@ -917,6 +911,7 @@ namespace SeewoTestTool
             }
         }
 
+
         // 写入指定的设备SN号
         private void writeIn_button_Click(object sender, EventArgs e)
         {
@@ -926,12 +921,6 @@ namespace SeewoTestTool
             {
                 if (clientSocket != null && clientSocket.Connected)
                 {
-                    // 写入指定的设备SN号 - 登录操作获取session - 后续IP以后续输入为主，当前暂定
-                    string loginCommand = "curl -X POST \"http://10.66.30.69/json_api\" -H \"Content-Type: application/json\" -d \"{\\\"method\\\": \\\"login\\\", \\\"username\\\": \\\"admin\\\",\\\"password\\\": \\\"8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92\\\"}\"";
-                    output_string = executeCMDCommand(loginCommand);
-                    MatchCollection results = Regex.Matches(output_string, "\"session\" : (.*)");
-                    string session = results[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
-                    output_rich_textbox.AppendText("当前固件校验Session是：" + session + "\n");
 
                     // 写入指定的设备SN号
                     string writeINSN = writeInSN_textbox.Text;
@@ -982,6 +971,95 @@ namespace SeewoTestTool
             finally
             {
 
+            }
+        }
+
+        // 密码转换为SHA256加密字符串 
+        public static string SHA256EncryptString(string data)
+        {
+            StringBuilder builder = new StringBuilder();
+
+            try
+            {
+                if (!string.IsNullOrEmpty(data))
+                {
+                    byte[] bytes = Encoding.UTF8.GetBytes(data);
+
+                    using (SHA256 sha256 = SHA256.Create())
+                    {
+                        if (sha256 != null)
+                        {
+                            byte[] hash = sha256.ComputeHash(bytes);
+                            if (hash.Length > 0)
+                            {
+                                for (int i = 0; i < hash.Length; i++)
+                                {
+                                    builder.Append(hash[i].ToString("x2"));
+                                }
+                                return builder.ToString();
+                            }
+                        }
+                    }
+                }
+
+                return "";
+            }
+            catch (Exception e)
+            {
+                builder.Clear();
+                return "";
+            }
+            finally
+            {
+                builder.Clear();
+            }
+        }
+        string session;
+        // 点击登录后进行密码SH256加密转换
+        private void login_button_Click(object sender, EventArgs e)
+        {
+            //if (true)
+            output_rich_textbox.AppendText("点击登录后进行密码SH256加密转换\n");
+            if (clientSocket != null && clientSocket.Connected)
+            {
+                try
+                {
+                    try
+                    {
+                        string password_sha256 = SHA256EncryptString(password_textbox.Text);
+                        output_rich_textbox.AppendText($"登录成功，可以进行固件升级检测：{password_sha256}\n");
+                        // 登录操作获取session - 后续IP以后续输入为主，当前暂定
+                        string loginCommand = $"curl -X POST \"http://10.66.30.69/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"login\\\", \\\"{username_textbox.Text}\\\": \\\"admin\\\",\\\"password\\\": \\\"{password_sha256}\\\"}}\"";
+                        output_string = executeCMDCommand(loginCommand);
+                        MatchCollection results = Regex.Matches(output_string, "\"session\" : (.*)");
+                        session = results[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
+                        output_rich_textbox.AppendText("当前固件校验Session是：" + session + "\n");
+                        check_current_firmware_button.Enabled = true;
+                        upgrade_button.Enabled = true;
+                        getCurrentSN_button.Enabled = true;
+                        writeIn_button.Enabled = true;  
+                    }
+                    catch (Exception ex)
+                    {
+                        output_rich_textbox.AppendText($"登录失败，密码或者用户名错误，请重新输入检查：\n excetion:{ex.ToString()}\n");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    output_rich_textbox.AppendText($"点击登录后进行密码SH256加密转换失败：\n{ex.ToString()}\n");
+                }
+                finally
+                {
+
+                }
+            }
+            else
+            {
+                device_ip_textbox.Enabled = true;
+                radioButton_80.Enabled = true;
+                radioButton_8080.Enabled = true;
+                device_status_label.Text = "已断开";
+                output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
             }
         }
     }

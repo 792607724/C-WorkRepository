@@ -337,12 +337,14 @@
             // 
             // login_button
             // 
+            this.login_button.Enabled = false;
             this.login_button.Location = new System.Drawing.Point(6, 112);
             this.login_button.Name = "login_button";
             this.login_button.Size = new System.Drawing.Size(176, 23);
             this.login_button.TabIndex = 10;
             this.login_button.Text = "登录";
             this.login_button.UseVisualStyleBackColor = true;
+            this.login_button.Click += new System.EventHandler(this.login_button_Click);
             // 
             // username_textbox
             // 
@@ -371,6 +373,7 @@
             // 
             // upgrade_button
             // 
+            this.upgrade_button.Enabled = false;
             this.upgrade_button.Location = new System.Drawing.Point(207, 103);
             this.upgrade_button.Name = "upgrade_button";
             this.upgrade_button.Size = new System.Drawing.Size(382, 29);
@@ -407,6 +410,7 @@
             // 
             // check_current_firmware_button
             // 
+            this.check_current_firmware_button.Enabled = false;
             this.check_current_firmware_button.Location = new System.Drawing.Point(473, 42);
             this.check_current_firmware_button.Name = "check_current_firmware_button";
             this.check_current_firmware_button.Size = new System.Drawing.Size(116, 29);
@@ -626,6 +630,7 @@
             // 
             // writeIn_button
             // 
+            this.writeIn_button.Enabled = false;
             this.writeIn_button.Location = new System.Drawing.Point(365, 45);
             this.writeIn_button.Name = "writeIn_button";
             this.writeIn_button.Size = new System.Drawing.Size(184, 23);
@@ -652,6 +657,7 @@
             // 
             // getCurrentSN_button
             // 
+            this.getCurrentSN_button.Enabled = false;
             this.getCurrentSN_button.Location = new System.Drawing.Point(365, 16);
             this.getCurrentSN_button.Name = "getCurrentSN_button";
             this.getCurrentSN_button.Size = new System.Drawing.Size(184, 23);
