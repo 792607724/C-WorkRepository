@@ -95,6 +95,22 @@
             this.getCurrentSN_button = new System.Windows.Forms.Button();
             this.currentSN_textbox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.volume1_value_label = new System.Windows.Forms.Label();
+            this.volume2_value_label = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.volume3_value_label = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.volume4_value_label = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.volume8_value_label = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.volume7_value_label = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.volume6_value_label = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.volume5_value_label = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -194,6 +210,22 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.volume8_value_label);
+            this.groupBox7.Controls.Add(this.label23);
+            this.groupBox7.Controls.Add(this.volume7_value_label);
+            this.groupBox7.Controls.Add(this.label25);
+            this.groupBox7.Controls.Add(this.volume6_value_label);
+            this.groupBox7.Controls.Add(this.label27);
+            this.groupBox7.Controls.Add(this.volume5_value_label);
+            this.groupBox7.Controls.Add(this.label29);
+            this.groupBox7.Controls.Add(this.volume4_value_label);
+            this.groupBox7.Controls.Add(this.label21);
+            this.groupBox7.Controls.Add(this.volume3_value_label);
+            this.groupBox7.Controls.Add(this.label19);
+            this.groupBox7.Controls.Add(this.volume2_value_label);
+            this.groupBox7.Controls.Add(this.label17);
+            this.groupBox7.Controls.Add(this.volume1_value_label);
+            this.groupBox7.Controls.Add(this.label15);
             this.groupBox7.Controls.Add(this.gain_array_mic_audio_level_button);
             this.groupBox7.Controls.Add(this.stop_array_mic_audio_level_test_button);
             this.groupBox7.Controls.Add(this.label8);
@@ -785,6 +817,150 @@
             this.label9.TabIndex = 0;
             this.label9.Text = "当前序列号为：";
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(24, 35);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(107, 17);
+            this.label15.TabIndex = 4;
+            this.label15.Text = "Volume1音量值：";
+            // 
+            // volume1_value_label
+            // 
+            this.volume1_value_label.AutoSize = true;
+            this.volume1_value_label.Location = new System.Drawing.Point(163, 35);
+            this.volume1_value_label.Name = "volume1_value_label";
+            this.volume1_value_label.Size = new System.Drawing.Size(15, 17);
+            this.volume1_value_label.TabIndex = 5;
+            this.volume1_value_label.Text = "0";
+            // 
+            // volume2_value_label
+            // 
+            this.volume2_value_label.AutoSize = true;
+            this.volume2_value_label.Location = new System.Drawing.Point(163, 60);
+            this.volume2_value_label.Name = "volume2_value_label";
+            this.volume2_value_label.Size = new System.Drawing.Size(15, 17);
+            this.volume2_value_label.TabIndex = 7;
+            this.volume2_value_label.Text = "0";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(24, 60);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(107, 17);
+            this.label17.TabIndex = 6;
+            this.label17.Text = "Volume2音量值：";
+            // 
+            // volume3_value_label
+            // 
+            this.volume3_value_label.AutoSize = true;
+            this.volume3_value_label.Location = new System.Drawing.Point(163, 90);
+            this.volume3_value_label.Name = "volume3_value_label";
+            this.volume3_value_label.Size = new System.Drawing.Size(15, 17);
+            this.volume3_value_label.TabIndex = 9;
+            this.volume3_value_label.Text = "0";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(24, 90);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(107, 17);
+            this.label19.TabIndex = 8;
+            this.label19.Text = "Volume3音量值：";
+            // 
+            // volume4_value_label
+            // 
+            this.volume4_value_label.AutoSize = true;
+            this.volume4_value_label.Location = new System.Drawing.Point(163, 114);
+            this.volume4_value_label.Name = "volume4_value_label";
+            this.volume4_value_label.Size = new System.Drawing.Size(15, 17);
+            this.volume4_value_label.TabIndex = 11;
+            this.volume4_value_label.Text = "0";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(24, 114);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(107, 17);
+            this.label21.TabIndex = 10;
+            this.label21.Text = "Volume4音量值：";
+            // 
+            // volume8_value_label
+            // 
+            this.volume8_value_label.AutoSize = true;
+            this.volume8_value_label.Location = new System.Drawing.Point(451, 114);
+            this.volume8_value_label.Name = "volume8_value_label";
+            this.volume8_value_label.Size = new System.Drawing.Size(15, 17);
+            this.volume8_value_label.TabIndex = 19;
+            this.volume8_value_label.Text = "0";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(312, 114);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(107, 17);
+            this.label23.TabIndex = 18;
+            this.label23.Text = "Volume8音量值：";
+            // 
+            // volume7_value_label
+            // 
+            this.volume7_value_label.AutoSize = true;
+            this.volume7_value_label.Location = new System.Drawing.Point(451, 90);
+            this.volume7_value_label.Name = "volume7_value_label";
+            this.volume7_value_label.Size = new System.Drawing.Size(15, 17);
+            this.volume7_value_label.TabIndex = 17;
+            this.volume7_value_label.Text = "0";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(312, 90);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(107, 17);
+            this.label25.TabIndex = 16;
+            this.label25.Text = "Volume7音量值：";
+            // 
+            // volume6_value_label
+            // 
+            this.volume6_value_label.AutoSize = true;
+            this.volume6_value_label.Location = new System.Drawing.Point(451, 60);
+            this.volume6_value_label.Name = "volume6_value_label";
+            this.volume6_value_label.Size = new System.Drawing.Size(15, 17);
+            this.volume6_value_label.TabIndex = 15;
+            this.volume6_value_label.Text = "0";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(312, 60);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(107, 17);
+            this.label27.TabIndex = 14;
+            this.label27.Text = "Volume6音量值：";
+            // 
+            // volume5_value_label
+            // 
+            this.volume5_value_label.AutoSize = true;
+            this.volume5_value_label.Location = new System.Drawing.Point(451, 35);
+            this.volume5_value_label.Name = "volume5_value_label";
+            this.volume5_value_label.Size = new System.Drawing.Size(15, 17);
+            this.volume5_value_label.TabIndex = 13;
+            this.volume5_value_label.Text = "0";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(312, 35);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(107, 17);
+            this.label29.TabIndex = 12;
+            this.label29.Text = "Volume5音量值：";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -891,5 +1067,21 @@
         private Label label14;
         private Button stop_array_mic_audio_level_test_button;
         private Button gain_array_mic_audio_level_button;
+        private Label label15;
+        private Label volume1_value_label;
+        private Label volume8_value_label;
+        private Label label23;
+        private Label volume7_value_label;
+        private Label label25;
+        private Label volume6_value_label;
+        private Label label27;
+        private Label volume5_value_label;
+        private Label label29;
+        private Label volume4_value_label;
+        private Label label21;
+        private Label volume3_value_label;
+        private Label label19;
+        private Label volume2_value_label;
+        private Label label17;
     }
 }

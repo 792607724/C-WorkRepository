@@ -709,7 +709,38 @@ namespace SeewoTestTool
             {
                 try
                 {
-
+                    // 获取各路MIC音频音量值
+                    output_rich_textbox.AppendText(session);
+                    string gainDeviceMICVolumeCommand = $"curl -X POST \"http://10.66.30.69/testAudioJson_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getAudioVolume\\\"}}\"";
+                    output_string = executeCMDCommand(gainDeviceMICVolumeCommand);
+                    MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
+                    string backCode = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "").Replace(",","");
+                    if (Int32.Parse(backCode) == 0)
+                    {
+                        MatchCollection results_2 = Regex.Matches(output_string, "\"volumes\" : (.*)");
+                        string volume1 = results_2[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "").Replace("[","").Replace("]","").Split(",")[0];
+                        string volume2 = results_2[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "").Replace("[", "").Replace("]", "").Split(",")[1];
+                        string volume3 = results_2[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "").Replace("[", "").Replace("]", "").Split(",")[2];
+                        string volume4 = results_2[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "").Replace("[", "").Replace("]", "").Split(",")[3];
+                        string volume5 = results_2[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "").Replace("[", "").Replace("]", "").Split(",")[4];
+                        string volume6 = results_2[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "").Replace("[", "").Replace("]", "").Split(",")[5];
+                        string volume7 = results_2[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "").Replace("[", "").Replace("]", "").Split(",")[6];
+                        string volume8 = results_2[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "").Replace("[", "").Replace("]", "").Split(",")[7];
+                        output_rich_textbox.AppendText($"执行结果为：PASS，获取各路MIC音频音量值，backCode:[{backCode}]\n");
+                        volume1_value_label.Text = volume1;
+                        volume2_value_label.Text = volume2;
+                        volume3_value_label.Text = volume3;
+                        volume4_value_label.Text = volume4;
+                        volume5_value_label.Text = volume5;
+                        volume6_value_label.Text = volume6;
+                        volume7_value_label.Text = volume7;
+                        volume8_value_label.Text = volume8;
+                        output_rich_textbox.AppendText($"volume1：{volume1}\nvolume2：{volume2}\nvolume3：{volume3}\nvolume4：{volume4}\nvolume5：{volume5}\nvolume6：{volume6}\nvolume7：{volume7}\nvolume8：{volume8}\n");
+                    }
+                    else if (Int32.Parse(backCode) == -1)
+                    {
+                        output_rich_textbox.AppendText($"执行结果为：FAIL，无法获取各路MIC音频音量值，backCode:[{backCode}]\n");
+                    }
                 }
                 catch (Exception ex)
                 {
