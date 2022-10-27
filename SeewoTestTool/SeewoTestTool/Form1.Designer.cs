@@ -598,12 +598,11 @@
             // 
             this.currentVersion_label.AutoSize = true;
             this.currentVersion_label.Font = new System.Drawing.Font("Microsoft YaHei UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.currentVersion_label.ForeColor = System.Drawing.Color.Red;
+            this.currentVersion_label.ForeColor = System.Drawing.Color.ForestGreen;
             this.currentVersion_label.Location = new System.Drawing.Point(99, 71);
             this.currentVersion_label.Name = "currentVersion_label";
-            this.currentVersion_label.Size = new System.Drawing.Size(85, 35);
+            this.currentVersion_label.Size = new System.Drawing.Size(0, 35);
             this.currentVersion_label.TabIndex = 9;
-            this.currentVersion_label.Text = "xxxxx";
             // 
             // label20
             // 

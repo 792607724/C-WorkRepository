@@ -94,6 +94,7 @@ namespace SeewoTestTool
     // 保证设备在连接状态 网口通信
     private void device_connect_button_Click(object sender, EventArgs e)
         {
+            output_rich_textbox.AppendText("【执行操作】进行设备绑定连接……\n");
             string host = device_ip_textbox.Text;
             ip_users = host;
             string port;
@@ -178,6 +179,7 @@ namespace SeewoTestTool
         // 在cmd中执行命令操作
         private string executeCMDCommand(string command)
         {
+            output_rich_textbox.AppendText("【执行操作】在CMD中执行命令操作……\n");
             Process process_cmd = new Process();
             process_cmd.StartInfo.FileName = "cmd.exe";
             process_cmd.StartInfo.RedirectStandardInput = true;
@@ -197,13 +199,13 @@ namespace SeewoTestTool
         // Socket发送命令函数
         private void send_Str(string sendStr)
         {
+            output_rich_textbox.AppendText($"【执行操作】Socket发送指定命令{sendStr}……\n");
             //if (true)
             if (clientSocket != null && clientSocket.Connected)
             {
                 // Socket发送命令
                 try
                 {
-                    output_rich_textbox.AppendText($"指令发送:{sendStr}\n");
                     byte[] sendBytes = Encoding.ASCII.GetBytes(sendStr);
                     clientSocket.Send(sendBytes);
                 }
@@ -229,6 +231,7 @@ namespace SeewoTestTool
         // Socket接收返回内容函数
         private string receive_Str()
         {
+            output_rich_textbox.AppendText("【执行操作】Socket接收返回内容……\n");
             //if (true)
             if (clientSocket != null && clientSocket.Connected)
             {
@@ -278,6 +281,7 @@ namespace SeewoTestTool
         // 断开设备连接
         private void device_disconnect_button_Click(object sender, EventArgs e)
         {
+            output_rich_textbox.AppendText("【执行操作】断开当前已连接设备……\n");
             //if (true)
             if (clientSocket != null && clientSocket.Connected)
             {
@@ -320,11 +324,11 @@ namespace SeewoTestTool
         // 选择升级的固件路径
         private void choose_upgrade_firmware_button_Click(object sender, EventArgs e)
         {
+            output_rich_textbox.AppendText("【执行操作】选择升级固件……\n");
             //if(true)
             if (clientSocket != null && clientSocket.Connected)
             {
                 OpenFileDialog dialog = new OpenFileDialog();
-                output_rich_textbox.AppendText("选择升级固件！\n");
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     filePath = dialog.FileName;
@@ -353,6 +357,7 @@ namespace SeewoTestTool
         // 固件升级操作
         private void upgrade_button_Click(object sender, EventArgs e)
         {
+            output_rich_textbox.AppendText("【执行操作】固件升级……\n");
             //if (true)
             if (clientSocket != null && clientSocket.Connected)
             {
@@ -401,6 +406,7 @@ namespace SeewoTestTool
         private void check_current_firmware_button_Click(object sender, EventArgs e)
         {
             //if (true)
+            output_rich_textbox.AppendText("【执行操作】校验当前设备固件版本与固件包版本是否一致……\n");
             if (clientSocket != null && clientSocket.Connected)
             {
                 output_rich_textbox.AppendText("校验固件测试！\n");
@@ -485,7 +491,7 @@ namespace SeewoTestTool
         private void start_rg_flicker_button_Click(object sender, EventArgs e)
         {
             //if (true)
-            output_rich_textbox.AppendText("打开红绿灯交替闪烁\n");
+            output_rich_textbox.AppendText("【执行操作】打开红绿灯交替闪烁……\n");
             if (clientSocket != null && clientSocket.Connected)
             {
                 try
@@ -517,7 +523,7 @@ namespace SeewoTestTool
         private void stop_rg_flicker_button_Click(object sender, EventArgs e)
         {
             //if (true)
-            output_rich_textbox.AppendText("关闭红绿灯交替闪烁\n");
+            output_rich_textbox.AppendText("【执行操作】关闭红绿灯交替闪烁……\n");
             if (clientSocket != null && clientSocket.Connected)
             {
                 try
@@ -549,7 +555,7 @@ namespace SeewoTestTool
         private void get_poe_mic_info_button_Click(object sender, EventArgs e)
         {
             //if (true)
-            output_rich_textbox.AppendText("获取吊麦信息\n");
+            output_rich_textbox.AppendText("【执行操作】获取吊麦信息……\n");
             if (clientSocket != null && clientSocket.Connected)
             {
                 try
@@ -579,7 +585,7 @@ namespace SeewoTestTool
         private void audioin1_test_button_Click(object sender, EventArgs e)
         {
             //if (true)
-            output_rich_textbox.AppendText("Audio IN 1口测试\n");
+            output_rich_textbox.AppendText("【执行操作】Audio IN 1口测试……\n");
             if (clientSocket != null && clientSocket.Connected)
             {
                 try
@@ -609,7 +615,7 @@ namespace SeewoTestTool
         private void audioin2_test_button_Click(object sender, EventArgs e)
         {
             //if (true)
-            output_rich_textbox.AppendText("Audio IN 2口测试\n");
+            output_rich_textbox.AppendText("【执行操作】Audio IN 2口测试……\n");
             if (clientSocket != null && clientSocket.Connected)
             {
                 try
@@ -639,7 +645,7 @@ namespace SeewoTestTool
         private void array_mic_audio_level_test_button_Click(object sender, EventArgs e)
         {
             //if (true)
-            output_rich_textbox.AppendText("开启阵列MIC音量值测试\n");
+            output_rich_textbox.AppendText("【执行操作】开启阵列MIC音量值测试……\n");
             if (clientSocket != null && clientSocket.Connected)
             {
                 try
@@ -683,7 +689,7 @@ namespace SeewoTestTool
         private void stop_array_mic_audio_level_test_button_Click(object sender, EventArgs e)
         {
             //if (true)
-            output_rich_textbox.AppendText("停止阵列MIC音量值测试\n");
+            output_rich_textbox.AppendText("【执行操作】停止阵列MIC音量值测试……\n");
             if (clientSocket != null && clientSocket.Connected)
             {
                 try
@@ -727,7 +733,7 @@ namespace SeewoTestTool
         private void gain_array_mic_audio_level_button_Click(object sender, EventArgs e)
         {
             //if (true)
-            output_rich_textbox.AppendText("获取各路MIC音频音量值\n");
+            output_rich_textbox.AppendText("【执行操作】获取各路MIC音频音量值……\n");
             if (clientSocket != null && clientSocket.Connected)
             {
                 try
@@ -800,7 +806,7 @@ namespace SeewoTestTool
         private void device_reset_button_Click(object sender, EventArgs e)
         {
             //if (true)
-            output_rich_textbox.AppendText("设备复位\n");
+            output_rich_textbox.AppendText("【执行操作】设备复位……\n");
             if (clientSocket != null && clientSocket.Connected)
             {
                 try
@@ -829,8 +835,8 @@ namespace SeewoTestTool
         // 窗体关闭事件，将设备socket连接释放掉
         private void FormClosingEvent(object sender, FormClosingEventArgs e)
         {
+            output_rich_textbox.AppendText("【执行操作】窗体关闭事件，将设备socket连接释放掉……\n");
             //if (true)
-            output_rich_textbox.AppendText("窗体关闭事件，将设备socket连接释放掉\n");
             if (clientSocket != null && clientSocket.Connected)
             {
                 try
@@ -867,6 +873,7 @@ namespace SeewoTestTool
                 Font font2 = new Font(FontFamily.GenericMonospace, 9, FontStyle.Regular);
                 output_rich_textbox.Font = font2;
             }
+            output_rich_textbox.AppendText("【执行操作】清空输出内容……\n");
         }
 
         string output_string = "";
@@ -1038,7 +1045,7 @@ namespace SeewoTestTool
         private void getSeewoDevice_Click(object sender, EventArgs e)
         {
             //if (true)
-            output_rich_textbox.AppendText("获取当前电脑连接的所有设备的网口并筛选出Seewo的设备\n");
+            output_rich_textbox.AppendText("【执行操作】获取当前电脑连接的所有设备的网口并筛选出Seewo的设备……\n");
             try
             {
                 
@@ -1073,7 +1080,7 @@ namespace SeewoTestTool
         private void getCurrentSN_button_Click(object sender, EventArgs e)
         {
             //if (true)
-            output_rich_textbox.AppendText("获取当前设备的SN号:\n");
+            output_rich_textbox.AppendText("【执行操作】获取当前设备的SN号……\n");
             try
             {
                 if (clientSocket != null && clientSocket.Connected)
@@ -1083,7 +1090,7 @@ namespace SeewoTestTool
                     output_string = executeCMDCommand(fetchDeviceInfoCommand);
                     MatchCollection results_1 = Regex.Matches(output_string, "\"SN\" : (.*)");
                     string currentSN = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
-                    output_rich_textbox.AppendText("获取当前设备的SN号：" + currentSN + "\n");
+                    output_rich_textbox.AppendText("当前设备的SN号为：" + currentSN + "\n");
                     currentSN_textbox.Text = currentSN;
                 }
                 else
@@ -1111,7 +1118,7 @@ namespace SeewoTestTool
         private void writeIn_button_Click(object sender, EventArgs e)
         {
             //if (true)
-            output_rich_textbox.AppendText("写入指定的设备SN号:\n");
+            output_rich_textbox.AppendText("【执行操作】写入指定的设备SN号……\n");
             try
             {
                 if (clientSocket != null && clientSocket.Connected)
@@ -1214,7 +1221,7 @@ namespace SeewoTestTool
         private void login_button_Click(object sender, EventArgs e)
         {
             //if (true)
-            output_rich_textbox.AppendText("点击登录后进行密码SH256加密转换\n");
+            output_rich_textbox.AppendText("【执行操作】点击登录后进行密码SH256加密转换……\n");
             if (clientSocket != null && clientSocket.Connected)
             {
                 try
@@ -1289,7 +1296,7 @@ namespace SeewoTestTool
         private void getCurrentPCBA_button_Click(object sender, EventArgs e)
         {
             //if (true)
-            output_rich_textbox.AppendText("获取当前设备PCBA号:\n");
+            output_rich_textbox.AppendText("【执行操作】获取当前设备PCBA号……\n");
             try
             {
                 if (clientSocket != null && clientSocket.Connected)
@@ -1326,7 +1333,7 @@ namespace SeewoTestTool
         private void writeInPCBA_button_Click(object sender, EventArgs e)
         {
             //if (true)
-            output_rich_textbox.AppendText("写入指定PCBA号:\n");
+            output_rich_textbox.AppendText("【执行操作】写入指定PCBA号……\n");
             try
             {
                 if (clientSocket != null && clientSocket.Connected)
@@ -1388,9 +1395,9 @@ namespace SeewoTestTool
         private void gainCurrentVersion_button_Click(object sender, EventArgs e)
         {
             //if (true)
+            output_rich_textbox.AppendText("【执行操作】获取当前设备版本……\n");
             if (clientSocket != null && clientSocket.Connected)
             {
-                output_rich_textbox.AppendText("获取当前设备版本！\n");
                 try
                 {
                     // 校验固件 - 从session中获取固件当前版本
