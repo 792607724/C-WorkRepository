@@ -83,10 +83,19 @@ namespace SeewoTestTool
             login_button_Click(null, null);
         }
 
-        // 保证设备在连接状态 网口通信
-        private void device_connect_button_Click(object sender, EventArgs e)
+        private readonly ManualResetEvent TimeoutObject = new ManualResetEvent(false);
+        private void CallBackMethod(IAsyncResult asyncresult)
+        {
+            //使阻塞的线程继续 
+            TimeoutObject.Set();
+        }
+
+    string ip_users;
+    // 保证设备在连接状态 网口通信
+    private void device_connect_button_Click(object sender, EventArgs e)
         {
             string host = device_ip_textbox.Text;
+            ip_users = host;
             string port;
             if (radioButton_80.Checked)
             {
@@ -105,39 +114,49 @@ namespace SeewoTestTool
                 // Socket Connection Build
                 try
                 {
+                    TimeoutObject.Reset();
                     IPAddress ip = IPAddress.Parse(host);
                     IPEndPoint ipe = new IPEndPoint(ip, int.Parse(port));
                     clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                    clientSocket.Connect(ipe);
-                    if (clientSocket.Connected)
+                    clientSocket.BeginConnect(ipe, CallBackMethod, clientSocket);
+                    if (TimeoutObject.WaitOne(2000, false))
                     {
-                        output_rich_textbox.AppendText($"设备ip:{host}:{port}已连接上！\n");
-                        device_connect_button.Enabled = false;
-                        device_disconnect_button.Enabled = true;
-                        device_status_label.Text = "已连接";
-                        device_ip_textbox.Enabled = false;
-                        radioButton_80.Enabled = false;
-                        radioButton_8080.Enabled = false;
-                        login_button.Enabled = true;
-                        // 增加记住IP和端口功能
-                        if (rememberCheckBox.Checked == true)
+                        if (clientSocket.Connected)
                         {
-                            FileStream fileStream = new FileStream("data.bin", FileMode.OpenOrCreate);
-                            BinaryFormatter binaryFormatter = new BinaryFormatter();
-                            InternetPort internetPort = new InternetPort();
-                            internetPort.Deviceip = host;
-                            internetPort.Deviceport = port;
-                            if (internetPorts.ContainsKey(internetPort.Deviceip))
+                            output_rich_textbox.AppendText($"设备ip:{host}:{port}已连接上！\n");
+                            device_connect_button.Enabled = false;
+                            device_disconnect_button.Enabled = true;
+                            device_status_label.Text = "已连接";
+                            device_ip_textbox.Enabled = false;
+                            radioButton_80.Enabled = false;
+                            radioButton_8080.Enabled = false;
+                            login_button.Enabled = true;
+                            // 增加记住IP和端口功能
+                            if (rememberCheckBox.Checked == true)
                             {
-                                // 如果存在就清除掉
-                                //internetPorts.Remove(internetPort.Deviceip);
-                                internetPorts.Clear();
+                                FileStream fileStream = new FileStream("data.bin", FileMode.OpenOrCreate);
+                                BinaryFormatter binaryFormatter = new BinaryFormatter();
+                                InternetPort internetPort = new InternetPort();
+                                internetPort.Deviceip = host;
+                                internetPort.Deviceport = port;
+                                if (internetPorts.ContainsKey(internetPort.Deviceip))
+                                {
+                                    // 如果存在就清除掉
+                                    //internetPorts.Remove(internetPort.Deviceip);
+                                    internetPorts.Clear();
+                                }
+                                internetPorts.Add(internetPort.Deviceip, internetPort);
+                                binaryFormatter.Serialize(fileStream, internetPorts);
+                                fileStream.Close();
                             }
-                            internetPorts.Add(internetPort.Deviceip, internetPort);
-                            binaryFormatter.Serialize(fileStream, internetPorts);
-                            fileStream.Close();
+                            login_button_Click(null, null);
                         }
                     }
+                    else
+                    {
+                        MessageBox.Show($"连接超时，请检查！\nIP:{host}， PORT:{port}");
+                    }
+                    
                     /*
                     send_Str("am start com.android.browser");
                     string rec_Str = receive_Str();
@@ -150,7 +169,7 @@ namespace SeewoTestTool
                     radioButton_80.Enabled = true;
                     radioButton_8080.Enabled = true;
                     output_rich_textbox.AppendText($"设备网口IP地址和端口号错误，请检查是否输入正确！\n问题Log如下：{ex.ToString()}\n");
-                    MessageBox.Show($"设备未连接，请检查！\nIP:{host}， PORT:{port}");
+                    
                 }
 
             }
@@ -283,6 +302,8 @@ namespace SeewoTestTool
                     stop_array_mic_audio_level_test_button.Enabled = false;
                     gain_array_mic_audio_level_button.Enabled = false;
                     gainCurrentVersion_button.Enabled = false;
+                    login_button.Text = "登录";
+                    login_button.Enabled = true;
                 }
                 catch (Exception ex)
                 {
@@ -358,6 +379,7 @@ namespace SeewoTestTool
                     catch (Exception ex)
                     {
                         output_rich_textbox.AppendText($"固件升级操作失败：\n{ex.ToString()}\n");
+                        upgrade_progressbar.Value = 0;
                     }
                     finally
                     {
@@ -386,7 +408,7 @@ namespace SeewoTestTool
                 try
                 {
                     // 校验固件 - 从session中获取固件当前版本
-                    string checkVersionCommand = $"curl -X POST \"http://10.66.30.69/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\":\\\"getParam\\\",\\\"session\\\":\\\"{session}\\\",\\\"name\\\":\\\"DevInfo\\\"}}\"";
+                    string checkVersionCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\":\\\"getParam\\\",\\\"session\\\":\\\"{session}\\\",\\\"name\\\":\\\"DevInfo\\\"}}\"";
                     output_string = executeCMDCommand(checkVersionCommand);
                     MatchCollection results_2 = Regex.Matches(output_string, "\"SoftwaveVersion\" : (.*)");
                     string currentVersion = results_2[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
@@ -624,7 +646,7 @@ namespace SeewoTestTool
                 {
                     // 开启阵列MIC音量值测试
                     output_rich_textbox.AppendText(session);
-                    string beginDeviceMICVolumeTestCommand = $"curl -X POST \"http://10.66.30.69/testAudioJson_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"startAudioTest\\\",\\\"format\\\": 0,\\\"soundmode\\\": 8,\\\"samplerate\\\": 16000,\\\"periodsize\\\": 1024}}\"";
+                    string beginDeviceMICVolumeTestCommand = $"curl -X POST \"http://{ip_users}/testAudioJson_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"startAudioTest\\\",\\\"format\\\": 0,\\\"soundmode\\\": 8,\\\"samplerate\\\": 16000,\\\"periodsize\\\": 1024}}\"";
                     output_string = executeCMDCommand(beginDeviceMICVolumeTestCommand);
                     MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
                     string backCode = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
@@ -668,7 +690,7 @@ namespace SeewoTestTool
                 {
                     // 停止阵列MIC音量值测试
                     output_rich_textbox.AppendText(session);
-                    string stopDeviceMICVolumeTestCommand = $"curl -X POST \"http://10.66.30.69/testAudioJson_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"stopAudioTest\\\"}}\"";
+                    string stopDeviceMICVolumeTestCommand = $"curl -X POST \"http://{ip_users}/testAudioJson_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"stopAudioTest\\\"}}\"";
                     output_string = executeCMDCommand(stopDeviceMICVolumeTestCommand);
                     MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
                     string backCode = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
@@ -712,7 +734,7 @@ namespace SeewoTestTool
                 {
                     // 获取各路MIC音频音量值
                     output_rich_textbox.AppendText(session);
-                    string gainDeviceMICVolumeCommand = $"curl -X POST \"http://10.66.30.69/testAudioJson_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getAudioVolume\\\"}}\"";
+                    string gainDeviceMICVolumeCommand = $"curl -X POST \"http://{ip_users}/testAudioJson_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getAudioVolume\\\"}}\"";
                     output_string = executeCMDCommand(gainDeviceMICVolumeCommand);
                     MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
                     string backCode = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "").Replace(",","");
@@ -884,7 +906,7 @@ namespace SeewoTestTool
                                     else
                                     {
                                         // 升级操作 - 将固件推进去 后面确定下来了，这个ip从输入框里面获取
-                                        output_string = executeCMDCommand($"curl -T {filePath} \"ftp://10.66.30.69/\"");
+                                        output_string = executeCMDCommand($"curl -T {filePath} \"ftp://{ip_users}/\"");
                                         progress_i += 50;
                                         backgroundworker_firmwareupgrade.ReportProgress(progress_i, "Pushing\n");
                                         System.Threading.Thread.Sleep(1000);
@@ -893,13 +915,13 @@ namespace SeewoTestTool
                                         if (!System.IO.Directory.Exists("need_upgrade"))
                                         {
                                             output_string = executeCMDCommand("touch need_upgrade");
-                                            progress_i += 10;
-                                            backgroundworker_firmwareupgrade.ReportProgress(progress_i, "Createing\n");
-                                            System.Threading.Thread.Sleep(1000);
                                         }
+                                        progress_i += 10;
+                                        backgroundworker_firmwareupgrade.ReportProgress(progress_i, "Createing\n");
+                                        System.Threading.Thread.Sleep(1000);
 
                                         // 升级操作 - 开始升级
-                                        output_string = executeCMDCommand("curl -T need_upgrade \"ftp://10.66.30.69/\"");
+                                        output_string = executeCMDCommand($"curl -T need_upgrade \"ftp://{ip_users}/\"");
                                         progress_i += 5;
                                         backgroundworker_firmwareupgrade.ReportProgress(progress_i, "Upgrading\n");
                                         System.Threading.Thread.Sleep(1000);
@@ -912,7 +934,7 @@ namespace SeewoTestTool
                                         }
                                         while (!upgradeDone)
                                         {
-                                            output_string = executeCMDCommand("curl \"ftp://10.66.30.69/upgrade_result\" -o upgrade_result");
+                                            output_string = executeCMDCommand($"curl \"ftp://{ip_users}/upgrade_result\" -o upgrade_result");
                                             if (!System.IO.File.Exists("upgrade_result"))
                                             {
                                                 // 如果2s内没有获取到这个文件直接报升级失败
@@ -999,6 +1021,8 @@ namespace SeewoTestTool
                 getCurrentPCBA_button.Enabled = false;
                 writeInPCBA_button.Enabled = false;
                 login_button.Enabled = false;
+                login_button.Text = "登录";
+                login_button.Enabled = true;
                 start_array_mic_audio_level_test_button.Enabled = false;
                 stop_array_mic_audio_level_test_button.Enabled = false;
                 gain_array_mic_audio_level_button.Enabled = false;
@@ -1055,7 +1079,7 @@ namespace SeewoTestTool
                 if (clientSocket != null && clientSocket.Connected)
                 {
                     // 获取SN号
-                    string fetchDeviceInfoCommand = $"curl -X POST \"http://10.66.30.69/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"SerialNumber\\\"}}\"";
+                    string fetchDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"SerialNumber\\\"}}\"";
                     output_string = executeCMDCommand(fetchDeviceInfoCommand);
                     MatchCollection results_1 = Regex.Matches(output_string, "\"SN\" : (.*)");
                     string currentSN = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
@@ -1103,13 +1127,13 @@ namespace SeewoTestTool
                     else 
                     {
                         output_rich_textbox.AppendText(session);
-                        string writeDeviceInfoCommand = $"curl -X POST \"http://10.66.30.69/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"setParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"SerialNumber\\\",\\\"value\\\": {{\\\"SN\\\": \\\"{writeINSN}\\\"}}}}\"";
+                        string writeDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"setParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"SerialNumber\\\",\\\"value\\\": {{\\\"SN\\\": \\\"{writeINSN}\\\"}}}}\"";
                         output_string = executeCMDCommand(writeDeviceInfoCommand);
                         MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
                         string backCode = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
 
                         // 获取SN号
-                        string fetchDeviceInfoCommand = $"curl -X POST \"http://10.66.30.69/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"SerialNumber\\\"}}\"";
+                        string fetchDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"SerialNumber\\\"}}\"";
                         output_string = executeCMDCommand(fetchDeviceInfoCommand);
                         MatchCollection results_2 = Regex.Matches(output_string, "\"SN\" : (.*)");
                         string currentSN = results_2[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
@@ -1202,7 +1226,7 @@ namespace SeewoTestTool
                         string password_sha256 = SHA256EncryptString(password);
                         output_rich_textbox.AppendText($"登录成功，可以进行固件升级检测：{password_sha256}\n");
                         // 登录操作获取session - 后续IP以后续输入为主，当前暂定
-                        string loginCommand = $"curl -X POST \"http://10.66.30.69/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"login\\\", \\\"username\\\": \\\"{username}\\\",\\\"password\\\": \\\"{password_sha256}\\\"}}\"";
+                        string loginCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"login\\\", \\\"username\\\": \\\"{username}\\\",\\\"password\\\": \\\"{password_sha256}\\\"}}\"";
                         output_string = executeCMDCommand(loginCommand);
                         MatchCollection results = Regex.Matches(output_string, "\"session\" : (.*)");
                         session = results[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
@@ -1217,6 +1241,8 @@ namespace SeewoTestTool
                         stop_array_mic_audio_level_test_button.Enabled = true;
                         gain_array_mic_audio_level_button.Enabled = true;
                         gainCurrentVersion_button.Enabled = true;
+                        login_button.Text = "已登录";
+                        login_button.Enabled = false;
                         // 增加记住username和password功能
                         if (rememberCheckBox.Checked == true)
                         {
@@ -1269,7 +1295,7 @@ namespace SeewoTestTool
                 if (clientSocket != null && clientSocket.Connected)
                 {
                     // 获取当前设备PCBA号
-                    string fetchDeviceInfoCommand = $"curl -X POST \"http://10.66.30.69/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"SerialNumber\\\"}}\"";
+                    string fetchDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"SerialNumber\\\"}}\"";
                     output_string = executeCMDCommand(fetchDeviceInfoCommand);
                     MatchCollection results_1 = Regex.Matches(output_string, "\"PCBA\" : (.*)");
                     string currentPCBA = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "").Replace(",", "");
@@ -1316,13 +1342,13 @@ namespace SeewoTestTool
                     else
                     {
                         output_rich_textbox.AppendText(session);
-                        string writeDeviceInfoCommand = $"curl -X POST \"http://10.66.30.69/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"setParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"SerialNumber\\\",\\\"value\\\": {{\\\"PCBA\\\": \\\"{writeINPCBA}\\\"}}}}\"";
+                        string writeDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"setParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"SerialNumber\\\",\\\"value\\\": {{\\\"PCBA\\\": \\\"{writeINPCBA}\\\"}}}}\"";
                         output_string = executeCMDCommand(writeDeviceInfoCommand);
                         MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
                         string backCode = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
 
                         // 获取PCBA号
-                        string fetchDeviceInfoCommand = $"curl -X POST \"http://10.66.30.69/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"SerialNumber\\\"}}\"";
+                        string fetchDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"SerialNumber\\\"}}\"";
                         output_string = executeCMDCommand(fetchDeviceInfoCommand);
                         MatchCollection results_2 = Regex.Matches(output_string, "\"PCBA\" : (.*)");
                         string currentPCBA = results_2[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "").Replace(",", "");
@@ -1368,7 +1394,7 @@ namespace SeewoTestTool
                 try
                 {
                     // 校验固件 - 从session中获取固件当前版本
-                    string checkVersionCommand = $"curl -X POST \"http://10.66.30.69/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\":\\\"getParam\\\",\\\"session\\\":\\\"{session}\\\",\\\"name\\\":\\\"DevInfo\\\"}}\"";
+                    string checkVersionCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\":\\\"getParam\\\",\\\"session\\\":\\\"{session}\\\",\\\"name\\\":\\\"DevInfo\\\"}}\"";
                     output_string = executeCMDCommand(checkVersionCommand);
                     MatchCollection results_2 = Regex.Matches(output_string, "\"SoftwaveVersion\" : (.*)");
                     string currentVersion = results_2[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");

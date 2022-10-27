@@ -78,7 +78,6 @@
             this.label20 = new System.Windows.Forms.Label();
             this.upgrade_progressbar = new System.Windows.Forms.ProgressBar();
             this.upgrade_button = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.choose_upgrade_firmware_button = new System.Windows.Forms.Button();
             this.checked_firmware_textbox = new System.Windows.Forms.TextBox();
             this.check_current_firmware_button = new System.Windows.Forms.Button();
@@ -572,7 +571,6 @@
             this.groupBox3.Controls.Add(this.label20);
             this.groupBox3.Controls.Add(this.upgrade_progressbar);
             this.groupBox3.Controls.Add(this.upgrade_button);
-            this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.choose_upgrade_firmware_button);
             this.groupBox3.Controls.Add(this.checked_firmware_textbox);
             this.groupBox3.Controls.Add(this.check_current_firmware_button);
@@ -600,7 +598,8 @@
             // 
             this.currentVersion_label.AutoSize = true;
             this.currentVersion_label.Font = new System.Drawing.Font("Microsoft YaHei UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.currentVersion_label.Location = new System.Drawing.Point(110, 73);
+            this.currentVersion_label.ForeColor = System.Drawing.Color.Red;
+            this.currentVersion_label.Location = new System.Drawing.Point(99, 71);
             this.currentVersion_label.Name = "currentVersion_label";
             this.currentVersion_label.Size = new System.Drawing.Size(85, 35);
             this.currentVersion_label.TabIndex = 9;
@@ -634,15 +633,6 @@
             this.upgrade_button.UseVisualStyleBackColor = true;
             this.upgrade_button.Click += new System.EventHandler(this.upgrade_button_Click);
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(1, 48);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(104, 17);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "请输入目标固件：";
-            // 
             // choose_upgrade_firmware_button
             // 
             this.choose_upgrade_firmware_button.Location = new System.Drawing.Point(271, 17);
@@ -655,9 +645,10 @@
             // 
             // checked_firmware_textbox
             // 
-            this.checked_firmware_textbox.Location = new System.Drawing.Point(110, 45);
+            this.checked_firmware_textbox.Enabled = false;
+            this.checked_firmware_textbox.Location = new System.Drawing.Point(6, 45);
             this.checked_firmware_textbox.Name = "checked_firmware_textbox";
-            this.checked_firmware_textbox.Size = new System.Drawing.Size(155, 23);
+            this.checked_firmware_textbox.Size = new System.Drawing.Size(259, 23);
             this.checked_firmware_textbox.TabIndex = 1;
             // 
             // check_current_firmware_button
@@ -673,9 +664,9 @@
             // 
             // upgrade_firmware_textbox
             // 
-            this.upgrade_firmware_textbox.Location = new System.Drawing.Point(110, 16);
+            this.upgrade_firmware_textbox.Location = new System.Drawing.Point(62, 16);
             this.upgrade_firmware_textbox.Name = "upgrade_firmware_textbox";
-            this.upgrade_firmware_textbox.Size = new System.Drawing.Size(155, 23);
+            this.upgrade_firmware_textbox.Size = new System.Drawing.Size(203, 23);
             this.upgrade_firmware_textbox.TabIndex = 4;
             // 
             // label5
@@ -739,6 +730,7 @@
             this.password_textbox.Name = "password_textbox";
             this.password_textbox.Size = new System.Drawing.Size(114, 23);
             this.password_textbox.TabIndex = 12;
+            this.password_textbox.Text = "123456";
             this.password_textbox.UseSystemPasswordChar = true;
             // 
             // radioButton_80
@@ -831,6 +823,7 @@
             this.username_textbox.Name = "username_textbox";
             this.username_textbox.Size = new System.Drawing.Size(114, 23);
             this.username_textbox.TabIndex = 9;
+            this.username_textbox.Text = "admin";
             // 
             // device_connect_button
             // 
@@ -1043,7 +1036,6 @@
         private Label label3;
         private Label device_status_label;
         private GroupBox groupBox3;
-        private Label label4;
         private TextBox checked_firmware_textbox;
         private Button check_current_firmware_button;
         private Label label5;
