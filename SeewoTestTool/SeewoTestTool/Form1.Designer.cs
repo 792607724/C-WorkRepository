@@ -710,9 +710,9 @@
             this.explainLabel.Location = new System.Drawing.Point(221, 68);
             this.explainLabel.MaximumSize = new System.Drawing.Size(180, 40);
             this.explainLabel.Name = "explainLabel";
-            this.explainLabel.Size = new System.Drawing.Size(176, 40);
+            this.explainLabel.Size = new System.Drawing.Size(176, 34);
             this.explainLabel.TabIndex = 13;
-            this.explainLabel.Text = "所有的功能使用，需要用户名密码与服务器进行通信获取相应信息";
+            this.explainLabel.Text = "所有的功能使用需要用户名密码与服务器进行通信获取相应信息";
             // 
             // radioButton_8080
             // 
