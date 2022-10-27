@@ -282,6 +282,7 @@ namespace SeewoTestTool
                     start_array_mic_audio_level_test_button.Enabled = false;
                     stop_array_mic_audio_level_test_button.Enabled = false;
                     gain_array_mic_audio_level_button.Enabled = false;
+                    gainCurrentVersion_button.Enabled = false;
                 }
                 catch (Exception ex)
                 {
@@ -1000,6 +1001,7 @@ namespace SeewoTestTool
                 start_array_mic_audio_level_test_button.Enabled = false;
                 stop_array_mic_audio_level_test_button.Enabled = false;
                 gain_array_mic_audio_level_button.Enabled = false;
+                gainCurrentVersion_button.Enabled = false;
             }
             else
             {
@@ -1213,6 +1215,7 @@ namespace SeewoTestTool
                         start_array_mic_audio_level_test_button.Enabled = true;
                         stop_array_mic_audio_level_test_button.Enabled = true;
                         gain_array_mic_audio_level_button.Enabled = true;
+                        gainCurrentVersion_button.Enabled = true;
                         // 增加记住username和password功能
                         if (rememberCheckBox.Checked == true)
                         {
@@ -1351,6 +1354,42 @@ namespace SeewoTestTool
             finally
             {
 
+            }
+        }
+
+        // 获取当前设备版本
+        private void gainCurrentVersion_button_Click(object sender, EventArgs e)
+        {
+            //if (true)
+            if (clientSocket != null && clientSocket.Connected)
+            {
+                output_rich_textbox.AppendText("获取当前设备版本！\n");
+                try
+                {
+                    // 校验固件 - 从session中获取固件当前版本
+                    string checkVersionCommand = $"curl -X POST \"http://10.66.30.69/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\":\\\"getParam\\\",\\\"session\\\":\\\"{session}\\\",\\\"name\\\":\\\"DevInfo\\\"}}\"";
+                    output_string = executeCMDCommand(checkVersionCommand);
+                    MatchCollection results_2 = Regex.Matches(output_string, "\"SoftwaveVersion\" : (.*)");
+                    string currentVersion = results_2[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
+                    output_rich_textbox.AppendText("当前版本是：" + currentVersion + "\n");
+                    currentVersion_label.Text = currentVersion;
+                }
+                catch (Exception ex)
+                {
+                    output_rich_textbox.AppendText($"获取当前设备版本失败：\n{ex.ToString()}\n");
+                }
+                finally
+                {
+
+                }
+            }
+            else
+            {
+                device_ip_textbox.Enabled = true;
+                radioButton_80.Enabled = true;
+                radioButton_8080.Enabled = true;
+                device_status_label.Text = "已断开";
+                output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
             }
         }
     }

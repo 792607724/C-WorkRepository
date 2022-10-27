@@ -59,6 +59,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.start_array_mic_audio_level_test_button = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.audioin2_result_label = new System.Windows.Forms.Label();
             this.audioin1_result_label = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -71,12 +73,9 @@
             this.stop_rg_flicker_button = new System.Windows.Forms.Button();
             this.start_rg_flicker_button = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.explainLabel = new System.Windows.Forms.Label();
-            this.password_textbox = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.login_button = new System.Windows.Forms.Button();
-            this.username_textbox = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
+            this.gainCurrentVersion_button = new System.Windows.Forms.Button();
+            this.currentVersion_label = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
             this.upgrade_progressbar = new System.Windows.Forms.ProgressBar();
             this.upgrade_button = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -86,15 +85,21 @@
             this.upgrade_firmware_textbox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.explainLabel = new System.Windows.Forms.Label();
             this.radioButton_8080 = new System.Windows.Forms.RadioButton();
+            this.password_textbox = new System.Windows.Forms.TextBox();
             this.radioButton_80 = new System.Windows.Forms.RadioButton();
             this.rememberCheckBox = new System.Windows.Forms.CheckBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.getSeewoDevice = new System.Windows.Forms.Button();
             this.device_status_label = new System.Windows.Forms.Label();
+            this.login_button = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.device_disconnect_button = new System.Windows.Forms.Button();
+            this.username_textbox = new System.Windows.Forms.TextBox();
             this.device_connect_button = new System.Windows.Forms.Button();
             this.device_ip_textbox = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.device_reset_button = new System.Windows.Forms.Button();
@@ -109,8 +114,6 @@
             this.getCurrentSN_button = new System.Windows.Forms.Button();
             this.currentSN_textbox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -147,7 +150,7 @@
             this.groupBox10.Controls.Add(this.getCurrentPCBA_button);
             this.groupBox10.Controls.Add(this.currentPCBA_textbox);
             this.groupBox10.Controls.Add(this.label14);
-            this.groupBox10.Location = new System.Drawing.Point(228, 396);
+            this.groupBox10.Location = new System.Drawing.Point(228, 407);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Size = new System.Drawing.Size(596, 71);
             this.groupBox10.TabIndex = 6;
@@ -230,9 +233,9 @@
             this.groupBox7.Controls.Add(this.stop_array_mic_audio_level_test_button);
             this.groupBox7.Controls.Add(this.label8);
             this.groupBox7.Controls.Add(this.start_array_mic_audio_level_test_button);
-            this.groupBox7.Location = new System.Drawing.Point(228, 180);
+            this.groupBox7.Location = new System.Drawing.Point(229, 188);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(596, 210);
+            this.groupBox7.Size = new System.Drawing.Size(596, 216);
             this.groupBox7.TabIndex = 5;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "阵列MIC测试";
@@ -406,11 +409,10 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(216, 19);
+            this.label8.Location = new System.Drawing.Point(216, 10);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(164, 17);
+            this.label8.Size = new System.Drawing.Size(0, 17);
             this.label8.TabIndex = 1;
-            this.label8.Text = "各路MIC接收音频音量值展示";
             // 
             // start_array_mic_audio_level_test_button
             // 
@@ -429,12 +431,30 @@
             this.groupBox6.Controls.Add(this.label16);
             this.groupBox6.Controls.Add(this.audioin2_result_label);
             this.groupBox6.Controls.Add(this.audioin1_result_label);
-            this.groupBox6.Location = new System.Drawing.Point(14, 379);
+            this.groupBox6.Location = new System.Drawing.Point(14, 363);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(200, 88);
             this.groupBox6.TabIndex = 4;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Audio IN测试";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(3, 59);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(137, 17);
+            this.label18.TabIndex = 5;
+            this.label18.Text = "AUDIO IN 2测试结果：";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(3, 33);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(137, 17);
+            this.label16.TabIndex = 4;
+            this.label16.Text = "AUDIO IN 1测试结果：";
             // 
             // audioin2_result_label
             // 
@@ -461,7 +481,7 @@
             this.groupBox5.Controls.Add(this.poe_mic_firmware_info_label);
             this.groupBox5.Controls.Add(this.label7);
             this.groupBox5.Controls.Add(this.label6);
-            this.groupBox5.Location = new System.Drawing.Point(14, 270);
+            this.groupBox5.Location = new System.Drawing.Point(14, 254);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(200, 103);
             this.groupBox5.TabIndex = 3;
@@ -518,7 +538,7 @@
             // 
             this.groupBox4.Controls.Add(this.stop_rg_flicker_button);
             this.groupBox4.Controls.Add(this.start_rg_flicker_button);
-            this.groupBox4.Location = new System.Drawing.Point(14, 204);
+            this.groupBox4.Location = new System.Drawing.Point(14, 188);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(200, 60);
             this.groupBox4.TabIndex = 2;
@@ -547,12 +567,9 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.explainLabel);
-            this.groupBox3.Controls.Add(this.password_textbox);
-            this.groupBox3.Controls.Add(this.label12);
-            this.groupBox3.Controls.Add(this.login_button);
-            this.groupBox3.Controls.Add(this.username_textbox);
-            this.groupBox3.Controls.Add(this.label11);
+            this.groupBox3.Controls.Add(this.gainCurrentVersion_button);
+            this.groupBox3.Controls.Add(this.currentVersion_label);
+            this.groupBox3.Controls.Add(this.label20);
             this.groupBox3.Controls.Add(this.upgrade_progressbar);
             this.groupBox3.Controls.Add(this.upgrade_button);
             this.groupBox3.Controls.Add(this.label4);
@@ -561,81 +578,57 @@
             this.groupBox3.Controls.Add(this.check_current_firmware_button);
             this.groupBox3.Controls.Add(this.upgrade_firmware_textbox);
             this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Location = new System.Drawing.Point(228, 28);
+            this.groupBox3.Location = new System.Drawing.Point(433, 18);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(596, 144);
+            this.groupBox3.Size = new System.Drawing.Size(392, 164);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "固件升级校验";
             // 
-            // explainLabel
+            // gainCurrentVersion_button
             // 
-            this.explainLabel.AutoSize = true;
-            this.explainLabel.Location = new System.Drawing.Point(6, 72);
-            this.explainLabel.MaximumSize = new System.Drawing.Size(180, 40);
-            this.explainLabel.Name = "explainLabel";
-            this.explainLabel.Size = new System.Drawing.Size(176, 34);
-            this.explainLabel.TabIndex = 13;
-            this.explainLabel.Text = "固件升级校验，需要用户名密码与服务器进行通信获取相应信息";
+            this.gainCurrentVersion_button.Enabled = false;
+            this.gainCurrentVersion_button.Location = new System.Drawing.Point(271, 80);
+            this.gainCurrentVersion_button.Name = "gainCurrentVersion_button";
+            this.gainCurrentVersion_button.Size = new System.Drawing.Size(116, 23);
+            this.gainCurrentVersion_button.TabIndex = 10;
+            this.gainCurrentVersion_button.Text = "获取当前固件版本";
+            this.gainCurrentVersion_button.UseVisualStyleBackColor = true;
+            this.gainCurrentVersion_button.Click += new System.EventHandler(this.gainCurrentVersion_button_Click);
             // 
-            // password_textbox
+            // currentVersion_label
             // 
-            this.password_textbox.Location = new System.Drawing.Point(68, 46);
-            this.password_textbox.Name = "password_textbox";
-            this.password_textbox.Size = new System.Drawing.Size(114, 23);
-            this.password_textbox.TabIndex = 12;
-            this.password_textbox.UseSystemPasswordChar = true;
+            this.currentVersion_label.AutoSize = true;
+            this.currentVersion_label.Font = new System.Drawing.Font("Microsoft YaHei UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.currentVersion_label.Location = new System.Drawing.Point(110, 73);
+            this.currentVersion_label.Name = "currentVersion_label";
+            this.currentVersion_label.Size = new System.Drawing.Size(85, 35);
+            this.currentVersion_label.TabIndex = 9;
+            this.currentVersion_label.Text = "xxxxx";
             // 
-            // label12
+            // label20
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 49);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(44, 17);
-            this.label12.TabIndex = 11;
-            this.label12.Text = "密码：";
-            // 
-            // login_button
-            // 
-            this.login_button.Enabled = false;
-            this.login_button.Location = new System.Drawing.Point(6, 112);
-            this.login_button.Name = "login_button";
-            this.login_button.Size = new System.Drawing.Size(176, 23);
-            this.login_button.TabIndex = 10;
-            this.login_button.Text = "登录";
-            this.login_button.UseVisualStyleBackColor = true;
-            this.login_button.Click += new System.EventHandler(this.login_button_Click);
-            // 
-            // username_textbox
-            // 
-            this.username_textbox.Location = new System.Drawing.Point(68, 20);
-            this.username_textbox.Name = "username_textbox";
-            this.username_textbox.Size = new System.Drawing.Size(114, 23);
-            this.username_textbox.TabIndex = 9;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 23);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(56, 17);
-            this.label11.TabIndex = 8;
-            this.label11.Text = "用户名：";
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(2, 86);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(68, 17);
+            this.label20.TabIndex = 8;
+            this.label20.Text = "当前版本：";
             // 
             // upgrade_progressbar
             // 
-            this.upgrade_progressbar.Location = new System.Drawing.Point(207, 72);
+            this.upgrade_progressbar.Location = new System.Drawing.Point(5, 111);
             this.upgrade_progressbar.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.upgrade_progressbar.Name = "upgrade_progressbar";
-            this.upgrade_progressbar.Size = new System.Drawing.Size(382, 25);
+            this.upgrade_progressbar.Size = new System.Drawing.Size(382, 23);
             this.upgrade_progressbar.TabIndex = 7;
             // 
             // upgrade_button
             // 
             this.upgrade_button.Enabled = false;
-            this.upgrade_button.Location = new System.Drawing.Point(207, 103);
+            this.upgrade_button.Location = new System.Drawing.Point(5, 137);
             this.upgrade_button.Name = "upgrade_button";
-            this.upgrade_button.Size = new System.Drawing.Size(382, 29);
+            this.upgrade_button.Size = new System.Drawing.Size(382, 23);
             this.upgrade_button.TabIndex = 6;
             this.upgrade_button.Text = "开始升级";
             this.upgrade_button.UseVisualStyleBackColor = true;
@@ -644,7 +637,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(203, 48);
+            this.label4.Location = new System.Drawing.Point(1, 48);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(104, 17);
             this.label4.TabIndex = 0;
@@ -652,9 +645,9 @@
             // 
             // choose_upgrade_firmware_button
             // 
-            this.choose_upgrade_firmware_button.Location = new System.Drawing.Point(473, 13);
+            this.choose_upgrade_firmware_button.Location = new System.Drawing.Point(271, 17);
             this.choose_upgrade_firmware_button.Name = "choose_upgrade_firmware_button";
-            this.choose_upgrade_firmware_button.Size = new System.Drawing.Size(116, 29);
+            this.choose_upgrade_firmware_button.Size = new System.Drawing.Size(116, 23);
             this.choose_upgrade_firmware_button.TabIndex = 5;
             this.choose_upgrade_firmware_button.Text = "选择升级固件";
             this.choose_upgrade_firmware_button.UseVisualStyleBackColor = true;
@@ -662,7 +655,7 @@
             // 
             // checked_firmware_textbox
             // 
-            this.checked_firmware_textbox.Location = new System.Drawing.Point(312, 45);
+            this.checked_firmware_textbox.Location = new System.Drawing.Point(110, 45);
             this.checked_firmware_textbox.Name = "checked_firmware_textbox";
             this.checked_firmware_textbox.Size = new System.Drawing.Size(155, 23);
             this.checked_firmware_textbox.TabIndex = 1;
@@ -670,9 +663,9 @@
             // check_current_firmware_button
             // 
             this.check_current_firmware_button.Enabled = false;
-            this.check_current_firmware_button.Location = new System.Drawing.Point(473, 42);
+            this.check_current_firmware_button.Location = new System.Drawing.Point(271, 46);
             this.check_current_firmware_button.Name = "check_current_firmware_button";
-            this.check_current_firmware_button.Size = new System.Drawing.Size(116, 29);
+            this.check_current_firmware_button.Size = new System.Drawing.Size(116, 23);
             this.check_current_firmware_button.TabIndex = 2;
             this.check_current_firmware_button.Text = "校验当前设备固件";
             this.check_current_firmware_button.UseVisualStyleBackColor = true;
@@ -680,7 +673,7 @@
             // 
             // upgrade_firmware_textbox
             // 
-            this.upgrade_firmware_textbox.Location = new System.Drawing.Point(312, 16);
+            this.upgrade_firmware_textbox.Location = new System.Drawing.Point(110, 16);
             this.upgrade_firmware_textbox.Name = "upgrade_firmware_textbox";
             this.upgrade_firmware_textbox.Size = new System.Drawing.Size(155, 23);
             this.upgrade_firmware_textbox.TabIndex = 4;
@@ -688,7 +681,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(204, 17);
+            this.label5.Location = new System.Drawing.Point(2, 17);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(68, 17);
             this.label5.TabIndex = 3;
@@ -696,23 +689,39 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.explainLabel);
             this.groupBox2.Controls.Add(this.radioButton_8080);
+            this.groupBox2.Controls.Add(this.password_textbox);
             this.groupBox2.Controls.Add(this.radioButton_80);
             this.groupBox2.Controls.Add(this.rememberCheckBox);
+            this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.getSeewoDevice);
             this.groupBox2.Controls.Add(this.device_status_label);
+            this.groupBox2.Controls.Add(this.login_button);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.device_disconnect_button);
+            this.groupBox2.Controls.Add(this.username_textbox);
             this.groupBox2.Controls.Add(this.device_connect_button);
             this.groupBox2.Controls.Add(this.device_ip_textbox);
+            this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Location = new System.Drawing.Point(14, 28);
+            this.groupBox2.Location = new System.Drawing.Point(14, 18);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(200, 170);
+            this.groupBox2.Size = new System.Drawing.Size(413, 149);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "连接设备";
+            // 
+            // explainLabel
+            // 
+            this.explainLabel.AutoSize = true;
+            this.explainLabel.Location = new System.Drawing.Point(221, 68);
+            this.explainLabel.MaximumSize = new System.Drawing.Size(180, 40);
+            this.explainLabel.Name = "explainLabel";
+            this.explainLabel.Size = new System.Drawing.Size(176, 40);
+            this.explainLabel.TabIndex = 13;
+            this.explainLabel.Text = "所有的功能使用，需要用户名密码与服务器进行通信获取相应信息";
             // 
             // radioButton_8080
             // 
@@ -723,6 +732,14 @@
             this.radioButton_8080.TabIndex = 11;
             this.radioButton_8080.Text = "8080";
             this.radioButton_8080.UseVisualStyleBackColor = true;
+            // 
+            // password_textbox
+            // 
+            this.password_textbox.Location = new System.Drawing.Point(283, 42);
+            this.password_textbox.Name = "password_textbox";
+            this.password_textbox.Size = new System.Drawing.Size(114, 23);
+            this.password_textbox.TabIndex = 12;
+            this.password_textbox.UseSystemPasswordChar = true;
             // 
             // radioButton_80
             // 
@@ -741,19 +758,28 @@
             this.rememberCheckBox.AutoSize = true;
             this.rememberCheckBox.Checked = true;
             this.rememberCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.rememberCheckBox.Location = new System.Drawing.Point(7, 78);
+            this.rememberCheckBox.Location = new System.Drawing.Point(7, 73);
             this.rememberCheckBox.Name = "rememberCheckBox";
-            this.rememberCheckBox.Size = new System.Drawing.Size(158, 21);
+            this.rememberCheckBox.Size = new System.Drawing.Size(123, 21);
             this.rememberCheckBox.TabIndex = 9;
-            this.rememberCheckBox.Text = "记住当前IP地址和端口号";
+            this.rememberCheckBox.Text = "记住当前用户信息";
             this.rememberCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(221, 45);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(44, 17);
+            this.label12.TabIndex = 11;
+            this.label12.Text = "密码：";
             // 
             // getSeewoDevice
             // 
-            this.getSeewoDevice.Location = new System.Drawing.Point(114, 103);
+            this.getSeewoDevice.Location = new System.Drawing.Point(114, 93);
             this.getSeewoDevice.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.getSeewoDevice.Name = "getSeewoDevice";
-            this.getSeewoDevice.Size = new System.Drawing.Size(71, 25);
+            this.getSeewoDevice.Size = new System.Drawing.Size(71, 23);
             this.getSeewoDevice.TabIndex = 8;
             this.getSeewoDevice.Text = "刷新网口";
             this.getSeewoDevice.UseVisualStyleBackColor = true;
@@ -762,16 +788,27 @@
             // device_status_label
             // 
             this.device_status_label.AutoSize = true;
-            this.device_status_label.Location = new System.Drawing.Point(65, 107);
+            this.device_status_label.Location = new System.Drawing.Point(65, 97);
             this.device_status_label.Name = "device_status_label";
             this.device_status_label.Size = new System.Drawing.Size(44, 17);
             this.device_status_label.TabIndex = 7;
             this.device_status_label.Text = "已断开";
             // 
+            // login_button
+            // 
+            this.login_button.Enabled = false;
+            this.login_button.Location = new System.Drawing.Point(221, 108);
+            this.login_button.Name = "login_button";
+            this.login_button.Size = new System.Drawing.Size(176, 23);
+            this.login_button.TabIndex = 10;
+            this.login_button.Text = "登录";
+            this.login_button.UseVisualStyleBackColor = true;
+            this.login_button.Click += new System.EventHandler(this.login_button_Click);
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 107);
+            this.label3.Location = new System.Drawing.Point(6, 97);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 17);
             this.label3.TabIndex = 6;
@@ -780,19 +817,26 @@
             // device_disconnect_button
             // 
             this.device_disconnect_button.Enabled = false;
-            this.device_disconnect_button.Location = new System.Drawing.Point(112, 133);
+            this.device_disconnect_button.Location = new System.Drawing.Point(112, 122);
             this.device_disconnect_button.Name = "device_disconnect_button";
-            this.device_disconnect_button.Size = new System.Drawing.Size(75, 31);
+            this.device_disconnect_button.Size = new System.Drawing.Size(75, 23);
             this.device_disconnect_button.TabIndex = 5;
             this.device_disconnect_button.Text = "断开设备";
             this.device_disconnect_button.UseVisualStyleBackColor = true;
             this.device_disconnect_button.Click += new System.EventHandler(this.device_disconnect_button_Click);
             // 
+            // username_textbox
+            // 
+            this.username_textbox.Location = new System.Drawing.Point(283, 16);
+            this.username_textbox.Name = "username_textbox";
+            this.username_textbox.Size = new System.Drawing.Size(114, 23);
+            this.username_textbox.TabIndex = 9;
+            // 
             // device_connect_button
             // 
-            this.device_connect_button.Location = new System.Drawing.Point(6, 133);
+            this.device_connect_button.Location = new System.Drawing.Point(6, 122);
             this.device_connect_button.Name = "device_connect_button";
-            this.device_connect_button.Size = new System.Drawing.Size(75, 31);
+            this.device_connect_button.Size = new System.Drawing.Size(75, 23);
             this.device_connect_button.TabIndex = 4;
             this.device_connect_button.Text = "连接设备";
             this.device_connect_button.UseVisualStyleBackColor = true;
@@ -804,6 +848,15 @@
             this.device_ip_textbox.Name = "device_ip_textbox";
             this.device_ip_textbox.Size = new System.Drawing.Size(100, 23);
             this.device_ip_textbox.TabIndex = 2;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(221, 19);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(56, 17);
+            this.label11.TabIndex = 8;
+            this.label11.Text = "用户名：";
             // 
             // label2
             // 
@@ -825,9 +878,9 @@
             // 
             // device_reset_button
             // 
-            this.device_reset_button.Location = new System.Drawing.Point(574, 494);
+            this.device_reset_button.Location = new System.Drawing.Point(574, 510);
             this.device_reset_button.Name = "device_reset_button";
-            this.device_reset_button.Size = new System.Drawing.Size(269, 76);
+            this.device_reset_button.Size = new System.Drawing.Size(269, 49);
             this.device_reset_button.TabIndex = 6;
             this.device_reset_button.Text = "设备复位";
             this.device_reset_button.UseVisualStyleBackColor = true;
@@ -855,7 +908,7 @@
             // 
             // clear_output_button
             // 
-            this.clear_output_button.Location = new System.Drawing.Point(703, 0);
+            this.clear_output_button.Location = new System.Drawing.Point(703, 7);
             this.clear_output_button.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.clear_output_button.Name = "clear_output_button";
             this.clear_output_button.Size = new System.Drawing.Size(59, 27);
@@ -940,24 +993,6 @@
             this.label9.Size = new System.Drawing.Size(92, 17);
             this.label9.TabIndex = 0;
             this.label9.Text = "当前序列号为：";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(3, 33);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(137, 17);
-            this.label16.TabIndex = 4;
-            this.label16.Text = "AUDIO IN 1测试结果：";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(3, 59);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(137, 17);
-            this.label18.TabIndex = 5;
-            this.label18.Text = "AUDIO IN 2测试结果：";
             // 
             // Form1
             // 
@@ -1081,5 +1116,8 @@
         private Label label17;
         private Label label18;
         private Label label16;
+        private Label label20;
+        private Label currentVersion_label;
+        private Button gainCurrentVersion_button;
     }
 }
