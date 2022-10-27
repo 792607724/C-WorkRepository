@@ -113,6 +113,7 @@
             this.getCurrentSN_button = new System.Windows.Forms.Button();
             this.currentSN_textbox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.rebootDevice_button = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -546,6 +547,7 @@
             // 
             // stop_rg_flicker_button
             // 
+            this.stop_rg_flicker_button.Enabled = false;
             this.stop_rg_flicker_button.Location = new System.Drawing.Point(101, 22);
             this.stop_rg_flicker_button.Name = "stop_rg_flicker_button";
             this.stop_rg_flicker_button.Size = new System.Drawing.Size(93, 31);
@@ -556,6 +558,7 @@
             // 
             // start_rg_flicker_button
             // 
+            this.start_rg_flicker_button.Enabled = false;
             this.start_rg_flicker_button.Location = new System.Drawing.Point(3, 22);
             this.start_rg_flicker_button.Name = "start_rg_flicker_button";
             this.start_rg_flicker_button.Size = new System.Drawing.Size(93, 31);
@@ -870,9 +873,10 @@
             // 
             // device_reset_button
             // 
-            this.device_reset_button.Location = new System.Drawing.Point(574, 510);
+            this.device_reset_button.Enabled = false;
+            this.device_reset_button.Location = new System.Drawing.Point(574, 542);
             this.device_reset_button.Name = "device_reset_button";
-            this.device_reset_button.Size = new System.Drawing.Size(269, 49);
+            this.device_reset_button.Size = new System.Drawing.Size(269, 28);
             this.device_reset_button.TabIndex = 6;
             this.device_reset_button.Text = "设备复位";
             this.device_reset_button.UseVisualStyleBackColor = true;
@@ -986,11 +990,23 @@
             this.label9.TabIndex = 0;
             this.label9.Text = "当前序列号为：";
             // 
+            // rebootDevice_button
+            // 
+            this.rebootDevice_button.Enabled = false;
+            this.rebootDevice_button.Location = new System.Drawing.Point(574, 507);
+            this.rebootDevice_button.Name = "rebootDevice_button";
+            this.rebootDevice_button.Size = new System.Drawing.Size(269, 28);
+            this.rebootDevice_button.TabIndex = 7;
+            this.rebootDevice_button.Text = "重启设备";
+            this.rebootDevice_button.UseVisualStyleBackColor = true;
+            this.rebootDevice_button.Click += new System.EventHandler(this.rebootDevice_button_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(851, 776);
+            this.Controls.Add(this.rebootDevice_button);
             this.Controls.Add(this.device_reset_button);
             this.Controls.Add(this.groupBox9);
             this.Controls.Add(this.groupBox8);
@@ -1110,5 +1126,6 @@
         private Label label20;
         private Label currentVersion_label;
         private Button gainCurrentVersion_button;
+        private Button rebootDevice_button;
     }
 }

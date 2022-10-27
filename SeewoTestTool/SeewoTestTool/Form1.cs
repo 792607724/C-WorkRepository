@@ -132,6 +132,8 @@ namespace SeewoTestTool
                             radioButton_80.Enabled = false;
                             radioButton_8080.Enabled = false;
                             login_button.Enabled = true;
+                            device_reset_button.Enabled = true;
+                            rebootDevice_button.Enabled = true;
                             // 增加记住IP和端口功能
                             if (rememberCheckBox.Checked == true)
                             {
@@ -308,6 +310,10 @@ namespace SeewoTestTool
                     gainCurrentVersion_button.Enabled = false;
                     login_button.Text = "登录";
                     login_button.Enabled = true;
+                    device_reset_button.Enabled = false;
+                    rebootDevice_button.Enabled = false;
+                    stop_rg_flicker_button.Enabled = false;
+                    start_rg_flicker_button.Enabled = false;
                 }
                 catch (Exception ex)
                 {
@@ -496,8 +502,23 @@ namespace SeewoTestTool
             {
                 try
                 {
-                    stop_rg_flicker_button.Enabled = true;
-                    start_rg_flicker_button.Enabled = false;
+                    // 打开红绿灯交替闪烁
+                    string fetchDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"ledTest\\\",\\\"open\\\": \\\"true\\\"}}\"";
+                    output_string = executeCMDCommand(fetchDeviceInfoCommand);
+                    MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
+                    string back_code = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
+                    string result = "打开红绿灯交替闪烁操作未执行成功";
+                    if (back_code == "0")
+                    {
+                        result = "成功";
+                        stop_rg_flicker_button.Enabled = true;
+                        start_rg_flicker_button.Enabled = false;
+                    }
+                    else
+                    {
+                        result = "失败";
+                    }
+                    output_rich_textbox.AppendText("打开红绿灯交替闪烁结果：" + result + "\n");
 
                 }
                 catch (Exception ex)
@@ -528,8 +549,23 @@ namespace SeewoTestTool
             {
                 try
                 {
-                    stop_rg_flicker_button.Enabled = false;
-                    start_rg_flicker_button.Enabled = true;
+                    // 关闭红绿灯交替闪烁
+                    string fetchDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"ledTest\\\",\\\"open\\\": \\\"false\\\"}}\"";
+                    output_string = executeCMDCommand(fetchDeviceInfoCommand);
+                    MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
+                    string back_code = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
+                    string result = "关闭红绿灯交替闪烁操作未执行成功";
+                    if (back_code == "0")
+                    {
+                        result = "成功";
+                        stop_rg_flicker_button.Enabled = false;
+                        start_rg_flicker_button.Enabled = true;
+                    }
+                    else
+                    {
+                        result = "失败";
+                    }
+                    output_rich_textbox.AppendText("关闭红绿灯交替闪烁结果：" + result + "\n");
 
                 }
                 catch (Exception ex)
@@ -807,28 +843,44 @@ namespace SeewoTestTool
         {
             //if (true)
             output_rich_textbox.AppendText("【执行操作】设备复位……\n");
-            if (clientSocket != null && clientSocket.Connected)
+            try
             {
-                try
+                if (clientSocket != null && clientSocket.Connected)
                 {
+                    // 设备复位
+                    string fetchDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"control\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"restoreSettings\\\"}}\"";
+                    output_string = executeCMDCommand(fetchDeviceInfoCommand);
+                    MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
+                    string back_code = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
+                    string result = "复位操作未执行成功";
+                    if (back_code == "0")
+                    {
+                        result = "成功";
+                        device_disconnect_button_Click(null, null);
+                    }
+                    else
+                    {
+                        result = "失败";
+                    }
+                    output_rich_textbox.AppendText("设备复位结果：" + result + "\n");
+                }
+                else
+                {
+                    device_ip_textbox.Enabled = true;
+                    radioButton_80.Enabled = true;
+                    radioButton_8080.Enabled = true;
+                    device_status_label.Text = "已断开";
+                    output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
+                }
 
-                }
-                catch (Exception ex)
-                {
-                    output_rich_textbox.AppendText($"设备复位失败：\n{ex.ToString()}\n");
-                }
-                finally
-                {
-
-                }
             }
-            else
+            catch (Exception ex)
             {
-                device_ip_textbox.Enabled = true;
-                radioButton_80.Enabled = true;
-                radioButton_8080.Enabled = true;
-                device_status_label.Text = "已断开";
-                output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
+                output_rich_textbox.AppendText($"设备复位失败，当前未连接设备：\n{ex.ToString()}\n");
+            }
+            finally
+            {
+
             }
         }
 
@@ -1034,6 +1086,10 @@ namespace SeewoTestTool
                 stop_array_mic_audio_level_test_button.Enabled = false;
                 gain_array_mic_audio_level_button.Enabled = false;
                 gainCurrentVersion_button.Enabled = false;
+                device_reset_button.Enabled = false;
+                rebootDevice_button.Enabled = false;
+                stop_rg_flicker_button.Enabled = false;
+                start_rg_flicker_button.Enabled = false;
             }
             else
             {
@@ -1250,6 +1306,8 @@ namespace SeewoTestTool
                         gainCurrentVersion_button.Enabled = true;
                         login_button.Text = "已登录";
                         login_button.Enabled = false;
+                        stop_rg_flicker_button.Enabled = false;
+                        start_rg_flicker_button.Enabled = true;
                         // 增加记住username和password功能
                         if (rememberCheckBox.Checked == true)
                         {
@@ -1425,6 +1483,53 @@ namespace SeewoTestTool
                 radioButton_8080.Enabled = true;
                 device_status_label.Text = "已断开";
                 output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
+            }
+        }
+
+        // 重启设备操作
+        private void rebootDevice_button_Click(object sender, EventArgs e)
+        {
+            //if (true)
+            output_rich_textbox.AppendText("【执行操作】重启设备……\n");
+            try
+            {
+                if (clientSocket != null && clientSocket.Connected)
+                {
+                    // 重启设备操作
+                    string fetchDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"control\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"reboot\\\"}}\"";
+                    output_string = executeCMDCommand(fetchDeviceInfoCommand);
+                    MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
+                    string back_code = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
+                    string result = "重启设备操作未执行成功";
+                    if (back_code == "0")
+                    {
+                        result = "成功";
+                        device_disconnect_button_Click(null, null);
+                        output_rich_textbox.AppendText("等待20s设备正在重启中，期间无法操作工具……\n");
+                        System.Threading.Thread.Sleep(20000);
+                    }
+                    else
+                    {
+                        result = "失败";
+                    }
+                    output_rich_textbox.AppendText("重启设备结果：" + result + "\n");
+                }
+                else
+                {
+                    device_ip_textbox.Enabled = true;
+                    radioButton_80.Enabled = true;
+                    radioButton_8080.Enabled = true;
+                    device_status_label.Text = "已断开";
+                    output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
+                }
+            }
+            catch (Exception ex)
+            {
+                output_rich_textbox.AppendText($"重启设备失败，当前未连接设备：\n{ex.ToString()}\n");
+            }
+            finally
+            {
+
             }
         }
     }
