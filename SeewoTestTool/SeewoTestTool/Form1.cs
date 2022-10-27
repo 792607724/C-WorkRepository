@@ -314,6 +314,7 @@ namespace SeewoTestTool
                     rebootDevice_button.Enabled = false;
                     stop_rg_flicker_button.Enabled = false;
                     start_rg_flicker_button.Enabled = false;
+                    get_poe_mic_info_button.Enabled = false;
                 }
                 catch (Exception ex)
                 {
@@ -596,7 +597,27 @@ namespace SeewoTestTool
             {
                 try
                 {
-
+                    // 获取吊麦信息
+                    string fetchDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/testAudioJson_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"microphoneInfo\\\"}}\"";
+                    output_string = executeCMDCommand(fetchDeviceInfoCommand);
+                    MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
+                    string back_code = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
+                    string result = "获取吊麦信息操作未执行成功";
+                    if (back_code == "0")
+                    {
+                        result = "成功";
+                        MatchCollection results_2 = Regex.Matches(output_string, "\"micHardwareVersion\" : (.*)");
+                        string micHardwareVersion = results_2[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "").Replace(",","");
+                        MatchCollection results_3 = Regex.Matches(output_string, "\"micSoftwareVersion\" : (.*)");
+                        string micSoftwareVersion = results_3[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "").Replace(",", "");
+                        poe_mic_hardware_info_label.Text = micHardwareVersion;
+                        poe_mic_firmware_info_label.Text = micSoftwareVersion;
+                    }
+                    else
+                    {
+                        result = "失败";
+                    }
+                    output_rich_textbox.AppendText("获取吊麦信息结果：" + result + "【back_code】：" + back_code + "\n");
                 }
                 catch (Exception ex)
                 {
@@ -1090,6 +1111,7 @@ namespace SeewoTestTool
                 rebootDevice_button.Enabled = false;
                 stop_rg_flicker_button.Enabled = false;
                 start_rg_flicker_button.Enabled = false;
+                get_poe_mic_info_button.Enabled = false;
             }
             else
             {
@@ -1308,6 +1330,7 @@ namespace SeewoTestTool
                         login_button.Enabled = false;
                         stop_rg_flicker_button.Enabled = false;
                         start_rg_flicker_button.Enabled = true;
+                        get_poe_mic_info_button.Enabled = true;
                         // 增加记住username和password功能
                         if (rememberCheckBox.Checked == true)
                         {

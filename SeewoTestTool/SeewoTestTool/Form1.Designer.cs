@@ -461,18 +461,16 @@
             this.audioin2_result_label.AutoSize = true;
             this.audioin2_result_label.Location = new System.Drawing.Point(146, 59);
             this.audioin2_result_label.Name = "audioin2_result_label";
-            this.audioin2_result_label.Size = new System.Drawing.Size(32, 17);
+            this.audioin2_result_label.Size = new System.Drawing.Size(0, 17);
             this.audioin2_result_label.TabIndex = 3;
-            this.audioin2_result_label.Text = "xxxx";
             // 
             // audioin1_result_label
             // 
             this.audioin1_result_label.AutoSize = true;
             this.audioin1_result_label.Location = new System.Drawing.Point(146, 33);
             this.audioin1_result_label.Name = "audioin1_result_label";
-            this.audioin1_result_label.Size = new System.Drawing.Size(32, 17);
+            this.audioin1_result_label.Size = new System.Drawing.Size(0, 17);
             this.audioin1_result_label.TabIndex = 2;
-            this.audioin1_result_label.Text = "xxxx";
             // 
             // groupBox5
             // 
@@ -490,6 +488,7 @@
             // 
             // get_poe_mic_info_button
             // 
+            this.get_poe_mic_info_button.Enabled = false;
             this.get_poe_mic_info_button.Location = new System.Drawing.Point(7, 63);
             this.get_poe_mic_info_button.Name = "get_poe_mic_info_button";
             this.get_poe_mic_info_button.Size = new System.Drawing.Size(180, 31);
@@ -503,18 +502,16 @@
             this.poe_mic_hardware_info_label.AutoSize = true;
             this.poe_mic_hardware_info_label.Location = new System.Drawing.Point(105, 43);
             this.poe_mic_hardware_info_label.Name = "poe_mic_hardware_info_label";
-            this.poe_mic_hardware_info_label.Size = new System.Drawing.Size(56, 17);
+            this.poe_mic_hardware_info_label.Size = new System.Drawing.Size(0, 17);
             this.poe_mic_hardware_info_label.TabIndex = 3;
-            this.poe_mic_hardware_info_label.Text = "xxxxxxxx";
             // 
             // poe_mic_firmware_info_label
             // 
             this.poe_mic_firmware_info_label.AutoSize = true;
             this.poe_mic_firmware_info_label.Location = new System.Drawing.Point(105, 24);
             this.poe_mic_firmware_info_label.Name = "poe_mic_firmware_info_label";
-            this.poe_mic_firmware_info_label.Size = new System.Drawing.Size(56, 17);
+            this.poe_mic_firmware_info_label.Size = new System.Drawing.Size(0, 17);
             this.poe_mic_firmware_info_label.TabIndex = 2;
-            this.poe_mic_firmware_info_label.Text = "xxxxxxxx";
             // 
             // label7
             // 
