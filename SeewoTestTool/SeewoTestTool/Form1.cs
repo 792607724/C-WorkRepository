@@ -503,7 +503,7 @@ namespace SeewoTestTool
                 try
                 {
                     // 打开红绿灯交替闪烁
-                    string fetchDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"ledTest\\\",\\\"open\\\": \\\"true\\\"}}\"";
+                    string fetchDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/testAudioJson_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"ledTest\\\",\\\"open\\\": true}}\"";
                     output_string = executeCMDCommand(fetchDeviceInfoCommand);
                     MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
                     string back_code = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
@@ -518,7 +518,7 @@ namespace SeewoTestTool
                     {
                         result = "失败";
                     }
-                    output_rich_textbox.AppendText("打开红绿灯交替闪烁结果：" + result + "\n");
+                    output_rich_textbox.AppendText("打开红绿灯交替闪烁结果：" + result + "【back_code】："+ back_code + "\n");
 
                 }
                 catch (Exception ex)
@@ -550,7 +550,7 @@ namespace SeewoTestTool
                 try
                 {
                     // 关闭红绿灯交替闪烁
-                    string fetchDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"ledTest\\\",\\\"open\\\": \\\"false\\\"}}\"";
+                    string fetchDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/testAudioJson_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"ledTest\\\",\\\"open\\\": false}}\"";
                     output_string = executeCMDCommand(fetchDeviceInfoCommand);
                     MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
                     string back_code = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
@@ -565,7 +565,7 @@ namespace SeewoTestTool
                     {
                         result = "失败";
                     }
-                    output_rich_textbox.AppendText("关闭红绿灯交替闪烁结果：" + result + "\n");
+                    output_rich_textbox.AppendText("关闭红绿灯交替闪烁结果：" + result + "【back_code】：" + back_code + "\n");
 
                 }
                 catch (Exception ex)
