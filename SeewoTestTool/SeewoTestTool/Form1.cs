@@ -998,6 +998,7 @@ namespace SeewoTestTool
                 writeIn_button.Enabled = false;
                 getCurrentPCBA_button.Enabled = false;
                 writeInPCBA_button.Enabled = false;
+                login_button.Enabled = false;
                 start_array_mic_audio_level_test_button.Enabled = false;
                 stop_array_mic_audio_level_test_button.Enabled = false;
                 gain_array_mic_audio_level_button.Enabled = false;
@@ -1376,6 +1377,7 @@ namespace SeewoTestTool
                 }
                 catch (Exception ex)
                 {
+                    currentVersion_label.Text = "获取当前设备版本失败";
                     output_rich_textbox.AppendText($"获取当前设备版本失败：\n{ex.ToString()}\n");
                 }
                 finally

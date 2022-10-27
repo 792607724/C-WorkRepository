@@ -797,7 +797,7 @@
             // login_button
             // 
             this.login_button.Enabled = false;
-            this.login_button.Location = new System.Drawing.Point(221, 108);
+            this.login_button.Location = new System.Drawing.Point(221, 111);
             this.login_button.Name = "login_button";
             this.login_button.Size = new System.Drawing.Size(176, 23);
             this.login_button.TabIndex = 10;
