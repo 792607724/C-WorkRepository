@@ -181,7 +181,6 @@ namespace SeewoTestTool
         // 在cmd中执行命令操作
         private string executeCMDCommand(string command)
         {
-            output_rich_textbox.AppendText("【执行操作】在CMD中执行命令操作……\n");
             Process process_cmd = new Process();
             process_cmd.StartInfo.FileName = "cmd.exe";
             process_cmd.StartInfo.RedirectStandardInput = true;
@@ -1091,33 +1090,28 @@ namespace SeewoTestTool
                     output_rich_textbox.AppendText("等待20s设备正在重启中，期间无法操作工具……\n");
                     System.Threading.Thread.Sleep(20000);
                     // 这里升级完重启，需要重新连接设备，设备状态那边需要同步更新
-                    output_rich_textbox.AppendText("设备重启完成！\n");
-                    check_current_firmware_button.Enabled = false;
-                    upgrade_button.Enabled = false;
-                    getCurrentSN_button.Enabled = false;
-                    writeIn_button.Enabled = false;
-                    getCurrentPCBA_button.Enabled = false;
-                    writeInPCBA_button.Enabled = false;
-                    login_button.Enabled = false;
-                    login_button.Text = "登录";
-                    login_button.Enabled = true;
-                    start_array_mic_audio_level_test_button.Enabled = false;
-                    stop_array_mic_audio_level_test_button.Enabled = false;
-                    gain_array_mic_audio_level_button.Enabled = false;
-                    gainCurrentVersion_button.Enabled = false;
-                    device_reset_button.Enabled = false;
-                    rebootDevice_button.Enabled = false;
-                    stop_rg_flicker_button.Enabled = false;
-                    start_rg_flicker_button.Enabled = false;
-                    get_poe_mic_info_button.Enabled = false;
-                    device_connect_button_Click(null, null);
+                    device_disconnect_button_Click(null, null);
                 }
-                else
-                {
-                    output_rich_textbox.AppendText($"无需重启设备，当前设备状态：{output_string}\n");
-                    upgrade_progressbar.Value = 0;
-
-                }
+                output_rich_textbox.AppendText("设备重启完成！\n");
+                check_current_firmware_button.Enabled = false;
+                upgrade_button.Enabled = false;
+                getCurrentSN_button.Enabled = false;
+                writeIn_button.Enabled = false;
+                getCurrentPCBA_button.Enabled = false;
+                writeInPCBA_button.Enabled = false;
+                login_button.Enabled = false;
+                login_button.Text = "登录";
+                login_button.Enabled = true;
+                start_array_mic_audio_level_test_button.Enabled = false;
+                stop_array_mic_audio_level_test_button.Enabled = false;
+                gain_array_mic_audio_level_button.Enabled = false;
+                gainCurrentVersion_button.Enabled = false;
+                device_reset_button.Enabled = false;
+                rebootDevice_button.Enabled = false;
+                stop_rg_flicker_button.Enabled = false;
+                start_rg_flicker_button.Enabled = false;
+                get_poe_mic_info_button.Enabled = false;
+                device_disconnect_button_Click(null, null);
             }
             else
             {
@@ -1337,8 +1331,6 @@ namespace SeewoTestTool
                         stop_rg_flicker_button.Enabled = false;
                         start_rg_flicker_button.Enabled = true;
                         get_poe_mic_info_button.Enabled = true;
-                        rebootDevice_button.Enabled = true;
-                        device_reset_button.Enabled = true;
                         // 增加记住username和password功能
                         if (rememberCheckBox.Checked == true)
                         {
