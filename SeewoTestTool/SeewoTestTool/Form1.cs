@@ -1022,7 +1022,7 @@ namespace SeewoTestTool
                                                 break;
                                             }
                                             // 检测到该文件，进行cat读取内容
-                                            output_string = executeCMDCommand("cat upgrade_result");
+                                            output_string = executeCMDCommand("type upgrade_result");
                                             if (output_string.Contains("start"))
                                             {
                                                 continue;
@@ -1035,6 +1035,10 @@ namespace SeewoTestTool
                                                 break;
                                             }
                                             progress_i += 5;
+                                            if (progress_i >= 100)
+                                            {
+                                                progress_i = 100;
+                                            }
                                             System.Threading.Thread.Sleep(500);
                                             output_string = "正在升级中，请稍后！";
                                             backgroundworker_firmwareupgrade.ReportProgress(progress_i, "Upgrading\n");
