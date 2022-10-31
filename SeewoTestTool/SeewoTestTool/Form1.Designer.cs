@@ -840,6 +840,7 @@
             this.device_ip_textbox.Name = "device_ip_textbox";
             this.device_ip_textbox.Size = new System.Drawing.Size(100, 23);
             this.device_ip_textbox.TabIndex = 2;
+            this.device_ip_textbox.Text = "219.198.235.11";
             // 
             // label11
             // 

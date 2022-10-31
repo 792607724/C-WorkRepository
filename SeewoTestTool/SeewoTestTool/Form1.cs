@@ -1350,7 +1350,7 @@ namespace SeewoTestTool
                             }
                             users.Add(user.Username, user);
                             binaryFormatter.Serialize(fileStream, users);
-                            fileStream.Close();
+                            fileStream.Close(); 
                         }
                     }
                     catch (Exception ex)
