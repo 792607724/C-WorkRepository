@@ -1066,7 +1066,7 @@ namespace SeewoTestTool
                                         // 升级操作 - 创建文件夹 need_upgrade
                                         if (!System.IO.Directory.Exists("need_upgrade"))
                                         {
-                                            output_string = executeCMDCommand("touch need_upgrade");
+                                            output_string = executeCMDCommand("type nul> need_upgrade");
                                         }
                                         progress_i += 10;
                                         backgroundworker_firmwareupgrade.ReportProgress(progress_i, "Createing\n");
