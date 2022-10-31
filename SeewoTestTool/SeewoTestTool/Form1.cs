@@ -17,6 +17,14 @@ namespace SeewoTestTool
         Socket clientSocket;
         Dictionary<string, InternetPort> internetPorts = new Dictionary<string, InternetPort>();
         Dictionary<string, User> users = new Dictionary<string, User>();
+        /**
+         * 窗口构造方法：
+         * 在这里进行：
+         *  1、控件实例化
+         *  2、数据读写操作
+         *      A、"data.bin"：IP和端口号的记忆功能写入
+         *      B、"data1.bin"：Web登录校验username和password功能写入
+         */
         public Form1()
         {
             InitializeComponent();
@@ -79,7 +87,6 @@ namespace SeewoTestTool
             fs1.Close();
             // 增加自动连接设备功能
             device_connect_button_Click(null, null);
-
             login_button_Click(null, null);
         }
 
@@ -90,9 +97,13 @@ namespace SeewoTestTool
             TimeoutObject.Set();
         }
 
-    string ip_users;
-    // 保证设备在连接状态 网口通信
-    private void device_connect_button_Click(object sender, EventArgs e)
+        string ip_users;
+        // 保证设备在连接状态 网口通信
+    
+        /**
+         * 连接设备点击事件
+         */
+        private void device_connect_button_Click(object sender, EventArgs e)
         {
             output_rich_textbox.AppendText("【执行操作】进行设备绑定连接……\n");
             string host = device_ip_textbox.Text;
@@ -181,6 +192,9 @@ namespace SeewoTestTool
         }
 
         // 在cmd中执行命令操作
+        /**
+         *  传入字符串的命令即可在CMD中执行相应的指令
+         */
         private string executeCMDCommand(string command)
         {
             Process process_cmd = new Process();
@@ -200,6 +214,9 @@ namespace SeewoTestTool
         }
 
         // Socket发送命令函数
+        /**
+         *  提供了Socket端发送命令函数，当前需求未用到，保留该函数，后续项目有使用可以拿来用
+         */
         private void send_Str(string sendStr)
         {
             output_rich_textbox.AppendText($"【执行操作】Socket发送指定命令{sendStr}……\n");
@@ -232,6 +249,9 @@ namespace SeewoTestTool
         }
 
         // Socket接收返回内容函数
+        /**
+         *  提供了Socket端接收设备终端返回值函数，当前需求未用到，保留该函数，后续项目有使用可以拿来用
+         */
         private string receive_Str()
         {
             output_rich_textbox.AppendText("【执行操作】Socket接收返回内容……\n");
@@ -282,6 +302,9 @@ namespace SeewoTestTool
         }
 
         // 断开设备连接
+        /**
+         * 断开设备按钮点击事件
+         */
         private void device_disconnect_button_Click(object sender, EventArgs e)
         {
             output_rich_textbox.AppendText("【执行操作】断开当前已连接设备……\n");
@@ -330,6 +353,9 @@ namespace SeewoTestTool
 
         string filePath = null;
         // 选择升级的固件路径
+        /**
+         * 选择升级固件包按钮点击事件
+         */
         private void choose_upgrade_firmware_button_Click(object sender, EventArgs e)
         {
             output_rich_textbox.AppendText("【执行操作】选择升级固件……\n");
@@ -363,6 +389,9 @@ namespace SeewoTestTool
         }
 
         // 固件升级操作
+        /**
+         * 升级按钮点击事件
+         */
         private void upgrade_button_Click(object sender, EventArgs e)
         {
             output_rich_textbox.AppendText("【执行操作】固件升级……\n");
@@ -411,6 +440,9 @@ namespace SeewoTestTool
         }
 
         // 校验当前固件
+        /**
+         * 检验当前固件包版本按钮点击事件
+         */
         private void check_current_firmware_button_Click(object sender, EventArgs e)
         {
             //if (true)
@@ -496,6 +528,9 @@ namespace SeewoTestTool
         }
 
         // 打开红绿灯交替闪烁
+        /**
+         * 打开红绿指示灯交替闪烁按钮点击事件
+         */
         private void start_rg_flicker_button_Click(object sender, EventArgs e)
         {
             //if (true)
@@ -543,6 +578,9 @@ namespace SeewoTestTool
         }
 
         // 关闭红绿灯交替闪烁
+        /**
+         * 关闭红绿指示灯交替闪烁按钮点击事件
+         */
         private void stop_rg_flicker_button_Click(object sender, EventArgs e)
         {
             //if (true)
@@ -590,6 +628,9 @@ namespace SeewoTestTool
         }
 
         // 获取吊麦信息
+        /**
+         * 获取吊麦信息按钮点击事件
+         */
         private void get_poe_mic_info_button_Click(object sender, EventArgs e)
         {
             //if (true)
@@ -640,6 +681,9 @@ namespace SeewoTestTool
         }
 
         // Audio IN 1口测试
+        /**
+         * Audio IN 1口测试点击事件，暂时用不上，保留该方法
+         */
         private void audioin1_test_button_Click(object sender, EventArgs e)
         {
             //if (true)
@@ -670,6 +714,9 @@ namespace SeewoTestTool
         }
 
         // Audio IN 2口测试
+        /**
+         * Audio IN 2口测试点击事件，暂时用不上，保留该方法
+         */
         private void audioin2_test_button_Click(object sender, EventArgs e)
         {
             //if (true)
@@ -700,6 +747,9 @@ namespace SeewoTestTool
         }
 
         // 开启阵列MIC音量值测试
+        /**
+         * 开启阵列麦克风音量值测试
+         */
         private void array_mic_audio_level_test_button_Click(object sender, EventArgs e)
         {
             //if (true)
@@ -744,6 +794,9 @@ namespace SeewoTestTool
         }
 
         // 停止阵列MIC音量值测试
+        /**
+         * 停止阵列麦克风音量值测试
+         */
         private void stop_array_mic_audio_level_test_button_Click(object sender, EventArgs e)
         {
             //if (true)
@@ -788,6 +841,9 @@ namespace SeewoTestTool
         }
 
         // 获取各路MIC音频音量值
+        /**
+         * 开启阵列麦克风音量值测试后，对8路麦克风的值进行获取
+         */
         private void gain_array_mic_audio_level_button_Click(object sender, EventArgs e)
         {
             //if (true)
@@ -861,6 +917,9 @@ namespace SeewoTestTool
         }
 
         // 设备复位
+        /**
+         * 设备复位按钮点击事件
+         */
         private void device_reset_button_Click(object sender, EventArgs e)
         {
             //if (true)
@@ -907,6 +966,9 @@ namespace SeewoTestTool
         }
 
         // 窗体关闭事件，将设备socket连接释放掉
+        /**
+         * 重写窗体关闭事件，关闭时自动释放一些连接
+         */
         private void FormClosingEvent(object sender, FormClosingEventArgs e)
         {
             output_rich_textbox.AppendText("【执行操作】窗体关闭事件，将设备socket连接释放掉……\n");
@@ -929,6 +991,9 @@ namespace SeewoTestTool
         }
 
         // 输出列表始终显示最新内容Log
+        /**
+         * 定义输出框内容光标定位情况
+         */
         private void richTextChanged_to(object sender, EventArgs e)
         {
             // 将光标位置设置到当前内容的末尾
@@ -938,6 +1003,9 @@ namespace SeewoTestTool
         }
 
         // 清空输出内容
+        /**
+         * 清空按钮点击事件
+         */
         private void clear_output_button_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(output_rich_textbox.Text))
@@ -952,6 +1020,9 @@ namespace SeewoTestTool
 
         string output_string = "";
         // 新建backgroundworker给固件升级操作，防止UI阻塞交互卡死
+        /**
+         *  BackgroundWorker后台事件，DoWork重写，此处只能数据耗时操作，不能有UI操作
+         */
         private void backgroundworker_firmwareupgrade_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
             try
@@ -1060,6 +1131,9 @@ namespace SeewoTestTool
             
         }
 
+        /**
+         *  BackgroundWorker的进度改变操作，实时上报耗时任务进展情况，此处进行UI操作
+         */
         private void backgroundworker_firmwareupgrade_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
         {
             upgrade_progressbar.Value = e.ProgressPercentage;
@@ -1069,6 +1143,10 @@ namespace SeewoTestTool
             // 临时增加执行cmd命令验证
             output_rich_textbox.AppendText(output_string);
         }
+
+        /**
+         *  BackgroundWorker后台事件，耗时操作完成后的操作，此处多为进行UI操作，结束收尾，数据回收，结果反映
+         */
         private void backgroundworker_firmwareupgrade_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
             if (e.Error!=null)
@@ -1126,6 +1204,9 @@ namespace SeewoTestTool
         }
         
         // 获取当前电脑连接的所有设备的网口并筛选出Seewo的设备
+        /**
+         *  刷新网口点击事件，获取当前设备所关联的所有IP地址
+         */
         private void getSeewoDevice_Click(object sender, EventArgs e)
         {
             //if (true)
@@ -1161,6 +1242,9 @@ namespace SeewoTestTool
         }
 
         // 获取当前设备的SN号
+        /**
+         *  获取当前设备序列号按钮点击事件
+         */
         private void getCurrentSN_button_Click(object sender, EventArgs e)
         {
             //if (true)
@@ -1199,6 +1283,9 @@ namespace SeewoTestTool
 
 
         // 写入指定的设备SN号
+        /**
+         * 写入序列号按钮点击事件
+         */
         private void writeIn_button_Click(object sender, EventArgs e)
         {
             //if (true)
@@ -1302,6 +1389,9 @@ namespace SeewoTestTool
         }
         string session;
         // 点击登录后进行密码SH256加密转换
+        /**
+         * Web端登录校验函数，主要是对密码进行SHA256加密转换
+         */
         private void login_button_Click(object sender, EventArgs e)
         {
             //if (true)
@@ -1380,6 +1470,9 @@ namespace SeewoTestTool
         }
 
         // 获取当前设备PCBA号
+        /**
+         * 获取当前设备PCBA号按钮点击事件
+         */
         private void getCurrentPCBA_button_Click(object sender, EventArgs e)
         {
             //if (true)
@@ -1417,6 +1510,9 @@ namespace SeewoTestTool
         }
 
         // 写入指定PCBA号
+        /**
+         * 写入PCBA号点击事件
+         */
         private void writeInPCBA_button_Click(object sender, EventArgs e)
         {
             //if (true)
@@ -1479,6 +1575,9 @@ namespace SeewoTestTool
         }
 
         // 获取当前设备版本
+        /**
+         *  获取当前设备的固件版本号按钮点击事件
+         */
         private void gainCurrentVersion_button_Click(object sender, EventArgs e)
         {
             //if (true)
@@ -1516,6 +1615,9 @@ namespace SeewoTestTool
         }
 
         // 重启设备操作
+        /**
+         * 重启设备按钮点击事件
+         */
         private void rebootDevice_button_Click(object sender, EventArgs e)
         {
             //if (true)

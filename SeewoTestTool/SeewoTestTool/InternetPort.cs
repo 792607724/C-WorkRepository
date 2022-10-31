@@ -6,7 +6,8 @@ public class InternetPort
 	private string deviceIP;
 	private string devicePort;
 
-	public string Deviceip
+    // get set简化写法，直接通过xxx.xxx返回或设置值
+    public string Deviceip
 	{
 		get { return deviceIP; }
 		set { deviceIP = value; }
