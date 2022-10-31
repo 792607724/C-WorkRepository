@@ -116,8 +116,10 @@ namespace SeewoTestTool
                 try
                 {
                     TimeoutObject.Reset();
+                    
                     IPAddress ip = IPAddress.Parse(host);
                     IPEndPoint ipe = new IPEndPoint(ip, int.Parse(port));
+
                     clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                     clientSocket.BeginConnect(ipe, CallBackMethod, clientSocket);
                     if (TimeoutObject.WaitOne(2000, false))
