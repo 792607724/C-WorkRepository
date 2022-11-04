@@ -919,6 +919,12 @@
             this.device_connect_button.TabIndex = 4;
             this.device_connect_button.Text = "连接设备";
             this.device_connect_button.UseVisualStyleBackColor = true;
+            ToolTip toolTip = new ToolTip();
+            toolTip.AutomaticDelay = 5000;
+            toolTip.InitialDelay = 100;
+            toolTip.ReshowDelay = 100;
+            toolTip.ShowAlways = true;
+            toolTip.SetToolTip(this.device_connect_button, "点击连接设备，如果长时间没有响应，请检查设备IP地址以及当前电脑环境是否配置好。");
             this.device_connect_button.Click += new System.EventHandler(this.device_connect_button_Click);
             // 
             // device_ip_textbox

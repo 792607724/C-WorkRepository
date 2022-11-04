@@ -166,6 +166,7 @@ namespace SeewoTestTool
                                 binaryFormatter.Serialize(fileStream, internetPorts);
                                 fileStream.Close();
                             }
+                            Thread.Sleep(1);
                             login_button_Click(null, null);
                         }
                     }
@@ -186,7 +187,7 @@ namespace SeewoTestTool
                     radioButton_80.Enabled = true;
                     radioButton_8080.Enabled = true;
                     output_rich_textbox.AppendText($"设备网口IP地址和端口号错误，请检查是否输入正确！\n问题Log如下：{ex.ToString()}\n");
-                    
+
                 }
 
             }
@@ -199,17 +200,28 @@ namespace SeewoTestTool
         private string executeCMDCommand(string command)
         {
             Process process_cmd = new Process();
-            process_cmd.StartInfo.FileName = "cmd.exe";
-            process_cmd.StartInfo.RedirectStandardInput = true;
-            process_cmd.StartInfo.RedirectStandardOutput = true;
-            process_cmd.StartInfo.CreateNoWindow = true;
-            process_cmd.StartInfo.UseShellExecute = false;
-            process_cmd.Start();
-            process_cmd.StandardInput.WriteLine(command + "&exit");
-            process_cmd.StandardInput.AutoFlush = true;
-            string output_string = process_cmd.StandardOutput.ReadToEnd();
-            process_cmd.WaitForExit();
-            process_cmd.Close();
+            string output_string = null;
+            try
+            {
+                process_cmd.StartInfo.FileName = "cmd.exe";
+                process_cmd.StartInfo.RedirectStandardInput = true;
+                process_cmd.StartInfo.RedirectStandardOutput = true;
+                process_cmd.StartInfo.CreateNoWindow = true;
+                process_cmd.StartInfo.UseShellExecute = false;
+                process_cmd.Start();
+                process_cmd.StandardInput.WriteLine(command + "&exit");
+                process_cmd.StandardInput.AutoFlush = true;
+                output_string = process_cmd.StandardOutput.ReadToEnd();
+            }
+            catch (Exception ex)
+            {
+                output_string = ex.ToString();
+            }
+            finally
+            {
+                process_cmd.WaitForExit();
+                process_cmd.Close();
+            }
             return output_string;
 
         }
@@ -233,6 +245,7 @@ namespace SeewoTestTool
                 catch (Exception ex)
                 {
                     output_rich_textbox.AppendText($"Socket发送命令执行失败：\n{ex.ToString()}\n");
+                    device_disconnect_button_Click(null, null);
                 }
                 finally
                 {
@@ -286,6 +299,7 @@ namespace SeewoTestTool
                         radioButton_8080.Enabled = true;
                         device_status_label.Text = "已断开";
                         output_rich_textbox.AppendText($"Socket接收命令执行失败：\n{ex.ToString()}\n");
+                        device_disconnect_button_Click(null, null);
                         break;
                     }
                 }
@@ -318,6 +332,7 @@ namespace SeewoTestTool
                     device_disconnect_button.Enabled = false;
                     device_connect_button.Enabled = true;
                     clientSocket.Close();
+                    clientSocket = null;
                     device_status_label.Text = "已断开";
                     device_ip_textbox.Enabled = true;
                     radioButton_80.Enabled = true;
@@ -426,6 +441,7 @@ namespace SeewoTestTool
                     {
                         output_rich_textbox.AppendText($"固件升级操作失败：\n{ex.ToString()}\n");
                         upgrade_progressbar.Value = 0;
+                        device_disconnect_button_Click(null, null);
                     }
                     finally
                     {
@@ -1175,8 +1191,8 @@ namespace SeewoTestTool
                 output_rich_textbox.AppendText(output_string);
                 if (output_string.Contains("Upgrade finish"))
                 {
-                    output_rich_textbox.AppendText("等待20s设备正在重启中，期间无法操作工具……\n");
-                    System.Threading.Thread.Sleep(20000);
+                    output_rich_textbox.AppendText("等待100秒设备正在重启中，期间无法操作工具……\n");
+                    System.Threading.Thread.Sleep(100000);
                     // 这里升级完重启，需要重新连接设备，设备状态那边需要同步更新
                     device_disconnect_button_Click(null, null);
                 }
@@ -1199,7 +1215,6 @@ namespace SeewoTestTool
                 stop_rg_flicker_button.Enabled = false;
                 start_rg_flicker_button.Enabled = false;
                 get_poe_mic_info_button.Enabled = false;
-                device_disconnect_button_Click(null, null);
             }
             else
             {
@@ -1641,8 +1656,8 @@ namespace SeewoTestTool
                     {
                         result = "成功";
                         device_disconnect_button_Click(null, null);
-                        output_rich_textbox.AppendText("等待20s设备正在重启中，期间无法操作工具……\n");
-                        System.Threading.Thread.Sleep(20000);
+                        output_rich_textbox.AppendText("等待100s设备正在重启中，期间无法操作工具……\n");
+                        System.Threading.Thread.Sleep(100000);
                     }
                     else
                     {
@@ -1688,7 +1703,7 @@ namespace SeewoTestTool
                     // 标定数据写入操作
                     string filePath = "";
                     OpenFileDialog dialog = new OpenFileDialog();
-                    dialog.Multiselect = true;
+                    dialog.Multiselect = false;
                     dialog.Title = "请选择标定数据文件";
                     if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
@@ -1701,7 +1716,7 @@ namespace SeewoTestTool
                         output_rich_textbox.SelectionFont = font;
                         output_rich_textbox.AppendText("请等待一段时间写入完成，此间工具无法使用\n");
                         output_string = executeCMDCommand(fetchDeviceInfoCommand);
-                        output_rich_textbox.AppendText("标定数据写入操作结果：" + output_string + "\n");
+                        output_rich_textbox.AppendText($"【{fetchDeviceInfoCommand}】标定数据写入操作结果：" + output_string + "\n");
                         
                         MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
                         string back_code = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
@@ -1715,6 +1730,7 @@ namespace SeewoTestTool
                             result = "失败";
                         }
                         output_rich_textbox.AppendText("标定数据写入操作结果：" + result + "\n");
+                        
                     }
                     else
                     {
