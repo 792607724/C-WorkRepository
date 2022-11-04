@@ -108,6 +108,37 @@ namespace SeewoTestTool
         {
             output_rich_textbox.AppendText("【执行操作】进行设备绑定连接……\n");
             string host = device_ip_textbox.Text;
+
+            // 判断如果是：219.198.235.11，需要在连接设备前加上ping操作打通路由，如果不是，则不需要ping 219.198.235.11 -t -S 219.198.235.17
+            if (host == "219.198.235.11")
+            {
+                string localPCHost = null;
+                foreach (NetworkInterface netItem in NetworkInterface.GetAllNetworkInterfaces())
+                {
+                    foreach (UnicastIPAddressInformation ipIntProp in netItem.GetIPProperties().UnicastAddresses.ToArray<UnicastIPAddressInformation>())
+                    {
+                        string inetName = netItem.Name;
+                        string inetAddress = ipIntProp.Address.ToString();
+                        string inetType = ipIntProp.Address.AddressFamily.ToString();
+                        //output_rich_textbox.AppendText($"   接口名：{inetName}，IP：{inetAddress}，IP类型：{inetType}\n");
+                        if (inetName == "以太网" && inetType == "InterNetwork")
+                        {
+                            localPCHost = inetAddress;
+                        }
+                    }
+                }
+                if (!string.IsNullOrEmpty(localPCHost))
+                {
+                    output_rich_textbox.AppendText($"当前连接为局域网直连，本地PC的IP地址为：{localPCHost}\n");
+                    string back_temp = executeCMDCommand($"ping {host} -t -S {localPCHost} -n 1");
+                    output_rich_textbox.AppendText($"当前连接为局域网直连：IP：219.198.235.11\nPING 打通默认路由结果为：{back_temp}\n");
+                }
+                else
+                {
+                    MessageBox.Show("请检查设备网络连接！");
+                }
+            }
+
             ip_users = host;
             string port;
             if (radioButton_80.Checked)
@@ -148,6 +179,7 @@ namespace SeewoTestTool
                             login_button.Enabled = true;
                             device_reset_button.Enabled = true;
                             rebootDevice_button.Enabled = true;
+                            open3CameraTest_button.Enabled = true;
                             // 增加记住IP和端口功能
                             if (rememberCheckBox.Checked == true)
                             {
@@ -355,6 +387,7 @@ namespace SeewoTestTool
                     stop_rg_flicker_button.Enabled = false;
                     start_rg_flicker_button.Enabled = false;
                     get_poe_mic_info_button.Enabled = false;
+                    open3CameraTest_button.Enabled = false;
                     login_button.Enabled = false;
                     calibrationDataWriteIn_button.Enabled = false;
                     login_button.Text = "设备连接后可自动登录";
@@ -1191,8 +1224,8 @@ namespace SeewoTestTool
                 output_rich_textbox.AppendText(output_string);
                 if (output_string.Contains("Upgrade finish"))
                 {
-                    output_rich_textbox.AppendText("等待100秒设备正在重启中，期间无法操作工具……\n");
-                    System.Threading.Thread.Sleep(100000);
+                    output_rich_textbox.AppendText("等待20秒设备正在重启中，期间无法操作工具……\n");
+                    System.Threading.Thread.Sleep(20000);
                     // 这里升级完重启，需要重新连接设备，设备状态那边需要同步更新
                     device_disconnect_button_Click(null, null);
                 }
@@ -1213,6 +1246,7 @@ namespace SeewoTestTool
                 device_reset_button.Enabled = false;
                 rebootDevice_button.Enabled = false;
                 stop_rg_flicker_button.Enabled = false;
+                open3CameraTest_button.Enabled = false;
                 start_rg_flicker_button.Enabled = false;
                 get_poe_mic_info_button.Enabled = false;
             }
@@ -1656,8 +1690,8 @@ namespace SeewoTestTool
                     {
                         result = "成功";
                         device_disconnect_button_Click(null, null);
-                        output_rich_textbox.AppendText("等待100s设备正在重启中，期间无法操作工具……\n");
-                        System.Threading.Thread.Sleep(100000);
+                        output_rich_textbox.AppendText("等待20秒设备正在重启中，期间无法操作工具……\n");
+                        System.Threading.Thread.Sleep(20000);
                     }
                     else
                     {
@@ -1710,7 +1744,7 @@ namespace SeewoTestTool
                         filePath = dialog.FileName;
                         output_rich_textbox.AppendText($"当前写入的标定数据为：【{filePath}】\n");
                         //byte[] br2Binary = ConvertToBinary(filePath);
-                        string fetchDeviceInfoCommand = $"curl -s -X POST --data-binary @{filePath} \"http://{ip_users}/writeLdcCalib_api\" -H \"Content-Type: application/json\"";
+                        string fetchDeviceInfoCommand = $"curl -s -X POST --data-binary @{filePath} \"http://{ip_users}/writeLdcCalib_api\" -H \"Content-Type: text/plain\"";
                         Font font = new Font(FontFamily.GenericMonospace, 15, FontStyle.Bold);
                         output_rich_textbox.ForeColor = Color.Green;
                         output_rich_textbox.SelectionFont = font;
@@ -1718,10 +1752,8 @@ namespace SeewoTestTool
                         output_string = executeCMDCommand(fetchDeviceInfoCommand);
                         output_rich_textbox.AppendText($"【{fetchDeviceInfoCommand}】标定数据写入操作结果：" + output_string + "\n");
                         
-                        MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
-                        string back_code = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
                         string result = "标定数据写入操作未执行成功";
-                        if (back_code == "OK")
+                        if (output_string.Contains("OK"))
                         {
                             result = "成功";
                         }
@@ -1749,6 +1781,58 @@ namespace SeewoTestTool
             catch (Exception ex)
             {
                 output_rich_textbox.AppendText($"标定数据写入操作失败，当前未连接设备：\n{ex.ToString()}\n");
+            }
+            finally
+            {
+
+            }
+        }
+
+        // 打开三摄模组测试工具
+        private void open3CameraTest_button_Click(object sender, EventArgs e)
+        {
+            //if (true)
+            output_rich_textbox.AppendText("【执行操作】打开三摄模组测试工具……\n");
+            try
+            {
+                if (clientSocket != null && clientSocket.Connected)
+                {
+                    // 打开三摄模组测试工具
+                    Process process_cmd = new Process();
+                    string output_string = null;
+                    try
+                    {
+                        process_cmd.StartInfo.FileName = "SXW0301_Production_line.exe";
+                        process_cmd.StartInfo.RedirectStandardInput = true;
+                        process_cmd.StartInfo.RedirectStandardOutput = true;
+                        process_cmd.StartInfo.CreateNoWindow = false;
+                        process_cmd.StartInfo.UseShellExecute = false;
+                        process_cmd.Start();
+                        process_cmd.StandardInput.AutoFlush = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        output_string = ex.ToString();
+                    }
+                    finally
+                    {
+                        process_cmd.WaitForExit();
+                        process_cmd.Close();
+                    }
+
+                }
+                else
+                {
+                    device_ip_textbox.Enabled = true;
+                    radioButton_80.Enabled = true;
+                    radioButton_8080.Enabled = true;
+                    device_status_label.Text = "已断开";
+                    output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
+                }
+            }
+            catch (Exception ex)
+            {
+                output_rich_textbox.AppendText($"打开三摄模组测试工具失败，当前未连接设备：\n{ex.ToString()}\n");
             }
             finally
             {
