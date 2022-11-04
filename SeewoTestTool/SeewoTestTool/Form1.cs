@@ -86,8 +86,8 @@ namespace SeewoTestTool
             fs.Close();
             fs1.Close();
             // 增加自动连接设备功能
-            device_connect_button_Click(null, null);
-            login_button_Click(null, null);
+            //device_connect_button_Click(null, null);
+            //login_button_Click(null, null);
         }
 
         private readonly ManualResetEvent TimeoutObject = new ManualResetEvent(false);
@@ -95,6 +95,7 @@ namespace SeewoTestTool
         {
             //使阻塞的线程继续 
             TimeoutObject.Set();
+            
         }
 
         string ip_users;
@@ -132,7 +133,7 @@ namespace SeewoTestTool
                     IPEndPoint ipe = new IPEndPoint(ip, int.Parse(port));
 
                     clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                    clientSocket.BeginConnect(ipe, CallBackMethod, clientSocket);
+                    clientSocket.BeginConnect(ipe, new AsyncCallback(CallBackMethod), clientSocket);
                     if (TimeoutObject.WaitOne(2000, false))
                     {
                         if (clientSocket.Connected)
@@ -339,6 +340,9 @@ namespace SeewoTestTool
                     stop_rg_flicker_button.Enabled = false;
                     start_rg_flicker_button.Enabled = false;
                     get_poe_mic_info_button.Enabled = false;
+                    login_button.Enabled = false;
+                    calibrationDataWriteIn_button.Enabled = false;
+                    login_button.Text = "设备连接后可自动登录";
                 }
                 catch (Exception ex)
                 {
@@ -1426,6 +1430,7 @@ namespace SeewoTestTool
                         login_button.Enabled = false;
                         stop_rg_flicker_button.Enabled = false;
                         start_rg_flicker_button.Enabled = true;
+                        calibrationDataWriteIn_button.Enabled = true;
                         get_poe_mic_info_button.Enabled = true;
                         // 增加记住username和password功能
                         if (rememberCheckBox.Checked == true)
@@ -1657,6 +1662,77 @@ namespace SeewoTestTool
             catch (Exception ex)
             {
                 output_rich_textbox.AppendText($"重启设备失败，当前未连接设备：\n{ex.ToString()}\n");
+            }
+            finally
+            {
+
+            }
+        }
+        public static byte[] ConvertToBinary(string Path)
+        {
+            FileStream stream = new FileInfo(Path).OpenRead();
+            byte[] buffer = new byte[stream.Length];
+            stream.Read(buffer, 0, Convert.ToInt32(stream.Length));
+            return buffer;
+        }
+
+        // 标定数据写入操作
+        private void calibrationDataWriteIn_button_Click(object sender, EventArgs e)
+        {
+            //if (true)
+            output_rich_textbox.AppendText("【执行操作】标定数据写入操作……\n");
+            try
+            {
+                if (clientSocket != null && clientSocket.Connected)
+                {
+                    // 标定数据写入操作
+                    string filePath = "";
+                    OpenFileDialog dialog = new OpenFileDialog();
+                    dialog.Multiselect = true;
+                    dialog.Title = "请选择标定数据文件";
+                    if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        filePath = dialog.FileName;
+                        output_rich_textbox.AppendText($"当前写入的标定数据为：【{filePath}】\n");
+                        //byte[] br2Binary = ConvertToBinary(filePath);
+                        string fetchDeviceInfoCommand = $"curl -s -X POST --data-binary @{filePath} \"http://{ip_users}/writeLdcCalib_api\" -H \"Content-Type: application/json\"";
+                        Font font = new Font(FontFamily.GenericMonospace, 15, FontStyle.Bold);
+                        output_rich_textbox.ForeColor = Color.Green;
+                        output_rich_textbox.SelectionFont = font;
+                        output_rich_textbox.AppendText("请等待一段时间写入完成，此间工具无法使用\n");
+                        output_string = executeCMDCommand(fetchDeviceInfoCommand);
+                        output_rich_textbox.AppendText("标定数据写入操作结果：" + output_string + "\n");
+                        
+                        MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
+                        string back_code = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
+                        string result = "标定数据写入操作未执行成功";
+                        if (back_code == "OK")
+                        {
+                            result = "成功";
+                        }
+                        else
+                        {
+                            result = "失败";
+                        }
+                        output_rich_textbox.AppendText("标定数据写入操作结果：" + result + "\n");
+                    }
+                    else
+                    {
+                        output_rich_textbox.AppendText("未选择标定数据，选择后才能进行标定数据写入！\n");
+                    }
+                }
+                else
+                {
+                    device_ip_textbox.Enabled = true;
+                    radioButton_80.Enabled = true;
+                    radioButton_8080.Enabled = true;
+                    device_status_label.Text = "已断开";
+                    output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
+                }
+            }
+            catch (Exception ex)
+            {
+                output_rich_textbox.AppendText($"标定数据写入操作失败，当前未连接设备：\n{ex.ToString()}\n");
             }
             finally
             {
