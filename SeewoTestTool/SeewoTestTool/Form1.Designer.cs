@@ -151,10 +151,10 @@
             // open3CameraTest_button
             // 
             this.open3CameraTest_button.Enabled = false;
-            this.open3CameraTest_button.Location = new System.Drawing.Point(229, 432);
+            this.open3CameraTest_button.Location = new System.Drawing.Point(14, 432);
             this.open3CameraTest_button.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.open3CameraTest_button.Name = "open3CameraTest_button";
-            this.open3CameraTest_button.Size = new System.Drawing.Size(596, 46);
+            this.open3CameraTest_button.Size = new System.Drawing.Size(811, 46);
             this.open3CameraTest_button.TabIndex = 8;
             this.open3CameraTest_button.Text = "打开三摄模组测试工具";
             this.open3CameraTest_button.UseVisualStyleBackColor = true;
@@ -170,6 +170,7 @@
             this.calibrationDataWriteIn_button.TabIndex = 7;
             this.calibrationDataWriteIn_button.Text = "标定数据写入";
             this.calibrationDataWriteIn_button.UseVisualStyleBackColor = true;
+            this.calibrationDataWriteIn_button.Visible = false;
             this.calibrationDataWriteIn_button.Click += new System.EventHandler(this.calibrationDataWriteIn_button_Click);
             // 
             // groupBox10
