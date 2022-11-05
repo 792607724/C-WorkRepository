@@ -1804,11 +1804,12 @@ namespace SeewoTestTool
                     {
                         process_cmd.StartInfo.FileName = "SXW0301_Production_line.exe";
                         process_cmd.StartInfo.RedirectStandardInput = true;
-                        process_cmd.StartInfo.RedirectStandardOutput = true;
+                        //process_cmd.StartInfo.RedirectStandardOutput = true;
                         process_cmd.StartInfo.CreateNoWindow = false;
                         process_cmd.StartInfo.UseShellExecute = false;
                         process_cmd.Start();
-                        process_cmd.StandardInput.AutoFlush = true;
+                        process_cmd.WaitForExit();
+                        //process_cmd.StandardInput.AutoFlush = true;
                     }
                     catch (Exception ex)
                     {
@@ -1816,7 +1817,7 @@ namespace SeewoTestTool
                     }
                     finally
                     {
-                        process_cmd.WaitForExit();
+                        
                         process_cmd.Close();
                     }
 

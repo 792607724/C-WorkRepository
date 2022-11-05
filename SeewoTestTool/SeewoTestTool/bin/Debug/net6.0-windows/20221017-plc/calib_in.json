@@ -19,7 +19,7 @@
     "intrBoardSize": 30,
     "extrBoardWidth": 4,
     "extrBoardHeight": 24,
-    "extrBoardSize": 60,
+    "extrBoardSize": 40,
     "camNum": 2,
     "camIDList": "0,1,",
     "camPairNum": 1,
