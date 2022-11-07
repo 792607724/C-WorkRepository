@@ -35,10 +35,10 @@
             // 
             // onlineSoftwareUse_button
             // 
-            this.onlineSoftwareUse_button.Location = new System.Drawing.Point(109, 151);
+            this.onlineSoftwareUse_button.Location = new System.Drawing.Point(11, 12);
             this.onlineSoftwareUse_button.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.onlineSoftwareUse_button.Name = "onlineSoftwareUse_button";
-            this.onlineSoftwareUse_button.Size = new System.Drawing.Size(110, 25);
+            this.onlineSoftwareUse_button.Size = new System.Drawing.Size(405, 358);
             this.onlineSoftwareUse_button.TabIndex = 0;
             this.onlineSoftwareUse_button.Text = "联网使用";
             this.onlineSoftwareUse_button.UseVisualStyleBackColor = true;
@@ -46,9 +46,9 @@
             // 
             // offlineSoftwareUse_button
             // 
-            this.offlineSoftwareUse_button.Location = new System.Drawing.Point(257, 151);
+            this.offlineSoftwareUse_button.Location = new System.Drawing.Point(421, 143);
             this.offlineSoftwareUse_button.Name = "offlineSoftwareUse_button";
-            this.offlineSoftwareUse_button.Size = new System.Drawing.Size(189, 25);
+            this.offlineSoftwareUse_button.Size = new System.Drawing.Size(189, 41);
             this.offlineSoftwareUse_button.TabIndex = 1;
             this.offlineSoftwareUse_button.Text = "developer_修改隐藏文件_显示";
             this.offlineSoftwareUse_button.UseVisualStyleBackColor = true;
@@ -56,9 +56,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(257, 182);
+            this.button1.Location = new System.Drawing.Point(421, 190);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(189, 24);
+            this.button1.Size = new System.Drawing.Size(189, 41);
             this.button1.TabIndex = 2;
             this.button1.Text = "developer_修改隐藏文件_显示";
             this.button1.UseVisualStyleBackColor = true;
@@ -73,6 +73,8 @@
             this.Controls.Add(this.offlineSoftwareUse_button);
             this.Controls.Add(this.onlineSoftwareUse_button);
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.MaximumSize = new System.Drawing.Size(638, 421);
+            this.MinimumSize = new System.Drawing.Size(638, 421);
             this.Name = "Regist";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Regist";
