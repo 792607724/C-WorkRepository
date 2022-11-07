@@ -1263,26 +1263,35 @@ namespace SeewoTestTool
         private void getSeewoDevice_Click(object sender, EventArgs e)
         {
             //if (true)
-            output_rich_textbox.AppendText("【执行操作】获取当前电脑连接的所有设备的网口并筛选出Seewo的设备……\n");
+            output_rich_textbox.AppendText("【执行操作】获取当前电脑连接的所有通过以太网口连接的设备……\n");
             try
             {
-                
                 foreach (NetworkInterface netItem in NetworkInterface.GetAllNetworkInterfaces())
                 {
+                    /*
                     output_rich_textbox.AppendText($"接口名：{netItem.Name}，接口类型：{netItem.NetworkInterfaceType}，" +
                         $"接口MAC：{netItem.GetPhysicalAddress().ToString()}\n");
+                    */
                     foreach (UnicastIPAddressInformation ipIntProp in netItem.GetIPProperties().UnicastAddresses.ToArray<UnicastIPAddressInformation>())
                     {
-                        output_rich_textbox.AppendText($"   接口名：{netItem.Name}，IP：{ipIntProp.Address.ToString()}，IP类型：{ipIntProp.Address.AddressFamily}\n");
+                        string inetName = netItem.Name;
+                        string inetAddress = ipIntProp.Address.ToString();
+                        string inetType = ipIntProp.Address.AddressFamily.ToString();
+                        //output_rich_textbox.AppendText($"   接口名：{inetName}，IP：{inetAddress}，IP类型：{inetType}\n");
+                        if (inetName == "以太网" && inetType == "InterNetwork")
+                        {
+                            output_rich_textbox.AppendText($"   接口名：{inetName}，IP：{inetAddress}，IP类型：{inetType}\n");
+                        }
                     }
                 }
-
+                /*
                 IPGlobalProperties ipGlobalProperties = IPGlobalProperties.GetIPGlobalProperties();
                 IPEndPoint[] endPoints = ipGlobalProperties.GetActiveTcpListeners();
                 foreach (IPEndPoint endPoint in endPoints)
                 {
                     output_rich_textbox.AppendText($"端口：{endPoint.Port}，IP：{endPoint.Address.ToString()}，IP类型：{endPoint.Address.AddressFamily.ToString()}\n");
                 }
+                */
             }
             catch (Exception ex)
             {
