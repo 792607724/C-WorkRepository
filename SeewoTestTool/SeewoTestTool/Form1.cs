@@ -1034,6 +1034,8 @@ namespace SeewoTestTool
                 try
                 {
                     clientSocket.Close();
+                    // ¹Ø±ÕSXW0301_Production_line.exe
+                    executeCMDCommand("taskkill /f /t /im SXW0301_Production_line.exe");
                     Application.Exit();
                 }
                 catch (Exception ex)
@@ -1047,6 +1049,7 @@ namespace SeewoTestTool
             }
             else
             {
+                executeCMDCommand("taskkill /f /t /im SXW0301_Production_line.exe");
                 new Regist().Show();
             }
         }
