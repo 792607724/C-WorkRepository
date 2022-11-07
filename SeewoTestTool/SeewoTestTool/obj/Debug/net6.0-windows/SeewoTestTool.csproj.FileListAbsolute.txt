@@ -49,3 +49,4 @@ D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SeewoTestTool\SeewoTestTool
 D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SeewoTestTool\SeewoTestTool\obj\Debug\net6.0-windows\SeewoTestTool.pdb
 D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SeewoTestTool\SeewoTestTool\obj\Debug\net6.0-windows\SeewoTestTool.genruntimeconfig.cache
 D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SeewoTestTool\SeewoTestTool\obj\Debug\net6.0-windows\ref\SeewoTestTool.dll
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SeewoTestTool\SeewoTestTool\obj\Debug\net6.0-windows\SeewoTestTool.Regist.resources

@@ -9,6 +9,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using static System.Net.Mime.MediaTypeNames;
+using Application = System.Windows.Forms.Application;
 
 namespace SeewoTestTool
 {
@@ -25,10 +26,12 @@ namespace SeewoTestTool
          *      A、"data.bin"：IP和端口号的记忆功能写入
          *      B、"data1.bin"：Web登录校验username和password功能写入
          */
+
+
+
         public Form1()
         {
             InitializeComponent();
-
             FileStream fs = new FileStream("data.bin", FileMode.OpenOrCreate);
             if (fs.Length > 0)
             {
@@ -1031,6 +1034,7 @@ namespace SeewoTestTool
                 try
                 {
                     clientSocket.Close();
+                    Application.Exit();
                 }
                 catch (Exception ex)
                 {
@@ -1040,6 +1044,10 @@ namespace SeewoTestTool
                 {
 
                 }
+            }
+            else
+            {
+                new Regist().Show();
             }
         }
 
