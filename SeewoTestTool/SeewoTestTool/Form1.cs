@@ -1808,47 +1808,72 @@ namespace SeewoTestTool
             }
         }
 
+        private void openByCMD_CameraProcess()
+        {
+            if (clientSocket != null && clientSocket.Connected)
+            {
+                // 打开三摄模组测试工具
+                Process process_cmd = new Process();
+                string output_string = null;
+                try
+                {
+                    process_cmd.StartInfo.FileName = "SXW0301_Production_line.exe";
+                    process_cmd.StartInfo.RedirectStandardInput = true;
+                    //process_cmd.StartInfo.RedirectStandardOutput = true;
+                    process_cmd.StartInfo.CreateNoWindow = false;
+                    process_cmd.StartInfo.UseShellExecute = false;
+                    process_cmd.Start();
+                    process_cmd.WaitForExit();
+                    //process_cmd.StandardInput.AutoFlush = true;
+                }
+                catch (Exception ex)
+                {
+                    output_string = ex.ToString();
+                }
+                finally
+                {
+
+                    process_cmd.Close();
+                }
+            }
+            else
+            {
+                device_ip_textbox.Enabled = true;
+                radioButton_80.Enabled = true;
+                radioButton_8080.Enabled = true;
+                device_status_label.Text = "已断开";
+                output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
+            }
+        }
+
         // 打开三摄模组测试工具
+        Thread thread = null;
         private void open3CameraTest_button_Click(object sender, EventArgs e)
         {
             //if (true)
-            output_rich_textbox.AppendText("【执行操作】打开三摄模组测试工具……\n");
             try
             {
-                if (clientSocket != null && clientSocket.Connected)
+                if (thread == null)
                 {
-                    // 打开三摄模组测试工具
-                    Process process_cmd = new Process();
-                    string output_string = null;
-                    try
-                    {
-                        process_cmd.StartInfo.FileName = "SXW0301_Production_line.exe";
-                        process_cmd.StartInfo.RedirectStandardInput = true;
-                        //process_cmd.StartInfo.RedirectStandardOutput = true;
-                        process_cmd.StartInfo.CreateNoWindow = false;
-                        process_cmd.StartInfo.UseShellExecute = false;
-                        process_cmd.Start();
-                        process_cmd.WaitForExit();
-                        //process_cmd.StandardInput.AutoFlush = true;
-                    }
-                    catch (Exception ex)
-                    {
-                        output_string = ex.ToString();
-                    }
-                    finally
-                    {
-                        
-                        process_cmd.Close();
-                    }
-
+                    thread = new Thread(openByCMD_CameraProcess);
+                    output_rich_textbox.AppendText("【执行操作】打开三摄模组测试工具……\n");
+                    thread.IsBackground = true;
+                    thread.Start();
                 }
                 else
                 {
-                    device_ip_textbox.Enabled = true;
-                    radioButton_80.Enabled = true;
-                    radioButton_8080.Enabled = true;
-                    device_status_label.Text = "已断开";
-                    output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
+                    if (thread.IsAlive)
+                    {
+                        output_rich_textbox.AppendText("已打开三摄模组测试工具，请勿重复打开哦\n");
+                    }
+                    else
+                    {
+                        thread = new Thread(openByCMD_CameraProcess);
+                        output_rich_textbox.AppendText("【执行操作】打开三摄模组测试工具……\n");
+                        thread.IsBackground = true;
+                        thread.Start();
+                    }
+                    
                 }
             }
             catch (Exception ex)

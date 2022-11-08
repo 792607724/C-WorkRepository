@@ -146,7 +146,7 @@
             this.groupBox1.Size = new System.Drawing.Size(831, 484);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "希沃测试工具面板";
+            this.groupBox1.Text = "工具菜单";
             // 
             // open3CameraTest_button
             // 
@@ -1054,7 +1054,7 @@
             this.MinimumSize = new System.Drawing.Size(867, 705);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Seewo测试工具";
+            this.Text = "测试标定工具主面板";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormClosingEvent);
             this.groupBox1.ResumeLayout(false);
             this.groupBox10.ResumeLayout(false);
