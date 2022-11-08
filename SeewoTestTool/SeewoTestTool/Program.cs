@@ -2,6 +2,7 @@ using Microsoft.Win32;
 using Microsoft.Win32;
 using System;
 using System.Net;
+using System.Text;
 using Application = System.Windows.Forms.Application;
 namespace SeewoTestTool
 {
@@ -17,6 +18,9 @@ namespace SeewoTestTool
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new Regist());
+
+
+            
         }
         /**
          * 
