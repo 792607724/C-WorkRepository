@@ -31,7 +31,7 @@ namespace SeewoTestTool
             string[] files = Directory.GetFiles(".");
             foreach (string file in files)
             {
-                if (file.Contains("bin") || file.Contains("dll") || file.Contains("json") || file.Contains("pdb") || file.Contains("config") || file.Contains("C_production_line_tool.exe") || file.Contains("Splicing_test.exe") || file.Contains("SXW0301_Production_line.exe"))
+                if (file.Contains("cgtisthe") || file.Contains("bin") || file.Contains("dll") || file.Contains("json") || file.Contains("pdb") || file.Contains("config") || file.Contains("C_production_line_tool.exe") || file.Contains("Splicing_test.exe") || file.Contains("SXW0301_Production_line.exe"))
                 {
                     File.SetAttributes(file, FileAttributes.System | FileAttributes.Normal);
                 }
@@ -262,7 +262,7 @@ namespace SeewoTestTool
         private void button2_Click(object sender, EventArgs e)
         {
             // 限制使用次数激活代码
-            object useTimes = 5;
+            object useTimes = Int32.Parse(textBox1.Text);
             if (File.Exists(fileName))
             {
                 File.Delete(fileName);
@@ -282,7 +282,7 @@ namespace SeewoTestTool
             RegKey = RootKey.OpenSubKey("MyRegDataApp", true);
             RegKey.SetValue("UseTime", (object)useTimes);
 
-            MessageBox.Show("激活使用次数成功");
+            MessageBox.Show($"激活使用次数成功 - 软件可使用次数：[{useTimes}]");
 
 
         }
