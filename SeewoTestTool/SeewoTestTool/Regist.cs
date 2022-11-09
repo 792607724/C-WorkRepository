@@ -1,13 +1,5 @@
 ﻿using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace SeewoTestTool
 {
@@ -15,6 +7,7 @@ namespace SeewoTestTool
     {
         public Regist()
         {
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             InitializeComponent();
             HidePrivateFiles();
 
@@ -125,7 +118,7 @@ namespace SeewoTestTool
             object activate_time_Buy = 20221109151633;
 
             string activate_date_register = "00000000000000";
-            string fileName = "cgtisthebest.txt";
+            string fileName = "SeevisionTestToolRecord.dll";
             RegistryKey RootKey, RegKey;
             RootKey = Registry.CurrentUser.OpenSubKey("Software", true);
             if ((RegKey = RootKey.OpenSubKey("CGTISTHEBESTPEOPLEINTHEWORLD", true)) == null)
@@ -168,22 +161,25 @@ namespace SeewoTestTool
             */
             RegistryKey RootKey, RegKey;
             RootKey = Registry.CurrentUser.OpenSubKey("Software", true);
-            string fileName = "cgtisthebest.txt";
+            RegKey = RootKey.OpenSubKey("MyRegDataApp", true);
+            string fileName = "SeevisionTestToolRecord.dll";
             int useTimes = 0;
+            // 获取本地隐藏文件中的使用次数
+            using (FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+            {
+                using (StreamReader sr = new StreamReader(fs, Encoding.GetEncoding("gb2312")))
+                {
+                    useTimes = int.Parse(sr.ReadToEnd().ToString());
+                    sr.Close();
+                }
+                fs.Close();
+            }
+            /**
             if ((RegKey = RootKey.OpenSubKey("MyRegDataApp", true)) == null)
             {
 
                 try
                 {
-                    // 获取本地隐藏文件中的使用次数
-                    using (FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
-                    {
-                        using (StreamReader sr = new StreamReader(fs, Encoding.GetEncoding("utf-8")))
-                        {
-                            useTimes = Int32.Parse(sr.ReadToEnd());
-                        }
-                    }
-
                     RootKey.CreateSubKey("MyRegDataApp");
                     RegKey = RootKey.OpenSubKey("MyRegDataApp", true);
                     RegKey.SetValue("UseTime", (int)useTimes);
@@ -200,11 +196,17 @@ namespace SeewoTestTool
                     return;
                 }
             }
+            */
+            object usetime = RegKey.GetValue("UseTime");
+            if (int.Parse(usetime.ToString()) != useTimes )
+            {
+                RegKey.SetValue("UseTime", (object)useTimes);
+                usetime = RegKey.GetValue("UseTime");
+            }
             try
             {
-                object usetime = RegKey.GetValue("UseTime");
-                MessageBox.Show($"您还可以使用本软件：{usetime.ToString()}次！", "确认", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                int newtime = Int32.Parse(usetime.ToString()) - 1;
+                MessageBox.Show($"您还可以使用本软件：{int.Parse(usetime.ToString())}次！", "确认", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                int newtime = int.Parse(useTimes.ToString()) - 1;
 
                 if (newtime < 0)
                 {
@@ -220,11 +222,12 @@ namespace SeewoTestTool
 
                     RegKey.SetValue("UseTime", (object)newtime);
                     global::System.IO.FileInfo txtFile = new global::System.IO.FileInfo(fileName);
-                    FileStream fileStream = new FileStream(fileName, FileMode.Open, FileAccess.ReadWrite);
+                    FileStream fileStream = new FileStream(fileName, FileMode.Truncate, FileAccess.ReadWrite);
                     StreamWriter sw = new StreamWriter(fileStream);
-                    sw.Write(newtime);
+                    sw.Write(newtime);  
                     sw.Flush();
                     sw.Close();
+                    fileStream.Close();
                     File.SetAttributes(fileName, FileAttributes.System | FileAttributes.Hidden);
                     Form1 form1 = new Form1();
                     form1.Show();
@@ -257,12 +260,12 @@ namespace SeewoTestTool
         {
             HidePrivateFiles();
         }
-        string fileName = "cgtisthebest.txt";
+        string fileName = "SeevisionTestToolRecord.dll";
         // 激活使用次数操作 -- 对用户隐藏，当前是可见的
         private void button2_Click(object sender, EventArgs e)
         {
             // 限制使用次数激活代码
-            object useTimes = Int32.Parse(textBox1.Text);
+            int useTimes = int.Parse(textBox1.Text);
             if (File.Exists(fileName))
             {
                 File.Delete(fileName);
@@ -275,6 +278,7 @@ namespace SeewoTestTool
             sw.Write(useTimes);
             sw.Flush();
             sw.Close();
+            fileStream.Close();
             File.SetAttributes(fileName, FileAttributes.System | FileAttributes.Hidden);
             RegistryKey RootKey, RegKey;
             RootKey = Registry.CurrentUser.OpenSubKey("Software", true);
@@ -291,7 +295,7 @@ namespace SeewoTestTool
         // 离线使用软件
         private void offlineSoftwareUse_button_Click(object sender, EventArgs e)
         {
-            string fileName = "cgtisthebest.txt";
+            string fileName = "SeevisionTestToolRecord.dll";
             using (FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
             {
                 using (StreamReader sr = new StreamReader(fs, Encoding.GetEncoding("utf-8")))
