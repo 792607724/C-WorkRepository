@@ -112,6 +112,14 @@ namespace SeewoTestTool
             output_rich_textbox.AppendText("【执行操作】进行设备绑定连接……\n");
             string host = device_ip_textbox.Text;
 
+            // 检测如果ping不通直接FAIL无需往下继续执行
+            string temp_check_ping_ip_exists = executeCMDCommand($"ping {host} -n 1");
+            if (temp_check_ping_ip_exists.Contains("请求超时"))
+            {
+                MessageBox.Show("设备IP查找失败，请确认设备网口连接情况以及网络环境配置是否正常后重试！","错误",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return;
+            }
+
             // 判断如果是：219.198.235.11，需要在连接设备前加上ping操作打通路由，如果不是，则不需要ping 219.198.235.11 -t -S 219.198.235.17
             if (host == "219.198.235.11")
             {
@@ -222,9 +230,7 @@ namespace SeewoTestTool
                     radioButton_80.Enabled = true;
                     radioButton_8080.Enabled = true;
                     output_rich_textbox.AppendText($"设备网口IP地址和端口号错误，请检查是否输入正确！\n问题Log如下：{ex.ToString()}\n");
-
                 }
-
             }
         }
 

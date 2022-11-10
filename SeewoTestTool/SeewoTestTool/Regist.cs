@@ -47,6 +47,7 @@ namespace SeewoTestTool
                     File.SetAttributes(file, FileAttributes.System | FileAttributes.Hidden);
                 }
             }
+            
         }
 
         RegisterUsageLimit registerUsageLimit = new RegisterUsageLimit();
