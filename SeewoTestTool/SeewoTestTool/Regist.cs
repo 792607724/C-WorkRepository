@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 
 namespace SeewoTestTool
@@ -27,6 +28,7 @@ namespace SeewoTestTool
                 if (file.Contains("cgtisthe") || file.Contains("bin") || file.Contains("dll") || file.Contains("json") || file.Contains("pdb") || file.Contains("config") || file.Contains("C_production_line_tool.exe") || file.Contains("Splicing_test.exe") || file.Contains("SXW0301_Production_line.exe"))
                 {
                     File.SetAttributes(file, FileAttributes.System | FileAttributes.Normal);
+                    
                 }
             }
         }
@@ -168,11 +170,16 @@ namespace SeewoTestTool
             // 获取本地隐藏文件中的使用次数
             using (FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
             {
+                /**
                 using (StreamReader sr = new StreamReader(fs, Encoding.GetEncoding("gb2312")))
                 {
                     useTimes = int.Parse(sr.ReadToEnd().ToString());
                     sr.Close();
                 }
+                */
+                BinaryFormatter formatter = new BinaryFormatter();
+                useTimes = (int)formatter.Deserialize(fs);
+                MessageBox.Show(useTimes.ToString());
                 fs.Close();
             }
             /**
@@ -224,10 +231,14 @@ namespace SeewoTestTool
                     RegKey.SetValue("UseTime", (object)newtime);
                     global::System.IO.FileInfo txtFile = new global::System.IO.FileInfo(fileName);
                     FileStream fileStream = new FileStream(fileName, FileMode.Truncate, FileAccess.ReadWrite);
+                    /**
                     StreamWriter sw = new StreamWriter(fileStream);
                     sw.Write(newtime);  
                     sw.Flush();
                     sw.Close();
+                    */
+                    BinaryFormatter formatter = new BinaryFormatter();
+                    formatter.Serialize(fileStream, newtime);
                     fileStream.Close();
                     File.SetAttributes(fileName, FileAttributes.System | FileAttributes.Hidden);
                     Form1 form1 = new Form1();
@@ -273,12 +284,14 @@ namespace SeewoTestTool
             }
 
             // 创建隐藏文件
+            BinaryFormatter binaryFormatter = new BinaryFormatter();
             global::System.IO.FileInfo txtFile = new global::System.IO.FileInfo(fileName);
             FileStream fileStream = new FileStream(fileName, FileMode.CreateNew, FileAccess.ReadWrite);
-            StreamWriter sw = new StreamWriter(fileStream);
-            sw.Write(useTimes);
-            sw.Flush();
-            sw.Close();
+            //StreamWriter sw = new StreamWriter(fileStream);
+            //sw.Write(useTimes);
+            //sw.Flush();
+            //sw.Close();
+            binaryFormatter.Serialize(fileStream, useTimes);
             fileStream.Close();
             File.SetAttributes(fileName, FileAttributes.System | FileAttributes.Hidden);
             RegistryKey RootKey, RegKey;
