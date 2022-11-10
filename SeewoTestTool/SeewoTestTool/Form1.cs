@@ -138,7 +138,7 @@ namespace SeewoTestTool
                 }
                 else
                 {
-                    MessageBox.Show("请检查设备网络连接！");
+                    MessageBox.Show("请检查设备网络连接！","提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
 
@@ -207,7 +207,7 @@ namespace SeewoTestTool
                     }
                     else
                     {
-                        MessageBox.Show($"连接超时，请检查！\nIP:{host}， PORT:{port}");
+                        MessageBox.Show($"连接超时，请检查！\nIP:{host}， PORT:{port}","提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     
                     /*
@@ -689,6 +689,7 @@ namespace SeewoTestTool
          */
         private void get_poe_mic_info_button_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("该功能目前未实现，预留位后续有需求再实现！","提示", MessageBoxButtons.OK,MessageBoxIcon.Information);
             //if (true)
             output_rich_textbox.AppendText("【执行操作】获取吊麦信息……\n");
             if (clientSocket != null && clientSocket.Connected)
