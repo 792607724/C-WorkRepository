@@ -179,7 +179,7 @@ namespace SeewoTestTool
                 */
                 BinaryFormatter formatter = new BinaryFormatter();
                 useTimes = (int)formatter.Deserialize(fs);
-                MessageBox.Show(useTimes.ToString());
+                //MessageBox.Show(useTimes.ToString());
                 fs.Close();
             }
             /**

@@ -1,0 +1,46 @@
+ImageRuntimeVersion: v4.0.30319
+Assembly CLR_CvTool, Version=0.0.*, Culture=固定语言(固定国家/地区): 
+	hash=SHA1, flags=PublicKey
+Assembly mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Struct MI_CALIB_Conf_t: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, BeforeFieldInit
+  :System.ValueType
+Struct MI_CV_Intr_t: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, BeforeFieldInit
+  :System.ValueType
+Struct MI_CV_Extr_t: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, BeforeFieldInit
+  :System.ValueType
+Struct MI_CV_Map_Gen_Conf_t: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, BeforeFieldInit
+  :System.ValueType
+Struct MI_CV_Img_Scale_Q15_t: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, BeforeFieldInit
+  :System.ValueType
+Struct MI_CV_Camera_Q15_t: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, BeforeFieldInit
+  :System.ValueType
+Class CVTOOL_NAMESPACE.CVTOOL: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    System.IDisposable
+  Fields:
+    Void* algHandle : Public
+    MI_CALIB_Conf_t* pMI_Conf : Public
+    $UnnamedClass$0xac527c63$6$* pstInJsonBuf : Public
+    $UnnamedClass$0xac527c63$6$* pstOutJsonBuf : Public
+    $UnnamedClass$0xac527c63$6$* pcalibErrBuf : Public
+    $UnnamedClass$0xac527c63$6$* RpJsonBuf : Public
+    $UnnamedClass$0xac527c63$6$* WpJsonBuf : Public
+    SByte* demo_in : Public
+    SByte* demo_out : Public
+    SByte* demo_err : Public
+  Methods:
+    mi_CALIB_Init(): PrivateScope, Public, HideBySig
+    mi_CALIB_Deinit(): PrivateScope, Public, HideBySig
+    mi_CALIB_Calibration(): PrivateScope, Public, HideBySig
+    mi_CV_ReadJsFile(): PrivateScope, Public, HideBySig
+    mi_CV_WriteJsFile(): PrivateScope, Public, HideBySig
+    DEMO(SByte*, SByte*, SByte*): PrivateScope, Public, HideBySig
+    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
+Struct MI_CALIB_RetCode_e: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName

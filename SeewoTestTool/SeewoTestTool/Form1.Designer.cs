@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.open3CameraTest_button = new System.Windows.Forms.Button();
             this.calibrationDataWriteIn_button = new System.Windows.Forms.Button();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
@@ -132,6 +134,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.open3CameraTest_button);
             this.groupBox1.Controls.Add(this.calibrationDataWriteIn_button);
             this.groupBox1.Controls.Add(this.groupBox10);
@@ -142,13 +146,35 @@
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Location = new System.Drawing.Point(15, 5);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(1068, 569);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "工具菜单";
+            // 
+            // button2
+            // 
+            this.button2.Enabled = false;
+            this.button2.Location = new System.Drawing.Point(528, 510);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(537, 59);
+            this.button2.TabIndex = 10;
+            this.button2.Text = "拼接图检测";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Enabled = false;
+            this.button1.Location = new System.Drawing.Point(18, 510);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(504, 59);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "标定";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // open3CameraTest_button
             // 
@@ -156,10 +182,11 @@
             this.open3CameraTest_button.Location = new System.Drawing.Point(18, 508);
             this.open3CameraTest_button.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.open3CameraTest_button.Name = "open3CameraTest_button";
-            this.open3CameraTest_button.Size = new System.Drawing.Size(1043, 54);
+            this.open3CameraTest_button.Size = new System.Drawing.Size(314, 54);
             this.open3CameraTest_button.TabIndex = 8;
             this.open3CameraTest_button.Text = "打开三摄模组测试工具";
             this.open3CameraTest_button.UseVisualStyleBackColor = true;
+            this.open3CameraTest_button.Visible = false;
             this.open3CameraTest_button.Click += new System.EventHandler(this.open3CameraTest_button_Click);
             // 
             // calibrationDataWriteIn_button
@@ -184,9 +211,9 @@
             this.groupBox10.Controls.Add(this.currentPCBA_textbox);
             this.groupBox10.Controls.Add(this.label14);
             this.groupBox10.Location = new System.Drawing.Point(294, 419);
-            this.groupBox10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox10.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox10.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox10.Size = new System.Drawing.Size(766, 84);
             this.groupBox10.TabIndex = 6;
             this.groupBox10.TabStop = false;
@@ -196,7 +223,7 @@
             // 
             this.writeInPCBA_button.Enabled = false;
             this.writeInPCBA_button.Location = new System.Drawing.Point(507, 49);
-            this.writeInPCBA_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.writeInPCBA_button.Margin = new System.Windows.Forms.Padding(4);
             this.writeInPCBA_button.Name = "writeInPCBA_button";
             this.writeInPCBA_button.Size = new System.Drawing.Size(237, 27);
             this.writeInPCBA_button.TabIndex = 5;
@@ -207,7 +234,7 @@
             // writeINPCBA_textbox
             // 
             this.writeINPCBA_textbox.Location = new System.Drawing.Point(134, 53);
-            this.writeINPCBA_textbox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.writeINPCBA_textbox.Margin = new System.Windows.Forms.Padding(4);
             this.writeINPCBA_textbox.Name = "writeINPCBA_textbox";
             this.writeINPCBA_textbox.Size = new System.Drawing.Size(327, 27);
             this.writeINPCBA_textbox.TabIndex = 4;
@@ -226,7 +253,7 @@
             // 
             this.getCurrentPCBA_button.Enabled = false;
             this.getCurrentPCBA_button.Location = new System.Drawing.Point(507, 19);
-            this.getCurrentPCBA_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.getCurrentPCBA_button.Margin = new System.Windows.Forms.Padding(4);
             this.getCurrentPCBA_button.Name = "getCurrentPCBA_button";
             this.getCurrentPCBA_button.Size = new System.Drawing.Size(237, 27);
             this.getCurrentPCBA_button.TabIndex = 2;
@@ -237,7 +264,7 @@
             // currentPCBA_textbox
             // 
             this.currentPCBA_textbox.Location = new System.Drawing.Point(134, 19);
-            this.currentPCBA_textbox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.currentPCBA_textbox.Margin = new System.Windows.Forms.Padding(4);
             this.currentPCBA_textbox.Name = "currentPCBA_textbox";
             this.currentPCBA_textbox.Size = new System.Drawing.Size(327, 27);
             this.currentPCBA_textbox.TabIndex = 1;
@@ -275,9 +302,9 @@
             this.groupBox7.Controls.Add(this.label8);
             this.groupBox7.Controls.Add(this.start_array_mic_audio_level_test_button);
             this.groupBox7.Location = new System.Drawing.Point(294, 221);
-            this.groupBox7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox7.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox7.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox7.Size = new System.Drawing.Size(766, 199);
             this.groupBox7.TabIndex = 5;
             this.groupBox7.TabStop = false;
@@ -447,7 +474,7 @@
             // 
             this.gain_array_mic_audio_level_button.Enabled = false;
             this.gain_array_mic_audio_level_button.Location = new System.Drawing.Point(8, 120);
-            this.gain_array_mic_audio_level_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gain_array_mic_audio_level_button.Margin = new System.Windows.Forms.Padding(4);
             this.gain_array_mic_audio_level_button.Name = "gain_array_mic_audio_level_button";
             this.gain_array_mic_audio_level_button.Size = new System.Drawing.Size(750, 27);
             this.gain_array_mic_audio_level_button.TabIndex = 3;
@@ -459,7 +486,7 @@
             // 
             this.stop_array_mic_audio_level_test_button.Enabled = false;
             this.stop_array_mic_audio_level_test_button.Location = new System.Drawing.Point(9, 171);
-            this.stop_array_mic_audio_level_test_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.stop_array_mic_audio_level_test_button.Margin = new System.Windows.Forms.Padding(4);
             this.stop_array_mic_audio_level_test_button.Name = "stop_array_mic_audio_level_test_button";
             this.stop_array_mic_audio_level_test_button.Size = new System.Drawing.Size(750, 27);
             this.stop_array_mic_audio_level_test_button.TabIndex = 2;
@@ -480,7 +507,7 @@
             // 
             this.start_array_mic_audio_level_test_button.Enabled = false;
             this.start_array_mic_audio_level_test_button.Location = new System.Drawing.Point(9, 145);
-            this.start_array_mic_audio_level_test_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.start_array_mic_audio_level_test_button.Margin = new System.Windows.Forms.Padding(4);
             this.start_array_mic_audio_level_test_button.Name = "start_array_mic_audio_level_test_button";
             this.start_array_mic_audio_level_test_button.Size = new System.Drawing.Size(750, 27);
             this.start_array_mic_audio_level_test_button.TabIndex = 0;
@@ -495,9 +522,9 @@
             this.groupBox6.Controls.Add(this.audioin2_result_label);
             this.groupBox6.Controls.Add(this.audioin1_result_label);
             this.groupBox6.Location = new System.Drawing.Point(18, 427);
-            this.groupBox6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox6.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox6.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox6.Size = new System.Drawing.Size(257, 74);
             this.groupBox6.TabIndex = 4;
             this.groupBox6.TabStop = false;
@@ -549,9 +576,9 @@
             this.groupBox5.Controls.Add(this.label7);
             this.groupBox5.Controls.Add(this.label6);
             this.groupBox5.Location = new System.Drawing.Point(18, 299);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox5.Size = new System.Drawing.Size(257, 121);
             this.groupBox5.TabIndex = 3;
             this.groupBox5.TabStop = false;
@@ -561,7 +588,7 @@
             // 
             this.get_poe_mic_info_button.Enabled = false;
             this.get_poe_mic_info_button.Location = new System.Drawing.Point(9, 74);
-            this.get_poe_mic_info_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.get_poe_mic_info_button.Margin = new System.Windows.Forms.Padding(4);
             this.get_poe_mic_info_button.Name = "get_poe_mic_info_button";
             this.get_poe_mic_info_button.Size = new System.Drawing.Size(231, 36);
             this.get_poe_mic_info_button.TabIndex = 4;
@@ -612,9 +639,9 @@
             this.groupBox4.Controls.Add(this.stop_rg_flicker_button);
             this.groupBox4.Controls.Add(this.start_rg_flicker_button);
             this.groupBox4.Location = new System.Drawing.Point(18, 221);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox4.Size = new System.Drawing.Size(257, 71);
             this.groupBox4.TabIndex = 2;
             this.groupBox4.TabStop = false;
@@ -624,7 +651,7 @@
             // 
             this.stop_rg_flicker_button.Enabled = false;
             this.stop_rg_flicker_button.Location = new System.Drawing.Point(130, 26);
-            this.stop_rg_flicker_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.stop_rg_flicker_button.Margin = new System.Windows.Forms.Padding(4);
             this.stop_rg_flicker_button.Name = "stop_rg_flicker_button";
             this.stop_rg_flicker_button.Size = new System.Drawing.Size(120, 36);
             this.stop_rg_flicker_button.TabIndex = 1;
@@ -636,7 +663,7 @@
             // 
             this.start_rg_flicker_button.Enabled = false;
             this.start_rg_flicker_button.Location = new System.Drawing.Point(4, 26);
-            this.start_rg_flicker_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.start_rg_flicker_button.Margin = new System.Windows.Forms.Padding(4);
             this.start_rg_flicker_button.Name = "start_rg_flicker_button";
             this.start_rg_flicker_button.Size = new System.Drawing.Size(120, 36);
             this.start_rg_flicker_button.TabIndex = 0;
@@ -657,9 +684,9 @@
             this.groupBox3.Controls.Add(this.upgrade_firmware_textbox);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Location = new System.Drawing.Point(557, 21);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox3.Size = new System.Drawing.Size(504, 193);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
@@ -669,7 +696,7 @@
             // 
             this.gainCurrentVersion_button.Enabled = false;
             this.gainCurrentVersion_button.Location = new System.Drawing.Point(348, 94);
-            this.gainCurrentVersion_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gainCurrentVersion_button.Margin = new System.Windows.Forms.Padding(4);
             this.gainCurrentVersion_button.Name = "gainCurrentVersion_button";
             this.gainCurrentVersion_button.Size = new System.Drawing.Size(149, 27);
             this.gainCurrentVersion_button.TabIndex = 10;
@@ -710,7 +737,7 @@
             // 
             this.upgrade_button.Enabled = false;
             this.upgrade_button.Location = new System.Drawing.Point(6, 161);
-            this.upgrade_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.upgrade_button.Margin = new System.Windows.Forms.Padding(4);
             this.upgrade_button.Name = "upgrade_button";
             this.upgrade_button.Size = new System.Drawing.Size(491, 27);
             this.upgrade_button.TabIndex = 6;
@@ -721,7 +748,7 @@
             // choose_upgrade_firmware_button
             // 
             this.choose_upgrade_firmware_button.Location = new System.Drawing.Point(348, 20);
-            this.choose_upgrade_firmware_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.choose_upgrade_firmware_button.Margin = new System.Windows.Forms.Padding(4);
             this.choose_upgrade_firmware_button.Name = "choose_upgrade_firmware_button";
             this.choose_upgrade_firmware_button.Size = new System.Drawing.Size(149, 27);
             this.choose_upgrade_firmware_button.TabIndex = 5;
@@ -733,7 +760,7 @@
             // 
             this.checked_firmware_textbox.Enabled = false;
             this.checked_firmware_textbox.Location = new System.Drawing.Point(8, 53);
-            this.checked_firmware_textbox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checked_firmware_textbox.Margin = new System.Windows.Forms.Padding(4);
             this.checked_firmware_textbox.Name = "checked_firmware_textbox";
             this.checked_firmware_textbox.Size = new System.Drawing.Size(332, 27);
             this.checked_firmware_textbox.TabIndex = 1;
@@ -742,7 +769,7 @@
             // 
             this.check_current_firmware_button.Enabled = false;
             this.check_current_firmware_button.Location = new System.Drawing.Point(348, 54);
-            this.check_current_firmware_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.check_current_firmware_button.Margin = new System.Windows.Forms.Padding(4);
             this.check_current_firmware_button.Name = "check_current_firmware_button";
             this.check_current_firmware_button.Size = new System.Drawing.Size(149, 27);
             this.check_current_firmware_button.TabIndex = 2;
@@ -753,7 +780,7 @@
             // upgrade_firmware_textbox
             // 
             this.upgrade_firmware_textbox.Location = new System.Drawing.Point(80, 19);
-            this.upgrade_firmware_textbox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.upgrade_firmware_textbox.Margin = new System.Windows.Forms.Padding(4);
             this.upgrade_firmware_textbox.Name = "upgrade_firmware_textbox";
             this.upgrade_firmware_textbox.Size = new System.Drawing.Size(260, 27);
             this.upgrade_firmware_textbox.TabIndex = 4;
@@ -788,9 +815,9 @@
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Location = new System.Drawing.Point(18, 21);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(531, 175);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
@@ -811,7 +838,7 @@
             // 
             this.radioButton_8080.AutoSize = true;
             this.radioButton_8080.Location = new System.Drawing.Point(171, 58);
-            this.radioButton_8080.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioButton_8080.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton_8080.Name = "radioButton_8080";
             this.radioButton_8080.Size = new System.Drawing.Size(66, 24);
             this.radioButton_8080.TabIndex = 11;
@@ -821,7 +848,7 @@
             // password_textbox
             // 
             this.password_textbox.Location = new System.Drawing.Point(364, 49);
-            this.password_textbox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.password_textbox.Margin = new System.Windows.Forms.Padding(4);
             this.password_textbox.Name = "password_textbox";
             this.password_textbox.Size = new System.Drawing.Size(145, 27);
             this.password_textbox.TabIndex = 12;
@@ -833,7 +860,7 @@
             this.radioButton_80.AutoSize = true;
             this.radioButton_80.Checked = true;
             this.radioButton_80.Location = new System.Drawing.Point(112, 58);
-            this.radioButton_80.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioButton_80.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton_80.Name = "radioButton_80";
             this.radioButton_80.Size = new System.Drawing.Size(48, 24);
             this.radioButton_80.TabIndex = 10;
@@ -847,7 +874,7 @@
             this.rememberCheckBox.Checked = true;
             this.rememberCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.rememberCheckBox.Location = new System.Drawing.Point(9, 86);
-            this.rememberCheckBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rememberCheckBox.Margin = new System.Windows.Forms.Padding(4);
             this.rememberCheckBox.Name = "rememberCheckBox";
             this.rememberCheckBox.Size = new System.Drawing.Size(151, 24);
             this.rememberCheckBox.TabIndex = 9;
@@ -890,7 +917,7 @@
             // 
             this.login_button.Enabled = false;
             this.login_button.Location = new System.Drawing.Point(284, 131);
-            this.login_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.login_button.Margin = new System.Windows.Forms.Padding(4);
             this.login_button.Name = "login_button";
             this.login_button.Size = new System.Drawing.Size(226, 27);
             this.login_button.TabIndex = 10;
@@ -912,7 +939,7 @@
             // 
             this.device_disconnect_button.Enabled = false;
             this.device_disconnect_button.Location = new System.Drawing.Point(144, 144);
-            this.device_disconnect_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.device_disconnect_button.Margin = new System.Windows.Forms.Padding(4);
             this.device_disconnect_button.Name = "device_disconnect_button";
             this.device_disconnect_button.Size = new System.Drawing.Size(96, 27);
             this.device_disconnect_button.TabIndex = 5;
@@ -923,7 +950,7 @@
             // username_textbox
             // 
             this.username_textbox.Location = new System.Drawing.Point(364, 19);
-            this.username_textbox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.username_textbox.Margin = new System.Windows.Forms.Padding(4);
             this.username_textbox.Name = "username_textbox";
             this.username_textbox.Size = new System.Drawing.Size(145, 27);
             this.username_textbox.TabIndex = 9;
@@ -932,7 +959,7 @@
             // device_connect_button
             // 
             this.device_connect_button.Location = new System.Drawing.Point(8, 144);
-            this.device_connect_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.device_connect_button.Margin = new System.Windows.Forms.Padding(4);
             this.device_connect_button.Name = "device_connect_button";
             this.device_connect_button.Size = new System.Drawing.Size(96, 27);
             this.device_connect_button.TabIndex = 4;
@@ -944,7 +971,7 @@
             // device_ip_textbox
             // 
             this.device_ip_textbox.Location = new System.Drawing.Point(112, 24);
-            this.device_ip_textbox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.device_ip_textbox.Margin = new System.Windows.Forms.Padding(4);
             this.device_ip_textbox.Name = "device_ip_textbox";
             this.device_ip_textbox.Size = new System.Drawing.Size(127, 27);
             this.device_ip_textbox.TabIndex = 2;
@@ -984,7 +1011,7 @@
             // 
             this.device_reset_button.Enabled = false;
             this.device_reset_button.Location = new System.Drawing.Point(738, 638);
-            this.device_reset_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.device_reset_button.Margin = new System.Windows.Forms.Padding(4);
             this.device_reset_button.Name = "device_reset_button";
             this.device_reset_button.Size = new System.Drawing.Size(346, 33);
             this.device_reset_button.TabIndex = 6;
@@ -995,7 +1022,7 @@
             // output_rich_textbox
             // 
             this.output_rich_textbox.Location = new System.Drawing.Point(6, 26);
-            this.output_rich_textbox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.output_rich_textbox.Margin = new System.Windows.Forms.Padding(4);
             this.output_rich_textbox.Name = "output_rich_textbox";
             this.output_rich_textbox.Size = new System.Drawing.Size(1052, 196);
             this.output_rich_textbox.TabIndex = 1;
@@ -1007,9 +1034,9 @@
             this.groupBox8.Controls.Add(this.clear_output_button);
             this.groupBox8.Controls.Add(this.output_rich_textbox);
             this.groupBox8.Location = new System.Drawing.Point(15, 678);
-            this.groupBox8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox8.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox8.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox8.Size = new System.Drawing.Size(1068, 229);
             this.groupBox8.TabIndex = 2;
             this.groupBox8.TabStop = false;
@@ -1043,9 +1070,9 @@
             this.groupBox9.Controls.Add(this.currentSN_textbox);
             this.groupBox9.Controls.Add(this.label9);
             this.groupBox9.Location = new System.Drawing.Point(15, 581);
-            this.groupBox9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox9.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox9.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox9.Size = new System.Drawing.Size(715, 89);
             this.groupBox9.TabIndex = 3;
             this.groupBox9.TabStop = false;
@@ -1055,7 +1082,7 @@
             // 
             this.writeIn_button.Enabled = false;
             this.writeIn_button.Location = new System.Drawing.Point(469, 53);
-            this.writeIn_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.writeIn_button.Margin = new System.Windows.Forms.Padding(4);
             this.writeIn_button.Name = "writeIn_button";
             this.writeIn_button.Size = new System.Drawing.Size(237, 27);
             this.writeIn_button.TabIndex = 5;
@@ -1066,7 +1093,7 @@
             // writeInSN_textbox
             // 
             this.writeInSN_textbox.Location = new System.Drawing.Point(134, 53);
-            this.writeInSN_textbox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.writeInSN_textbox.Margin = new System.Windows.Forms.Padding(4);
             this.writeInSN_textbox.Name = "writeInSN_textbox";
             this.writeInSN_textbox.Size = new System.Drawing.Size(327, 27);
             this.writeInSN_textbox.TabIndex = 4;
@@ -1085,7 +1112,7 @@
             // 
             this.getCurrentSN_button.Enabled = false;
             this.getCurrentSN_button.Location = new System.Drawing.Point(469, 19);
-            this.getCurrentSN_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.getCurrentSN_button.Margin = new System.Windows.Forms.Padding(4);
             this.getCurrentSN_button.Name = "getCurrentSN_button";
             this.getCurrentSN_button.Size = new System.Drawing.Size(237, 27);
             this.getCurrentSN_button.TabIndex = 2;
@@ -1096,7 +1123,7 @@
             // currentSN_textbox
             // 
             this.currentSN_textbox.Location = new System.Drawing.Point(134, 19);
-            this.currentSN_textbox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.currentSN_textbox.Margin = new System.Windows.Forms.Padding(4);
             this.currentSN_textbox.Name = "currentSN_textbox";
             this.currentSN_textbox.Size = new System.Drawing.Size(327, 27);
             this.currentSN_textbox.TabIndex = 1;
@@ -1115,7 +1142,7 @@
             // 
             this.rebootDevice_button.Enabled = false;
             this.rebootDevice_button.Location = new System.Drawing.Point(738, 596);
-            this.rebootDevice_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rebootDevice_button.Margin = new System.Windows.Forms.Padding(4);
             this.rebootDevice_button.Name = "rebootDevice_button";
             this.rebootDevice_button.Size = new System.Drawing.Size(346, 33);
             this.rebootDevice_button.TabIndex = 7;
@@ -1142,7 +1169,7 @@
             this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximumSize = new System.Drawing.Size(1110, 949);
             this.MinimumSize = new System.Drawing.Size(1110, 821);
             this.Name = "Form1";
@@ -1261,5 +1288,7 @@
         private Button calibrationDataWriteIn_button;
         private Button open3CameraTest_button;
         private ToolTip toolTip;
+        private Button button1;
+        private Button button2;
     }
 }

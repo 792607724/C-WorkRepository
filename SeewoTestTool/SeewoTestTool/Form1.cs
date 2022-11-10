@@ -191,6 +191,8 @@ namespace SeewoTestTool
                             device_reset_button.Enabled = true;
                             rebootDevice_button.Enabled = true;
                             open3CameraTest_button.Enabled = true;
+                            button1.Enabled = true;
+                            button2.Enabled = true;
                             // 增加记住IP和端口功能
                             if (rememberCheckBox.Checked == true)
                             {
@@ -398,6 +400,8 @@ namespace SeewoTestTool
                     get_poe_mic_info_button.Enabled = false;
                     open3CameraTest_button.Enabled = false;
                     login_button.Enabled = false;
+                    button1.Enabled = false;
+                    button2.Enabled = false;
                     calibrationDataWriteIn_button.Enabled = false;
                     login_button.Text = "设备连接后可自动登录";
                 }
@@ -1215,6 +1219,47 @@ namespace SeewoTestTool
             output_rich_textbox.AppendText(output_string);
         }
 
+        private void waitForReboot()
+        {
+            while (true)
+            {
+                output_rich_textbox.AppendText("请稍等设备正在重启中……\n");
+                Thread.Sleep(5000);
+                string temp_check_ping_ip_exists = executeCMDCommand($"ping {device_ip_textbox.Text} -n 1");
+                if (temp_check_ping_ip_exists.Contains("TTL"))
+                {
+                    thread_reboot1.Interrupt();
+                    device_disconnect_button_Click(null, null);
+                    output_rich_textbox.AppendText("设备重启完成！\n");
+                    check_current_firmware_button.Enabled = false;
+                    upgrade_button.Enabled = false;
+                    getCurrentSN_button.Enabled = false;
+                    writeIn_button.Enabled = false;
+                    getCurrentPCBA_button.Enabled = false;
+                    writeInPCBA_button.Enabled = false;
+                    login_button.Enabled = false;
+                    login_button.Text = "登录";
+                    login_button.Enabled = true;
+                    start_array_mic_audio_level_test_button.Enabled = false;
+                    stop_array_mic_audio_level_test_button.Enabled = false;
+                    gain_array_mic_audio_level_button.Enabled = false;
+                    gainCurrentVersion_button.Enabled = false;
+                    device_reset_button.Enabled = false;
+                    rebootDevice_button.Enabled = false;
+                    stop_rg_flicker_button.Enabled = false;
+                    open3CameraTest_button.Enabled = false;
+                    start_rg_flicker_button.Enabled = false;
+                    button1.Enabled = false;
+                    button2.Enabled = false;
+                    get_poe_mic_info_button.Enabled = false;
+                    return;
+                }
+            }
+            
+            
+        }
+        Thread thread_reboot1;
+
         /**
          *  BackgroundWorker后台事件，耗时操作完成后的操作，此处多为进行UI操作，结束收尾，数据回收，结果反映
          */
@@ -1233,6 +1278,7 @@ namespace SeewoTestTool
                 {
                     output_rich_textbox.ForeColor = Color.Green;
                     output_rich_textbox.SelectionFont = font;
+                    upgrade_button.Enabled = true;
                 }
                 else if (output_string.Contains("fail"))
                 {
@@ -1242,31 +1288,15 @@ namespace SeewoTestTool
                 output_rich_textbox.AppendText(output_string);
                 if (output_string.Contains("Upgrade finish"))
                 {
+                    thread_reboot1 = new Thread(waitForReboot);
+                    thread_reboot1.IsBackground = true;
+                    thread_reboot1.Start();
+                    /**
                     output_rich_textbox.AppendText("等待20秒设备正在重启中，期间无法操作工具……\n");
                     System.Threading.Thread.Sleep(20000);
+                    */
                     // 这里升级完重启，需要重新连接设备，设备状态那边需要同步更新
-                    device_disconnect_button_Click(null, null);
                 }
-                output_rich_textbox.AppendText("设备重启完成！\n");
-                check_current_firmware_button.Enabled = false;
-                upgrade_button.Enabled = false;
-                getCurrentSN_button.Enabled = false;
-                writeIn_button.Enabled = false;
-                getCurrentPCBA_button.Enabled = false;
-                writeInPCBA_button.Enabled = false;
-                login_button.Enabled = false;
-                login_button.Text = "登录";
-                login_button.Enabled = true;
-                start_array_mic_audio_level_test_button.Enabled = false;
-                stop_array_mic_audio_level_test_button.Enabled = false;
-                gain_array_mic_audio_level_button.Enabled = false;
-                gainCurrentVersion_button.Enabled = false;
-                device_reset_button.Enabled = false;
-                rebootDevice_button.Enabled = false;
-                stop_rg_flicker_button.Enabled = false;
-                open3CameraTest_button.Enabled = false;
-                start_rg_flicker_button.Enabled = false;
-                get_poe_mic_info_button.Enabled = false;
             }
             else
             {
@@ -1349,7 +1379,6 @@ namespace SeewoTestTool
                     device_status_label.Text = "已断开";
                     output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
                 }
-
             }
             catch (Exception ex)
             {
@@ -1382,7 +1411,7 @@ namespace SeewoTestTool
                         writeInSN_textbox.Text = "请写入正确的SN号再进行刷入，示例：FCSC03V000019179E00001，只能包含大写字母和数字，且长度为22位！\n";
                         output_rich_textbox.AppendText("请写入正确的SN号再进行刷入，示例：FCSC03V000019179E00001，只能包含大写字母和数字，且长度为22位！\n");
                     }
-                    else 
+                    else
                     {
                         output_rich_textbox.AppendText(session);
                         string writeDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"setParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"SerialNumber\\\",\\\"value\\\": {{\\\"SN\\\": \\\"{writeINSN}\\\"}}}}\"";
@@ -1716,9 +1745,14 @@ namespace SeewoTestTool
                     if (back_code == "0")
                     {
                         result = "成功";
-                        device_disconnect_button_Click(null, null);
+                        thread_reboot1 = new Thread(waitForReboot);
+                        thread_reboot1.IsBackground = true;
+                        thread_reboot1.Start();
+                        //device_disconnect_button_Click(null, null);
+                        /**
                         output_rich_textbox.AppendText("等待20秒设备正在重启中，期间无法操作工具……\n");
                         System.Threading.Thread.Sleep(20000);
+                        */
                     }
                     else
                     {
@@ -1890,6 +1924,71 @@ namespace SeewoTestTool
             finally
             {
 
+            }
+        }
+
+        SXW0301_Production_line.Fom1 fom1;
+        private void button1_Click(object sender, EventArgs e)
+        {
+            output_rich_textbox.AppendText("【执行操作】打开三摄标定工具操作……\n");
+            if (clientSocket != null && clientSocket.Connected)
+            {
+                if (fom1 == null)
+                {
+                    fom1 = new SXW0301_Production_line.Fom1();
+                    fom1.Show();
+                }
+                else if (fom1.IsDisposed)
+                {
+                    fom1 = new SXW0301_Production_line.Fom1();
+                    fom1.Activate();
+                    fom1.Show();
+                }
+                else
+                {
+                    output_rich_textbox.AppendText("已打开三摄标定工具，请勿重复打开哦\n");
+                }
+            }
+            else
+            {
+                device_ip_textbox.Enabled = true;
+                radioButton_80.Enabled = true;
+                radioButton_8080.Enabled = true;
+                device_status_label.Text = "已断开";
+                output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
+            }
+            
+        }
+
+        SXW0301_Production_line.Form3 form3;
+        private void button2_Click(object sender, EventArgs e)
+        {
+            output_rich_textbox.AppendText("【执行操作】打开三摄拼接图检测工具操作……\n");
+            if (clientSocket != null && clientSocket.Connected)
+            {
+                if (form3 == null)
+                {
+                    form3 = new SXW0301_Production_line.Form3();
+                    form3.Show();
+                }
+                else if (form3.IsDisposed)
+                {
+                    form3 = new SXW0301_Production_line.Form3();
+                    form3.Activate();
+                    form3.Show();
+                }
+                else
+                {
+                    output_rich_textbox.AppendText("已打开三摄拼接图检测工具，请勿重复打开哦\n");
+                }
+            }
+            else
+            {
+                device_ip_textbox.Enabled = true;
+                radioButton_80.Enabled = true;
+                radioButton_8080.Enabled = true;
+                device_status_label.Text = "已断开";
+                output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
             }
         }
     }

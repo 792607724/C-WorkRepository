@@ -1,0 +1,8 @@
+﻿  CvTool_Clr.cpp
+  Calib.lib(alg_calib.obj) : 找到 MSIL .netmodule 或使用 /GL 编译的模块；正在使用 /LTCG 重新启动链接；将 /LTCG 添加到链接命令行以改进链接器性能
+  正在生成代码
+  已完成代码的生成
+Calib.lib(alg_calib.obj) : warning LNK4099: 未找到 PDB“Calib.pdb”(使用“Calib.lib(alg_calib.obj)”或在“D:\work\2022.10.27\SXW0301_Production_line\x64\Release\Calib.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+Calib.lib(alg_common.obj) : warning LNK4099: 未找到 PDB“Calib.pdb”(使用“Calib.lib(alg_common.obj)”或在“D:\work\2022.10.27\SXW0301_Production_line\x64\Release\Calib.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+Calib.lib(alg_corner.obj) : warning LNK4099: 未找到 PDB“Calib.pdb”(使用“Calib.lib(alg_corner.obj)”或在“D:\work\2022.10.27\SXW0301_Production_line\x64\Release\Calib.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+  CLR_CvTool.vcxproj -> D:\work\2022.10.27\SXW0301_Production_line\x64\Release\CLR_CvTool.dll
