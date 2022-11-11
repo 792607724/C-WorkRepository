@@ -178,7 +178,7 @@
             this.uiGroupBox1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiGroupBox1.Name = "uiGroupBox1";
             this.uiGroupBox1.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
-            this.uiGroupBox1.Size = new System.Drawing.Size(1562, 664);
+            this.uiGroupBox1.Size = new System.Drawing.Size(1270, 664);
             this.uiGroupBox1.TabIndex = 11;
             this.uiGroupBox1.Text = "工具菜单";
             this.uiGroupBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1377,7 +1377,7 @@
             this.uiGroupBox3.Controls.Add(this.clear_output_button);
             this.uiGroupBox3.Controls.Add(this.output_rich_textbox);
             this.uiGroupBox3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiGroupBox3.Location = new System.Drawing.Point(7, 670);
+            this.uiGroupBox3.Location = new System.Drawing.Point(5, 670);
             this.uiGroupBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiGroupBox3.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiGroupBox3.Name = "uiGroupBox3";
@@ -1423,12 +1423,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1679, 902);
+            this.ClientSize = new System.Drawing.Size(1282, 902);
             this.Controls.Add(this.uiGroupBox3);
             this.Controls.Add(this.uiGroupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MinimumSize = new System.Drawing.Size(1291, 949);
+            this.MaximumSize = new System.Drawing.Size(1300, 949);
+            this.MinimumSize = new System.Drawing.Size(1300, 949);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "测试标定工具主面板";

@@ -30,11 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form3));
             this.vlcControl1 = new Vlc.DotNet.Forms.VlcControl();
-            this.panel1 = new Sunny.UI.UIPanel();
             this.textBox1 = new Sunny.UI.UITextBox();
             this.label1 = new Sunny.UI.UILabel();
             this.button1 = new Sunny.UI.UIButton();
             this.button2 = new Sunny.UI.UIButton();
+            this.panel1 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.vlcControl1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -42,7 +42,7 @@
             // vlcControl1
             // 
             this.vlcControl1.BackColor = System.Drawing.Color.Black;
-            this.vlcControl1.Location = new System.Drawing.Point(0, 0);
+            this.vlcControl1.Location = new System.Drawing.Point(4, 4);
             this.vlcControl1.Margin = new System.Windows.Forms.Padding(4);
             this.vlcControl1.Name = "vlcControl1";
             this.vlcControl1.Size = new System.Drawing.Size(973, 553);
@@ -54,29 +54,11 @@
             this.vlcControl1.VlcLibDirectoryNeeded += new System.EventHandler<Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs>(this.vlcControl1_VlcLibDirectoryNeeded);
             this.vlcControl1.Click += new System.EventHandler(this.vlcControl1_Click);
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Controls.Add(this.vlcControl1);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.panel1.Location = new System.Drawing.Point(2, 1);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.panel1.MinimumSize = new System.Drawing.Size(1, 1);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(973, 610);
-            this.panel1.TabIndex = 6;
-            this.panel1.Text = "uiPanel1";
-            this.panel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.panel1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
             // textBox1
             // 
             this.textBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox1.Location = new System.Drawing.Point(4, 562);
+            this.textBox1.Location = new System.Drawing.Point(39, 569);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox1.MinimumSize = new System.Drawing.Size(1, 16);
             this.textBox1.Name = "textBox1";
@@ -91,7 +73,7 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("微软雅黑", 20F);
-            this.label1.Location = new System.Drawing.Point(676, 557);
+            this.label1.Location = new System.Drawing.Point(711, 564);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(137, 43);
             this.label1.TabIndex = 1;
@@ -103,7 +85,7 @@
             // 
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button1.Location = new System.Drawing.Point(311, 560);
+            this.button1.Location = new System.Drawing.Point(346, 567);
             this.button1.MinimumSize = new System.Drawing.Size(1, 1);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(151, 43);
@@ -117,7 +99,7 @@
             // 
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button2.Location = new System.Drawing.Point(468, 560);
+            this.button2.Location = new System.Drawing.Point(503, 567);
             this.button2.MinimumSize = new System.Drawing.Size(1, 1);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(148, 43);
@@ -127,16 +109,29 @@
             this.button2.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.vlcControl1);
+            this.panel1.Location = new System.Drawing.Point(2, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(973, 561);
+            this.panel1.TabIndex = 1;
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(976, 614);
+            this.ClientSize = new System.Drawing.Size(979, 613);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MinimumSize = new System.Drawing.Size(821, 504);
+            this.MaximumSize = new System.Drawing.Size(997, 660);
+            this.MinimumSize = new System.Drawing.Size(997, 660);
             this.Name = "Form3";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "测试工具";
@@ -148,10 +143,10 @@
 
         #endregion
         private Vlc.DotNet.Forms.VlcControl vlcControl1;
-        private Sunny.UI.UIPanel panel1;
         private Sunny.UI.UITextBox textBox1;
         private Sunny.UI.UIButton button1;
         private Sunny.UI.UIButton button2;
         private Sunny.UI.UILabel label1;
+        private System.Windows.Forms.FlowLayoutPanel panel1;
     }
 }

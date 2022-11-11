@@ -48,7 +48,7 @@
             this.vlcControl1.Location = new System.Drawing.Point(0, 0);
             this.vlcControl1.Margin = new System.Windows.Forms.Padding(4);
             this.vlcControl1.Name = "vlcControl1";
-            this.vlcControl1.Size = new System.Drawing.Size(869, 692);
+            this.vlcControl1.Size = new System.Drawing.Size(743, 615);
             this.vlcControl1.Spu = -1;
             this.vlcControl1.TabIndex = 0;
             this.vlcControl1.Text = "vlcControl1";
@@ -63,16 +63,16 @@
             this.panel1.Location = new System.Drawing.Point(0, 15);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1749, 696);
+            this.panel1.Size = new System.Drawing.Size(1563, 619);
             this.panel1.TabIndex = 6;
             // 
             // vlcControl2
             // 
             this.vlcControl2.BackColor = System.Drawing.Color.Black;
-            this.vlcControl2.Location = new System.Drawing.Point(877, 0);
+            this.vlcControl2.Location = new System.Drawing.Point(742, 0);
             this.vlcControl2.Margin = new System.Windows.Forms.Padding(4);
             this.vlcControl2.Name = "vlcControl2";
-            this.vlcControl2.Size = new System.Drawing.Size(859, 692);
+            this.vlcControl2.Size = new System.Drawing.Size(821, 615);
             this.vlcControl2.Spu = -1;
             this.vlcControl2.TabIndex = 1;
             this.vlcControl2.Text = "vlcControl2";
@@ -84,12 +84,12 @@
             // 
             this.textBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox1.Location = new System.Drawing.Point(0, 720);
+            this.textBox1.Location = new System.Drawing.Point(0, 633);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox1.MinimumSize = new System.Drawing.Size(1, 16);
             this.textBox1.Name = "textBox1";
             this.textBox1.ShowText = false;
-            this.textBox1.Size = new System.Drawing.Size(593, 52);
+            this.textBox1.Size = new System.Drawing.Size(438, 52);
             this.textBox1.TabIndex = 2;
             this.textBox1.Text = "rtsp://219.198.235.11/sec0";
             this.textBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
@@ -100,7 +100,7 @@
             // 
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button2.Location = new System.Drawing.Point(606, 719);
+            this.button2.Location = new System.Drawing.Point(445, 633);
             this.button2.MinimumSize = new System.Drawing.Size(1, 1);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(115, 53);
@@ -114,7 +114,7 @@
             // 
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button1.Location = new System.Drawing.Point(727, 714);
+            this.button1.Location = new System.Drawing.Point(566, 633);
             this.button1.MinimumSize = new System.Drawing.Size(1, 1);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(274, 66);
@@ -128,7 +128,8 @@
             // 
             this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button3.Location = new System.Drawing.Point(1007, 720);
+            this.button3.Location = new System.Drawing.Point(846, 633);
+            this.button3.MinimumSize = new System.Drawing.Size(1, 1);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(114, 52);
             this.button3.TabIndex = 2;
@@ -141,12 +142,12 @@
             // 
             this.textBox2.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textBox2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox2.Location = new System.Drawing.Point(1140, 716);
+            this.textBox2.Location = new System.Drawing.Point(967, 633);
             this.textBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox2.MinimumSize = new System.Drawing.Size(1, 16);
             this.textBox2.Name = "textBox2";
             this.textBox2.ShowText = false;
-            this.textBox2.Size = new System.Drawing.Size(596, 60);
+            this.textBox2.Size = new System.Drawing.Size(596, 53);
             this.textBox2.TabIndex = 2;
             this.textBox2.Text = "rtsp://219.198.235.11/sec1";
             this.textBox2.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
@@ -158,7 +159,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1752, 781);
+            this.ClientSize = new System.Drawing.Size(1571, 701);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button1);
@@ -167,8 +168,8 @@
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MaximumSize = new System.Drawing.Size(1770, 828);
-            this.MinimumSize = new System.Drawing.Size(1770, 828);
+            this.MaximumSize = new System.Drawing.Size(1589, 748);
+            this.MinimumSize = new System.Drawing.Size(1589, 748);
             this.Name = "Fom1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "标定";
