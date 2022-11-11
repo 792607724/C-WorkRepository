@@ -79,12 +79,13 @@
             this.vlcControl2.VlcLibDirectory = null;
             this.vlcControl2.VlcMediaplayerOptions = null;
             this.vlcControl2.VlcLibDirectoryNeeded += new System.EventHandler<Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs>(this.vlcControl2_VlcLibDirectoryNeeded);
+            this.vlcControl2.Click += new System.EventHandler(this.vlcControl2_Click);
             // 
             // textBox1
             // 
             this.textBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox1.Location = new System.Drawing.Point(0, 633);
+            this.textBox1.Location = new System.Drawing.Point(4, 633);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox1.MinimumSize = new System.Drawing.Size(1, 16);
             this.textBox1.Name = "textBox1";
@@ -100,10 +101,10 @@
             // 
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button2.Location = new System.Drawing.Point(445, 633);
+            this.button2.Location = new System.Drawing.Point(511, 637);
             this.button2.MinimumSize = new System.Drawing.Size(1, 1);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(115, 60);
+            this.button2.Size = new System.Drawing.Size(91, 52);
             this.button2.TabIndex = 9;
             this.button2.Text = "播放";
             this.button2.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -114,10 +115,10 @@
             // 
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button1.Location = new System.Drawing.Point(566, 633);
+            this.button1.Location = new System.Drawing.Point(650, 641);
             this.button1.MinimumSize = new System.Drawing.Size(1, 1);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(274, 60);
+            this.button1.Size = new System.Drawing.Size(201, 52);
             this.button1.TabIndex = 2;
             this.button1.Text = "播放并标定";
             this.button1.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -128,10 +129,10 @@
             // 
             this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button3.Location = new System.Drawing.Point(846, 633);
+            this.button3.Location = new System.Drawing.Point(870, 637);
             this.button3.MinimumSize = new System.Drawing.Size(1, 1);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(114, 60);
+            this.button3.Size = new System.Drawing.Size(90, 52);
             this.button3.TabIndex = 2;
             this.button3.Text = "播放";
             this.button3.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -142,12 +143,12 @@
             // 
             this.textBox2.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textBox2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox2.Location = new System.Drawing.Point(967, 633);
+            this.textBox2.Location = new System.Drawing.Point(1039, 633);
             this.textBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox2.MinimumSize = new System.Drawing.Size(1, 16);
             this.textBox2.Name = "textBox2";
             this.textBox2.ShowText = false;
-            this.textBox2.Size = new System.Drawing.Size(518, 60);
+            this.textBox2.Size = new System.Drawing.Size(446, 60);
             this.textBox2.TabIndex = 2;
             this.textBox2.Text = "rtsp://219.198.235.11/sec1";
             this.textBox2.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
@@ -159,7 +160,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1489, 701);
+            this.ClientSize = new System.Drawing.Size(1191, 560);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button1);
@@ -168,7 +169,8 @@
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MaximumSize = new System.Drawing.Size(1589, 748);
+            this.MaximumSize = new System.Drawing.Size(1507, 748);
+            this.MinimumSize = new System.Drawing.Size(1507, 748);
             this.Name = "Fom1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "标定";

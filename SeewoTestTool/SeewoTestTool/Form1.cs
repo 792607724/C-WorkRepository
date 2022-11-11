@@ -31,6 +31,7 @@ namespace SeewoTestTool
 
         public Form1()
         {
+            this.AutoScaleMode = AutoScaleMode.Dpi;
             InitializeComponent();
             FileStream fs = new FileStream("data.bin", FileMode.OpenOrCreate);
             if (fs.Length > 0)
@@ -2005,6 +2006,16 @@ namespace SeewoTestTool
                 device_status_label.Text = "已断开";
                 output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
             }
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void uiGroupBox3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

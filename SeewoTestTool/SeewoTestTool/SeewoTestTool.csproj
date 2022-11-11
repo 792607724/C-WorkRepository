@@ -10,6 +10,7 @@
     <RootNamespace>SeevisionTestTool</RootNamespace>
     <PackageIcon>seevi_128.png</PackageIcon>
     <ApplicationIcon>seevi_64.ico</ApplicationIcon>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

@@ -182,7 +182,7 @@ namespace SeewoTestTool
                 //MessageBox.Show(useTimes.ToString());
                 fs.Close();
             }
-            /**
+            
             if ((RegKey = RootKey.OpenSubKey("MyRegDataApp", true)) == null)
             {
 
@@ -204,7 +204,7 @@ namespace SeewoTestTool
                     return;
                 }
             }
-            */
+            
             object usetime = RegKey.GetValue("UseTime");
             if (int.Parse(usetime.ToString()) != useTimes )
             {

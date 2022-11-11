@@ -280,5 +280,10 @@ namespace SXW0301_Production_line
         {
 
         }
+
+        private void vlcControl2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
