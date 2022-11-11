@@ -29,27 +29,15 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Regist));
-            this.onlineSoftwareUse_button = new System.Windows.Forms.Button();
             this.offlineSoftwareUse_button = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.uiButton1 = new Sunny.UI.UIButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // onlineSoftwareUse_button
-            // 
-            this.onlineSoftwareUse_button.Font = new System.Drawing.Font("Microsoft YaHei UI", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.onlineSoftwareUse_button.Location = new System.Drawing.Point(14, 14);
-            this.onlineSoftwareUse_button.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.onlineSoftwareUse_button.Name = "onlineSoftwareUse_button";
-            this.onlineSoftwareUse_button.Size = new System.Drawing.Size(521, 421);
-            this.onlineSoftwareUse_button.TabIndex = 0;
-            this.onlineSoftwareUse_button.Text = "限制次数使用打开软件";
-            this.onlineSoftwareUse_button.UseVisualStyleBackColor = true;
-            this.onlineSoftwareUse_button.Click += new System.EventHandler(this.registAndActivateSoftware_button_Click);
             // 
             // offlineSoftwareUse_button
             // 
@@ -114,18 +102,31 @@
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             // 
+            // uiButton1
+            // 
+            this.uiButton1.Font = new System.Drawing.Font("微软雅黑", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiButton1.Location = new System.Drawing.Point(12, 13);
+            this.uiButton1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiButton1.Name = "uiButton1";
+            this.uiButton1.Size = new System.Drawing.Size(522, 421);
+            this.uiButton1.TabIndex = 7;
+            this.uiButton1.Text = "限制次数使用打开软件";
+            this.uiButton1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.uiButton1.Click += new System.EventHandler(this.registAndActivateSoftware_button_Click);
+            // 
             // Regist
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.ClientSize = new System.Drawing.Size(797, 440);
+            this.Controls.Add(this.uiButton1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.offlineSoftwareUse_button);
-            this.Controls.Add(this.onlineSoftwareUse_button);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximumSize = new System.Drawing.Size(815, 487);
@@ -141,13 +142,12 @@
         }
 
         #endregion
-
-        private Button onlineSoftwareUse_button;
         private Button offlineSoftwareUse_button;
         private Button button1;
         private Button button2;
         private TextBox textBox1;
         private Label label1;
         private PictureBox pictureBox1;
+        private Sunny.UI.UIButton uiButton1;
     }
 }

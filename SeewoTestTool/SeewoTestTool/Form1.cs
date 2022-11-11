@@ -190,7 +190,6 @@ namespace SeewoTestTool
                             login_button.Enabled = true;
                             device_reset_button.Enabled = true;
                             rebootDevice_button.Enabled = true;
-                            open3CameraTest_button.Enabled = true;
                             button1.Enabled = true;
                             button2.Enabled = true;
                             // 增加记住IP和端口功能
@@ -398,12 +397,10 @@ namespace SeewoTestTool
                     stop_rg_flicker_button.Enabled = false;
                     start_rg_flicker_button.Enabled = false;
                     get_poe_mic_info_button.Enabled = false;
-                    open3CameraTest_button.Enabled = false;
                     login_button.Enabled = false;
                     button1.Enabled = false;
                     button2.Enabled = false;
-                    calibrationDataWriteIn_button.Enabled = false;
-                    login_button.Text = "设备连接后可自动登录";
+                    login_button.Text = "设备连接后\n可自动登录";
                 }
                 catch (Exception ex)
                 {
@@ -1087,8 +1084,8 @@ namespace SeewoTestTool
             {
                 output_rich_textbox.Text = "";
                 output_rich_textbox.ForeColor = Color.Black;
-                Font font2 = new Font(FontFamily.GenericMonospace, 9, FontStyle.Regular);
-                output_rich_textbox.Font = font2;
+                //Font font2 = new Font(FontFamily., 9, FontStyle.Regular);
+                //output_rich_textbox.Font = font2;
             }
             output_rich_textbox.AppendText("【执行操作】清空输出内容……\n");
         }
@@ -1202,6 +1199,7 @@ namespace SeewoTestTool
             catch (Exception ex)
             {
                 output_string = $"升级操作异常，异常报错Log如下：\n{ex.ToString()}\n";
+                device_disconnect_button_Click(null, null);
             }
             
         }
@@ -1263,7 +1261,6 @@ namespace SeewoTestTool
                     device_reset_button.Enabled = false;
                     rebootDevice_button.Enabled = false;
                     stop_rg_flicker_button.Enabled = false;
-                    open3CameraTest_button.Enabled = false;
                     start_rg_flicker_button.Enabled = false;
                     button1.Enabled = false;
                     button2.Enabled = false;
@@ -1552,7 +1549,6 @@ namespace SeewoTestTool
                         login_button.Enabled = false;
                         stop_rg_flicker_button.Enabled = false;
                         start_rg_flicker_button.Enabled = true;
-                        calibrationDataWriteIn_button.Enabled = true;
                         get_poe_mic_info_button.Enabled = true;
                         // 增加记住username和password功能
                         if (rememberCheckBox.Checked == true)

@@ -21,6 +21,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="SunnyUI" Version="3.2.8.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\SXW0301_Production_line\SXW0301_Production_line\SXW0301_Production_line.csproj" />
   </ItemGroup>
 

@@ -59,3 +59,5 @@ D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SeewoTestTool\SeewoTestTool
 D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SeewoTestTool\SeewoTestTool\obj\Debug\net6.0-windows\SeevisionTestTool.pdb
 D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SeewoTestTool\SeewoTestTool\obj\Debug\net6.0-windows\SeewoTestTool.genruntimeconfig.cache
 D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SeewoTestTool\SeewoTestTool\obj\Debug\net6.0-windows\ref\SeevisionTestTool.dll
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SeewoTestTool\SeewoTestTool\bin\Debug\net6.0-windows\SunnyUI.dll
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SeewoTestTool\SeewoTestTool\bin\Debug\net6.0-windows\SunnyUI.Common.dll
