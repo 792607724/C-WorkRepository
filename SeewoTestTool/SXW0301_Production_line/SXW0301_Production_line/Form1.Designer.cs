@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Fom1));
             this.vlcControl1 = new Vlc.DotNet.Forms.VlcControl();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -45,7 +46,7 @@
             // 
             this.vlcControl1.BackColor = System.Drawing.Color.Black;
             this.vlcControl1.Location = new System.Drawing.Point(0, 0);
-            this.vlcControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.vlcControl1.Margin = new System.Windows.Forms.Padding(4);
             this.vlcControl1.Name = "vlcControl1";
             this.vlcControl1.Size = new System.Drawing.Size(869, 692);
             this.vlcControl1.Spu = -1;
@@ -58,7 +59,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(808, 731);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(135, 70);
             this.button1.TabIndex = 2;
@@ -70,7 +71,7 @@
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
             this.textBox1.Location = new System.Drawing.Point(16, 739);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(607, 33);
             this.textBox1.TabIndex = 4;
@@ -80,7 +81,7 @@
             // 
             this.textBox2.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
             this.textBox2.Location = new System.Drawing.Point(1116, 739);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(607, 33);
             this.textBox2.TabIndex = 5;
@@ -92,7 +93,7 @@
             this.panel1.Controls.Add(this.vlcControl2);
             this.panel1.Controls.Add(this.vlcControl1);
             this.panel1.Location = new System.Drawing.Point(0, 15);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1749, 696);
             this.panel1.TabIndex = 6;
@@ -101,7 +102,7 @@
             // 
             this.vlcControl2.BackColor = System.Drawing.Color.Black;
             this.vlcControl2.Location = new System.Drawing.Point(877, 0);
-            this.vlcControl2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.vlcControl2.Margin = new System.Windows.Forms.Padding(4);
             this.vlcControl2.Name = "vlcControl2";
             this.vlcControl2.Size = new System.Drawing.Size(859, 692);
             this.vlcControl2.Spu = -1;
@@ -114,7 +115,7 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(632, 745);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(100, 29);
             this.button2.TabIndex = 7;
@@ -125,7 +126,7 @@
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(1008, 739);
-            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(100, 29);
             this.button3.TabIndex = 8;
@@ -144,7 +145,8 @@
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximumSize = new System.Drawing.Size(1770, 863);
             this.MinimumSize = new System.Drawing.Size(1770, 863);
             this.Name = "Fom1";
