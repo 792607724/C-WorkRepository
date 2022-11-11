@@ -137,5 +137,10 @@ namespace SXW0301_Production_line
             var videoUri = new Uri(textBox1.Text.Trim());
             vlcControl1.Play(videoUri, options);
         }
+
+        private void vlcControl1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

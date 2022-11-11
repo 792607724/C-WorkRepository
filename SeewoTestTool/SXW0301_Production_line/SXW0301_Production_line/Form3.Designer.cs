@@ -29,113 +29,129 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form3));
-            this.panel1 = new System.Windows.Forms.Panel();
             this.vlcControl1 = new Vlc.DotNet.Forms.VlcControl();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.panel1.SuspendLayout();
+            this.panel1 = new Sunny.UI.UIPanel();
+            this.textBox1 = new Sunny.UI.UITextBox();
+            this.label1 = new Sunny.UI.UILabel();
+            this.button1 = new Sunny.UI.UIButton();
+            this.button2 = new Sunny.UI.UIButton();
             ((System.ComponentModel.ISupportInitialize)(this.vlcControl1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.vlcControl1);
-            this.panel1.Location = new System.Drawing.Point(16, 15);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1123, 586);
-            this.panel1.TabIndex = 0;
             // 
             // vlcControl1
             // 
             this.vlcControl1.BackColor = System.Drawing.Color.Black;
-            this.vlcControl1.Location = new System.Drawing.Point(31, 4);
-            this.vlcControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.vlcControl1.Location = new System.Drawing.Point(0, 0);
+            this.vlcControl1.Margin = new System.Windows.Forms.Padding(4);
             this.vlcControl1.Name = "vlcControl1";
-            this.vlcControl1.Size = new System.Drawing.Size(1068, 579);
+            this.vlcControl1.Size = new System.Drawing.Size(973, 553);
             this.vlcControl1.Spu = -1;
             this.vlcControl1.TabIndex = 0;
             this.vlcControl1.Text = "vlcControl1";
             this.vlcControl1.VlcLibDirectory = null;
             this.vlcControl1.VlcMediaplayerOptions = null;
             this.vlcControl1.VlcLibDirectoryNeeded += new System.EventHandler<Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs>(this.vlcControl1_VlcLibDirectoryNeeded);
+            this.vlcControl1.Click += new System.EventHandler(this.vlcControl1_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.vlcControl1);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.panel1.Location = new System.Drawing.Point(2, 1);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(973, 610);
+            this.panel1.TabIndex = 6;
+            this.panel1.Text = "uiPanel1";
+            this.panel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.panel1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // textBox1
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
-            this.textBox1.Location = new System.Drawing.Point(167, 644);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBox1.Location = new System.Drawing.Point(4, 562);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox1.MinimumSize = new System.Drawing.Size(1, 16);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(435, 33);
-            this.textBox1.TabIndex = 2;
+            this.textBox1.ShowText = false;
+            this.textBox1.Size = new System.Drawing.Size(300, 41);
+            this.textBox1.TabIndex = 7;
             this.textBox1.Text = "rtsp://219.198.235.11/merge";
+            this.textBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.textBox1.Watermark = "";
+            this.textBox1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("宋体", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(960, 644);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Font = new System.Drawing.Font("微软雅黑", 20F);
+            this.label1.Location = new System.Drawing.Point(676, 557);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(128, 37);
-            this.label1.TabIndex = 3;
+            this.label1.Size = new System.Drawing.Size(137, 43);
+            this.label1.TabIndex = 1;
             this.label1.Text = "未检测";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(768, 629);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(184, 68);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "拍照并检测";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(631, 629);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button1.Location = new System.Drawing.Point(311, 560);
+            this.button1.MinimumSize = new System.Drawing.Size(1, 1);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(111, 68);
-            this.button1.TabIndex = 5;
+            this.button1.Size = new System.Drawing.Size(151, 43);
+            this.button1.TabIndex = 1;
             this.button1.Text = "播放";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // button2
+            // 
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button2.Location = new System.Drawing.Point(468, 560);
+            this.button2.MinimumSize = new System.Drawing.Size(1, 1);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(148, 43);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "拍照并检测";
+            this.button2.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button2.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1155, 711);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.ClientSize = new System.Drawing.Size(976, 614);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.MaximumSize = new System.Drawing.Size(1173, 758);
-            this.MinimumSize = new System.Drawing.Size(1173, 758);
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MinimumSize = new System.Drawing.Size(821, 504);
             this.Name = "Form3";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "测试工具";
-            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.vlcControl1)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
         private Vlc.DotNet.Forms.VlcControl vlcControl1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private Sunny.UI.UIPanel panel1;
+        private Sunny.UI.UITextBox textBox1;
+        private Sunny.UI.UIButton button1;
+        private Sunny.UI.UIButton button2;
+        private Sunny.UI.UILabel label1;
     }
 }

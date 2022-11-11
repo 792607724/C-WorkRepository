@@ -192,6 +192,7 @@ namespace SeewoTestTool
                             rebootDevice_button.Enabled = true;
                             button1.Enabled = true;
                             button2.Enabled = true;
+                            upgrade_progressbar.Value = 0;
                             // 增加记住IP和端口功能
                             if (rememberCheckBox.Checked == true)
                             {
@@ -375,6 +376,7 @@ namespace SeewoTestTool
                     device_connect_button.Enabled = true;
                     clientSocket.Close();
                     clientSocket = null;
+                    upgrade_progressbar.Value = 0;
                     device_status_label.Text = "已断开";
                     device_ip_textbox.Enabled = true;
                     radioButton_80.Enabled = true;

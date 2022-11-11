@@ -30,13 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Fom1));
             this.vlcControl1 = new Vlc.DotNet.Forms.VlcControl();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.vlcControl2 = new Vlc.DotNet.Forms.VlcControl();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.textBox1 = new Sunny.UI.UITextBox();
+            this.button2 = new Sunny.UI.UIButton();
+            this.button1 = new Sunny.UI.UIButton();
+            this.button3 = new Sunny.UI.UIButton();
+            this.textBox2 = new Sunny.UI.UITextBox();
             ((System.ComponentModel.ISupportInitialize)(this.vlcControl1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vlcControl2)).BeginInit();
@@ -55,38 +55,6 @@
             this.vlcControl1.VlcLibDirectory = null;
             this.vlcControl1.VlcMediaplayerOptions = null;
             this.vlcControl1.VlcLibDirectoryNeeded += new System.EventHandler<Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs>(this.vlcControl1_VlcLibDirectoryNeeded);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(808, 731);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(135, 70);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "播放并标定";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
-            this.textBox1.Location = new System.Drawing.Point(16, 739);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(607, 33);
-            this.textBox1.TabIndex = 4;
-            this.textBox1.Text = "rtsp://219.198.235.11/sec0";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
-            this.textBox2.Location = new System.Drawing.Point(1116, 739);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(607, 33);
-            this.textBox2.TabIndex = 5;
-            this.textBox2.Text = "rtsp://219.198.235.11/sec1";
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // panel1
             // 
@@ -112,43 +80,95 @@
             this.vlcControl2.VlcMediaplayerOptions = null;
             this.vlcControl2.VlcLibDirectoryNeeded += new System.EventHandler<Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs>(this.vlcControl2_VlcLibDirectoryNeeded);
             // 
+            // textBox1
+            // 
+            this.textBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBox1.Location = new System.Drawing.Point(0, 720);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox1.MinimumSize = new System.Drawing.Size(1, 16);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ShowText = false;
+            this.textBox1.Size = new System.Drawing.Size(593, 52);
+            this.textBox1.TabIndex = 2;
+            this.textBox1.Text = "rtsp://219.198.235.11/sec0";
+            this.textBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.textBox1.Watermark = "";
+            this.textBox1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(632, 745);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button2.Location = new System.Drawing.Point(606, 719);
+            this.button2.MinimumSize = new System.Drawing.Size(1, 1);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 29);
-            this.button2.TabIndex = 7;
+            this.button2.Size = new System.Drawing.Size(115, 53);
+            this.button2.TabIndex = 9;
             this.button2.Text = "播放";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button2.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // button1
+            // 
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button1.Location = new System.Drawing.Point(727, 714);
+            this.button1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(274, 66);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "播放并标定";
+            this.button1.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(1008, 739);
-            this.button3.Margin = new System.Windows.Forms.Padding(4);
+            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button3.Location = new System.Drawing.Point(1007, 720);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(100, 29);
-            this.button3.TabIndex = 8;
+            this.button3.Size = new System.Drawing.Size(114, 52);
+            this.button3.TabIndex = 2;
             this.button3.Text = "播放";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button3.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button3.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // textBox2
+            // 
+            this.textBox2.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBox2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBox2.Location = new System.Drawing.Point(1140, 716);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox2.MinimumSize = new System.Drawing.Size(1, 16);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ShowText = false;
+            this.textBox2.Size = new System.Drawing.Size(596, 60);
+            this.textBox2.TabIndex = 2;
+            this.textBox2.Text = "rtsp://219.198.235.11/sec1";
+            this.textBox2.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.textBox2.Watermark = "";
+            this.textBox2.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // Fom1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1752, 816);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(1752, 781);
             this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MaximumSize = new System.Drawing.Size(1770, 863);
-            this.MinimumSize = new System.Drawing.Size(1770, 863);
+            this.MaximumSize = new System.Drawing.Size(1770, 828);
+            this.MinimumSize = new System.Drawing.Size(1770, 828);
             this.Name = "Fom1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "标定";
@@ -157,20 +177,19 @@
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.vlcControl2)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private Vlc.DotNet.Forms.VlcControl vlcControl1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Panel panel1;
         private Vlc.DotNet.Forms.VlcControl vlcControl2;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private Sunny.UI.UITextBox textBox1;
+        private Sunny.UI.UIButton button2;
+        private Sunny.UI.UIButton button1;
+        private Sunny.UI.UIButton button3;
+        private Sunny.UI.UITextBox textBox2;
     }
 }
 

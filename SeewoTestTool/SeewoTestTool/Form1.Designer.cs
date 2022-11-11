@@ -178,10 +178,11 @@
             this.uiGroupBox1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiGroupBox1.Name = "uiGroupBox1";
             this.uiGroupBox1.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
-            this.uiGroupBox1.Size = new System.Drawing.Size(1260, 664);
+            this.uiGroupBox1.Size = new System.Drawing.Size(1562, 664);
             this.uiGroupBox1.TabIndex = 11;
             this.uiGroupBox1.Text = "工具菜单";
             this.uiGroupBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.uiGroupBox1.ZoomScaleDisabled = true;
             this.uiGroupBox1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // groupBox7
@@ -215,6 +216,7 @@
             this.groupBox7.TabIndex = 27;
             this.groupBox7.Text = "阵列MIC测试";
             this.groupBox7.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.groupBox7.ZoomScaleDisabled = true;
             this.groupBox7.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // stop_array_mic_audio_level_test_button
@@ -227,6 +229,7 @@
             this.stop_array_mic_audio_level_test_button.Size = new System.Drawing.Size(565, 44);
             this.stop_array_mic_audio_level_test_button.TabIndex = 38;
             this.stop_array_mic_audio_level_test_button.Text = "停止阵列MIC音量值测试";
+            this.stop_array_mic_audio_level_test_button.ZoomScaleDisabled = true;
             this.stop_array_mic_audio_level_test_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.stop_array_mic_audio_level_test_button.Click += new System.EventHandler(this.stop_array_mic_audio_level_test_button_Click);
             // 
@@ -240,6 +243,7 @@
             this.start_array_mic_audio_level_test_button.Size = new System.Drawing.Size(565, 44);
             this.start_array_mic_audio_level_test_button.TabIndex = 37;
             this.start_array_mic_audio_level_test_button.Text = "开启阵列MIC音量值测试";
+            this.start_array_mic_audio_level_test_button.ZoomScaleDisabled = true;
             this.start_array_mic_audio_level_test_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.start_array_mic_audio_level_test_button.Click += new System.EventHandler(this.array_mic_audio_level_test_button_Click);
             // 
@@ -253,6 +257,7 @@
             this.gain_array_mic_audio_level_button.Size = new System.Drawing.Size(565, 44);
             this.gain_array_mic_audio_level_button.TabIndex = 36;
             this.gain_array_mic_audio_level_button.Text = "获取各路MIC音频音量值";
+            this.gain_array_mic_audio_level_button.ZoomScaleDisabled = true;
             this.gain_array_mic_audio_level_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.gain_array_mic_audio_level_button.Click += new System.EventHandler(this.gain_array_mic_audio_level_button_Click);
             // 
@@ -266,6 +271,7 @@
             this.volume8_value_label.TabIndex = 35;
             this.volume8_value_label.Text = "0";
             this.volume8_value_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.volume8_value_label.ZoomScaleDisabled = true;
             this.volume8_value_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // label23
@@ -278,6 +284,7 @@
             this.label23.TabIndex = 34;
             this.label23.Text = "Volume8音量值：";
             this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label23.ZoomScaleDisabled = true;
             this.label23.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // volume4_value_label
@@ -290,6 +297,7 @@
             this.volume4_value_label.TabIndex = 33;
             this.volume4_value_label.Text = "0";
             this.volume4_value_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.volume4_value_label.ZoomScaleDisabled = true;
             this.volume4_value_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // label21
@@ -302,6 +310,7 @@
             this.label21.TabIndex = 32;
             this.label21.Text = "Volume4音量值：";
             this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label21.ZoomScaleDisabled = true;
             this.label21.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // volume7_value_label
@@ -314,6 +323,7 @@
             this.volume7_value_label.TabIndex = 31;
             this.volume7_value_label.Text = "0";
             this.volume7_value_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.volume7_value_label.ZoomScaleDisabled = true;
             this.volume7_value_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // label25
@@ -326,6 +336,7 @@
             this.label25.TabIndex = 30;
             this.label25.Text = "Volume7音量值：";
             this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label25.ZoomScaleDisabled = true;
             this.label25.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // volume3_value_label
@@ -338,6 +349,7 @@
             this.volume3_value_label.TabIndex = 29;
             this.volume3_value_label.Text = "0";
             this.volume3_value_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.volume3_value_label.ZoomScaleDisabled = true;
             this.volume3_value_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // label19
@@ -350,6 +362,7 @@
             this.label19.TabIndex = 28;
             this.label19.Text = "Volume3音量值：";
             this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label19.ZoomScaleDisabled = true;
             this.label19.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // volume6_value_label
@@ -362,6 +375,7 @@
             this.volume6_value_label.TabIndex = 27;
             this.volume6_value_label.Text = "0";
             this.volume6_value_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.volume6_value_label.ZoomScaleDisabled = true;
             this.volume6_value_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // label27
@@ -374,6 +388,7 @@
             this.label27.TabIndex = 26;
             this.label27.Text = "Volume6音量值：";
             this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label27.ZoomScaleDisabled = true;
             this.label27.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // volume2_value_label
@@ -386,6 +401,7 @@
             this.volume2_value_label.TabIndex = 25;
             this.volume2_value_label.Text = "0";
             this.volume2_value_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.volume2_value_label.ZoomScaleDisabled = true;
             this.volume2_value_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // label17
@@ -398,6 +414,7 @@
             this.label17.TabIndex = 24;
             this.label17.Text = "Volume2音量值：";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label17.ZoomScaleDisabled = true;
             this.label17.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // volume5_value_label
@@ -410,6 +427,7 @@
             this.volume5_value_label.TabIndex = 23;
             this.volume5_value_label.Text = "0";
             this.volume5_value_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.volume5_value_label.ZoomScaleDisabled = true;
             this.volume5_value_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // label29
@@ -422,6 +440,7 @@
             this.label29.TabIndex = 22;
             this.label29.Text = "Volume5音量值：";
             this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label29.ZoomScaleDisabled = true;
             this.label29.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // volume1_value_label
@@ -434,6 +453,7 @@
             this.volume1_value_label.TabIndex = 21;
             this.volume1_value_label.Text = "0";
             this.volume1_value_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.volume1_value_label.ZoomScaleDisabled = true;
             this.volume1_value_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // label15
@@ -446,6 +466,7 @@
             this.label15.TabIndex = 20;
             this.label15.Text = "Volume1音量值：";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label15.ZoomScaleDisabled = true;
             this.label15.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // groupBox10
@@ -466,6 +487,7 @@
             this.groupBox10.TabIndex = 26;
             this.groupBox10.Text = "PCBA号刷写";
             this.groupBox10.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.groupBox10.ZoomScaleDisabled = true;
             this.groupBox10.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // writeInPCBA_button
@@ -478,6 +500,7 @@
             this.writeInPCBA_button.Size = new System.Drawing.Size(199, 36);
             this.writeInPCBA_button.TabIndex = 5;
             this.writeInPCBA_button.Text = "写入PCBA号";
+            this.writeInPCBA_button.ZoomScaleDisabled = true;
             this.writeInPCBA_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.writeInPCBA_button.Click += new System.EventHandler(this.writeInPCBA_button_Click);
             // 
@@ -494,6 +517,7 @@
             this.writeINPCBA_textbox.TabIndex = 4;
             this.writeINPCBA_textbox.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.writeINPCBA_textbox.Watermark = "";
+            this.writeINPCBA_textbox.ZoomScaleDisabled = true;
             this.writeINPCBA_textbox.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // label13
@@ -506,6 +530,7 @@
             this.label13.TabIndex = 3;
             this.label13.Text = "写入PCBA号：";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label13.ZoomScaleDisabled = true;
             this.label13.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // getCurrentPCBA_button
@@ -518,6 +543,7 @@
             this.getCurrentPCBA_button.Size = new System.Drawing.Size(199, 36);
             this.getCurrentPCBA_button.TabIndex = 2;
             this.getCurrentPCBA_button.Text = "获取当前设备PCBA号";
+            this.getCurrentPCBA_button.ZoomScaleDisabled = true;
             this.getCurrentPCBA_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.getCurrentPCBA_button.Click += new System.EventHandler(this.getCurrentPCBA_button_Click);
             // 
@@ -533,6 +559,7 @@
             this.currentPCBA_textbox.TabIndex = 1;
             this.currentPCBA_textbox.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.currentPCBA_textbox.Watermark = "";
+            this.currentPCBA_textbox.ZoomScaleDisabled = true;
             this.currentPCBA_textbox.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // label14
@@ -545,6 +572,7 @@
             this.label14.TabIndex = 0;
             this.label14.Text = "当前PCBA号为：";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label14.ZoomScaleDisabled = true;
             this.label14.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // uiGroupBox2
@@ -565,6 +593,7 @@
             this.uiGroupBox2.TabIndex = 3;
             this.uiGroupBox2.Text = "SN号刷写";
             this.uiGroupBox2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.uiGroupBox2.ZoomScaleDisabled = true;
             this.uiGroupBox2.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // writeIn_button
@@ -577,6 +606,7 @@
             this.writeIn_button.Size = new System.Drawing.Size(199, 36);
             this.writeIn_button.TabIndex = 4;
             this.writeIn_button.Text = "写入序列号";
+            this.writeIn_button.ZoomScaleDisabled = true;
             this.writeIn_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.writeIn_button.Click += new System.EventHandler(this.writeIn_button_Click);
             // 
@@ -593,6 +623,7 @@
             this.writeInSN_textbox.TabIndex = 3;
             this.writeInSN_textbox.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.writeInSN_textbox.Watermark = "";
+            this.writeInSN_textbox.ZoomScaleDisabled = true;
             this.writeInSN_textbox.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // label10
@@ -605,6 +636,7 @@
             this.label10.TabIndex = 3;
             this.label10.Text = "写入序列号：";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label10.ZoomScaleDisabled = true;
             this.label10.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // getCurrentSN_button
@@ -617,6 +649,7 @@
             this.getCurrentSN_button.Size = new System.Drawing.Size(199, 36);
             this.getCurrentSN_button.TabIndex = 2;
             this.getCurrentSN_button.Text = "获取当前设备序列号";
+            this.getCurrentSN_button.ZoomScaleDisabled = true;
             this.getCurrentSN_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.getCurrentSN_button.Click += new System.EventHandler(this.getCurrentSN_button_Click);
             // 
@@ -632,6 +665,7 @@
             this.currentSN_textbox.TabIndex = 1;
             this.currentSN_textbox.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.currentSN_textbox.Watermark = "";
+            this.currentSN_textbox.ZoomScaleDisabled = true;
             this.currentSN_textbox.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // label9
@@ -644,6 +678,7 @@
             this.label9.TabIndex = 0;
             this.label9.Text = "当前序列号为：";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label9.ZoomScaleDisabled = true;
             this.label9.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // device_reset_button
@@ -656,6 +691,7 @@
             this.device_reset_button.Size = new System.Drawing.Size(186, 36);
             this.device_reset_button.TabIndex = 25;
             this.device_reset_button.Text = "恢复出厂设置";
+            this.device_reset_button.ZoomScaleDisabled = true;
             this.device_reset_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.device_reset_button.Click += new System.EventHandler(this.device_reset_button_Click);
             // 
@@ -669,6 +705,7 @@
             this.rebootDevice_button.Size = new System.Drawing.Size(186, 36);
             this.rebootDevice_button.TabIndex = 24;
             this.rebootDevice_button.Text = "重启设备";
+            this.rebootDevice_button.ZoomScaleDisabled = true;
             this.rebootDevice_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.rebootDevice_button.Click += new System.EventHandler(this.rebootDevice_button_Click);
             // 
@@ -688,6 +725,7 @@
             this.groupBox6.TabIndex = 23;
             this.groupBox6.Text = "Audio IN测试";
             this.groupBox6.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.groupBox6.ZoomScaleDisabled = true;
             this.groupBox6.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // audioin2_result_label
@@ -699,6 +737,7 @@
             this.audioin2_result_label.Size = new System.Drawing.Size(153, 29);
             this.audioin2_result_label.TabIndex = 9;
             this.audioin2_result_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.audioin2_result_label.ZoomScaleDisabled = true;
             this.audioin2_result_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // label18
@@ -711,6 +750,7 @@
             this.label18.TabIndex = 8;
             this.label18.Text = "AUDIO IN 2测试结果：";
             this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label18.ZoomScaleDisabled = true;
             this.label18.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // audioin1_result_label
@@ -722,6 +762,7 @@
             this.audioin1_result_label.Size = new System.Drawing.Size(153, 29);
             this.audioin1_result_label.TabIndex = 7;
             this.audioin1_result_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.audioin1_result_label.ZoomScaleDisabled = true;
             this.audioin1_result_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // label16
@@ -734,6 +775,7 @@
             this.label16.TabIndex = 6;
             this.label16.Text = "AUDIO IN 1测试结果：";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label16.ZoomScaleDisabled = true;
             this.label16.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // uiGroupBox4
@@ -762,6 +804,7 @@
             this.button2.Size = new System.Drawing.Size(183, 29);
             this.button2.TabIndex = 24;
             this.button2.Text = "拼接图检测";
+            this.button2.ZoomScaleDisabled = true;
             this.button2.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -775,6 +818,7 @@
             this.button1.Size = new System.Drawing.Size(186, 29);
             this.button1.TabIndex = 23;
             this.button1.Text = "标定";
+            this.button1.ZoomScaleDisabled = true;
             this.button1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -795,6 +839,7 @@
             this.groupBox5.TabIndex = 21;
             this.groupBox5.Text = "PoE 输出信息";
             this.groupBox5.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.groupBox5.ZoomScaleDisabled = true;
             this.groupBox5.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // get_poe_mic_info_button
@@ -807,6 +852,7 @@
             this.get_poe_mic_info_button.Size = new System.Drawing.Size(268, 36);
             this.get_poe_mic_info_button.TabIndex = 26;
             this.get_poe_mic_info_button.Text = "获取吊麦信息";
+            this.get_poe_mic_info_button.ZoomScaleDisabled = true;
             this.get_poe_mic_info_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.get_poe_mic_info_button.Click += new System.EventHandler(this.get_poe_mic_info_button_Click);
             // 
@@ -819,6 +865,7 @@
             this.poe_mic_hardware_info_label.Size = new System.Drawing.Size(109, 29);
             this.poe_mic_hardware_info_label.TabIndex = 25;
             this.poe_mic_hardware_info_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.poe_mic_hardware_info_label.ZoomScaleDisabled = true;
             this.poe_mic_hardware_info_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // label7
@@ -831,6 +878,7 @@
             this.label7.TabIndex = 24;
             this.label7.Text = "吊麦硬件型号：";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label7.ZoomScaleDisabled = true;
             this.label7.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // poe_mic_firmware_info_label
@@ -842,6 +890,7 @@
             this.poe_mic_firmware_info_label.Size = new System.Drawing.Size(109, 29);
             this.poe_mic_firmware_info_label.TabIndex = 23;
             this.poe_mic_firmware_info_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.poe_mic_firmware_info_label.ZoomScaleDisabled = true;
             this.poe_mic_firmware_info_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // label6
@@ -854,6 +903,7 @@
             this.label6.TabIndex = 22;
             this.label6.Text = "吊麦固件版本：";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label6.ZoomScaleDisabled = true;
             this.label6.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // groupBox4
@@ -882,6 +932,7 @@
             this.stop_rg_flicker_button.Size = new System.Drawing.Size(131, 29);
             this.stop_rg_flicker_button.TabIndex = 3;
             this.stop_rg_flicker_button.Text = "关闭交替闪烁";
+            this.stop_rg_flicker_button.ZoomScaleDisabled = true;
             this.stop_rg_flicker_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.stop_rg_flicker_button.Click += new System.EventHandler(this.stop_rg_flicker_button_Click);
             // 
@@ -895,6 +946,7 @@
             this.start_rg_flicker_button.Size = new System.Drawing.Size(131, 29);
             this.start_rg_flicker_button.TabIndex = 2;
             this.start_rg_flicker_button.Text = "打开交替闪烁";
+            this.start_rg_flicker_button.ZoomScaleDisabled = true;
             this.start_rg_flicker_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.start_rg_flicker_button.Click += new System.EventHandler(this.start_rg_flicker_button_Click);
             // 
@@ -916,10 +968,11 @@
             this.groupBox3.MinimumSize = new System.Drawing.Size(1, 1);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
-            this.groupBox3.Size = new System.Drawing.Size(576, 233);
+            this.groupBox3.Size = new System.Drawing.Size(580, 233);
             this.groupBox3.TabIndex = 20;
             this.groupBox3.Text = "固件升级校验";
             this.groupBox3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.groupBox3.ZoomScaleDisabled = true;
             this.groupBox3.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // upgrade_button
@@ -932,6 +985,7 @@
             this.upgrade_button.Size = new System.Drawing.Size(564, 36);
             this.upgrade_button.TabIndex = 19;
             this.upgrade_button.Text = "开始升级";
+            this.upgrade_button.ZoomScaleDisabled = true;
             this.upgrade_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.upgrade_button.Click += new System.EventHandler(this.upgrade_button_Click);
             // 
@@ -944,6 +998,7 @@
             this.upgrade_progressbar.Size = new System.Drawing.Size(564, 36);
             this.upgrade_progressbar.TabIndex = 18;
             this.upgrade_progressbar.Text = "uiProcessBar1";
+            this.upgrade_progressbar.ZoomScaleDisabled = true;
             this.upgrade_progressbar.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // gainCurrentVersion_button
@@ -956,6 +1011,7 @@
             this.gainCurrentVersion_button.Size = new System.Drawing.Size(209, 36);
             this.gainCurrentVersion_button.TabIndex = 17;
             this.gainCurrentVersion_button.Text = "获取当前固件版本";
+            this.gainCurrentVersion_button.ZoomScaleDisabled = true;
             this.gainCurrentVersion_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.gainCurrentVersion_button.Click += new System.EventHandler(this.gainCurrentVersion_button_Click);
             // 
@@ -969,6 +1025,7 @@
             this.label20.TabIndex = 16;
             this.label20.Text = "当前版本：";
             this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label20.ZoomScaleDisabled = true;
             this.label20.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // check_current_firmware_button
@@ -981,6 +1038,7 @@
             this.check_current_firmware_button.Size = new System.Drawing.Size(209, 36);
             this.check_current_firmware_button.TabIndex = 15;
             this.check_current_firmware_button.Text = "校验当前设备固件";
+            this.check_current_firmware_button.ZoomScaleDisabled = true;
             this.check_current_firmware_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.check_current_firmware_button.Click += new System.EventHandler(this.check_current_firmware_button_Click);
             // 
@@ -996,6 +1054,7 @@
             this.checked_firmware_textbox.TabIndex = 14;
             this.checked_firmware_textbox.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.checked_firmware_textbox.Watermark = "";
+            this.checked_firmware_textbox.ZoomScaleDisabled = true;
             this.checked_firmware_textbox.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // choose_upgrade_firmware_button
@@ -1007,6 +1066,7 @@
             this.choose_upgrade_firmware_button.Size = new System.Drawing.Size(209, 36);
             this.choose_upgrade_firmware_button.TabIndex = 13;
             this.choose_upgrade_firmware_button.Text = "选择升级固件";
+            this.choose_upgrade_firmware_button.ZoomScaleDisabled = true;
             this.choose_upgrade_firmware_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.choose_upgrade_firmware_button.Click += new System.EventHandler(this.choose_upgrade_firmware_button_Click);
             // 
@@ -1022,6 +1082,7 @@
             this.upgrade_firmware_textbox.TabIndex = 12;
             this.upgrade_firmware_textbox.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.upgrade_firmware_textbox.Watermark = "";
+            this.upgrade_firmware_textbox.ZoomScaleDisabled = true;
             this.upgrade_firmware_textbox.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // label5
@@ -1034,6 +1095,7 @@
             this.label5.TabIndex = 11;
             this.label5.Text = "固件升级：";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label5.ZoomScaleDisabled = true;
             this.label5.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // uiGroupBox5
@@ -1065,6 +1127,7 @@
             this.uiGroupBox5.TabIndex = 14;
             this.uiGroupBox5.Text = "连接设备";
             this.uiGroupBox5.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.uiGroupBox5.ZoomScaleDisabled = true;
             this.uiGroupBox5.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // login_button
@@ -1077,6 +1140,7 @@
             this.login_button.Size = new System.Drawing.Size(131, 66);
             this.login_button.TabIndex = 28;
             this.login_button.Text = "登录";
+            this.login_button.ZoomScaleDisabled = true;
             this.login_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.login_button.Click += new System.EventHandler(this.login_button_Click);
             // 
@@ -1090,6 +1154,7 @@
             this.explainLabel.TabIndex = 27;
             this.explainLabel.Text = "所有的功能使用需要用户名密码与服务器进行通信获取相应信息";
             this.explainLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.explainLabel.ZoomScaleDisabled = true;
             this.explainLabel.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // password_textbox
@@ -1109,6 +1174,7 @@
             this.password_textbox.Text = "123456";
             this.password_textbox.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.password_textbox.Watermark = "";
+            this.password_textbox.ZoomScaleDisabled = true;
             this.password_textbox.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // username_textbox
@@ -1125,6 +1191,7 @@
             this.username_textbox.Text = "admin";
             this.username_textbox.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.username_textbox.Watermark = "";
+            this.username_textbox.ZoomScaleDisabled = true;
             this.username_textbox.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // label12
@@ -1137,6 +1204,7 @@
             this.label12.TabIndex = 15;
             this.label12.Text = "密码：";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label12.ZoomScaleDisabled = true;
             this.label12.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // label11
@@ -1149,6 +1217,7 @@
             this.label11.TabIndex = 24;
             this.label11.Text = "用户名：";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label11.ZoomScaleDisabled = true;
             this.label11.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // device_disconnect_button
@@ -1161,6 +1230,7 @@
             this.device_disconnect_button.Size = new System.Drawing.Size(143, 29);
             this.device_disconnect_button.TabIndex = 23;
             this.device_disconnect_button.Text = "断开设备";
+            this.device_disconnect_button.ZoomScaleDisabled = true;
             this.device_disconnect_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.device_disconnect_button.Click += new System.EventHandler(this.device_disconnect_button_Click);
             // 
@@ -1174,6 +1244,7 @@
             this.device_connect_button.TabIndex = 22;
             this.device_connect_button.Text = "连接设备";
             this.device_connect_button.TipsText = "点击连接设备，如果长时间没有响应，请检查设备IP地址以及当前电脑环境是否配置好。";
+            this.device_connect_button.ZoomScaleDisabled = true;
             this.device_connect_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.device_connect_button.Click += new System.EventHandler(this.device_connect_button_Click);
             // 
@@ -1186,6 +1257,7 @@
             this.getSeewoDevice.Size = new System.Drawing.Size(94, 29);
             this.getSeewoDevice.TabIndex = 21;
             this.getSeewoDevice.Text = "刷新网口";
+            this.getSeewoDevice.ZoomScaleDisabled = true;
             this.getSeewoDevice.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.getSeewoDevice.Click += new System.EventHandler(this.getSeewoDevice_Click);
             // 
@@ -1199,6 +1271,7 @@
             this.device_status_label.TabIndex = 2;
             this.device_status_label.Text = "已断开";
             this.device_status_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.device_status_label.ZoomScaleDisabled = true;
             this.device_status_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // label3
@@ -1211,6 +1284,7 @@
             this.label3.TabIndex = 20;
             this.label3.Text = "设备状态：";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label3.ZoomScaleDisabled = true;
             this.label3.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // rememberCheckBox
@@ -1225,6 +1299,7 @@
             this.rememberCheckBox.Size = new System.Drawing.Size(188, 36);
             this.rememberCheckBox.TabIndex = 19;
             this.rememberCheckBox.Text = "记住当前用户信息";
+            this.rememberCheckBox.ZoomScaleDisabled = true;
             this.rememberCheckBox.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // radioButton_8080
@@ -1238,6 +1313,7 @@
             this.radioButton_8080.Size = new System.Drawing.Size(79, 36);
             this.radioButton_8080.TabIndex = 18;
             this.radioButton_8080.Text = "8080";
+            this.radioButton_8080.ZoomScaleDisabled = true;
             this.radioButton_8080.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // radioButton_80
@@ -1251,6 +1327,7 @@
             this.radioButton_80.Size = new System.Drawing.Size(52, 36);
             this.radioButton_80.TabIndex = 17;
             this.radioButton_80.Text = "80";
+            this.radioButton_80.ZoomScaleDisabled = true;
             this.radioButton_80.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // label2
@@ -1263,6 +1340,7 @@
             this.label2.TabIndex = 16;
             this.label2.Text = "设备端口号：";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label2.ZoomScaleDisabled = true;
             this.label2.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // device_ip_textbox
@@ -1278,6 +1356,7 @@
             this.device_ip_textbox.TabIndex = 15;
             this.device_ip_textbox.Text = "219.198.235.11";
             this.device_ip_textbox.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.device_ip_textbox.ZoomScaleDisabled = true;
             this.device_ip_textbox.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // label1
@@ -1290,6 +1369,7 @@
             this.label1.TabIndex = 14;
             this.label1.Text = "设备IP地址：";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label1.ZoomScaleDisabled = true;
             this.label1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // uiGroupBox3
@@ -1302,10 +1382,11 @@
             this.uiGroupBox3.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiGroupBox3.Name = "uiGroupBox3";
             this.uiGroupBox3.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
-            this.uiGroupBox3.Size = new System.Drawing.Size(1260, 229);
+            this.uiGroupBox3.Size = new System.Drawing.Size(1274, 229);
             this.uiGroupBox3.TabIndex = 3;
             this.uiGroupBox3.Text = "输出";
             this.uiGroupBox3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.uiGroupBox3.ZoomScaleDisabled = true;
             this.uiGroupBox3.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // clear_output_button
@@ -1317,6 +1398,7 @@
             this.clear_output_button.Size = new System.Drawing.Size(59, 31);
             this.clear_output_button.TabIndex = 3;
             this.clear_output_button.Text = "清空";
+            this.clear_output_button.ZoomScaleDisabled = true;
             this.clear_output_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.clear_output_button.Click += new System.EventHandler(this.clear_output_button_Click);
             // 
@@ -1330,9 +1412,10 @@
             this.output_rich_textbox.Name = "output_rich_textbox";
             this.output_rich_textbox.Padding = new System.Windows.Forms.Padding(2);
             this.output_rich_textbox.ShowText = false;
-            this.output_rich_textbox.Size = new System.Drawing.Size(1252, 205);
+            this.output_rich_textbox.Size = new System.Drawing.Size(1266, 205);
             this.output_rich_textbox.TabIndex = 3;
             this.output_rich_textbox.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.output_rich_textbox.ZoomScaleDisabled = true;
             this.output_rich_textbox.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.output_rich_textbox.TextChanged += new System.EventHandler(this.richTextChanged_to);
             // 
@@ -1340,12 +1423,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1273, 902);
+            this.ClientSize = new System.Drawing.Size(1679, 902);
             this.Controls.Add(this.uiGroupBox3);
             this.Controls.Add(this.uiGroupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MaximumSize = new System.Drawing.Size(1291, 949);
             this.MinimumSize = new System.Drawing.Size(1291, 949);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
