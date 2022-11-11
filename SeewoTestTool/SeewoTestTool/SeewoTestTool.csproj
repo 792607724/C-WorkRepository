@@ -8,7 +8,17 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <AssemblyName>SeevisionTestTool</AssemblyName>
     <RootNamespace>SeevisionTestTool</RootNamespace>
+    <PackageIcon>seevi_128.png</PackageIcon>
+    <ApplicationIcon>seevi_64.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Optimize>True</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="seevi_64.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\SXW0301_Production_line\SXW0301_Production_line\SXW0301_Production_line.csproj" />
@@ -27,6 +37,17 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="seevi_128.ico">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="seevi_128.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

@@ -157,7 +157,7 @@
             // button2
             // 
             this.button2.Enabled = false;
-            this.button2.Location = new System.Drawing.Point(528, 510);
+            this.button2.Location = new System.Drawing.Point(528, 504);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(537, 59);
             this.button2.TabIndex = 10;
@@ -168,7 +168,7 @@
             // button1
             // 
             this.button1.Enabled = false;
-            this.button1.Location = new System.Drawing.Point(18, 510);
+            this.button1.Location = new System.Drawing.Point(18, 504);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(504, 59);
             this.button1.TabIndex = 9;
@@ -233,6 +233,7 @@
             // 
             // writeINPCBA_textbox
             // 
+            this.writeINPCBA_textbox.Enabled = false;
             this.writeINPCBA_textbox.Location = new System.Drawing.Point(134, 53);
             this.writeINPCBA_textbox.Margin = new System.Windows.Forms.Padding(4);
             this.writeINPCBA_textbox.Name = "writeINPCBA_textbox";
@@ -1092,6 +1093,7 @@
             // 
             // writeInSN_textbox
             // 
+            this.writeInSN_textbox.Enabled = false;
             this.writeInSN_textbox.Location = new System.Drawing.Point(134, 53);
             this.writeInSN_textbox.Margin = new System.Windows.Forms.Padding(4);
             this.writeInSN_textbox.Name = "writeInSN_textbox";
@@ -1171,7 +1173,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximumSize = new System.Drawing.Size(1110, 949);
-            this.MinimumSize = new System.Drawing.Size(1110, 821);
+            this.MinimumSize = new System.Drawing.Size(1110, 949);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "测试标定工具主面板";

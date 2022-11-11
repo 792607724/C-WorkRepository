@@ -1134,7 +1134,7 @@ namespace SeewoTestTool
                                     {
                                         // 升级操作 - 将固件推进去 后面确定下来了，这个ip从输入框里面获取
                                         output_string = executeCMDCommand($"curl -T {filePath} \"ftp://{ip_users}/\"");
-                                        progress_i += 50;
+                                        progress_i += 30;
                                         backgroundworker_firmwareupgrade.ReportProgress(progress_i, "Pushing\n");
                                         System.Threading.Thread.Sleep(1000);
 
@@ -1143,7 +1143,7 @@ namespace SeewoTestTool
                                         {
                                             output_string = executeCMDCommand("type nul> need_upgrade");
                                         }
-                                        progress_i += 10;
+                                        progress_i += 20;
                                         backgroundworker_firmwareupgrade.ReportProgress(progress_i, "Createing\n");
                                         System.Threading.Thread.Sleep(1000);
 
@@ -1177,7 +1177,7 @@ namespace SeewoTestTool
                                             }
                                             if (output_string.Contains("success") || output_string.Contains("fail"))
                                             {
-                                                progress_i = 100;
+                                                //progress_i = 100;
                                                 backgroundworker_firmwareupgrade.ReportProgress(progress_i, "Upgrading\n");
                                                 backgroundworker_firmwareupgrade.CancelAsync();
                                                 break;
@@ -1185,7 +1185,7 @@ namespace SeewoTestTool
                                             progress_i += 5;
                                             if (progress_i >= 100)
                                             {
-                                                progress_i = 100;
+                                                //progress_i = 100;
                                             }
                                             System.Threading.Thread.Sleep(500);
                                             output_string = "正在升级中，请稍后！";
@@ -1219,18 +1219,34 @@ namespace SeewoTestTool
             output_rich_textbox.AppendText(output_string);
         }
 
+        int lastValue;
         private void waitForReboot()
         {
+            MessageBox.Show("请稍等设备正在重启中……\n", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             while (true)
             {
+                Font font = new Font(FontFamily.GenericMonospace, 25, FontStyle.Bold);
+                output_rich_textbox.ForeColor = Color.MediumVioletRed;
+                output_rich_textbox.SelectionFont = font;
                 output_rich_textbox.AppendText("请稍等设备正在重启中……\n");
                 Thread.Sleep(5000);
                 string temp_check_ping_ip_exists = executeCMDCommand($"ping {device_ip_textbox.Text} -n 1");
+                if (upgrade_progressbar.Value != 0)
+                {
+                    lastValue = 100 - upgrade_progressbar.Value;
+                    if (lastValue != 0)
+                    {
+                        upgrade_progressbar.Value += 10;
+                    }
+                }
+
                 if (temp_check_ping_ip_exists.Contains("TTL"))
                 {
+                    Thread.Sleep(8000);
                     thread_reboot1.Interrupt();
                     device_disconnect_button_Click(null, null);
                     output_rich_textbox.AppendText("设备重启完成！\n");
+                    upgrade_progressbar.Value = 100;
                     check_current_firmware_button.Enabled = false;
                     upgrade_button.Enabled = false;
                     getCurrentSN_button.Enabled = false;
@@ -1397,6 +1413,7 @@ namespace SeewoTestTool
          */
         private void writeIn_button_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("功能暂时关闭以防止误操作，每块板子只有三次写入机会。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             //if (true)
             output_rich_textbox.AppendText("【执行操作】写入指定的设备SN号……\n");
             try
@@ -1625,13 +1642,13 @@ namespace SeewoTestTool
          */
         private void writeInPCBA_button_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("功能暂时关闭以防止误操作，每块板子只有三次写入机会。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             //if (true)
             output_rich_textbox.AppendText("【执行操作】写入指定PCBA号……\n");
             try
             {
                 if (clientSocket != null && clientSocket.Connected)
                 {
-
                     // 写入指定PCBA号
                     string writeINPCBA = writeINPCBA_textbox.Text;
                     if (string.IsNullOrEmpty(writeINPCBA) || writeINPCBA.Length != 19 || !new Regex("^[A-Z|0-9]+$").IsMatch(writeINPCBA))
