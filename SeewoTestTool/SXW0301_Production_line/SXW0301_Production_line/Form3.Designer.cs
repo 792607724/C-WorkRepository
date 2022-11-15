@@ -104,7 +104,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(148, 43);
             this.button2.TabIndex = 1;
-            this.button2.Text = "拍照并检测";
+            this.button2.Text = "拍照检测";
             this.button2.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button2.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.button2.Click += new System.EventHandler(this.button2_Click);

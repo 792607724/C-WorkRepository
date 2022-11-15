@@ -36,6 +36,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.uiButton1 = new Sunny.UI.UIButton();
+            this.software_version_get_uiButton2 = new Sunny.UI.UIButton();
+            this.lastUseTimes_uiLabel1 = new Sunny.UI.UILabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -94,7 +96,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(541, 13);
+            this.pictureBox1.Location = new System.Drawing.Point(540, 13);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(243, 421);
@@ -104,15 +106,43 @@
             // 
             // uiButton1
             // 
-            this.uiButton1.Font = new System.Drawing.Font("微软雅黑", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.uiButton1.Font = new System.Drawing.Font("华文彩云", 70.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiButton1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.uiButton1.Location = new System.Drawing.Point(12, 13);
             this.uiButton1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiButton1.Name = "uiButton1";
             this.uiButton1.Size = new System.Drawing.Size(522, 421);
+            this.uiButton1.Style = Sunny.UI.UIStyle.Custom;
             this.uiButton1.TabIndex = 7;
-            this.uiButton1.Text = "限制次数使用打开软件";
+            this.uiButton1.Text = "打开软件";
             this.uiButton1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.uiButton1.Click += new System.EventHandler(this.registAndActivateSoftware_button_Click);
+            // 
+            // software_version_get_uiButton2
+            // 
+            this.software_version_get_uiButton2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.software_version_get_uiButton2.Location = new System.Drawing.Point(603, 368);
+            this.software_version_get_uiButton2.MinimumSize = new System.Drawing.Size(1, 1);
+            this.software_version_get_uiButton2.Name = "software_version_get_uiButton2";
+            this.software_version_get_uiButton2.Size = new System.Drawing.Size(125, 44);
+            this.software_version_get_uiButton2.TabIndex = 8;
+            this.software_version_get_uiButton2.Text = "软件版本";
+            this.software_version_get_uiButton2.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.software_version_get_uiButton2.Click += new System.EventHandler(this.software_version_get_uiButton2_Click);
+            // 
+            // lastUseTimes_uiLabel1
+            // 
+            this.lastUseTimes_uiLabel1.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lastUseTimes_uiLabel1.ForeColor = System.Drawing.Color.Red;
+            this.lastUseTimes_uiLabel1.Location = new System.Drawing.Point(550, 26);
+            this.lastUseTimes_uiLabel1.Name = "lastUseTimes_uiLabel1";
+            this.lastUseTimes_uiLabel1.Size = new System.Drawing.Size(233, 29);
+            this.lastUseTimes_uiLabel1.Style = Sunny.UI.UIStyle.Custom;
+            this.lastUseTimes_uiLabel1.TabIndex = 9;
+            this.lastUseTimes_uiLabel1.Text = "软件剩余使用次数：";
+            this.lastUseTimes_uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lastUseTimes_uiLabel1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // Regist
             // 
@@ -120,6 +150,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.ClientSize = new System.Drawing.Size(797, 440);
+            this.Controls.Add(this.lastUseTimes_uiLabel1);
+            this.Controls.Add(this.software_version_get_uiButton2);
             this.Controls.Add(this.uiButton1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
@@ -149,5 +181,7 @@
         private Label label1;
         private PictureBox pictureBox1;
         private Sunny.UI.UIButton uiButton1;
+        private Sunny.UI.UIButton software_version_get_uiButton2;
+        private Sunny.UI.UILabel lastUseTimes_uiLabel1;
     }
 }

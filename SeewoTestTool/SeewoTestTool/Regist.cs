@@ -11,6 +11,23 @@ namespace SeewoTestTool
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             InitializeComponent();
             HidePrivateFiles();
+            int useTimes = 0;
+            // 获取本地隐藏文件中的使用次数
+            using (FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+            {
+                /**
+                using (StreamReader sr = new StreamReader(fs, Encoding.GetEncoding("gb2312")))
+                {
+                    useTimes = int.Parse(sr.ReadToEnd().ToString());
+                    sr.Close();
+                }
+                */
+                BinaryFormatter formatter = new BinaryFormatter();
+                useTimes = (int)formatter.Deserialize(fs);
+                //MessageBox.Show(useTimes.ToString());
+                fs.Close();
+                lastUseTimes_uiLabel1.Text = $"软件剩余使用次数：{useTimes}";
+            }
 
         }
 
@@ -213,7 +230,7 @@ namespace SeewoTestTool
             }
             try
             {
-                MessageBox.Show($"您还可以使用本软件：{int.Parse(usetime.ToString())}次！", "确认", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show($"您还可以使用本软件：{int.Parse(usetime.ToString())}次！", "确认", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 int newtime = int.Parse(useTimes.ToString()) - 1;
 
                 if (newtime < 0)
@@ -227,7 +244,6 @@ namespace SeewoTestTool
                 }
                 else
                 {
-
                     RegKey.SetValue("UseTime", (object)newtime);
                     global::System.IO.FileInfo txtFile = new global::System.IO.FileInfo(fileName);
                     FileStream fileStream = new FileStream(fileName, FileMode.Truncate, FileAccess.ReadWrite);
@@ -303,6 +319,12 @@ namespace SeewoTestTool
             MessageBox.Show($"激活使用次数成功 - 软件可使用次数：[{useTimes}]");
 
 
+        }
+
+        string software_version = "V2022_11_14";
+        private void software_version_get_uiButton2_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show($"当前软件版本：{software_version}");
         }
 
         /**

@@ -33,6 +33,7 @@ namespace SeewoTestTool
         {
             this.AutoScaleMode = AutoScaleMode.Dpi;
             InitializeComponent();
+            output_rich_textbox.AppendText("欢迎使用视熙测试标定软件！");
             FileStream fs = new FileStream("data.bin", FileMode.OpenOrCreate);
             if (fs.Length > 0)
             {
@@ -1046,7 +1047,7 @@ namespace SeewoTestTool
                 {
                     clientSocket.Close();
                     // 关闭SXW0301_Production_line.exe
-                    executeCMDCommand("taskkill /f /t /im SXW0301_Production_line.exe");
+                    executeCMDCommand("taskkill /f /t /im SeevisionTestTool.exe");
                     Application.Exit();
                 }
                 catch (Exception ex)
@@ -1060,7 +1061,7 @@ namespace SeewoTestTool
             }
             else
             {
-                executeCMDCommand("taskkill /f /t /im SXW0301_Production_line.exe");
+                //executeCMDCommand("taskkill /f /t /im SeevisionTestTool.exe");
                 new Regist().Show();
             }
         }
@@ -1223,7 +1224,7 @@ namespace SeewoTestTool
         int lastValue;
         private void waitForReboot()
         {
-            MessageBox.Show("请稍等设备正在重启中……\n", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //MessageBox.Show("请稍等设备正在重启中……\n", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             while (true)
             {
                 Font font = new Font(FontFamily.GenericMonospace, 25, FontStyle.Bold);

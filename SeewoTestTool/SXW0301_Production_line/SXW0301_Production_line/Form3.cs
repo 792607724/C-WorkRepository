@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Threading;
 
 namespace SXW0301_Production_line
 {
@@ -113,6 +114,8 @@ namespace SXW0301_Production_line
                 myPro.StartInfo.CreateNoWindow = true;
                 myPro.Start();
                 myPro.WaitForExit();
+                //myPro.Close();
+
                 if (myPro.ExitCode == 0)
                 {
                     label1.ForeColor = Color.Green;
@@ -129,13 +132,33 @@ namespace SXW0301_Production_line
                 MessageBox.Show("请先播放");
             }
         }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
+        Thread player_1_open;
+        private void player_1_open_func()
+        { 
             //播放
             string[] options = { ":network-caching=200", ":rtsp-tcp", ":no-audio" };// { ":network-caching=100", ":rtsp -tcp", ":no-audio" }; //  --avcodec-hw={any,d3d11va,dxva2,none} 
             var videoUri = new Uri(textBox1.Text.Trim());
             vlcControl1.Play(videoUri, options);
+
+        }
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            /**
+            string[] options = { ":network-caching=200", ":rtsp-tcp", ":no-audio" };// { ":network-caching=100", ":rtsp -tcp", ":no-audio" }; //  --avcodec-hw={any,d3d11va,dxva2,none} 
+            var videoUri = new Uri(textBox1.Text.Trim());
+            vlcControl1.Play(videoUri, options);
+            */
+            if (player_1_open != null && vlcControl1.IsPlaying)
+            {
+                MessageBox.Show("请勿重复打开出流哦！");
+            }
+            else
+            {
+                player_1_open = new Thread(player_1_open_func);
+                player_1_open.IsBackground = true;
+                player_1_open.Start();
+            }
+
         }
 
         private void vlcControl1_Click(object sender, EventArgs e)

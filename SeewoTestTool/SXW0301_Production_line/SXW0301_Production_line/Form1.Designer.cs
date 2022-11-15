@@ -106,7 +106,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(91, 52);
             this.button2.TabIndex = 9;
-            this.button2.Text = "播放";
+            this.button2.Text = "播放sec0";
             this.button2.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button2.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
@@ -120,7 +120,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(201, 52);
             this.button1.TabIndex = 2;
-            this.button1.Text = "播放并标定";
+            this.button1.Text = "标定";
             this.button1.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -134,7 +134,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(90, 52);
             this.button3.TabIndex = 2;
-            this.button3.Text = "播放";
+            this.button3.Text = "播放sec1";
             this.button3.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button3.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -160,7 +160,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1191, 560);
+            this.ClientSize = new System.Drawing.Size(1489, 701);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button1);

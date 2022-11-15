@@ -135,12 +135,12 @@
             // 
             this.currentVersion_label.AutoSize = true;
             this.currentVersion_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.currentVersion_label.Font = new System.Drawing.Font("Microsoft YaHei UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.currentVersion_label.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.currentVersion_label.ForeColor = System.Drawing.Color.ForestGreen;
             this.currentVersion_label.Location = new System.Drawing.Point(128, 100);
             this.currentVersion_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.currentVersion_label.Name = "currentVersion_label";
-            this.currentVersion_label.Size = new System.Drawing.Size(0, 32);
+            this.currentVersion_label.Size = new System.Drawing.Size(0, 27);
             this.currentVersion_label.TabIndex = 9;
             // 
             // backgroundworker_firmwareupgrade
@@ -209,7 +209,6 @@
             this.groupBox7.Controls.Add(this.volume1_value_label);
             this.groupBox7.Controls.Add(this.label15);
             this.groupBox7.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox7.ForeColor = System.Drawing.Color.Black;
             this.groupBox7.Location = new System.Drawing.Point(487, 239);
             this.groupBox7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox7.MinimumSize = new System.Drawing.Size(1, 1);
@@ -231,6 +230,7 @@
             this.stop_array_mic_audio_level_test_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.stop_array_mic_audio_level_test_button.Name = "stop_array_mic_audio_level_test_button";
             this.stop_array_mic_audio_level_test_button.Size = new System.Drawing.Size(461, 35);
+            this.stop_array_mic_audio_level_test_button.Style = Sunny.UI.UIStyle.Custom;
             this.stop_array_mic_audio_level_test_button.TabIndex = 38;
             this.stop_array_mic_audio_level_test_button.Text = "停止阵列MIC音量值测试";
             this.stop_array_mic_audio_level_test_button.ZoomScaleDisabled = true;
@@ -245,6 +245,7 @@
             this.start_array_mic_audio_level_test_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.start_array_mic_audio_level_test_button.Name = "start_array_mic_audio_level_test_button";
             this.start_array_mic_audio_level_test_button.Size = new System.Drawing.Size(461, 35);
+            this.start_array_mic_audio_level_test_button.Style = Sunny.UI.UIStyle.Custom;
             this.start_array_mic_audio_level_test_button.TabIndex = 37;
             this.start_array_mic_audio_level_test_button.Text = "开启阵列MIC音量值测试";
             this.start_array_mic_audio_level_test_button.ZoomScaleDisabled = true;
@@ -259,6 +260,7 @@
             this.gain_array_mic_audio_level_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.gain_array_mic_audio_level_button.Name = "gain_array_mic_audio_level_button";
             this.gain_array_mic_audio_level_button.Size = new System.Drawing.Size(461, 35);
+            this.gain_array_mic_audio_level_button.Style = Sunny.UI.UIStyle.Custom;
             this.gain_array_mic_audio_level_button.TabIndex = 36;
             this.gain_array_mic_audio_level_button.Text = "获取各路MIC音频音量值";
             this.gain_array_mic_audio_level_button.ZoomScaleDisabled = true;
@@ -272,6 +274,7 @@
             this.volume8_value_label.Location = new System.Drawing.Point(392, 153);
             this.volume8_value_label.Name = "volume8_value_label";
             this.volume8_value_label.Size = new System.Drawing.Size(64, 20);
+            this.volume8_value_label.Style = Sunny.UI.UIStyle.Custom;
             this.volume8_value_label.TabIndex = 35;
             this.volume8_value_label.Text = "0";
             this.volume8_value_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -282,7 +285,6 @@
             // 
             this.label23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.label23.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label23.ForeColor = System.Drawing.Color.Black;
             this.label23.Location = new System.Drawing.Point(257, 149);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(138, 29);
@@ -300,6 +302,7 @@
             this.volume4_value_label.Location = new System.Drawing.Point(137, 149);
             this.volume4_value_label.Name = "volume4_value_label";
             this.volume4_value_label.Size = new System.Drawing.Size(64, 20);
+            this.volume4_value_label.Style = Sunny.UI.UIStyle.Custom;
             this.volume4_value_label.TabIndex = 33;
             this.volume4_value_label.Text = "0";
             this.volume4_value_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -310,7 +313,6 @@
             // 
             this.label21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.label21.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label21.ForeColor = System.Drawing.Color.Black;
             this.label21.Location = new System.Drawing.Point(8, 145);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(138, 29);
@@ -328,6 +330,7 @@
             this.volume7_value_label.Location = new System.Drawing.Point(392, 109);
             this.volume7_value_label.Name = "volume7_value_label";
             this.volume7_value_label.Size = new System.Drawing.Size(64, 20);
+            this.volume7_value_label.Style = Sunny.UI.UIStyle.Custom;
             this.volume7_value_label.TabIndex = 31;
             this.volume7_value_label.Text = "0";
             this.volume7_value_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -338,7 +341,6 @@
             // 
             this.label25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.label25.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label25.ForeColor = System.Drawing.Color.Black;
             this.label25.Location = new System.Drawing.Point(257, 105);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(138, 29);
@@ -356,6 +358,7 @@
             this.volume3_value_label.Location = new System.Drawing.Point(137, 109);
             this.volume3_value_label.Name = "volume3_value_label";
             this.volume3_value_label.Size = new System.Drawing.Size(64, 20);
+            this.volume3_value_label.Style = Sunny.UI.UIStyle.Custom;
             this.volume3_value_label.TabIndex = 29;
             this.volume3_value_label.Text = "0";
             this.volume3_value_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -366,7 +369,6 @@
             // 
             this.label19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.label19.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label19.ForeColor = System.Drawing.Color.Black;
             this.label19.Location = new System.Drawing.Point(8, 105);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(138, 29);
@@ -384,6 +386,7 @@
             this.volume6_value_label.Location = new System.Drawing.Point(392, 71);
             this.volume6_value_label.Name = "volume6_value_label";
             this.volume6_value_label.Size = new System.Drawing.Size(64, 20);
+            this.volume6_value_label.Style = Sunny.UI.UIStyle.Custom;
             this.volume6_value_label.TabIndex = 27;
             this.volume6_value_label.Text = "0";
             this.volume6_value_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -394,7 +397,6 @@
             // 
             this.label27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.label27.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label27.ForeColor = System.Drawing.Color.Black;
             this.label27.Location = new System.Drawing.Point(257, 64);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(138, 29);
@@ -412,6 +414,7 @@
             this.volume2_value_label.Location = new System.Drawing.Point(137, 68);
             this.volume2_value_label.Name = "volume2_value_label";
             this.volume2_value_label.Size = new System.Drawing.Size(64, 20);
+            this.volume2_value_label.Style = Sunny.UI.UIStyle.Custom;
             this.volume2_value_label.TabIndex = 25;
             this.volume2_value_label.Text = "0";
             this.volume2_value_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -422,7 +425,6 @@
             // 
             this.label17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.label17.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label17.ForeColor = System.Drawing.Color.Black;
             this.label17.Location = new System.Drawing.Point(9, 64);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(138, 29);
@@ -440,6 +442,7 @@
             this.volume5_value_label.Location = new System.Drawing.Point(392, 28);
             this.volume5_value_label.Name = "volume5_value_label";
             this.volume5_value_label.Size = new System.Drawing.Size(64, 20);
+            this.volume5_value_label.Style = Sunny.UI.UIStyle.Custom;
             this.volume5_value_label.TabIndex = 23;
             this.volume5_value_label.Text = "0";
             this.volume5_value_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -450,7 +453,6 @@
             // 
             this.label29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.label29.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label29.ForeColor = System.Drawing.Color.Black;
             this.label29.Location = new System.Drawing.Point(257, 24);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(138, 29);
@@ -468,6 +470,7 @@
             this.volume1_value_label.Location = new System.Drawing.Point(137, 28);
             this.volume1_value_label.Name = "volume1_value_label";
             this.volume1_value_label.Size = new System.Drawing.Size(64, 20);
+            this.volume1_value_label.Style = Sunny.UI.UIStyle.Custom;
             this.volume1_value_label.TabIndex = 21;
             this.volume1_value_label.Text = "0";
             this.volume1_value_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -478,7 +481,6 @@
             // 
             this.label15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.label15.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label15.ForeColor = System.Drawing.Color.Black;
             this.label15.Location = new System.Drawing.Point(8, 24);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(138, 29);
@@ -498,7 +500,6 @@
             this.groupBox10.Controls.Add(this.currentPCBA_textbox);
             this.groupBox10.Controls.Add(this.label14);
             this.groupBox10.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox10.ForeColor = System.Drawing.Color.Black;
             this.groupBox10.Location = new System.Drawing.Point(4, 395);
             this.groupBox10.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox10.MinimumSize = new System.Drawing.Size(1, 1);
@@ -520,6 +521,7 @@
             this.writeInPCBA_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.writeInPCBA_button.Name = "writeInPCBA_button";
             this.writeInPCBA_button.Size = new System.Drawing.Size(146, 24);
+            this.writeInPCBA_button.Style = Sunny.UI.UIStyle.Custom;
             this.writeInPCBA_button.TabIndex = 5;
             this.writeInPCBA_button.Text = "写入PCBA号";
             this.writeInPCBA_button.ZoomScaleDisabled = true;
@@ -536,6 +538,7 @@
             this.writeINPCBA_textbox.Name = "writeINPCBA_textbox";
             this.writeINPCBA_textbox.ShowText = false;
             this.writeINPCBA_textbox.Size = new System.Drawing.Size(210, 22);
+            this.writeINPCBA_textbox.Style = Sunny.UI.UIStyle.Custom;
             this.writeINPCBA_textbox.TabIndex = 4;
             this.writeINPCBA_textbox.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.writeINPCBA_textbox.Watermark = "";
@@ -546,7 +549,6 @@
             // 
             this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.label13.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label13.ForeColor = System.Drawing.Color.Black;
             this.label13.Location = new System.Drawing.Point(2, 46);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(112, 20);
@@ -565,6 +567,7 @@
             this.getCurrentPCBA_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.getCurrentPCBA_button.Name = "getCurrentPCBA_button";
             this.getCurrentPCBA_button.Size = new System.Drawing.Size(146, 24);
+            this.getCurrentPCBA_button.Style = Sunny.UI.UIStyle.Custom;
             this.getCurrentPCBA_button.TabIndex = 2;
             this.getCurrentPCBA_button.Text = "获取当前设备PCBA号";
             this.getCurrentPCBA_button.ZoomScaleDisabled = true;
@@ -580,6 +583,7 @@
             this.currentPCBA_textbox.Name = "currentPCBA_textbox";
             this.currentPCBA_textbox.ShowText = false;
             this.currentPCBA_textbox.Size = new System.Drawing.Size(210, 22);
+            this.currentPCBA_textbox.Style = Sunny.UI.UIStyle.Custom;
             this.currentPCBA_textbox.TabIndex = 1;
             this.currentPCBA_textbox.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.currentPCBA_textbox.Watermark = "";
@@ -590,7 +594,6 @@
             // 
             this.label14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.label14.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label14.ForeColor = System.Drawing.Color.Black;
             this.label14.Location = new System.Drawing.Point(2, 24);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(121, 20);
@@ -610,7 +613,6 @@
             this.uiGroupBox2.Controls.Add(this.currentSN_textbox);
             this.uiGroupBox2.Controls.Add(this.label9);
             this.uiGroupBox2.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiGroupBox2.ForeColor = System.Drawing.Color.Black;
             this.uiGroupBox2.Location = new System.Drawing.Point(2, 476);
             this.uiGroupBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiGroupBox2.MinimumSize = new System.Drawing.Size(1, 1);
@@ -632,6 +634,7 @@
             this.writeIn_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.writeIn_button.Name = "writeIn_button";
             this.writeIn_button.Size = new System.Drawing.Size(146, 24);
+            this.writeIn_button.Style = Sunny.UI.UIStyle.Custom;
             this.writeIn_button.TabIndex = 4;
             this.writeIn_button.Text = "写入序列号";
             this.writeIn_button.ZoomScaleDisabled = true;
@@ -648,6 +651,7 @@
             this.writeInSN_textbox.Name = "writeInSN_textbox";
             this.writeInSN_textbox.ShowText = false;
             this.writeInSN_textbox.Size = new System.Drawing.Size(210, 22);
+            this.writeInSN_textbox.Style = Sunny.UI.UIStyle.Custom;
             this.writeInSN_textbox.TabIndex = 3;
             this.writeInSN_textbox.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.writeInSN_textbox.Watermark = "";
@@ -658,7 +662,6 @@
             // 
             this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.label10.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label10.ForeColor = System.Drawing.Color.Black;
             this.label10.Location = new System.Drawing.Point(4, 57);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(99, 19);
@@ -677,6 +680,7 @@
             this.getCurrentSN_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.getCurrentSN_button.Name = "getCurrentSN_button";
             this.getCurrentSN_button.Size = new System.Drawing.Size(146, 24);
+            this.getCurrentSN_button.Style = Sunny.UI.UIStyle.Custom;
             this.getCurrentSN_button.TabIndex = 2;
             this.getCurrentSN_button.Text = "获取当前设备序列号";
             this.getCurrentSN_button.ZoomScaleDisabled = true;
@@ -692,6 +696,7 @@
             this.currentSN_textbox.Name = "currentSN_textbox";
             this.currentSN_textbox.ShowText = false;
             this.currentSN_textbox.Size = new System.Drawing.Size(210, 22);
+            this.currentSN_textbox.Style = Sunny.UI.UIStyle.Custom;
             this.currentSN_textbox.TabIndex = 1;
             this.currentSN_textbox.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.currentSN_textbox.Watermark = "";
@@ -702,7 +707,6 @@
             // 
             this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.label9.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label9.ForeColor = System.Drawing.Color.Black;
             this.label9.Location = new System.Drawing.Point(4, 32);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(114, 25);
@@ -721,6 +725,7 @@
             this.device_reset_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.device_reset_button.Name = "device_reset_button";
             this.device_reset_button.Size = new System.Drawing.Size(110, 21);
+            this.device_reset_button.Style = Sunny.UI.UIStyle.Custom;
             this.device_reset_button.TabIndex = 25;
             this.device_reset_button.Text = "恢复出厂设置";
             this.device_reset_button.ZoomScaleDisabled = true;
@@ -735,6 +740,7 @@
             this.rebootDevice_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.rebootDevice_button.Name = "rebootDevice_button";
             this.rebootDevice_button.Size = new System.Drawing.Size(110, 21);
+            this.rebootDevice_button.Style = Sunny.UI.UIStyle.Custom;
             this.rebootDevice_button.TabIndex = 24;
             this.rebootDevice_button.Text = "重启设备";
             this.rebootDevice_button.ZoomScaleDisabled = true;
@@ -748,7 +754,6 @@
             this.groupBox6.Controls.Add(this.audioin1_result_label);
             this.groupBox6.Controls.Add(this.label16);
             this.groupBox6.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox6.ForeColor = System.Drawing.Color.Black;
             this.groupBox6.Location = new System.Drawing.Point(241, 280);
             this.groupBox6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox6.MinimumSize = new System.Drawing.Size(1, 1);
@@ -769,6 +774,7 @@
             this.audioin2_result_label.Location = new System.Drawing.Point(174, 54);
             this.audioin2_result_label.Name = "audioin2_result_label";
             this.audioin2_result_label.Size = new System.Drawing.Size(60, 23);
+            this.audioin2_result_label.Style = Sunny.UI.UIStyle.Custom;
             this.audioin2_result_label.TabIndex = 9;
             this.audioin2_result_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.audioin2_result_label.ZoomScaleDisabled = true;
@@ -778,7 +784,6 @@
             // 
             this.label18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.label18.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label18.ForeColor = System.Drawing.Color.Black;
             this.label18.Location = new System.Drawing.Point(3, 56);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(165, 19);
@@ -796,6 +801,7 @@
             this.audioin1_result_label.Location = new System.Drawing.Point(174, 29);
             this.audioin1_result_label.Name = "audioin1_result_label";
             this.audioin1_result_label.Size = new System.Drawing.Size(61, 23);
+            this.audioin1_result_label.Style = Sunny.UI.UIStyle.Custom;
             this.audioin1_result_label.TabIndex = 7;
             this.audioin1_result_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.audioin1_result_label.ZoomScaleDisabled = true;
@@ -805,7 +811,6 @@
             // 
             this.label16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.label16.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label16.ForeColor = System.Drawing.Color.Black;
             this.label16.Location = new System.Drawing.Point(3, 27);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(165, 22);
@@ -821,7 +826,6 @@
             this.uiGroupBox4.Controls.Add(this.button2);
             this.uiGroupBox4.Controls.Add(this.button1);
             this.uiGroupBox4.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiGroupBox4.ForeColor = System.Drawing.Color.Black;
             this.uiGroupBox4.Location = new System.Drawing.Point(221, 210);
             this.uiGroupBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiGroupBox4.MinimumSize = new System.Drawing.Size(1, 1);
@@ -842,6 +846,7 @@
             this.button2.MinimumSize = new System.Drawing.Size(1, 1);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(125, 28);
+            this.button2.Style = Sunny.UI.UIStyle.Custom;
             this.button2.TabIndex = 24;
             this.button2.Text = "拼接图检测";
             this.button2.ZoomScaleDisabled = true;
@@ -856,6 +861,7 @@
             this.button1.MinimumSize = new System.Drawing.Size(1, 1);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(125, 28);
+            this.button1.Style = Sunny.UI.UIStyle.Custom;
             this.button1.TabIndex = 23;
             this.button1.Text = "标定";
             this.button1.ZoomScaleDisabled = true;
@@ -870,7 +876,6 @@
             this.groupBox5.Controls.Add(this.poe_mic_firmware_info_label);
             this.groupBox5.Controls.Add(this.label6);
             this.groupBox5.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox5.ForeColor = System.Drawing.Color.Black;
             this.groupBox5.Location = new System.Drawing.Point(5, 276);
             this.groupBox5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox5.MinimumSize = new System.Drawing.Size(1, 1);
@@ -892,6 +897,7 @@
             this.get_poe_mic_info_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.get_poe_mic_info_button.Name = "get_poe_mic_info_button";
             this.get_poe_mic_info_button.Size = new System.Drawing.Size(213, 29);
+            this.get_poe_mic_info_button.Style = Sunny.UI.UIStyle.Custom;
             this.get_poe_mic_info_button.TabIndex = 26;
             this.get_poe_mic_info_button.Text = "获取吊麦信息";
             this.get_poe_mic_info_button.ZoomScaleDisabled = true;
@@ -905,6 +911,7 @@
             this.poe_mic_hardware_info_label.Location = new System.Drawing.Point(107, 55);
             this.poe_mic_hardware_info_label.Name = "poe_mic_hardware_info_label";
             this.poe_mic_hardware_info_label.Size = new System.Drawing.Size(109, 29);
+            this.poe_mic_hardware_info_label.Style = Sunny.UI.UIStyle.Custom;
             this.poe_mic_hardware_info_label.TabIndex = 25;
             this.poe_mic_hardware_info_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.poe_mic_hardware_info_label.ZoomScaleDisabled = true;
@@ -914,7 +921,6 @@
             // 
             this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.label7.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.ForeColor = System.Drawing.Color.Black;
             this.label7.Location = new System.Drawing.Point(7, 55);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(112, 29);
@@ -932,6 +938,7 @@
             this.poe_mic_firmware_info_label.Location = new System.Drawing.Point(107, 33);
             this.poe_mic_firmware_info_label.Name = "poe_mic_firmware_info_label";
             this.poe_mic_firmware_info_label.Size = new System.Drawing.Size(109, 18);
+            this.poe_mic_firmware_info_label.Style = Sunny.UI.UIStyle.Custom;
             this.poe_mic_firmware_info_label.TabIndex = 23;
             this.poe_mic_firmware_info_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.poe_mic_firmware_info_label.ZoomScaleDisabled = true;
@@ -941,7 +948,6 @@
             // 
             this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.label6.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.ForeColor = System.Drawing.Color.Black;
             this.label6.Location = new System.Drawing.Point(7, 29);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(112, 26);
@@ -958,7 +964,6 @@
             this.groupBox4.Controls.Add(this.stop_rg_flicker_button);
             this.groupBox4.Controls.Add(this.start_rg_flicker_button);
             this.groupBox4.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox4.ForeColor = System.Drawing.Color.Black;
             this.groupBox4.Location = new System.Drawing.Point(4, 210);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox4.MinimumSize = new System.Drawing.Size(1, 1);
@@ -979,6 +984,7 @@
             this.stop_rg_flicker_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.stop_rg_flicker_button.Name = "stop_rg_flicker_button";
             this.stop_rg_flicker_button.Size = new System.Drawing.Size(99, 32);
+            this.stop_rg_flicker_button.Style = Sunny.UI.UIStyle.Custom;
             this.stop_rg_flicker_button.TabIndex = 3;
             this.stop_rg_flicker_button.Text = "关闭交替闪烁";
             this.stop_rg_flicker_button.ZoomScaleDisabled = true;
@@ -993,6 +999,7 @@
             this.start_rg_flicker_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.start_rg_flicker_button.Name = "start_rg_flicker_button";
             this.start_rg_flicker_button.Size = new System.Drawing.Size(99, 32);
+            this.start_rg_flicker_button.Style = Sunny.UI.UIStyle.Custom;
             this.start_rg_flicker_button.TabIndex = 2;
             this.start_rg_flicker_button.Text = "打开交替闪烁";
             this.start_rg_flicker_button.ZoomScaleDisabled = true;
@@ -1012,7 +1019,6 @@
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.currentVersion_label);
             this.groupBox3.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox3.ForeColor = System.Drawing.Color.Black;
             this.groupBox3.Location = new System.Drawing.Point(487, 26);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox3.MinimumSize = new System.Drawing.Size(1, 1);
@@ -1034,6 +1040,7 @@
             this.upgrade_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.upgrade_button.Name = "upgrade_button";
             this.upgrade_button.Size = new System.Drawing.Size(455, 28);
+            this.upgrade_button.Style = Sunny.UI.UIStyle.Custom;
             this.upgrade_button.TabIndex = 19;
             this.upgrade_button.Text = "开始升级";
             this.upgrade_button.ZoomScaleDisabled = true;
@@ -1047,6 +1054,7 @@
             this.upgrade_progressbar.MinimumSize = new System.Drawing.Size(70, 3);
             this.upgrade_progressbar.Name = "upgrade_progressbar";
             this.upgrade_progressbar.Size = new System.Drawing.Size(455, 30);
+            this.upgrade_progressbar.Style = Sunny.UI.UIStyle.Custom;
             this.upgrade_progressbar.TabIndex = 18;
             this.upgrade_progressbar.Text = "uiProcessBar1";
             this.upgrade_progressbar.ZoomScaleDisabled = true;
@@ -1060,6 +1068,7 @@
             this.gainCurrentVersion_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.gainCurrentVersion_button.Name = "gainCurrentVersion_button";
             this.gainCurrentVersion_button.Size = new System.Drawing.Size(140, 28);
+            this.gainCurrentVersion_button.Style = Sunny.UI.UIStyle.Custom;
             this.gainCurrentVersion_button.TabIndex = 17;
             this.gainCurrentVersion_button.Text = "获取当前固件版本";
             this.gainCurrentVersion_button.ZoomScaleDisabled = true;
@@ -1070,7 +1079,6 @@
             // 
             this.label20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.label20.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label20.ForeColor = System.Drawing.Color.Black;
             this.label20.Location = new System.Drawing.Point(9, 103);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(81, 18);
@@ -1089,6 +1097,7 @@
             this.check_current_firmware_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.check_current_firmware_button.Name = "check_current_firmware_button";
             this.check_current_firmware_button.Size = new System.Drawing.Size(140, 28);
+            this.check_current_firmware_button.Style = Sunny.UI.UIStyle.Custom;
             this.check_current_firmware_button.TabIndex = 15;
             this.check_current_firmware_button.Text = "校验当前设备固件";
             this.check_current_firmware_button.ZoomScaleDisabled = true;
@@ -1104,6 +1113,7 @@
             this.checked_firmware_textbox.Name = "checked_firmware_textbox";
             this.checked_firmware_textbox.ShowText = false;
             this.checked_firmware_textbox.Size = new System.Drawing.Size(309, 27);
+            this.checked_firmware_textbox.Style = Sunny.UI.UIStyle.Custom;
             this.checked_firmware_textbox.TabIndex = 14;
             this.checked_firmware_textbox.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.checked_firmware_textbox.Watermark = "";
@@ -1117,6 +1127,7 @@
             this.choose_upgrade_firmware_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.choose_upgrade_firmware_button.Name = "choose_upgrade_firmware_button";
             this.choose_upgrade_firmware_button.Size = new System.Drawing.Size(140, 28);
+            this.choose_upgrade_firmware_button.Style = Sunny.UI.UIStyle.Custom;
             this.choose_upgrade_firmware_button.TabIndex = 13;
             this.choose_upgrade_firmware_button.Text = "选择升级固件";
             this.choose_upgrade_firmware_button.ZoomScaleDisabled = true;
@@ -1132,6 +1143,7 @@
             this.upgrade_firmware_textbox.Name = "upgrade_firmware_textbox";
             this.upgrade_firmware_textbox.ShowText = false;
             this.upgrade_firmware_textbox.Size = new System.Drawing.Size(220, 28);
+            this.upgrade_firmware_textbox.Style = Sunny.UI.UIStyle.Custom;
             this.upgrade_firmware_textbox.TabIndex = 12;
             this.upgrade_firmware_textbox.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.upgrade_firmware_textbox.Watermark = "";
@@ -1142,7 +1154,6 @@
             // 
             this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.label5.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.ForeColor = System.Drawing.Color.Black;
             this.label5.Location = new System.Drawing.Point(9, 30);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(81, 29);
@@ -1173,7 +1184,6 @@
             this.uiGroupBox5.Controls.Add(this.device_ip_textbox);
             this.uiGroupBox5.Controls.Add(this.label1);
             this.uiGroupBox5.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiGroupBox5.ForeColor = System.Drawing.Color.Black;
             this.uiGroupBox5.Location = new System.Drawing.Point(4, 26);
             this.uiGroupBox5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiGroupBox5.MinimumSize = new System.Drawing.Size(1, 1);
@@ -1195,6 +1205,7 @@
             this.login_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.login_button.Name = "login_button";
             this.login_button.Size = new System.Drawing.Size(69, 56);
+            this.login_button.Style = Sunny.UI.UIStyle.Custom;
             this.login_button.TabIndex = 28;
             this.login_button.Text = "登录";
             this.login_button.ZoomScaleDisabled = true;
@@ -1205,7 +1216,6 @@
             // 
             this.explainLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.explainLabel.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.explainLabel.ForeColor = System.Drawing.Color.Black;
             this.explainLabel.Location = new System.Drawing.Point(258, 91);
             this.explainLabel.Name = "explainLabel";
             this.explainLabel.Size = new System.Drawing.Size(205, 83);
@@ -1229,6 +1239,7 @@
             this.password_textbox.PasswordChar = '*';
             this.password_textbox.ShowText = false;
             this.password_textbox.Size = new System.Drawing.Size(57, 27);
+            this.password_textbox.Style = Sunny.UI.UIStyle.Custom;
             this.password_textbox.TabIndex = 26;
             this.password_textbox.Text = "123456";
             this.password_textbox.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1246,6 +1257,7 @@
             this.username_textbox.Name = "username_textbox";
             this.username_textbox.ShowText = false;
             this.username_textbox.Size = new System.Drawing.Size(57, 27);
+            this.username_textbox.Style = Sunny.UI.UIStyle.Custom;
             this.username_textbox.TabIndex = 25;
             this.username_textbox.Text = "admin";
             this.username_textbox.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1260,6 +1272,7 @@
             this.label12.Location = new System.Drawing.Point(258, 59);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(65, 21);
+            this.label12.Style = Sunny.UI.UIStyle.Custom;
             this.label12.TabIndex = 15;
             this.label12.Text = "密码：";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1273,6 +1286,7 @@
             this.label11.Location = new System.Drawing.Point(258, 31);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(65, 28);
+            this.label11.Style = Sunny.UI.UIStyle.Custom;
             this.label11.TabIndex = 24;
             this.label11.Text = "用户名：";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1287,6 +1301,7 @@
             this.device_disconnect_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.device_disconnect_button.Name = "device_disconnect_button";
             this.device_disconnect_button.Size = new System.Drawing.Size(96, 26);
+            this.device_disconnect_button.Style = Sunny.UI.UIStyle.Custom;
             this.device_disconnect_button.TabIndex = 23;
             this.device_disconnect_button.Text = "断开设备";
             this.device_disconnect_button.ZoomScaleDisabled = true;
@@ -1300,6 +1315,7 @@
             this.device_connect_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.device_connect_button.Name = "device_connect_button";
             this.device_connect_button.Size = new System.Drawing.Size(96, 26);
+            this.device_connect_button.Style = Sunny.UI.UIStyle.Custom;
             this.device_connect_button.TabIndex = 22;
             this.device_connect_button.Text = "连接设备";
             this.device_connect_button.TipsText = "点击连接设备，如果长时间没有响应，请检查设备IP地址以及当前电脑环境是否配置好。";
@@ -1314,6 +1330,7 @@
             this.getSeewoDevice.MinimumSize = new System.Drawing.Size(1, 1);
             this.getSeewoDevice.Name = "getSeewoDevice";
             this.getSeewoDevice.Size = new System.Drawing.Size(76, 25);
+            this.getSeewoDevice.Style = Sunny.UI.UIStyle.Custom;
             this.getSeewoDevice.TabIndex = 21;
             this.getSeewoDevice.Text = "刷新网口";
             this.getSeewoDevice.ZoomScaleDisabled = true;
@@ -1324,7 +1341,6 @@
             // 
             this.device_status_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.device_status_label.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.device_status_label.ForeColor = System.Drawing.Color.Black;
             this.device_status_label.Location = new System.Drawing.Point(108, 124);
             this.device_status_label.Name = "device_status_label";
             this.device_status_label.Size = new System.Drawing.Size(66, 24);
@@ -1339,7 +1355,6 @@
             // 
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.label3.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(8, 124);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(85, 29);
@@ -1355,7 +1370,6 @@
             this.rememberCheckBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.rememberCheckBox.Checked = true;
             this.rememberCheckBox.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.rememberCheckBox.ForeColor = System.Drawing.Color.Black;
             this.rememberCheckBox.Location = new System.Drawing.Point(8, 96);
             this.rememberCheckBox.MinimumSize = new System.Drawing.Size(1, 1);
             this.rememberCheckBox.Name = "rememberCheckBox";
@@ -1371,7 +1385,6 @@
             // 
             this.radioButton_8080.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.radioButton_8080.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.radioButton_8080.ForeColor = System.Drawing.Color.Black;
             this.radioButton_8080.Location = new System.Drawing.Point(164, 68);
             this.radioButton_8080.MinimumSize = new System.Drawing.Size(1, 1);
             this.radioButton_8080.Name = "radioButton_8080";
@@ -1387,7 +1400,6 @@
             // 
             this.radioButton_80.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.radioButton_80.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.radioButton_80.ForeColor = System.Drawing.Color.Black;
             this.radioButton_80.Location = new System.Drawing.Point(107, 64);
             this.radioButton_80.MinimumSize = new System.Drawing.Size(1, 1);
             this.radioButton_80.Name = "radioButton_80";
@@ -1403,7 +1415,6 @@
             // 
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.label2.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(5, 64);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(96, 29);
@@ -1424,6 +1435,7 @@
             this.device_ip_textbox.Padding = new System.Windows.Forms.Padding(1);
             this.device_ip_textbox.ShowText = false;
             this.device_ip_textbox.Size = new System.Drawing.Size(139, 29);
+            this.device_ip_textbox.Style = Sunny.UI.UIStyle.Custom;
             this.device_ip_textbox.TabIndex = 15;
             this.device_ip_textbox.Text = "219.198.235.11";
             this.device_ip_textbox.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1434,7 +1446,6 @@
             // 
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.label1.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(5, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(96, 32);
@@ -1472,6 +1483,7 @@
             this.clear_output_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.clear_output_button.Name = "clear_output_button";
             this.clear_output_button.Size = new System.Drawing.Size(59, 31);
+            this.clear_output_button.Style = Sunny.UI.UIStyle.Custom;
             this.clear_output_button.TabIndex = 3;
             this.clear_output_button.Text = "清空";
             this.clear_output_button.ZoomScaleDisabled = true;
@@ -1489,6 +1501,7 @@
             this.output_rich_textbox.Padding = new System.Windows.Forms.Padding(2);
             this.output_rich_textbox.ShowText = false;
             this.output_rich_textbox.Size = new System.Drawing.Size(954, 200);
+            this.output_rich_textbox.Style = Sunny.UI.UIStyle.Custom;
             this.output_rich_textbox.TabIndex = 3;
             this.output_rich_textbox.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.output_rich_textbox.ZoomScaleDisabled = true;

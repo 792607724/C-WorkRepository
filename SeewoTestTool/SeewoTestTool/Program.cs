@@ -1,7 +1,9 @@
 using Microsoft.Win32;
 using Microsoft.Win32;
 using System;
+using System.Diagnostics;
 using System.Net;
+using System.Reflection;
 using System.Text;
 using Application = System.Windows.Forms.Application;
 namespace SeewoTestTool
@@ -16,10 +18,30 @@ namespace SeewoTestTool
         {
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-            Application.Run(new Regist());
-            
+            Process currentProcess = Process.GetCurrentProcess();
+            Process[] Processes = Process.GetProcessesByName(currentProcess.ProcessName);
+            bool currentSoftwareExists = false;
+            //遍历与当前进程名称相同的进程列表
+            foreach (Process process in Processes)
+            {
+                //如果实例已经存在,则忽略当前进程
+                if (process.Id != currentProcess.Id)
+                {
+                    currentSoftwareExists = true;
+                }
+            }
+            if (currentSoftwareExists)
+            {
+                MessageBox.Show($"当前软件{currentProcess.ProcessName}已打开，请勿重复打开！");
+            }
+            else
+            {
+                ApplicationConfiguration.Initialize();
+                Application.Run(new Regist());
+            }
         }
+
+
         /**
          * 
         // 获取本地时间

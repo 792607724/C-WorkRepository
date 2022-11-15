@@ -13,6 +13,7 @@ using System.Runtime.InteropServices;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 using Microsoft.Win32;
+using System.Threading;
 
 namespace SXW0301_Production_line
 {
@@ -68,7 +69,7 @@ namespace SXW0301_Production_line
             //播放1
             string[] options1 = { ":network-caching=200", "--rtsp-frame-buffer-size=100000", ":rtsp-tcp", ":no-audio" };// { ":network-caching=100", ":rtsp -tcp", ":no-audio" }; //  --avcodec-hw={any,d3d11va,dxva2,none} 
             var videoUri1 = new Uri(textBox1.Text.Trim());
-            vlcControl1.Play(videoUri1, options1);
+            //vlcControl1.Play(videoUri1, options1);
 
             //执行标定算法,并生成calib_out_json文件
             //Process myPro = new Process();
@@ -80,13 +81,17 @@ namespace SXW0301_Production_line
             //myPro.StartInfo.CreateNoWindow = true;
             //myPro.Start();
             //myPro.WaitForExit();//本行代码不是必须，但是很关键，限制等待外部程序退出后才能往下执行
-            if (textBox2.Text.Trim() != textBox1.Text.Trim())
+            if (!vlcControl2.IsPlaying && !vlcControl1.IsPlaying)
+            {
+                MessageBox.Show("请先点击左右两侧的播放按钮，两侧视频流播放后，再点击标定按钮进行标定！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if(textBox2.Text.Trim() != textBox1.Text.Trim())
             {
                 //播放2
                 string[] options2 = { ":network-caching=500", ":rtsp-tcp", ":no-audio" };// { ":network-caching=100", ":rtsp -tcp", ":no-audio" }; //  --avcodec-hw={any,d3d11va,dxva2,none} 
                 var videoUri2 = new Uri(textBox2.Text.Trim());
-                vlcControl2.Play(videoUri2, options2);
-                MessageBox.Show("标定文件正在生成");
+                //vlcControl2.Play(videoUri2, options2);
+                //MessageBox.Show("标定文件正在生成");
                 if (vlcControl2.IsPlaying && vlcControl1.IsPlaying)
                 {
                     DeleteDir1("20221017-plc//stitch");
@@ -115,20 +120,20 @@ namespace SXW0301_Production_line
                     //myPro.StartInfo.RedirectStandardOutput = true;
                     myPro.StartInfo.RedirectStandardError = true;
                     myPro.StartInfo.CreateNoWindow = true;
-                    myPro.Start();  
+                    myPro.Start();
                     myPro.WaitForExit();//本行代码不是必须，但是很关键，限制等待外部程序退出后才能往下执行
                     myPro.Close();
-                    MessageBox.Show("标定完成");
+                    //MessageBox.Show("标定完成");
 
                     /**
-                     *  陈广涛 -- Add Code 增加写入数据&删除数据的功能
-                     **/
+                        *  陈广涛 -- Add Code 增加写入数据&删除数据的功能
+                        **/
                     string calib_out_json_path = ".\\20221017-plc\\calib_out.json";
                     if (File.Exists(calib_out_json_path))
-                    {                                              
+                    {
                         MatchCollection result = Regex.Matches(textBox1.Text, @"rtsp:\/\/(.*)\/sec0");
-                        string writeInIP = (result[0].ToString()).Replace("//","/").Split('/')[1];
-                        MessageBox.Show($"已找到标定数据，开始写入标定数据……,写入IP：【{writeInIP}】");
+                        string writeInIP = (result[0].ToString()).Replace("//", "/").Split('/')[1];
+                        //MessageBox.Show($"已找到标定数据，开始写入标定数据……,写入IP：【{writeInIP}】");
                         string uploadCommand = $"curl -s -X POST --data-binary @{calib_out_json_path} \"http://{writeInIP}/writeLdcCalib_api\" -H \"Content-Type: text/plain\"";
                         string executeResult = executeCMDCommand(uploadCommand);
                         string result_0 = "标定数据写入操作未执行成功";
@@ -140,6 +145,7 @@ namespace SXW0301_Production_line
                         {
                             result_0 = "失败";
                         }
+                        Thread.Sleep(3000);
                         MessageBox.Show($"标定数据写入操作结果：" + result_0);
                         executeCMDCommand($"del {calib_out_json_path}");
                     }
@@ -152,7 +158,6 @@ namespace SXW0301_Production_line
                 {
                     MessageBox.Show("标定文件生成失败,请检查两路流是否都在播放");
                 }
-
             }
             else{
                 MessageBox.Show("两个流路径请勿一样");
@@ -262,18 +267,62 @@ namespace SXW0301_Production_line
 
         }
 
-        private void button2_Click_1(object sender, EventArgs e)
+        private void player1_open_func()
         {
             string[] options1 = { ":network-caching=500", ":rtsp-tcp", ":no-audio" };// { ":network-caching=100", ":rtsp -tcp", ":no-audio" }; //  --avcodec-hw={any,d3d11va,dxva2,none} 
             var videoUri1 = new Uri(textBox1.Text.Trim());
             vlcControl1.Play(videoUri1, options1);
         }
 
+        private void player2_open_func()
+        {
+            string[] options2 = { ":network-caching=500", ":rtsp-tcp", ":no-audio" };// { ":network-caching=100", ":rtsp -tcp", ":no-audio" }; //  --avcodec-hw={any,d3d11va,dxva2,none} 
+            var videoUri2 = new Uri(textBox2.Text.Trim());
+            vlcControl2.Play(videoUri2, options2);
+        }
+        Thread player_1_open;
+        Thread player_2_open;
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            if (player_1_open != null && vlcControl1.IsPlaying) 
+            {
+                MessageBox.Show("请勿重复打开出流哦！");
+            }
+            else
+            {
+                player_1_open = new Thread(player1_open_func);
+                player_1_open.IsBackground = true;
+                player_1_open.Start();
+
+            }
+            
+
+            /**
+            string[] options1 = { ":network-caching=500", ":rtsp-tcp", ":no-audio" };// { ":network-caching=100", ":rtsp -tcp", ":no-audio" }; //  --avcodec-hw={any,d3d11va,dxva2,none} 
+            var videoUri1 = new Uri(textBox1.Text.Trim());
+            vlcControl1.Play(videoUri1, options1);
+            */
+        }
+
         private void button3_Click(object sender, EventArgs e)
         {
+            if (player_2_open != null && vlcControl2.IsPlaying)
+            {
+                MessageBox.Show("请勿重复打开出流哦！");
+            }
+            else
+            {
+                player_2_open = new Thread(player2_open_func);
+                player_2_open.IsBackground = true;
+                player_2_open.Start();
+            }
+            
+            /**
             string[] options2 = { ":network-caching=500",  ":rtsp-tcp", ":no-audio" };// { ":network-caching=100", ":rtsp -tcp", ":no-audio" }; //  --avcodec-hw={any,d3d11va,dxva2,none} 
             var videoUri2 = new Uri(textBox2.Text.Trim());
             vlcControl2.Play(videoUri2, options2);
+            */
         }
 
         private void button4_Click(object sender, EventArgs e)
