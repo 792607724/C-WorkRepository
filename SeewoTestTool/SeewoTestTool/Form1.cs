@@ -1135,7 +1135,8 @@ namespace SeewoTestTool
                                     else
                                     {
                                         // 升级操作 - 将固件推进去 后面确定下来了，这个ip从输入框里面获取
-                                        output_string = executeCMDCommand($"curl -T {filePath} \"ftp://{ip_users}/\"");
+                                        string ftp_ip_user = ip_users.Split(":")[0];
+                                        output_string = executeCMDCommand($"curl -T {filePath} \"ftp://{ftp_ip_user}/\"");
                                         progress_i += 30;
                                         backgroundworker_firmwareupgrade.ReportProgress(progress_i, "Pushing\n");
                                         System.Threading.Thread.Sleep(1000);
@@ -1150,7 +1151,7 @@ namespace SeewoTestTool
                                         System.Threading.Thread.Sleep(1000);
 
                                         // 升级操作 - 开始升级
-                                        output_string = executeCMDCommand($"curl -T need_upgrade \"ftp://{ip_users}/\"");
+                                        output_string = executeCMDCommand($"curl -T need_upgrade \"ftp://{ftp_ip_user}/\"");
                                         progress_i += 5;
                                         backgroundworker_firmwareupgrade.ReportProgress(progress_i, "Upgrading\n");
                                         System.Threading.Thread.Sleep(1000);
@@ -1163,7 +1164,7 @@ namespace SeewoTestTool
                                         }
                                         while (!upgradeDone)
                                         {
-                                            output_string = executeCMDCommand($"curl \"ftp://{ip_users}/upgrade_result\" -o upgrade_result");
+                                            output_string = executeCMDCommand($"curl \"ftp://{ftp_ip_user}/upgrade_result\" -o upgrade_result");
                                             if (!System.IO.File.Exists("upgrade_result"))
                                             {
                                                 // 如果2s内没有获取到这个文件直接报升级失败
@@ -1984,21 +1985,45 @@ namespace SeewoTestTool
             output_rich_textbox.AppendText("【执行操作】打开三摄拼接图检测工具操作……\n");
             if (clientSocket != null && clientSocket.Connected)
             {
-                if (form3 == null)
+                // 打开拼接图码流前将 Merge码率 curl 修改码流至61440
+                int rate = 35000;
+                string updateBitRateCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"setParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"Camera0Chn0\\\",\\\"value\\\": {{\\\"BitRate\\\": {rate}}}}}\"";
+                output_string = executeCMDCommand(updateBitRateCommand);
+                MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
+                string backCode = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
+                if (backCode == "0")
                 {
-                    form3 = new SXW0301_Production_line.Form3();
-                    form3.Show();
-                }
-                else if (form3.IsDisposed)
-                {
-                    form3 = new SXW0301_Production_line.Form3();
-                    form3.Activate();
-                    form3.Show();
+                    string getBitRateCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"Camera0Chn0\\\"}}\"";
+                    output_string = executeCMDCommand(getBitRateCommand);
+                    if (output_string.Contains(rate.ToString()))
+                    {
+                        output_rich_textbox.AppendText($"当前拼接流视频码率为：【{rate}】\n");
+                        if (form3 == null)
+                        {
+                            form3 = new SXW0301_Production_line.Form3();
+                            form3.Show();
+                        }
+                        else if (form3.IsDisposed)
+                        {
+                            form3 = new SXW0301_Production_line.Form3();
+                            form3.Activate();
+                            form3.Show();
+                        }
+                        else
+                        {
+                            output_rich_textbox.AppendText("已打开三摄拼接图检测工具，请勿重复打开哦\n");
+                        }
+                    }
+                    else
+                    {
+                        output_rich_textbox.AppendText($"拼接流码率【{rate}】设置失败,返回值\n{output_string}\n，请检查！\n");
+                    }
                 }
                 else
                 {
-                    output_rich_textbox.AppendText("已打开三摄拼接图检测工具，请勿重复打开哦\n");
+                    output_rich_textbox.AppendText($"拼接流码率【{rate}】设置失败,返回值【{backCode}】，请检查！");
                 }
+                
             }
             else
             {

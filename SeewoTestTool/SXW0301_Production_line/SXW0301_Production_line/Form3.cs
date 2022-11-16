@@ -138,6 +138,7 @@ namespace SXW0301_Production_line
             //播放
             string[] options = { ":network-caching=200", ":rtsp-tcp", ":no-audio" };// { ":network-caching=100", ":rtsp -tcp", ":no-audio" }; //  --avcodec-hw={any,d3d11va,dxva2,none} 
             var videoUri = new Uri(textBox1.Text.Trim());
+
             vlcControl1.Play(videoUri, options);
 
         }
@@ -148,6 +149,7 @@ namespace SXW0301_Production_line
             var videoUri = new Uri(textBox1.Text.Trim());
             vlcControl1.Play(videoUri, options);
             */
+
             if (player_1_open != null && vlcControl1.IsPlaying)
             {
                 MessageBox.Show("请勿重复打开出流哦！");
