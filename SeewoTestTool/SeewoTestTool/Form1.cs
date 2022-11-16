@@ -162,6 +162,7 @@ namespace SeewoTestTool
             {
                 port = radioButton_8080.Text;
             }
+            ip_users = host + ":" + port;
             if (string.IsNullOrEmpty(host))
             {
                 output_rich_textbox.AppendText("设备网口IP地址和端口号不能为空！\n");
