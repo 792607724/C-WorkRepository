@@ -11,7 +11,7 @@
     "imgHeight": 3120,
     "imgFormat": "RGB",
     "imgPrefix": "camera",
-    "imgDepthList": "5500,5500,",
+    "imgDepthList": "3000,3000,",
     "rotateAngleList": "0,0,",
     "blendWidthPercentList": "10,",
     "intrBoardWidth": 11,
