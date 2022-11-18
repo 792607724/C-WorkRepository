@@ -137,7 +137,7 @@
             this.currentVersion_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.currentVersion_label.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.currentVersion_label.ForeColor = System.Drawing.Color.ForestGreen;
-            this.currentVersion_label.Location = new System.Drawing.Point(128, 100);
+            this.currentVersion_label.Location = new System.Drawing.Point(89, 100);
             this.currentVersion_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.currentVersion_label.Name = "currentVersion_label";
             this.currentVersion_label.Size = new System.Drawing.Size(0, 27);
