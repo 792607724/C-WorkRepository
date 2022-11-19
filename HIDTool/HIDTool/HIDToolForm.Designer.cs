@@ -101,12 +101,17 @@
             this.OpenTencentModeBtn = new System.Windows.Forms.Button();
             this.CloseTencentModeBtn = new System.Windows.Forms.Button();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.manualFocusButton = new System.Windows.Forms.Button();
-            this.autoFocusButton = new System.Windows.Forms.Button();
-            this.focusLocationTextBox = new System.Windows.Forms.TextBox();
-            this.setFocusButton = new System.Windows.Forms.Button();
-            this.currentFocusLocationLabel = new System.Windows.Forms.Label();
             this.getCurrentFocusLocationButton = new System.Windows.Forms.Button();
+            this.currentFocusLocationLabel = new System.Windows.Forms.Label();
+            this.setFocusButton = new System.Windows.Forms.Button();
+            this.focusLocationTextBox = new System.Windows.Forms.TextBox();
+            this.autoFocusButton = new System.Windows.Forms.Button();
+            this.manualFocusButton = new System.Windows.Forms.Button();
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.close_camera_privacy_button = new System.Windows.Forms.Button();
+            this.open_camera_privacy_button = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.privacy_camera_output_status_label = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -122,13 +127,15 @@
             this.groupBox8.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.groupBox11.SuspendLayout();
+            this.groupBox12.SuspendLayout();
             this.SuspendLayout();
             // 
             // GetIQVersionBtn
             // 
-            this.GetIQVersionBtn.Location = new System.Drawing.Point(6, 110);
+            this.GetIQVersionBtn.Location = new System.Drawing.Point(8, 138);
+            this.GetIQVersionBtn.Margin = new System.Windows.Forms.Padding(4);
             this.GetIQVersionBtn.Name = "GetIQVersionBtn";
-            this.GetIQVersionBtn.Size = new System.Drawing.Size(124, 36);
+            this.GetIQVersionBtn.Size = new System.Drawing.Size(165, 45);
             this.GetIQVersionBtn.TabIndex = 53;
             this.GetIQVersionBtn.Text = "获取IQ版本号";
             this.GetIQVersionBtn.UseVisualStyleBackColor = true;
@@ -137,16 +144,17 @@
             // toolStripProgressBar1
             // 
             this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(880, 16);
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(1173, 18);
             // 
             // statusStrip1
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripProgressBar1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 542);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 669);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(944, 22);
+            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
+            this.statusStrip1.Size = new System.Drawing.Size(1256, 26);
             this.statusStrip1.TabIndex = 51;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -159,9 +167,10 @@
             // 
             // GetRecordLogBtn
             // 
-            this.GetRecordLogBtn.Location = new System.Drawing.Point(6, 155);
+            this.GetRecordLogBtn.Location = new System.Drawing.Point(8, 194);
+            this.GetRecordLogBtn.Margin = new System.Windows.Forms.Padding(4);
             this.GetRecordLogBtn.Name = "GetRecordLogBtn";
-            this.GetRecordLogBtn.Size = new System.Drawing.Size(124, 36);
+            this.GetRecordLogBtn.Size = new System.Drawing.Size(165, 45);
             this.GetRecordLogBtn.TabIndex = 50;
             this.GetRecordLogBtn.Text = "获取Log";
             this.GetRecordLogBtn.UseVisualStyleBackColor = true;
@@ -169,9 +178,10 @@
             // 
             // StopRecordBtn
             // 
-            this.StopRecordBtn.Location = new System.Drawing.Point(6, 110);
+            this.StopRecordBtn.Location = new System.Drawing.Point(8, 138);
+            this.StopRecordBtn.Margin = new System.Windows.Forms.Padding(4);
             this.StopRecordBtn.Name = "StopRecordBtn";
-            this.StopRecordBtn.Size = new System.Drawing.Size(124, 36);
+            this.StopRecordBtn.Size = new System.Drawing.Size(165, 45);
             this.StopRecordBtn.TabIndex = 49;
             this.StopRecordBtn.Text = "停止录制log";
             this.StopRecordBtn.UseVisualStyleBackColor = true;
@@ -179,9 +189,10 @@
             // 
             // StartRecordLogBtn
             // 
-            this.StartRecordLogBtn.Location = new System.Drawing.Point(6, 65);
+            this.StartRecordLogBtn.Location = new System.Drawing.Point(8, 81);
+            this.StartRecordLogBtn.Margin = new System.Windows.Forms.Padding(4);
             this.StartRecordLogBtn.Name = "StartRecordLogBtn";
-            this.StartRecordLogBtn.Size = new System.Drawing.Size(124, 36);
+            this.StartRecordLogBtn.Size = new System.Drawing.Size(165, 45);
             this.StartRecordLogBtn.TabIndex = 48;
             this.StartRecordLogBtn.Text = "开始录制log";
             this.StartRecordLogBtn.UseVisualStyleBackColor = true;
@@ -193,9 +204,10 @@
             // 
             // GetCPUFreqBtn
             // 
-            this.GetCPUFreqBtn.Location = new System.Drawing.Point(6, 65);
+            this.GetCPUFreqBtn.Location = new System.Drawing.Point(8, 81);
+            this.GetCPUFreqBtn.Margin = new System.Windows.Forms.Padding(4);
             this.GetCPUFreqBtn.Name = "GetCPUFreqBtn";
-            this.GetCPUFreqBtn.Size = new System.Drawing.Size(124, 36);
+            this.GetCPUFreqBtn.Size = new System.Drawing.Size(165, 45);
             this.GetCPUFreqBtn.TabIndex = 52;
             this.GetCPUFreqBtn.Text = "获取CPU频率";
             this.GetCPUFreqBtn.UseVisualStyleBackColor = true;
@@ -211,11 +223,11 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.combBoxAngles);
-            this.groupBox1.Location = new System.Drawing.Point(10, 11);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Location = new System.Drawing.Point(13, 14);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(153, 180);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Size = new System.Drawing.Size(204, 225);
             this.groupBox1.TabIndex = 47;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "模拟声源角度";
@@ -223,20 +235,20 @@
             // chkBoxCheckAck
             // 
             this.chkBoxCheckAck.AutoSize = true;
-            this.chkBoxCheckAck.Location = new System.Drawing.Point(70, 61);
-            this.chkBoxCheckAck.Margin = new System.Windows.Forms.Padding(2);
+            this.chkBoxCheckAck.Location = new System.Drawing.Point(93, 76);
+            this.chkBoxCheckAck.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chkBoxCheckAck.Name = "chkBoxCheckAck";
-            this.chkBoxCheckAck.Size = new System.Drawing.Size(72, 16);
+            this.chkBoxCheckAck.Size = new System.Drawing.Size(89, 19);
             this.chkBoxCheckAck.TabIndex = 3;
             this.chkBoxCheckAck.Text = "检查应答";
             this.chkBoxCheckAck.UseVisualStyleBackColor = true;
             // 
             // btnSimulateSound
             // 
-            this.btnSimulateSound.Location = new System.Drawing.Point(50, 140);
-            this.btnSimulateSound.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSimulateSound.Location = new System.Drawing.Point(67, 175);
+            this.btnSimulateSound.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSimulateSound.Name = "btnSimulateSound";
-            this.btnSimulateSound.Size = new System.Drawing.Size(54, 30);
+            this.btnSimulateSound.Size = new System.Drawing.Size(72, 38);
             this.btnSimulateSound.TabIndex = 2;
             this.btnSimulateSound.Text = "开始";
             this.btnSimulateSound.UseVisualStyleBackColor = true;
@@ -244,50 +256,45 @@
             // 
             // lblReceiveCnt
             // 
-            this.lblReceiveCnt.Location = new System.Drawing.Point(70, 117);
-            this.lblReceiveCnt.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblReceiveCnt.Location = new System.Drawing.Point(93, 146);
             this.lblReceiveCnt.Name = "lblReceiveCnt";
-            this.lblReceiveCnt.Size = new System.Drawing.Size(67, 16);
+            this.lblReceiveCnt.Size = new System.Drawing.Size(89, 20);
             this.lblReceiveCnt.TabIndex = 1;
             this.lblReceiveCnt.Text = "0";
             this.lblReceiveCnt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(9, 117);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(12, 146);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(56, 16);
+            this.label3.Size = new System.Drawing.Size(75, 20);
             this.label3.TabIndex = 1;
             this.label3.Text = "应答次数";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblSendCnt
             // 
-            this.lblSendCnt.Location = new System.Drawing.Point(70, 89);
-            this.lblSendCnt.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSendCnt.Location = new System.Drawing.Point(93, 111);
             this.lblSendCnt.Name = "lblSendCnt";
-            this.lblSendCnt.Size = new System.Drawing.Size(67, 16);
+            this.lblSendCnt.Size = new System.Drawing.Size(89, 20);
             this.lblSendCnt.TabIndex = 1;
             this.lblSendCnt.Text = "0";
             this.lblSendCnt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(9, 89);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(12, 111);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 16);
+            this.label2.Size = new System.Drawing.Size(75, 20);
             this.label2.TabIndex = 1;
             this.label2.Text = "发送次数";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(9, 29);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(12, 36);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 16);
+            this.label1.Size = new System.Drawing.Size(75, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "声源角度";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -296,17 +303,18 @@
             // 
             this.combBoxAngles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.combBoxAngles.FormattingEnabled = true;
-            this.combBoxAngles.Location = new System.Drawing.Point(70, 29);
-            this.combBoxAngles.Margin = new System.Windows.Forms.Padding(2);
+            this.combBoxAngles.Location = new System.Drawing.Point(93, 36);
+            this.combBoxAngles.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.combBoxAngles.Name = "combBoxAngles";
-            this.combBoxAngles.Size = new System.Drawing.Size(68, 20);
+            this.combBoxAngles.Size = new System.Drawing.Size(89, 23);
             this.combBoxAngles.TabIndex = 0;
             // 
             // IsCaptureSupportedBtn
             // 
-            this.IsCaptureSupportedBtn.Location = new System.Drawing.Point(6, 200);
+            this.IsCaptureSupportedBtn.Location = new System.Drawing.Point(8, 250);
+            this.IsCaptureSupportedBtn.Margin = new System.Windows.Forms.Padding(4);
             this.IsCaptureSupportedBtn.Name = "IsCaptureSupportedBtn";
-            this.IsCaptureSupportedBtn.Size = new System.Drawing.Size(124, 36);
+            this.IsCaptureSupportedBtn.Size = new System.Drawing.Size(165, 45);
             this.IsCaptureSupportedBtn.TabIndex = 46;
             this.IsCaptureSupportedBtn.Text = "是否支持48M拍照";
             this.IsCaptureSupportedBtn.UseVisualStyleBackColor = true;
@@ -314,9 +322,10 @@
             // 
             // GetAppVersionBtn
             // 
-            this.GetAppVersionBtn.Location = new System.Drawing.Point(6, 65);
+            this.GetAppVersionBtn.Location = new System.Drawing.Point(8, 81);
+            this.GetAppVersionBtn.Margin = new System.Windows.Forms.Padding(4);
             this.GetAppVersionBtn.Name = "GetAppVersionBtn";
-            this.GetAppVersionBtn.Size = new System.Drawing.Size(124, 36);
+            this.GetAppVersionBtn.Size = new System.Drawing.Size(165, 45);
             this.GetAppVersionBtn.TabIndex = 43;
             this.GetAppVersionBtn.Text = "获取APP版本号";
             this.GetAppVersionBtn.UseVisualStyleBackColor = true;
@@ -324,9 +333,10 @@
             // 
             // RebootBootloaderBtn
             // 
-            this.RebootBootloaderBtn.Location = new System.Drawing.Point(6, 20);
+            this.RebootBootloaderBtn.Location = new System.Drawing.Point(8, 25);
+            this.RebootBootloaderBtn.Margin = new System.Windows.Forms.Padding(4);
             this.RebootBootloaderBtn.Name = "RebootBootloaderBtn";
-            this.RebootBootloaderBtn.Size = new System.Drawing.Size(124, 36);
+            this.RebootBootloaderBtn.Size = new System.Drawing.Size(165, 45);
             this.RebootBootloaderBtn.TabIndex = 42;
             this.RebootBootloaderBtn.Text = "启动Bootloader模式";
             this.RebootBootloaderBtn.UseVisualStyleBackColor = true;
@@ -334,9 +344,10 @@
             // 
             // GetCPUTempBtn
             // 
-            this.GetCPUTempBtn.Location = new System.Drawing.Point(6, 20);
+            this.GetCPUTempBtn.Location = new System.Drawing.Point(8, 25);
+            this.GetCPUTempBtn.Margin = new System.Windows.Forms.Padding(4);
             this.GetCPUTempBtn.Name = "GetCPUTempBtn";
-            this.GetCPUTempBtn.Size = new System.Drawing.Size(124, 36);
+            this.GetCPUTempBtn.Size = new System.Drawing.Size(165, 45);
             this.GetCPUTempBtn.TabIndex = 41;
             this.GetCPUTempBtn.Text = "获取CPU温度";
             this.GetCPUTempBtn.UseVisualStyleBackColor = true;
@@ -344,9 +355,10 @@
             // 
             // GetDeviceNameBtn
             // 
-            this.GetDeviceNameBtn.Location = new System.Drawing.Point(136, 155);
+            this.GetDeviceNameBtn.Location = new System.Drawing.Point(181, 194);
+            this.GetDeviceNameBtn.Margin = new System.Windows.Forms.Padding(4);
             this.GetDeviceNameBtn.Name = "GetDeviceNameBtn";
-            this.GetDeviceNameBtn.Size = new System.Drawing.Size(124, 36);
+            this.GetDeviceNameBtn.Size = new System.Drawing.Size(165, 45);
             this.GetDeviceNameBtn.TabIndex = 40;
             this.GetDeviceNameBtn.Text = "获取设备名";
             this.GetDeviceNameBtn.UseVisualStyleBackColor = true;
@@ -354,9 +366,10 @@
             // 
             // GetOTAKeyBtn
             // 
-            this.GetOTAKeyBtn.Location = new System.Drawing.Point(136, 110);
+            this.GetOTAKeyBtn.Location = new System.Drawing.Point(181, 138);
+            this.GetOTAKeyBtn.Margin = new System.Windows.Forms.Padding(4);
             this.GetOTAKeyBtn.Name = "GetOTAKeyBtn";
-            this.GetOTAKeyBtn.Size = new System.Drawing.Size(124, 36);
+            this.GetOTAKeyBtn.Size = new System.Drawing.Size(165, 45);
             this.GetOTAKeyBtn.TabIndex = 37;
             this.GetOTAKeyBtn.Text = "获取OTA Key";
             this.GetOTAKeyBtn.UseVisualStyleBackColor = true;
@@ -364,9 +377,10 @@
             // 
             // GetUpgradeMethodBtn
             // 
-            this.GetUpgradeMethodBtn.Location = new System.Drawing.Point(136, 65);
+            this.GetUpgradeMethodBtn.Location = new System.Drawing.Point(181, 81);
+            this.GetUpgradeMethodBtn.Margin = new System.Windows.Forms.Padding(4);
             this.GetUpgradeMethodBtn.Name = "GetUpgradeMethodBtn";
-            this.GetUpgradeMethodBtn.Size = new System.Drawing.Size(124, 36);
+            this.GetUpgradeMethodBtn.Size = new System.Drawing.Size(165, 45);
             this.GetUpgradeMethodBtn.TabIndex = 36;
             this.GetUpgradeMethodBtn.Text = "获取升级方式";
             this.GetUpgradeMethodBtn.UseVisualStyleBackColor = true;
@@ -374,9 +388,10 @@
             // 
             // GetVersionBtn
             // 
-            this.GetVersionBtn.Location = new System.Drawing.Point(6, 20);
+            this.GetVersionBtn.Location = new System.Drawing.Point(8, 25);
+            this.GetVersionBtn.Margin = new System.Windows.Forms.Padding(4);
             this.GetVersionBtn.Name = "GetVersionBtn";
-            this.GetVersionBtn.Size = new System.Drawing.Size(124, 36);
+            this.GetVersionBtn.Size = new System.Drawing.Size(165, 45);
             this.GetVersionBtn.TabIndex = 35;
             this.GetVersionBtn.Text = "获取版本号";
             this.GetVersionBtn.UseVisualStyleBackColor = true;
@@ -384,9 +399,10 @@
             // 
             // GetCameraModelBtn
             // 
-            this.GetCameraModelBtn.Location = new System.Drawing.Point(136, 20);
+            this.GetCameraModelBtn.Location = new System.Drawing.Point(181, 25);
+            this.GetCameraModelBtn.Margin = new System.Windows.Forms.Padding(4);
             this.GetCameraModelBtn.Name = "GetCameraModelBtn";
-            this.GetCameraModelBtn.Size = new System.Drawing.Size(124, 36);
+            this.GetCameraModelBtn.Size = new System.Drawing.Size(165, 45);
             this.GetCameraModelBtn.TabIndex = 34;
             this.GetCameraModelBtn.Text = "获取模组信息";
             this.GetCameraModelBtn.UseVisualStyleBackColor = true;
@@ -396,25 +412,28 @@
             // 
             this.comboBoxDevices.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxDevices.FormattingEnabled = true;
-            this.comboBoxDevices.Location = new System.Drawing.Point(76, 16);
+            this.comboBoxDevices.Location = new System.Drawing.Point(101, 20);
+            this.comboBoxDevices.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxDevices.Name = "comboBoxDevices";
-            this.comboBoxDevices.Size = new System.Drawing.Size(197, 20);
+            this.comboBoxDevices.Size = new System.Drawing.Size(261, 23);
             this.comboBoxDevices.TabIndex = 54;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 20);
+            this.label4.Location = new System.Drawing.Point(17, 25);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 12);
+            this.label4.Size = new System.Drawing.Size(67, 15);
             this.label4.TabIndex = 55;
             this.label4.Text = "相机设备";
             // 
             // GetSNBtn
             // 
-            this.GetSNBtn.Location = new System.Drawing.Point(6, 155);
+            this.GetSNBtn.Location = new System.Drawing.Point(8, 194);
+            this.GetSNBtn.Margin = new System.Windows.Forms.Padding(4);
             this.GetSNBtn.Name = "GetSNBtn";
-            this.GetSNBtn.Size = new System.Drawing.Size(124, 36);
+            this.GetSNBtn.Size = new System.Drawing.Size(165, 45);
             this.GetSNBtn.TabIndex = 56;
             this.GetSNBtn.Text = "获取SN号";
             this.GetSNBtn.UseVisualStyleBackColor = true;
@@ -428,27 +447,31 @@
             this.groupBox3.Controls.Add(this.right_narrow);
             this.groupBox3.Controls.Add(this.left_narrow);
             this.groupBox3.Controls.Add(this.up_narrow);
-            this.groupBox3.Location = new System.Drawing.Point(11, 6);
+            this.groupBox3.Location = new System.Drawing.Point(15, 8);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(150, 158);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox3.Size = new System.Drawing.Size(200, 198);
             this.groupBox3.TabIndex = 58;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "移动控制";
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(6, 119);
+            this.label6.Location = new System.Drawing.Point(8, 149);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(72, 33);
+            this.label6.Size = new System.Drawing.Size(96, 41);
             this.label6.TabIndex = 9;
             this.label6.Text = "步长（1步32像素 0~255）";
             // 
             // eptz_move_textbox_length
             // 
-            this.eptz_move_textbox_length.Location = new System.Drawing.Point(108, 123);
+            this.eptz_move_textbox_length.Location = new System.Drawing.Point(144, 154);
+            this.eptz_move_textbox_length.Margin = new System.Windows.Forms.Padding(4);
             this.eptz_move_textbox_length.MaxLength = 3;
             this.eptz_move_textbox_length.Name = "eptz_move_textbox_length";
-            this.eptz_move_textbox_length.Size = new System.Drawing.Size(38, 21);
+            this.eptz_move_textbox_length.Size = new System.Drawing.Size(49, 25);
             this.eptz_move_textbox_length.TabIndex = 10;
             this.eptz_move_textbox_length.Text = "1";
             // 
@@ -461,9 +484,10 @@
             this.down_narrow.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.down_narrow.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.down_narrow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.down_narrow.Location = new System.Drawing.Point(56, 79);
+            this.down_narrow.Location = new System.Drawing.Point(75, 99);
+            this.down_narrow.Margin = new System.Windows.Forms.Padding(4);
             this.down_narrow.Name = "down_narrow";
-            this.down_narrow.Size = new System.Drawing.Size(33, 33);
+            this.down_narrow.Size = new System.Drawing.Size(44, 41);
             this.down_narrow.TabIndex = 3;
             this.down_narrow.UseVisualStyleBackColor = false;
             this.down_narrow.Click += new System.EventHandler(this.EPTZ_MOVE_DOWN_Click);
@@ -477,9 +501,10 @@
             this.right_narrow.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.right_narrow.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.right_narrow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.right_narrow.Location = new System.Drawing.Point(91, 46);
+            this.right_narrow.Location = new System.Drawing.Point(121, 58);
+            this.right_narrow.Margin = new System.Windows.Forms.Padding(4);
             this.right_narrow.Name = "right_narrow";
-            this.right_narrow.Size = new System.Drawing.Size(33, 33);
+            this.right_narrow.Size = new System.Drawing.Size(44, 41);
             this.right_narrow.TabIndex = 2;
             this.right_narrow.UseVisualStyleBackColor = false;
             this.right_narrow.Click += new System.EventHandler(this.EPTZ_MOVE_RIGHT_Click);
@@ -493,9 +518,10 @@
             this.left_narrow.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.left_narrow.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.left_narrow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.left_narrow.Location = new System.Drawing.Point(23, 46);
+            this.left_narrow.Location = new System.Drawing.Point(31, 58);
+            this.left_narrow.Margin = new System.Windows.Forms.Padding(4);
             this.left_narrow.Name = "left_narrow";
-            this.left_narrow.Size = new System.Drawing.Size(33, 33);
+            this.left_narrow.Size = new System.Drawing.Size(44, 41);
             this.left_narrow.TabIndex = 1;
             this.left_narrow.UseVisualStyleBackColor = false;
             this.left_narrow.Click += new System.EventHandler(this.EPTZ_MOVE_LEFT_Click);
@@ -509,15 +535,17 @@
             this.up_narrow.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.up_narrow.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.up_narrow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.up_narrow.Location = new System.Drawing.Point(56, 13);
+            this.up_narrow.Location = new System.Drawing.Point(75, 16);
+            this.up_narrow.Margin = new System.Windows.Forms.Padding(4);
             this.up_narrow.Name = "up_narrow";
-            this.up_narrow.Size = new System.Drawing.Size(33, 33);
+            this.up_narrow.Size = new System.Drawing.Size(44, 41);
             this.up_narrow.TabIndex = 0;
             this.up_narrow.UseVisualStyleBackColor = false;
             this.up_narrow.Click += new System.EventHandler(this.EPTZ_MOVE_UP_Click);
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
@@ -534,18 +562,21 @@
             this.groupBox4.Controls.Add(this.GetAppVersionBtn);
             this.groupBox4.Controls.Add(this.GetIQVersionBtn);
             this.groupBox4.Controls.Add(this.IsCaptureSupportedBtn);
-            this.groupBox4.Location = new System.Drawing.Point(13, 58);
+            this.groupBox4.Location = new System.Drawing.Point(17, 72);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(267, 303);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox4.Size = new System.Drawing.Size(356, 379);
             this.groupBox4.TabIndex = 59;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "获取基本信息";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(6, 242);
+            this.button1.Location = new System.Drawing.Point(8, 302);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(124, 36);
+            this.button1.Size = new System.Drawing.Size(165, 45);
             this.button1.TabIndex = 58;
             this.button1.Text = "获取RMS功能";
             this.button1.UseVisualStyleBackColor = true;
@@ -553,9 +584,10 @@
             // 
             // getAudioVersion
             // 
-            this.getAudioVersion.Location = new System.Drawing.Point(136, 200);
+            this.getAudioVersion.Location = new System.Drawing.Point(181, 250);
+            this.getAudioVersion.Margin = new System.Windows.Forms.Padding(4);
             this.getAudioVersion.Name = "getAudioVersion";
-            this.getAudioVersion.Size = new System.Drawing.Size(124, 36);
+            this.getAudioVersion.Size = new System.Drawing.Size(165, 45);
             this.getAudioVersion.TabIndex = 57;
             this.getAudioVersion.Text = "获取音频版本号";
             this.getAudioVersion.UseVisualStyleBackColor = true;
@@ -565,9 +597,11 @@
             // 
             this.groupBox5.Controls.Add(this.GetCPUTempBtn);
             this.groupBox5.Controls.Add(this.GetCPUFreqBtn);
-            this.groupBox5.Location = new System.Drawing.Point(295, 58);
+            this.groupBox5.Location = new System.Drawing.Point(393, 72);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(135, 303);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox5.Size = new System.Drawing.Size(180, 379);
             this.groupBox5.TabIndex = 60;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "获取运行状态";
@@ -578,9 +612,11 @@
             this.groupBox6.Controls.Add(this.StartRecordLogBtn);
             this.groupBox6.Controls.Add(this.StopRecordBtn);
             this.groupBox6.Controls.Add(this.GetRecordLogBtn);
-            this.groupBox6.Location = new System.Drawing.Point(445, 58);
+            this.groupBox6.Location = new System.Drawing.Point(593, 72);
+            this.groupBox6.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(144, 200);
+            this.groupBox6.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox6.Size = new System.Drawing.Size(192, 250);
             this.groupBox6.TabIndex = 61;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "刷机与调试";
@@ -589,18 +625,18 @@
             // 
             this.comboBoxPreviewMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxPreviewMode.FormattingEnabled = true;
-            this.comboBoxPreviewMode.Location = new System.Drawing.Point(661, 16);
+            this.comboBoxPreviewMode.Location = new System.Drawing.Point(881, 20);
+            this.comboBoxPreviewMode.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxPreviewMode.Name = "comboBoxPreviewMode";
-            this.comboBoxPreviewMode.Size = new System.Drawing.Size(272, 20);
+            this.comboBoxPreviewMode.Size = new System.Drawing.Size(361, 23);
             this.comboBoxPreviewMode.TabIndex = 62;
             this.comboBoxPreviewMode.SelectionChangeCommitted += new System.EventHandler(this.comboBoxPreviewMode_SelectionChangeCommitted);
             // 
             // label7
             // 
-            this.label7.Location = new System.Drawing.Point(595, 18);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Location = new System.Drawing.Point(793, 22);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(59, 16);
+            this.label7.Size = new System.Drawing.Size(79, 20);
             this.label7.TabIndex = 1;
             this.label7.Text = "预览模式";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -612,35 +648,40 @@
             this.groupBox2.Controls.Add(this.button4);
             this.groupBox2.Controls.Add(this.button3);
             this.groupBox2.Controls.Add(this.button2);
-            this.groupBox2.Location = new System.Drawing.Point(10, 172);
+            this.groupBox2.Location = new System.Drawing.Point(13, 215);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(152, 80);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Size = new System.Drawing.Size(203, 100);
             this.groupBox2.TabIndex = 57;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "缩放控制";
             // 
             // label5
             // 
-            this.label5.Location = new System.Drawing.Point(4, 18);
+            this.label5.Location = new System.Drawing.Point(5, 22);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(76, 30);
+            this.label5.Size = new System.Drawing.Size(101, 38);
             this.label5.TabIndex = 4;
             this.label5.Text = "步长（1步64像素 0~255）：";
             // 
             // eptz_size_textbox_length
             // 
-            this.eptz_size_textbox_length.Location = new System.Drawing.Point(106, 22);
+            this.eptz_size_textbox_length.Location = new System.Drawing.Point(141, 28);
+            this.eptz_size_textbox_length.Margin = new System.Windows.Forms.Padding(4);
             this.eptz_size_textbox_length.MaxLength = 3;
             this.eptz_size_textbox_length.Name = "eptz_size_textbox_length";
-            this.eptz_size_textbox_length.Size = new System.Drawing.Size(38, 21);
+            this.eptz_size_textbox_length.Size = new System.Drawing.Size(49, 25);
             this.eptz_size_textbox_length.TabIndex = 8;
             this.eptz_size_textbox_length.Text = "1";
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(100, 50);
+            this.button4.Location = new System.Drawing.Point(133, 62);
+            this.button4.Margin = new System.Windows.Forms.Padding(4);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(50, 23);
+            this.button4.Size = new System.Drawing.Size(67, 29);
             this.button4.TabIndex = 2;
             this.button4.Text = "复位";
             this.button4.UseVisualStyleBackColor = true;
@@ -648,9 +689,10 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(50, 50);
+            this.button3.Location = new System.Drawing.Point(67, 62);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(50, 23);
+            this.button3.Size = new System.Drawing.Size(67, 29);
             this.button3.TabIndex = 1;
             this.button3.Text = "缩小";
             this.button3.UseVisualStyleBackColor = true;
@@ -658,9 +700,10 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(1, 50);
+            this.button2.Location = new System.Drawing.Point(1, 62);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(50, 23);
+            this.button2.Size = new System.Drawing.Size(67, 29);
             this.button2.TabIndex = 0;
             this.button2.Text = "放大";
             this.button2.UseVisualStyleBackColor = true;
@@ -670,20 +713,22 @@
             // 
             this.tabControlEPTZ.Controls.Add(this.tabPage1);
             this.tabControlEPTZ.Controls.Add(this.tabPage2);
-            this.tabControlEPTZ.Location = new System.Drawing.Point(164, 20);
+            this.tabControlEPTZ.Location = new System.Drawing.Point(219, 25);
+            this.tabControlEPTZ.Margin = new System.Windows.Forms.Padding(4);
             this.tabControlEPTZ.Name = "tabControlEPTZ";
             this.tabControlEPTZ.SelectedIndex = 0;
-            this.tabControlEPTZ.Size = new System.Drawing.Size(190, 283);
+            this.tabControlEPTZ.Size = new System.Drawing.Size(253, 354);
             this.tabControlEPTZ.TabIndex = 63;
             // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.groupBox3);
             this.tabPage1.Controls.Add(this.groupBox2);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(182, 257);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage1.Size = new System.Drawing.Size(245, 325);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "手动";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -691,19 +736,21 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.groupBox1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(182, 257);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage2.Size = new System.Drawing.Size(245, 325);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "主讲者模式";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // btnUpdateDeviceList
             // 
-            this.btnUpdateDeviceList.Location = new System.Drawing.Point(295, 14);
+            this.btnUpdateDeviceList.Location = new System.Drawing.Point(393, 18);
+            this.btnUpdateDeviceList.Margin = new System.Windows.Forms.Padding(4);
             this.btnUpdateDeviceList.Name = "btnUpdateDeviceList";
-            this.btnUpdateDeviceList.Size = new System.Drawing.Size(135, 24);
+            this.btnUpdateDeviceList.Size = new System.Drawing.Size(180, 30);
             this.btnUpdateDeviceList.TabIndex = 64;
             this.btnUpdateDeviceList.Text = "刷新设备列表";
             this.btnUpdateDeviceList.UseVisualStyleBackColor = true;
@@ -717,9 +764,11 @@
             this.groupBox7.Controls.Add(this.GetEPTZEnableBtn);
             this.groupBox7.Controls.Add(this.GetEPTZModeBtn);
             this.groupBox7.Controls.Add(this.IsEPTZSupportedBtn);
-            this.groupBox7.Location = new System.Drawing.Point(595, 58);
+            this.groupBox7.Location = new System.Drawing.Point(793, 72);
+            this.groupBox7.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(368, 303);
+            this.groupBox7.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox7.Size = new System.Drawing.Size(491, 379);
             this.groupBox7.TabIndex = 65;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "电子云台控制";
@@ -728,18 +777,21 @@
             // 
             this.groupBox9.Controls.Add(this.OpenAFMacroBtn);
             this.groupBox9.Controls.Add(this.CloseAFMacroBtn);
-            this.groupBox9.Location = new System.Drawing.Point(6, 155);
+            this.groupBox9.Location = new System.Drawing.Point(8, 194);
+            this.groupBox9.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(124, 52);
+            this.groupBox9.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox9.Size = new System.Drawing.Size(165, 65);
             this.groupBox9.TabIndex = 64;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "微距模式";
             // 
             // OpenAFMacroBtn
             // 
-            this.OpenAFMacroBtn.Location = new System.Drawing.Point(6, 17);
+            this.OpenAFMacroBtn.Location = new System.Drawing.Point(8, 21);
+            this.OpenAFMacroBtn.Margin = new System.Windows.Forms.Padding(4);
             this.OpenAFMacroBtn.Name = "OpenAFMacroBtn";
-            this.OpenAFMacroBtn.Size = new System.Drawing.Size(50, 28);
+            this.OpenAFMacroBtn.Size = new System.Drawing.Size(67, 35);
             this.OpenAFMacroBtn.TabIndex = 64;
             this.OpenAFMacroBtn.Text = "开启";
             this.OpenAFMacroBtn.UseVisualStyleBackColor = true;
@@ -747,9 +799,10 @@
             // 
             // CloseAFMacroBtn
             // 
-            this.CloseAFMacroBtn.Location = new System.Drawing.Point(68, 17);
+            this.CloseAFMacroBtn.Location = new System.Drawing.Point(91, 21);
+            this.CloseAFMacroBtn.Margin = new System.Windows.Forms.Padding(4);
             this.CloseAFMacroBtn.Name = "CloseAFMacroBtn";
-            this.CloseAFMacroBtn.Size = new System.Drawing.Size(50, 28);
+            this.CloseAFMacroBtn.Size = new System.Drawing.Size(67, 35);
             this.CloseAFMacroBtn.TabIndex = 65;
             this.CloseAFMacroBtn.Text = "关闭";
             this.CloseAFMacroBtn.UseVisualStyleBackColor = true;
@@ -761,18 +814,21 @@
             this.groupBox8.Controls.Add(this.SetFOVBtn114);
             this.groupBox8.Controls.Add(this.SetFOVBtn90);
             this.groupBox8.Controls.Add(this.SetFOVBtn72);
-            this.groupBox8.Location = new System.Drawing.Point(6, 222);
+            this.groupBox8.Location = new System.Drawing.Point(8, 278);
+            this.groupBox8.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(124, 81);
+            this.groupBox8.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox8.Size = new System.Drawing.Size(165, 101);
             this.groupBox8.TabIndex = 62;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "FOV控制";
             // 
             // GetFOVBtn
             // 
-            this.GetFOVBtn.Location = new System.Drawing.Point(4, 48);
+            this.GetFOVBtn.Location = new System.Drawing.Point(5, 60);
+            this.GetFOVBtn.Margin = new System.Windows.Forms.Padding(4);
             this.GetFOVBtn.Name = "GetFOVBtn";
-            this.GetFOVBtn.Size = new System.Drawing.Size(114, 22);
+            this.GetFOVBtn.Size = new System.Drawing.Size(152, 28);
             this.GetFOVBtn.TabIndex = 65;
             this.GetFOVBtn.Text = "获取FOV";
             this.GetFOVBtn.UseVisualStyleBackColor = true;
@@ -780,9 +836,10 @@
             // 
             // SetFOVBtn114
             // 
-            this.SetFOVBtn114.Location = new System.Drawing.Point(84, 20);
+            this.SetFOVBtn114.Location = new System.Drawing.Point(112, 25);
+            this.SetFOVBtn114.Margin = new System.Windows.Forms.Padding(4);
             this.SetFOVBtn114.Name = "SetFOVBtn114";
-            this.SetFOVBtn114.Size = new System.Drawing.Size(36, 22);
+            this.SetFOVBtn114.Size = new System.Drawing.Size(48, 28);
             this.SetFOVBtn114.TabIndex = 68;
             this.SetFOVBtn114.Text = "114°";
             this.SetFOVBtn114.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -792,9 +849,10 @@
             // SetFOVBtn90
             // 
             this.SetFOVBtn90.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.SetFOVBtn90.Location = new System.Drawing.Point(44, 20);
+            this.SetFOVBtn90.Location = new System.Drawing.Point(59, 25);
+            this.SetFOVBtn90.Margin = new System.Windows.Forms.Padding(4);
             this.SetFOVBtn90.Name = "SetFOVBtn90";
-            this.SetFOVBtn90.Size = new System.Drawing.Size(36, 22);
+            this.SetFOVBtn90.Size = new System.Drawing.Size(48, 28);
             this.SetFOVBtn90.TabIndex = 67;
             this.SetFOVBtn90.Text = "90°";
             this.SetFOVBtn90.UseVisualStyleBackColor = true;
@@ -802,9 +860,10 @@
             // 
             // SetFOVBtn72
             // 
-            this.SetFOVBtn72.Location = new System.Drawing.Point(4, 20);
+            this.SetFOVBtn72.Location = new System.Drawing.Point(5, 25);
+            this.SetFOVBtn72.Margin = new System.Windows.Forms.Padding(4);
             this.SetFOVBtn72.Name = "SetFOVBtn72";
-            this.SetFOVBtn72.Size = new System.Drawing.Size(36, 22);
+            this.SetFOVBtn72.Size = new System.Drawing.Size(48, 28);
             this.SetFOVBtn72.TabIndex = 66;
             this.SetFOVBtn72.Text = "72°";
             this.SetFOVBtn72.UseVisualStyleBackColor = true;
@@ -812,9 +871,10 @@
             // 
             // GetEPTZEnableBtn
             // 
-            this.GetEPTZEnableBtn.Location = new System.Drawing.Point(6, 110);
+            this.GetEPTZEnableBtn.Location = new System.Drawing.Point(8, 138);
+            this.GetEPTZEnableBtn.Margin = new System.Windows.Forms.Padding(4);
             this.GetEPTZEnableBtn.Name = "GetEPTZEnableBtn";
-            this.GetEPTZEnableBtn.Size = new System.Drawing.Size(124, 36);
+            this.GetEPTZEnableBtn.Size = new System.Drawing.Size(165, 45);
             this.GetEPTZEnableBtn.TabIndex = 48;
             this.GetEPTZEnableBtn.Text = "获取电子云台状态";
             this.GetEPTZEnableBtn.UseVisualStyleBackColor = true;
@@ -822,9 +882,10 @@
             // 
             // GetEPTZModeBtn
             // 
-            this.GetEPTZModeBtn.Location = new System.Drawing.Point(6, 65);
+            this.GetEPTZModeBtn.Location = new System.Drawing.Point(8, 81);
+            this.GetEPTZModeBtn.Margin = new System.Windows.Forms.Padding(4);
             this.GetEPTZModeBtn.Name = "GetEPTZModeBtn";
-            this.GetEPTZModeBtn.Size = new System.Drawing.Size(124, 36);
+            this.GetEPTZModeBtn.Size = new System.Drawing.Size(165, 45);
             this.GetEPTZModeBtn.TabIndex = 48;
             this.GetEPTZModeBtn.Text = "获取电子云台模式";
             this.GetEPTZModeBtn.UseVisualStyleBackColor = true;
@@ -832,9 +893,10 @@
             // 
             // IsEPTZSupportedBtn
             // 
-            this.IsEPTZSupportedBtn.Location = new System.Drawing.Point(6, 20);
+            this.IsEPTZSupportedBtn.Location = new System.Drawing.Point(8, 25);
+            this.IsEPTZSupportedBtn.Margin = new System.Windows.Forms.Padding(4);
             this.IsEPTZSupportedBtn.Name = "IsEPTZSupportedBtn";
-            this.IsEPTZSupportedBtn.Size = new System.Drawing.Size(124, 36);
+            this.IsEPTZSupportedBtn.Size = new System.Drawing.Size(165, 45);
             this.IsEPTZSupportedBtn.TabIndex = 48;
             this.IsEPTZSupportedBtn.Text = "是否支持电子云台";
             this.IsEPTZSupportedBtn.UseVisualStyleBackColor = true;
@@ -844,18 +906,21 @@
             // 
             this.groupBox10.Controls.Add(this.OpenTencentModeBtn);
             this.groupBox10.Controls.Add(this.CloseTencentModeBtn);
-            this.groupBox10.Location = new System.Drawing.Point(443, 264);
+            this.groupBox10.Location = new System.Drawing.Point(591, 330);
+            this.groupBox10.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(146, 97);
+            this.groupBox10.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox10.Size = new System.Drawing.Size(195, 121);
             this.groupBox10.TabIndex = 66;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "腾讯认证";
             // 
             // OpenTencentModeBtn
             // 
-            this.OpenTencentModeBtn.Location = new System.Drawing.Point(8, 20);
+            this.OpenTencentModeBtn.Location = new System.Drawing.Point(11, 25);
+            this.OpenTencentModeBtn.Margin = new System.Windows.Forms.Padding(4);
             this.OpenTencentModeBtn.Name = "OpenTencentModeBtn";
-            this.OpenTencentModeBtn.Size = new System.Drawing.Size(60, 36);
+            this.OpenTencentModeBtn.Size = new System.Drawing.Size(80, 45);
             this.OpenTencentModeBtn.TabIndex = 64;
             this.OpenTencentModeBtn.Text = "开启";
             this.OpenTencentModeBtn.UseVisualStyleBackColor = true;
@@ -863,9 +928,10 @@
             // 
             // CloseTencentModeBtn
             // 
-            this.CloseTencentModeBtn.Location = new System.Drawing.Point(72, 20);
+            this.CloseTencentModeBtn.Location = new System.Drawing.Point(96, 25);
+            this.CloseTencentModeBtn.Margin = new System.Windows.Forms.Padding(4);
             this.CloseTencentModeBtn.Name = "CloseTencentModeBtn";
-            this.CloseTencentModeBtn.Size = new System.Drawing.Size(60, 36);
+            this.CloseTencentModeBtn.Size = new System.Drawing.Size(80, 45);
             this.CloseTencentModeBtn.TabIndex = 65;
             this.CloseTencentModeBtn.Text = "关闭";
             this.CloseTencentModeBtn.UseVisualStyleBackColor = true;
@@ -879,76 +945,135 @@
             this.groupBox11.Controls.Add(this.focusLocationTextBox);
             this.groupBox11.Controls.Add(this.autoFocusButton);
             this.groupBox11.Controls.Add(this.manualFocusButton);
-            this.groupBox11.Location = new System.Drawing.Point(15, 367);
+            this.groupBox11.Location = new System.Drawing.Point(20, 459);
+            this.groupBox11.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(267, 163);
+            this.groupBox11.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox11.Size = new System.Drawing.Size(356, 204);
             this.groupBox11.TabIndex = 67;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "对焦模式";
             // 
-            // manualFocusButton
-            // 
-            this.manualFocusButton.Location = new System.Drawing.Point(6, 20);
-            this.manualFocusButton.Name = "manualFocusButton";
-            this.manualFocusButton.Size = new System.Drawing.Size(124, 38);
-            this.manualFocusButton.TabIndex = 0;
-            this.manualFocusButton.Text = "手动对焦模式";
-            this.manualFocusButton.UseVisualStyleBackColor = true;
-            this.manualFocusButton.Click += new System.EventHandler(this.manualFocusButton_Click);
-            // 
-            // autoFocusButton
-            // 
-            this.autoFocusButton.Location = new System.Drawing.Point(136, 20);
-            this.autoFocusButton.Name = "autoFocusButton";
-            this.autoFocusButton.Size = new System.Drawing.Size(124, 38);
-            this.autoFocusButton.TabIndex = 1;
-            this.autoFocusButton.Text = "自动对焦模式";
-            this.autoFocusButton.UseVisualStyleBackColor = true;
-            this.autoFocusButton.Click += new System.EventHandler(this.autoFocusButton_Click);
-            // 
-            // focusLocationTextBox
-            // 
-            this.focusLocationTextBox.Location = new System.Drawing.Point(7, 74);
-            this.focusLocationTextBox.Name = "focusLocationTextBox";
-            this.focusLocationTextBox.Size = new System.Drawing.Size(123, 21);
-            this.focusLocationTextBox.TabIndex = 0;
-            // 
-            // setFocusButton
-            // 
-            this.setFocusButton.Location = new System.Drawing.Point(136, 64);
-            this.setFocusButton.Name = "setFocusButton";
-            this.setFocusButton.Size = new System.Drawing.Size(124, 38);
-            this.setFocusButton.TabIndex = 1;
-            this.setFocusButton.Text = "设置对焦位置";
-            this.setFocusButton.UseVisualStyleBackColor = true;
-            this.setFocusButton.Click += new System.EventHandler(this.setFocusButton_Click);
-            // 
-            // currentFocusLocationLabel
-            // 
-            this.currentFocusLocationLabel.AutoSize = true;
-            this.currentFocusLocationLabel.Location = new System.Drawing.Point(6, 121);
-            this.currentFocusLocationLabel.Name = "currentFocusLocationLabel";
-            this.currentFocusLocationLabel.Size = new System.Drawing.Size(89, 12);
-            this.currentFocusLocationLabel.TabIndex = 2;
-            this.currentFocusLocationLabel.Text = "当前对焦位置：";
-            // 
             // getCurrentFocusLocationButton
             // 
-            this.getCurrentFocusLocationButton.Location = new System.Drawing.Point(136, 108);
+            this.getCurrentFocusLocationButton.Location = new System.Drawing.Point(181, 135);
+            this.getCurrentFocusLocationButton.Margin = new System.Windows.Forms.Padding(4);
             this.getCurrentFocusLocationButton.Name = "getCurrentFocusLocationButton";
-            this.getCurrentFocusLocationButton.Size = new System.Drawing.Size(124, 38);
+            this.getCurrentFocusLocationButton.Size = new System.Drawing.Size(165, 48);
             this.getCurrentFocusLocationButton.TabIndex = 3;
             this.getCurrentFocusLocationButton.Text = "获取当前对焦位置";
             this.getCurrentFocusLocationButton.UseVisualStyleBackColor = true;
             this.getCurrentFocusLocationButton.Click += new System.EventHandler(this.getCurrentFocusLocationButton_Click);
             // 
+            // currentFocusLocationLabel
+            // 
+            this.currentFocusLocationLabel.AutoSize = true;
+            this.currentFocusLocationLabel.Location = new System.Drawing.Point(8, 151);
+            this.currentFocusLocationLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.currentFocusLocationLabel.Name = "currentFocusLocationLabel";
+            this.currentFocusLocationLabel.Size = new System.Drawing.Size(112, 15);
+            this.currentFocusLocationLabel.TabIndex = 2;
+            this.currentFocusLocationLabel.Text = "当前对焦位置：";
+            // 
+            // setFocusButton
+            // 
+            this.setFocusButton.Location = new System.Drawing.Point(181, 80);
+            this.setFocusButton.Margin = new System.Windows.Forms.Padding(4);
+            this.setFocusButton.Name = "setFocusButton";
+            this.setFocusButton.Size = new System.Drawing.Size(165, 48);
+            this.setFocusButton.TabIndex = 1;
+            this.setFocusButton.Text = "设置对焦位置";
+            this.setFocusButton.UseVisualStyleBackColor = true;
+            this.setFocusButton.Click += new System.EventHandler(this.setFocusButton_Click);
+            // 
+            // focusLocationTextBox
+            // 
+            this.focusLocationTextBox.Location = new System.Drawing.Point(9, 92);
+            this.focusLocationTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.focusLocationTextBox.Name = "focusLocationTextBox";
+            this.focusLocationTextBox.Size = new System.Drawing.Size(163, 25);
+            this.focusLocationTextBox.TabIndex = 0;
+            // 
+            // autoFocusButton
+            // 
+            this.autoFocusButton.Location = new System.Drawing.Point(181, 25);
+            this.autoFocusButton.Margin = new System.Windows.Forms.Padding(4);
+            this.autoFocusButton.Name = "autoFocusButton";
+            this.autoFocusButton.Size = new System.Drawing.Size(165, 48);
+            this.autoFocusButton.TabIndex = 1;
+            this.autoFocusButton.Text = "自动对焦模式";
+            this.autoFocusButton.UseVisualStyleBackColor = true;
+            this.autoFocusButton.Click += new System.EventHandler(this.autoFocusButton_Click);
+            // 
+            // manualFocusButton
+            // 
+            this.manualFocusButton.Location = new System.Drawing.Point(8, 25);
+            this.manualFocusButton.Margin = new System.Windows.Forms.Padding(4);
+            this.manualFocusButton.Name = "manualFocusButton";
+            this.manualFocusButton.Size = new System.Drawing.Size(165, 48);
+            this.manualFocusButton.TabIndex = 0;
+            this.manualFocusButton.Text = "手动对焦模式";
+            this.manualFocusButton.UseVisualStyleBackColor = true;
+            this.manualFocusButton.Click += new System.EventHandler(this.manualFocusButton_Click);
+            // 
+            // groupBox12
+            // 
+            this.groupBox12.Controls.Add(this.privacy_camera_output_status_label);
+            this.groupBox12.Controls.Add(this.label8);
+            this.groupBox12.Controls.Add(this.close_camera_privacy_button);
+            this.groupBox12.Controls.Add(this.open_camera_privacy_button);
+            this.groupBox12.Location = new System.Drawing.Point(393, 459);
+            this.groupBox12.Name = "groupBox12";
+            this.groupBox12.Size = new System.Drawing.Size(319, 88);
+            this.groupBox12.TabIndex = 68;
+            this.groupBox12.TabStop = false;
+            this.groupBox12.Text = "摄像头隐私开关";
+            // 
+            // close_camera_privacy_button
+            // 
+            this.close_camera_privacy_button.Location = new System.Drawing.Point(162, 24);
+            this.close_camera_privacy_button.Name = "close_camera_privacy_button";
+            this.close_camera_privacy_button.Size = new System.Drawing.Size(148, 27);
+            this.close_camera_privacy_button.TabIndex = 5;
+            this.close_camera_privacy_button.Text = "关闭摄像头黑屏";
+            this.close_camera_privacy_button.UseVisualStyleBackColor = true;
+            this.close_camera_privacy_button.Click += new System.EventHandler(this.close_camera_privacy_button_Click);
+            // 
+            // open_camera_privacy_button
+            // 
+            this.open_camera_privacy_button.Location = new System.Drawing.Point(8, 25);
+            this.open_camera_privacy_button.Name = "open_camera_privacy_button";
+            this.open_camera_privacy_button.Size = new System.Drawing.Size(148, 27);
+            this.open_camera_privacy_button.TabIndex = 4;
+            this.open_camera_privacy_button.Text = "开启摄像头黑屏";
+            this.open_camera_privacy_button.UseVisualStyleBackColor = true;
+            this.open_camera_privacy_button.Click += new System.EventHandler(this.open_camera_privacy_button_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 62);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(157, 15);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "当前摄像头黑屏状态：";
+            // 
+            // privacy_camera_output_status_label
+            // 
+            this.privacy_camera_output_status_label.AutoSize = true;
+            this.privacy_camera_output_status_label.Location = new System.Drawing.Point(239, 63);
+            this.privacy_camera_output_status_label.Name = "privacy_camera_output_status_label";
+            this.privacy_camera_output_status_label.Size = new System.Drawing.Size(0, 15);
+            this.privacy_camera_output_status_label.TabIndex = 7;
+            // 
             // HIDToolForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(944, 564);
+            this.ClientSize = new System.Drawing.Size(1256, 695);
+            this.Controls.Add(this.groupBox12);
             this.Controls.Add(this.groupBox11);
             this.Controls.Add(this.groupBox10);
             this.Controls.Add(this.groupBox7);
@@ -961,8 +1086,9 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.comboBoxDevices);
             this.Controls.Add(this.statusStrip1);
-            this.MaximumSize = new System.Drawing.Size(960, 603);
-            this.MinimumSize = new System.Drawing.Size(960, 603);
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximumSize = new System.Drawing.Size(1274, 742);
+            this.MinimumSize = new System.Drawing.Size(1274, 742);
             this.Name = "HIDToolForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HIDTool_3.1";
@@ -988,6 +1114,8 @@
             this.groupBox10.ResumeLayout(false);
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
+            this.groupBox12.ResumeLayout(false);
+            this.groupBox12.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1073,5 +1201,10 @@
         private System.Windows.Forms.TextBox focusLocationTextBox;
         private System.Windows.Forms.Label currentFocusLocationLabel;
         private System.Windows.Forms.Button getCurrentFocusLocationButton;
+        private System.Windows.Forms.GroupBox groupBox12;
+        private System.Windows.Forms.Button open_camera_privacy_button;
+        private System.Windows.Forms.Button close_camera_privacy_button;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label privacy_camera_output_status_label;
     }
 }

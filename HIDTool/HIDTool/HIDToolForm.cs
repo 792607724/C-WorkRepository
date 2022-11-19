@@ -206,7 +206,6 @@ namespace HIDTool
         private void GetVersionBtn_Click(object sender, EventArgs e)
         {
             HIDDevice device = OpenHIDDevice(this.comboBoxDevices.SelectedIndex);
-
             if (device != null)
             {
                 byte[] requestBuffer = new byte[device.OutputReportByteLength];
@@ -1727,6 +1726,139 @@ namespace HIDTool
                 int currentFocusLocation = (int.Parse(responseBuffer[7].ToString()) << 8) + int.Parse(responseBuffer[8].ToString());
                 currentFocusLocationLabel.Text = "当前对焦位置：" + currentFocusLocation.ToString();
                 //MessageBox.Show($"当前responseBuffer[7]：{int.Parse(responseBuffer[7].ToString()) << 8}，responseBuffer[8]：{responseBuffer[8].ToString()}");
+            }
+        }
+
+
+        // 获取摄像头隐私黑屏状态
+        private void getCameraPrivacyStatus()
+        {
+            HIDDevice device = OpenHIDDevice(this.comboBoxDevices.SelectedIndex);
+
+            if (device != null)
+            {
+                byte[] requestBuffer = new byte[device.OutputReportByteLength];
+                byte[] responseBuffer = new byte[device.InputReportByteLength];
+
+                Array.Copy(Protocol.COMMAND_REQUEST_TYPE_GET_OUTPUT_BLACK_PIC, requestBuffer, Protocol.COMMAND_REQUEST_TYPE_GET_OUTPUT_BLACK_PIC.Length);
+                device.Send(requestBuffer, 0, requestBuffer.Length);
+                device.Receive(responseBuffer, 0, responseBuffer.Length);
+                device.Close();
+
+                string backConect = "";
+                int strLen = responseBuffer[5];
+                for (int i = 0; i < strLen; i++)
+                {
+                    backConect += (char)responseBuffer[7 + i];
+                }
+                MessageBox.Show("返回内容: " + backConect);
+
+                if (backConect == "0")
+                {
+                    MessageBox.Show("摄像头隐私黑屏状态：已关闭");
+                }
+                else if (backConect == "1")
+                {
+                    MessageBox.Show("摄像头隐私黑屏状态：已打开");
+                }
+
+                bool isValidCommand = true;
+                for (int i = 0; i < 7; i++)
+                {
+                    if (Protocol.COMMAND_RESPONSE_TYPE_GET_OUTPUT_BLACK_PIC[i] != responseBuffer[i])
+                    {
+                        isValidCommand = false;
+                        break;
+                    }
+                }
+                if (isValidCommand)
+                {
+                    MessageBox.Show("有效返回值！ 获取摄像头隐私黑屏状态");
+                }
+                else
+                {
+                    MessageBox.Show("无效返回值！");
+                }
+            }
+        }
+
+        // 开启摄像头隐私黑屏
+        private void open_camera_privacy_button_Click(object sender, EventArgs e)
+        {
+            HIDDevice device = OpenHIDDevice(this.comboBoxDevices.SelectedIndex);
+
+            if (device != null)
+            {
+                byte[] requestBuffer = new byte[device.OutputReportByteLength];
+                byte[] responseBuffer = new byte[device.InputReportByteLength];
+
+                Array.Copy(Protocol.COMMAND_REQUEST_TYPE_SET_OUTPUT_BLACK_PIC, requestBuffer, Protocol.COMMAND_REQUEST_TYPE_SET_OUTPUT_BLACK_PIC.Length);
+                requestBuffer[7] = 0x01;
+                device.Send(requestBuffer, 0, requestBuffer.Length);
+                device.Receive(responseBuffer, 0, responseBuffer.Length);
+                device.Close();
+
+                string backConect = "";
+                int strLen = responseBuffer[5];
+                for (int i = 0; i < strLen; i++)
+                {
+                    backConect += (char)responseBuffer[7 + i];
+                }
+                MessageBox.Show("返回内容: " + backConect);
+
+                bool isValidCommand = true;
+                for (int i = 0; i < 7; i++)
+                {
+                    if (Protocol.COMMAND_RESPONSE_TYPE_GET_OUTPUT_BLACK_PIC[i] != responseBuffer[i])
+                    {
+                        isValidCommand = false;
+                        break;
+                    }
+                }
+                if (isValidCommand)
+                {
+                    MessageBox.Show("有效返回值！ 开启摄像头隐私黑屏");
+                }
+                else
+                {
+                    MessageBox.Show("无效返回值！");
+                }
+            }
+        }
+
+        // 关闭摄像头隐私黑屏
+        private void close_camera_privacy_button_Click(object sender, EventArgs e)
+        {
+            HIDDevice device = OpenHIDDevice(this.comboBoxDevices.SelectedIndex);
+
+            if (device != null)
+            {
+                byte[] requestBuffer = new byte[device.OutputReportByteLength];
+                byte[] responseBuffer = new byte[device.InputReportByteLength];
+
+                Array.Copy(Protocol.COMMAND_REQUEST_TYPE_SET_OUTPUT_BLACK_PIC, requestBuffer, Protocol.COMMAND_REQUEST_TYPE_SET_OUTPUT_BLACK_PIC.Length);
+                requestBuffer[7] = 0x00;
+                device.Send(requestBuffer, 0, requestBuffer.Length);
+                device.Receive(responseBuffer, 0, responseBuffer.Length);
+                device.Close();
+
+                bool isValidCommand = true;
+                for (int i = 0; i < 7; i++)
+                {
+                    if (Protocol.COMMAND_RESPONSE_TYPE_GET_OUTPUT_BLACK_PIC[i] != responseBuffer[i])
+                    {
+                        isValidCommand = false;
+                        break;
+                    }
+                }
+                if (isValidCommand)
+                {
+                    MessageBox.Show("有效返回值！ 关闭摄像头隐私黑屏");
+                }
+                else
+                {
+                    MessageBox.Show("无效返回值！");
+                }
             }
         }
     }
