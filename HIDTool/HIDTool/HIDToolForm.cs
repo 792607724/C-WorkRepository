@@ -1798,14 +1798,6 @@ namespace HIDTool
                 device.Receive(responseBuffer, 0, responseBuffer.Length);
                 device.Close();
 
-                string backConect = "";
-                int strLen = responseBuffer[5];
-                for (int i = 0; i < strLen; i++)
-                {
-                    backConect += (char)responseBuffer[7 + i];
-                }
-                MessageBox.Show("返回内容: " + backConect);
-
                 bool isValidCommand = true;
                 for (int i = 0; i < 7; i++)
                 {
@@ -1817,7 +1809,9 @@ namespace HIDTool
                 }
                 if (isValidCommand)
                 {
-                    MessageBox.Show("有效返回值！ 开启摄像头隐私黑屏");
+                    //MessageBox.Show("开启摄像头隐私黑屏");
+                    privacy_camera_output_status_label.Text = "已开启";
+                    getCameraPrivacyStatus();
                 }
                 else
                 {
@@ -1853,7 +1847,9 @@ namespace HIDTool
                 }
                 if (isValidCommand)
                 {
-                    MessageBox.Show("有效返回值！ 关闭摄像头隐私黑屏");
+                    privacy_camera_output_status_label.Text = "已关闭";
+                    //MessageBox.Show("关闭摄像头隐私黑屏");
+                    getCameraPrivacyStatus();
                 }
                 else
                 {

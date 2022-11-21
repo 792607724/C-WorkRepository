@@ -108,10 +108,10 @@
             this.autoFocusButton = new System.Windows.Forms.Button();
             this.manualFocusButton = new System.Windows.Forms.Button();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.privacy_camera_output_status_label = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.close_camera_privacy_button = new System.Windows.Forms.Button();
             this.open_camera_privacy_button = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.privacy_camera_output_status_label = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -1029,6 +1029,23 @@
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "摄像头隐私开关";
             // 
+            // privacy_camera_output_status_label
+            // 
+            this.privacy_camera_output_status_label.AutoSize = true;
+            this.privacy_camera_output_status_label.Location = new System.Drawing.Point(214, 63);
+            this.privacy_camera_output_status_label.Name = "privacy_camera_output_status_label";
+            this.privacy_camera_output_status_label.Size = new System.Drawing.Size(0, 15);
+            this.privacy_camera_output_status_label.TabIndex = 7;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 62);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(157, 15);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "当前摄像头黑屏状态：";
+            // 
             // close_camera_privacy_button
             // 
             this.close_camera_privacy_button.Location = new System.Drawing.Point(162, 24);
@@ -1048,23 +1065,6 @@
             this.open_camera_privacy_button.Text = "开启摄像头黑屏";
             this.open_camera_privacy_button.UseVisualStyleBackColor = true;
             this.open_camera_privacy_button.Click += new System.EventHandler(this.open_camera_privacy_button_Click);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 62);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(157, 15);
-            this.label8.TabIndex = 6;
-            this.label8.Text = "当前摄像头黑屏状态：";
-            // 
-            // privacy_camera_output_status_label
-            // 
-            this.privacy_camera_output_status_label.AutoSize = true;
-            this.privacy_camera_output_status_label.Location = new System.Drawing.Point(239, 63);
-            this.privacy_camera_output_status_label.Name = "privacy_camera_output_status_label";
-            this.privacy_camera_output_status_label.Size = new System.Drawing.Size(0, 15);
-            this.privacy_camera_output_status_label.TabIndex = 7;
             // 
             // HIDToolForm
             // 
