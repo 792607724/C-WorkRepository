@@ -1755,11 +1755,11 @@ namespace HIDTool
 
                 if (backConect == "0")
                 {
-                    MessageBox.Show("摄像头隐私黑屏状态：已关闭");
+                    privacy_camera_output_status_label.Text = "摄像头隐私黑屏状态：已关闭";
                 }
                 else if (backConect == "1")
                 {
-                    MessageBox.Show("摄像头隐私黑屏状态：已打开");
+                    privacy_camera_output_status_label.Text = "摄像头隐私黑屏状态：已打开";
                 }
 
                 bool isValidCommand = true;
