@@ -1091,7 +1091,7 @@
             this.MinimumSize = new System.Drawing.Size(1274, 742);
             this.Name = "HIDToolForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "HIDTool_3.1";
+            this.Text = "HIDTool_3.2";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HIDToolForm_FormClosing);
             this.Load += new System.EventHandler(this.HIDToolForm_Load);
             this.statusStrip1.ResumeLayout(false);

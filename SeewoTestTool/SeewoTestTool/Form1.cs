@@ -1160,7 +1160,7 @@ namespace SeewoTestTool
                                         bool upgradeDone = false;
                                         if (System.IO.File.Exists("upgrade_result"))
                                         {
-                                            output_string = executeCMDCommand("rm -rf upgrade_result");
+                                            output_string = executeCMDCommand("del upgrade_result");
                                         }
                                         while (!upgradeDone)
                                         {
