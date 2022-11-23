@@ -220,7 +220,7 @@ namespace SeewoTestTool
                     }
                     else
                     {
-                        MessageBox.Show($"连接超时，请检查！\nIP:{host}， PORT:{port}","提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show($"连接超时，请检查！\nIP:{host}， PORT:{port}\n如果多次连接尝试无果，可尝试重启设备后再做连接操作！","提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     
                     /*
@@ -847,7 +847,8 @@ namespace SeewoTestTool
                 }
                 catch (Exception ex)
                 {
-                    output_rich_textbox.AppendText($"开启阵列MIC音量值测试失败：\n{ex.ToString()}\n");
+                    MessageBox.Show($"开启阵列MIC音量值测试失败，请检查是否以开启了音频测试未正确关闭！：\n{ex.ToString()}\n");
+                    output_rich_textbox.AppendText($"开启阵列MIC音量值测试失败，请检查是否以开启了音频测试未正确关闭！：\n{ex.ToString()}\n");
                 }
                 finally
                 {
