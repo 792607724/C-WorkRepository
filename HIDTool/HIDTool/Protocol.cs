@@ -124,6 +124,9 @@ namespace HIDTool
 
         public static readonly byte[] COMMAND_REQUEST_TYPE_GET_OUTPUT_BLACK_PIC = { 0xAA, 0xBB, 0xCC, 0x20, 0xB8, 0x00, 0x00 };
         public static readonly byte[] COMMAND_RESPONSE_TYPE_GET_OUTPUT_BLACK_PIC_ACK = { 0xAA, 0xBB, 0xCC, 0x20, 0xB9, 0x01, 0x00 };
+
+        public static readonly byte[] COMMAND_REQUEST_TYPE_GET_FUNC_LIST = { 0xAA, 0xBB, 0xCC, 0x31, 0xfe, 0x00, 0x00 };
+        public static readonly byte[] COMMAND_RESPONSE_TYPE_GET_FUNC_LIST_ACK = { 0xAA, 0xBB, 0xCC, 0x31, 0xff, 0x00, 0x00 };
     }
 
 }

@@ -112,6 +112,31 @@
             this.label8 = new System.Windows.Forms.Label();
             this.close_camera_privacy_button = new System.Windows.Forms.Button();
             this.open_camera_privacy_button = new System.Windows.Forms.Button();
+            this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.getFunctionSupport_button = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.support_function_label = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.hdr_label_support = new System.Windows.Forms.Label();
+            this.pip_label_support = new System.Windows.Forms.Label();
+            this.autoframing_label_support = new System.Windows.Forms.Label();
+            this.manual_label_support = new System.Windows.Forms.Label();
+            this.mainspeaker_label_support = new System.Windows.Forms.Label();
+            this.poeplefollow_label_support = new System.Windows.Forms.Label();
+            this.badFix_label_support = new System.Windows.Forms.Label();
+            this.airMachine_label_support = new System.Windows.Forms.Label();
+            this.flipMachine_label_support = new System.Windows.Forms.Label();
+            this.setBlackoutput_label_support = new System.Windows.Forms.Label();
+            this.getChipSetTemperature_label_support = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -128,6 +153,7 @@
             this.groupBox10.SuspendLayout();
             this.groupBox11.SuspendLayout();
             this.groupBox12.SuspendLayout();
+            this.groupBox13.SuspendLayout();
             this.SuspendLayout();
             // 
             // GetIQVersionBtn
@@ -154,7 +180,7 @@
             this.statusStrip1.Location = new System.Drawing.Point(0, 669);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(1256, 26);
+            this.statusStrip1.Size = new System.Drawing.Size(1609, 26);
             this.statusStrip1.TabIndex = 51;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -1066,13 +1092,255 @@
             this.open_camera_privacy_button.UseVisualStyleBackColor = true;
             this.open_camera_privacy_button.Click += new System.EventHandler(this.open_camera_privacy_button_Click);
             // 
+            // groupBox13
+            // 
+            this.groupBox13.Controls.Add(this.getChipSetTemperature_label_support);
+            this.groupBox13.Controls.Add(this.setBlackoutput_label_support);
+            this.groupBox13.Controls.Add(this.flipMachine_label_support);
+            this.groupBox13.Controls.Add(this.airMachine_label_support);
+            this.groupBox13.Controls.Add(this.badFix_label_support);
+            this.groupBox13.Controls.Add(this.poeplefollow_label_support);
+            this.groupBox13.Controls.Add(this.mainspeaker_label_support);
+            this.groupBox13.Controls.Add(this.manual_label_support);
+            this.groupBox13.Controls.Add(this.autoframing_label_support);
+            this.groupBox13.Controls.Add(this.pip_label_support);
+            this.groupBox13.Controls.Add(this.hdr_label_support);
+            this.groupBox13.Controls.Add(this.label19);
+            this.groupBox13.Controls.Add(this.label17);
+            this.groupBox13.Controls.Add(this.label18);
+            this.groupBox13.Controls.Add(this.label15);
+            this.groupBox13.Controls.Add(this.label16);
+            this.groupBox13.Controls.Add(this.label13);
+            this.groupBox13.Controls.Add(this.label14);
+            this.groupBox13.Controls.Add(this.label11);
+            this.groupBox13.Controls.Add(this.label12);
+            this.groupBox13.Controls.Add(this.label10);
+            this.groupBox13.Controls.Add(this.support_function_label);
+            this.groupBox13.Controls.Add(this.label9);
+            this.groupBox13.Controls.Add(this.getFunctionSupport_button);
+            this.groupBox13.Location = new System.Drawing.Point(718, 459);
+            this.groupBox13.Name = "groupBox13";
+            this.groupBox13.Size = new System.Drawing.Size(879, 183);
+            this.groupBox13.TabIndex = 69;
+            this.groupBox13.TabStop = false;
+            this.groupBox13.Text = "获取当前设备能力集";
+            this.groupBox13.Enter += new System.EventHandler(this.groupBox13_Enter);
+            // 
+            // getFunctionSupport_button
+            // 
+            this.getFunctionSupport_button.Location = new System.Drawing.Point(6, 135);
+            this.getFunctionSupport_button.Name = "getFunctionSupport_button";
+            this.getFunctionSupport_button.Size = new System.Drawing.Size(867, 39);
+            this.getFunctionSupport_button.TabIndex = 0;
+            this.getFunctionSupport_button.Text = "点击获取能力集";
+            this.getFunctionSupport_button.UseVisualStyleBackColor = true;
+            this.getFunctionSupport_button.Click += new System.EventHandler(this.getFunctionSupport_button_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 21);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(157, 15);
+            this.label9.TabIndex = 1;
+            this.label9.Text = "当前设备支持的功能：";
+            // 
+            // support_function_label
+            // 
+            this.support_function_label.AutoSize = true;
+            this.support_function_label.Location = new System.Drawing.Point(9, 40);
+            this.support_function_label.Name = "support_function_label";
+            this.support_function_label.Size = new System.Drawing.Size(39, 15);
+            this.support_function_label.TabIndex = 2;
+            this.support_function_label.Text = "HDR:";
+            this.support_function_label.Click += new System.EventHandler(this.support_function_label_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(200, 40);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(135, 15);
+            this.label10.TabIndex = 3;
+            this.label10.Text = "手动电子云台控制:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(200, 63);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(90, 15);
+            this.label11.TabIndex = 5;
+            this.label11.Text = "主讲者模式:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(9, 63);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(39, 15);
+            this.label12.TabIndex = 4;
+            this.label12.Text = "PIP:";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(200, 86);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(75, 15);
+            this.label13.TabIndex = 7;
+            this.label13.Text = "人像追踪:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(9, 86);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(103, 15);
+            this.label14.TabIndex = 6;
+            this.label14.Text = "AutoFraming:";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(656, 42);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(135, 15);
+            this.label15.TabIndex = 9;
+            this.label15.Text = "设置画面黑屏输出:";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(446, 40);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(75, 15);
+            this.label16.TabIndex = 8;
+            this.label16.Text = "畸变校正:";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(656, 65);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(105, 15);
+            this.label17.TabIndex = 11;
+            this.label17.Text = "获取芯片温度:";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(446, 63);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(75, 15);
+            this.label18.TabIndex = 10;
+            this.label18.Text = "云台电机:";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(446, 86);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(75, 15);
+            this.label19.TabIndex = 12;
+            this.label19.Text = "翻转电机:";
+            // 
+            // hdr_label_support
+            // 
+            this.hdr_label_support.AutoSize = true;
+            this.hdr_label_support.Location = new System.Drawing.Point(56, 42);
+            this.hdr_label_support.Name = "hdr_label_support";
+            this.hdr_label_support.Size = new System.Drawing.Size(0, 15);
+            this.hdr_label_support.TabIndex = 13;
+            // 
+            // pip_label_support
+            // 
+            this.pip_label_support.AutoSize = true;
+            this.pip_label_support.Location = new System.Drawing.Point(61, 63);
+            this.pip_label_support.Name = "pip_label_support";
+            this.pip_label_support.Size = new System.Drawing.Size(0, 15);
+            this.pip_label_support.TabIndex = 14;
+            // 
+            // autoframing_label_support
+            // 
+            this.autoframing_label_support.AutoSize = true;
+            this.autoframing_label_support.Location = new System.Drawing.Point(116, 87);
+            this.autoframing_label_support.Name = "autoframing_label_support";
+            this.autoframing_label_support.Size = new System.Drawing.Size(0, 15);
+            this.autoframing_label_support.TabIndex = 15;
+            // 
+            // manual_label_support
+            // 
+            this.manual_label_support.AutoSize = true;
+            this.manual_label_support.Location = new System.Drawing.Point(341, 39);
+            this.manual_label_support.Name = "manual_label_support";
+            this.manual_label_support.Size = new System.Drawing.Size(0, 15);
+            this.manual_label_support.TabIndex = 16;
+            // 
+            // mainspeaker_label_support
+            // 
+            this.mainspeaker_label_support.AutoSize = true;
+            this.mainspeaker_label_support.Location = new System.Drawing.Point(293, 63);
+            this.mainspeaker_label_support.Name = "mainspeaker_label_support";
+            this.mainspeaker_label_support.Size = new System.Drawing.Size(0, 15);
+            this.mainspeaker_label_support.TabIndex = 17;
+            // 
+            // poeplefollow_label_support
+            // 
+            this.poeplefollow_label_support.AutoSize = true;
+            this.poeplefollow_label_support.Location = new System.Drawing.Point(279, 86);
+            this.poeplefollow_label_support.Name = "poeplefollow_label_support";
+            this.poeplefollow_label_support.Size = new System.Drawing.Size(0, 15);
+            this.poeplefollow_label_support.TabIndex = 18;
+            // 
+            // badFix_label_support
+            // 
+            this.badFix_label_support.AutoSize = true;
+            this.badFix_label_support.Location = new System.Drawing.Point(529, 42);
+            this.badFix_label_support.Name = "badFix_label_support";
+            this.badFix_label_support.Size = new System.Drawing.Size(0, 15);
+            this.badFix_label_support.TabIndex = 19;
+            // 
+            // airMachine_label_support
+            // 
+            this.airMachine_label_support.AutoSize = true;
+            this.airMachine_label_support.Location = new System.Drawing.Point(530, 63);
+            this.airMachine_label_support.Name = "airMachine_label_support";
+            this.airMachine_label_support.Size = new System.Drawing.Size(0, 15);
+            this.airMachine_label_support.TabIndex = 20;
+            // 
+            // flipMachine_label_support
+            // 
+            this.flipMachine_label_support.AutoSize = true;
+            this.flipMachine_label_support.Location = new System.Drawing.Point(528, 86);
+            this.flipMachine_label_support.Name = "flipMachine_label_support";
+            this.flipMachine_label_support.Size = new System.Drawing.Size(0, 15);
+            this.flipMachine_label_support.TabIndex = 21;
+            // 
+            // setBlackoutput_label_support
+            // 
+            this.setBlackoutput_label_support.AutoSize = true;
+            this.setBlackoutput_label_support.Location = new System.Drawing.Point(795, 42);
+            this.setBlackoutput_label_support.Name = "setBlackoutput_label_support";
+            this.setBlackoutput_label_support.Size = new System.Drawing.Size(0, 15);
+            this.setBlackoutput_label_support.TabIndex = 22;
+            // 
+            // getChipSetTemperature_label_support
+            // 
+            this.getChipSetTemperature_label_support.AutoSize = true;
+            this.getChipSetTemperature_label_support.Location = new System.Drawing.Point(765, 67);
+            this.getChipSetTemperature_label_support.Name = "getChipSetTemperature_label_support";
+            this.getChipSetTemperature_label_support.Size = new System.Drawing.Size(0, 15);
+            this.getChipSetTemperature_label_support.TabIndex = 23;
+            // 
             // HIDToolForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1256, 695);
+            this.ClientSize = new System.Drawing.Size(1609, 695);
+            this.Controls.Add(this.groupBox13);
             this.Controls.Add(this.groupBox12);
             this.Controls.Add(this.groupBox11);
             this.Controls.Add(this.groupBox10);
@@ -1087,8 +1355,6 @@
             this.Controls.Add(this.comboBoxDevices);
             this.Controls.Add(this.statusStrip1);
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MaximumSize = new System.Drawing.Size(1274, 742);
-            this.MinimumSize = new System.Drawing.Size(1274, 742);
             this.Name = "HIDToolForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HIDTool_3.2";
@@ -1116,6 +1382,8 @@
             this.groupBox11.PerformLayout();
             this.groupBox12.ResumeLayout(false);
             this.groupBox12.PerformLayout();
+            this.groupBox13.ResumeLayout(false);
+            this.groupBox13.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1206,5 +1474,30 @@
         private System.Windows.Forms.Button close_camera_privacy_button;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label privacy_camera_output_status_label;
+        private System.Windows.Forms.GroupBox groupBox13;
+        private System.Windows.Forms.Button getFunctionSupport_button;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label support_function_label;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label hdr_label_support;
+        private System.Windows.Forms.Label mainspeaker_label_support;
+        private System.Windows.Forms.Label manual_label_support;
+        private System.Windows.Forms.Label autoframing_label_support;
+        private System.Windows.Forms.Label pip_label_support;
+        private System.Windows.Forms.Label poeplefollow_label_support;
+        private System.Windows.Forms.Label badFix_label_support;
+        private System.Windows.Forms.Label getChipSetTemperature_label_support;
+        private System.Windows.Forms.Label setBlackoutput_label_support;
+        private System.Windows.Forms.Label flipMachine_label_support;
+        private System.Windows.Forms.Label airMachine_label_support;
     }
 }

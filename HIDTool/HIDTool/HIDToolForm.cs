@@ -1855,5 +1855,164 @@ namespace HIDTool
                 }
             }
         }
+
+        // 获取当前设备所支持的能力集
+        private void getFunctionSupport_button_Click(object sender, EventArgs e)
+        {
+            HIDDevice device = OpenHIDDevice(this.comboBoxDevices.SelectedIndex);
+
+            if (device != null)
+            {
+                byte[] requestBuffer = new byte[device.OutputReportByteLength];
+                byte[] responseBuffer = new byte[device.InputReportByteLength];
+
+                Array.Copy(Protocol.COMMAND_REQUEST_TYPE_GET_FUNC_LIST, requestBuffer, Protocol.COMMAND_RESPONSE_TYPE_GET_FUNC_LIST_ACK.Length);
+                requestBuffer[7] = 0x00;
+                device.Send(requestBuffer, 0, requestBuffer.Length);
+                device.Receive(responseBuffer, 0, responseBuffer.Length);
+                device.Close();
+
+                byte data1;
+                byte data2;
+                data1 = (byte)responseBuffer[8];
+                data2 = (byte)responseBuffer[9];
+                Boolean[] data1_functionSupportList = new Boolean[8];
+                Boolean[] data2_functionSupportList = new Boolean[3];
+                for (int i = 0, n = 1; i < 8; i++)
+                {
+                    data1_functionSupportList[i] = ((data1 & n) == 0 ? false : true);
+                    n = n << 1;
+                }
+                for (int i = 0, n = 1; i < 3; i++)
+                {
+                    data2_functionSupportList[i] = ((data2 & n) == 0 ? false : true);
+                    n = n << 1;
+                }
+
+                if (data1_functionSupportList.Length == 8)
+                {
+                    if (data1_functionSupportList[0] == true)
+                    {
+                        hdr_label_support.Text = "【支持】";
+                    }
+                    else
+                    {
+                        hdr_label_support.Text = "【不支持】";
+                    }
+
+                    if (data1_functionSupportList[1] == true)
+                    {
+                        pip_label_support.Text = "【支持】";
+                    }
+                    else
+                    {
+                        pip_label_support.Text = "【不支持】";
+                    }
+
+                    if (data1_functionSupportList[2] == true)
+                    {
+                        autoframing_label_support.Text = "【支持】";
+                    }
+                    else
+                    {
+                        autoframing_label_support.Text = "【不支持】";
+                    }
+
+                    if (data1_functionSupportList[3] == true)
+                    {
+                        manual_label_support.Text = "【支持】";
+                    }
+                    else
+                    {
+                        manual_label_support.Text = "【不支持】";
+                    }
+
+                    if (data1_functionSupportList[4] == true)
+                    {
+                        mainspeaker_label_support.Text = "【支持】";
+                    }
+                    else
+                    {
+                        mainspeaker_label_support.Text = "【不支持】";
+                    }
+
+                    if (data1_functionSupportList[5] == true)
+                    {
+                        poeplefollow_label_support.Text = "【支持】";
+                    }
+                    else
+                    {
+                        poeplefollow_label_support.Text = "【不支持】";
+                    }
+
+                    if (data1_functionSupportList[6] == true)
+                    {
+                        badFix_label_support.Text = "【支持】";
+                    }
+                    else
+                    {
+                        badFix_label_support.Text = "【不支持】";
+                    }
+
+                    if (data1_functionSupportList[7] == true)
+                    {
+                        airMachine_label_support.Text = "【支持】";
+                    }
+                    else
+                    {
+                        airMachine_label_support.Text = "【不支持】";
+                    }
+                }
+                else
+                {
+                    MessageBox.Show($"数据缺失，DATA[1]当前只有{data1_functionSupportList.Length}位数据!");
+                }
+                if (data2_functionSupportList.Length == 3)
+                {
+                    if (data2_functionSupportList[0] == true)
+                    {
+                        flipMachine_label_support.Text = "【支持】";
+                    }
+                    else
+                    {
+                        flipMachine_label_support.Text = "【不支持】";
+                    }
+
+                    if (data2_functionSupportList[1] == true)
+                    {
+                        setBlackoutput_label_support.Text = "【支持】";
+                    }
+                    else
+                    {
+                        setBlackoutput_label_support.Text = "【不支持】";
+                    }
+
+                    if (data2_functionSupportList[2] == true)
+                    {
+                        getChipSetTemperature_label_support.Text = "【支持】";
+                    }
+                    else
+                    {
+                        getChipSetTemperature_label_support.Text = "【不支持】";
+                    }
+                }
+                else
+                {
+                    MessageBox.Show($"数据缺失，DATA[2]当前只有{data2_functionSupportList.Length}位数据!");
+                }
+
+
+            }
+        }
+
+        private void support_function_label_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox13_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
