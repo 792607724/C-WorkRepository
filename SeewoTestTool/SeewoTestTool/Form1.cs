@@ -837,6 +837,8 @@ namespace SeewoTestTool
                     if (Int32.Parse(backCode) == 0)
                     {
                         output_rich_textbox.AppendText($"执行结果为：PASS，已开启阵列MIC音量值测试，backCode:[{backCode}]\n");
+                        start_array_mic_audio_level_test_button.Enabled = false;
+                        stop_array_mic_audio_level_test_button.Enabled = true;
                     }
                     else if(Int32.Parse(backCode) == -1)
                     {
@@ -883,6 +885,8 @@ namespace SeewoTestTool
 
                     if (Int32.Parse(backCode) == 0)
                     {
+                        start_array_mic_audio_level_test_button.Enabled = true;
+                        stop_array_mic_audio_level_test_button.Enabled = false;
                         output_rich_textbox.AppendText($"执行结果为：PASS，已停止阵列MIC音量值测试，backCode:[{backCode}]\n");
                     }
                     else if (Int32.Parse(backCode) == -1)
@@ -1551,7 +1555,7 @@ namespace SeewoTestTool
                         getCurrentPCBA_button.Enabled = true;
                         writeInPCBA_button.Enabled = true;
                         start_array_mic_audio_level_test_button.Enabled = true;
-                        stop_array_mic_audio_level_test_button.Enabled = true;
+                        stop_array_mic_audio_level_test_button.Enabled = false;
                         gain_array_mic_audio_level_button.Enabled = true;
                         gainCurrentVersion_button.Enabled = true;
                         login_button.Text = "已登录";
