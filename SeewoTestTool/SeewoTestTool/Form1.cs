@@ -839,6 +839,7 @@ namespace SeewoTestTool
                         output_rich_textbox.AppendText($"执行结果为：PASS，已开启阵列MIC音量值测试，backCode:[{backCode}]\n");
                         start_array_mic_audio_level_test_button.Enabled = false;
                         stop_array_mic_audio_level_test_button.Enabled = true;
+                        gain_array_mic_audio_level_button.Enabled = true;
                     }
                     else if(Int32.Parse(backCode) == -1)
                     {
@@ -888,6 +889,7 @@ namespace SeewoTestTool
                     {
                         start_array_mic_audio_level_test_button.Enabled = true;
                         stop_array_mic_audio_level_test_button.Enabled = false;
+                        gain_array_mic_audio_level_button.Enabled = false;
                         output_rich_textbox.AppendText($"执行结果为：PASS，已停止阵列MIC音量值测试，backCode:[{backCode}]\n");
                     }
                     else if (Int32.Parse(backCode) == -1)
@@ -954,7 +956,7 @@ namespace SeewoTestTool
                         volume6_value_label.Text = volume6;
                         volume7_value_label.Text = volume7;
                         volume8_value_label.Text = volume8;
-                        output_rich_textbox.AppendText($"volume1：{volume1}\nvolume2：{volume2}\nvolume3：{volume3}\nvolume4：{volume4}\nvolume5：{volume5}\nvolume6：{volume6}\nvolume7：{volume7}\nvolume8：{volume8}\n");
+                        output_rich_textbox.AppendText($"rmsdb1：{volume1}\nrmsdb2：{volume2}\nrmsdb3：{volume3}\nrmsdb4：{volume4}\nrmsdb5：{volume5}\nrmsdb6：{volume6}\nrmsdb7：{volume7}\nrmsdb8：{volume8}\n");
 
                         if ((float.Parse(volume1) > 0) && (float.Parse(volume2) > 0) && (float.Parse(volume3) > 0) && (float.Parse(volume4) > 0) && (float.Parse(volume5) > 0) && (float.Parse(volume6) > 0) && (float.Parse(volume7) > 0) && (float.Parse(volume8) > 0))
                         {
@@ -1557,7 +1559,7 @@ namespace SeewoTestTool
                         writeInPCBA_button.Enabled = true;
                         start_array_mic_audio_level_test_button.Enabled = true;
                         stop_array_mic_audio_level_test_button.Enabled = false;
-                        gain_array_mic_audio_level_button.Enabled = true;
+                        gain_array_mic_audio_level_button.Enabled = false;
                         gainCurrentVersion_button.Enabled = true;
                         login_button.Text = "已登录";
                         login_button.Enabled = false;

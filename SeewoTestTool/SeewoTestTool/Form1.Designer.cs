@@ -290,7 +290,7 @@
             this.label23.Size = new System.Drawing.Size(138, 29);
             this.label23.Style = Sunny.UI.UIStyle.Custom;
             this.label23.TabIndex = 34;
-            this.label23.Text = "Volume8音量值：";
+            this.label23.Text = "rmsdb8音量值：";
             this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label23.ZoomScaleDisabled = true;
             this.label23.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
@@ -318,7 +318,7 @@
             this.label21.Size = new System.Drawing.Size(138, 29);
             this.label21.Style = Sunny.UI.UIStyle.Custom;
             this.label21.TabIndex = 32;
-            this.label21.Text = "Volume4音量值：";
+            this.label21.Text = "rmsdb4音量值：";
             this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label21.ZoomScaleDisabled = true;
             this.label21.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
@@ -346,7 +346,7 @@
             this.label25.Size = new System.Drawing.Size(138, 29);
             this.label25.Style = Sunny.UI.UIStyle.Custom;
             this.label25.TabIndex = 30;
-            this.label25.Text = "Volume7音量值：";
+            this.label25.Text = "rmsdb7音量值：";
             this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label25.ZoomScaleDisabled = true;
             this.label25.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
@@ -374,7 +374,7 @@
             this.label19.Size = new System.Drawing.Size(138, 29);
             this.label19.Style = Sunny.UI.UIStyle.Custom;
             this.label19.TabIndex = 28;
-            this.label19.Text = "Volume3音量值：";
+            this.label19.Text = "rmsdb3音量值：";
             this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label19.ZoomScaleDisabled = true;
             this.label19.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
@@ -402,7 +402,7 @@
             this.label27.Size = new System.Drawing.Size(138, 29);
             this.label27.Style = Sunny.UI.UIStyle.Custom;
             this.label27.TabIndex = 26;
-            this.label27.Text = "Volume6音量值：";
+            this.label27.Text = "rmsdb6音量值：";
             this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label27.ZoomScaleDisabled = true;
             this.label27.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
@@ -430,7 +430,7 @@
             this.label17.Size = new System.Drawing.Size(138, 29);
             this.label17.Style = Sunny.UI.UIStyle.Custom;
             this.label17.TabIndex = 24;
-            this.label17.Text = "Volume2音量值：";
+            this.label17.Text = "rmsdb2音量值：";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label17.ZoomScaleDisabled = true;
             this.label17.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
@@ -458,7 +458,7 @@
             this.label29.Size = new System.Drawing.Size(138, 29);
             this.label29.Style = Sunny.UI.UIStyle.Custom;
             this.label29.TabIndex = 22;
-            this.label29.Text = "Volume5音量值：";
+            this.label29.Text = "rmsdb5音量值：";
             this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label29.ZoomScaleDisabled = true;
             this.label29.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
@@ -486,7 +486,7 @@
             this.label15.Size = new System.Drawing.Size(138, 29);
             this.label15.Style = Sunny.UI.UIStyle.Custom;
             this.label15.TabIndex = 20;
-            this.label15.Text = "Volume1音量值：";
+            this.label15.Text = "rmsdb1音量值：";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label15.ZoomScaleDisabled = true;
             this.label15.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
