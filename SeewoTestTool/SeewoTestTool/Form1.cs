@@ -978,8 +978,8 @@ namespace SeewoTestTool
                         float[] volumes_f = { volume_1_f, volume_2_f, volume_4_f, volume_5_f, volume_6_f, volume_8_f};
                         float maxINArray = volumes_f.Max();
                         float minINArray = volumes_f.Min();
-                        if (Math.Abs(maxINArray) - Math.Abs(minINArray) <= 3 && (Math.Abs(volume_1_f) > 70 && Math.Abs(volume_2_f) > 70 && Math.Abs(volume_4_f) > 70 && Math.Abs(volume_5_f) > 70
-                            && Math.Abs(volume_6_f) > 70 && Math.Abs(volume_8_f) > 70))
+                        if (Math.Abs(maxINArray) - Math.Abs(minINArray) <= 3 && (volume_1_f > -70 && volume_2_f > -70 && volume_4_f > -70 && volume_5_f > -70
+                            && volume_6_f > -70 && volume_8_f > -70))
                         {
                             arrayMICTestResult_label.Text = "PASS";
                         }
@@ -2017,7 +2017,7 @@ namespace SeewoTestTool
             if (clientSocket != null && clientSocket.Connected)
             {
                 // 打开拼接图码流前将 Merge码率 curl 修改码流至61440
-                int rate = 35000;
+                int rate = 30000;
                 string updateBitRateCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"setParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"Camera0Chn0\\\",\\\"value\\\": {{\\\"BitRate\\\": {rate}}}}}\"";
                 output_string = executeCMDCommand(updateBitRateCommand);
                 MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
@@ -2124,7 +2124,7 @@ namespace SeewoTestTool
                         float volume_7_f = float.Parse(volume7);
                         float volume_8_f = float.Parse(volume8);
 
-                        if (Math.Abs(Math.Abs(volume_3_f) - Math.Abs(volume_7_f)) <= 3 && (Math.Abs(volume_3_f) > 70 && Math.Abs(volume_7_f) > 70))
+                        if (Math.Abs(Math.Abs(volume_3_f) - Math.Abs(volume_7_f)) <= 3 && (volume_3_f > -70 && volume_7_f > -70))
                         {
                             audioin1_result_label.Text = "PASS";
                         }
@@ -2206,7 +2206,7 @@ namespace SeewoTestTool
                         float volume_7_f = float.Parse(volume7);
                         float volume_8_f = float.Parse(volume8);
 
-                        if (Math.Abs(Math.Abs(volume_3_f) - Math.Abs(volume_7_f)) <= 3 && (Math.Abs(volume_3_f) > 70 && Math.Abs(volume_7_f) > 70))
+                        if (Math.Abs(Math.Abs(volume_3_f) - Math.Abs(volume_7_f)) <= 3 && (volume_3_f > -70 && volume_7_f > -70))
                         {
                             audioin2_result_label.Text = "PASS";
                         }
