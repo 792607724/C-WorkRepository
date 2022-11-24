@@ -73,6 +73,7 @@
             this.device_reset_button = new Sunny.UI.UIButton();
             this.rebootDevice_button = new Sunny.UI.UIButton();
             this.groupBox6 = new Sunny.UI.UIGroupBox();
+            this.uiLabel2 = new Sunny.UI.UILabel();
             this.audioIn2_test_button = new Sunny.UI.UIButton();
             this.audioIn1_test_button = new Sunny.UI.UIButton();
             this.audioin2_result_label = new Sunny.UI.UILabel();
@@ -122,7 +123,6 @@
             this.uiGroupBox3 = new Sunny.UI.UIGroupBox();
             this.clear_output_button = new Sunny.UI.UIButton();
             this.output_rich_textbox = new Sunny.UI.UIRichTextBox();
-            this.uiLabel2 = new Sunny.UI.UILabel();
             this.uiGroupBox1.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox10.SuspendLayout();
@@ -195,6 +195,7 @@
             // 
             this.groupBox7.Controls.Add(this.arrayMICTestResult_label);
             this.groupBox7.Controls.Add(this.uiLabel1);
+            this.groupBox7.Controls.Add(this.groupBox5);
             this.groupBox7.Controls.Add(this.stop_array_mic_audio_level_test_button);
             this.groupBox7.Controls.Add(this.start_array_mic_audio_level_test_button);
             this.groupBox7.Controls.Add(this.gain_array_mic_audio_level_button);
@@ -799,6 +800,19 @@
             this.groupBox6.ZoomScaleDisabled = true;
             this.groupBox6.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
+            // uiLabel2
+            // 
+            this.uiLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.uiLabel2.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLabel2.Location = new System.Drawing.Point(225, 19);
+            this.uiLabel2.Name = "uiLabel2";
+            this.uiLabel2.Size = new System.Drawing.Size(124, 66);
+            this.uiLabel2.Style = Sunny.UI.UIStyle.Custom;
+            this.uiLabel2.TabIndex = 12;
+            this.uiLabel2.Text = "请先开启阵列MIC音量值测试后再进行AUDIO IN测试";
+            this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiLabel2.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
             // audioIn2_test_button
             // 
             this.audioIn2_test_button.Enabled = false;
@@ -1137,7 +1151,6 @@
             // 
             this.uiGroupBox5.Controls.Add(this.login_button);
             this.uiGroupBox5.Controls.Add(this.explainLabel);
-            this.uiGroupBox5.Controls.Add(this.groupBox5);
             this.uiGroupBox5.Controls.Add(this.password_textbox);
             this.uiGroupBox5.Controls.Add(this.username_textbox);
             this.uiGroupBox5.Controls.Add(this.label12);
@@ -1204,7 +1217,7 @@
             this.groupBox5.Controls.Add(this.poe_mic_firmware_info_label);
             this.groupBox5.Controls.Add(this.label6);
             this.groupBox5.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox5.Location = new System.Drawing.Point(96, 53);
+            this.groupBox5.Location = new System.Drawing.Point(412, 27);
             this.groupBox5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox5.MinimumSize = new System.Drawing.Size(1, 1);
             this.groupBox5.Name = "groupBox5";
@@ -1569,19 +1582,6 @@
             this.output_rich_textbox.ZoomScaleDisabled = true;
             this.output_rich_textbox.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.output_rich_textbox.TextChanged += new System.EventHandler(this.richTextChanged_to);
-            // 
-            // uiLabel2
-            // 
-            this.uiLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.uiLabel2.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiLabel2.Location = new System.Drawing.Point(225, 19);
-            this.uiLabel2.Name = "uiLabel2";
-            this.uiLabel2.Size = new System.Drawing.Size(124, 66);
-            this.uiLabel2.Style = Sunny.UI.UIStyle.Custom;
-            this.uiLabel2.TabIndex = 12;
-            this.uiLabel2.Text = "请先开启阵列MIC音量值测试后再进行AUDIO IN测试";
-            this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiLabel2.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // Form1
             // 
