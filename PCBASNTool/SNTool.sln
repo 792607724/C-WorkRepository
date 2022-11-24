@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1321
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SNTool", "SNTool\SNTool.csproj", "{C02C2F25-39D5-42D3-B9DB-218DB606D99C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HIDInterface", "HIDInterface\HIDInterface.csproj", "{1C1683F3-72E3-4FA3-BA2C-FC9A75307FC2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C02C2F25-39D5-42D3-B9DB-218DB606D99C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C02C2F25-39D5-42D3-B9DB-218DB606D99C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C02C2F25-39D5-42D3-B9DB-218DB606D99C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C02C2F25-39D5-42D3-B9DB-218DB606D99C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C1683F3-72E3-4FA3-BA2C-FC9A75307FC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C1683F3-72E3-4FA3-BA2C-FC9A75307FC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C1683F3-72E3-4FA3-BA2C-FC9A75307FC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C1683F3-72E3-4FA3-BA2C-FC9A75307FC2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F7EE4692-7EAF-4C25-9884-0AD8F1131E04}
+	EndGlobalSection
+EndGlobal

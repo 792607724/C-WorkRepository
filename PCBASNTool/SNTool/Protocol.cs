@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SNTool
+{
+    public class Protocol
+    {
+        public static readonly byte[] COMMAND_REQUEST_TYPE_SET_SN = { 0xAA, 0xBB, 0xCC, 0x90, 0x16, 0x12, 0x00 };
+        public static readonly byte[] COMMAND_RESPONSE_TYPE_SET_SN = { 0xAA, 0xBB, 0xCC, 0x90, 0x17, 0x0, 0x00 };
+
+        public static readonly byte[] COMMAND_REQUEST_TYPE_GET_SN = { 0xAA, 0xBB, 0xCC, 0x90, 0x18, 0x00, 0x00 };
+        public static readonly byte[] COMMAND_RESPONSE_TYPE_GET_SN = { 0xAA, 0xBB, 0xCC, 0x90, 0x19, 0x11, 0x00 };
+
+        public static readonly byte[] COMMAND_REQUEST_TYPE_SET_PCBASN = { 0xAA, 0xBB, 0xCC, 0x90, 0x1A, 0x14, 0x00 };
+        public static readonly byte[] COMMAND_RESPONSE_TYPE_SET_PCBASN = { 0xAA, 0xBB, 0xCC, 0x86, 0x1B, 0x0, 0x00 };
+
+        public static readonly byte[] COMMAND_REQUEST_TYPE_GET_PCBASN = { 0xAA, 0xBB, 0xCC, 0x90, 0x1C, 0x00, 0x00 };
+        public static readonly byte[] COMMAND_RESPONSE_TYPE_GET_PCBASN = { 0xAA, 0xBB, 0xCC, 0x90, 0x1D, 0x13, 0x00 };
+    }
+}
