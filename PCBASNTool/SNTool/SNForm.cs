@@ -253,6 +253,7 @@ namespace SNTool
 
                 if (snStr == this.textBox2.Text)
                 {
+                    MessageBox.Show("成功写入PCBA序列号");
                     string passString = "成功写入PCBA序列号";
                     using (Font font = new Font("Arial", 24))
                     {
@@ -267,6 +268,7 @@ namespace SNTool
                 }
                 else
                 {
+                    MessageBox.Show("写入PCBA号失败");
                     string ngString = "写入PCBA号失败";
                     using (Font font = new Font("Arial", 24))
                     {

@@ -50,3 +50,17 @@ E:\workplace\339\Tools\PCBASNTool\SNTool\obj\Debug\SNTool.csproj.CoreCompileInpu
 E:\workplace\339\Tools\PCBASNTool\SNTool\obj\Debug\SNTool.csproj.CopyComplete
 E:\workplace\339\Tools\PCBASNTool\SNTool\obj\Debug\SNTool.exe
 E:\workplace\339\Tools\PCBASNTool\SNTool\obj\Debug\SNTool.pdb
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\PCBASNTool\SNTool\bin\Debug\SNTool.exe.config
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\PCBASNTool\SNTool\bin\Debug\SNTool.exe
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\PCBASNTool\SNTool\bin\Debug\SNTool.pdb
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\PCBASNTool\SNTool\bin\Debug\HIDInterface.dll
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\PCBASNTool\SNTool\bin\Debug\HIDInterface.pdb
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\PCBASNTool\SNTool\obj\Debug\SNTool.csproj.AssemblyReference.cache
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\PCBASNTool\SNTool\obj\Debug\SNTool.csproj.SuggestedBindingRedirects.cache
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\PCBASNTool\SNTool\obj\Debug\SNTool.SNForm.resources
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\PCBASNTool\SNTool\obj\Debug\SNTool.Properties.Resources.resources
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\PCBASNTool\SNTool\obj\Debug\SNTool.csproj.GenerateResource.cache
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\PCBASNTool\SNTool\obj\Debug\SNTool.csproj.CoreCompileInputs.cache
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\PCBASNTool\SNTool\obj\Debug\SNTool.csproj.CopyComplete
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\PCBASNTool\SNTool\obj\Debug\SNTool.exe
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\PCBASNTool\SNTool\obj\Debug\SNTool.pdb

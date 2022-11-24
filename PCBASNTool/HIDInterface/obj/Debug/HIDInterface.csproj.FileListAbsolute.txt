@@ -20,3 +20,9 @@ E:\workplace\339\Tools\PCBASNTool\HIDInterface\bin\Debug\HIDInterface.pdb
 E:\workplace\339\Tools\PCBASNTool\HIDInterface\obj\Debug\HIDInterface.csproj.CoreCompileInputs.cache
 E:\workplace\339\Tools\PCBASNTool\HIDInterface\obj\Debug\HIDInterface.dll
 E:\workplace\339\Tools\PCBASNTool\HIDInterface\obj\Debug\HIDInterface.pdb
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\PCBASNTool\HIDInterface\bin\Debug\HIDInterface.dll
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\PCBASNTool\HIDInterface\bin\Debug\HIDInterface.pdb
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\PCBASNTool\HIDInterface\obj\Debug\HIDInterface.csproj.AssemblyReference.cache
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\PCBASNTool\HIDInterface\obj\Debug\HIDInterface.csproj.CoreCompileInputs.cache
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\PCBASNTool\HIDInterface\obj\Debug\HIDInterface.dll
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\PCBASNTool\HIDInterface\obj\Debug\HIDInterface.pdb
