@@ -405,6 +405,8 @@ namespace SeewoTestTool
                     login_button.Enabled = false;
                     button1.Enabled = false;
                     button2.Enabled = false;
+                    audioIn1_test_button.Enabled = false;
+                    audioIn2_test_button.Enabled = false;
                     login_button.Text = "设备连接后\n可自动登录";
                 }
                 catch (Exception ex)
@@ -840,6 +842,8 @@ namespace SeewoTestTool
                         start_array_mic_audio_level_test_button.Enabled = false;
                         stop_array_mic_audio_level_test_button.Enabled = true;
                         gain_array_mic_audio_level_button.Enabled = true;
+                        audioIn1_test_button.Enabled = true;
+                        audioIn2_test_button.Enabled = true;
                     }
                     else if(Int32.Parse(backCode) == -1)
                     {
@@ -848,8 +852,8 @@ namespace SeewoTestTool
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"开启阵列MIC音量值测试失败，请检查是否以开启了音频测试未正确关闭！：\n{ex.ToString()}\n");
-                    output_rich_textbox.AppendText($"开启阵列MIC音量值测试失败，请检查是否以开启了音频测试未正确关闭！：\n{ex.ToString()}\n");
+                    MessageBox.Show($"开启阵列MIC音量值测试失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n{ex.ToString()}\n");
+                    output_rich_textbox.AppendText($"开启阵列MIC音量值测试失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n{ex.ToString()}\n");
                 }
                 finally
                 {
@@ -890,6 +894,8 @@ namespace SeewoTestTool
                         start_array_mic_audio_level_test_button.Enabled = true;
                         stop_array_mic_audio_level_test_button.Enabled = false;
                         gain_array_mic_audio_level_button.Enabled = false;
+                        audioIn1_test_button.Enabled = false;
+                        audioIn2_test_button.Enabled = false;
                         output_rich_textbox.AppendText($"执行结果为：PASS，已停止阵列MIC音量值测试，backCode:[{backCode}]\n");
                     }
                     else if (Int32.Parse(backCode) == -1)
@@ -899,7 +905,8 @@ namespace SeewoTestTool
                 }
                 catch (Exception ex)
                 {
-                    output_rich_textbox.AppendText($"停止阵列MIC音量值测试失败：\n{ex.ToString()}\n");
+                    MessageBox.Show($"停止阵列MIC音量值测试失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n{ex.ToString()}\n");
+                    output_rich_textbox.AppendText($"停止阵列MIC音量值测试失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n{ex.ToString()}\n");
                 }
                 finally
                 {
@@ -958,18 +965,27 @@ namespace SeewoTestTool
                         volume8_value_label.Text = volume8;
                         output_rich_textbox.AppendText($"rmsdb1：{volume1}\nrmsdb2：{volume2}\nrmsdb3：{volume3}\nrmsdb4：{volume4}\nrmsdb5：{volume5}\nrmsdb6：{volume6}\nrmsdb7：{volume7}\nrmsdb8：{volume8}\n");
 
-                        if ((float.Parse(volume1) > 0) && (float.Parse(volume2) > 0) && (float.Parse(volume3) > 0) && (float.Parse(volume4) > 0) && (float.Parse(volume5) > 0) && (float.Parse(volume6) > 0) && (float.Parse(volume7) > 0) && (float.Parse(volume8) > 0))
+                        float volume_1_f = float.Parse(volume1);
+                        float volume_2_f = float.Parse(volume2);
+                        float volume_3_f = float.Parse(volume3);
+                        float volume_4_f = float.Parse(volume4);
+                        float volume_5_f = float.Parse(volume5);
+                        float volume_6_f = float.Parse(volume6);
+                        float volume_7_f = float.Parse(volume7);
+                        float volume_8_f = float.Parse(volume8);
+
+                        float[] volumes_f = { volume_1_f, volume_2_f, volume_4_f, volume_5_f, volume_6_f, volume_8_f};
+                        float maxINArray = volumes_f.Max();
+                        float minINArray = volumes_f.Min();
+                        if (Math.Abs(maxINArray) - Math.Abs(minINArray) <= 3 && (Math.Abs(volume_1_f) > 70 && Math.Abs(volume_2_f) > 70 && Math.Abs(volume_4_f) > 70 && Math.Abs(volume_5_f) > 70
+                            && Math.Abs(volume_6_f) > 70 && Math.Abs(volume_8_f) > 70))
                         {
-                            audioin1_result_label.Text = "PASS";
-                            audioin2_result_label.Text = "PASS";
+                            arrayMICTestResult_label.Text = "PASS";
                         }
                         else
                         {
-                            audioin1_result_label.Text = "FAIL";
-                            audioin2_result_label.Text = "FAIL";
+                            arrayMICTestResult_label.Text = "FAIL";
                         }
-                        
-
                     }
                     else if (Int32.Parse(backCode) == -1)
                     {
@@ -978,7 +994,8 @@ namespace SeewoTestTool
                 }
                 catch (Exception ex)
                 {
-                    output_rich_textbox.AppendText($"获取各路MIC音频音量值失败：\n{ex.ToString()}\n");
+                    MessageBox.Show($"获取各路MIC音频音量值失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n{ex.ToString()}\n");
+                    output_rich_textbox.AppendText($"获取各路MIC音频音量值失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n{ex.ToString()}\n");
                 }
                 finally
                 {
@@ -1056,6 +1073,8 @@ namespace SeewoTestTool
             {
                 try
                 {
+                    // 释放掉音频测试的内容
+                    stop_array_mic_audio_level_test_button_Click(null, null);
                     clientSocket.Close();
                     // 关闭SXW0301_Production_line.exe
                     executeCMDCommand("taskkill /f /t /im SeevisionTestTool.exe");
@@ -1426,7 +1445,7 @@ namespace SeewoTestTool
          */
         private void writeIn_button_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("功能暂时关闭以防止误操作，每块板子只有三次写入机会。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //MessageBox.Show("功能暂时关闭以防止误操作，每块板子只有三次写入机会。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             //if (true)
             output_rich_textbox.AppendText("【执行操作】写入指定的设备SN号……\n");
             try
@@ -1566,6 +1585,7 @@ namespace SeewoTestTool
                         stop_rg_flicker_button.Enabled = false;
                         start_rg_flicker_button.Enabled = true;
                         get_poe_mic_info_button.Enabled = true;
+                        
                         // 增加记住username和password功能
                         if (rememberCheckBox.Checked == true)
                         {
@@ -1654,7 +1674,7 @@ namespace SeewoTestTool
          */
         private void writeInPCBA_button_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("功能暂时关闭以防止误操作，每块板子只有三次写入机会。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //MessageBox.Show("功能暂时关闭以防止误操作，每块板子只有三次写入机会。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             //if (true)
             output_rich_textbox.AppendText("【执行操作】写入指定PCBA号……\n");
             try
@@ -2053,6 +2073,170 @@ namespace SeewoTestTool
         private void uiGroupBox3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        // Audio IN 1 测试
+        private void audioIn1_test_button_Click_1(object sender, EventArgs e)
+        {
+            //if (true)
+            output_rich_textbox.AppendText("【执行操作】Audio IN 1 测试……\n");
+            if (clientSocket != null && clientSocket.Connected)
+            {
+                try
+                {
+                    // 获取各路MIC音频音量值
+                    output_rich_textbox.AppendText(session);
+                    string gainDeviceMICVolumeCommand = $"curl -X POST \"http://{ip_users}/testAudioJson_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getAudioVolume\\\"}}\"";
+                    output_string = executeCMDCommand(gainDeviceMICVolumeCommand);
+                    MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
+                    output_rich_textbox.AppendText(results_1.ToString());
+                    string backCode = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "").Replace(",", "");
+                    if (Int32.Parse(backCode) == 0)
+                    {
+                        MatchCollection results_2 = Regex.Matches(output_string, "\\\"rmsdb\\\" : \\[\\n(.*),\\n(.*),\\n(.*),\\n(.*),\\n(.*),\\n(.*),\\n(.*),\\n(.*)\\n   ]");
+                        string[] temp = results_2[0].ToString().Replace("\"rmsdb\" : [", "").Replace("]", "").Replace("\"", "").Replace("\n", "").Replace(" ", "").Split(",");
+                        string volume1 = temp[0].ToString();
+                        string volume2 = temp[1].ToString();
+                        string volume3 = temp[2].ToString();
+                        string volume4 = temp[3].ToString();
+                        string volume5 = temp[4].ToString();
+                        string volume6 = temp[5].ToString();
+                        string volume7 = temp[6].ToString();
+                        string volume8 = temp[7].ToString();
+                        output_rich_textbox.AppendText($"执行结果为：PASS，获取各路MIC音频音量值，backCode:[{backCode}]\n");
+                        volume1_value_label.Text = volume1;
+                        volume2_value_label.Text = volume2;
+                        volume3_value_label.Text = volume3;
+                        volume4_value_label.Text = volume4;
+                        volume5_value_label.Text = volume5;
+                        volume6_value_label.Text = volume6;
+                        volume7_value_label.Text = volume7;
+                        volume8_value_label.Text = volume8;
+                        output_rich_textbox.AppendText($"rmsdb1：{volume1}\nrmsdb2：{volume2}\nrmsdb3：{volume3}\nrmsdb4：{volume4}\nrmsdb5：{volume5}\nrmsdb6：{volume6}\nrmsdb7：{volume7}\nrmsdb8：{volume8}\n");
+
+                        float volume_1_f = float.Parse(volume1);
+                        float volume_2_f = float.Parse(volume2);
+                        float volume_3_f = float.Parse(volume3);
+                        float volume_4_f = float.Parse(volume4);
+                        float volume_5_f = float.Parse(volume5);
+                        float volume_6_f = float.Parse(volume6);
+                        float volume_7_f = float.Parse(volume7);
+                        float volume_8_f = float.Parse(volume8);
+
+                        if (Math.Abs(Math.Abs(volume_3_f) - Math.Abs(volume_7_f)) <= 3 && (Math.Abs(volume_3_f) > 70 && Math.Abs(volume_7_f) > 70))
+                        {
+                            audioin1_result_label.Text = "PASS";
+                        }
+                        else
+                        {
+                            audioin1_result_label.Text = "FAIL";
+                        }
+                    }
+                    else if (Int32.Parse(backCode) == -1)
+                    {
+                        output_rich_textbox.AppendText($"执行结果为：FAIL，无法获取各路MIC音频音量值，backCode:[{backCode}]\n");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Audio IN 1 测试失败失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n{ex.ToString()}\n");
+                    output_rich_textbox.AppendText($"Audio IN 1 测试失败失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n{ex.ToString()}\n");
+                }
+                finally
+                {
+
+                }
+            }
+            else
+            {
+                device_ip_textbox.Enabled = true;
+                radioButton_80.Enabled = true;
+                radioButton_8080.Enabled = true;
+                device_status_label.Text = "已断开";
+                output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
+            }
+        }
+
+        // Audio IN 2 测试
+        private void audioIn2_test_button_Click_1(object sender, EventArgs e)
+        {
+            //if (true)
+            output_rich_textbox.AppendText("【执行操作】Audio IN 2 测试……\n");
+            if (clientSocket != null && clientSocket.Connected)
+            {
+                try
+                {
+                    // 获取各路MIC音频音量值
+                    output_rich_textbox.AppendText(session);
+                    string gainDeviceMICVolumeCommand = $"curl -X POST \"http://{ip_users}/testAudioJson_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getAudioVolume\\\"}}\"";
+                    output_string = executeCMDCommand(gainDeviceMICVolumeCommand);
+                    MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
+                    output_rich_textbox.AppendText(results_1.ToString());
+                    string backCode = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "").Replace(",", "");
+                    if (Int32.Parse(backCode) == 0)
+                    {
+                        MatchCollection results_2 = Regex.Matches(output_string, "\\\"rmsdb\\\" : \\[\\n(.*),\\n(.*),\\n(.*),\\n(.*),\\n(.*),\\n(.*),\\n(.*),\\n(.*)\\n   ]");
+                        string[] temp = results_2[0].ToString().Replace("\"rmsdb\" : [", "").Replace("]", "").Replace("\"", "").Replace("\n", "").Replace(" ", "").Split(",");
+                        string volume1 = temp[0].ToString();
+                        string volume2 = temp[1].ToString();
+                        string volume3 = temp[2].ToString();
+                        string volume4 = temp[3].ToString();
+                        string volume5 = temp[4].ToString();
+                        string volume6 = temp[5].ToString();
+                        string volume7 = temp[6].ToString();
+                        string volume8 = temp[7].ToString();
+                        output_rich_textbox.AppendText($"执行结果为：PASS，获取各路MIC音频音量值，backCode:[{backCode}]\n");
+                        volume1_value_label.Text = volume1;
+                        volume2_value_label.Text = volume2;
+                        volume3_value_label.Text = volume3;
+                        volume4_value_label.Text = volume4;
+                        volume5_value_label.Text = volume5;
+                        volume6_value_label.Text = volume6;
+                        volume7_value_label.Text = volume7;
+                        volume8_value_label.Text = volume8;
+                        output_rich_textbox.AppendText($"rmsdb1：{volume1}\nrmsdb2：{volume2}\nrmsdb3：{volume3}\nrmsdb4：{volume4}\nrmsdb5：{volume5}\nrmsdb6：{volume6}\nrmsdb7：{volume7}\nrmsdb8：{volume8}\n");
+
+                        float volume_1_f = float.Parse(volume1);
+                        float volume_2_f = float.Parse(volume2);
+                        float volume_3_f = float.Parse(volume3);
+                        float volume_4_f = float.Parse(volume4);
+                        float volume_5_f = float.Parse(volume5);
+                        float volume_6_f = float.Parse(volume6);
+                        float volume_7_f = float.Parse(volume7);
+                        float volume_8_f = float.Parse(volume8);
+
+                        if (Math.Abs(Math.Abs(volume_3_f) - Math.Abs(volume_7_f)) <= 3 && (Math.Abs(volume_3_f) > 70 && Math.Abs(volume_7_f) > 70))
+                        {
+                            audioin2_result_label.Text = "PASS";
+                        }
+                        else
+                        {
+                            audioin2_result_label.Text = "FAIL";
+                        }
+                    }
+                    else if (Int32.Parse(backCode) == -1)
+                    {
+                        output_rich_textbox.AppendText($"执行结果为：FAIL，无法获取各路MIC音频音量值，backCode:[{backCode}]\n");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Audio IN 2 测试失败失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n{ex.ToString()}\n");
+                    output_rich_textbox.AppendText($"Audio IN 2 测试失败失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n{ex.ToString()}\n");
+                }
+                finally
+                {
+
+                }
+            }
+            else
+            {
+                device_ip_textbox.Enabled = true;
+                radioButton_80.Enabled = true;
+                radioButton_8080.Enabled = true;
+                device_status_label.Text = "已断开";
+                output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
+            }
         }
     }
 }
