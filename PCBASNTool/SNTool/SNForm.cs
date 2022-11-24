@@ -202,6 +202,7 @@ namespace SNTool
 
         private void button2_Click(object sender, EventArgs e)
         {
+            writePCBAInResult_label.Text = "";
             this.textBox2.Focus();
             if (this.textBox2.Text.Length < 19)
             {
@@ -250,10 +251,14 @@ namespace SNTool
                 }
 
                 device.Close();
-
+                Font font_temp = new Font(FontFamily.GenericSansSerif, 15, FontStyle.Bold);
                 if (snStr == this.textBox2.Text)
                 {
-                    MessageBox.Show("成功写入PCBA序列号");
+                    writePCBAInResult_label.ForeColor = Color.Green;
+                    writePCBAInResult_label.Font = font_temp;
+                    writePCBAInResult_label.Text = "成功写入PCBA序列号";
+                    //MessageBox.Show("成功写入PCBA序列号");
+                    /**
                     string passString = "成功写入PCBA序列号";
                     using (Font font = new Font("Arial", 24))
                     {
@@ -264,10 +269,14 @@ namespace SNTool
                         stringFormat.LineAlignment = StringAlignment.Center;
 
                         m_Canvas.DrawString(passString, font, Brushes.Green, region, stringFormat);
-                    }
+                    }*/
                 }
                 else
                 {
+                    writePCBAInResult_label.ForeColor = Color.Red;
+                    writePCBAInResult_label.Font = font_temp;
+                    writePCBAInResult_label.Text = "写入PCBA号失败";
+                    /**
                     MessageBox.Show("写入PCBA号失败");
                     string ngString = "写入PCBA号失败";
                     using (Font font = new Font("Arial", 24))
@@ -280,6 +289,7 @@ namespace SNTool
 
                         m_Canvas.DrawString(ngString, font, Brushes.Red, region, stringFormat);
                     }
+                    */
                 }
                 this.textBox2.Text = "";
             }
@@ -338,6 +348,11 @@ namespace SNTool
         }
 
         private void pcba3_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }
