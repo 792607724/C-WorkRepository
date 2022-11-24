@@ -375,6 +375,7 @@ namespace SeewoTestTool
                 try
                 {
                     output_rich_textbox.AppendText("断开当前已连接设备\n");
+                    stop_array_mic_audio_level_test_button_Click(null, null);
                     device_disconnect_button.Enabled = false;
                     device_connect_button.Enabled = true;
                     clientSocket.Close();
