@@ -853,8 +853,8 @@ namespace SeewoTestTool
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"开启阵列MIC音量值测试失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n{ex.ToString()}\n");
-                    output_rich_textbox.AppendText($"开启阵列MIC音量值测试失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n{ex.ToString()}\n");
+                    MessageBox.Show($"开启阵列MIC音量值测试失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n");
+                    output_rich_textbox.AppendText($"开启阵列MIC音量值测试失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n");
                 }
                 finally
                 {
@@ -906,8 +906,8 @@ namespace SeewoTestTool
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"停止阵列MIC音量值测试失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n{ex.ToString()}\n");
-                    output_rich_textbox.AppendText($"停止阵列MIC音量值测试失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n{ex.ToString()}\n");
+                    //MessageBox.Show($"停止阵列MIC音量值测试失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n");
+                    output_rich_textbox.AppendText($"停止阵列MIC音量值测试失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n");
                 }
                 finally
                 {
@@ -995,8 +995,8 @@ namespace SeewoTestTool
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"获取各路MIC音频音量值失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n{ex.ToString()}\n");
-                    output_rich_textbox.AppendText($"获取各路MIC音频音量值失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n{ex.ToString()}\n");
+                    MessageBox.Show($"获取各路MIC音频音量值失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n");
+                    output_rich_textbox.AppendText($"获取各路MIC音频音量值失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n");
                 }
                 finally
                 {
@@ -2140,8 +2140,8 @@ namespace SeewoTestTool
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Audio IN 1 测试失败失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n{ex.ToString()}\n");
-                    output_rich_textbox.AppendText($"Audio IN 1 测试失败失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n{ex.ToString()}\n");
+                    MessageBox.Show($"Audio IN 1 测试失败失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n");
+                    output_rich_textbox.AppendText($"Audio IN 1 测试失败失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n");
                 }
                 finally
                 {
@@ -2222,8 +2222,8 @@ namespace SeewoTestTool
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Audio IN 2 测试失败失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n{ex.ToString()}\n");
-                    output_rich_textbox.AppendText($"Audio IN 2 测试失败失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n{ex.ToString()}\n");
+                    MessageBox.Show($"Audio IN 2 测试失败失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n");
+                    output_rich_textbox.AppendText($"Audio IN 2 测试失败失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n");
                 }
                 finally
                 {

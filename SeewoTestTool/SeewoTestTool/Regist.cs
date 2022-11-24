@@ -236,7 +236,7 @@ namespace SeewoTestTool
 
                 if (newtime < 0)
                 {
-                    object result = MessageBox.Show("继续使用，请购买本软件！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    object result = MessageBox.Show("继续使用，请联系视熙科技相关人员！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     if ((DialogResult)result == DialogResult.OK)
                     {
                         // 跳转至购买页面同时关闭应用限制使用
