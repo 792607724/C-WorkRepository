@@ -21,6 +21,8 @@ namespace HIDTool
         private static readonly int TARGET_HID_HONGHE04_PID = 0x3014;
         private static readonly int TARGET_HID_HONGHE05_VID = 0x2757;
         private static readonly int TARGET_HID_HONGHE05_PID = 0x3015;
+        private static readonly int VID_1 = 0x2757;
+        private static readonly int VID_2 = 0x254a;
         //private static readonly int TARGET_HID_PID = 3074;
         private static readonly int TARGET_REPORT_BUFFER_SIZE = 64;
 
@@ -1265,10 +1267,7 @@ namespace HIDTool
                 //Console.WriteLine("deviceInfos[{0}], PID: {1}, VID: {2} outlen: {3}, devicePath: {4}", ki, deviceInfo.PID, 
                 //    deviceInfo.VID, deviceInfo.OUT_reportByteLength, deviceInfo.devicePath);
                 // 下个版本直接改成识别VID就可以了，去掉PID
-                if ((deviceInfos[ki].PID == TARGET_HID_HONGHE_PID && deviceInfos[ki].VID == TARGET_HID_HONGHE_VID) || 
-                    (deviceInfos[ki].VID == TARGET_HID_SEEVISION_VID) || (deviceInfos[ki].VID == TARGET_HID_HONGHE03_VID && deviceInfos[ki].PID == TARGET_HID_HONGHE03_PID)
-                    || (deviceInfos[ki].VID == TARGET_HID_HONGHE04_VID && deviceInfos[ki].PID == TARGET_HID_HONGHE04_PID)
-                    || (deviceInfos[ki].VID == TARGET_HID_HONGHE05_VID && deviceInfos[ki].PID == TARGET_HID_HONGHE05_PID))
+                if (deviceInfos[ki].VID == VID_1 || deviceInfos[ki].VID == VID_2)
                 {
                     if (deviceInfos[ki].OUT_reportByteLength == TARGET_REPORT_BUFFER_SIZE)
                     {
