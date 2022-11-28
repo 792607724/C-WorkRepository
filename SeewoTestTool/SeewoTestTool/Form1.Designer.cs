@@ -37,6 +37,12 @@
             this.groupBox7 = new Sunny.UI.UIGroupBox();
             this.arrayMICTestResult_label = new Sunny.UI.UILabel();
             this.uiLabel1 = new Sunny.UI.UILabel();
+            this.groupBox5 = new Sunny.UI.UIGroupBox();
+            this.get_poe_mic_info_button = new Sunny.UI.UIButton();
+            this.poe_mic_hardware_info_label = new Sunny.UI.UILabel();
+            this.label7 = new Sunny.UI.UILabel();
+            this.poe_mic_firmware_info_label = new Sunny.UI.UILabel();
+            this.label6 = new Sunny.UI.UILabel();
             this.stop_array_mic_audio_level_test_button = new Sunny.UI.UIButton();
             this.start_array_mic_audio_level_test_button = new Sunny.UI.UIButton();
             this.gain_array_mic_audio_level_button = new Sunny.UI.UIButton();
@@ -99,12 +105,6 @@
             this.uiGroupBox5 = new Sunny.UI.UIGroupBox();
             this.login_button = new Sunny.UI.UIButton();
             this.explainLabel = new Sunny.UI.UILabel();
-            this.groupBox5 = new Sunny.UI.UIGroupBox();
-            this.get_poe_mic_info_button = new Sunny.UI.UIButton();
-            this.poe_mic_hardware_info_label = new Sunny.UI.UILabel();
-            this.label7 = new Sunny.UI.UILabel();
-            this.poe_mic_firmware_info_label = new Sunny.UI.UILabel();
-            this.label6 = new Sunny.UI.UILabel();
             this.password_textbox = new Sunny.UI.UITextBox();
             this.username_textbox = new Sunny.UI.UITextBox();
             this.label12 = new Sunny.UI.UILabel();
@@ -125,6 +125,7 @@
             this.output_rich_textbox = new Sunny.UI.UIRichTextBox();
             this.uiGroupBox1.SuspendLayout();
             this.groupBox7.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.uiGroupBox2.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -132,7 +133,6 @@
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.uiGroupBox5.SuspendLayout();
-            this.groupBox5.SuspendLayout();
             this.uiGroupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -253,6 +253,98 @@
             this.uiLabel1.Text = "阵列MIC测试结果：";
             this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.uiLabel1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.get_poe_mic_info_button);
+            this.groupBox5.Controls.Add(this.poe_mic_hardware_info_label);
+            this.groupBox5.Controls.Add(this.label7);
+            this.groupBox5.Controls.Add(this.poe_mic_firmware_info_label);
+            this.groupBox5.Controls.Add(this.label6);
+            this.groupBox5.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBox5.Location = new System.Drawing.Point(412, 27);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox5.MinimumSize = new System.Drawing.Size(1, 1);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
+            this.groupBox5.Size = new System.Drawing.Size(55, 95);
+            this.groupBox5.Style = Sunny.UI.UIStyle.Custom;
+            this.groupBox5.TabIndex = 21;
+            this.groupBox5.Text = "PoE 输出信息";
+            this.groupBox5.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.groupBox5.Visible = false;
+            this.groupBox5.ZoomScaleDisabled = true;
+            this.groupBox5.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // get_poe_mic_info_button
+            // 
+            this.get_poe_mic_info_button.Enabled = false;
+            this.get_poe_mic_info_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.get_poe_mic_info_button.Location = new System.Drawing.Point(7, 85);
+            this.get_poe_mic_info_button.MinimumSize = new System.Drawing.Size(1, 1);
+            this.get_poe_mic_info_button.Name = "get_poe_mic_info_button";
+            this.get_poe_mic_info_button.Size = new System.Drawing.Size(213, 29);
+            this.get_poe_mic_info_button.Style = Sunny.UI.UIStyle.Custom;
+            this.get_poe_mic_info_button.TabIndex = 26;
+            this.get_poe_mic_info_button.Text = "获取吊麦信息";
+            this.get_poe_mic_info_button.ZoomScaleDisabled = true;
+            this.get_poe_mic_info_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.get_poe_mic_info_button.Click += new System.EventHandler(this.get_poe_mic_info_button_Click);
+            // 
+            // poe_mic_hardware_info_label
+            // 
+            this.poe_mic_hardware_info_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.poe_mic_hardware_info_label.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.poe_mic_hardware_info_label.Location = new System.Drawing.Point(107, 55);
+            this.poe_mic_hardware_info_label.Name = "poe_mic_hardware_info_label";
+            this.poe_mic_hardware_info_label.Size = new System.Drawing.Size(109, 29);
+            this.poe_mic_hardware_info_label.Style = Sunny.UI.UIStyle.Custom;
+            this.poe_mic_hardware_info_label.TabIndex = 25;
+            this.poe_mic_hardware_info_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.poe_mic_hardware_info_label.ZoomScaleDisabled = true;
+            this.poe_mic_hardware_info_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // label7
+            // 
+            this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.label7.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label7.Location = new System.Drawing.Point(7, 55);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(112, 29);
+            this.label7.Style = Sunny.UI.UIStyle.Custom;
+            this.label7.TabIndex = 24;
+            this.label7.Text = "吊麦硬件型号：";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label7.ZoomScaleDisabled = true;
+            this.label7.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // poe_mic_firmware_info_label
+            // 
+            this.poe_mic_firmware_info_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.poe_mic_firmware_info_label.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.poe_mic_firmware_info_label.Location = new System.Drawing.Point(107, 33);
+            this.poe_mic_firmware_info_label.Name = "poe_mic_firmware_info_label";
+            this.poe_mic_firmware_info_label.Size = new System.Drawing.Size(109, 18);
+            this.poe_mic_firmware_info_label.Style = Sunny.UI.UIStyle.Custom;
+            this.poe_mic_firmware_info_label.TabIndex = 23;
+            this.poe_mic_firmware_info_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.poe_mic_firmware_info_label.ZoomScaleDisabled = true;
+            this.poe_mic_firmware_info_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // label6
+            // 
+            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.label6.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label6.Location = new System.Drawing.Point(7, 29);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(112, 26);
+            this.label6.Style = Sunny.UI.UIStyle.Custom;
+            this.label6.TabIndex = 22;
+            this.label6.Text = "吊麦固件版本：";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label6.ZoomScaleDisabled = true;
+            this.label6.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // stop_array_mic_audio_level_test_button
             // 
@@ -900,12 +992,12 @@
             this.uiGroupBox4.Controls.Add(this.button2);
             this.uiGroupBox4.Controls.Add(this.button1);
             this.uiGroupBox4.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiGroupBox4.Location = new System.Drawing.Point(221, 210);
+            this.uiGroupBox4.Location = new System.Drawing.Point(220, 211);
             this.uiGroupBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiGroupBox4.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiGroupBox4.Name = "uiGroupBox4";
             this.uiGroupBox4.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
-            this.uiGroupBox4.Size = new System.Drawing.Size(256, 61);
+            this.uiGroupBox4.Size = new System.Drawing.Size(257, 63);
             this.uiGroupBox4.Style = Sunny.UI.UIStyle.Custom;
             this.uiGroupBox4.TabIndex = 22;
             this.uiGroupBox4.Text = "三摄模组测试标定";
@@ -952,7 +1044,7 @@
             this.groupBox4.MinimumSize = new System.Drawing.Size(1, 1);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
-            this.groupBox4.Size = new System.Drawing.Size(209, 64);
+            this.groupBox4.Size = new System.Drawing.Size(212, 64);
             this.groupBox4.Style = Sunny.UI.UIStyle.Custom;
             this.groupBox4.TabIndex = 20;
             this.groupBox4.Text = "红绿指示灯控制";
@@ -963,7 +1055,7 @@
             // 
             this.stop_rg_flicker_button.Enabled = false;
             this.stop_rg_flicker_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.stop_rg_flicker_button.Location = new System.Drawing.Point(108, 29);
+            this.stop_rg_flicker_button.Location = new System.Drawing.Point(110, 26);
             this.stop_rg_flicker_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.stop_rg_flicker_button.Name = "stop_rg_flicker_button";
             this.stop_rg_flicker_button.Size = new System.Drawing.Size(99, 32);
@@ -978,7 +1070,7 @@
             // 
             this.start_rg_flicker_button.Enabled = false;
             this.start_rg_flicker_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.start_rg_flicker_button.Location = new System.Drawing.Point(5, 29);
+            this.start_rg_flicker_button.Location = new System.Drawing.Point(8, 26);
             this.start_rg_flicker_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.start_rg_flicker_button.Name = "start_rg_flicker_button";
             this.start_rg_flicker_button.Size = new System.Drawing.Size(99, 32);
@@ -1208,98 +1300,6 @@
             this.explainLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.explainLabel.ZoomScaleDisabled = true;
             this.explainLabel.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.get_poe_mic_info_button);
-            this.groupBox5.Controls.Add(this.poe_mic_hardware_info_label);
-            this.groupBox5.Controls.Add(this.label7);
-            this.groupBox5.Controls.Add(this.poe_mic_firmware_info_label);
-            this.groupBox5.Controls.Add(this.label6);
-            this.groupBox5.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox5.Location = new System.Drawing.Point(412, 27);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox5.MinimumSize = new System.Drawing.Size(1, 1);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
-            this.groupBox5.Size = new System.Drawing.Size(55, 95);
-            this.groupBox5.Style = Sunny.UI.UIStyle.Custom;
-            this.groupBox5.TabIndex = 21;
-            this.groupBox5.Text = "PoE 输出信息";
-            this.groupBox5.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.groupBox5.Visible = false;
-            this.groupBox5.ZoomScaleDisabled = true;
-            this.groupBox5.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // get_poe_mic_info_button
-            // 
-            this.get_poe_mic_info_button.Enabled = false;
-            this.get_poe_mic_info_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.get_poe_mic_info_button.Location = new System.Drawing.Point(7, 85);
-            this.get_poe_mic_info_button.MinimumSize = new System.Drawing.Size(1, 1);
-            this.get_poe_mic_info_button.Name = "get_poe_mic_info_button";
-            this.get_poe_mic_info_button.Size = new System.Drawing.Size(213, 29);
-            this.get_poe_mic_info_button.Style = Sunny.UI.UIStyle.Custom;
-            this.get_poe_mic_info_button.TabIndex = 26;
-            this.get_poe_mic_info_button.Text = "获取吊麦信息";
-            this.get_poe_mic_info_button.ZoomScaleDisabled = true;
-            this.get_poe_mic_info_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            this.get_poe_mic_info_button.Click += new System.EventHandler(this.get_poe_mic_info_button_Click);
-            // 
-            // poe_mic_hardware_info_label
-            // 
-            this.poe_mic_hardware_info_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.poe_mic_hardware_info_label.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.poe_mic_hardware_info_label.Location = new System.Drawing.Point(107, 55);
-            this.poe_mic_hardware_info_label.Name = "poe_mic_hardware_info_label";
-            this.poe_mic_hardware_info_label.Size = new System.Drawing.Size(109, 29);
-            this.poe_mic_hardware_info_label.Style = Sunny.UI.UIStyle.Custom;
-            this.poe_mic_hardware_info_label.TabIndex = 25;
-            this.poe_mic_hardware_info_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.poe_mic_hardware_info_label.ZoomScaleDisabled = true;
-            this.poe_mic_hardware_info_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // label7
-            // 
-            this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.label7.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(7, 55);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(112, 29);
-            this.label7.Style = Sunny.UI.UIStyle.Custom;
-            this.label7.TabIndex = 24;
-            this.label7.Text = "吊麦硬件型号：";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label7.ZoomScaleDisabled = true;
-            this.label7.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // poe_mic_firmware_info_label
-            // 
-            this.poe_mic_firmware_info_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.poe_mic_firmware_info_label.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.poe_mic_firmware_info_label.Location = new System.Drawing.Point(107, 33);
-            this.poe_mic_firmware_info_label.Name = "poe_mic_firmware_info_label";
-            this.poe_mic_firmware_info_label.Size = new System.Drawing.Size(109, 18);
-            this.poe_mic_firmware_info_label.Style = Sunny.UI.UIStyle.Custom;
-            this.poe_mic_firmware_info_label.TabIndex = 23;
-            this.poe_mic_firmware_info_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.poe_mic_firmware_info_label.ZoomScaleDisabled = true;
-            this.poe_mic_firmware_info_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // label6
-            // 
-            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.label6.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(7, 29);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(112, 26);
-            this.label6.Style = Sunny.UI.UIStyle.Custom;
-            this.label6.TabIndex = 22;
-            this.label6.Text = "吊麦固件版本：";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label6.ZoomScaleDisabled = true;
-            this.label6.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // password_textbox
             // 
@@ -1600,6 +1600,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormClosingEvent);
             this.uiGroupBox1.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
             this.groupBox10.ResumeLayout(false);
             this.uiGroupBox2.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
@@ -1608,7 +1609,6 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.uiGroupBox5.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
             this.uiGroupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
 
