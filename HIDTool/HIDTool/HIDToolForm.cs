@@ -1264,6 +1264,7 @@ namespace HIDTool
                 HIDDeviceInfo deviceInfo = deviceInfos[ki];
                 //Console.WriteLine("deviceInfos[{0}], PID: {1}, VID: {2} outlen: {3}, devicePath: {4}", ki, deviceInfo.PID, 
                 //    deviceInfo.VID, deviceInfo.OUT_reportByteLength, deviceInfo.devicePath);
+                // 下个版本直接改成识别VID就可以了，去掉PID
                 if ((deviceInfos[ki].PID == TARGET_HID_HONGHE_PID && deviceInfos[ki].VID == TARGET_HID_HONGHE_VID) || 
                     (deviceInfos[ki].VID == TARGET_HID_SEEVISION_VID) || (deviceInfos[ki].VID == TARGET_HID_HONGHE03_VID && deviceInfos[ki].PID == TARGET_HID_HONGHE03_PID)
                     || (deviceInfos[ki].VID == TARGET_HID_HONGHE04_VID && deviceInfos[ki].PID == TARGET_HID_HONGHE04_PID)
