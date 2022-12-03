@@ -135,6 +135,7 @@
             this.Name = "Form3";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "测试工具";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormClosingEvent);
             ((System.ComponentModel.ISupportInitialize)(this.vlcControl1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);

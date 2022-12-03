@@ -50,7 +50,7 @@ namespace SXW0301_Production_line
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string[] options = { ":network-caching=200", ":rtsp-tcp", ":no-audio" };// { ":network-caching=100", ":rtsp -tcp", ":no-audio" }; //  --avcodec-hw={any,d3d11va,dxva2,none} 
+            string[] options = { ":network-caching=1000", ":rtsp-frame-buffer-size=1000000", ":rtsp-tcp", ":no-audio" };// { ":network-caching=100", ":rtsp -tcp", ":no-audio" }; //  --avcodec-hw={any,d3d11va,dxva2,none} 
             var videoUri = new Uri(textBox1.Text.Trim());
             vlcControl1.Play(videoUri, options);
         }
@@ -134,9 +134,9 @@ namespace SXW0301_Production_line
         }
         Thread player_1_open;
         private void player_1_open_func()
-        { 
+        {
             //播放
-            string[] options = { ":network-caching=200", ":rtsp-tcp", ":no-audio" };// { ":network-caching=100", ":rtsp -tcp", ":no-audio" }; //  --avcodec-hw={any,d3d11va,dxva2,none} 
+            string[] options = { ":network-caching=1000", ":rtsp-frame-buffer-size=1000000", ":rtsp-tcp", ":no-audio" };// { ":network-caching=100", ":rtsp -tcp", ":no-audio" }; //  --avcodec-hw={any,d3d11va,dxva2,none} 
             var videoUri = new Uri(textBox1.Text.Trim());
 
             vlcControl1.Play(videoUri, options);
@@ -166,6 +166,17 @@ namespace SXW0301_Production_line
         private void vlcControl1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void FormClosingEvent(object sender, FormClosingEventArgs e)
+        {
+            vlcControl1.Stop();
+            if (player_1_open!=null)
+            {
+                player_1_open.Interrupt();
+                player_1_open=null;
+            }
+            vlcControl1 = null;
         }
     }
 }

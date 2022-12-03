@@ -103,6 +103,63 @@ namespace SeewoTestTool
             
         }
 
+        // 检查设备是否在线
+        private bool check_device_online()
+        {
+            string host = device_ip_textbox.Text;
+            // 检测如果ping不通直接FAIL无需往下继续执行
+            try
+            {
+                string temp_check_ping_ip_exists = executeCMDCommand($"ping {host} -n 1");
+                if (temp_check_ping_ip_exists.Contains("请求超时"))
+                {
+                    MessageBox.Show("设备IP查找失败，请确认设备网口连接情况以及网络环境配置是否正常后重试！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+
+                // 判断如果是：219.198.235.11，需要在连接设备前加上ping操作打通路由，如果不是，则不需要ping 219.198.235.11 -t -S 219.198.235.17
+                if (host == "219.198.235.11")
+                {
+                    string localPCHost = null;
+                    foreach (NetworkInterface netItem in NetworkInterface.GetAllNetworkInterfaces())
+                    {
+                        foreach (UnicastIPAddressInformation ipIntProp in netItem.GetIPProperties().UnicastAddresses.ToArray<UnicastIPAddressInformation>())
+                        {
+                            string inetName = netItem.Name;
+                            string inetAddress = ipIntProp.Address.ToString();
+                            string inetType = ipIntProp.Address.AddressFamily.ToString();
+                            //output_rich_textbox.AppendText($"   接口名：{inetName}，IP：{inetAddress}，IP类型：{inetType}\n");
+                            if (inetName == "以太网" && inetType == "InterNetwork")
+                            {
+                                localPCHost = inetAddress;
+                            }
+                        }
+                    }
+                    if (!string.IsNullOrEmpty(localPCHost))
+                    {
+                        output_rich_textbox.AppendText($"当前连接为局域网直连，本地PC的IP地址为：{localPCHost}\n");
+                        string back_temp = executeCMDCommand($"ping {host} -t -S {localPCHost} -n 1");
+                        output_rich_textbox.AppendText($"当前连接为局域网直连：IP：219.198.235.11\nPING 打通默认路由结果为：{back_temp}\n");
+                    }
+                    else
+                    {
+                        MessageBox.Show("请检查设备网络连接！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(ex.ToString());
+                output_rich_textbox.AppendText("操作结束");
+                return true;
+            }
+            
+        }
+
         string ip_users;
         // 保证设备在连接状态 网口通信
     
@@ -112,131 +169,96 @@ namespace SeewoTestTool
         private void device_connect_button_Click(object sender, EventArgs e)
         {
             output_rich_textbox.AppendText("【执行操作】进行设备绑定连接……\n");
-            string host = device_ip_textbox.Text;
-
-            // 检测如果ping不通直接FAIL无需往下继续执行
-            string temp_check_ping_ip_exists = executeCMDCommand($"ping {host} -n 1");
-            if (temp_check_ping_ip_exists.Contains("请求超时"))
+            if (check_device_online())
             {
-                MessageBox.Show("设备IP查找失败，请确认设备网口连接情况以及网络环境配置是否正常后重试！","错误",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                return;
-            }
-
-            // 判断如果是：219.198.235.11，需要在连接设备前加上ping操作打通路由，如果不是，则不需要ping 219.198.235.11 -t -S 219.198.235.17
-            if (host == "219.198.235.11")
-            {
-                string localPCHost = null;
-                foreach (NetworkInterface netItem in NetworkInterface.GetAllNetworkInterfaces())
+                string host = device_ip_textbox.Text;
+                ip_users = host;
+                string port;
+                if (radioButton_80.Checked)
                 {
-                    foreach (UnicastIPAddressInformation ipIntProp in netItem.GetIPProperties().UnicastAddresses.ToArray<UnicastIPAddressInformation>())
-                    {
-                        string inetName = netItem.Name;
-                        string inetAddress = ipIntProp.Address.ToString();
-                        string inetType = ipIntProp.Address.AddressFamily.ToString();
-                        //output_rich_textbox.AppendText($"   接口名：{inetName}，IP：{inetAddress}，IP类型：{inetType}\n");
-                        if (inetName == "以太网" && inetType == "InterNetwork")
-                        {
-                            localPCHost = inetAddress;
-                        }
-                    }
-                }
-                if (!string.IsNullOrEmpty(localPCHost))
-                {
-                    output_rich_textbox.AppendText($"当前连接为局域网直连，本地PC的IP地址为：{localPCHost}\n");
-                    string back_temp = executeCMDCommand($"ping {host} -t -S {localPCHost} -n 1");
-                    output_rich_textbox.AppendText($"当前连接为局域网直连：IP：219.198.235.11\nPING 打通默认路由结果为：{back_temp}\n");
+                    port = radioButton_80.Text;
                 }
                 else
                 {
-                    MessageBox.Show("请检查设备网络连接！","提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    port = radioButton_8080.Text;
                 }
-            }
-
-            ip_users = host;
-            string port;
-            if (radioButton_80.Checked)
-            {
-                port = radioButton_80.Text;
-            }
-            else 
-            {
-                port = radioButton_8080.Text;
-            }
-            ip_users = host + ":" + port;
-            if (string.IsNullOrEmpty(host))
-            {
-                output_rich_textbox.AppendText("设备网口IP地址和端口号不能为空！\n");
-            }
-            else
-            {
-                // Socket Connection Build
-                try
+                ip_users = host + ":" + port;
+                if (string.IsNullOrEmpty(host))
                 {
-                    TimeoutObject.Reset();
-                    
-                    IPAddress ip = IPAddress.Parse(host);
-                    IPEndPoint ipe = new IPEndPoint(ip, int.Parse(port));
-
-                    clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                    clientSocket.BeginConnect(ipe, new AsyncCallback(CallBackMethod), clientSocket);
-                    if (TimeoutObject.WaitOne(2000, false))
+                    output_rich_textbox.AppendText("设备网口IP地址和端口号不能为空！\n");
+                }
+                else
+                {
+                    // Socket Connection Build
+                    try
                     {
-                        if (clientSocket.Connected)
+                        TimeoutObject.Reset();
+
+                        IPAddress ip = IPAddress.Parse(host);
+                        IPEndPoint ipe = new IPEndPoint(ip, int.Parse(port));
+
+                        clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                        clientSocket.BeginConnect(ipe, new AsyncCallback(CallBackMethod), clientSocket);
+                        if (TimeoutObject.WaitOne(2000, false))
                         {
-                            output_rich_textbox.AppendText($"设备ip:{host}:{port}已连接上！\n");
-                            device_connect_button.Enabled = false;
-                            device_disconnect_button.Enabled = true;
-                            device_status_label.Text = "已连接";
-                            device_ip_textbox.Enabled = false;
-                            radioButton_80.Enabled = false;
-                            radioButton_8080.Enabled = false;
-                            login_button.Enabled = true;
-                            device_reset_button.Enabled = true;
-                            rebootDevice_button.Enabled = true;
-                            button1.Enabled = true;
-                            button2.Enabled = true;
-                            upgrade_progressbar.Value = 0;
-                            // 增加记住IP和端口功能
-                            if (rememberCheckBox.Checked == true)
+                            if (clientSocket.Connected)
                             {
-                                FileStream fileStream = new FileStream("data.bin", FileMode.OpenOrCreate);
-                                BinaryFormatter binaryFormatter = new BinaryFormatter();
-                                InternetPort internetPort = new InternetPort();
-                                internetPort.Deviceip = host;
-                                internetPort.Deviceport = port;
-                                if (internetPorts.ContainsKey(internetPort.Deviceip))
+                                output_rich_textbox.AppendText($"设备ip:{host}:{port}已连接上！\n");
+                                device_connect_button.Enabled = false;
+                                device_disconnect_button.Enabled = true;
+                                device_status_label.Text = "已连接";
+                                device_ip_textbox.Enabled = false;
+                                radioButton_80.Enabled = false;
+                                radioButton_8080.Enabled = false;
+                                login_button.Enabled = true;
+                                device_reset_button.Enabled = true;
+                                rebootDevice_button.Enabled = true;
+                                button1.Enabled = true;
+                                button2.Enabled = true;
+                                upgrade_progressbar.Value = 0;
+                                // 增加记住IP和端口功能
+                                if (rememberCheckBox.Checked == true)
                                 {
-                                    // 如果存在就清除掉
-                                    //internetPorts.Remove(internetPort.Deviceip);
-                                    internetPorts.Clear();
+                                    FileStream fileStream = new FileStream("data.bin", FileMode.OpenOrCreate);
+                                    BinaryFormatter binaryFormatter = new BinaryFormatter();
+                                    InternetPort internetPort = new InternetPort();
+                                    internetPort.Deviceip = host;
+                                    internetPort.Deviceport = port;
+                                    if (internetPorts.ContainsKey(internetPort.Deviceip))
+                                    {
+                                        // 如果存在就清除掉
+                                        //internetPorts.Remove(internetPort.Deviceip);
+                                        internetPorts.Clear();
+                                    }
+                                    internetPorts.Add(internetPort.Deviceip, internetPort);
+                                    binaryFormatter.Serialize(fileStream, internetPorts);
+                                    fileStream.Close();
                                 }
-                                internetPorts.Add(internetPort.Deviceip, internetPort);
-                                binaryFormatter.Serialize(fileStream, internetPorts);
-                                fileStream.Close();
+                                Thread.Sleep(1);
+                                login_button_Click(null, null);
                             }
-                            Thread.Sleep(1);
-                            login_button_Click(null, null);
                         }
+                        else
+                        {
+                            MessageBox.Show($"连接超时，请检查！\nIP:{host}， PORT:{port}\n如果多次连接尝试无果，可尝试重启设备后再做连接操作！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+
+                        /*
+                        send_Str("am start com.android.browser");
+                        string rec_Str = receive_Str();
+                        */
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        MessageBox.Show($"连接超时，请检查！\nIP:{host}， PORT:{port}\n如果多次连接尝试无果，可尝试重启设备后再做连接操作！","提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        device_status_label.Text = "已断开";
+                        device_ip_textbox.Enabled = true;
+                        radioButton_80.Enabled = true;
+                        radioButton_8080.Enabled = true;
+                        output_rich_textbox.AppendText($"设备网口IP地址和端口号错误，请检查是否输入正确！\n问题Log如下：{ex.ToString()}\n");
                     }
-                    
-                    /*
-                    send_Str("am start com.android.browser");
-                    string rec_Str = receive_Str();
-                    */
-                }
-                catch (Exception ex)
-                {
-                    device_status_label.Text = "已断开";
-                    device_ip_textbox.Enabled = true;
-                    radioButton_80.Enabled = true;
-                    radioButton_8080.Enabled = true;
-                    output_rich_textbox.AppendText($"设备网口IP地址和端口号错误，请检查是否输入正确！\n问题Log如下：{ex.ToString()}\n");
                 }
             }
+            
         }
 
         // 在cmd中执行命令操作
@@ -370,53 +392,56 @@ namespace SeewoTestTool
         {
             output_rich_textbox.AppendText("【执行操作】断开当前已连接设备……\n");
             //if (true)
-            if (clientSocket != null && clientSocket.Connected)
+            if (check_device_online())
             {
-                try
+                if (clientSocket != null && clientSocket.Connected)
                 {
-                    output_rich_textbox.AppendText("断开当前已连接设备\n");
-                    stop_array_mic_audio_level_test_button_Click(null, null);
-                    device_disconnect_button.Enabled = false;
-                    device_connect_button.Enabled = true;
-                    clientSocket.Close();
-                    clientSocket = null;
-                    upgrade_progressbar.Value = 0;
-                    device_status_label.Text = "已断开";
-                    device_ip_textbox.Enabled = true;
-                    radioButton_80.Enabled = true;
-                    radioButton_8080.Enabled = true;
-                    check_current_firmware_button.Enabled = false;
-                    upgrade_button.Enabled = false;
-                    getCurrentSN_button.Enabled = false;
-                    writeIn_button.Enabled = false;
-                    login_button.Enabled = false;
-                    getCurrentPCBA_button.Enabled = false;
-                    writeInPCBA_button.Enabled = false;
-                    start_array_mic_audio_level_test_button.Enabled = false;
-                    stop_array_mic_audio_level_test_button.Enabled = false;
-                    gain_array_mic_audio_level_button.Enabled = false;
-                    gainCurrentVersion_button.Enabled = false;
-                    login_button.Text = "登录";
-                    login_button.Enabled = true;
-                    device_reset_button.Enabled = false;
-                    rebootDevice_button.Enabled = false;
-                    stop_rg_flicker_button.Enabled = false;
-                    start_rg_flicker_button.Enabled = false;
-                    get_poe_mic_info_button.Enabled = false;
-                    login_button.Enabled = false;
-                    button1.Enabled = false;
-                    button2.Enabled = false;
-                    audioIn1_test_button.Enabled = false;
-                    audioIn2_test_button.Enabled = false;
-                    login_button.Text = "设备连接后\n可自动登录";
-                }
-                catch (Exception ex)
-                {
-                    output_rich_textbox.AppendText($"断开设备连接失败：\n{ex.ToString()}\n");
-                }
-                finally
-                {
+                    try
+                    {
+                        output_rich_textbox.AppendText("断开当前已连接设备\n");
+                        stop_array_mic_audio_level_test_button_Click(null, null);
+                        device_disconnect_button.Enabled = false;
+                        device_connect_button.Enabled = true;
+                        clientSocket.Close();
+                        clientSocket = null;
+                        upgrade_progressbar.Value = 0;
+                        device_status_label.Text = "已断开";
+                        device_ip_textbox.Enabled = true;
+                        radioButton_80.Enabled = true;
+                        radioButton_8080.Enabled = true;
+                        check_current_firmware_button.Enabled = false;
+                        upgrade_button.Enabled = false;
+                        getCurrentSN_button.Enabled = false;
+                        writeIn_button.Enabled = false;
+                        login_button.Enabled = false;
+                        getCurrentPCBA_button.Enabled = false;
+                        writeInPCBA_button.Enabled = false;
+                        start_array_mic_audio_level_test_button.Enabled = false;
+                        stop_array_mic_audio_level_test_button.Enabled = false;
+                        gain_array_mic_audio_level_button.Enabled = false;
+                        gainCurrentVersion_button.Enabled = false;
+                        login_button.Text = "登录";
+                        login_button.Enabled = true;
+                        device_reset_button.Enabled = false;
+                        rebootDevice_button.Enabled = false;
+                        stop_rg_flicker_button.Enabled = false;
+                        start_rg_flicker_button.Enabled = false;
+                        get_poe_mic_info_button.Enabled = false;
+                        login_button.Enabled = false;
+                        button1.Enabled = false;
+                        button2.Enabled = false;
+                        audioIn1_test_button.Enabled = false;
+                        audioIn2_test_button.Enabled = false;
+                        login_button.Text = "设备连接后\n可自动登录";
+                    }
+                    catch (Exception ex)
+                    {
+                        output_rich_textbox.AppendText($"断开设备连接失败：\n{ex.ToString()}\n");
+                    }
+                    finally
+                    {
 
+                    }
                 }
             }
         }
@@ -464,50 +489,54 @@ namespace SeewoTestTool
          */
         private void upgrade_button_Click(object sender, EventArgs e)
         {
-            output_rich_textbox.AppendText("【执行操作】固件升级……\n");
-            //if (true)
-            if (clientSocket != null && clientSocket.Connected)
+            if (check_device_online())
             {
-                string filePath = upgrade_firmware_textbox.Text;
-                if (string.IsNullOrEmpty(filePath))
+                output_rich_textbox.AppendText("【执行操作】固件升级……\n");
+                //if (true)
+                if (clientSocket != null && clientSocket.Connected)
                 {
-                    upgrade_firmware_textbox.Text = "未选择正确的固件路径";
+                    string filePath = upgrade_firmware_textbox.Text;
+                    if (string.IsNullOrEmpty(filePath))
+                    {
+                        upgrade_firmware_textbox.Text = "未选择正确的固件路径";
+                    }
+                    else
+                    {
+                        // 固件开始升级
+                        try
+                        {
+                            output_rich_textbox.AppendText("开始升级，请耐心等待完成！\n");
+                            // 使用后台线程去升级操作，防止UI阻塞卡死
+                            upgrade_progressbar.Value = 0;
+                            upgrade_button.Enabled = false;
+                            if (backgroundworker_firmwareupgrade.IsBusy)
+                            {
+                                return;
+                            }
+                            backgroundworker_firmwareupgrade.RunWorkerAsync("Hello");
+                        }
+                        catch (Exception ex)
+                        {
+                            output_rich_textbox.AppendText($"固件升级操作失败：\n{ex.ToString()}\n");
+                            upgrade_progressbar.Value = 0;
+                            device_disconnect_button_Click(null, null);
+                        }
+                        finally
+                        {
+
+                        }
+                    }
                 }
                 else
                 {
-                    // 固件开始升级
-                    try
-                    {
-                        output_rich_textbox.AppendText("开始升级，请耐心等待完成！\n");
-                        // 使用后台线程去升级操作，防止UI阻塞卡死
-                        upgrade_progressbar.Value = 0;
-                        upgrade_button.Enabled = false;
-                        if (backgroundworker_firmwareupgrade.IsBusy)
-                        {
-                            return;
-                        }
-                        backgroundworker_firmwareupgrade.RunWorkerAsync("Hello");
-                    }
-                    catch (Exception ex)
-                    {
-                        output_rich_textbox.AppendText($"固件升级操作失败：\n{ex.ToString()}\n");
-                        upgrade_progressbar.Value = 0;
-                        device_disconnect_button_Click(null, null);
-                    }
-                    finally
-                    {
-
-                    }
+                    device_ip_textbox.Enabled = true;
+                    radioButton_80.Enabled = true;
+                    radioButton_8080.Enabled = true;
+                    device_status_label.Text = "已断开";
+                    output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
                 }
             }
-            else
-            {
-                device_ip_textbox.Enabled = true;
-                radioButton_80.Enabled = true;
-                radioButton_8080.Enabled = true;
-                device_status_label.Text = "已断开";
-                output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
-            }
+            
         }
 
         // 校验当前固件
@@ -517,85 +546,89 @@ namespace SeewoTestTool
         private void check_current_firmware_button_Click(object sender, EventArgs e)
         {
             //if (true)
-            output_rich_textbox.AppendText("【执行操作】校验当前设备固件版本与固件包版本是否一致……\n");
-            if (clientSocket != null && clientSocket.Connected)
+            if (check_device_online())
             {
-                output_rich_textbox.AppendText("校验固件测试！\n");
-                string currentFirmware = null;
-                try
+                output_rich_textbox.AppendText("【执行操作】校验当前设备固件版本与固件包版本是否一致……\n");
+                if (clientSocket != null && clientSocket.Connected)
                 {
-                    // 校验固件 - 从session中获取固件当前版本
-                    string checkVersionCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\":\\\"getParam\\\",\\\"session\\\":\\\"{session}\\\",\\\"name\\\":\\\"DevInfo\\\"}}\"";
-                    output_string = executeCMDCommand(checkVersionCommand);
-                    MatchCollection results_2 = Regex.Matches(output_string, "\"SoftwaveVersion\" : (.*)");
-                    string currentVersion = results_2[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
-                    output_rich_textbox.AppendText("当前版本是：" + currentVersion + "\n");
+                    output_rich_textbox.AppendText("校验固件测试！\n");
+                    string currentFirmware = null;
+                    try
+                    {
+                        // 校验固件 - 从session中获取固件当前版本
+                        string checkVersionCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\":\\\"getParam\\\",\\\"session\\\":\\\"{session}\\\",\\\"name\\\":\\\"DevInfo\\\"}}\"";
+                        output_string = executeCMDCommand(checkVersionCommand);
+                        MatchCollection results_2 = Regex.Matches(output_string, "\"SoftwaveVersion\" : (.*)");
+                        string currentVersion = results_2[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
+                        output_rich_textbox.AppendText("当前版本是：" + currentVersion + "\n");
 
-                    // 将本地Firmware压缩包解压从info.txt中获取需要升级的版本进行核对
-                    if (string.IsNullOrEmpty(filePath))
-                    {
-                        output_rich_textbox.AppendText("请先点击【选择升级固件】后再进行核对操作！\n");
-                    }
-                    else
-                    {
-                        using (var zip = ZipFile.OpenRead(filePath))
+                        // 将本地Firmware压缩包解压从info.txt中获取需要升级的版本进行核对
+                        if (string.IsNullOrEmpty(filePath))
                         {
-                            foreach (var entry in zip.Entries)
+                            output_rich_textbox.AppendText("请先点击【选择升级固件】后再进行核对操作！\n");
+                        }
+                        else
+                        {
+                            using (var zip = ZipFile.OpenRead(filePath))
                             {
-                                if (entry.FullName == "info.txt")
+                                foreach (var entry in zip.Entries)
                                 {
-                                    output_rich_textbox.AppendText($"当前解包的固件文件为：{entry.FullName}\n");
-                                    using (var stream = entry.Open())
-                                    using (var reader = new StreamReader(stream))
+                                    if (entry.FullName == "info.txt")
                                     {
-                                        var content_get = reader.ReadToEnd();
-                                        MatchCollection results_3 = Regex.Matches(content_get.ToString(), "project=(.*)");
-                                        string toProduct = results_3[0].ToString().Split("=")[1];
-                                        MatchCollection results_4 = Regex.Matches(content_get.ToString(), "version=(.*)");
-                                        string toVersion = results_4[0].ToString().Split("=")[1];
-                                        output_rich_textbox.AppendText($"当前核对的版本为：{toVersion}, 项目为：{toProduct}\n");
+                                        output_rich_textbox.AppendText($"当前解包的固件文件为：{entry.FullName}\n");
+                                        using (var stream = entry.Open())
+                                        using (var reader = new StreamReader(stream))
+                                        {
+                                            var content_get = reader.ReadToEnd();
+                                            MatchCollection results_3 = Regex.Matches(content_get.ToString(), "project=(.*)");
+                                            string toProduct = results_3[0].ToString().Split("=")[1];
+                                            MatchCollection results_4 = Regex.Matches(content_get.ToString(), "version=(.*)");
+                                            string toVersion = results_4[0].ToString().Split("=")[1];
+                                            output_rich_textbox.AppendText($"当前核对的版本为：{toVersion}, 项目为：{toProduct}\n");
 
-                                        Font font = new Font(FontFamily.GenericMonospace, 15, FontStyle.Bold);
-                                        if (currentVersion == toVersion && toProduct == "SXW0301")
-                                        {
-                                            output_rich_textbox.ForeColor = Color.Green;
-                                            output_rich_textbox.SelectionFont = font;
-                                            checked_firmware_textbox.Text = $"固件校验成功，当前固件版本：{currentVersion}";
-                                            output_rich_textbox.AppendText($"固件校验成功，当前固件版本：{currentVersion}\n");
-                                        }
-                                        else
-                                        {
-                                            output_rich_textbox.ForeColor = Color.Red;
-                                            output_rich_textbox.SelectionFont = font;
-                                            checked_firmware_textbox.Text = $"固件校验失败，当前固件版本：{currentVersion}";
-                                            output_rich_textbox.AppendText($"固件校验失败，当前固件版本：{currentVersion}\n");
+                                            Font font = new Font(FontFamily.GenericMonospace, 15, FontStyle.Bold);
+                                            if (currentVersion == toVersion && toProduct == "SXW0301")
+                                            {
+                                                output_rich_textbox.ForeColor = Color.Green;
+                                                output_rich_textbox.SelectionFont = font;
+                                                checked_firmware_textbox.Text = $"固件校验成功，当前固件版本：{currentVersion}";
+                                                output_rich_textbox.AppendText($"固件校验成功，当前固件版本：{currentVersion}\n");
+                                            }
+                                            else
+                                            {
+                                                output_rich_textbox.ForeColor = Color.Red;
+                                                output_rich_textbox.SelectionFont = font;
+                                                checked_firmware_textbox.Text = $"固件校验失败，当前固件版本：{currentVersion}";
+                                                output_rich_textbox.AppendText($"固件校验失败，当前固件版本：{currentVersion}\n");
+                                            }
                                         }
                                     }
-                                }
 
+                                }
                             }
                         }
-                    }
-                    
 
+
+                    }
+                    catch (Exception ex)
+                    {
+                        output_rich_textbox.AppendText($"校验固件测试失败：\n{ex.ToString()}\n");
+                    }
+                    finally
+                    {
+
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    output_rich_textbox.AppendText($"校验固件测试失败：\n{ex.ToString()}\n");
-                }
-                finally
-                { 
-                    
+                    device_ip_textbox.Enabled = true;
+                    radioButton_80.Enabled = true;
+                    radioButton_8080.Enabled = true;
+                    device_status_label.Text = "已断开";
+                    output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
                 }
             }
-            else
-            {
-                device_ip_textbox.Enabled = true;
-                radioButton_80.Enabled = true;
-                radioButton_8080.Enabled = true;
-                device_status_label.Text = "已断开";
-                output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
-            }
+            
         }
 
         // 打开红绿灯交替闪烁
@@ -605,47 +638,51 @@ namespace SeewoTestTool
         private void start_rg_flicker_button_Click(object sender, EventArgs e)
         {
             //if (true)
-            output_rich_textbox.AppendText("【执行操作】打开红绿灯交替闪烁……\n");
-            if (clientSocket != null && clientSocket.Connected)
+            if (check_device_online())
             {
-                try
+                output_rich_textbox.AppendText("【执行操作】打开红绿灯交替闪烁……\n");
+                if (clientSocket != null && clientSocket.Connected)
                 {
-                    // 打开红绿灯交替闪烁
-                    string fetchDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/testAudioJson_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"ledTest\\\",\\\"open\\\": true}}\"";
-                    output_string = executeCMDCommand(fetchDeviceInfoCommand);
-                    MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
-                    string back_code = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
-                    string result = "打开红绿灯交替闪烁操作未执行成功";
-                    if (back_code == "0")
+                    try
                     {
-                        result = "成功";
-                        stop_rg_flicker_button.Enabled = true;
-                        start_rg_flicker_button.Enabled = false;
+                        // 打开红绿灯交替闪烁
+                        string fetchDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/testAudioJson_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"ledTest\\\",\\\"open\\\": true}}\"";
+                        output_string = executeCMDCommand(fetchDeviceInfoCommand);
+                        MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
+                        string back_code = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
+                        string result = "打开红绿灯交替闪烁操作未执行成功";
+                        if (back_code == "0")
+                        {
+                            result = "成功";
+                            stop_rg_flicker_button.Enabled = true;
+                            start_rg_flicker_button.Enabled = false;
+                        }
+                        else
+                        {
+                            result = "失败";
+                        }
+                        output_rich_textbox.AppendText("打开红绿灯交替闪烁结果：" + result + "【back_code】：" + back_code + "\n");
+
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        result = "失败";
+                        output_rich_textbox.AppendText($"打开红绿灯交替闪烁功能失败：\n{ex.ToString()}\n");
                     }
-                    output_rich_textbox.AppendText("打开红绿灯交替闪烁结果：" + result + "【back_code】："+ back_code + "\n");
+                    finally
+                    {
 
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    output_rich_textbox.AppendText($"打开红绿灯交替闪烁功能失败：\n{ex.ToString()}\n");
-                }
-                finally
-                {
-
+                    device_ip_textbox.Enabled = true;
+                    radioButton_80.Enabled = true;
+                    radioButton_8080.Enabled = true;
+                    device_status_label.Text = "已断开";
+                    output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
                 }
             }
-            else
-            {
-                device_ip_textbox.Enabled = true;
-                radioButton_80.Enabled = true;
-                radioButton_8080.Enabled = true;
-                device_status_label.Text = "已断开";
-                output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
-            }
+            
         }
 
         // 关闭红绿灯交替闪烁
@@ -655,47 +692,51 @@ namespace SeewoTestTool
         private void stop_rg_flicker_button_Click(object sender, EventArgs e)
         {
             //if (true)
-            output_rich_textbox.AppendText("【执行操作】关闭红绿灯交替闪烁……\n");
-            if (clientSocket != null && clientSocket.Connected)
+            if (check_device_online())
             {
-                try
+                output_rich_textbox.AppendText("【执行操作】关闭红绿灯交替闪烁……\n");
+                if (clientSocket != null && clientSocket.Connected)
                 {
-                    // 关闭红绿灯交替闪烁
-                    string fetchDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/testAudioJson_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"ledTest\\\",\\\"open\\\": false}}\"";
-                    output_string = executeCMDCommand(fetchDeviceInfoCommand);
-                    MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
-                    string back_code = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
-                    string result = "关闭红绿灯交替闪烁操作未执行成功";
-                    if (back_code == "0")
+                    try
                     {
-                        result = "成功";
-                        stop_rg_flicker_button.Enabled = false;
-                        start_rg_flicker_button.Enabled = true;
+                        // 关闭红绿灯交替闪烁
+                        string fetchDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/testAudioJson_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"ledTest\\\",\\\"open\\\": false}}\"";
+                        output_string = executeCMDCommand(fetchDeviceInfoCommand);
+                        MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
+                        string back_code = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
+                        string result = "关闭红绿灯交替闪烁操作未执行成功";
+                        if (back_code == "0")
+                        {
+                            result = "成功";
+                            stop_rg_flicker_button.Enabled = false;
+                            start_rg_flicker_button.Enabled = true;
+                        }
+                        else
+                        {
+                            result = "失败";
+                        }
+                        output_rich_textbox.AppendText("关闭红绿灯交替闪烁结果：" + result + "【back_code】：" + back_code + "\n");
+
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        result = "失败";
+                        output_rich_textbox.AppendText($"关闭红绿灯交替闪烁功能失败：\n{ex.ToString()}\n");
                     }
-                    output_rich_textbox.AppendText("关闭红绿灯交替闪烁结果：" + result + "【back_code】：" + back_code + "\n");
+                    finally
+                    {
 
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    output_rich_textbox.AppendText($"关闭红绿灯交替闪烁功能失败：\n{ex.ToString()}\n");
-                }
-                finally
-                {
-
+                    device_ip_textbox.Enabled = true;
+                    radioButton_80.Enabled = true;
+                    radioButton_8080.Enabled = true;
+                    device_status_label.Text = "已断开";
+                    output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
                 }
             }
-            else
-            {
-                device_ip_textbox.Enabled = true;
-                radioButton_80.Enabled = true;
-                radioButton_8080.Enabled = true;
-                device_status_label.Text = "已断开";
-                output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
-            }
+            
         }
 
         // 获取吊麦信息
@@ -825,222 +866,43 @@ namespace SeewoTestTool
         private void array_mic_audio_level_test_button_Click(object sender, EventArgs e)
         {
             //if (true)
-            output_rich_textbox.AppendText("【执行操作】开启阵列MIC音量值测试……\n");
-            if (clientSocket != null && clientSocket.Connected)
+            if (check_device_online())
             {
-                try
-                {
-                    // 开启阵列MIC音量值测试
-                    output_rich_textbox.AppendText(session);
-                    string beginDeviceMICVolumeTestCommand = $"curl -X POST \"http://{ip_users}/testAudioJson_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"startAudioTest\\\",\\\"format\\\": 0,\\\"soundmode\\\": 8,\\\"samplerate\\\": 16000,\\\"periodsize\\\": 1024}}\"";
-                    output_string = executeCMDCommand(beginDeviceMICVolumeTestCommand);
-                    MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
-                    string backCode = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
-                    
-                    if (Int32.Parse(backCode) == 0)
-                    {
-                        output_rich_textbox.AppendText($"执行结果为：PASS，已开启阵列MIC音量值测试，backCode:[{backCode}]\n");
-                        start_array_mic_audio_level_test_button.Enabled = false;
-                        stop_array_mic_audio_level_test_button.Enabled = true;
-                        gain_array_mic_audio_level_button.Enabled = true;
-                        audioIn1_test_button.Enabled = true;
-                        audioIn2_test_button.Enabled = true;
-                    }
-                    else if(Int32.Parse(backCode) == -1)
-                    {
-                        output_rich_textbox.AppendText($"执行结果为：FAIL，未开启阵列MIC音量值测试，backCode:[{backCode}]\n");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"开启阵列MIC音量值测试失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n");
-                    output_rich_textbox.AppendText($"开启阵列MIC音量值测试失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n");
-                }
-                finally
-                {
-
-                }
-            }
-            else
-            {
-                device_ip_textbox.Enabled = true;
-                radioButton_80.Enabled = true;
-                radioButton_8080.Enabled = true;
-                device_status_label.Text = "已断开";
-                output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
-            }
-        }
-
-        // 停止阵列MIC音量值测试
-        /**
-         * 停止阵列麦克风音量值测试
-         */
-        private void stop_array_mic_audio_level_test_button_Click(object sender, EventArgs e)
-        {
-            //if (true)
-            output_rich_textbox.AppendText("【执行操作】停止阵列MIC音量值测试……\n");
-            if (clientSocket != null && clientSocket.Connected)
-            {
-                try
-                {
-                    // 停止阵列MIC音量值测试
-                    output_rich_textbox.AppendText(session);
-                    string stopDeviceMICVolumeTestCommand = $"curl -X POST \"http://{ip_users}/testAudioJson_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"stopAudioTest\\\"}}\"";
-                    output_string = executeCMDCommand(stopDeviceMICVolumeTestCommand);
-                    MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
-                    string backCode = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
-
-                    if (Int32.Parse(backCode) == 0)
-                    {
-                        start_array_mic_audio_level_test_button.Enabled = true;
-                        stop_array_mic_audio_level_test_button.Enabled = false;
-                        gain_array_mic_audio_level_button.Enabled = false;
-                        audioIn1_test_button.Enabled = false;
-                        audioIn2_test_button.Enabled = false;
-                        output_rich_textbox.AppendText($"执行结果为：PASS，已停止阵列MIC音量值测试，backCode:[{backCode}]\n");
-                    }
-                    else if (Int32.Parse(backCode) == -1)
-                    {
-                        output_rich_textbox.AppendText($"执行结果为：FAIL，无法关闭阵列MIC音量值测试，backCode:[{backCode}]\n");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    //MessageBox.Show($"停止阵列MIC音量值测试失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n");
-                    output_rich_textbox.AppendText($"停止阵列MIC音量值测试失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n");
-                }
-                finally
-                {
-
-                }
-            }
-            else
-            {
-                device_ip_textbox.Enabled = true;
-                radioButton_80.Enabled = true;
-                radioButton_8080.Enabled = true;
-                device_status_label.Text = "已断开";
-                output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
-            }
-        }
-
-        // 获取各路MIC音频音量值
-        /**
-         * 开启阵列麦克风音量值测试后，对8路麦克风的值进行获取
-         */
-        private void gain_array_mic_audio_level_button_Click(object sender, EventArgs e)
-        {
-            //if (true)
-            output_rich_textbox.AppendText("【执行操作】获取各路MIC音频音量值……\n");
-            if (clientSocket != null && clientSocket.Connected)
-            {
-                try
-                {
-                    // 获取各路MIC音频音量值
-                    output_rich_textbox.AppendText(session);
-                    string gainDeviceMICVolumeCommand = $"curl -X POST \"http://{ip_users}/testAudioJson_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getAudioVolume\\\"}}\"";
-                    output_string = executeCMDCommand(gainDeviceMICVolumeCommand);
-                    MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
-                    output_rich_textbox.AppendText(results_1.ToString());
-                    string backCode = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "").Replace(",","");
-                    if (Int32.Parse(backCode) == 0)
-                    {
-                        MatchCollection results_2 = Regex.Matches(output_string, "\\\"rmsdb\\\" : \\[\\n(.*),\\n(.*),\\n(.*),\\n(.*),\\n(.*),\\n(.*),\\n(.*),\\n(.*)\\n   ]");
-                        string[] temp = results_2[0].ToString().Replace("\"rmsdb\" : [", "").Replace("]", "").Replace("\"", "").Replace("\n", "").Replace(" ", "").Split(",");
-                        string volume1 = temp[0].ToString();
-                        string volume2 = temp[1].ToString();
-                        string volume3 = temp[2].ToString();
-                        string volume4 = temp[3].ToString();
-                        string volume5 = temp[4].ToString();
-                        string volume6 = temp[5].ToString();
-                        string volume7 = temp[6].ToString();
-                        string volume8 = temp[7].ToString();
-                        output_rich_textbox.AppendText($"执行结果为：PASS，获取各路MIC音频音量值，backCode:[{backCode}]\n");
-                        volume1_value_label.Text = volume1;
-                        volume2_value_label.Text = volume2;
-                        volume3_value_label.Text = volume3;
-                        volume4_value_label.Text = volume4;
-                        volume5_value_label.Text = volume5;
-                        volume6_value_label.Text = volume6;
-                        volume7_value_label.Text = volume7;
-                        volume8_value_label.Text = volume8;
-                        output_rich_textbox.AppendText($"rmsdb1：{volume1}\nrmsdb2：{volume2}\nrmsdb3：{volume3}\nrmsdb4：{volume4}\nrmsdb5：{volume5}\nrmsdb6：{volume6}\nrmsdb7：{volume7}\nrmsdb8：{volume8}\n");
-
-                        float volume_1_f = float.Parse(volume1);
-                        float volume_2_f = float.Parse(volume2);
-                        float volume_3_f = float.Parse(volume3);
-                        float volume_4_f = float.Parse(volume4);
-                        float volume_5_f = float.Parse(volume5);
-                        float volume_6_f = float.Parse(volume6);
-                        float volume_7_f = float.Parse(volume7);
-                        float volume_8_f = float.Parse(volume8);
-
-                        float[] volumes_f = { volume_1_f, volume_2_f, volume_4_f, volume_5_f, volume_6_f, volume_8_f};
-                        float maxINArray = volumes_f.Max();
-                        float minINArray = volumes_f.Min();
-                        if (Math.Abs(maxINArray) - Math.Abs(minINArray) <= 3 && (volume_1_f > -70 && volume_2_f > -70 && volume_4_f > -70 && volume_5_f > -70
-                            && volume_6_f > -70 && volume_8_f > -70))
-                        {
-                            arrayMICTestResult_label.Text = "PASS";
-                        }
-                        else
-                        {
-                            arrayMICTestResult_label.Text = "FAIL";
-                        }
-                    }
-                    else if (Int32.Parse(backCode) == -1)
-                    {
-                        output_rich_textbox.AppendText($"执行结果为：FAIL，无法获取各路MIC音频音量值，backCode:[{backCode}]\n");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"获取各路MIC音频音量值失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n");
-                    output_rich_textbox.AppendText($"获取各路MIC音频音量值失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n");
-                }
-                finally
-                {
-
-                }
-            }
-            else
-            {
-                device_ip_textbox.Enabled = true;
-                radioButton_80.Enabled = true;
-                radioButton_8080.Enabled = true;
-                device_status_label.Text = "已断开";
-                output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
-            }
-        }
-
-        // 设备复位
-        /**
-         * 设备复位按钮点击事件
-         */
-                        private void device_reset_button_Click(object sender, EventArgs e)
-        {
-            //if (true)
-            output_rich_textbox.AppendText("【执行操作】设备复位……\n");
-            try
-            {
+                output_rich_textbox.AppendText("【执行操作】开启阵列MIC音量值测试……\n");
                 if (clientSocket != null && clientSocket.Connected)
                 {
-                    // 设备复位
-                    string fetchDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"control\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"restoreSettings\\\"}}\"";
-                    output_string = executeCMDCommand(fetchDeviceInfoCommand);
-                    MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
-                    string back_code = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
-                    string result = "复位操作未执行成功";
-                    if (back_code == "0")
+                    try
                     {
-                        result = "成功";
-                        device_disconnect_button_Click(null, null);
+                        // 开启阵列MIC音量值测试
+                        output_rich_textbox.AppendText(session);
+                        string beginDeviceMICVolumeTestCommand = $"curl -X POST \"http://{ip_users}/testAudioJson_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"startAudioTest\\\",\\\"format\\\": 0,\\\"soundmode\\\": 8,\\\"samplerate\\\": 16000,\\\"periodsize\\\": 1024}}\"";
+                        output_string = executeCMDCommand(beginDeviceMICVolumeTestCommand);
+                        MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
+                        string backCode = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
+
+                        if (Int32.Parse(backCode) == 0)
+                        {
+                            output_rich_textbox.AppendText($"执行结果为：PASS，已开启阵列MIC音量值测试，backCode:[{backCode}]\n");
+                            start_array_mic_audio_level_test_button.Enabled = false;
+                            stop_array_mic_audio_level_test_button.Enabled = true;
+                            gain_array_mic_audio_level_button.Enabled = true;
+                            audioIn1_test_button.Enabled = true;
+                            audioIn2_test_button.Enabled = true;
+                        }
+                        else if (Int32.Parse(backCode) == -1)
+                        {
+                            output_rich_textbox.AppendText($"执行结果为：FAIL，未开启阵列MIC音量值测试，backCode:[{backCode}]\n");
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        result = "失败";
+                        MessageBox.Show($"开启阵列MIC音量值测试失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n");
+                        output_rich_textbox.AppendText($"开启阵列MIC音量值测试失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n");
                     }
-                    output_rich_textbox.AppendText("设备复位结果：" + result + "\n");
+                    finally
+                    {
+
+                    }
                 }
                 else
                 {
@@ -1050,16 +912,211 @@ namespace SeewoTestTool
                     device_status_label.Text = "已断开";
                     output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
                 }
+            }
+            
+        }
 
-            }
-            catch (Exception ex)
+        // 停止阵列MIC音量值测试
+        /**
+         * 停止阵列麦克风音量值测试
+         */
+        private void stop_array_mic_audio_level_test_button_Click(object sender, EventArgs e)
+        {
+            //if (true)
+            if (check_device_online())
             {
-                output_rich_textbox.AppendText($"设备复位失败，当前未连接设备：\n{ex.ToString()}\n");
-            }
-            finally
-            {
+                output_rich_textbox.AppendText("【执行操作】停止阵列MIC音量值测试……\n");
+                if (clientSocket != null && clientSocket.Connected)
+                {
+                    try
+                    {
+                        // 停止阵列MIC音量值测试
+                        output_rich_textbox.AppendText(session);
+                        string stopDeviceMICVolumeTestCommand = $"curl -X POST \"http://{ip_users}/testAudioJson_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"stopAudioTest\\\"}}\"";
+                        output_string = executeCMDCommand(stopDeviceMICVolumeTestCommand);
+                        MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
+                        string backCode = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
 
+                        if (Int32.Parse(backCode) == 0)
+                        {
+                            start_array_mic_audio_level_test_button.Enabled = true;
+                            stop_array_mic_audio_level_test_button.Enabled = false;
+                            gain_array_mic_audio_level_button.Enabled = false;
+                            audioIn1_test_button.Enabled = false;
+                            audioIn2_test_button.Enabled = false;
+                            output_rich_textbox.AppendText($"执行结果为：PASS，已停止阵列MIC音量值测试，backCode:[{backCode}]\n");
+                        }
+                        else if (Int32.Parse(backCode) == -1)
+                        {
+                            output_rich_textbox.AppendText($"执行结果为：FAIL，无法关闭阵列MIC音量值测试，backCode:[{backCode}]\n");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        //MessageBox.Show($"停止阵列MIC音量值测试失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n");
+                        output_rich_textbox.AppendText($"停止阵列MIC音量值测试失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n");
+                    }
+                    finally
+                    {
+
+                    }
+                }
+                else
+                {
+                    device_ip_textbox.Enabled = true;
+                    radioButton_80.Enabled = true;
+                    radioButton_8080.Enabled = true;
+                    device_status_label.Text = "已断开";
+                    output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
+                }
             }
+            
+        }
+
+        // 获取各路MIC音频音量值
+        /**
+         * 开启阵列麦克风音量值测试后，对8路麦克风的值进行获取
+         */
+        private void gain_array_mic_audio_level_button_Click(object sender, EventArgs e)
+        {
+            //if (true)
+            if (check_device_online())
+            {
+                output_rich_textbox.AppendText("【执行操作】获取各路MIC音频音量值……\n");
+                if (clientSocket != null && clientSocket.Connected)
+                {
+                    try
+                    {
+                        // 获取各路MIC音频音量值
+                        output_rich_textbox.AppendText(session);
+                        string gainDeviceMICVolumeCommand = $"curl -X POST \"http://{ip_users}/testAudioJson_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getAudioVolume\\\"}}\"";
+                        output_string = executeCMDCommand(gainDeviceMICVolumeCommand);
+                        MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
+                        output_rich_textbox.AppendText(results_1.ToString());
+                        string backCode = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "").Replace(",", "");
+                        if (Int32.Parse(backCode) == 0)
+                        {
+                            MatchCollection results_2 = Regex.Matches(output_string, "\\\"rmsdb\\\" : \\[\\n(.*),\\n(.*),\\n(.*),\\n(.*),\\n(.*),\\n(.*),\\n(.*),\\n(.*)\\n   ]");
+                            string[] temp = results_2[0].ToString().Replace("\"rmsdb\" : [", "").Replace("]", "").Replace("\"", "").Replace("\n", "").Replace(" ", "").Split(",");
+                            string volume1 = temp[0].ToString();
+                            string volume2 = temp[1].ToString();
+                            string volume3 = temp[2].ToString();
+                            string volume4 = temp[3].ToString();
+                            string volume5 = temp[4].ToString();
+                            string volume6 = temp[5].ToString();
+                            string volume7 = temp[6].ToString();
+                            string volume8 = temp[7].ToString();
+                            output_rich_textbox.AppendText($"执行结果为：PASS，获取各路MIC音频音量值，backCode:[{backCode}]\n");
+                            volume1_value_label.Text = volume1;
+                            volume2_value_label.Text = volume2;
+                            volume3_value_label.Text = volume3;
+                            volume4_value_label.Text = volume4;
+                            volume5_value_label.Text = volume5;
+                            volume6_value_label.Text = volume6;
+                            volume7_value_label.Text = volume7;
+                            volume8_value_label.Text = volume8;
+                            output_rich_textbox.AppendText($"rmsdb1：{volume1}\nrmsdb2：{volume2}\nrmsdb3：{volume3}\nrmsdb4：{volume4}\nrmsdb5：{volume5}\nrmsdb6：{volume6}\nrmsdb7：{volume7}\nrmsdb8：{volume8}\n");
+
+                            float volume_1_f = float.Parse(volume1);
+                            float volume_2_f = float.Parse(volume2);
+                            float volume_3_f = float.Parse(volume3);
+                            float volume_4_f = float.Parse(volume4);
+                            float volume_5_f = float.Parse(volume5);
+                            float volume_6_f = float.Parse(volume6);
+                            float volume_7_f = float.Parse(volume7);
+                            float volume_8_f = float.Parse(volume8);
+
+                            float[] volumes_f = { volume_1_f, volume_2_f, volume_4_f, volume_5_f, volume_6_f, volume_8_f };
+                            float maxINArray = volumes_f.Max();
+                            float minINArray = volumes_f.Min();
+                            if (Math.Abs(maxINArray) - Math.Abs(minINArray) <= 3 && (volume_1_f > -70 && volume_2_f > -70 && volume_4_f > -70 && volume_5_f > -70
+                                && volume_6_f > -70 && volume_8_f > -70))
+                            {
+                                arrayMICTestResult_label.Text = "PASS";
+                            }
+                            else
+                            {
+                                arrayMICTestResult_label.Text = "FAIL";
+                            }
+                        }
+                        else if (Int32.Parse(backCode) == -1)
+                        {
+                            output_rich_textbox.AppendText($"执行结果为：FAIL，无法获取各路MIC音频音量值，backCode:[{backCode}]\n");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"获取各路MIC音频音量值失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n");
+                        output_rich_textbox.AppendText($"获取各路MIC音频音量值失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n");
+                    }
+                    finally
+                    {
+
+                    }
+                }
+                else
+                {
+                    device_ip_textbox.Enabled = true;
+                    radioButton_80.Enabled = true;
+                    radioButton_8080.Enabled = true;
+                    device_status_label.Text = "已断开";
+                    output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
+                }
+            }
+            
+        }
+
+        // 设备复位
+        /**
+         * 设备复位按钮点击事件
+         */
+        private void device_reset_button_Click(object sender, EventArgs e)
+        {
+            //if (true)
+            if (check_device_online())
+            {
+                output_rich_textbox.AppendText("【执行操作】设备复位……\n");
+                try
+                {
+                    if (clientSocket != null && clientSocket.Connected)
+                    {
+                        // 设备复位
+                        string fetchDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"control\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"restoreSettings\\\"}}\"";
+                        output_string = executeCMDCommand(fetchDeviceInfoCommand);
+                        MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
+                        string back_code = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
+                        string result = "复位操作未执行成功";
+                        if (back_code == "0")
+                        {
+                            result = "成功";
+                            device_disconnect_button_Click(null, null);
+                        }
+                        else
+                        {
+                            result = "失败";
+                        }
+                        output_rich_textbox.AppendText("设备复位结果：" + result + "\n");
+                    }
+                    else
+                    {
+                        device_ip_textbox.Enabled = true;
+                        radioButton_80.Enabled = true;
+                        radioButton_8080.Enabled = true;
+                        device_status_label.Text = "已断开";
+                        output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    output_rich_textbox.AppendText($"设备复位失败，当前未连接设备：\n{ex.ToString()}\n");
+                }
+                finally
+                {
+
+                }
+            }
+            
         }
 
         // 窗体关闭事件，将设备socket连接释放掉
@@ -1301,11 +1358,15 @@ namespace SeewoTestTool
                     button1.Enabled = false;
                     button2.Enabled = false;
                     get_poe_mic_info_button.Enabled = false;
+
+                    Thread.Sleep(3000);
+                    // 这里升级完重启，需要重新连接设备，设备状态那边需要同步更新
+                    device_connect_button_Click(null, null);
                     return;
                 }
             }
-            
-            
+
+
         }
         Thread thread_reboot1;
 
@@ -1344,7 +1405,13 @@ namespace SeewoTestTool
                     output_rich_textbox.AppendText("等待20秒设备正在重启中，期间无法操作工具……\n");
                     System.Threading.Thread.Sleep(20000);
                     */
-                    // 这里升级完重启，需要重新连接设备，设备状态那边需要同步更新
+                }
+                else
+                {
+                    MessageBox.Show("升级中断，无需升级或者升级失败，请检查！\n开始尝试重新连接设备，请稍等连接结果……");
+                    output_rich_textbox.AppendText("升级中断，无需升级或者升级失败，请检查！\n开始尝试重新连接设备，请稍等连接结果……");
+                    device_disconnect_button_Click(null, null);
+                    device_connect_button_Click(null, null);
                 }
             }
             else
@@ -1407,36 +1474,40 @@ namespace SeewoTestTool
         private void getCurrentSN_button_Click(object sender, EventArgs e)
         {
             //if (true)
-            output_rich_textbox.AppendText("【执行操作】获取当前设备的SN号……\n");
-            try
+            if (check_device_online())
             {
-                if (clientSocket != null && clientSocket.Connected)
+                output_rich_textbox.AppendText("【执行操作】获取当前设备的SN号……\n");
+                try
                 {
-                    // 获取SN号
-                    string fetchDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"SerialNumber\\\"}}\"";
-                    output_string = executeCMDCommand(fetchDeviceInfoCommand);
-                    MatchCollection results_1 = Regex.Matches(output_string, "\"SN\" : (.*)");
-                    string currentSN = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
-                    output_rich_textbox.AppendText("当前设备的SN号为：" + currentSN + "\n");
-                    currentSN_textbox.Text = currentSN;
+                    if (clientSocket != null && clientSocket.Connected)
+                    {
+                        // 获取SN号
+                        string fetchDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"SerialNumber\\\"}}\"";
+                        output_string = executeCMDCommand(fetchDeviceInfoCommand);
+                        MatchCollection results_1 = Regex.Matches(output_string, "\"SN\" : (.*)");
+                        string currentSN = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
+                        output_rich_textbox.AppendText("当前设备的SN号为：" + currentSN + "\n");
+                        currentSN_textbox.Text = currentSN;
+                    }
+                    else
+                    {
+                        device_ip_textbox.Enabled = true;
+                        radioButton_80.Enabled = true;
+                        radioButton_8080.Enabled = true;
+                        device_status_label.Text = "已断开";
+                        output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    device_ip_textbox.Enabled = true;
-                    radioButton_80.Enabled = true;
-                    radioButton_8080.Enabled = true;
-                    device_status_label.Text = "已断开";
-                    output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
+                    output_rich_textbox.AppendText($"获取当前设备的SN号失败，当前未连接设备：\n{ex.ToString()}\n");
                 }
-            }
-            catch (Exception ex)
-            {
-                output_rich_textbox.AppendText($"获取当前设备的SN号失败，当前未连接设备：\n{ex.ToString()}\n");
-            }
-            finally
-            {
+                finally
+                {
 
+                }
             }
+            
         }
 
 
@@ -1448,62 +1519,66 @@ namespace SeewoTestTool
         {
             //MessageBox.Show("功能暂时关闭以防止误操作，每块板子只有三次写入机会。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             //if (true)
-            output_rich_textbox.AppendText("【执行操作】写入指定的设备SN号……\n");
-            try
+            if (check_device_online())
             {
-                if (clientSocket != null && clientSocket.Connected)
+                output_rich_textbox.AppendText("【执行操作】写入指定的设备SN号……\n");
+                try
                 {
-
-                    // 写入指定的设备SN号
-                    string writeINSN = writeInSN_textbox.Text;
-                    if (string.IsNullOrEmpty(writeINSN) || writeINSN.Length != 22 || !new Regex("^[A-Z|0-9]+$").IsMatch(writeINSN))
+                    if (clientSocket != null && clientSocket.Connected)
                     {
-                        writeInSN_textbox.Text = "请写入正确的SN号再进行刷入，示例：FCSC03V000019179E00001，只能包含大写字母和数字，且长度为22位！\n";
-                        output_rich_textbox.AppendText("请写入正确的SN号再进行刷入，示例：FCSC03V000019179E00001，只能包含大写字母和数字，且长度为22位！\n");
-                    }
-                    else
-                    {
-                        output_rich_textbox.AppendText(session);
-                        string writeDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"setParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"SerialNumber\\\",\\\"value\\\": {{\\\"SN\\\": \\\"{writeINSN}\\\"}}}}\"";
-                        output_string = executeCMDCommand(writeDeviceInfoCommand);
-                        MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
-                        string backCode = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
 
-                        // 获取SN号
-                        string fetchDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"SerialNumber\\\"}}\"";
-                        output_string = executeCMDCommand(fetchDeviceInfoCommand);
-                        MatchCollection results_2 = Regex.Matches(output_string, "\"SN\" : (.*)");
-                        string currentSN = results_2[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
-                        output_rich_textbox.AppendText("获取当前设备的SN号：" + currentSN + "\n");
-                        if (currentSN == writeINSN && Int32.Parse(backCode) == 0)
+                        // 写入指定的设备SN号
+                        string writeINSN = writeInSN_textbox.Text;
+                        if (string.IsNullOrEmpty(writeINSN) || writeINSN.Length != 22 || !new Regex("^[A-Z|0-9]+$").IsMatch(writeINSN))
                         {
-                            output_rich_textbox.AppendText($"当前写入结果为：PASS，当前SN号：{currentSN}\n");
-                            writeInSN_textbox.Text = currentSN;
+                            writeInSN_textbox.Text = "请写入正确的SN号再进行刷入，示例：FCSC03V000019179E00001，只能包含大写字母和数字，且长度为22位！\n";
+                            output_rich_textbox.AppendText("请写入正确的SN号再进行刷入，示例：FCSC03V000019179E00001，只能包含大写字母和数字，且长度为22位！\n");
                         }
                         else
                         {
-                            output_rich_textbox.AppendText($"当前写入结果为：FAIL，当前SN号：{currentSN}\n");
-                            writeInSN_textbox.Text = currentSN;
+                            output_rich_textbox.AppendText(session);
+                            string writeDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"setParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"SerialNumber\\\",\\\"value\\\": {{\\\"SN\\\": \\\"{writeINSN}\\\"}}}}\"";
+                            output_string = executeCMDCommand(writeDeviceInfoCommand);
+                            MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
+                            string backCode = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
+
+                            // 获取SN号
+                            string fetchDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"SerialNumber\\\"}}\"";
+                            output_string = executeCMDCommand(fetchDeviceInfoCommand);
+                            MatchCollection results_2 = Regex.Matches(output_string, "\"SN\" : (.*)");
+                            string currentSN = results_2[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
+                            output_rich_textbox.AppendText("获取当前设备的SN号：" + currentSN + "\n");
+                            if (currentSN == writeINSN && Int32.Parse(backCode) == 0)
+                            {
+                                output_rich_textbox.AppendText($"当前写入结果为：PASS，当前SN号：{currentSN}\n");
+                                writeInSN_textbox.Text = currentSN;
+                            }
+                            else
+                            {
+                                output_rich_textbox.AppendText($"当前写入结果为：FAIL，当前SN号：{currentSN}\n");
+                                writeInSN_textbox.Text = currentSN;
+                            }
                         }
                     }
+                    else
+                    {
+                        device_ip_textbox.Enabled = true;
+                        radioButton_80.Enabled = true;
+                        radioButton_8080.Enabled = true;
+                        device_status_label.Text = "已断开";
+                        output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    device_ip_textbox.Enabled = true;
-                    radioButton_80.Enabled = true;
-                    radioButton_8080.Enabled = true;
-                    device_status_label.Text = "已断开";
-                    output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
+                    output_rich_textbox.AppendText($"写入指定的设备SN号失败，当前未连接设备：\n{ex.ToString()}\n");
+                }
+                finally
+                {
+
                 }
             }
-            catch (Exception ex)
-            {
-                output_rich_textbox.AppendText($"写入指定的设备SN号失败，当前未连接设备：\n{ex.ToString()}\n");
-            }
-            finally
-            {
-
-            }
+            
         }
 
         // 密码转换为SHA256加密字符串 
@@ -1554,100 +1629,72 @@ namespace SeewoTestTool
         private void login_button_Click(object sender, EventArgs e)
         {
             //if (true)
-            output_rich_textbox.AppendText("【执行操作】点击登录后进行密码SH256加密转换……\n");
-            if (clientSocket != null && clientSocket.Connected)
+            if (check_device_online())
             {
-                try
+                output_rich_textbox.AppendText("【执行操作】点击登录后进行密码SH256加密转换……\n");
+                if (clientSocket != null && clientSocket.Connected)
                 {
                     try
                     {
-                        string username = username_textbox.Text;
-                        string password = password_textbox.Text;
-                        string password_sha256 = SHA256EncryptString(password);
-                        output_rich_textbox.AppendText($"登录成功，可以进行固件升级检测：{password_sha256}\n");
-                        // 登录操作获取session - 后续IP以后续输入为主，当前暂定
-                        string loginCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"login\\\", \\\"username\\\": \\\"{username}\\\",\\\"password\\\": \\\"{password_sha256}\\\"}}\"";
-                        output_string = executeCMDCommand(loginCommand);
-                        MatchCollection results = Regex.Matches(output_string, "\"session\" : (.*)");
-                        session = results[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
-                        output_rich_textbox.AppendText("当前固件校验Session是：" + session + "\n");
-                        check_current_firmware_button.Enabled = true;
-                        upgrade_button.Enabled = true;
-                        getCurrentSN_button.Enabled = true;
-                        writeIn_button.Enabled = true;
-                        getCurrentPCBA_button.Enabled = true;
-                        writeInPCBA_button.Enabled = true;
-                        start_array_mic_audio_level_test_button.Enabled = true;
-                        stop_array_mic_audio_level_test_button.Enabled = false;
-                        gain_array_mic_audio_level_button.Enabled = false;
-                        gainCurrentVersion_button.Enabled = true;
-                        login_button.Text = "已登录";
-                        login_button.Enabled = false;
-                        stop_rg_flicker_button.Enabled = false;
-                        start_rg_flicker_button.Enabled = true;
-                        get_poe_mic_info_button.Enabled = true;
-                        
-                        // 增加记住username和password功能
-                        if (rememberCheckBox.Checked == true)
+                        try
                         {
-                            FileStream fileStream = new FileStream("data1.bin", FileMode.OpenOrCreate);
-                            BinaryFormatter binaryFormatter = new BinaryFormatter();
-                            User user = new User();
-                            user.Username = username;
-                            user.Password = password;
-                            if (users.ContainsKey(user.Username))
+                            string username = username_textbox.Text;
+                            string password = password_textbox.Text;
+                            string password_sha256 = SHA256EncryptString(password);
+                            output_rich_textbox.AppendText($"登录成功，可以进行固件升级检测：{password_sha256}\n");
+                            // 登录操作获取session - 后续IP以后续输入为主，当前暂定
+                            string loginCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"login\\\", \\\"username\\\": \\\"{username}\\\",\\\"password\\\": \\\"{password_sha256}\\\"}}\"";
+                            output_string = executeCMDCommand(loginCommand);
+                            MatchCollection results = Regex.Matches(output_string, "\"session\" : (.*)");
+                            session = results[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
+                            output_rich_textbox.AppendText("当前固件校验Session是：" + session + "\n");
+                            check_current_firmware_button.Enabled = true;
+                            upgrade_button.Enabled = true;
+                            getCurrentSN_button.Enabled = true;
+                            writeIn_button.Enabled = true;
+                            getCurrentPCBA_button.Enabled = true;
+                            writeInPCBA_button.Enabled = true;
+                            start_array_mic_audio_level_test_button.Enabled = true;
+                            stop_array_mic_audio_level_test_button.Enabled = false;
+                            gain_array_mic_audio_level_button.Enabled = false;
+                            gainCurrentVersion_button.Enabled = true;
+                            login_button.Text = "已登录";
+                            login_button.Enabled = false;
+                            stop_rg_flicker_button.Enabled = false;
+                            start_rg_flicker_button.Enabled = true;
+                            get_poe_mic_info_button.Enabled = true;
+
+                            // 增加记住username和password功能
+                            if (rememberCheckBox.Checked == true)
                             {
-                                // 如果存在就清除掉
-                                users.Clear();
+                                FileStream fileStream = new FileStream("data1.bin", FileMode.OpenOrCreate);
+                                BinaryFormatter binaryFormatter = new BinaryFormatter();
+                                User user = new User();
+                                user.Username = username;
+                                user.Password = password;
+                                if (users.ContainsKey(user.Username))
+                                {
+                                    // 如果存在就清除掉
+                                    users.Clear();
+                                }
+                                users.Add(user.Username, user);
+                                binaryFormatter.Serialize(fileStream, users);
+                                fileStream.Close();
                             }
-                            users.Add(user.Username, user);
-                            binaryFormatter.Serialize(fileStream, users);
-                            fileStream.Close(); 
+                        }
+                        catch (Exception ex)
+                        {
+                            output_rich_textbox.AppendText($"登录失败，密码或者用户名错误，请重新输入检查：\n excetion:{ex.ToString()}\n");
                         }
                     }
                     catch (Exception ex)
                     {
-                        output_rich_textbox.AppendText($"登录失败，密码或者用户名错误，请重新输入检查：\n excetion:{ex.ToString()}\n");
+                        output_rich_textbox.AppendText($"点击登录后进行密码SH256加密转换失败：\n{ex.ToString()}\n");
                     }
-                }
-                catch (Exception ex)
-                {
-                    output_rich_textbox.AppendText($"点击登录后进行密码SH256加密转换失败：\n{ex.ToString()}\n");
-                }
-                finally
-                {
+                    finally
+                    {
 
-                }
-            }
-            else
-            {
-                device_ip_textbox.Enabled = true;
-                radioButton_80.Enabled = true;
-                radioButton_8080.Enabled = true;
-                device_status_label.Text = "已断开";
-                output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
-            }
-        }
-
-        // 获取当前设备PCBA号
-        /**
-         * 获取当前设备PCBA号按钮点击事件
-         */
-        private void getCurrentPCBA_button_Click(object sender, EventArgs e)
-        {
-            //if (true)
-            output_rich_textbox.AppendText("【执行操作】获取当前设备PCBA号……\n");
-            try
-            {
-                if (clientSocket != null && clientSocket.Connected)
-                {
-                    // 获取当前设备PCBA号
-                    string fetchDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"SerialNumber\\\"}}\"";
-                    output_string = executeCMDCommand(fetchDeviceInfoCommand);
-                    MatchCollection results_1 = Regex.Matches(output_string, "\"PCBA\" : (.*)");
-                    string currentPCBA = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "").Replace(",", "");
-                    output_rich_textbox.AppendText("获取当前设备PCBA号：" + currentPCBA + "\n");
-                    currentPCBA_textbox.Text = currentPCBA;
+                    }
                 }
                 else
                 {
@@ -1657,16 +1704,52 @@ namespace SeewoTestTool
                     device_status_label.Text = "已断开";
                     output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
                 }
+            }
+            
+        }
 
-            }
-            catch (Exception ex)
+        // 获取当前设备PCBA号
+        /**
+         * 获取当前设备PCBA号按钮点击事件
+         */
+        private void getCurrentPCBA_button_Click(object sender, EventArgs e)
+        {
+            //if (true)
+            if (check_device_online())
             {
-                output_rich_textbox.AppendText($"获取当前设备PCBA号失败，当前未连接设备：\n{ex.ToString()}\n");
-            }
-            finally
-            {
+                output_rich_textbox.AppendText("【执行操作】获取当前设备PCBA号……\n");
+                try
+                {
+                    if (clientSocket != null && clientSocket.Connected)
+                    {
+                        // 获取当前设备PCBA号
+                        string fetchDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"SerialNumber\\\"}}\"";
+                        output_string = executeCMDCommand(fetchDeviceInfoCommand);
+                        MatchCollection results_1 = Regex.Matches(output_string, "\"PCBA\" : (.*)");
+                        string currentPCBA = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "").Replace(",", "");
+                        output_rich_textbox.AppendText("获取当前设备PCBA号：" + currentPCBA + "\n");
+                        currentPCBA_textbox.Text = currentPCBA;
+                    }
+                    else
+                    {
+                        device_ip_textbox.Enabled = true;
+                        radioButton_80.Enabled = true;
+                        radioButton_8080.Enabled = true;
+                        device_status_label.Text = "已断开";
+                        output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
+                    }
 
+                }
+                catch (Exception ex)
+                {
+                    output_rich_textbox.AppendText($"获取当前设备PCBA号失败，当前未连接设备：\n{ex.ToString()}\n");
+                }
+                finally
+                {
+
+                }
             }
+            
         }
 
         // 写入指定PCBA号
@@ -1677,61 +1760,65 @@ namespace SeewoTestTool
         {
             //MessageBox.Show("功能暂时关闭以防止误操作，每块板子只有三次写入机会。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             //if (true)
-            output_rich_textbox.AppendText("【执行操作】写入指定PCBA号……\n");
-            try
+            if (check_device_online())
             {
-                if (clientSocket != null && clientSocket.Connected)
+                output_rich_textbox.AppendText("【执行操作】写入指定PCBA号……\n");
+                try
                 {
-                    // 写入指定PCBA号
-                    string writeINPCBA = writeINPCBA_textbox.Text;
-                    if (string.IsNullOrEmpty(writeINPCBA) || writeINPCBA.Length != 19 || !new Regex("^[A-Z|0-9]+$").IsMatch(writeINPCBA))
+                    if (clientSocket != null && clientSocket.Connected)
                     {
-                        writeINPCBA_textbox.Text = "请写入正确的PCBA号再进行刷入，示例：ABCDEFGHI0123456789，只能包含大写字母和数字，且长度为19位！\n";
-                        output_rich_textbox.AppendText("请写入正确的PCBA号再进行刷入，示例：ABCDEFGHI0123456789，只能包含大写字母和数字，且长度为19位！\n");
-                    }
-                    else
-                    {
-                        output_rich_textbox.AppendText(session);
-                        string writeDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"setParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"SerialNumber\\\",\\\"value\\\": {{\\\"PCBA\\\": \\\"{writeINPCBA}\\\"}}}}\"";
-                        output_string = executeCMDCommand(writeDeviceInfoCommand);
-                        MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
-                        string backCode = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
-
-                        // 获取PCBA号
-                        string fetchDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"SerialNumber\\\"}}\"";
-                        output_string = executeCMDCommand(fetchDeviceInfoCommand);
-                        MatchCollection results_2 = Regex.Matches(output_string, "\"PCBA\" : (.*)");
-                        string currentPCBA = results_2[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "").Replace(",", "");
-                        output_rich_textbox.AppendText("获取当前设备的PCBA号：" + currentPCBA + "\n");
-                        if (currentPCBA == writeINPCBA && Int32.Parse(backCode) == 0)
+                        // 写入指定PCBA号
+                        string writeINPCBA = writeINPCBA_textbox.Text;
+                        if (string.IsNullOrEmpty(writeINPCBA) || writeINPCBA.Length != 19 || !new Regex("^[A-Z|0-9]+$").IsMatch(writeINPCBA))
                         {
-                            output_rich_textbox.AppendText($"当前写入结果为：PASS，当前PCBA号：{currentPCBA}\n");
-                            writeINPCBA_textbox.Text = currentPCBA;
+                            writeINPCBA_textbox.Text = "请写入正确的PCBA号再进行刷入，示例：ABCDEFGHI0123456789，只能包含大写字母和数字，且长度为19位！\n";
+                            output_rich_textbox.AppendText("请写入正确的PCBA号再进行刷入，示例：ABCDEFGHI0123456789，只能包含大写字母和数字，且长度为19位！\n");
                         }
                         else
                         {
-                            output_rich_textbox.AppendText($"当前写入结果为：FAIL，当前SN号，超过3次写入也会失败，硬件只能写三次：{currentPCBA}\n");
-                            writeINPCBA_textbox.Text = currentPCBA;
+                            output_rich_textbox.AppendText(session);
+                            string writeDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"setParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"SerialNumber\\\",\\\"value\\\": {{\\\"PCBA\\\": \\\"{writeINPCBA}\\\"}}}}\"";
+                            output_string = executeCMDCommand(writeDeviceInfoCommand);
+                            MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
+                            string backCode = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
+
+                            // 获取PCBA号
+                            string fetchDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"SerialNumber\\\"}}\"";
+                            output_string = executeCMDCommand(fetchDeviceInfoCommand);
+                            MatchCollection results_2 = Regex.Matches(output_string, "\"PCBA\" : (.*)");
+                            string currentPCBA = results_2[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "").Replace(",", "");
+                            output_rich_textbox.AppendText("获取当前设备的PCBA号：" + currentPCBA + "\n");
+                            if (currentPCBA == writeINPCBA && Int32.Parse(backCode) == 0)
+                            {
+                                output_rich_textbox.AppendText($"当前写入结果为：PASS，当前PCBA号：{currentPCBA}\n");
+                                writeINPCBA_textbox.Text = currentPCBA;
+                            }
+                            else
+                            {
+                                output_rich_textbox.AppendText($"当前写入结果为：FAIL，当前SN号，超过3次写入也会失败，硬件只能写三次：{currentPCBA}\n");
+                                writeINPCBA_textbox.Text = currentPCBA;
+                            }
                         }
                     }
+                    else
+                    {
+                        device_ip_textbox.Enabled = true;
+                        radioButton_80.Enabled = true;
+                        radioButton_8080.Enabled = true;
+                        device_status_label.Text = "已断开";
+                        output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    device_ip_textbox.Enabled = true;
-                    radioButton_80.Enabled = true;
-                    radioButton_8080.Enabled = true;
-                    device_status_label.Text = "已断开";
-                    output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
+                    output_rich_textbox.AppendText($"写入指定PCBA号失败，当前未连接设备：\n{ex.ToString()}\n");
+                }
+                finally
+                {
+
                 }
             }
-            catch (Exception ex)
-            {
-                output_rich_textbox.AppendText($"写入指定PCBA号失败，当前未连接设备：\n{ex.ToString()}\n");
-            }
-            finally
-            {
-
-            }
+            
         }
 
         // 获取当前设备版本
@@ -1741,74 +1828,30 @@ namespace SeewoTestTool
         private void gainCurrentVersion_button_Click(object sender, EventArgs e)
         {
             //if (true)
-            output_rich_textbox.AppendText("【执行操作】获取当前设备版本……\n");
-            if (clientSocket != null && clientSocket.Connected)
+            if (check_device_online())
             {
-                try
-                {
-                    // 校验固件 - 从session中获取固件当前版本
-                    string checkVersionCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\":\\\"getParam\\\",\\\"session\\\":\\\"{session}\\\",\\\"name\\\":\\\"DevInfo\\\"}}\"";
-                    output_string = executeCMDCommand(checkVersionCommand);
-                    MatchCollection results_2 = Regex.Matches(output_string, "\"SoftwaveVersion\" : (.*)");
-                    string currentVersion = results_2[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
-                    output_rich_textbox.AppendText("当前版本是：" + currentVersion + "\n");
-                    currentVersion_label.Text = currentVersion;
-                }
-                catch (Exception ex)
-                {
-                    currentVersion_label.Text = "获取当前设备版本失败";
-                    output_rich_textbox.AppendText($"获取当前设备版本失败：\n{ex.ToString()}\n");
-                }
-                finally
-                {
-
-                }
-            }
-            else
-            {
-                device_ip_textbox.Enabled = true;
-                radioButton_80.Enabled = true;
-                radioButton_8080.Enabled = true;
-                device_status_label.Text = "已断开";
-                output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
-            }
-        }
-
-        // 重启设备操作
-        /**
-         * 重启设备按钮点击事件
-         */
-        private void rebootDevice_button_Click(object sender, EventArgs e)
-        {
-            //if (true)
-            output_rich_textbox.AppendText("【执行操作】重启设备……\n");
-            try
-            {
+                output_rich_textbox.AppendText("【执行操作】获取当前设备版本……\n");
                 if (clientSocket != null && clientSocket.Connected)
                 {
-                    // 重启设备操作
-                    string fetchDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"control\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"reboot\\\"}}\"";
-                    output_string = executeCMDCommand(fetchDeviceInfoCommand);
-                    MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
-                    string back_code = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
-                    string result = "重启设备操作未执行成功";
-                    if (back_code == "0")
+                    try
                     {
-                        result = "成功";
-                        thread_reboot1 = new Thread(waitForReboot);
-                        thread_reboot1.IsBackground = true;
-                        thread_reboot1.Start();
-                        //device_disconnect_button_Click(null, null);
-                        /**
-                        output_rich_textbox.AppendText("等待20秒设备正在重启中，期间无法操作工具……\n");
-                        System.Threading.Thread.Sleep(20000);
-                        */
+                        // 校验固件 - 从session中获取固件当前版本
+                        string checkVersionCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\":\\\"getParam\\\",\\\"session\\\":\\\"{session}\\\",\\\"name\\\":\\\"DevInfo\\\"}}\"";
+                        output_string = executeCMDCommand(checkVersionCommand);
+                        MatchCollection results_2 = Regex.Matches(output_string, "\"SoftwaveVersion\" : (.*)");
+                        string currentVersion = results_2[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
+                        output_rich_textbox.AppendText("当前版本是：" + currentVersion + "\n");
+                        currentVersion_label.Text = currentVersion;
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        result = "失败";
+                        currentVersion_label.Text = "获取当前设备版本失败";
+                        output_rich_textbox.AppendText($"获取当前设备版本失败：\n{ex.ToString()}\n");
                     }
-                    output_rich_textbox.AppendText("重启设备结果：" + result + "\n");
+                    finally
+                    {
+
+                    }
                 }
                 else
                 {
@@ -1819,14 +1862,66 @@ namespace SeewoTestTool
                     output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
                 }
             }
-            catch (Exception ex)
-            {
-                output_rich_textbox.AppendText($"重启设备失败，当前未连接设备：\n{ex.ToString()}\n");
-            }
-            finally
-            {
+            
+        }
 
+        // 重启设备操作
+        /**
+         * 重启设备按钮点击事件
+         */
+        private void rebootDevice_button_Click(object sender, EventArgs e)
+        {
+            //if (true)
+            if (check_device_online())
+            {
+                output_rich_textbox.AppendText("【执行操作】重启设备……\n");
+                try
+                {
+                    if (clientSocket != null && clientSocket.Connected)
+                    {
+                        // 重启设备操作
+                        string fetchDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"control\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"reboot\\\"}}\"";
+                        output_string = executeCMDCommand(fetchDeviceInfoCommand);
+                        MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
+                        string back_code = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
+                        string result = "重启设备操作未执行成功";
+                        if (back_code == "0")
+                        {
+                            result = "成功";
+                            thread_reboot1 = new Thread(waitForReboot);
+                            thread_reboot1.IsBackground = true;
+                            thread_reboot1.Start();
+                            //device_disconnect_button_Click(null, null);
+                            /**
+                            output_rich_textbox.AppendText("等待20秒设备正在重启中，期间无法操作工具……\n");
+                            System.Threading.Thread.Sleep(20000);
+                            */
+                        }
+                        else
+                        {
+                            result = "失败";
+                        }
+                        output_rich_textbox.AppendText("重启设备结果：" + result + "\n");
+                    }
+                    else
+                    {
+                        device_ip_textbox.Enabled = true;
+                        radioButton_80.Enabled = true;
+                        radioButton_8080.Enabled = true;
+                        device_status_label.Text = "已断开";
+                        output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    output_rich_textbox.AppendText($"重启设备失败，当前未连接设备：\n{ex.ToString()}\n");
+                }
+                finally
+                {
+
+                }
             }
+            
         }
         public static byte[] ConvertToBinary(string Path)
         {
@@ -1897,7 +1992,7 @@ namespace SeewoTestTool
             {
 
             }
-        }
+        }   
 
         private void openByCMD_CameraProcess()
         {
@@ -1943,7 +2038,7 @@ namespace SeewoTestTool
         {
             //if (true)
             try
-            {
+            {   
                 if (thread == null)
                 {
                     thread = new Thread(openByCMD_CameraProcess);
@@ -1980,91 +2075,97 @@ namespace SeewoTestTool
         SXW0301_Production_line.Fom1 fom1;
         private void button1_Click(object sender, EventArgs e)
         {
-            /**
-            output_rich_textbox.AppendText("【执行操作】打开三摄标定工具操作……\n");
-            if (clientSocket != null && clientSocket.Connected)
+            if (check_device_online())
             {
-                if (fom1 == null)
+                output_rich_textbox.AppendText("【执行操作】打开三摄标定工具操作……\n");
+                if (clientSocket != null && clientSocket.Connected)
                 {
-                    fom1 = new SXW0301_Production_line.Fom1();
-                    fom1.Show();
-                }
-                else if (fom1.IsDisposed)
-                {
-                    fom1 = new SXW0301_Production_line.Fom1();
-                    fom1.Activate();
-                    fom1.Show();
+                    if (fom1 == null)
+                    {
+                        fom1 = new SXW0301_Production_line.Fom1();
+                        fom1.Show();
+                    }
+                    else if (fom1.IsDisposed)
+                    {
+                        fom1 = new SXW0301_Production_line.Fom1();
+                        fom1.Activate();
+                        fom1.Show();
+                    }
+                    else
+                    {
+                        output_rich_textbox.AppendText("已打开三摄标定工具，请勿重复打开哦\n");
+                    }
                 }
                 else
                 {
-                    output_rich_textbox.AppendText("已打开三摄标定工具，请勿重复打开哦\n");
+                    device_ip_textbox.Enabled = true;
+                    radioButton_80.Enabled = true;
+                    radioButton_8080.Enabled = true;
+                    device_status_label.Text = "已断开";
+                    output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
                 }
             }
-            else
-            {
-                device_ip_textbox.Enabled = true;
-                radioButton_80.Enabled = true;
-                radioButton_8080.Enabled = true;
-                device_status_label.Text = "已断开";
-                output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
-            }
-            */
+            
         }
 
         SXW0301_Production_line.Form3 form3;
         private void button2_Click(object sender, EventArgs e)
         {
-            output_rich_textbox.AppendText("【执行操作】打开三摄拼接图检测工具操作……\n");
-            if (clientSocket != null && clientSocket.Connected)
+            if (check_device_online())
             {
-                // 打开拼接图码流前将 Merge码率 curl 修改码流至61440
-                int rate = 30000;
-                string updateBitRateCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"setParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"Camera0Chn0\\\",\\\"value\\\": {{\\\"BitRate\\\": {rate}}}}}\"";
-                output_string = executeCMDCommand(updateBitRateCommand);
-                MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
-                string backCode = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
-                if (backCode == "0")
+                output_rich_textbox.AppendText("【执行操作】打开三摄拼接图检测工具操作……\n");
+                if (clientSocket != null && clientSocket.Connected)
                 {
-                    string getBitRateCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"Camera0Chn0\\\"}}\"";
-                    output_string = executeCMDCommand(getBitRateCommand);
-                    if (output_string.Contains(rate.ToString()))
+                    // 打开拼接图码流前将 Merge码率 curl 修改码流至61440
+                    int rate = 35000;
+                    string updateBitRateCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"setParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"Camera0Chn0\\\",\\\"value\\\": {{\\\"BitRate\\\": {rate}}}}}\"";
+                    output_string = executeCMDCommand(updateBitRateCommand);
+                    MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
+                    string backCode = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
+                    if (backCode == "0")
                     {
-                        output_rich_textbox.AppendText($"当前拼接流视频码率为：【{rate}】\n");
-                        if (form3 == null)
+                        string getBitRateCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"Camera0Chn0\\\"}}\"";
+                        output_string = executeCMDCommand(getBitRateCommand);
+                        if (output_string.Contains(rate.ToString()))
                         {
-                            form3 = new SXW0301_Production_line.Form3();
-                            form3.Show();
-                        }
-                        else if (form3.IsDisposed)
-                        {
-                            form3 = new SXW0301_Production_line.Form3();
-                            form3.Activate();
-                            form3.Show();
+                            output_rich_textbox.AppendText($"当前拼接流视频码率为：【{rate}】\n");
+                            if (form3 == null)
+                            {
+                                form3 = new SXW0301_Production_line.Form3();
+                                form3.Show();
+                            }
+                            else if (form3.IsDisposed)
+                            {
+                                form3 = new SXW0301_Production_line.Form3();
+                                form3.Activate();
+                                form3.Show();
+                            }
+                            else
+                            {
+                                output_rich_textbox.AppendText("已打开三摄拼接图检测工具，请勿重复打开哦\n");
+                            }
                         }
                         else
                         {
-                            output_rich_textbox.AppendText("已打开三摄拼接图检测工具，请勿重复打开哦\n");
+                            output_rich_textbox.AppendText($"拼接流码率【{rate}】设置失败,返回值\n{output_string}\n，请检查！\n");
                         }
                     }
                     else
                     {
-                        output_rich_textbox.AppendText($"拼接流码率【{rate}】设置失败,返回值\n{output_string}\n，请检查！\n");
+                        output_rich_textbox.AppendText($"拼接流码率【{rate}】设置失败,返回值【{backCode}】，请检查！");
                     }
+
                 }
                 else
                 {
-                    output_rich_textbox.AppendText($"拼接流码率【{rate}】设置失败,返回值【{backCode}】，请检查！");
+                    device_ip_textbox.Enabled = true;
+                    radioButton_80.Enabled = true;
+                    radioButton_8080.Enabled = true;
+                    device_status_label.Text = "已断开";
+                    output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
                 }
-                
             }
-            else
-            {
-                device_ip_textbox.Enabled = true;
-                radioButton_80.Enabled = true;
-                radioButton_8080.Enabled = true;
-                device_status_label.Text = "已断开";
-                output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
-            }
+            
         }
 
         private void label6_Click(object sender, EventArgs e)
@@ -2081,164 +2182,172 @@ namespace SeewoTestTool
         private void audioIn1_test_button_Click_1(object sender, EventArgs e)
         {
             //if (true)
-            output_rich_textbox.AppendText("【执行操作】Audio IN 1 测试……\n");
-            if (clientSocket != null && clientSocket.Connected)
+            if (check_device_online())
             {
-                try
+                output_rich_textbox.AppendText("【执行操作】Audio IN 1 测试……\n");
+                if (clientSocket != null && clientSocket.Connected)
                 {
-                    // 获取各路MIC音频音量值
-                    output_rich_textbox.AppendText(session);
-                    string gainDeviceMICVolumeCommand = $"curl -X POST \"http://{ip_users}/testAudioJson_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getAudioVolume\\\"}}\"";
-                    output_string = executeCMDCommand(gainDeviceMICVolumeCommand);
-                    MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
-                    output_rich_textbox.AppendText(results_1.ToString());
-                    string backCode = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "").Replace(",", "");
-                    if (Int32.Parse(backCode) == 0)
+                    try
                     {
-                        MatchCollection results_2 = Regex.Matches(output_string, "\\\"rmsdb\\\" : \\[\\n(.*),\\n(.*),\\n(.*),\\n(.*),\\n(.*),\\n(.*),\\n(.*),\\n(.*)\\n   ]");
-                        string[] temp = results_2[0].ToString().Replace("\"rmsdb\" : [", "").Replace("]", "").Replace("\"", "").Replace("\n", "").Replace(" ", "").Split(",");
-                        string volume1 = temp[0].ToString();
-                        string volume2 = temp[1].ToString();
-                        string volume3 = temp[2].ToString();
-                        string volume4 = temp[3].ToString();
-                        string volume5 = temp[4].ToString();
-                        string volume6 = temp[5].ToString();
-                        string volume7 = temp[6].ToString();
-                        string volume8 = temp[7].ToString();
-                        output_rich_textbox.AppendText($"执行结果为：PASS，获取各路MIC音频音量值，backCode:[{backCode}]\n");
-                        volume1_value_label.Text = volume1;
-                        volume2_value_label.Text = volume2;
-                        volume3_value_label.Text = volume3;
-                        volume4_value_label.Text = volume4;
-                        volume5_value_label.Text = volume5;
-                        volume6_value_label.Text = volume6;
-                        volume7_value_label.Text = volume7;
-                        volume8_value_label.Text = volume8;
-                        output_rich_textbox.AppendText($"rmsdb1：{volume1}\nrmsdb2：{volume2}\nrmsdb3：{volume3}\nrmsdb4：{volume4}\nrmsdb5：{volume5}\nrmsdb6：{volume6}\nrmsdb7：{volume7}\nrmsdb8：{volume8}\n");
-
-                        float volume_1_f = float.Parse(volume1);
-                        float volume_2_f = float.Parse(volume2);
-                        float volume_3_f = float.Parse(volume3);
-                        float volume_4_f = float.Parse(volume4);
-                        float volume_5_f = float.Parse(volume5);
-                        float volume_6_f = float.Parse(volume6);
-                        float volume_7_f = float.Parse(volume7);
-                        float volume_8_f = float.Parse(volume8);
-
-                        if (Math.Abs(Math.Abs(volume_3_f) - Math.Abs(volume_7_f)) <= 3 && (volume_3_f > -70 && volume_7_f > -70))
+                        // 获取各路MIC音频音量值
+                        output_rich_textbox.AppendText(session);
+                        string gainDeviceMICVolumeCommand = $"curl -X POST \"http://{ip_users}/testAudioJson_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getAudioVolume\\\"}}\"";
+                        output_string = executeCMDCommand(gainDeviceMICVolumeCommand);
+                        MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
+                        output_rich_textbox.AppendText(results_1.ToString());
+                        string backCode = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "").Replace(",", "");
+                        if (Int32.Parse(backCode) == 0)
                         {
-                            audioin1_result_label.Text = "PASS";
+                            MatchCollection results_2 = Regex.Matches(output_string, "\\\"rmsdb\\\" : \\[\\n(.*),\\n(.*),\\n(.*),\\n(.*),\\n(.*),\\n(.*),\\n(.*),\\n(.*)\\n   ]");
+                            string[] temp = results_2[0].ToString().Replace("\"rmsdb\" : [", "").Replace("]", "").Replace("\"", "").Replace("\n", "").Replace(" ", "").Split(",");
+                            string volume1 = temp[0].ToString();
+                            string volume2 = temp[1].ToString();
+                            string volume3 = temp[2].ToString();
+                            string volume4 = temp[3].ToString();
+                            string volume5 = temp[4].ToString();
+                            string volume6 = temp[5].ToString();
+                            string volume7 = temp[6].ToString();
+                            string volume8 = temp[7].ToString();
+                            output_rich_textbox.AppendText($"执行结果为：PASS，获取各路MIC音频音量值，backCode:[{backCode}]\n");
+                            volume1_value_label.Text = volume1;
+                            volume2_value_label.Text = volume2;
+                            volume3_value_label.Text = volume3;
+                            volume4_value_label.Text = volume4;
+                            volume5_value_label.Text = volume5;
+                            volume6_value_label.Text = volume6;
+                            volume7_value_label.Text = volume7;
+                            volume8_value_label.Text = volume8;
+                            output_rich_textbox.AppendText($"rmsdb1：{volume1}\nrmsdb2：{volume2}\nrmsdb3：{volume3}\nrmsdb4：{volume4}\nrmsdb5：{volume5}\nrmsdb6：{volume6}\nrmsdb7：{volume7}\nrmsdb8：{volume8}\n");
+
+                            float volume_1_f = float.Parse(volume1);
+                            float volume_2_f = float.Parse(volume2);
+                            float volume_3_f = float.Parse(volume3);
+                            float volume_4_f = float.Parse(volume4);
+                            float volume_5_f = float.Parse(volume5);
+                            float volume_6_f = float.Parse(volume6);
+                            float volume_7_f = float.Parse(volume7);
+                            float volume_8_f = float.Parse(volume8);
+
+                            if (Math.Abs(Math.Abs(volume_3_f) - Math.Abs(volume_7_f)) <= 3 && (volume_3_f > -70 && volume_7_f > -70))
+                            {
+                                audioin1_result_label.Text = "PASS";
+                            }
+                            else
+                            {
+                                audioin1_result_label.Text = "FAIL";
+                            }
                         }
-                        else
+                        else if (Int32.Parse(backCode) == -1)
                         {
-                            audioin1_result_label.Text = "FAIL";
+                            output_rich_textbox.AppendText($"执行结果为：FAIL，无法获取各路MIC音频音量值，backCode:[{backCode}]\n");
                         }
                     }
-                    else if (Int32.Parse(backCode) == -1)
+                    catch (Exception ex)
                     {
-                        output_rich_textbox.AppendText($"执行结果为：FAIL，无法获取各路MIC音频音量值，backCode:[{backCode}]\n");
+                        MessageBox.Show($"Audio IN 1 测试失败失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n");
+                        output_rich_textbox.AppendText($"Audio IN 1 测试失败失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n");
+                    }
+                    finally
+                    {
+
                     }
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show($"Audio IN 1 测试失败失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n");
-                    output_rich_textbox.AppendText($"Audio IN 1 测试失败失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n");
-                }
-                finally
-                {
-
+                    device_ip_textbox.Enabled = true;
+                    radioButton_80.Enabled = true;
+                    radioButton_8080.Enabled = true;
+                    device_status_label.Text = "已断开";
+                    output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
                 }
             }
-            else
-            {
-                device_ip_textbox.Enabled = true;
-                radioButton_80.Enabled = true;
-                radioButton_8080.Enabled = true;
-                device_status_label.Text = "已断开";
-                output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
-            }
+            
         }
 
         // Audio IN 2 测试
         private void audioIn2_test_button_Click_1(object sender, EventArgs e)
         {
             //if (true)
-            output_rich_textbox.AppendText("【执行操作】Audio IN 2 测试……\n");
-            if (clientSocket != null && clientSocket.Connected)
+            if (check_device_online())
             {
-                try
+                output_rich_textbox.AppendText("【执行操作】Audio IN 2 测试……\n");
+                if (clientSocket != null && clientSocket.Connected)
                 {
-                    // 获取各路MIC音频音量值
-                    output_rich_textbox.AppendText(session);
-                    string gainDeviceMICVolumeCommand = $"curl -X POST \"http://{ip_users}/testAudioJson_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getAudioVolume\\\"}}\"";
-                    output_string = executeCMDCommand(gainDeviceMICVolumeCommand);
-                    MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
-                    output_rich_textbox.AppendText(results_1.ToString());
-                    string backCode = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "").Replace(",", "");
-                    if (Int32.Parse(backCode) == 0)
+                    try
                     {
-                        MatchCollection results_2 = Regex.Matches(output_string, "\\\"rmsdb\\\" : \\[\\n(.*),\\n(.*),\\n(.*),\\n(.*),\\n(.*),\\n(.*),\\n(.*),\\n(.*)\\n   ]");
-                        string[] temp = results_2[0].ToString().Replace("\"rmsdb\" : [", "").Replace("]", "").Replace("\"", "").Replace("\n", "").Replace(" ", "").Split(",");
-                        string volume1 = temp[0].ToString();
-                        string volume2 = temp[1].ToString();
-                        string volume3 = temp[2].ToString();
-                        string volume4 = temp[3].ToString();
-                        string volume5 = temp[4].ToString();
-                        string volume6 = temp[5].ToString();
-                        string volume7 = temp[6].ToString();
-                        string volume8 = temp[7].ToString();
-                        output_rich_textbox.AppendText($"执行结果为：PASS，获取各路MIC音频音量值，backCode:[{backCode}]\n");
-                        volume1_value_label.Text = volume1;
-                        volume2_value_label.Text = volume2;
-                        volume3_value_label.Text = volume3;
-                        volume4_value_label.Text = volume4;
-                        volume5_value_label.Text = volume5;
-                        volume6_value_label.Text = volume6;
-                        volume7_value_label.Text = volume7;
-                        volume8_value_label.Text = volume8;
-                        output_rich_textbox.AppendText($"rmsdb1：{volume1}\nrmsdb2：{volume2}\nrmsdb3：{volume3}\nrmsdb4：{volume4}\nrmsdb5：{volume5}\nrmsdb6：{volume6}\nrmsdb7：{volume7}\nrmsdb8：{volume8}\n");
-
-                        float volume_1_f = float.Parse(volume1);
-                        float volume_2_f = float.Parse(volume2);
-                        float volume_3_f = float.Parse(volume3);
-                        float volume_4_f = float.Parse(volume4);
-                        float volume_5_f = float.Parse(volume5);
-                        float volume_6_f = float.Parse(volume6);
-                        float volume_7_f = float.Parse(volume7);
-                        float volume_8_f = float.Parse(volume8);
-
-                        if (Math.Abs(Math.Abs(volume_3_f) - Math.Abs(volume_7_f)) <= 3 && (volume_3_f > -70 && volume_7_f > -70))
+                        // 获取各路MIC音频音量值
+                        output_rich_textbox.AppendText(session);
+                        string gainDeviceMICVolumeCommand = $"curl -X POST \"http://{ip_users}/testAudioJson_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getAudioVolume\\\"}}\"";
+                        output_string = executeCMDCommand(gainDeviceMICVolumeCommand);
+                        MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
+                        output_rich_textbox.AppendText(results_1.ToString());
+                        string backCode = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "").Replace(",", "");
+                        if (Int32.Parse(backCode) == 0)
                         {
-                            audioin2_result_label.Text = "PASS";
+                            MatchCollection results_2 = Regex.Matches(output_string, "\\\"rmsdb\\\" : \\[\\n(.*),\\n(.*),\\n(.*),\\n(.*),\\n(.*),\\n(.*),\\n(.*),\\n(.*)\\n   ]");
+                            string[] temp = results_2[0].ToString().Replace("\"rmsdb\" : [", "").Replace("]", "").Replace("\"", "").Replace("\n", "").Replace(" ", "").Split(",");
+                            string volume1 = temp[0].ToString();
+                            string volume2 = temp[1].ToString();
+                            string volume3 = temp[2].ToString();
+                            string volume4 = temp[3].ToString();
+                            string volume5 = temp[4].ToString();
+                            string volume6 = temp[5].ToString();
+                            string volume7 = temp[6].ToString();
+                            string volume8 = temp[7].ToString();
+                            output_rich_textbox.AppendText($"执行结果为：PASS，获取各路MIC音频音量值，backCode:[{backCode}]\n");
+                            volume1_value_label.Text = volume1;
+                            volume2_value_label.Text = volume2;
+                            volume3_value_label.Text = volume3;
+                            volume4_value_label.Text = volume4;
+                            volume5_value_label.Text = volume5;
+                            volume6_value_label.Text = volume6;
+                            volume7_value_label.Text = volume7;
+                            volume8_value_label.Text = volume8;
+                            output_rich_textbox.AppendText($"rmsdb1：{volume1}\nrmsdb2：{volume2}\nrmsdb3：{volume3}\nrmsdb4：{volume4}\nrmsdb5：{volume5}\nrmsdb6：{volume6}\nrmsdb7：{volume7}\nrmsdb8：{volume8}\n");
+
+                            float volume_1_f = float.Parse(volume1);
+                            float volume_2_f = float.Parse(volume2);
+                            float volume_3_f = float.Parse(volume3);
+                            float volume_4_f = float.Parse(volume4);
+                            float volume_5_f = float.Parse(volume5);
+                            float volume_6_f = float.Parse(volume6);
+                            float volume_7_f = float.Parse(volume7);
+                            float volume_8_f = float.Parse(volume8);
+
+                            if (Math.Abs(Math.Abs(volume_3_f) - Math.Abs(volume_7_f)) <= 3 && (volume_3_f > -70 && volume_7_f > -70))
+                            {
+                                audioin2_result_label.Text = "PASS";
+                            }
+                            else
+                            {
+                                audioin2_result_label.Text = "FAIL";
+                            }
                         }
-                        else
+                        else if (Int32.Parse(backCode) == -1)
                         {
-                            audioin2_result_label.Text = "FAIL";
+                            output_rich_textbox.AppendText($"执行结果为：FAIL，无法获取各路MIC音频音量值，backCode:[{backCode}]\n");
                         }
                     }
-                    else if (Int32.Parse(backCode) == -1)
+                    catch (Exception ex)
                     {
-                        output_rich_textbox.AppendText($"执行结果为：FAIL，无法获取各路MIC音频音量值，backCode:[{backCode}]\n");
+                        MessageBox.Show($"Audio IN 2 测试失败失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n");
+                        output_rich_textbox.AppendText($"Audio IN 2 测试失败失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n");
+                    }
+                    finally
+                    {
+
                     }
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show($"Audio IN 2 测试失败失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n");
-                    output_rich_textbox.AppendText($"Audio IN 2 测试失败失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n");
-                }
-                finally
-                {
-
+                    device_ip_textbox.Enabled = true;
+                    radioButton_80.Enabled = true;
+                    radioButton_8080.Enabled = true;
+                    device_status_label.Text = "已断开";
+                    output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
                 }
             }
-            else
-            {
-                device_ip_textbox.Enabled = true;
-                radioButton_80.Enabled = true;
-                radioButton_8080.Enabled = true;
-                device_status_label.Text = "已断开";
-                output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
-            }
+            
         }
     }
 }

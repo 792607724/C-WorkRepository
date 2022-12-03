@@ -36,8 +36,16 @@ namespace SeewoTestTool
             }
             else
             {
-                ApplicationConfiguration.Initialize();
-                Application.Run(new Regist());
+                try
+                {
+                    ApplicationConfiguration.Initialize();
+                    Application.Run(new Regist());
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("请检查是否网线松动或者重启试试……");
+                }
+                
             }
         }
 
