@@ -425,8 +425,6 @@ namespace SeewoTestTool
                         login_button.Enabled = false;
                         getCurrentPCBA_button.Enabled = false;
                         writeInPCBA_button.Enabled = false;
-                        start_array_mic_audio_level_test_button.Enabled = false;
-                        stop_array_mic_audio_level_test_button.Enabled = false;
                         gain_array_mic_audio_level_button.Enabled = false;
                         gainCurrentVersion_button.Enabled = false;
                         login_button.Text = "登录";
@@ -911,8 +909,6 @@ namespace SeewoTestTool
                         if (Int32.Parse(backCode) == 0)
                         {
                             output_rich_textbox.AppendText($"执行结果为：PASS，已开启阵列MIC音量值测试，backCode:[{backCode}]\n");
-                            start_array_mic_audio_level_test_button.Enabled = false;
-                            stop_array_mic_audio_level_test_button.Enabled = true;
                             gain_array_mic_audio_level_button.Enabled = true;
                             audioIn1_test_button.Enabled = true;
                             audioIn2_test_button.Enabled = true;
@@ -967,8 +963,6 @@ namespace SeewoTestTool
 
                         if (Int32.Parse(backCode) == 0)
                         {
-                            start_array_mic_audio_level_test_button.Enabled = true;
-                            stop_array_mic_audio_level_test_button.Enabled = false;
                             gain_array_mic_audio_level_button.Enabled = false;
                             audioIn1_test_button.Enabled = false;
                             audioIn2_test_button.Enabled = false;
@@ -1386,8 +1380,6 @@ namespace SeewoTestTool
                     login_button.Enabled = false;
                     login_button.Text = "登录";
                     login_button.Enabled = true;
-                    start_array_mic_audio_level_test_button.Enabled = false;
-                    stop_array_mic_audio_level_test_button.Enabled = false;
                     gain_array_mic_audio_level_button.Enabled = false;
                     gainCurrentVersion_button.Enabled = false;
                     device_reset_button.Enabled = false;
@@ -1695,9 +1687,7 @@ namespace SeewoTestTool
                             writeIn_button.Enabled = true;
                             getCurrentPCBA_button.Enabled = true;
                             writeInPCBA_button.Enabled = true;
-                            start_array_mic_audio_level_test_button.Enabled = true;
-                            stop_array_mic_audio_level_test_button.Enabled = false;
-                            gain_array_mic_audio_level_button.Enabled = false;
+                            gain_array_mic_audio_level_button.Enabled = true;
                             gainCurrentVersion_button.Enabled = true;
                             login_button.Text = "已登录";
                             login_button.Enabled = false;
@@ -1708,6 +1698,8 @@ namespace SeewoTestTool
                             poe2NetworkTest_button.Enabled = true;
                             openLiveCamera_buttton.Enabled = true;
                             openMergeCamera_buttton.Enabled = true;
+                            audioIn1_test_button.Enabled = true;
+                            audioIn2_test_button.Enabled = true;
                             clearInput_button.Enabled = true;
                             writeInMac_button.Enabled = true;
 
@@ -2724,7 +2716,7 @@ namespace SeewoTestTool
                             MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
                             string backCode = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
                             */
-                          
+
                         }
                     }
                     else
@@ -2744,6 +2736,88 @@ namespace SeewoTestTool
                 finally
                 {
 
+                }
+            }
+        }
+
+        string duration;
+        private void recordAudioThread()
+        {
+            try
+            {
+                // 开始音频录制
+                output_rich_textbox.AppendText(session);
+                string beginDeviceMICVolumeTestCommand = $"curl -X POST \"http://{ip_users}/testAudioJson_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"startRecordAudio\\\",\\\"format\\\": 0,\\\"soundmode\\\": 8,\\\"samplerate\\\": 16000,\\\"periodsize\\\": 1000,\\\"duration\\\": {int.Parse(duration)}}}\"";
+                output_string = executeCMDCommand(beginDeviceMICVolumeTestCommand);
+                MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
+                string backCode = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
+
+                if (Int32.Parse(backCode) == 0)
+                {
+                    output_rich_textbox.AppendText($"执行结果为：PASS，已开始音频录制，backCode:[{backCode}]\n");
+                }
+                else if (Int32.Parse(backCode) == -1)
+                {
+                    output_rich_textbox.AppendText($"执行结果为：FAIL，未开始音频录制，backCode:[{backCode}]\n");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"开始音频录制失败，请检查是否以开启了音频测试未正确关闭！\n或可尝试重启机器恢复正常：\n");
+                output_rich_textbox.AppendText($"开始音频录制失败，请检查是否以开启了音频测试未正确关闭！\n或可尝试重启机器恢复正常：\n");
+            }
+            finally
+            {
+                Font font = new Font(FontFamily.GenericMonospace, 15, FontStyle.Bold);
+                output_rich_textbox.ForeColor = Color.Green;
+                output_rich_textbox.SelectionFont = font;
+                output_rich_textbox.AppendText("音频录制完成！\n");
+            }
+        }
+
+        Thread audioRecord_t;
+
+        // 开始音频录制
+        private void beginAudioRecord_button_Click(object sender, EventArgs e)
+        {
+            //if (true)
+            duration = recordTime_textbox.Text;
+            if (String.IsNullOrEmpty(duration) || !new Regex("^[0-9]+$").IsMatch(duration))
+            {
+                // 用线程去启动，输入的是秒钟，倒计时完成录制，再取出录制的音频
+                现在是先录制再计算，你可以点击一次，就开始录制，再获取音量,修改每一次获取音量后的，先录制再读取，录音加一个进度条
+                MessageBox.Show("音频录制时间不能为空！\n或者输入了非数字的内容，请重新输入！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                recordTime_textbox.Text = "";
+            }
+            else if (check_device_online())
+            {
+                output_rich_textbox.AppendText("【执行操作】开始音频录制测试……\n");
+                if (clientSocket != null && clientSocket.Connected)
+                {
+                    if (audioRecord_t != null)
+                    {
+                        MessageBox.Show("当前还未录制完成，请稍等！");
+                    }
+                    else
+                    {
+                        audioRecord_t = new Thread(recordAudioThread);
+                        audioRecord_t.IsBackground = true;
+                        audioRecord_t.Start();
+                    }
+                    Font font = new Font(FontFamily.GenericMonospace, 15, FontStyle.Bold);
+                    output_rich_textbox.ForeColor = Color.Red;
+                    output_rich_textbox.SelectionFont = font;
+                    output_rich_textbox.AppendText($"请稍等，正在录制音频中,录制时间【{duration}】秒……！\n");
+                    Thread.Sleep(int.Parse(duration) + 1);
+                    audioRecord_t = null;
+                }
+                else
+                {
+                    device_ip_textbox.Enabled = true;
+                    radioButton_80.Enabled = true;
+                    radioButton_8080.Enabled = true;
+                    device_status_label.Text = "已断开";
+                    output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
                 }
             }
         }

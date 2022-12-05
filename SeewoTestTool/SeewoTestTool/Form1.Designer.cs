@@ -38,10 +38,11 @@
             this.poe2NetworkTest_button = new Sunny.UI.UIButton();
             this.poe1NetworkTest_button = new Sunny.UI.UIButton();
             this.groupBox7 = new Sunny.UI.UIGroupBox();
+            this.recordTime_textbox = new Sunny.UI.UITextBox();
+            this.uiLabel15 = new Sunny.UI.UILabel();
+            this.beginAudioRecord_button = new Sunny.UI.UIButton();
             this.standardAudioVolume_textbox = new Sunny.UI.UITextBox();
             this.uiLabel1 = new Sunny.UI.UILabel();
-            this.stop_array_mic_audio_level_test_button = new Sunny.UI.UIButton();
-            this.start_array_mic_audio_level_test_button = new Sunny.UI.UIButton();
             this.gain_array_mic_audio_level_button = new Sunny.UI.UIButton();
             this.volume8_value_label = new Sunny.UI.UILabel();
             this.label23 = new Sunny.UI.UILabel();
@@ -76,7 +77,6 @@
             this.audioIn1_label = new Sunny.UI.UILabel();
             this.audioInTestStandard_textbox = new Sunny.UI.UITextBox();
             this.uiLabel4 = new Sunny.UI.UILabel();
-            this.uiLabel2 = new Sunny.UI.UILabel();
             this.audioIn2_test_button = new Sunny.UI.UIButton();
             this.audioIn1_test_button = new Sunny.UI.UIButton();
             this.label18 = new Sunny.UI.UILabel();
@@ -158,12 +158,12 @@
             this.network_test_label = new Sunny.UI.UILabel();
             this.uiLabel3 = new Sunny.UI.UILabel();
             this.uiGroupBox7 = new Sunny.UI.UIGroupBox();
+            this.macWriteResult_label = new Sunny.UI.UILabel();
+            this.uiLabel13 = new Sunny.UI.UILabel();
             this.writeInMac_button = new Sunny.UI.UIButton();
             this.clearInput_button = new Sunny.UI.UIButton();
             this.macInput_textbox = new Sunny.UI.UITextBox();
             this.uiLabel11 = new Sunny.UI.UILabel();
-            this.uiLabel13 = new Sunny.UI.UILabel();
-            this.macWriteResult_label = new Sunny.UI.UILabel();
             this.uiGroupBox1.SuspendLayout();
             this.uiGroupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -285,10 +285,11 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.recordTime_textbox);
+            this.groupBox7.Controls.Add(this.uiLabel15);
+            this.groupBox7.Controls.Add(this.beginAudioRecord_button);
             this.groupBox7.Controls.Add(this.standardAudioVolume_textbox);
             this.groupBox7.Controls.Add(this.uiLabel1);
-            this.groupBox7.Controls.Add(this.stop_array_mic_audio_level_test_button);
-            this.groupBox7.Controls.Add(this.start_array_mic_audio_level_test_button);
             this.groupBox7.Controls.Add(this.gain_array_mic_audio_level_button);
             this.groupBox7.Controls.Add(this.volume8_value_label);
             this.groupBox7.Controls.Add(this.label23);
@@ -315,6 +316,47 @@
             this.groupBox7.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.groupBox7.ZoomScaleDisabled = true;
             this.groupBox7.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // recordTime_textbox
+            // 
+            this.recordTime_textbox.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.recordTime_textbox.Location = new System.Drawing.Point(314, 148);
+            this.recordTime_textbox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.recordTime_textbox.MinimumSize = new System.Drawing.Size(1, 16);
+            this.recordTime_textbox.Name = "recordTime_textbox";
+            this.recordTime_textbox.ShowText = false;
+            this.recordTime_textbox.Size = new System.Drawing.Size(52, 36);
+            this.recordTime_textbox.Style = Sunny.UI.UIStyle.Custom;
+            this.recordTime_textbox.TabIndex = 43;
+            this.recordTime_textbox.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.recordTime_textbox.Watermark = "";
+            this.recordTime_textbox.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // uiLabel15
+            // 
+            this.uiLabel15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.uiLabel15.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLabel15.Location = new System.Drawing.Point(3, 148);
+            this.uiLabel15.Name = "uiLabel15";
+            this.uiLabel15.Size = new System.Drawing.Size(315, 29);
+            this.uiLabel15.Style = Sunny.UI.UIStyle.Custom;
+            this.uiLabel15.TabIndex = 42;
+            this.uiLabel15.Text = "请输入音频录制时间(单位/秒钟)：";
+            this.uiLabel15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiLabel15.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // beginAudioRecord_button
+            // 
+            this.beginAudioRecord_button.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.beginAudioRecord_button.Location = new System.Drawing.Point(370, 148);
+            this.beginAudioRecord_button.MinimumSize = new System.Drawing.Size(1, 1);
+            this.beginAudioRecord_button.Name = "beginAudioRecord_button";
+            this.beginAudioRecord_button.Size = new System.Drawing.Size(86, 36);
+            this.beginAudioRecord_button.Style = Sunny.UI.UIStyle.Custom;
+            this.beginAudioRecord_button.TabIndex = 41;
+            this.beginAudioRecord_button.Text = "开始录制";
+            this.beginAudioRecord_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.beginAudioRecord_button.Click += new System.EventHandler(this.beginAudioRecord_button_Click);
             // 
             // standardAudioVolume_textbox
             // 
@@ -343,36 +385,6 @@
             this.uiLabel1.Text = "请输入标定音量值：";
             this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.uiLabel1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // stop_array_mic_audio_level_test_button
-            // 
-            this.stop_array_mic_audio_level_test_button.Enabled = false;
-            this.stop_array_mic_audio_level_test_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.stop_array_mic_audio_level_test_button.Location = new System.Drawing.Point(3, 294);
-            this.stop_array_mic_audio_level_test_button.MinimumSize = new System.Drawing.Size(1, 1);
-            this.stop_array_mic_audio_level_test_button.Name = "stop_array_mic_audio_level_test_button";
-            this.stop_array_mic_audio_level_test_button.Size = new System.Drawing.Size(461, 22);
-            this.stop_array_mic_audio_level_test_button.Style = Sunny.UI.UIStyle.Custom;
-            this.stop_array_mic_audio_level_test_button.TabIndex = 38;
-            this.stop_array_mic_audio_level_test_button.Text = "停止阵列MIC音量值测试";
-            this.stop_array_mic_audio_level_test_button.ZoomScaleDisabled = true;
-            this.stop_array_mic_audio_level_test_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            this.stop_array_mic_audio_level_test_button.Click += new System.EventHandler(this.stop_array_mic_audio_level_test_button_Click);
-            // 
-            // start_array_mic_audio_level_test_button
-            // 
-            this.start_array_mic_audio_level_test_button.Enabled = false;
-            this.start_array_mic_audio_level_test_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.start_array_mic_audio_level_test_button.Location = new System.Drawing.Point(3, 266);
-            this.start_array_mic_audio_level_test_button.MinimumSize = new System.Drawing.Size(1, 1);
-            this.start_array_mic_audio_level_test_button.Name = "start_array_mic_audio_level_test_button";
-            this.start_array_mic_audio_level_test_button.Size = new System.Drawing.Size(461, 22);
-            this.start_array_mic_audio_level_test_button.Style = Sunny.UI.UIStyle.Custom;
-            this.start_array_mic_audio_level_test_button.TabIndex = 37;
-            this.start_array_mic_audio_level_test_button.Text = "开启阵列MIC音量值测试";
-            this.start_array_mic_audio_level_test_button.ZoomScaleDisabled = true;
-            this.start_array_mic_audio_level_test_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            this.start_array_mic_audio_level_test_button.Click += new System.EventHandler(this.array_mic_audio_level_test_button_Click);
             // 
             // gain_array_mic_audio_level_button
             // 
@@ -817,7 +829,6 @@
             this.groupBox6.Controls.Add(this.audioIn1_label);
             this.groupBox6.Controls.Add(this.audioInTestStandard_textbox);
             this.groupBox6.Controls.Add(this.uiLabel4);
-            this.groupBox6.Controls.Add(this.uiLabel2);
             this.groupBox6.Controls.Add(this.audioIn2_test_button);
             this.groupBox6.Controls.Add(this.audioIn1_test_button);
             this.groupBox6.Controls.Add(this.label18);
@@ -891,19 +902,6 @@
             this.uiLabel4.Text = "请输入标定音量值：";
             this.uiLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.uiLabel4.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // uiLabel2
-            // 
-            this.uiLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.uiLabel2.Font = new System.Drawing.Font("微软雅黑", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiLabel2.Location = new System.Drawing.Point(4, 79);
-            this.uiLabel2.Name = "uiLabel2";
-            this.uiLabel2.Size = new System.Drawing.Size(183, 40);
-            this.uiLabel2.Style = Sunny.UI.UIStyle.Custom;
-            this.uiLabel2.TabIndex = 12;
-            this.uiLabel2.Text = "请先开启阵列MIC音量值测试后再进行AUDIO IN测试";
-            this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiLabel2.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // audioIn2_test_button
             // 
@@ -2112,6 +2110,29 @@
             this.uiGroupBox7.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.uiGroupBox7.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
+            // macWriteResult_label
+            // 
+            this.macWriteResult_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.macWriteResult_label.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.macWriteResult_label.Location = new System.Drawing.Point(148, 140);
+            this.macWriteResult_label.Name = "macWriteResult_label";
+            this.macWriteResult_label.Size = new System.Drawing.Size(124, 29);
+            this.macWriteResult_label.TabIndex = 42;
+            this.macWriteResult_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.macWriteResult_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // uiLabel13
+            // 
+            this.uiLabel13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.uiLabel13.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLabel13.Location = new System.Drawing.Point(8, 140);
+            this.uiLabel13.Name = "uiLabel13";
+            this.uiLabel13.Size = new System.Drawing.Size(124, 29);
+            this.uiLabel13.TabIndex = 41;
+            this.uiLabel13.Text = "烧录结果：";
+            this.uiLabel13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiLabel13.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
             // writeInMac_button
             // 
             this.writeInMac_button.Enabled = false;
@@ -2164,29 +2185,6 @@
             this.uiLabel11.Text = "鼠标点击下面的输入框，再使用扫描枪扫描条形码：";
             this.uiLabel11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.uiLabel11.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // uiLabel13
-            // 
-            this.uiLabel13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.uiLabel13.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiLabel13.Location = new System.Drawing.Point(8, 140);
-            this.uiLabel13.Name = "uiLabel13";
-            this.uiLabel13.Size = new System.Drawing.Size(124, 29);
-            this.uiLabel13.TabIndex = 41;
-            this.uiLabel13.Text = "烧录结果：";
-            this.uiLabel13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiLabel13.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // macWriteResult_label
-            // 
-            this.macWriteResult_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.macWriteResult_label.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.macWriteResult_label.Location = new System.Drawing.Point(148, 140);
-            this.macWriteResult_label.Name = "macWriteResult_label";
-            this.macWriteResult_label.Size = new System.Drawing.Size(124, 29);
-            this.macWriteResult_label.TabIndex = 42;
-            this.macWriteResult_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.macWriteResult_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // Form1
             // 
@@ -2304,13 +2302,10 @@
         private Sunny.UI.UILabel volume2_value_label;
         private Sunny.UI.UILabel label17;
         private Sunny.UI.UIButton gain_array_mic_audio_level_button;
-        private Sunny.UI.UIButton start_array_mic_audio_level_test_button;
-        private Sunny.UI.UIButton stop_array_mic_audio_level_test_button;
         private Sunny.UI.UIRichTextBox output_rich_textbox;
         private Sunny.UI.UIButton clear_output_button;
         private Sunny.UI.UIButton audioIn2_test_button;
         private Sunny.UI.UIButton audioIn1_test_button;
-        private Sunny.UI.UILabel uiLabel2;
         private Sunny.UI.UIGroupBox uiGroupBox6;
         private Sunny.UI.UILabel uiLabel3;
         private Sunny.UI.UILabel network_test_label;
@@ -2360,5 +2355,8 @@
         private Sunny.UI.UIButton clearInput_button;
         private Sunny.UI.UILabel macWriteResult_label;
         private Sunny.UI.UILabel uiLabel13;
+        private Sunny.UI.UIButton beginAudioRecord_button;
+        private Sunny.UI.UITextBox recordTime_textbox;
+        private Sunny.UI.UILabel uiLabel15;
     }
 }
