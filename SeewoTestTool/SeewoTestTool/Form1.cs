@@ -1061,9 +1061,9 @@ namespace SeewoTestTool
                             float[] volumes_f = { volume_1_f, volume_2_f, volume_4_f, volume_5_f, volume_6_f, volume_8_f };
                             float maxINArray = volumes_f.Max();
                             float minINArray = volumes_f.Min();
-                            if (Math.Abs(standard_volume - volume_1_f) <= 2 && Math.Abs(standard_volume - volume_2_f) <= 2
-                                && Math.Abs(standard_volume - volume_4_f) <= 2 && Math.Abs(standard_volume - volume_5_f) <= 2
-                                && Math.Abs(standard_volume - volume_6_f) <= 2 && Math.Abs(standard_volume - volume_8_f) <= 2)
+                            if (Math.Abs(Math.Abs(standard_volume) - Math.Abs(volume_1_f)) <= 2 && Math.Abs(Math.Abs(standard_volume) - Math.Abs(volume_2_f)) <= 2
+                                && Math.Abs(Math.Abs(standard_volume) - Math.Abs(volume_4_f)) <= 2 && Math.Abs(Math.Abs(standard_volume) - Math.Abs(volume_5_f)) <= 2
+                                && Math.Abs(Math.Abs(standard_volume) - Math.Abs(volume_6_f)) <= 2 && Math.Abs(Math.Abs(standard_volume) - Math.Abs(volume_8_f)) <= 2)
                             {
                                 // 结果位
                                 refreshTestResult_button_Click(null, null);
@@ -2226,8 +2226,13 @@ namespace SeewoTestTool
         // Audio IN 1 测试
         private void audioIn1_test_button_Click_1(object sender, EventArgs e)
         {
+            if (String.IsNullOrEmpty(audioInTestStandard_textbox.Text) || !new Regex("^[0-9]+$").IsMatch(audioInTestStandard_textbox.Text))
+            {
+                MessageBox.Show("标定音量值不能为空！\n或者输入了非数字的内容，请重新输入！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                audioInTestStandard_textbox.Text = "";
+            }
             //if (true)
-            if (check_device_online())
+            else if (check_device_online())
             {
                 output_rich_textbox.AppendText("【执行操作】Audio IN 1 测试……\n");
                 if (clientSocket != null && clientSocket.Connected)
@@ -2273,9 +2278,12 @@ namespace SeewoTestTool
                             float volume_7_f = float.Parse(volume7);
                             float volume_8_f = float.Parse(volume8);
 
-                            if (Math.Abs(Math.Abs(volume_3_f) - Math.Abs(volume_7_f)) <= 3 && (volume_3_f > -70 && volume_7_f > -70))
+                            audioIn1_label.Text = volume3;
+
+                            float audioInStandard = float.Parse(audioInTestStandard_textbox.Text);
+
+                            if (Math.Abs(Math.Abs(audioInStandard) - Math.Abs(volume_3_f)) <= 2)
                             {
-                                audioin1_result_label.Text = "PASS";
                                 // 结果位
                                 refreshTestResult_button_Click(null, null);
                                 testResults["测试结果"].AudioInResult = "PASS";
@@ -2283,7 +2291,6 @@ namespace SeewoTestTool
                             }
                             else
                             {
-                                audioin1_result_label.Text = "FAIL";
                                 // 结果位
                                 refreshTestResult_button_Click(null, null);
                                 testResults["测试结果"].AudioInResult = "FAIL";
@@ -2320,8 +2327,13 @@ namespace SeewoTestTool
         // Audio IN 2 测试
         private void audioIn2_test_button_Click_1(object sender, EventArgs e)
         {
+            if (String.IsNullOrEmpty(audioInTestStandard_textbox.Text) || !new Regex("^[0-9]+$").IsMatch(audioInTestStandard_textbox.Text))
+            {
+                MessageBox.Show("标定音量值不能为空！\n或者输入了非数字的内容，请重新输入！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                audioInTestStandard_textbox.Text = "";
+            }
             //if (true)
-            if (check_device_online())
+            else if (check_device_online())
             {
                 output_rich_textbox.AppendText("【执行操作】Audio IN 2 测试……\n");
                 if (clientSocket != null && clientSocket.Connected)
@@ -2367,9 +2379,12 @@ namespace SeewoTestTool
                             float volume_7_f = float.Parse(volume7);
                             float volume_8_f = float.Parse(volume8);
 
-                            if (Math.Abs(Math.Abs(volume_3_f) - Math.Abs(volume_7_f)) <= 3 && (volume_3_f > -70 && volume_7_f > -70))
+                            audioIn2_label.Text = volume7;
+
+                            float audioInStandard = float.Parse(audioInTestStandard_textbox.Text);
+
+                            if (Math.Abs(Math.Abs(audioInStandard) - Math.Abs(volume_7_f)) <= 2)
                             {
-                                audioin2_result_label.Text = "PASS";
                                 // 结果位
                                 refreshTestResult_button_Click(null, null);
                                 testResults["测试结果"].AudioIn2Result = "PASS";
@@ -2377,7 +2392,6 @@ namespace SeewoTestTool
                             }
                             else
                             {
-                                audioin2_result_label.Text = "FAIL";
                                 // 结果位
                                 refreshTestResult_button_Click(null, null);
                                 testResults["测试结果"].AudioIn2Result = "FAIL";
