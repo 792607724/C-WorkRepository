@@ -47,10 +47,6 @@
             this.label23 = new Sunny.UI.UILabel();
             this.volume4_value_label = new Sunny.UI.UILabel();
             this.label21 = new Sunny.UI.UILabel();
-            this.volume7_value_label = new Sunny.UI.UILabel();
-            this.label25 = new Sunny.UI.UILabel();
-            this.volume3_value_label = new Sunny.UI.UILabel();
-            this.label19 = new Sunny.UI.UILabel();
             this.volume6_value_label = new Sunny.UI.UILabel();
             this.label27 = new Sunny.UI.UILabel();
             this.volume2_value_label = new Sunny.UI.UILabel();
@@ -162,6 +158,12 @@
             this.network_test_label = new Sunny.UI.UILabel();
             this.uiLabel3 = new Sunny.UI.UILabel();
             this.uiGroupBox7 = new Sunny.UI.UIGroupBox();
+            this.writeInMac_button = new Sunny.UI.UIButton();
+            this.clearInput_button = new Sunny.UI.UIButton();
+            this.macInput_textbox = new Sunny.UI.UITextBox();
+            this.uiLabel11 = new Sunny.UI.UILabel();
+            this.uiLabel13 = new Sunny.UI.UILabel();
+            this.macWriteResult_label = new Sunny.UI.UILabel();
             this.uiGroupBox1.SuspendLayout();
             this.uiGroupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -175,6 +177,7 @@
             this.groupBox5.SuspendLayout();
             this.uiGroupBox3.SuspendLayout();
             this.uiGroupBox6.SuspendLayout();
+            this.uiGroupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // currentVersion_label
@@ -291,10 +294,6 @@
             this.groupBox7.Controls.Add(this.label23);
             this.groupBox7.Controls.Add(this.volume4_value_label);
             this.groupBox7.Controls.Add(this.label21);
-            this.groupBox7.Controls.Add(this.volume7_value_label);
-            this.groupBox7.Controls.Add(this.label25);
-            this.groupBox7.Controls.Add(this.volume3_value_label);
-            this.groupBox7.Controls.Add(this.label19);
             this.groupBox7.Controls.Add(this.volume6_value_label);
             this.groupBox7.Controls.Add(this.label27);
             this.groupBox7.Controls.Add(this.volume2_value_label);
@@ -394,7 +393,7 @@
             // 
             this.volume8_value_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.volume8_value_label.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.volume8_value_label.Location = new System.Drawing.Point(392, 153);
+            this.volume8_value_label.Location = new System.Drawing.Point(392, 110);
             this.volume8_value_label.Name = "volume8_value_label";
             this.volume8_value_label.Size = new System.Drawing.Size(64, 20);
             this.volume8_value_label.Style = Sunny.UI.UIStyle.Custom;
@@ -408,7 +407,7 @@
             // 
             this.label23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.label23.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label23.Location = new System.Drawing.Point(257, 149);
+            this.label23.Location = new System.Drawing.Point(257, 106);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(138, 29);
             this.label23.Style = Sunny.UI.UIStyle.Custom;
@@ -422,7 +421,7 @@
             // 
             this.volume4_value_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.volume4_value_label.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.volume4_value_label.Location = new System.Drawing.Point(137, 149);
+            this.volume4_value_label.Location = new System.Drawing.Point(137, 106);
             this.volume4_value_label.Name = "volume4_value_label";
             this.volume4_value_label.Size = new System.Drawing.Size(64, 20);
             this.volume4_value_label.Style = Sunny.UI.UIStyle.Custom;
@@ -436,7 +435,7 @@
             // 
             this.label21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.label21.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label21.Location = new System.Drawing.Point(8, 145);
+            this.label21.Location = new System.Drawing.Point(8, 102);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(138, 29);
             this.label21.Style = Sunny.UI.UIStyle.Custom;
@@ -445,62 +444,6 @@
             this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label21.ZoomScaleDisabled = true;
             this.label21.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // volume7_value_label
-            // 
-            this.volume7_value_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.volume7_value_label.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.volume7_value_label.Location = new System.Drawing.Point(392, 109);
-            this.volume7_value_label.Name = "volume7_value_label";
-            this.volume7_value_label.Size = new System.Drawing.Size(64, 20);
-            this.volume7_value_label.Style = Sunny.UI.UIStyle.Custom;
-            this.volume7_value_label.TabIndex = 31;
-            this.volume7_value_label.Text = "0";
-            this.volume7_value_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.volume7_value_label.ZoomScaleDisabled = true;
-            this.volume7_value_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // label25
-            // 
-            this.label25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.label25.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label25.Location = new System.Drawing.Point(257, 105);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(138, 29);
-            this.label25.Style = Sunny.UI.UIStyle.Custom;
-            this.label25.TabIndex = 30;
-            this.label25.Text = "rmsdb7音量值：";
-            this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label25.ZoomScaleDisabled = true;
-            this.label25.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // volume3_value_label
-            // 
-            this.volume3_value_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.volume3_value_label.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.volume3_value_label.Location = new System.Drawing.Point(137, 109);
-            this.volume3_value_label.Name = "volume3_value_label";
-            this.volume3_value_label.Size = new System.Drawing.Size(64, 20);
-            this.volume3_value_label.Style = Sunny.UI.UIStyle.Custom;
-            this.volume3_value_label.TabIndex = 29;
-            this.volume3_value_label.Text = "0";
-            this.volume3_value_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.volume3_value_label.ZoomScaleDisabled = true;
-            this.volume3_value_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // label19
-            // 
-            this.label19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.label19.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label19.Location = new System.Drawing.Point(8, 105);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(138, 29);
-            this.label19.Style = Sunny.UI.UIStyle.Custom;
-            this.label19.TabIndex = 28;
-            this.label19.Text = "rmsdb3音量值：";
-            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label19.ZoomScaleDisabled = true;
-            this.label19.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // volume6_value_label
             // 
@@ -2151,6 +2094,12 @@
             // 
             // uiGroupBox7
             // 
+            this.uiGroupBox7.Controls.Add(this.macWriteResult_label);
+            this.uiGroupBox7.Controls.Add(this.uiLabel13);
+            this.uiGroupBox7.Controls.Add(this.writeInMac_button);
+            this.uiGroupBox7.Controls.Add(this.clearInput_button);
+            this.uiGroupBox7.Controls.Add(this.macInput_textbox);
+            this.uiGroupBox7.Controls.Add(this.uiLabel11);
             this.uiGroupBox7.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.uiGroupBox7.Location = new System.Drawing.Point(4, 466);
             this.uiGroupBox7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -2159,9 +2108,85 @@
             this.uiGroupBox7.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
             this.uiGroupBox7.Size = new System.Drawing.Size(277, 467);
             this.uiGroupBox7.TabIndex = 13;
-            this.uiGroupBox7.Text = "空白位";
+            this.uiGroupBox7.Text = "Mac地址烧录";
             this.uiGroupBox7.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.uiGroupBox7.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // writeInMac_button
+            // 
+            this.writeInMac_button.Enabled = false;
+            this.writeInMac_button.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.writeInMac_button.Location = new System.Drawing.Point(138, 180);
+            this.writeInMac_button.MinimumSize = new System.Drawing.Size(1, 1);
+            this.writeInMac_button.Name = "writeInMac_button";
+            this.writeInMac_button.Size = new System.Drawing.Size(135, 37);
+            this.writeInMac_button.TabIndex = 20;
+            this.writeInMac_button.Text = "烧录MAC";
+            this.writeInMac_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.writeInMac_button.Click += new System.EventHandler(this.writeInMac_button_Click);
+            // 
+            // clearInput_button
+            // 
+            this.clearInput_button.Enabled = false;
+            this.clearInput_button.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.clearInput_button.Location = new System.Drawing.Point(3, 180);
+            this.clearInput_button.MinimumSize = new System.Drawing.Size(1, 1);
+            this.clearInput_button.Name = "clearInput_button";
+            this.clearInput_button.Size = new System.Drawing.Size(129, 37);
+            this.clearInput_button.TabIndex = 19;
+            this.clearInput_button.Text = "清空输入";
+            this.clearInput_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.clearInput_button.Click += new System.EventHandler(this.clearInput_button_Click);
+            // 
+            // macInput_textbox
+            // 
+            this.macInput_textbox.FocusedSelectAll = true;
+            this.macInput_textbox.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.macInput_textbox.Location = new System.Drawing.Point(9, 93);
+            this.macInput_textbox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.macInput_textbox.MinimumSize = new System.Drawing.Size(1, 16);
+            this.macInput_textbox.Name = "macInput_textbox";
+            this.macInput_textbox.ShowText = false;
+            this.macInput_textbox.Size = new System.Drawing.Size(264, 36);
+            this.macInput_textbox.TabIndex = 1;
+            this.macInput_textbox.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.macInput_textbox.Watermark = "";
+            this.macInput_textbox.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // uiLabel11
+            // 
+            this.uiLabel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.uiLabel11.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLabel11.Location = new System.Drawing.Point(8, 32);
+            this.uiLabel11.Name = "uiLabel11";
+            this.uiLabel11.Size = new System.Drawing.Size(265, 63);
+            this.uiLabel11.TabIndex = 0;
+            this.uiLabel11.Text = "鼠标点击下面的输入框，再使用扫描枪扫描条形码：";
+            this.uiLabel11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiLabel11.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // uiLabel13
+            // 
+            this.uiLabel13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.uiLabel13.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLabel13.Location = new System.Drawing.Point(8, 140);
+            this.uiLabel13.Name = "uiLabel13";
+            this.uiLabel13.Size = new System.Drawing.Size(124, 29);
+            this.uiLabel13.TabIndex = 41;
+            this.uiLabel13.Text = "烧录结果：";
+            this.uiLabel13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiLabel13.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // macWriteResult_label
+            // 
+            this.macWriteResult_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.macWriteResult_label.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.macWriteResult_label.Location = new System.Drawing.Point(148, 140);
+            this.macWriteResult_label.Name = "macWriteResult_label";
+            this.macWriteResult_label.Size = new System.Drawing.Size(124, 29);
+            this.macWriteResult_label.TabIndex = 42;
+            this.macWriteResult_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.macWriteResult_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // Form1
             // 
@@ -2194,6 +2219,7 @@
             this.groupBox5.ResumeLayout(false);
             this.uiGroupBox3.ResumeLayout(false);
             this.uiGroupBox6.ResumeLayout(false);
+            this.uiGroupBox7.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2273,10 +2299,6 @@
         private Sunny.UI.UILabel label23;
         private Sunny.UI.UILabel volume4_value_label;
         private Sunny.UI.UILabel label21;
-        private Sunny.UI.UILabel volume7_value_label;
-        private Sunny.UI.UILabel label25;
-        private Sunny.UI.UILabel volume3_value_label;
-        private Sunny.UI.UILabel label19;
         private Sunny.UI.UILabel volume6_value_label;
         private Sunny.UI.UILabel label27;
         private Sunny.UI.UILabel volume2_value_label;
@@ -2332,5 +2354,11 @@
         private Sunny.UI.UILabel uiLabel4;
         private Sunny.UI.UILabel audioIn1_label;
         private Sunny.UI.UILabel audioIn2_label;
+        private Sunny.UI.UILabel uiLabel11;
+        private Sunny.UI.UITextBox macInput_textbox;
+        private Sunny.UI.UIButton writeInMac_button;
+        private Sunny.UI.UIButton clearInput_button;
+        private Sunny.UI.UILabel macWriteResult_label;
+        private Sunny.UI.UILabel uiLabel13;
     }
 }

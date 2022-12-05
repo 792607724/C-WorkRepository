@@ -445,6 +445,8 @@ namespace SeewoTestTool
                         poe2NetworkTest_button.Enabled = false;
                         openLiveCamera_buttton.Enabled = false;
                         openMergeCamera_buttton.Enabled = false;
+                        clearInput_button.Enabled = false;
+                        writeInMac_button.Enabled = false;
                         login_button.Text = "设备连接后\n可自动登录";
                     }
                     catch (Exception ex)
@@ -1041,11 +1043,9 @@ namespace SeewoTestTool
                             output_rich_textbox.AppendText($"执行结果为：PASS，获取各路MIC音频音量值，backCode:[{backCode}]\n");
                             volume1_value_label.Text = volume1;
                             volume2_value_label.Text = volume2;
-                            volume3_value_label.Text = volume3;
                             volume4_value_label.Text = volume4;
                             volume5_value_label.Text = volume5;
                             volume6_value_label.Text = volume6;
-                            volume7_value_label.Text = volume7;
                             volume8_value_label.Text = volume8;
                             output_rich_textbox.AppendText($"rmsdb1：{volume1}\nrmsdb2：{volume2}\nrmsdb3：{volume3}\nrmsdb4：{volume4}\nrmsdb5：{volume5}\nrmsdb6：{volume6}\nrmsdb7：{volume7}\nrmsdb8：{volume8}\n");
 
@@ -1708,6 +1708,8 @@ namespace SeewoTestTool
                             poe2NetworkTest_button.Enabled = true;
                             openLiveCamera_buttton.Enabled = true;
                             openMergeCamera_buttton.Enabled = true;
+                            clearInput_button.Enabled = true;
+                            writeInMac_button.Enabled = true;
 
                             // 增加记住username和password功能
                             if (rememberCheckBox.Checked == true)
@@ -2261,11 +2263,9 @@ namespace SeewoTestTool
                             output_rich_textbox.AppendText($"执行结果为：PASS，获取各路MIC音频音量值，backCode:[{backCode}]\n");
                             volume1_value_label.Text = volume1;
                             volume2_value_label.Text = volume2;
-                            volume3_value_label.Text = volume3;
                             volume4_value_label.Text = volume4;
                             volume5_value_label.Text = volume5;
                             volume6_value_label.Text = volume6;
-                            volume7_value_label.Text = volume7;
                             volume8_value_label.Text = volume8;
                             output_rich_textbox.AppendText($"rmsdb1：{volume1}\nrmsdb2：{volume2}\nrmsdb3：{volume3}\nrmsdb4：{volume4}\nrmsdb5：{volume5}\nrmsdb6：{volume6}\nrmsdb7：{volume7}\nrmsdb8：{volume8}\n");
 
@@ -2362,11 +2362,9 @@ namespace SeewoTestTool
                             output_rich_textbox.AppendText($"执行结果为：PASS，获取各路MIC音频音量值，backCode:[{backCode}]\n");
                             volume1_value_label.Text = volume1;
                             volume2_value_label.Text = volume2;
-                            volume3_value_label.Text = volume3;
                             volume4_value_label.Text = volume4;
                             volume5_value_label.Text = volume5;
                             volume6_value_label.Text = volume6;
-                            volume7_value_label.Text = volume7;
                             volume8_value_label.Text = volume8;
                             output_rich_textbox.AppendText($"rmsdb1：{volume1}\nrmsdb2：{volume2}\nrmsdb3：{volume3}\nrmsdb4：{volume4}\nrmsdb5：{volume5}\nrmsdb6：{volume6}\nrmsdb7：{volume7}\nrmsdb8：{volume8}\n");
 
@@ -2690,6 +2688,64 @@ namespace SeewoTestTool
             refreshTestResult_button_Click(null, null);
             testResults["测试结果"].ThreeCamera2Result = "FAIL";
             writeTestResult();
+        }
+
+        // 清空MAC输入框
+        private void clearInput_button_Click(object sender, EventArgs e)
+        {
+            macInput_textbox.Text = "";
+            macWriteResult_label.Text = "";
+        }
+
+        // 写入MAC地址进设备
+        private void writeInMac_button_Click(object sender, EventArgs e)
+        {
+            if (check_device_online())
+            {
+                output_rich_textbox.AppendText("【执行操作】写入MAC地址进设备……\n");
+                try
+                {
+                    if (clientSocket != null && clientSocket.Connected)
+                    {
+                        // 写入MAC地址进设备
+                        string writeInMAC = macInput_textbox.Text;
+                        if (string.IsNullOrEmpty(writeInMAC) || !new Regex("^[0-9]+$").IsMatch(writeInMAC))
+                        {
+                            MessageBox.Show("请写入正确的MAC地址再进行刷入，只能数字\n", "温馨提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            output_rich_textbox.AppendText("请写入正确的MAC地址再进行刷入，只能数字\n");
+                            macWriteResult_label.Text = "FAIL";
+                        }
+                        else
+                        {
+                            /**
+                            output_rich_textbox.AppendText(session);
+                            string writeDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"setParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"SerialNumber\\\",\\\"value\\\": {{\\\"PCBA\\\": \\\"{writeINPCBA}\\\"}}}}\"";
+                            output_string = executeCMDCommand(writeDeviceInfoCommand);
+                            MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
+                            string backCode = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
+                            */
+                          
+                        }
+                    }
+                    else
+                    {
+                        device_ip_textbox.Enabled = true;
+                        radioButton_80.Enabled = true;
+                        radioButton_8080.Enabled = true;
+                        device_status_label.Text = "已断开";
+                        output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    output_rich_textbox.AppendText($"写入MAC地址进设备失败，当前未连接设备：\n{ex.ToString()}\n");
+                    macWriteResult_label.Text = "FAIL";
+                }
+                finally
+                {
+
+                }
+            }
         }
     }
 }
