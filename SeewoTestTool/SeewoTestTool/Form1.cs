@@ -1,3 +1,4 @@
+using Sunny.UI.Win32;
 using System.Diagnostics;
 using System.IO.Compression;
 using System.Linq;
@@ -18,6 +19,8 @@ namespace SeewoTestTool
         Socket clientSocket;
         Dictionary<string, InternetPort> internetPorts = new Dictionary<string, InternetPort>();
         Dictionary<string, User> users = new Dictionary<string, User>();
+        Dictionary<string, TestResult> testResults = new Dictionary<string, TestResult>();
+        TestResult testResult_Tester = new TestResult();
         /**
          * 窗口构造方法：
          * 在这里进行：
@@ -67,6 +70,7 @@ namespace SeewoTestTool
                 
                 
             }
+            // 账号密码存储读取
             FileStream fs1 = new FileStream("data1.bin", FileMode.OpenOrCreate);
             if (fs1.Length > 0)
             {
@@ -88,6 +92,11 @@ namespace SeewoTestTool
                     }
                 }
             }
+
+            // 测试结果存储读取
+            refreshTestResult_button_Click(null, null);
+
+
             fs.Close();
             fs1.Close();
             // 增加自动连接设备功能
@@ -592,6 +601,12 @@ namespace SeewoTestTool
                                                 output_rich_textbox.ForeColor = Color.Green;
                                                 output_rich_textbox.SelectionFont = font;
                                                 checked_firmware_textbox.Text = $"固件校验成功，当前固件版本：{currentVersion}";
+
+                                                // 结果位
+                                                refreshTestResult_button_Click(null, null);
+                                                testResults["测试结果"].FirmwareVerifiedResult = "PASS";
+                                                writeTestResult();
+
                                                 output_rich_textbox.AppendText($"固件校验成功，当前固件版本：{currentVersion}\n");
                                             }
                                             else
@@ -599,6 +614,12 @@ namespace SeewoTestTool
                                                 output_rich_textbox.ForeColor = Color.Red;
                                                 output_rich_textbox.SelectionFont = font;
                                                 checked_firmware_textbox.Text = $"固件校验失败，当前固件版本：{currentVersion}";
+
+                                                // 结果位
+                                                refreshTestResult_button_Click(null, null);
+                                                testResults["测试结果"].FirmwareVerifiedResult = "FAIL";
+                                                writeTestResult();
+
                                                 output_rich_textbox.AppendText($"固件校验失败，当前固件版本：{currentVersion}\n");
                                             }
                                         }
@@ -630,6 +651,7 @@ namespace SeewoTestTool
             }
             
         }
+
 
         // 打开红绿灯交替闪烁
         /**
@@ -2231,10 +2253,18 @@ namespace SeewoTestTool
                             if (Math.Abs(Math.Abs(volume_3_f) - Math.Abs(volume_7_f)) <= 3 && (volume_3_f > -70 && volume_7_f > -70))
                             {
                                 audioin1_result_label.Text = "PASS";
+                                // 结果位
+                                refreshTestResult_button_Click(null, null);
+                                testResults["测试结果"].AudioInResult = "PASS";
+                                writeTestResult();
                             }
                             else
                             {
                                 audioin1_result_label.Text = "FAIL";
+                                // 结果位
+                                refreshTestResult_button_Click(null, null);
+                                testResults["测试结果"].AudioInResult = "FAIL";
+                                writeTestResult();
                             }
                         }
                         else if (Int32.Parse(backCode) == -1)
@@ -2317,10 +2347,18 @@ namespace SeewoTestTool
                             if (Math.Abs(Math.Abs(volume_3_f) - Math.Abs(volume_7_f)) <= 3 && (volume_3_f > -70 && volume_7_f > -70))
                             {
                                 audioin2_result_label.Text = "PASS";
+                                // 结果位
+                                refreshTestResult_button_Click(null, null);
+                                testResults["测试结果"].AudioIn2Result = "PASS";
+                                writeTestResult();
                             }
                             else
                             {
                                 audioin2_result_label.Text = "FAIL";
+                                // 结果位
+                                refreshTestResult_button_Click(null, null);
+                                testResults["测试结果"].AudioIn2Result = "FAIL";
+                                writeTestResult();
                             }
                         }
                         else if (Int32.Parse(backCode) == -1)
@@ -2348,6 +2386,107 @@ namespace SeewoTestTool
                 }
             }
             
+        }
+
+        string fileName_testResult = "TestResult.txt";
+        // 重置测试结果
+        private void resetTestResult_button_Click(object sender, EventArgs e)
+        {
+            testResults.Clear();
+            if (System.IO.File.Exists(fileName_testResult))
+            {
+                executeCMDCommand($"del {fileName_testResult}");
+                network_test_label.Text = "暂未测试";
+                firmwareVerified_test_label.Text = "暂未测试";
+                redgreenLED_test_label.Text = "暂未测试";
+                resetButton_test_label.Text = "暂未测试";
+                threeCamera_test_label.Text = "暂未测试";
+                audioIn_test_label.Text = "暂未测试";
+                audioIn2_test_label.Text = "暂未测试";
+                arrayMic_test_label.Text = "暂未测试";
+                macAddress_test_label.Text = "暂未测试";
+                
+            }
+            MessageBox.Show("测试结果重置完成！", "提示",  MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        // 写入测试结果
+        private void writeTestResult()
+        {
+            FileStream fs2 = new FileStream(fileName_testResult, FileMode.OpenOrCreate);
+            BinaryFormatter binaryFormatter = new BinaryFormatter();
+            binaryFormatter.Serialize(fs2, testResults);
+            fs2.Close();
+            refreshTestResult_button_Click(null, null);
+        }
+
+        // 刷新测试结果
+        private void refreshTestResult_button_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FileStream fs2 = new FileStream(fileName_testResult, FileMode.OpenOrCreate);
+                if (fs2.Length == 0)
+                {
+                    BinaryFormatter binaryFormatter = new BinaryFormatter();
+                    TestResult testResult = new TestResult();
+                    testResult.NetworkTestResult = "暂未测试";
+                    testResult.FirmwareVerifiedResult = "暂未测试";
+                    testResult.RedGreenLEDResult = "暂未测试";
+                    testResult.ResetButtonResult = "暂未测试";
+                    testResult.ThreeCameraResult = "暂未测试";
+                    testResult.AudioInResult = "暂未测试";
+                    testResult.AudioIn2Result = "暂未测试";
+                    testResult.ArrayMicResult = "暂未测试";
+                    testResult.MacAddressResult = "暂未测试";
+
+                    testResults.Add("测试结果", testResult);
+                    binaryFormatter.Serialize(fs2, testResults);
+                    fs2.Close();
+
+                }
+                else if (fs2.Length > 0)    
+                {
+                    BinaryFormatter bf = new BinaryFormatter();
+                    TestResult testResult = new TestResult();
+                    testResults = bf.Deserialize(fs2) as Dictionary<string, TestResult>;
+                    TestResult testresult_item = testResults["测试结果"];
+                    network_test_label.Text = testresult_item.NetworkTestResult;
+                    firmwareVerified_test_label.Text = testresult_item.FirmwareVerifiedResult;
+                    redgreenLED_test_label.Text = testresult_item.RedGreenLEDResult;
+                    resetButton_test_label.Text = testresult_item.ResetButtonResult;
+                    threeCamera_test_label.Text = testresult_item.ThreeCameraResult;
+                    audioIn_test_label.Text = testresult_item.AudioInResult;
+                    audioIn2_test_label.Text = testresult_item.AudioIn2Result;
+                    arrayMic_test_label.Text = testresult_item.ArrayMicResult;
+                    macAddress_test_label.Text = testresult_item.MacAddressResult;
+                }
+                fs2.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("【当前测试结束】:\n请勿手动删除根目录的文件，请重新打开工具！", "【温馨提示】", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Application.Exit();
+            }
+            
+        }
+
+        // 红绿指示灯测试PASS
+        private void redGreenPASS_button_Click(object sender, EventArgs e)
+        {
+            // 结果位
+            refreshTestResult_button_Click(null, null);
+            testResults["测试结果"].RedGreenLEDResult = "PASS";
+            writeTestResult();
+        }
+
+        // 红绿指示灯测试FAIL
+        private void redGreenFAIL_button_Click(object sender, EventArgs e)
+        {
+            // 结果位
+            refreshTestResult_button_Click(null, null);
+            testResults["测试结果"].RedGreenLEDResult = "FAIL";
+            writeTestResult();
         }
     }
 }

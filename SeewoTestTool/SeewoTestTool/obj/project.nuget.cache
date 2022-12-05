@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "/BSemyNMOa1QYLduETOOl1B9CGCsPcJXkv7/uZhEGbvqd+QeEmIp+Eo5U5ufDIx/lDMel7MAuYP+l1aQYa4pXQ==",
+  "dgSpecHash": "X4M6fUQmMOCbAZWprh0ygWoXhXaeMbjgQvVnuIz48KOnnx2uU2deKyFO9Hu9p66PNR5QRjggE4mqaTgsOLqaLw==",
   "success": true,
   "projectFilePath": "D:\\MicrosoftVisualStudio\\GithubSync\\C-WorkRepository\\SeewoTestTool\\SeewoTestTool\\SeewoTestTool.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\CHENGUANGTAO\\.nuget\\packages\\newtonsoft.json\\12.0.1\\newtonsoft.json.12.0.1.nupkg.sha512",
+    "C:\\Users\\CHENGUANGTAO\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
     "C:\\Users\\CHENGUANGTAO\\.nuget\\packages\\sunnyui\\3.2.8.1\\sunnyui.3.2.8.1.nupkg.sha512",
     "C:\\Users\\CHENGUANGTAO\\.nuget\\packages\\sunnyui.common\\3.2.8\\sunnyui.common.3.2.8.nupkg.sha512"
   ],
