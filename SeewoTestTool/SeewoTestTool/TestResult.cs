@@ -4,10 +4,12 @@
 public class TestResult
 {
     private string network_test_result;
+    private string network2_test_result;
     private string firmwareVerified_test_result;
     private string redgreenLED_test_result;
     private string resetButton_test_result;
     private string threeCamera_test_result;
+    private string threeCamera2_test_result;
     private string audioIn_test_result;
     private string audioIn2_test_result;
     private string arrayMic_test_result;
@@ -18,6 +20,12 @@ public class TestResult
     {
         get { return network_test_result; }
         set { network_test_result = value; }
+    }
+
+    public string Network2TestResult
+    {
+        get { return network2_test_result; }
+        set { network2_test_result = value; }
     }
 
     public string FirmwareVerifiedResult
@@ -42,6 +50,12 @@ public class TestResult
     {
         get { return threeCamera_test_result; }
         set { threeCamera_test_result = value; }
+    }
+
+    public string ThreeCamera2Result
+    {
+        get { return threeCamera2_test_result; }
+        set { threeCamera2_test_result = value; }
     }
 
     public string AudioInResult

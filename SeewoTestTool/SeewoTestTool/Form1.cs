@@ -441,6 +441,10 @@ namespace SeewoTestTool
                         button2.Enabled = false;
                         audioIn1_test_button.Enabled = false;
                         audioIn2_test_button.Enabled = false;
+                        poe1NetworkTest_button.Enabled = false;
+                        poe2NetworkTest_button.Enabled = false;
+                        openLiveCamera_buttton.Enabled = false;
+                        openMergeCamera_buttton.Enabled = false;
                         login_button.Text = "设备连接后\n可自动登录";
                     }
                     catch (Exception ex)
@@ -1380,6 +1384,8 @@ namespace SeewoTestTool
                     button1.Enabled = false;
                     button2.Enabled = false;
                     get_poe_mic_info_button.Enabled = false;
+                    poe1NetworkTest_button.Enabled = false;
+                    poe2NetworkTest_button.Enabled = false;
 
                     Thread.Sleep(3000);
                     // 这里升级完重启，需要重新连接设备，设备状态那边需要同步更新
@@ -1685,6 +1691,10 @@ namespace SeewoTestTool
                             stop_rg_flicker_button.Enabled = false;
                             start_rg_flicker_button.Enabled = true;
                             get_poe_mic_info_button.Enabled = true;
+                            poe1NetworkTest_button.Enabled = true;
+                            poe2NetworkTest_button.Enabled = true;
+                            openLiveCamera_buttton.Enabled = true;
+                            openMergeCamera_buttton.Enabled = true;
 
                             // 增加记住username和password功能
                             if (rememberCheckBox.Checked == true)
@@ -1699,7 +1709,7 @@ namespace SeewoTestTool
                                     // 如果存在就清除掉
                                     users.Clear();
                                 }
-                                users.Add(user.Username, user);
+                                users.Add(user.Username, user); 
                                 binaryFormatter.Serialize(fileStream, users);
                                 fileStream.Close();
                             }
@@ -2397,10 +2407,12 @@ namespace SeewoTestTool
             {
                 executeCMDCommand($"del {fileName_testResult}");
                 network_test_label.Text = "暂未测试";
+                network2_test_label.Text = "暂未测试";
                 firmwareVerified_test_label.Text = "暂未测试";
                 redgreenLED_test_label.Text = "暂未测试";
                 resetButton_test_label.Text = "暂未测试";
                 threeCamera_test_label.Text = "暂未测试";
+                threeCamera2_test_label.Text = "暂未测试";
                 audioIn_test_label.Text = "暂未测试";
                 audioIn2_test_label.Text = "暂未测试";
                 arrayMic_test_label.Text = "暂未测试";
@@ -2431,10 +2443,12 @@ namespace SeewoTestTool
                     BinaryFormatter binaryFormatter = new BinaryFormatter();
                     TestResult testResult = new TestResult();
                     testResult.NetworkTestResult = "暂未测试";
+                    testResult.Network2TestResult = "暂未测试";
                     testResult.FirmwareVerifiedResult = "暂未测试";
                     testResult.RedGreenLEDResult = "暂未测试";
                     testResult.ResetButtonResult = "暂未测试";
                     testResult.ThreeCameraResult = "暂未测试";
+                    testResult.ThreeCamera2Result = "暂未测试";
                     testResult.AudioInResult = "暂未测试";
                     testResult.AudioIn2Result = "暂未测试";
                     testResult.ArrayMicResult = "暂未测试";
@@ -2452,10 +2466,12 @@ namespace SeewoTestTool
                     testResults = bf.Deserialize(fs2) as Dictionary<string, TestResult>;
                     TestResult testresult_item = testResults["测试结果"];
                     network_test_label.Text = testresult_item.NetworkTestResult;
+                    network2_test_label.Text = testresult_item.Network2TestResult;
                     firmwareVerified_test_label.Text = testresult_item.FirmwareVerifiedResult;
                     redgreenLED_test_label.Text = testresult_item.RedGreenLEDResult;
                     resetButton_test_label.Text = testresult_item.ResetButtonResult;
                     threeCamera_test_label.Text = testresult_item.ThreeCameraResult;
+                    threeCamera2_test_label.Text = testresult_item.ThreeCamera2Result;
                     audioIn_test_label.Text = testresult_item.AudioInResult;
                     audioIn2_test_label.Text = testresult_item.AudioIn2Result;
                     arrayMic_test_label.Text = testresult_item.ArrayMicResult;
@@ -2486,6 +2502,166 @@ namespace SeewoTestTool
             // 结果位
             refreshTestResult_button_Click(null, null);
             testResults["测试结果"].RedGreenLEDResult = "FAIL";
+            writeTestResult();
+        }
+
+        // POE1网口测试
+        private void poe1NetworkTest_button_Click(object sender, EventArgs e)
+        {
+            output_rich_textbox.AppendText("【执行操作】POE1网口测试……\n");
+            if (check_device_online())
+            {
+                output_rich_textbox.Text = "";
+                login_button_Click(null, null);
+                if (output_rich_textbox.Text.Contains("成功"))
+                {
+                    // 结果位
+                    refreshTestResult_button_Click(null, null);
+                    testResults["测试结果"].NetworkTestResult = "PASS";
+                    writeTestResult();
+                }
+                else
+                {
+                    // 结果位
+                    refreshTestResult_button_Click(null, null);
+                    testResults["测试结果"].NetworkTestResult = "FAIL";
+                    writeTestResult();
+                    MessageBox.Show("测试失败，请检查网络连接！");
+                }
+            }
+        }
+
+        // POE2网口测试
+        private void poe2NetworkTest_button_Click(object sender, EventArgs e)
+        {
+            output_rich_textbox.AppendText("【执行操作】POE2网口测试……\n");
+            if (check_device_online())
+            {
+                output_rich_textbox.Text = "";
+                login_button_Click(null, null);
+                if (output_rich_textbox.Text.Contains("成功"))
+                {
+                    // 结果位
+                    refreshTestResult_button_Click(null, null);
+                    testResults["测试结果"].Network2TestResult = "PASS";
+                    writeTestResult();
+                }
+                else
+                {
+                    // 结果位
+                    refreshTestResult_button_Click(null, null);
+                    testResults["测试结果"].Network2TestResult = "FAIL";
+                    writeTestResult();
+                    MessageBox.Show("测试失败，请检查网络连接！");
+                }
+            }
+        }
+
+        SXW0301_Production_line.LiveWindow liveWindow;
+        // 打开Live摄像头
+        private void openLiveCamera_buttton_Click(object sender, EventArgs e)
+        {
+            if (check_device_online())
+            {
+                output_rich_textbox.AppendText("【执行操作】打开Live摄像头……\n");
+                if (clientSocket != null && clientSocket.Connected)
+                {
+                    if (liveWindow == null)
+                    {
+                        liveWindow = new SXW0301_Production_line.LiveWindow();
+                        liveWindow.Show();
+                    }
+                    else if (liveWindow.IsDisposed)
+                    {
+                        liveWindow = new SXW0301_Production_line.LiveWindow();
+                        liveWindow.Activate();
+                        liveWindow.Show();
+                    }
+                    else
+                    {
+                        output_rich_textbox.AppendText("已打开Live摄像头，请勿重复打开哦\n");
+                    }
+                }
+                else
+                {
+                    device_ip_textbox.Enabled = true;
+                    radioButton_80.Enabled = true;
+                    radioButton_8080.Enabled = true;
+                    device_status_label.Text = "已断开";
+                    output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
+                }
+            }
+        }
+
+        // 打开Live摄像头PASS
+        private void openLiveCameraPASS_buttton_Click(object sender, EventArgs e)
+        {
+            // 结果位
+            refreshTestResult_button_Click(null, null);
+            testResults["测试结果"].ThreeCameraResult = "PASS";
+            writeTestResult();
+        }
+
+        // 打开Live摄像头FAIL
+        private void openLiveCameraFAIL_buttton_Click(object sender, EventArgs e)
+        {
+            // 结果位
+            refreshTestResult_button_Click(null, null);
+            testResults["测试结果"].ThreeCameraResult = "FAIL";
+            writeTestResult();
+        }
+
+        SXW0301_Production_line.MergeWindow mergeWindow;
+        // 打开Merge摄像头
+        private void openMergeCamera_buttton_Click(object sender, EventArgs e)
+        {
+            if (check_device_online())
+            {
+                output_rich_textbox.AppendText("【执行操作】打开Merge摄像头……\n");
+                if (clientSocket != null && clientSocket.Connected)
+                {
+                    if (mergeWindow == null)
+                    {
+                        mergeWindow = new SXW0301_Production_line.MergeWindow();
+                        mergeWindow.Show();
+                    }
+                    else if (mergeWindow.IsDisposed)
+                    {
+                        mergeWindow = new SXW0301_Production_line.MergeWindow();
+                        mergeWindow.Activate();
+                        mergeWindow.Show();
+                    }
+                    else
+                    {
+                        output_rich_textbox.AppendText("已打开Merge摄像头，请勿重复打开哦\n");
+                    }
+                }
+                else
+                {
+                    device_ip_textbox.Enabled = true;
+                    radioButton_80.Enabled = true;
+                    radioButton_8080.Enabled = true;
+                    device_status_label.Text = "已断开";
+                    output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
+                }
+            }
+        }
+
+        // 打开Merge摄像头PASS
+        private void openMergeCameraPASS_buttton_Click(object sender, EventArgs e)
+        {
+            // 结果位
+            refreshTestResult_button_Click(null, null);
+            testResults["测试结果"].ThreeCamera2Result = "PASS";
+            writeTestResult();
+        }
+
+        // 打开Merge摄像头FAIL
+        private void openMergeCameraFAIL_buttton_Click(object sender, EventArgs e)
+        {
+            // 结果位
+            refreshTestResult_button_Click(null, null);
+            testResults["测试结果"].ThreeCamera2Result = "FAIL";
             writeTestResult();
         }
     }

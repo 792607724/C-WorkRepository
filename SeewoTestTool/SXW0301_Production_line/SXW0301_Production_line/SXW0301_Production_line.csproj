@@ -114,6 +114,18 @@
     <Compile Include="Form3.Designer.cs">
       <DependentUpon>Form3.cs</DependentUpon>
     </Compile>
+    <Compile Include="LiveWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LiveWindow.Designer.cs">
+      <DependentUpon>LiveWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MergeWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MergeWindow.Designer.cs">
+      <DependentUpon>MergeWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -124,6 +136,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form3.resx">
       <DependentUpon>Form3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LiveWindow.resx">
+      <DependentUpon>LiveWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MergeWindow.resx">
+      <DependentUpon>MergeWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
