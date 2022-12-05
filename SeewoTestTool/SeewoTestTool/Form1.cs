@@ -1006,8 +1006,14 @@ namespace SeewoTestTool
         private void gain_array_mic_audio_level_button_Click(object sender, EventArgs e)
         {
             //if (true)
-            if (check_device_online())
+            if (String.IsNullOrEmpty(standardAudioVolume_textbox.Text) || !new Regex("^[0-9]+$").IsMatch(standardAudioVolume_textbox.Text))
             {
+                MessageBox.Show("标定音量值不能为空！\n或者输入了非数字的内容，请重新输入！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                standardAudioVolume_textbox.Text = "";
+            }
+            else if (check_device_online())
+            {
+                float standard_volume = float.Parse(standardAudioVolume_textbox.Text);
                 output_rich_textbox.AppendText("【执行操作】获取各路MIC音频音量值……\n");
                 if (clientSocket != null && clientSocket.Connected)
                 {
@@ -1055,14 +1061,21 @@ namespace SeewoTestTool
                             float[] volumes_f = { volume_1_f, volume_2_f, volume_4_f, volume_5_f, volume_6_f, volume_8_f };
                             float maxINArray = volumes_f.Max();
                             float minINArray = volumes_f.Min();
-                            if (Math.Abs(maxINArray) - Math.Abs(minINArray) <= 3 && (volume_1_f > -70 && volume_2_f > -70 && volume_4_f > -70 && volume_5_f > -70
-                                && volume_6_f > -70 && volume_8_f > -70))
+                            if (Math.Abs(standard_volume - volume_1_f) <= 2 && Math.Abs(standard_volume - volume_2_f) <= 2
+                                && Math.Abs(standard_volume - volume_4_f) <= 2 && Math.Abs(standard_volume - volume_5_f) <= 2
+                                && Math.Abs(standard_volume - volume_6_f) <= 2 && Math.Abs(standard_volume - volume_8_f) <= 2)
                             {
-                                arrayMICTestResult_label.Text = "PASS";
+                                // 结果位
+                                refreshTestResult_button_Click(null, null);
+                                testResults["测试结果"].ArrayMicResult = "PASS";
+                                writeTestResult();
                             }
                             else
                             {
-                                arrayMICTestResult_label.Text = "FAIL";
+                                // 结果位
+                                refreshTestResult_button_Click(null, null);
+                                testResults["测试结果"].ArrayMicResult = "FAIL";
+                                writeTestResult();
                             }
                         }
                         else if (Int32.Parse(backCode) == -1)

@@ -38,8 +38,6 @@
             this.poe2NetworkTest_button = new Sunny.UI.UIButton();
             this.poe1NetworkTest_button = new Sunny.UI.UIButton();
             this.groupBox7 = new Sunny.UI.UIGroupBox();
-            this.arrayMICTestResult_label = new Sunny.UI.UILabel();
-            this.uiLabel1 = new Sunny.UI.UILabel();
             this.stop_array_mic_audio_level_test_button = new Sunny.UI.UIButton();
             this.start_array_mic_audio_level_test_button = new Sunny.UI.UIButton();
             this.gain_array_mic_audio_level_button = new Sunny.UI.UIButton();
@@ -160,6 +158,8 @@
             this.network_test_label = new Sunny.UI.UILabel();
             this.uiLabel3 = new Sunny.UI.UILabel();
             this.uiGroupBox7 = new Sunny.UI.UIGroupBox();
+            this.uiLabel1 = new Sunny.UI.UILabel();
+            this.standardAudioVolume_textbox = new Sunny.UI.UITextBox();
             this.uiGroupBox1.SuspendLayout();
             this.uiGroupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -280,7 +280,7 @@
             // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.arrayMICTestResult_label);
+            this.groupBox7.Controls.Add(this.standardAudioVolume_textbox);
             this.groupBox7.Controls.Add(this.uiLabel1);
             this.groupBox7.Controls.Add(this.stop_array_mic_audio_level_test_button);
             this.groupBox7.Controls.Add(this.start_array_mic_audio_level_test_button);
@@ -314,31 +314,6 @@
             this.groupBox7.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.groupBox7.ZoomScaleDisabled = true;
             this.groupBox7.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // arrayMICTestResult_label
-            // 
-            this.arrayMICTestResult_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.arrayMICTestResult_label.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.arrayMICTestResult_label.Location = new System.Drawing.Point(257, 188);
-            this.arrayMICTestResult_label.Name = "arrayMICTestResult_label";
-            this.arrayMICTestResult_label.Size = new System.Drawing.Size(192, 29);
-            this.arrayMICTestResult_label.Style = Sunny.UI.UIStyle.Custom;
-            this.arrayMICTestResult_label.TabIndex = 40;
-            this.arrayMICTestResult_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.arrayMICTestResult_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // uiLabel1
-            // 
-            this.uiLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.uiLabel1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiLabel1.Location = new System.Drawing.Point(9, 188);
-            this.uiLabel1.Name = "uiLabel1";
-            this.uiLabel1.Size = new System.Drawing.Size(192, 29);
-            this.uiLabel1.Style = Sunny.UI.UIStyle.Custom;
-            this.uiLabel1.TabIndex = 39;
-            this.uiLabel1.Text = "阵列MIC测试结果：";
-            this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiLabel1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // stop_array_mic_audio_level_test_button
             // 
@@ -2126,6 +2101,34 @@
             this.uiGroupBox7.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.uiGroupBox7.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
+            // uiLabel1
+            // 
+            this.uiLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.uiLabel1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLabel1.Location = new System.Drawing.Point(3, 191);
+            this.uiLabel1.Name = "uiLabel1";
+            this.uiLabel1.Size = new System.Drawing.Size(192, 29);
+            this.uiLabel1.Style = Sunny.UI.UIStyle.Custom;
+            this.uiLabel1.TabIndex = 39;
+            this.uiLabel1.Text = "请输入标定音量值：";
+            this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiLabel1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // standardAudioVolume_textbox
+            // 
+            this.standardAudioVolume_textbox.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.standardAudioVolume_textbox.Location = new System.Drawing.Point(202, 189);
+            this.standardAudioVolume_textbox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.standardAudioVolume_textbox.MinimumSize = new System.Drawing.Size(1, 16);
+            this.standardAudioVolume_textbox.Name = "standardAudioVolume_textbox";
+            this.standardAudioVolume_textbox.ShowText = false;
+            this.standardAudioVolume_textbox.Size = new System.Drawing.Size(52, 36);
+            this.standardAudioVolume_textbox.Style = Sunny.UI.UIStyle.Custom;
+            this.standardAudioVolume_textbox.TabIndex = 40;
+            this.standardAudioVolume_textbox.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.standardAudioVolume_textbox.Watermark = "";
+            this.standardAudioVolume_textbox.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -2253,8 +2256,6 @@
         private Sunny.UI.UIButton clear_output_button;
         private Sunny.UI.UIButton audioIn2_test_button;
         private Sunny.UI.UIButton audioIn1_test_button;
-        private Sunny.UI.UILabel uiLabel1;
-        private Sunny.UI.UILabel arrayMICTestResult_label;
         private Sunny.UI.UILabel uiLabel2;
         private Sunny.UI.UIGroupBox uiGroupBox6;
         private Sunny.UI.UILabel uiLabel3;
@@ -2293,5 +2294,7 @@
         private Sunny.UI.UIButton openMergeCameraPASS_buttton;
         private Sunny.UI.UILabel threeCamera2_test_label;
         private Sunny.UI.UILabel uiLabel9;
+        private Sunny.UI.UILabel uiLabel1;
+        private Sunny.UI.UITextBox standardAudioVolume_textbox;
     }
 }
