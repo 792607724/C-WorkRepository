@@ -1,3 +1,4 @@
+using Sunny.UI;
 using Sunny.UI.Win32;
 using System.Diagnostics;
 using System.IO.Compression;
@@ -457,6 +458,7 @@ namespace SeewoTestTool
                         redGreenPASS_button.Enabled = false;
                         redGreenFAIL_button.Enabled = false;
                         getCurrentMacAddress_button.Enabled = false;
+                        beginResetTest_button.Enabled = false;
                         login_button.Text = "设备连接后\n可自动登录";
                     }
                     catch (Exception ex)
@@ -534,6 +536,7 @@ namespace SeewoTestTool
                             // 禁用相关功能，防止用户在升级的时候操作导致软件崩溃或者升级失败
                             uiGroupBox1.Enabled = false;
                             uiGroupBox7.Enabled = false;
+                            uiGroupBox9.Enabled = false;
                             // 使用后台线程去升级操作，防止UI阻塞卡死
                             upgrade_progressbar.Value = 0;
                             upgrade_button.Enabled = false;
@@ -1392,6 +1395,7 @@ namespace SeewoTestTool
                     output_rich_textbox.AppendText("设备重启完成！\n");
                     uiGroupBox1.Enabled = true;
                     uiGroupBox7.Enabled = true;
+                    uiGroupBox9.Enabled = true;
                     upgrade_progressbar.Value = 100;
                     check_current_firmware_button.Enabled = false;
                     upgrade_button.Enabled = false;
@@ -1415,6 +1419,7 @@ namespace SeewoTestTool
                     poe2NetworkTest_button.Enabled = false;
                     uiGroupBox1.Enabled = true;
                     uiGroupBox7.Enabled = true;
+                    uiGroupBox9.Enabled = true;
 
                     Thread.Sleep(3000);
                     // 这里升级完重启，需要重新连接设备，设备状态那边需要同步更新
@@ -1471,6 +1476,7 @@ namespace SeewoTestTool
                     device_connect_button_Click(null, null);
                     uiGroupBox1.Enabled = true;
                     uiGroupBox7.Enabled = true;
+                    uiGroupBox9.Enabled = true;
                 }
             }
             else
@@ -1737,6 +1743,7 @@ namespace SeewoTestTool
                             redGreenPASS_button.Enabled = true;
                             redGreenFAIL_button.Enabled = true;
                             getCurrentMacAddress_button.Enabled = true;
+                            beginResetTest_button.Enabled = true;
                             // 增加记住username和password功能
                             if (rememberCheckBox.Checked == true)
                             {
@@ -1962,6 +1969,7 @@ namespace SeewoTestTool
                         {
                             uiGroupBox1.Enabled = false;
                             uiGroupBox7.Enabled = false;
+                            uiGroupBox9.Enabled = false;
                             result = "成功";
                             thread_reboot1 = new Thread(waitForReboot);
                             thread_reboot1.IsBackground = true;
