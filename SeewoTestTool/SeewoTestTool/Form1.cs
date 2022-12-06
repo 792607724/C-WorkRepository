@@ -520,6 +520,7 @@ namespace SeewoTestTool
                 //if (true)
                 if (clientSocket != null && clientSocket.Connected)
                 {
+                    // 禁用相关功能，防止用户在升级的时候操作导致软件崩溃或者升级失败
                     uiGroupBox1.Enabled = false;
                     uiGroupBox7.Enabled = false;
                     string filePath = upgrade_firmware_textbox.Text;
