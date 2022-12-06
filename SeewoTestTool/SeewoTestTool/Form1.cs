@@ -448,6 +448,8 @@ namespace SeewoTestTool
                         openMergeCamera_buttton.Enabled = false;
                         clearInput_button.Enabled = false;
                         writeInMac_button.Enabled = false;
+                        beginAudioRecord_button.Enabled = false;
+                        extractRecordFile_button.Enabled = false;
                         login_button.Text = "设备连接后\n可自动登录";
                     }
                     catch (Exception ex)
@@ -1012,6 +1014,7 @@ namespace SeewoTestTool
             }
             else if (check_device_online())
             {
+                gain_array_mic_audio_level_button.Enabled = false;
                 // 每次获取MIC音频音量值需要先录制1s后获取
                 recordTime_textbox.Text = "1";
                 beginAudioRecord_button_Click(null, null);
@@ -1709,7 +1712,8 @@ namespace SeewoTestTool
                             audioIn2_test_button.Enabled = true;
                             clearInput_button.Enabled = true;
                             writeInMac_button.Enabled = true;
-
+                            beginAudioRecord_button.Enabled = true;
+                            extractRecordFile_button.Enabled = true;
                             // 增加记住username和password功能
                             if (rememberCheckBox.Checked == true)
                             {
@@ -2779,10 +2783,10 @@ namespace SeewoTestTool
                 output_rich_textbox.ForeColor = Color.Green;
                 output_rich_textbox.SelectionFont = font;
                 output_rich_textbox.AppendText("音频录制完成！\n");
-
+                beginAudioRecord_button.Enabled = true;
                 // 录制完成显示
                 recordingGif_label.Image = Image.FromFile("./img/recordingFinish.png");
-
+                gain_array_mic_audio_level_button.Enabled = true;
             }
         }
 
@@ -2803,6 +2807,7 @@ namespace SeewoTestTool
             }
             else if (check_device_online())
             {
+                beginAudioRecord_button.Enabled = false;
                 output_rich_textbox.AppendText("【执行操作】开始音频录制测试……\n");
                 if (clientSocket != null && clientSocket.Connected)
                 {
@@ -2824,6 +2829,8 @@ namespace SeewoTestTool
                     Thread.Sleep(int.Parse(duration));
                     audioRecord_t = null;
                     
+
+
                 }
                 else
                 {
@@ -2847,6 +2854,7 @@ namespace SeewoTestTool
                 output_rich_textbox.AppendText("【执行操作】导出录制文件……\n");
                 if (clientSocket != null && clientSocket.Connected)
                 {
+                    extractRecordFile_button.Enabled = false;
                     SaveFileDialog saveFileDialog = new SaveFileDialog();
                     saveFileDialog.Title = "请选择保存文件路径";
                     saveFileDialog.Filter = "音频文件(*.mp3;*.mid;*.wav;)|*.mp3;*.mid;*.wav;\"";
@@ -2863,7 +2871,6 @@ namespace SeewoTestTool
                         }
                         else
                         {
-
                             extractAudioFile_t = new Thread(DownloadFile);
                             extractAudioFile_t.IsBackground = true;
                             extractAudioFile_t.Start();
@@ -2871,6 +2878,7 @@ namespace SeewoTestTool
                     }
                     else
                     {
+                        extractRecordFile_button.Enabled = true;
                         return;
                     }
                 }
@@ -2938,6 +2946,7 @@ namespace SeewoTestTool
                 MessageBox.Show("录制文件导出完成", "温馨提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 recordingGif_label.Image = Image.FromFile("./img/recordingFinish.png");
                 extractAudioFile_t = null;
+                extractRecordFile_button.Enabled = true;
             }
             catch (Exception ex)
             {
@@ -2954,6 +2963,11 @@ namespace SeewoTestTool
                 {
                     response.Close();
                 }
+                if (extractAudioFile_t != null)
+                {
+                    extractAudioFile_t = null;
+                }
+                extractRecordFile_button.Enabled = true;
             }
         }
     }

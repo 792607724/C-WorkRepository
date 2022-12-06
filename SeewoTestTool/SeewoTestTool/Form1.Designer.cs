@@ -323,6 +323,7 @@
             // 
             // extractRecordFile_button
             // 
+            this.extractRecordFile_button.Enabled = false;
             this.extractRecordFile_button.Font = new System.Drawing.Font("微软雅黑", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.extractRecordFile_button.Location = new System.Drawing.Point(314, 189);
             this.extractRecordFile_button.MinimumSize = new System.Drawing.Size(1, 1);
@@ -378,6 +379,7 @@
             // 
             // beginAudioRecord_button
             // 
+            this.beginAudioRecord_button.Enabled = false;
             this.beginAudioRecord_button.Font = new System.Drawing.Font("微软雅黑", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.beginAudioRecord_button.Location = new System.Drawing.Point(9, 189);
             this.beginAudioRecord_button.MinimumSize = new System.Drawing.Size(1, 1);
@@ -1137,7 +1139,7 @@
             this.groupBox4.MinimumSize = new System.Drawing.Size(1, 1);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
-            this.groupBox4.Size = new System.Drawing.Size(212, 97);
+            this.groupBox4.Size = new System.Drawing.Size(212, 116);
             this.groupBox4.Style = Sunny.UI.UIStyle.Custom;
             this.groupBox4.TabIndex = 20;
             this.groupBox4.Text = "红绿指示灯控制";
@@ -1147,7 +1149,7 @@
             // redGreenFAIL_button
             // 
             this.redGreenFAIL_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.redGreenFAIL_button.Location = new System.Drawing.Point(107, 60);
+            this.redGreenFAIL_button.Location = new System.Drawing.Point(107, 78);
             this.redGreenFAIL_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.redGreenFAIL_button.Name = "redGreenFAIL_button";
             this.redGreenFAIL_button.Size = new System.Drawing.Size(99, 32);
@@ -1160,7 +1162,7 @@
             // redGreenPASS_button
             // 
             this.redGreenPASS_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.redGreenPASS_button.Location = new System.Drawing.Point(5, 60);
+            this.redGreenPASS_button.Location = new System.Drawing.Point(6, 78);
             this.redGreenPASS_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.redGreenPASS_button.Name = "redGreenPASS_button";
             this.redGreenPASS_button.Size = new System.Drawing.Size(99, 32);
@@ -1174,10 +1176,10 @@
             // 
             this.stop_rg_flicker_button.Enabled = false;
             this.stop_rg_flicker_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.stop_rg_flicker_button.Location = new System.Drawing.Point(108, 26);
+            this.stop_rg_flicker_button.Location = new System.Drawing.Point(108, 30);
             this.stop_rg_flicker_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.stop_rg_flicker_button.Name = "stop_rg_flicker_button";
-            this.stop_rg_flicker_button.Size = new System.Drawing.Size(99, 32);
+            this.stop_rg_flicker_button.Size = new System.Drawing.Size(99, 40);
             this.stop_rg_flicker_button.Style = Sunny.UI.UIStyle.Custom;
             this.stop_rg_flicker_button.TabIndex = 3;
             this.stop_rg_flicker_button.Text = "关闭交替闪烁";
@@ -1189,10 +1191,10 @@
             // 
             this.start_rg_flicker_button.Enabled = false;
             this.start_rg_flicker_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.start_rg_flicker_button.Location = new System.Drawing.Point(6, 26);
+            this.start_rg_flicker_button.Location = new System.Drawing.Point(6, 30);
             this.start_rg_flicker_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.start_rg_flicker_button.Name = "start_rg_flicker_button";
-            this.start_rg_flicker_button.Size = new System.Drawing.Size(99, 32);
+            this.start_rg_flicker_button.Size = new System.Drawing.Size(99, 40);
             this.start_rg_flicker_button.Style = Sunny.UI.UIStyle.Custom;
             this.start_rg_flicker_button.TabIndex = 2;
             this.start_rg_flicker_button.Text = "打开交替闪烁";
