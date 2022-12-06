@@ -520,9 +520,6 @@ namespace SeewoTestTool
                 //if (true)
                 if (clientSocket != null && clientSocket.Connected)
                 {
-                    // 禁用相关功能，防止用户在升级的时候操作导致软件崩溃或者升级失败
-                    uiGroupBox1.Enabled = false;
-                    uiGroupBox7.Enabled = false;
                     string filePath = upgrade_firmware_textbox.Text;
                     if (string.IsNullOrEmpty(filePath))
                     {
@@ -534,6 +531,9 @@ namespace SeewoTestTool
                         try
                         {
                             output_rich_textbox.AppendText("开始升级，请耐心等待完成！\n");
+                            // 禁用相关功能，防止用户在升级的时候操作导致软件崩溃或者升级失败
+                            uiGroupBox1.Enabled = false;
+                            uiGroupBox7.Enabled = false;
                             // 使用后台线程去升级操作，防止UI阻塞卡死
                             upgrade_progressbar.Value = 0;
                             upgrade_button.Enabled = false;
@@ -1465,7 +1465,7 @@ namespace SeewoTestTool
                 }
                 else
                 {
-                    MessageBox.Show("升级中断，无需升级或者升级失败，请检查！\n开始尝试重新连接设备，请稍等连接结果……");
+                    MessageBox.Show("升级中断，无需升级或者升级失败，请检查！\n开始尝试重新连接设备，请稍等连接结果……", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     output_rich_textbox.AppendText("升级中断，无需升级或者升级失败，请检查！\n开始尝试重新连接设备，请稍等连接结果……");
                     device_disconnect_button_Click(null, null);
                     device_connect_button_Click(null, null);
@@ -1952,8 +1952,6 @@ namespace SeewoTestTool
                 {
                     if (clientSocket != null && clientSocket.Connected)
                     {
-                        uiGroupBox1.Enabled = false;
-                        uiGroupBox7.Enabled = false;
                         // 重启设备操作
                         string fetchDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"control\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"reboot\\\"}}\"";
                         output_string = executeCMDCommand(fetchDeviceInfoCommand);
@@ -1962,6 +1960,8 @@ namespace SeewoTestTool
                         string result = "重启设备操作未执行成功";
                         if (back_code == "0")
                         {
+                            uiGroupBox1.Enabled = false;
+                            uiGroupBox7.Enabled = false;
                             result = "成功";
                             thread_reboot1 = new Thread(waitForReboot);
                             thread_reboot1.IsBackground = true;
@@ -3019,6 +3019,12 @@ namespace SeewoTestTool
 
         // 获取当前MAC地址
         private void getCurrentMacAddress_button_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        // 开始测试Reset按键
+        private void beginResetTest_button_Click(object sender, EventArgs e)
         {
 
         }

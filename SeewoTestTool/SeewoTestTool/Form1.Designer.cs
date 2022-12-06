@@ -168,6 +168,10 @@
             this.clearInput_button = new Sunny.UI.UIButton();
             this.macInput_textbox = new Sunny.UI.UITextBox();
             this.uiLabel11 = new Sunny.UI.UILabel();
+            this.uiGroupBox9 = new Sunny.UI.UIGroupBox();
+            this.resetTestClickResult_label = new Sunny.UI.UILabel();
+            this.uiLabel19 = new Sunny.UI.UILabel();
+            this.beginResetTest_button = new Sunny.UI.UIButton();
             this.uiGroupBox1.SuspendLayout();
             this.uiGroupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -182,6 +186,7 @@
             this.uiGroupBox3.SuspendLayout();
             this.uiGroupBox6.SuspendLayout();
             this.uiGroupBox7.SuspendLayout();
+            this.uiGroupBox9.SuspendLayout();
             this.SuspendLayout();
             // 
             // currentVersion_label
@@ -214,6 +219,7 @@
             // 
             // uiGroupBox1
             // 
+            this.uiGroupBox1.Controls.Add(this.uiGroupBox9);
             this.uiGroupBox1.Controls.Add(this.uiGroupBox8);
             this.uiGroupBox1.Controls.Add(this.groupBox7);
             this.uiGroupBox1.Controls.Add(this.groupBox10);
@@ -314,7 +320,7 @@
             this.groupBox7.Controls.Add(this.volume1_value_label);
             this.groupBox7.Controls.Add(this.label15);
             this.groupBox7.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox7.Location = new System.Drawing.Point(4, 386);
+            this.groupBox7.Location = new System.Drawing.Point(4, 383);
             this.groupBox7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox7.MinimumSize = new System.Drawing.Size(1, 1);
             this.groupBox7.Name = "groupBox7";
@@ -623,7 +629,7 @@
             this.groupBox10.Controls.Add(this.currentPCBA_textbox);
             this.groupBox10.Controls.Add(this.label14);
             this.groupBox10.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox10.Location = new System.Drawing.Point(4, 552);
+            this.groupBox10.Location = new System.Drawing.Point(4, 535);
             this.groupBox10.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox10.MinimumSize = new System.Drawing.Size(1, 1);
             this.groupBox10.Name = "groupBox10";
@@ -740,7 +746,7 @@
             this.uiGroupBox2.Controls.Add(this.currentSN_textbox);
             this.uiGroupBox2.Controls.Add(this.label9);
             this.uiGroupBox2.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiGroupBox2.Location = new System.Drawing.Point(483, 552);
+            this.uiGroupBox2.Location = new System.Drawing.Point(483, 535);
             this.uiGroupBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiGroupBox2.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiGroupBox2.Name = "uiGroupBox2";
@@ -852,7 +858,7 @@
             // 
             this.device_reset_button.Enabled = false;
             this.device_reset_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.device_reset_button.Location = new System.Drawing.Point(774, 478);
+            this.device_reset_button.Location = new System.Drawing.Point(773, 470);
             this.device_reset_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.device_reset_button.Name = "device_reset_button";
             this.device_reset_button.Radius = 20;
@@ -2321,6 +2327,65 @@
             this.uiLabel11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.uiLabel11.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
+            // uiGroupBox9
+            // 
+            this.uiGroupBox9.Controls.Add(this.resetTestClickResult_label);
+            this.uiGroupBox9.Controls.Add(this.uiLabel19);
+            this.uiGroupBox9.Controls.Add(this.beginResetTest_button);
+            this.uiGroupBox9.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiGroupBox9.Location = new System.Drawing.Point(4, 622);
+            this.uiGroupBox9.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiGroupBox9.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiGroupBox9.Name = "uiGroupBox9";
+            this.uiGroupBox9.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
+            this.uiGroupBox9.Radius = 20;
+            this.uiGroupBox9.Size = new System.Drawing.Size(953, 75);
+            this.uiGroupBox9.Style = Sunny.UI.UIStyle.Custom;
+            this.uiGroupBox9.TabIndex = 29;
+            this.uiGroupBox9.Text = "Reset按键测试";
+            this.uiGroupBox9.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.uiGroupBox9.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // resetTestClickResult_label
+            // 
+            this.resetTestClickResult_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.resetTestClickResult_label.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.resetTestClickResult_label.Location = new System.Drawing.Point(645, 32);
+            this.resetTestClickResult_label.Name = "resetTestClickResult_label";
+            this.resetTestClickResult_label.Size = new System.Drawing.Size(89, 29);
+            this.resetTestClickResult_label.Style = Sunny.UI.UIStyle.Custom;
+            this.resetTestClickResult_label.TabIndex = 45;
+            this.resetTestClickResult_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.resetTestClickResult_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // uiLabel19
+            // 
+            this.uiLabel19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.uiLabel19.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLabel19.Location = new System.Drawing.Point(9, 32);
+            this.uiLabel19.Name = "uiLabel19";
+            this.uiLabel19.Size = new System.Drawing.Size(598, 29);
+            this.uiLabel19.Style = Sunny.UI.UIStyle.Custom;
+            this.uiLabel19.TabIndex = 44;
+            this.uiLabel19.Text = "点击开始测试后，请手动按下板子的Reset键后松开，系统会自动检测Reset按下状态";
+            this.uiLabel19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiLabel19.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // beginResetTest_button
+            // 
+            this.beginResetTest_button.Enabled = false;
+            this.beginResetTest_button.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.beginResetTest_button.Location = new System.Drawing.Point(815, 28);
+            this.beginResetTest_button.MinimumSize = new System.Drawing.Size(1, 1);
+            this.beginResetTest_button.Name = "beginResetTest_button";
+            this.beginResetTest_button.Radius = 20;
+            this.beginResetTest_button.Size = new System.Drawing.Size(129, 37);
+            this.beginResetTest_button.Style = Sunny.UI.UIStyle.Custom;
+            this.beginResetTest_button.TabIndex = 43;
+            this.beginResetTest_button.Text = "开始测试";
+            this.beginResetTest_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.beginResetTest_button.Click += new System.EventHandler(this.beginResetTest_button_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -2353,6 +2418,7 @@
             this.uiGroupBox3.ResumeLayout(false);
             this.uiGroupBox6.ResumeLayout(false);
             this.uiGroupBox7.ResumeLayout(false);
+            this.uiGroupBox9.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2497,5 +2563,9 @@
         private Sunny.UI.UIButton extractRecordFile_button;
         private Sunny.UI.UIButton getCurrentMacAddress_button;
         private Sunny.UI.UILabel uiLabel2;
+        private Sunny.UI.UIGroupBox uiGroupBox9;
+        private Sunny.UI.UILabel resetTestClickResult_label;
+        private Sunny.UI.UILabel uiLabel19;
+        private Sunny.UI.UIButton beginResetTest_button;
     }
 }
