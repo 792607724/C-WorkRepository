@@ -123,7 +123,7 @@
             // software_version_get_uiButton2
             // 
             this.software_version_get_uiButton2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.software_version_get_uiButton2.Location = new System.Drawing.Point(603, 368);
+            this.software_version_get_uiButton2.Location = new System.Drawing.Point(603, 370);
             this.software_version_get_uiButton2.MinimumSize = new System.Drawing.Size(1, 1);
             this.software_version_get_uiButton2.Name = "software_version_get_uiButton2";
             this.software_version_get_uiButton2.Radius = 20;

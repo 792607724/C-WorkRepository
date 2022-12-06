@@ -325,7 +325,7 @@ namespace SeewoTestTool
         string software_version = "V2022_12_06_14_20_53";
         private void software_version_get_uiButton2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show($"当前软件版本：{software_version}");
+            MessageBox.Show($"当前软件版本：{software_version}","系统提示",MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
 
         /**
