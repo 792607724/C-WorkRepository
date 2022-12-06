@@ -1012,6 +1012,10 @@ namespace SeewoTestTool
             }
             else if (check_device_online())
             {
+                // 每次获取MIC音频音量值需要先录制1s后获取
+                recordTime_textbox.Text = "1";
+                beginAudioRecord_button_Click(null, null);
+
                 float standard_volume = float.Parse(standardAudioVolume_textbox.Text);
                 output_rich_textbox.AppendText("【执行操作】获取各路MIC音频音量值……\n");
                 if (clientSocket != null && clientSocket.Connected)
@@ -2817,7 +2821,7 @@ namespace SeewoTestTool
                     output_rich_textbox.SelectionFont = font;
                     output_rich_textbox.AppendText($"请稍等，正在录制音频中,录制时间【{duration}】秒……！\n");
                     recordingGif_label.Visible = true;
-                    Thread.Sleep(int.Parse(duration) + 1);
+                    Thread.Sleep(int.Parse(duration));
                     audioRecord_t = null;
                     
                 }
