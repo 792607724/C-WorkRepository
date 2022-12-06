@@ -112,6 +112,7 @@
             this.uiButton1.Location = new System.Drawing.Point(12, 13);
             this.uiButton1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiButton1.Name = "uiButton1";
+            this.uiButton1.Radius = 100;
             this.uiButton1.Size = new System.Drawing.Size(522, 421);
             this.uiButton1.Style = Sunny.UI.UIStyle.Custom;
             this.uiButton1.TabIndex = 7;
@@ -125,6 +126,7 @@
             this.software_version_get_uiButton2.Location = new System.Drawing.Point(603, 368);
             this.software_version_get_uiButton2.MinimumSize = new System.Drawing.Size(1, 1);
             this.software_version_get_uiButton2.Name = "software_version_get_uiButton2";
+            this.software_version_get_uiButton2.Radius = 20;
             this.software_version_get_uiButton2.Size = new System.Drawing.Size(125, 44);
             this.software_version_get_uiButton2.TabIndex = 8;
             this.software_version_get_uiButton2.Text = "软件版本";

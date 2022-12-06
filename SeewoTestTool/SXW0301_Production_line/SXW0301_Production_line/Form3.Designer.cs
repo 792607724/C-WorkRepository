@@ -62,6 +62,7 @@
             this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox1.MinimumSize = new System.Drawing.Size(1, 16);
             this.textBox1.Name = "textBox1";
+            this.textBox1.Radius = 20;
             this.textBox1.ShowText = false;
             this.textBox1.Size = new System.Drawing.Size(300, 41);
             this.textBox1.TabIndex = 7;
@@ -88,6 +89,7 @@
             this.button1.Location = new System.Drawing.Point(346, 567);
             this.button1.MinimumSize = new System.Drawing.Size(1, 1);
             this.button1.Name = "button1";
+            this.button1.Radius = 20;
             this.button1.Size = new System.Drawing.Size(151, 43);
             this.button1.TabIndex = 1;
             this.button1.Text = "播放";
@@ -102,6 +104,7 @@
             this.button2.Location = new System.Drawing.Point(503, 567);
             this.button2.MinimumSize = new System.Drawing.Size(1, 1);
             this.button2.Name = "button2";
+            this.button2.Radius = 20;
             this.button2.Size = new System.Drawing.Size(148, 43);
             this.button2.TabIndex = 1;
             this.button2.Text = "拍照检测";

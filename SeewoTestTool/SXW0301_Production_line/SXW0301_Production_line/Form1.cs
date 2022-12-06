@@ -81,7 +81,7 @@ namespace SXW0301_Production_line
         private unsafe void button1_Click(object sender, EventArgs e)
         {
             //播放1
-            string[] options1 = { ":network-caching=200", "--rtsp-frame-buffer-size=100000", ":rtsp-tcp", ":no-audio" };// { ":network-caching=100", ":rtsp -tcp", ":no-audio" }; //  --avcodec-hw={any,d3d11va,dxva2,none} 
+            string[] options1 = { ":network-caching=1000", ":rtsp-frame-buffer-size=1000000", ":rtsp-tcp", ":no-audio" };// { ":network-caching=100", ":rtsp -tcp", ":no-audio" }; //  --avcodec-hw={any,d3d11va,dxva2,none} 
             var videoUri1 = new Uri(textBox1.Text.Trim());
             //vlcControl1.Play(videoUri1, options1);
 
@@ -102,7 +102,7 @@ namespace SXW0301_Production_line
             else if(textBox2.Text.Trim() != textBox1.Text.Trim())
             {
                 //播放2
-                string[] options2 = { ":network-caching=500", ":rtsp-tcp", ":no-audio" };// { ":network-caching=100", ":rtsp -tcp", ":no-audio" }; //  --avcodec-hw={any,d3d11va,dxva2,none} 
+                string[] options2 = { ":network-caching=1000", ":rtsp-frame-buffer-size=1000000", ":rtsp-tcp", ":no-audio" };// { ":network-caching=100", ":rtsp -tcp", ":no-audio" }; //  --avcodec-hw={any,d3d11va,dxva2,none} 
                 var videoUri2 = new Uri(textBox2.Text.Trim());
                 //vlcControl2.Play(videoUri2, options2);
                 //MessageBox.Show("标定文件正在生成");
@@ -309,7 +309,6 @@ namespace SXW0301_Production_line
                 player_1_open.Start();
 
             }
-            
 
             /**
             string[] options1 = { ":network-caching=500", ":rtsp-tcp", ":no-audio" };// { ":network-caching=100", ":rtsp -tcp", ":no-audio" }; //  --avcodec-hw={any,d3d11va,dxva2,none} 

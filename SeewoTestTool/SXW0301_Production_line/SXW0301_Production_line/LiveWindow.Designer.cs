@@ -57,6 +57,7 @@
             this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox1.MinimumSize = new System.Drawing.Size(1, 16);
             this.textBox1.Name = "textBox1";
+            this.textBox1.Radius = 20;
             this.textBox1.ShowText = false;
             this.textBox1.Size = new System.Drawing.Size(475, 41);
             this.textBox1.TabIndex = 8;
@@ -72,6 +73,7 @@
             this.liveVideoPlay_button.Location = new System.Drawing.Point(486, 561);
             this.liveVideoPlay_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.liveVideoPlay_button.Name = "liveVideoPlay_button";
+            this.liveVideoPlay_button.Radius = 20;
             this.liveVideoPlay_button.Size = new System.Drawing.Size(481, 43);
             this.liveVideoPlay_button.TabIndex = 9;
             this.liveVideoPlay_button.Text = "播放";
@@ -91,6 +93,7 @@
             this.MaximumSize = new System.Drawing.Size(997, 660);
             this.MinimumSize = new System.Drawing.Size(997, 660);
             this.Name = "LiveWindow";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Live视频出流";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormClosingEvent);
             ((System.ComponentModel.ISupportInitialize)(this.vlcControl1)).EndInit();

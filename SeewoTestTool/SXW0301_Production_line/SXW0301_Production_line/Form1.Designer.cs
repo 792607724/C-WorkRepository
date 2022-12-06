@@ -89,6 +89,7 @@
             this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox1.MinimumSize = new System.Drawing.Size(1, 16);
             this.textBox1.Name = "textBox1";
+            this.textBox1.Radius = 20;
             this.textBox1.ShowText = false;
             this.textBox1.Size = new System.Drawing.Size(438, 60);
             this.textBox1.TabIndex = 2;
@@ -101,9 +102,10 @@
             // 
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button2.Location = new System.Drawing.Point(511, 637);
+            this.button2.Location = new System.Drawing.Point(511, 641);
             this.button2.MinimumSize = new System.Drawing.Size(1, 1);
             this.button2.Name = "button2";
+            this.button2.Radius = 20;
             this.button2.Size = new System.Drawing.Size(91, 52);
             this.button2.TabIndex = 9;
             this.button2.Text = "播放sec0";
@@ -115,9 +117,10 @@
             // 
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button1.Location = new System.Drawing.Point(650, 641);
+            this.button1.Location = new System.Drawing.Point(644, 641);
             this.button1.MinimumSize = new System.Drawing.Size(1, 1);
             this.button1.Name = "button1";
+            this.button1.Radius = 20;
             this.button1.Size = new System.Drawing.Size(201, 52);
             this.button1.TabIndex = 2;
             this.button1.Text = "标定";
@@ -129,9 +132,10 @@
             // 
             this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button3.Location = new System.Drawing.Point(870, 637);
+            this.button3.Location = new System.Drawing.Point(901, 641);
             this.button3.MinimumSize = new System.Drawing.Size(1, 1);
             this.button3.Name = "button3";
+            this.button3.Radius = 20;
             this.button3.Size = new System.Drawing.Size(90, 52);
             this.button3.TabIndex = 2;
             this.button3.Text = "播放sec1";
@@ -147,6 +151,7 @@
             this.textBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox2.MinimumSize = new System.Drawing.Size(1, 16);
             this.textBox2.Name = "textBox2";
+            this.textBox2.Radius = 20;
             this.textBox2.ShowText = false;
             this.textBox2.Size = new System.Drawing.Size(446, 60);
             this.textBox2.TabIndex = 2;

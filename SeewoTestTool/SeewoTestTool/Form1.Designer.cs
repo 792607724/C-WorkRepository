@@ -73,7 +73,6 @@
             this.currentSN_textbox = new Sunny.UI.UITextBox();
             this.label9 = new Sunny.UI.UILabel();
             this.device_reset_button = new Sunny.UI.UIButton();
-            this.rebootDevice_button = new Sunny.UI.UIButton();
             this.groupBox6 = new Sunny.UI.UIGroupBox();
             this.audioIn2_label = new Sunny.UI.UILabel();
             this.audioIn1_label = new Sunny.UI.UILabel();
@@ -92,6 +91,7 @@
             this.openLiveCamera_buttton = new Sunny.UI.UIButton();
             this.button2 = new Sunny.UI.UIButton();
             this.button1 = new Sunny.UI.UIButton();
+            this.rebootDevice_button = new Sunny.UI.UIButton();
             this.groupBox4 = new Sunny.UI.UIGroupBox();
             this.redGreenFAIL_button = new Sunny.UI.UIButton();
             this.redGreenPASS_button = new Sunny.UI.UIButton();
@@ -160,6 +160,8 @@
             this.network_test_label = new Sunny.UI.UILabel();
             this.uiLabel3 = new Sunny.UI.UILabel();
             this.uiGroupBox7 = new Sunny.UI.UIGroupBox();
+            this.uiLabel2 = new Sunny.UI.UILabel();
+            this.getCurrentMacAddress_button = new Sunny.UI.UIButton();
             this.macWriteResult_label = new Sunny.UI.UILabel();
             this.uiLabel13 = new Sunny.UI.UILabel();
             this.writeInMac_button = new Sunny.UI.UIButton();
@@ -217,9 +219,9 @@
             this.uiGroupBox1.Controls.Add(this.groupBox10);
             this.uiGroupBox1.Controls.Add(this.uiGroupBox2);
             this.uiGroupBox1.Controls.Add(this.device_reset_button);
-            this.uiGroupBox1.Controls.Add(this.rebootDevice_button);
             this.uiGroupBox1.Controls.Add(this.groupBox6);
             this.uiGroupBox1.Controls.Add(this.uiGroupBox4);
+            this.uiGroupBox1.Controls.Add(this.rebootDevice_button);
             this.uiGroupBox1.Controls.Add(this.groupBox4);
             this.uiGroupBox1.Controls.Add(this.groupBox3);
             this.uiGroupBox1.Controls.Add(this.uiGroupBox5);
@@ -230,6 +232,7 @@
             this.uiGroupBox1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiGroupBox1.Name = "uiGroupBox1";
             this.uiGroupBox1.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
+            this.uiGroupBox1.Radius = 20;
             this.uiGroupBox1.Size = new System.Drawing.Size(964, 703);
             this.uiGroupBox1.Style = Sunny.UI.UIStyle.Custom;
             this.uiGroupBox1.TabIndex = 11;
@@ -248,6 +251,7 @@
             this.uiGroupBox8.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiGroupBox8.Name = "uiGroupBox8";
             this.uiGroupBox8.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
+            this.uiGroupBox8.Radius = 20;
             this.uiGroupBox8.Size = new System.Drawing.Size(212, 60);
             this.uiGroupBox8.Style = Sunny.UI.UIStyle.Custom;
             this.uiGroupBox8.TabIndex = 28;
@@ -262,6 +266,7 @@
             this.poe2NetworkTest_button.Location = new System.Drawing.Point(107, 25);
             this.poe2NetworkTest_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.poe2NetworkTest_button.Name = "poe2NetworkTest_button";
+            this.poe2NetworkTest_button.Radius = 20;
             this.poe2NetworkTest_button.Size = new System.Drawing.Size(99, 32);
             this.poe2NetworkTest_button.Style = Sunny.UI.UIStyle.Custom;
             this.poe2NetworkTest_button.TabIndex = 7;
@@ -277,6 +282,7 @@
             this.poe1NetworkTest_button.Location = new System.Drawing.Point(5, 25);
             this.poe1NetworkTest_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.poe1NetworkTest_button.Name = "poe1NetworkTest_button";
+            this.poe1NetworkTest_button.Radius = 20;
             this.poe1NetworkTest_button.Size = new System.Drawing.Size(99, 32);
             this.poe1NetworkTest_button.Style = Sunny.UI.UIStyle.Custom;
             this.poe1NetworkTest_button.TabIndex = 6;
@@ -308,12 +314,13 @@
             this.groupBox7.Controls.Add(this.volume1_value_label);
             this.groupBox7.Controls.Add(this.label15);
             this.groupBox7.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox7.Location = new System.Drawing.Point(487, 379);
+            this.groupBox7.Location = new System.Drawing.Point(4, 386);
             this.groupBox7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox7.MinimumSize = new System.Drawing.Size(1, 1);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
-            this.groupBox7.Size = new System.Drawing.Size(471, 324);
+            this.groupBox7.Radius = 20;
+            this.groupBox7.Size = new System.Drawing.Size(762, 137);
             this.groupBox7.Style = Sunny.UI.UIStyle.Custom;
             this.groupBox7.TabIndex = 27;
             this.groupBox7.Text = "阵列MIC测试";
@@ -325,10 +332,11 @@
             // 
             this.extractRecordFile_button.Enabled = false;
             this.extractRecordFile_button.Font = new System.Drawing.Font("微软雅黑", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.extractRecordFile_button.Location = new System.Drawing.Point(314, 189);
+            this.extractRecordFile_button.Location = new System.Drawing.Point(620, 55);
             this.extractRecordFile_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.extractRecordFile_button.Name = "extractRecordFile_button";
-            this.extractRecordFile_button.Size = new System.Drawing.Size(142, 36);
+            this.extractRecordFile_button.Radius = 20;
+            this.extractRecordFile_button.Size = new System.Drawing.Size(132, 36);
             this.extractRecordFile_button.Style = Sunny.UI.UIStyle.Custom;
             this.extractRecordFile_button.TabIndex = 45;
             this.extractRecordFile_button.Text = "导出录制文件";
@@ -340,7 +348,7 @@
             this.recordingGif_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.recordingGif_label.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.recordingGif_label.Image = ((System.Drawing.Image)(resources.GetObject("recordingGif_label.Image")));
-            this.recordingGif_label.Location = new System.Drawing.Point(392, 142);
+            this.recordingGif_label.Location = new System.Drawing.Point(398, 53);
             this.recordingGif_label.Name = "recordingGif_label";
             this.recordingGif_label.Size = new System.Drawing.Size(59, 44);
             this.recordingGif_label.Style = Sunny.UI.UIStyle.Custom;
@@ -352,10 +360,11 @@
             // recordTime_textbox
             // 
             this.recordTime_textbox.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.recordTime_textbox.Location = new System.Drawing.Point(314, 148);
+            this.recordTime_textbox.Location = new System.Drawing.Point(320, 59);
             this.recordTime_textbox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.recordTime_textbox.MinimumSize = new System.Drawing.Size(1, 16);
             this.recordTime_textbox.Name = "recordTime_textbox";
+            this.recordTime_textbox.Radius = 20;
             this.recordTime_textbox.ShowText = false;
             this.recordTime_textbox.Size = new System.Drawing.Size(52, 36);
             this.recordTime_textbox.Style = Sunny.UI.UIStyle.Custom;
@@ -368,7 +377,7 @@
             // 
             this.uiLabel15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.uiLabel15.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiLabel15.Location = new System.Drawing.Point(3, 148);
+            this.uiLabel15.Location = new System.Drawing.Point(9, 59);
             this.uiLabel15.Name = "uiLabel15";
             this.uiLabel15.Size = new System.Drawing.Size(315, 29);
             this.uiLabel15.Style = Sunny.UI.UIStyle.Custom;
@@ -381,10 +390,11 @@
             // 
             this.beginAudioRecord_button.Enabled = false;
             this.beginAudioRecord_button.Font = new System.Drawing.Font("微软雅黑", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.beginAudioRecord_button.Location = new System.Drawing.Point(9, 189);
+            this.beginAudioRecord_button.Location = new System.Drawing.Point(475, 55);
             this.beginAudioRecord_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.beginAudioRecord_button.Name = "beginAudioRecord_button";
-            this.beginAudioRecord_button.Size = new System.Drawing.Size(291, 36);
+            this.beginAudioRecord_button.Radius = 20;
+            this.beginAudioRecord_button.Size = new System.Drawing.Size(132, 36);
             this.beginAudioRecord_button.Style = Sunny.UI.UIStyle.Custom;
             this.beginAudioRecord_button.TabIndex = 41;
             this.beginAudioRecord_button.Text = "开始录制";
@@ -394,12 +404,13 @@
             // standardAudioVolume_textbox
             // 
             this.standardAudioVolume_textbox.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.standardAudioVolume_textbox.Location = new System.Drawing.Point(319, 235);
+            this.standardAudioVolume_textbox.Location = new System.Drawing.Point(320, 103);
             this.standardAudioVolume_textbox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.standardAudioVolume_textbox.MinimumSize = new System.Drawing.Size(1, 16);
             this.standardAudioVolume_textbox.Name = "standardAudioVolume_textbox";
+            this.standardAudioVolume_textbox.Radius = 20;
             this.standardAudioVolume_textbox.ShowText = false;
-            this.standardAudioVolume_textbox.Size = new System.Drawing.Size(142, 36);
+            this.standardAudioVolume_textbox.Size = new System.Drawing.Size(137, 29);
             this.standardAudioVolume_textbox.Style = Sunny.UI.UIStyle.Custom;
             this.standardAudioVolume_textbox.TabIndex = 40;
             this.standardAudioVolume_textbox.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
@@ -410,7 +421,7 @@
             // 
             this.uiLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.uiLabel1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiLabel1.Location = new System.Drawing.Point(8, 235);
+            this.uiLabel1.Location = new System.Drawing.Point(9, 103);
             this.uiLabel1.Name = "uiLabel1";
             this.uiLabel1.Size = new System.Drawing.Size(192, 29);
             this.uiLabel1.Style = Sunny.UI.UIStyle.Custom;
@@ -423,10 +434,11 @@
             // 
             this.gain_array_mic_audio_level_button.Enabled = false;
             this.gain_array_mic_audio_level_button.Font = new System.Drawing.Font("微软雅黑", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.gain_array_mic_audio_level_button.Location = new System.Drawing.Point(9, 285);
+            this.gain_array_mic_audio_level_button.Location = new System.Drawing.Point(475, 103);
             this.gain_array_mic_audio_level_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.gain_array_mic_audio_level_button.Name = "gain_array_mic_audio_level_button";
-            this.gain_array_mic_audio_level_button.Size = new System.Drawing.Size(452, 36);
+            this.gain_array_mic_audio_level_button.Radius = 20;
+            this.gain_array_mic_audio_level_button.Size = new System.Drawing.Size(277, 29);
             this.gain_array_mic_audio_level_button.Style = Sunny.UI.UIStyle.Custom;
             this.gain_array_mic_audio_level_button.TabIndex = 36;
             this.gain_array_mic_audio_level_button.Text = "获取各路MIC音频音量值";
@@ -438,7 +450,7 @@
             // 
             this.volume8_value_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.volume8_value_label.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.volume8_value_label.Location = new System.Drawing.Point(392, 110);
+            this.volume8_value_label.Location = new System.Drawing.Point(545, 27);
             this.volume8_value_label.Name = "volume8_value_label";
             this.volume8_value_label.Size = new System.Drawing.Size(64, 20);
             this.volume8_value_label.Style = Sunny.UI.UIStyle.Custom;
@@ -452,12 +464,12 @@
             // 
             this.label23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.label23.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label23.Location = new System.Drawing.Point(257, 106);
+            this.label23.Location = new System.Drawing.Point(498, 23);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(138, 29);
+            this.label23.Size = new System.Drawing.Size(61, 29);
             this.label23.Style = Sunny.UI.UIStyle.Custom;
             this.label23.TabIndex = 34;
-            this.label23.Text = "rmsdb8音量值：";
+            this.label23.Text = "MIC5：";
             this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label23.ZoomScaleDisabled = true;
             this.label23.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
@@ -466,9 +478,9 @@
             // 
             this.volume4_value_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.volume4_value_label.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.volume4_value_label.Location = new System.Drawing.Point(137, 106);
+            this.volume4_value_label.Location = new System.Drawing.Point(692, 27);
             this.volume4_value_label.Name = "volume4_value_label";
-            this.volume4_value_label.Size = new System.Drawing.Size(64, 20);
+            this.volume4_value_label.Size = new System.Drawing.Size(67, 20);
             this.volume4_value_label.Style = Sunny.UI.UIStyle.Custom;
             this.volume4_value_label.TabIndex = 33;
             this.volume4_value_label.Text = "0";
@@ -480,12 +492,12 @@
             // 
             this.label21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.label21.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label21.Location = new System.Drawing.Point(8, 102);
+            this.label21.Location = new System.Drawing.Point(645, 23);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(138, 29);
+            this.label21.Size = new System.Drawing.Size(61, 29);
             this.label21.Style = Sunny.UI.UIStyle.Custom;
             this.label21.TabIndex = 32;
-            this.label21.Text = "rmsdb4音量值：";
+            this.label21.Text = "MIC6：";
             this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label21.ZoomScaleDisabled = true;
             this.label21.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
@@ -494,7 +506,7 @@
             // 
             this.volume6_value_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.volume6_value_label.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.volume6_value_label.Location = new System.Drawing.Point(392, 71);
+            this.volume6_value_label.Location = new System.Drawing.Point(289, 27);
             this.volume6_value_label.Name = "volume6_value_label";
             this.volume6_value_label.Size = new System.Drawing.Size(64, 20);
             this.volume6_value_label.Style = Sunny.UI.UIStyle.Custom;
@@ -508,12 +520,12 @@
             // 
             this.label27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.label27.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label27.Location = new System.Drawing.Point(257, 64);
+            this.label27.Location = new System.Drawing.Point(242, 23);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(138, 29);
+            this.label27.Size = new System.Drawing.Size(61, 29);
             this.label27.Style = Sunny.UI.UIStyle.Custom;
             this.label27.TabIndex = 26;
-            this.label27.Text = "rmsdb6音量值：";
+            this.label27.Text = "MIC3：";
             this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label27.ZoomScaleDisabled = true;
             this.label27.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
@@ -522,7 +534,7 @@
             // 
             this.volume2_value_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.volume2_value_label.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.volume2_value_label.Location = new System.Drawing.Point(137, 68);
+            this.volume2_value_label.Location = new System.Drawing.Point(407, 27);
             this.volume2_value_label.Name = "volume2_value_label";
             this.volume2_value_label.Size = new System.Drawing.Size(64, 20);
             this.volume2_value_label.Style = Sunny.UI.UIStyle.Custom;
@@ -536,12 +548,12 @@
             // 
             this.label17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.label17.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label17.Location = new System.Drawing.Point(9, 64);
+            this.label17.Location = new System.Drawing.Point(360, 23);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(138, 29);
+            this.label17.Size = new System.Drawing.Size(61, 29);
             this.label17.Style = Sunny.UI.UIStyle.Custom;
             this.label17.TabIndex = 24;
-            this.label17.Text = "rmsdb2音量值：";
+            this.label17.Text = "MIC4：";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label17.ZoomScaleDisabled = true;
             this.label17.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
@@ -550,7 +562,7 @@
             // 
             this.volume5_value_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.volume5_value_label.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.volume5_value_label.Location = new System.Drawing.Point(392, 28);
+            this.volume5_value_label.Location = new System.Drawing.Point(58, 27);
             this.volume5_value_label.Name = "volume5_value_label";
             this.volume5_value_label.Size = new System.Drawing.Size(64, 20);
             this.volume5_value_label.Style = Sunny.UI.UIStyle.Custom;
@@ -564,12 +576,12 @@
             // 
             this.label29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.label29.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label29.Location = new System.Drawing.Point(257, 24);
+            this.label29.Location = new System.Drawing.Point(8, 23);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(138, 29);
+            this.label29.Size = new System.Drawing.Size(61, 29);
             this.label29.Style = Sunny.UI.UIStyle.Custom;
             this.label29.TabIndex = 22;
-            this.label29.Text = "rmsdb5音量值：";
+            this.label29.Text = "MIC1：";
             this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label29.ZoomScaleDisabled = true;
             this.label29.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
@@ -578,7 +590,7 @@
             // 
             this.volume1_value_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.volume1_value_label.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.volume1_value_label.Location = new System.Drawing.Point(137, 28);
+            this.volume1_value_label.Location = new System.Drawing.Point(181, 27);
             this.volume1_value_label.Name = "volume1_value_label";
             this.volume1_value_label.Size = new System.Drawing.Size(64, 20);
             this.volume1_value_label.Style = Sunny.UI.UIStyle.Custom;
@@ -592,12 +604,12 @@
             // 
             this.label15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.label15.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label15.Location = new System.Drawing.Point(8, 24);
+            this.label15.Location = new System.Drawing.Point(130, 23);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(138, 29);
+            this.label15.Size = new System.Drawing.Size(61, 29);
             this.label15.Style = Sunny.UI.UIStyle.Custom;
             this.label15.TabIndex = 20;
-            this.label15.Text = "rmsdb1音量值：";
+            this.label15.Text = "MIC2：";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label15.ZoomScaleDisabled = true;
             this.label15.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
@@ -611,12 +623,13 @@
             this.groupBox10.Controls.Add(this.currentPCBA_textbox);
             this.groupBox10.Controls.Add(this.label14);
             this.groupBox10.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox10.Location = new System.Drawing.Point(4, 533);
+            this.groupBox10.Location = new System.Drawing.Point(4, 526);
             this.groupBox10.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox10.MinimumSize = new System.Drawing.Size(1, 1);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
-            this.groupBox10.Size = new System.Drawing.Size(475, 79);
+            this.groupBox10.Radius = 20;
+            this.groupBox10.Size = new System.Drawing.Size(475, 86);
             this.groupBox10.Style = Sunny.UI.UIStyle.Custom;
             this.groupBox10.TabIndex = 26;
             this.groupBox10.Text = "PCBA号刷写";
@@ -628,9 +641,10 @@
             // 
             this.writeInPCBA_button.Enabled = false;
             this.writeInPCBA_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.writeInPCBA_button.Location = new System.Drawing.Point(325, 49);
+            this.writeInPCBA_button.Location = new System.Drawing.Point(325, 55);
             this.writeInPCBA_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.writeInPCBA_button.Name = "writeInPCBA_button";
+            this.writeInPCBA_button.Radius = 20;
             this.writeInPCBA_button.Size = new System.Drawing.Size(146, 24);
             this.writeInPCBA_button.Style = Sunny.UI.UIStyle.Custom;
             this.writeInPCBA_button.TabIndex = 5;
@@ -642,10 +656,11 @@
             // writeINPCBA_textbox
             // 
             this.writeINPCBA_textbox.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.writeINPCBA_textbox.Location = new System.Drawing.Point(110, 49);
+            this.writeINPCBA_textbox.Location = new System.Drawing.Point(110, 55);
             this.writeINPCBA_textbox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.writeINPCBA_textbox.MinimumSize = new System.Drawing.Size(1, 16);
             this.writeINPCBA_textbox.Name = "writeINPCBA_textbox";
+            this.writeINPCBA_textbox.Radius = 20;
             this.writeINPCBA_textbox.ShowText = false;
             this.writeINPCBA_textbox.Size = new System.Drawing.Size(210, 22);
             this.writeINPCBA_textbox.Style = Sunny.UI.UIStyle.Custom;
@@ -659,7 +674,7 @@
             // 
             this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.label13.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label13.Location = new System.Drawing.Point(2, 46);
+            this.label13.Location = new System.Drawing.Point(2, 52);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(112, 20);
             this.label13.Style = Sunny.UI.UIStyle.Custom;
@@ -676,6 +691,7 @@
             this.getCurrentPCBA_button.Location = new System.Drawing.Point(325, 24);
             this.getCurrentPCBA_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.getCurrentPCBA_button.Name = "getCurrentPCBA_button";
+            this.getCurrentPCBA_button.Radius = 20;
             this.getCurrentPCBA_button.Size = new System.Drawing.Size(146, 24);
             this.getCurrentPCBA_button.Style = Sunny.UI.UIStyle.Custom;
             this.getCurrentPCBA_button.TabIndex = 2;
@@ -691,6 +707,7 @@
             this.currentPCBA_textbox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.currentPCBA_textbox.MinimumSize = new System.Drawing.Size(1, 16);
             this.currentPCBA_textbox.Name = "currentPCBA_textbox";
+            this.currentPCBA_textbox.Radius = 20;
             this.currentPCBA_textbox.ShowText = false;
             this.currentPCBA_textbox.Size = new System.Drawing.Size(210, 22);
             this.currentPCBA_textbox.Style = Sunny.UI.UIStyle.Custom;
@@ -723,11 +740,12 @@
             this.uiGroupBox2.Controls.Add(this.currentSN_textbox);
             this.uiGroupBox2.Controls.Add(this.label9);
             this.uiGroupBox2.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiGroupBox2.Location = new System.Drawing.Point(2, 614);
+            this.uiGroupBox2.Location = new System.Drawing.Point(483, 526);
             this.uiGroupBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiGroupBox2.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiGroupBox2.Name = "uiGroupBox2";
             this.uiGroupBox2.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
+            this.uiGroupBox2.Radius = 20;
             this.uiGroupBox2.Size = new System.Drawing.Size(477, 87);
             this.uiGroupBox2.Style = Sunny.UI.UIStyle.Custom;
             this.uiGroupBox2.TabIndex = 3;
@@ -743,6 +761,7 @@
             this.writeIn_button.Location = new System.Drawing.Point(327, 57);
             this.writeIn_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.writeIn_button.Name = "writeIn_button";
+            this.writeIn_button.Radius = 20;
             this.writeIn_button.Size = new System.Drawing.Size(146, 24);
             this.writeIn_button.Style = Sunny.UI.UIStyle.Custom;
             this.writeIn_button.TabIndex = 4;
@@ -758,6 +777,7 @@
             this.writeInSN_textbox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.writeInSN_textbox.MinimumSize = new System.Drawing.Size(1, 16);
             this.writeInSN_textbox.Name = "writeInSN_textbox";
+            this.writeInSN_textbox.Radius = 20;
             this.writeInSN_textbox.ShowText = false;
             this.writeInSN_textbox.Size = new System.Drawing.Size(210, 22);
             this.writeInSN_textbox.Style = Sunny.UI.UIStyle.Custom;
@@ -785,9 +805,10 @@
             // 
             this.getCurrentSN_button.Enabled = false;
             this.getCurrentSN_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.getCurrentSN_button.Location = new System.Drawing.Point(327, 32);
+            this.getCurrentSN_button.Location = new System.Drawing.Point(327, 24);
             this.getCurrentSN_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.getCurrentSN_button.Name = "getCurrentSN_button";
+            this.getCurrentSN_button.Radius = 20;
             this.getCurrentSN_button.Size = new System.Drawing.Size(146, 24);
             this.getCurrentSN_button.Style = Sunny.UI.UIStyle.Custom;
             this.getCurrentSN_button.TabIndex = 2;
@@ -799,10 +820,11 @@
             // currentSN_textbox
             // 
             this.currentSN_textbox.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.currentSN_textbox.Location = new System.Drawing.Point(112, 32);
+            this.currentSN_textbox.Location = new System.Drawing.Point(112, 24);
             this.currentSN_textbox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.currentSN_textbox.MinimumSize = new System.Drawing.Size(1, 16);
             this.currentSN_textbox.Name = "currentSN_textbox";
+            this.currentSN_textbox.Radius = 20;
             this.currentSN_textbox.ShowText = false;
             this.currentSN_textbox.Size = new System.Drawing.Size(210, 22);
             this.currentSN_textbox.Style = Sunny.UI.UIStyle.Custom;
@@ -816,7 +838,7 @@
             // 
             this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.label9.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(4, 32);
+            this.label9.Location = new System.Drawing.Point(4, 24);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(114, 25);
             this.label9.Style = Sunny.UI.UIStyle.Custom;
@@ -830,31 +852,17 @@
             // 
             this.device_reset_button.Enabled = false;
             this.device_reset_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.device_reset_button.Location = new System.Drawing.Point(236, 511);
+            this.device_reset_button.Location = new System.Drawing.Point(773, 457);
             this.device_reset_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.device_reset_button.Name = "device_reset_button";
-            this.device_reset_button.Size = new System.Drawing.Size(218, 22);
+            this.device_reset_button.Radius = 20;
+            this.device_reset_button.Size = new System.Drawing.Size(183, 66);
             this.device_reset_button.Style = Sunny.UI.UIStyle.Custom;
             this.device_reset_button.TabIndex = 25;
             this.device_reset_button.Text = "恢复出厂设置";
             this.device_reset_button.ZoomScaleDisabled = true;
             this.device_reset_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.device_reset_button.Click += new System.EventHandler(this.device_reset_button_Click);
-            // 
-            // rebootDevice_button
-            // 
-            this.rebootDevice_button.Enabled = false;
-            this.rebootDevice_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.rebootDevice_button.Location = new System.Drawing.Point(15, 511);
-            this.rebootDevice_button.MinimumSize = new System.Drawing.Size(1, 1);
-            this.rebootDevice_button.Name = "rebootDevice_button";
-            this.rebootDevice_button.Size = new System.Drawing.Size(218, 22);
-            this.rebootDevice_button.Style = Sunny.UI.UIStyle.Custom;
-            this.rebootDevice_button.TabIndex = 24;
-            this.rebootDevice_button.Text = "重启设备";
-            this.rebootDevice_button.ZoomScaleDisabled = true;
-            this.rebootDevice_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            this.rebootDevice_button.Click += new System.EventHandler(this.rebootDevice_button_Click);
             // 
             // groupBox6
             // 
@@ -867,12 +875,13 @@
             this.groupBox6.Controls.Add(this.label18);
             this.groupBox6.Controls.Add(this.label16);
             this.groupBox6.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox6.Location = new System.Drawing.Point(6, 385);
+            this.groupBox6.Location = new System.Drawing.Point(487, 242);
             this.groupBox6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox6.MinimumSize = new System.Drawing.Size(1, 1);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
-            this.groupBox6.Size = new System.Drawing.Size(470, 123);
+            this.groupBox6.Radius = 20;
+            this.groupBox6.Size = new System.Drawing.Size(470, 141);
             this.groupBox6.Style = Sunny.UI.UIStyle.Custom;
             this.groupBox6.TabIndex = 23;
             this.groupBox6.Text = "Audio IN测试";
@@ -884,7 +893,7 @@
             // 
             this.audioIn2_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.audioIn2_label.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.audioIn2_label.Location = new System.Drawing.Point(195, 55);
+            this.audioIn2_label.Location = new System.Drawing.Point(195, 63);
             this.audioIn2_label.Name = "audioIn2_label";
             this.audioIn2_label.Size = new System.Drawing.Size(64, 20);
             this.audioIn2_label.Style = Sunny.UI.UIStyle.Custom;
@@ -911,10 +920,11 @@
             // audioInTestStandard_textbox
             // 
             this.audioInTestStandard_textbox.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.audioInTestStandard_textbox.Location = new System.Drawing.Point(283, 82);
+            this.audioInTestStandard_textbox.Location = new System.Drawing.Point(283, 96);
             this.audioInTestStandard_textbox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.audioInTestStandard_textbox.MinimumSize = new System.Drawing.Size(1, 16);
             this.audioInTestStandard_textbox.Name = "audioInTestStandard_textbox";
+            this.audioInTestStandard_textbox.Radius = 20;
             this.audioInTestStandard_textbox.ShowText = false;
             this.audioInTestStandard_textbox.Size = new System.Drawing.Size(178, 36);
             this.audioInTestStandard_textbox.Style = Sunny.UI.UIStyle.Custom;
@@ -927,7 +937,7 @@
             // 
             this.uiLabel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.uiLabel4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiLabel4.Location = new System.Drawing.Point(6, 85);
+            this.uiLabel4.Location = new System.Drawing.Point(6, 99);
             this.uiLabel4.Name = "uiLabel4";
             this.uiLabel4.Size = new System.Drawing.Size(192, 29);
             this.uiLabel4.Style = Sunny.UI.UIStyle.Custom;
@@ -940,9 +950,10 @@
             // 
             this.audioIn2_test_button.Enabled = false;
             this.audioIn2_test_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.audioIn2_test_button.Location = new System.Drawing.Point(283, 53);
+            this.audioIn2_test_button.Location = new System.Drawing.Point(283, 61);
             this.audioIn2_test_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.audioIn2_test_button.Name = "audioIn2_test_button";
+            this.audioIn2_test_button.Radius = 20;
             this.audioIn2_test_button.Size = new System.Drawing.Size(178, 24);
             this.audioIn2_test_button.Style = Sunny.UI.UIStyle.Custom;
             this.audioIn2_test_button.TabIndex = 11;
@@ -957,6 +968,7 @@
             this.audioIn1_test_button.Location = new System.Drawing.Point(283, 23);
             this.audioIn1_test_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.audioIn1_test_button.Name = "audioIn1_test_button";
+            this.audioIn1_test_button.Radius = 20;
             this.audioIn1_test_button.Size = new System.Drawing.Size(178, 24);
             this.audioIn1_test_button.Style = Sunny.UI.UIStyle.Custom;
             this.audioIn1_test_button.TabIndex = 10;
@@ -968,7 +980,7 @@
             // 
             this.label18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.label18.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label18.Location = new System.Drawing.Point(3, 56);
+            this.label18.Location = new System.Drawing.Point(3, 64);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(165, 19);
             this.label18.Style = Sunny.UI.UIStyle.Custom;
@@ -1008,6 +1020,7 @@
             this.uiGroupBox4.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiGroupBox4.Name = "uiGroupBox4";
             this.uiGroupBox4.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
+            this.uiGroupBox4.Radius = 20;
             this.uiGroupBox4.Size = new System.Drawing.Size(262, 175);
             this.uiGroupBox4.Style = Sunny.UI.UIStyle.Custom;
             this.uiGroupBox4.TabIndex = 22;
@@ -1017,10 +1030,12 @@
             // 
             // openMergeCameraFAIL_buttton
             // 
+            this.openMergeCameraFAIL_buttton.Enabled = false;
             this.openMergeCameraFAIL_buttton.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.openMergeCameraFAIL_buttton.Location = new System.Drawing.Point(135, 145);
             this.openMergeCameraFAIL_buttton.MinimumSize = new System.Drawing.Size(1, 1);
             this.openMergeCameraFAIL_buttton.Name = "openMergeCameraFAIL_buttton";
+            this.openMergeCameraFAIL_buttton.Radius = 20;
             this.openMergeCameraFAIL_buttton.Size = new System.Drawing.Size(120, 25);
             this.openMergeCameraFAIL_buttton.Style = Sunny.UI.UIStyle.Custom;
             this.openMergeCameraFAIL_buttton.TabIndex = 30;
@@ -1030,10 +1045,12 @@
             // 
             // openMergeCameraPASS_buttton
             // 
+            this.openMergeCameraPASS_buttton.Enabled = false;
             this.openMergeCameraPASS_buttton.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.openMergeCameraPASS_buttton.Location = new System.Drawing.Point(3, 145);
             this.openMergeCameraPASS_buttton.MinimumSize = new System.Drawing.Size(1, 1);
             this.openMergeCameraPASS_buttton.Name = "openMergeCameraPASS_buttton";
+            this.openMergeCameraPASS_buttton.Radius = 20;
             this.openMergeCameraPASS_buttton.Size = new System.Drawing.Size(120, 25);
             this.openMergeCameraPASS_buttton.Style = Sunny.UI.UIStyle.Custom;
             this.openMergeCameraPASS_buttton.TabIndex = 29;
@@ -1043,10 +1060,12 @@
             // 
             // openLiveCameraFAIL_buttton
             // 
+            this.openLiveCameraFAIL_buttton.Enabled = false;
             this.openLiveCameraFAIL_buttton.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.openLiveCameraFAIL_buttton.Location = new System.Drawing.Point(135, 89);
             this.openLiveCameraFAIL_buttton.MinimumSize = new System.Drawing.Size(1, 1);
             this.openLiveCameraFAIL_buttton.Name = "openLiveCameraFAIL_buttton";
+            this.openLiveCameraFAIL_buttton.Radius = 20;
             this.openLiveCameraFAIL_buttton.Size = new System.Drawing.Size(120, 25);
             this.openLiveCameraFAIL_buttton.Style = Sunny.UI.UIStyle.Custom;
             this.openLiveCameraFAIL_buttton.TabIndex = 28;
@@ -1056,10 +1075,12 @@
             // 
             // openLiveCameraPASS_buttton
             // 
+            this.openLiveCameraPASS_buttton.Enabled = false;
             this.openLiveCameraPASS_buttton.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.openLiveCameraPASS_buttton.Location = new System.Drawing.Point(3, 89);
             this.openLiveCameraPASS_buttton.MinimumSize = new System.Drawing.Size(1, 1);
             this.openLiveCameraPASS_buttton.Name = "openLiveCameraPASS_buttton";
+            this.openLiveCameraPASS_buttton.Radius = 20;
             this.openLiveCameraPASS_buttton.Size = new System.Drawing.Size(120, 25);
             this.openLiveCameraPASS_buttton.Style = Sunny.UI.UIStyle.Custom;
             this.openLiveCameraPASS_buttton.TabIndex = 27;
@@ -1074,6 +1095,7 @@
             this.openMergeCamera_buttton.Location = new System.Drawing.Point(3, 118);
             this.openMergeCamera_buttton.MinimumSize = new System.Drawing.Size(1, 1);
             this.openMergeCamera_buttton.Name = "openMergeCamera_buttton";
+            this.openMergeCamera_buttton.Radius = 20;
             this.openMergeCamera_buttton.Size = new System.Drawing.Size(252, 25);
             this.openMergeCamera_buttton.Style = Sunny.UI.UIStyle.Custom;
             this.openMergeCamera_buttton.TabIndex = 26;
@@ -1089,6 +1111,7 @@
             this.openLiveCamera_buttton.Location = new System.Drawing.Point(3, 61);
             this.openLiveCamera_buttton.MinimumSize = new System.Drawing.Size(1, 1);
             this.openLiveCamera_buttton.Name = "openLiveCamera_buttton";
+            this.openLiveCamera_buttton.Radius = 20;
             this.openLiveCamera_buttton.Size = new System.Drawing.Size(252, 25);
             this.openLiveCamera_buttton.Style = Sunny.UI.UIStyle.Custom;
             this.openLiveCamera_buttton.TabIndex = 25;
@@ -1104,6 +1127,7 @@
             this.button2.Location = new System.Drawing.Point(135, 25);
             this.button2.MinimumSize = new System.Drawing.Size(1, 1);
             this.button2.Name = "button2";
+            this.button2.Radius = 20;
             this.button2.Size = new System.Drawing.Size(120, 32);
             this.button2.Style = Sunny.UI.UIStyle.Custom;
             this.button2.TabIndex = 24;
@@ -1119,6 +1143,7 @@
             this.button1.Location = new System.Drawing.Point(3, 25);
             this.button1.MinimumSize = new System.Drawing.Size(1, 1);
             this.button1.Name = "button1";
+            this.button1.Radius = 20;
             this.button1.Size = new System.Drawing.Size(120, 32);
             this.button1.Style = Sunny.UI.UIStyle.Custom;
             this.button1.TabIndex = 23;
@@ -1126,6 +1151,22 @@
             this.button1.ZoomScaleDisabled = true;
             this.button1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // rebootDevice_button
+            // 
+            this.rebootDevice_button.Enabled = false;
+            this.rebootDevice_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.rebootDevice_button.Location = new System.Drawing.Point(773, 385);
+            this.rebootDevice_button.MinimumSize = new System.Drawing.Size(1, 1);
+            this.rebootDevice_button.Name = "rebootDevice_button";
+            this.rebootDevice_button.Radius = 20;
+            this.rebootDevice_button.Size = new System.Drawing.Size(183, 66);
+            this.rebootDevice_button.Style = Sunny.UI.UIStyle.Custom;
+            this.rebootDevice_button.TabIndex = 24;
+            this.rebootDevice_button.Text = "重启设备";
+            this.rebootDevice_button.ZoomScaleDisabled = true;
+            this.rebootDevice_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.rebootDevice_button.Click += new System.EventHandler(this.rebootDevice_button_Click);
             // 
             // groupBox4
             // 
@@ -1139,6 +1180,7 @@
             this.groupBox4.MinimumSize = new System.Drawing.Size(1, 1);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
+            this.groupBox4.Radius = 20;
             this.groupBox4.Size = new System.Drawing.Size(212, 116);
             this.groupBox4.Style = Sunny.UI.UIStyle.Custom;
             this.groupBox4.TabIndex = 20;
@@ -1148,10 +1190,12 @@
             // 
             // redGreenFAIL_button
             // 
+            this.redGreenFAIL_button.Enabled = false;
             this.redGreenFAIL_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.redGreenFAIL_button.Location = new System.Drawing.Point(107, 78);
             this.redGreenFAIL_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.redGreenFAIL_button.Name = "redGreenFAIL_button";
+            this.redGreenFAIL_button.Radius = 20;
             this.redGreenFAIL_button.Size = new System.Drawing.Size(99, 32);
             this.redGreenFAIL_button.Style = Sunny.UI.UIStyle.Custom;
             this.redGreenFAIL_button.TabIndex = 5;
@@ -1161,10 +1205,12 @@
             // 
             // redGreenPASS_button
             // 
+            this.redGreenPASS_button.Enabled = false;
             this.redGreenPASS_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.redGreenPASS_button.Location = new System.Drawing.Point(6, 78);
             this.redGreenPASS_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.redGreenPASS_button.Name = "redGreenPASS_button";
+            this.redGreenPASS_button.Radius = 20;
             this.redGreenPASS_button.Size = new System.Drawing.Size(99, 32);
             this.redGreenPASS_button.Style = Sunny.UI.UIStyle.Custom;
             this.redGreenPASS_button.TabIndex = 4;
@@ -1179,6 +1225,7 @@
             this.stop_rg_flicker_button.Location = new System.Drawing.Point(108, 30);
             this.stop_rg_flicker_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.stop_rg_flicker_button.Name = "stop_rg_flicker_button";
+            this.stop_rg_flicker_button.Radius = 20;
             this.stop_rg_flicker_button.Size = new System.Drawing.Size(99, 40);
             this.stop_rg_flicker_button.Style = Sunny.UI.UIStyle.Custom;
             this.stop_rg_flicker_button.TabIndex = 3;
@@ -1194,6 +1241,7 @@
             this.start_rg_flicker_button.Location = new System.Drawing.Point(6, 30);
             this.start_rg_flicker_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.start_rg_flicker_button.Name = "start_rg_flicker_button";
+            this.start_rg_flicker_button.Radius = 20;
             this.start_rg_flicker_button.Size = new System.Drawing.Size(99, 40);
             this.start_rg_flicker_button.Style = Sunny.UI.UIStyle.Custom;
             this.start_rg_flicker_button.TabIndex = 2;
@@ -1220,6 +1268,7 @@
             this.groupBox3.MinimumSize = new System.Drawing.Size(1, 1);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
+            this.groupBox3.Radius = 20;
             this.groupBox3.Size = new System.Drawing.Size(471, 206);
             this.groupBox3.Style = Sunny.UI.UIStyle.Custom;
             this.groupBox3.TabIndex = 20;
@@ -1235,6 +1284,7 @@
             this.upgrade_button.Location = new System.Drawing.Point(9, 170);
             this.upgrade_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.upgrade_button.Name = "upgrade_button";
+            this.upgrade_button.Radius = 20;
             this.upgrade_button.Size = new System.Drawing.Size(455, 28);
             this.upgrade_button.Style = Sunny.UI.UIStyle.Custom;
             this.upgrade_button.TabIndex = 19;
@@ -1249,6 +1299,7 @@
             this.upgrade_progressbar.Location = new System.Drawing.Point(9, 134);
             this.upgrade_progressbar.MinimumSize = new System.Drawing.Size(70, 3);
             this.upgrade_progressbar.Name = "upgrade_progressbar";
+            this.upgrade_progressbar.Radius = 20;
             this.upgrade_progressbar.Size = new System.Drawing.Size(455, 30);
             this.upgrade_progressbar.Style = Sunny.UI.UIStyle.Custom;
             this.upgrade_progressbar.TabIndex = 18;
@@ -1263,6 +1314,7 @@
             this.gainCurrentVersion_button.Location = new System.Drawing.Point(324, 100);
             this.gainCurrentVersion_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.gainCurrentVersion_button.Name = "gainCurrentVersion_button";
+            this.gainCurrentVersion_button.Radius = 20;
             this.gainCurrentVersion_button.Size = new System.Drawing.Size(140, 28);
             this.gainCurrentVersion_button.Style = Sunny.UI.UIStyle.Custom;
             this.gainCurrentVersion_button.TabIndex = 17;
@@ -1292,6 +1344,7 @@
             this.check_current_firmware_button.Location = new System.Drawing.Point(324, 67);
             this.check_current_firmware_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.check_current_firmware_button.Name = "check_current_firmware_button";
+            this.check_current_firmware_button.Radius = 20;
             this.check_current_firmware_button.Size = new System.Drawing.Size(140, 28);
             this.check_current_firmware_button.Style = Sunny.UI.UIStyle.Custom;
             this.check_current_firmware_button.TabIndex = 15;
@@ -1307,6 +1360,7 @@
             this.checked_firmware_textbox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.checked_firmware_textbox.MinimumSize = new System.Drawing.Size(1, 16);
             this.checked_firmware_textbox.Name = "checked_firmware_textbox";
+            this.checked_firmware_textbox.Radius = 20;
             this.checked_firmware_textbox.ShowText = false;
             this.checked_firmware_textbox.Size = new System.Drawing.Size(309, 27);
             this.checked_firmware_textbox.Style = Sunny.UI.UIStyle.Custom;
@@ -1322,6 +1376,7 @@
             this.choose_upgrade_firmware_button.Location = new System.Drawing.Point(324, 31);
             this.choose_upgrade_firmware_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.choose_upgrade_firmware_button.Name = "choose_upgrade_firmware_button";
+            this.choose_upgrade_firmware_button.Radius = 20;
             this.choose_upgrade_firmware_button.Size = new System.Drawing.Size(140, 28);
             this.choose_upgrade_firmware_button.Style = Sunny.UI.UIStyle.Custom;
             this.choose_upgrade_firmware_button.TabIndex = 13;
@@ -1337,6 +1392,7 @@
             this.upgrade_firmware_textbox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.upgrade_firmware_textbox.MinimumSize = new System.Drawing.Size(1, 16);
             this.upgrade_firmware_textbox.Name = "upgrade_firmware_textbox";
+            this.upgrade_firmware_textbox.Radius = 20;
             this.upgrade_firmware_textbox.ShowText = false;
             this.upgrade_firmware_textbox.Size = new System.Drawing.Size(220, 28);
             this.upgrade_firmware_textbox.Style = Sunny.UI.UIStyle.Custom;
@@ -1385,6 +1441,7 @@
             this.uiGroupBox5.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiGroupBox5.Name = "uiGroupBox5";
             this.uiGroupBox5.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
+            this.uiGroupBox5.Radius = 20;
             this.uiGroupBox5.Size = new System.Drawing.Size(473, 179);
             this.uiGroupBox5.Style = Sunny.UI.UIStyle.Custom;
             this.uiGroupBox5.TabIndex = 14;
@@ -1400,6 +1457,7 @@
             this.login_button.Location = new System.Drawing.Point(394, 32);
             this.login_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.login_button.Name = "login_button";
+            this.login_button.Radius = 20;
             this.login_button.Size = new System.Drawing.Size(69, 56);
             this.login_button.Style = Sunny.UI.UIStyle.Custom;
             this.login_button.TabIndex = 28;
@@ -1433,6 +1491,7 @@
             this.password_textbox.MinimumSize = new System.Drawing.Size(1, 16);
             this.password_textbox.Name = "password_textbox";
             this.password_textbox.PasswordChar = '*';
+            this.password_textbox.Radius = 20;
             this.password_textbox.ShowText = false;
             this.password_textbox.Size = new System.Drawing.Size(57, 27);
             this.password_textbox.Style = Sunny.UI.UIStyle.Custom;
@@ -1451,6 +1510,7 @@
             this.username_textbox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.username_textbox.MinimumSize = new System.Drawing.Size(1, 16);
             this.username_textbox.Name = "username_textbox";
+            this.username_textbox.Radius = 20;
             this.username_textbox.ShowText = false;
             this.username_textbox.Size = new System.Drawing.Size(57, 27);
             this.username_textbox.Style = Sunny.UI.UIStyle.Custom;
@@ -1496,6 +1556,7 @@
             this.device_disconnect_button.Location = new System.Drawing.Point(151, 148);
             this.device_disconnect_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.device_disconnect_button.Name = "device_disconnect_button";
+            this.device_disconnect_button.Radius = 20;
             this.device_disconnect_button.Size = new System.Drawing.Size(96, 26);
             this.device_disconnect_button.Style = Sunny.UI.UIStyle.Custom;
             this.device_disconnect_button.TabIndex = 23;
@@ -1510,6 +1571,7 @@
             this.device_connect_button.Location = new System.Drawing.Point(8, 150);
             this.device_connect_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.device_connect_button.Name = "device_connect_button";
+            this.device_connect_button.Radius = 20;
             this.device_connect_button.Size = new System.Drawing.Size(96, 26);
             this.device_connect_button.Style = Sunny.UI.UIStyle.Custom;
             this.device_connect_button.TabIndex = 22;
@@ -1525,6 +1587,7 @@
             this.getSeewoDevice.Location = new System.Drawing.Point(171, 96);
             this.getSeewoDevice.MinimumSize = new System.Drawing.Size(1, 1);
             this.getSeewoDevice.Name = "getSeewoDevice";
+            this.getSeewoDevice.Radius = 20;
             this.getSeewoDevice.Size = new System.Drawing.Size(76, 25);
             this.getSeewoDevice.Style = Sunny.UI.UIStyle.Custom;
             this.getSeewoDevice.TabIndex = 21;
@@ -1623,12 +1686,14 @@
             // 
             // device_ip_textbox
             // 
+            this.device_ip_textbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.device_ip_textbox.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.device_ip_textbox.Location = new System.Drawing.Point(108, 32);
             this.device_ip_textbox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.device_ip_textbox.MinimumSize = new System.Drawing.Size(1, 1);
             this.device_ip_textbox.Name = "device_ip_textbox";
             this.device_ip_textbox.Padding = new System.Windows.Forms.Padding(1);
+            this.device_ip_textbox.Radius = 20;
             this.device_ip_textbox.ShowText = false;
             this.device_ip_textbox.Size = new System.Drawing.Size(139, 29);
             this.device_ip_textbox.Style = Sunny.UI.UIStyle.Custom;
@@ -1756,6 +1821,7 @@
             this.uiGroupBox3.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiGroupBox3.Name = "uiGroupBox3";
             this.uiGroupBox3.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
+            this.uiGroupBox3.Radius = 20;
             this.uiGroupBox3.Size = new System.Drawing.Size(964, 230);
             this.uiGroupBox3.Style = Sunny.UI.UIStyle.Custom;
             this.uiGroupBox3.TabIndex = 3;
@@ -1788,6 +1854,7 @@
             this.output_rich_textbox.MinimumSize = new System.Drawing.Size(1, 1);
             this.output_rich_textbox.Name = "output_rich_textbox";
             this.output_rich_textbox.Padding = new System.Windows.Forms.Padding(2);
+            this.output_rich_textbox.Radius = 20;
             this.output_rich_textbox.ShowText = false;
             this.output_rich_textbox.Size = new System.Drawing.Size(954, 200);
             this.output_rich_textbox.Style = Sunny.UI.UIStyle.Custom;
@@ -1829,6 +1896,7 @@
             this.uiGroupBox6.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiGroupBox6.Name = "uiGroupBox6";
             this.uiGroupBox6.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
+            this.uiGroupBox6.Radius = 20;
             this.uiGroupBox6.Size = new System.Drawing.Size(277, 467);
             this.uiGroupBox6.TabIndex = 12;
             this.uiGroupBox6.Text = "测试结果";
@@ -1913,6 +1981,7 @@
             this.refreshTestResult_button.Location = new System.Drawing.Point(3, 385);
             this.refreshTestResult_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.refreshTestResult_button.Name = "refreshTestResult_button";
+            this.refreshTestResult_button.Radius = 20;
             this.refreshTestResult_button.Size = new System.Drawing.Size(271, 37);
             this.refreshTestResult_button.TabIndex = 18;
             this.refreshTestResult_button.Text = "刷新测试结果";
@@ -1925,6 +1994,7 @@
             this.resetTestResult_button.Location = new System.Drawing.Point(3, 425);
             this.resetTestResult_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.resetTestResult_button.Name = "resetTestResult_button";
+            this.resetTestResult_button.Radius = 20;
             this.resetTestResult_button.Size = new System.Drawing.Size(271, 37);
             this.resetTestResult_button.TabIndex = 17;
             this.resetTestResult_button.Text = "重置测试结果";
@@ -2125,6 +2195,8 @@
             // 
             // uiGroupBox7
             // 
+            this.uiGroupBox7.Controls.Add(this.uiLabel2);
+            this.uiGroupBox7.Controls.Add(this.getCurrentMacAddress_button);
             this.uiGroupBox7.Controls.Add(this.macWriteResult_label);
             this.uiGroupBox7.Controls.Add(this.uiLabel13);
             this.uiGroupBox7.Controls.Add(this.writeInMac_button);
@@ -2137,11 +2209,38 @@
             this.uiGroupBox7.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiGroupBox7.Name = "uiGroupBox7";
             this.uiGroupBox7.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
+            this.uiGroupBox7.Radius = 20;
             this.uiGroupBox7.Size = new System.Drawing.Size(277, 467);
             this.uiGroupBox7.TabIndex = 13;
             this.uiGroupBox7.Text = "Mac地址烧录";
             this.uiGroupBox7.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.uiGroupBox7.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // uiLabel2
+            // 
+            this.uiLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.uiLabel2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLabel2.Image = ((System.Drawing.Image)(resources.GetObject("uiLabel2.Image")));
+            this.uiLabel2.Location = new System.Drawing.Point(8, 310);
+            this.uiLabel2.Name = "uiLabel2";
+            this.uiLabel2.Size = new System.Drawing.Size(258, 93);
+            this.uiLabel2.TabIndex = 44;
+            this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiLabel2.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // getCurrentMacAddress_button
+            // 
+            this.getCurrentMacAddress_button.Enabled = false;
+            this.getCurrentMacAddress_button.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.getCurrentMacAddress_button.Location = new System.Drawing.Point(3, 223);
+            this.getCurrentMacAddress_button.MinimumSize = new System.Drawing.Size(1, 1);
+            this.getCurrentMacAddress_button.Name = "getCurrentMacAddress_button";
+            this.getCurrentMacAddress_button.Radius = 20;
+            this.getCurrentMacAddress_button.Size = new System.Drawing.Size(269, 37);
+            this.getCurrentMacAddress_button.TabIndex = 43;
+            this.getCurrentMacAddress_button.Text = "获取当前MAC地址";
+            this.getCurrentMacAddress_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.getCurrentMacAddress_button.Click += new System.EventHandler(this.getCurrentMacAddress_button_Click);
             // 
             // macWriteResult_label
             // 
@@ -2173,6 +2272,7 @@
             this.writeInMac_button.Location = new System.Drawing.Point(138, 180);
             this.writeInMac_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.writeInMac_button.Name = "writeInMac_button";
+            this.writeInMac_button.Radius = 20;
             this.writeInMac_button.Size = new System.Drawing.Size(135, 37);
             this.writeInMac_button.TabIndex = 20;
             this.writeInMac_button.Text = "烧录MAC";
@@ -2186,6 +2286,7 @@
             this.clearInput_button.Location = new System.Drawing.Point(3, 180);
             this.clearInput_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.clearInput_button.Name = "clearInput_button";
+            this.clearInput_button.Radius = 20;
             this.clearInput_button.Size = new System.Drawing.Size(129, 37);
             this.clearInput_button.TabIndex = 19;
             this.clearInput_button.Text = "清空输入";
@@ -2200,6 +2301,7 @@
             this.macInput_textbox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.macInput_textbox.MinimumSize = new System.Drawing.Size(1, 16);
             this.macInput_textbox.Name = "macInput_textbox";
+            this.macInput_textbox.Radius = 20;
             this.macInput_textbox.ShowText = false;
             this.macInput_textbox.Size = new System.Drawing.Size(264, 36);
             this.macInput_textbox.TabIndex = 1;
@@ -2230,8 +2332,8 @@
             this.Controls.Add(this.uiGroupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MaximumSize = new System.Drawing.Size(1271, 1849);
-            this.MinimumSize = new System.Drawing.Size(1271, 849);
+            this.MaximumSize = new System.Drawing.Size(1271, 983);
+            this.MinimumSize = new System.Drawing.Size(1271, 983);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "测试标定工具主面板";
@@ -2393,5 +2495,7 @@
         private Sunny.UI.UILabel uiLabel15;
         private Sunny.UI.UILabel recordingGif_label;
         private Sunny.UI.UIButton extractRecordFile_button;
+        private Sunny.UI.UIButton getCurrentMacAddress_button;
+        private Sunny.UI.UILabel uiLabel2;
     }
 }

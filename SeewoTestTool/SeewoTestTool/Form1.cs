@@ -39,7 +39,7 @@ namespace SeewoTestTool
         {
             this.AutoScaleMode = AutoScaleMode.Dpi;
             InitializeComponent();
-            output_rich_textbox.AppendText("欢迎使用视熙测试标定软件！");
+            output_rich_textbox.AppendText("欢迎使用视熙测试标定软件！\n");
             FileStream fs = new FileStream("data.bin", FileMode.OpenOrCreate);
             if (fs.Length > 0)
             {
@@ -450,6 +450,13 @@ namespace SeewoTestTool
                         writeInMac_button.Enabled = false;
                         beginAudioRecord_button.Enabled = false;
                         extractRecordFile_button.Enabled = false;
+                        openLiveCameraPASS_buttton.Enabled = false;
+                        openLiveCameraFAIL_buttton.Enabled = false;
+                        openMergeCameraPASS_buttton.Enabled = false;
+                        openMergeCameraFAIL_buttton.Enabled = false;
+                        redGreenPASS_button.Enabled = false;
+                        redGreenFAIL_button.Enabled = false;
+                        getCurrentMacAddress_button.Enabled = false;
                         login_button.Text = "设备连接后\n可自动登录";
                     }
                     catch (Exception ex)
@@ -1321,7 +1328,7 @@ namespace SeewoTestTool
                                                 //progress_i = 100;
                                             }
                                             System.Threading.Thread.Sleep(500);
-                                            output_string = "正在升级中，请稍后！";
+                                            output_string = "正在升级中，请稍后！\n升级过程中请勿进行其他操作，谢谢配合！\n";
                                             backgroundworker_firmwareupgrade.ReportProgress(progress_i, "Upgrading\n");
                                         }
                                     }
@@ -1714,6 +1721,13 @@ namespace SeewoTestTool
                             writeInMac_button.Enabled = true;
                             beginAudioRecord_button.Enabled = true;
                             extractRecordFile_button.Enabled = true;
+                            openLiveCameraPASS_buttton.Enabled = true;
+                            openLiveCameraFAIL_buttton.Enabled = true;
+                            openMergeCameraPASS_buttton.Enabled = true;
+                            openMergeCameraFAIL_buttton.Enabled = true;
+                            redGreenPASS_button.Enabled = true;
+                            redGreenFAIL_button.Enabled = true;
+                            getCurrentMacAddress_button.Enabled = true;
                             // 增加记住username和password功能
                             if (rememberCheckBox.Checked == true)
                             {
@@ -2125,6 +2139,7 @@ namespace SeewoTestTool
         SXW0301_Production_line.Fom1 fom1;
         private void button1_Click(object sender, EventArgs e)
         {
+            /**
             if (check_device_online())
             {
                 output_rich_textbox.AppendText("【执行操作】打开三摄标定工具操作……\n");
@@ -2155,6 +2170,7 @@ namespace SeewoTestTool
                     output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
                 }
             }
+            */
             
         }
 
@@ -2234,11 +2250,16 @@ namespace SeewoTestTool
             if (String.IsNullOrEmpty(audioInTestStandard_textbox.Text) || !new Regex("^[0-9]+$").IsMatch(audioInTestStandard_textbox.Text))
             {
                 MessageBox.Show("标定音量值不能为空！\n或者输入了非数字的内容，请重新输入！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                output_rich_textbox.AppendText("标定音量值不能为空！\n或者输入了非数字的内容，请重新输入！\n");
                 audioInTestStandard_textbox.Text = "";
             }
             //if (true)
             else if (check_device_online())
             {
+                audioIn1_test_button.Enabled = false;
+                // 每次获取MIC音频音量值需要先录制1s后获取
+                recordTime_textbox.Text = "1";
+                beginAudioRecord_button_Click(null, null);
                 output_rich_textbox.AppendText("【执行操作】Audio IN 1 测试……\n");
                 if (clientSocket != null && clientSocket.Connected)
                 {
@@ -2249,7 +2270,6 @@ namespace SeewoTestTool
                         string gainDeviceMICVolumeCommand = $"curl -X POST \"http://{ip_users}/testAudioJson_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getAudioVolume\\\"}}\"";
                         output_string = executeCMDCommand(gainDeviceMICVolumeCommand);
                         MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
-                        output_rich_textbox.AppendText(results_1.ToString());
                         string backCode = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "").Replace(",", "");
                         if (Int32.Parse(backCode) == 0)
                         {
@@ -2333,11 +2353,16 @@ namespace SeewoTestTool
             if (String.IsNullOrEmpty(audioInTestStandard_textbox.Text) || !new Regex("^[0-9]+$").IsMatch(audioInTestStandard_textbox.Text))
             {
                 MessageBox.Show("标定音量值不能为空！\n或者输入了非数字的内容，请重新输入！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                output_rich_textbox.AppendText("标定音量值不能为空！\n或者输入了非数字的内容，请重新输入！\n");
                 audioInTestStandard_textbox.Text = "";
             }
             //if (true)
             else if (check_device_online())
             {
+                audioIn2_test_button.Enabled = false;
+                // 每次获取MIC音频音量值需要先录制1s后获取
+                recordTime_textbox.Text = "1";
+                beginAudioRecord_button_Click(null, null);
                 output_rich_textbox.AppendText("【执行操作】Audio IN 2 测试……\n");
                 if (clientSocket != null && clientSocket.Connected)
                 {
@@ -2348,7 +2373,6 @@ namespace SeewoTestTool
                         string gainDeviceMICVolumeCommand = $"curl -X POST \"http://{ip_users}/testAudioJson_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getAudioVolume\\\"}}\"";
                         output_string = executeCMDCommand(gainDeviceMICVolumeCommand);
                         MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
-                        output_rich_textbox.AppendText(results_1.ToString());
                         string backCode = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "").Replace(",", "");
                         if (Int32.Parse(backCode) == 0)
                         {
@@ -2448,6 +2472,7 @@ namespace SeewoTestTool
                 
             }
             MessageBox.Show("测试结果重置完成！", "提示",  MessageBoxButtons.OK, MessageBoxIcon.Information);
+            output_rich_textbox.AppendText("测试结果重置完成！\n");
         }
 
         // 写入测试结果
@@ -2510,6 +2535,7 @@ namespace SeewoTestTool
             catch (Exception ex)
             {
                 MessageBox.Show("【当前测试结束】:\n请勿手动删除根目录的文件，请重新打开工具！", "【温馨提示】", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                output_rich_textbox.AppendText("【当前测试结束】:\n请勿手动删除根目录的文件，请重新打开工具！\n");
                 Application.Exit();
             }
             
@@ -2555,6 +2581,7 @@ namespace SeewoTestTool
                     testResults["测试结果"].NetworkTestResult = "FAIL";
                     writeTestResult();
                     MessageBox.Show("测试失败，请检查网络连接！");
+                    output_rich_textbox.AppendText("测试失败，请检查网络连接！\n");
                 }
             }
         }
@@ -2581,6 +2608,7 @@ namespace SeewoTestTool
                     testResults["测试结果"].Network2TestResult = "FAIL";
                     writeTestResult();
                     MessageBox.Show("测试失败，请检查网络连接！");
+                    output_rich_textbox.AppendText("测试失败，请检查网络连接！\n");
                 }
             }
         }
@@ -2787,6 +2815,8 @@ namespace SeewoTestTool
                 // 录制完成显示
                 recordingGif_label.Image = Image.FromFile("./img/recordingFinish.png");
                 gain_array_mic_audio_level_button.Enabled = true;
+                audioIn1_test_button.Enabled = true;
+                audioIn2_test_button.Enabled = true;
             }
         }
 
@@ -2803,6 +2833,7 @@ namespace SeewoTestTool
                 // 用线程去启动，输入的是秒钟，倒计时完成录制，再取出录制的音频
                 // 现在是先录制再计算，你可以点击一次，就开始录制，再获取音量,修改每一次获取音量后的，先录制再读取，录音加一个进度条
                 MessageBox.Show("音频录制时间不能为空！\n或者输入了非数字的内容，请重新输入！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                output_rich_textbox.AppendText("音频录制时间不能为空！\n或者输入了非数字的内容，请重新输入！\n");
                 recordTime_textbox.Text = "";
             }
             else if (check_device_online())
@@ -2814,6 +2845,7 @@ namespace SeewoTestTool
                     if (audioRecord_t != null)
                     {
                         MessageBox.Show("当前还未录制完成，请稍等！");
+                        output_rich_textbox.AppendText("当前还未录制完成，请稍等！");
                     }
                     else
                     {
@@ -2857,7 +2889,7 @@ namespace SeewoTestTool
                     extractRecordFile_button.Enabled = false;
                     SaveFileDialog saveFileDialog = new SaveFileDialog();
                     saveFileDialog.Title = "请选择保存文件路径";
-                    saveFileDialog.Filter = "音频文件(*.mp3;*.mid;*.wav;)|*.mp3;*.mid;*.wav;\"";
+                    saveFileDialog.Filter = "音频文件(*.mp3;*.mid;*.wav;)|*.mp3;*.mid;*.wav;";
                     saveFileDialog.OverwritePrompt = true;
                     saveFileDialog.RestoreDirectory = true;
                     if (saveFileDialog.ShowDialog() == DialogResult.OK)
@@ -2868,6 +2900,7 @@ namespace SeewoTestTool
                         if (extractAudioFile_t != null)
                         {
                             MessageBox.Show("当前还未导出完成，请稍等！");
+                            output_rich_textbox.AppendText("当前还未导出完成，请稍等！\n");
                         }
                         else
                         {
@@ -2943,7 +2976,8 @@ namespace SeewoTestTool
                 outputStream.Close();
                 response.Close();
 
-                MessageBox.Show("录制文件导出完成", "温馨提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"录制文件导出完成：\n文件地址：{LocalSavePath}", "温馨提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                output_rich_textbox.AppendText($"录制文件导出完成：\n文件地址：{LocalSavePath}\n");
                 recordingGif_label.Image = Image.FromFile("./img/recordingFinish.png");
                 extractAudioFile_t = null;
                 extractRecordFile_button.Enabled = true;
@@ -2951,6 +2985,7 @@ namespace SeewoTestTool
             catch (Exception ex)
             {
                 MessageBox.Show("未找到指定文件，请先录制音频！", "温馨提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                output_rich_textbox.AppendText("未找到指定文件，请先录制音频！\n");
                 if (ftpStream != null)
                 {
                     ftpStream.Close();
@@ -2969,6 +3004,12 @@ namespace SeewoTestTool
                 }
                 extractRecordFile_button.Enabled = true;
             }
+        }
+
+        // 获取当前MAC地址
+        private void getCurrentMacAddress_button_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

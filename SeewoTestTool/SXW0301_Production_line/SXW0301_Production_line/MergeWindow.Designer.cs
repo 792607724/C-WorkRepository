@@ -56,6 +56,7 @@
             this.mergeVideoPlay_button.Location = new System.Drawing.Point(495, 565);
             this.mergeVideoPlay_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.mergeVideoPlay_button.Name = "mergeVideoPlay_button";
+            this.mergeVideoPlay_button.Radius = 20;
             this.mergeVideoPlay_button.Size = new System.Drawing.Size(481, 43);
             this.mergeVideoPlay_button.TabIndex = 11;
             this.mergeVideoPlay_button.Text = "播放";
@@ -71,6 +72,7 @@
             this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox1.MinimumSize = new System.Drawing.Size(1, 16);
             this.textBox1.Name = "textBox1";
+            this.textBox1.Radius = 20;
             this.textBox1.ShowText = false;
             this.textBox1.Size = new System.Drawing.Size(475, 41);
             this.textBox1.TabIndex = 10;
@@ -91,6 +93,7 @@
             this.MaximumSize = new System.Drawing.Size(997, 660);
             this.MinimumSize = new System.Drawing.Size(997, 660);
             this.Name = "MergeWindow";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MergeWindow";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormClosingEvent);
             ((System.ComponentModel.ISupportInitialize)(this.vlcControl1)).EndInit();
