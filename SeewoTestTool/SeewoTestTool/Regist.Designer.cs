@@ -43,10 +43,10 @@
             // 
             // offlineSoftwareUse_button
             // 
-            this.offlineSoftwareUse_button.Location = new System.Drawing.Point(541, 168);
+            this.offlineSoftwareUse_button.Location = new System.Drawing.Point(597, 168);
             this.offlineSoftwareUse_button.Margin = new System.Windows.Forms.Padding(4);
             this.offlineSoftwareUse_button.Name = "offlineSoftwareUse_button";
-            this.offlineSoftwareUse_button.Size = new System.Drawing.Size(243, 48);
+            this.offlineSoftwareUse_button.Size = new System.Drawing.Size(131, 48);
             this.offlineSoftwareUse_button.TabIndex = 1;
             this.offlineSoftwareUse_button.Text = "【开发者模式】显示隐私文件";
             this.offlineSoftwareUse_button.UseVisualStyleBackColor = true;
@@ -54,10 +54,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(541, 224);
+            this.button1.Location = new System.Drawing.Point(597, 224);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(243, 48);
+            this.button1.Size = new System.Drawing.Size(131, 48);
             this.button1.TabIndex = 2;
             this.button1.Text = "【开发者模式】隐藏隐私文件";
             this.button1.UseVisualStyleBackColor = true;
@@ -65,10 +65,10 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(541, 113);
+            this.button2.Location = new System.Drawing.Point(597, 113);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(243, 48);
+            this.button2.Size = new System.Drawing.Size(131, 48);
             this.button2.TabIndex = 3;
             this.button2.Text = "【开发者模式】激活使用次数";
             this.button2.UseVisualStyleBackColor = true;
@@ -76,17 +76,17 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(541, 79);
+            this.textBox1.Location = new System.Drawing.Point(597, 79);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(242, 27);
+            this.textBox1.Size = new System.Drawing.Size(131, 27);
             this.textBox1.TabIndex = 4;
             this.textBox1.Text = "5";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(541, 55);
+            this.label1.Location = new System.Drawing.Point(603, 55);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(114, 20);
@@ -96,7 +96,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(542, 13);
+            this.pictureBox1.Location = new System.Drawing.Point(541, 10);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(243, 421);
@@ -109,7 +109,7 @@
             this.uiButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.uiButton1.Font = new System.Drawing.Font("等线", 70.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.uiButton1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.uiButton1.Location = new System.Drawing.Point(12, 13);
+            this.uiButton1.Location = new System.Drawing.Point(12, 10);
             this.uiButton1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiButton1.Name = "uiButton1";
             this.uiButton1.Radius = 100;
