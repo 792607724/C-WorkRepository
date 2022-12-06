@@ -18,7 +18,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="img\recordingFinish.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="seevi_64.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="img\recordingFinish.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>

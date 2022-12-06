@@ -38,6 +38,8 @@
             this.poe2NetworkTest_button = new Sunny.UI.UIButton();
             this.poe1NetworkTest_button = new Sunny.UI.UIButton();
             this.groupBox7 = new Sunny.UI.UIGroupBox();
+            this.extractRecordFile_button = new Sunny.UI.UIButton();
+            this.recordingGif_label = new Sunny.UI.UILabel();
             this.recordTime_textbox = new Sunny.UI.UITextBox();
             this.uiLabel15 = new Sunny.UI.UILabel();
             this.beginAudioRecord_button = new Sunny.UI.UIButton();
@@ -285,6 +287,8 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.extractRecordFile_button);
+            this.groupBox7.Controls.Add(this.recordingGif_label);
             this.groupBox7.Controls.Add(this.recordTime_textbox);
             this.groupBox7.Controls.Add(this.uiLabel15);
             this.groupBox7.Controls.Add(this.beginAudioRecord_button);
@@ -317,6 +321,33 @@
             this.groupBox7.ZoomScaleDisabled = true;
             this.groupBox7.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
+            // extractRecordFile_button
+            // 
+            this.extractRecordFile_button.Font = new System.Drawing.Font("微软雅黑", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.extractRecordFile_button.Location = new System.Drawing.Point(314, 189);
+            this.extractRecordFile_button.MinimumSize = new System.Drawing.Size(1, 1);
+            this.extractRecordFile_button.Name = "extractRecordFile_button";
+            this.extractRecordFile_button.Size = new System.Drawing.Size(142, 36);
+            this.extractRecordFile_button.Style = Sunny.UI.UIStyle.Custom;
+            this.extractRecordFile_button.TabIndex = 45;
+            this.extractRecordFile_button.Text = "导出录制文件";
+            this.extractRecordFile_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.extractRecordFile_button.Click += new System.EventHandler(this.extractRecordFile_button_Click);
+            // 
+            // recordingGif_label
+            // 
+            this.recordingGif_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.recordingGif_label.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.recordingGif_label.Image = ((System.Drawing.Image)(resources.GetObject("recordingGif_label.Image")));
+            this.recordingGif_label.Location = new System.Drawing.Point(392, 142);
+            this.recordingGif_label.Name = "recordingGif_label";
+            this.recordingGif_label.Size = new System.Drawing.Size(59, 44);
+            this.recordingGif_label.Style = Sunny.UI.UIStyle.Custom;
+            this.recordingGif_label.TabIndex = 44;
+            this.recordingGif_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.recordingGif_label.Visible = false;
+            this.recordingGif_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
             // recordTime_textbox
             // 
             this.recordTime_textbox.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -347,11 +378,11 @@
             // 
             // beginAudioRecord_button
             // 
-            this.beginAudioRecord_button.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.beginAudioRecord_button.Location = new System.Drawing.Point(370, 148);
+            this.beginAudioRecord_button.Font = new System.Drawing.Font("微软雅黑", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.beginAudioRecord_button.Location = new System.Drawing.Point(9, 189);
             this.beginAudioRecord_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.beginAudioRecord_button.Name = "beginAudioRecord_button";
-            this.beginAudioRecord_button.Size = new System.Drawing.Size(86, 36);
+            this.beginAudioRecord_button.Size = new System.Drawing.Size(291, 36);
             this.beginAudioRecord_button.Style = Sunny.UI.UIStyle.Custom;
             this.beginAudioRecord_button.TabIndex = 41;
             this.beginAudioRecord_button.Text = "开始录制";
@@ -361,12 +392,12 @@
             // standardAudioVolume_textbox
             // 
             this.standardAudioVolume_textbox.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.standardAudioVolume_textbox.Location = new System.Drawing.Point(202, 189);
+            this.standardAudioVolume_textbox.Location = new System.Drawing.Point(319, 235);
             this.standardAudioVolume_textbox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.standardAudioVolume_textbox.MinimumSize = new System.Drawing.Size(1, 16);
             this.standardAudioVolume_textbox.Name = "standardAudioVolume_textbox";
             this.standardAudioVolume_textbox.ShowText = false;
-            this.standardAudioVolume_textbox.Size = new System.Drawing.Size(52, 36);
+            this.standardAudioVolume_textbox.Size = new System.Drawing.Size(142, 36);
             this.standardAudioVolume_textbox.Style = Sunny.UI.UIStyle.Custom;
             this.standardAudioVolume_textbox.TabIndex = 40;
             this.standardAudioVolume_textbox.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
@@ -377,7 +408,7 @@
             // 
             this.uiLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.uiLabel1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiLabel1.Location = new System.Drawing.Point(3, 191);
+            this.uiLabel1.Location = new System.Drawing.Point(8, 235);
             this.uiLabel1.Name = "uiLabel1";
             this.uiLabel1.Size = new System.Drawing.Size(192, 29);
             this.uiLabel1.Style = Sunny.UI.UIStyle.Custom;
@@ -389,11 +420,11 @@
             // gain_array_mic_audio_level_button
             // 
             this.gain_array_mic_audio_level_button.Enabled = false;
-            this.gain_array_mic_audio_level_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.gain_array_mic_audio_level_button.Location = new System.Drawing.Point(3, 238);
+            this.gain_array_mic_audio_level_button.Font = new System.Drawing.Font("微软雅黑", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.gain_array_mic_audio_level_button.Location = new System.Drawing.Point(9, 285);
             this.gain_array_mic_audio_level_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.gain_array_mic_audio_level_button.Name = "gain_array_mic_audio_level_button";
-            this.gain_array_mic_audio_level_button.Size = new System.Drawing.Size(461, 22);
+            this.gain_array_mic_audio_level_button.Size = new System.Drawing.Size(452, 36);
             this.gain_array_mic_audio_level_button.Style = Sunny.UI.UIStyle.Custom;
             this.gain_array_mic_audio_level_button.TabIndex = 36;
             this.gain_array_mic_audio_level_button.Text = "获取各路MIC音频音量值";
@@ -878,12 +909,12 @@
             // audioInTestStandard_textbox
             // 
             this.audioInTestStandard_textbox.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.audioInTestStandard_textbox.Location = new System.Drawing.Point(414, 83);
+            this.audioInTestStandard_textbox.Location = new System.Drawing.Point(283, 82);
             this.audioInTestStandard_textbox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.audioInTestStandard_textbox.MinimumSize = new System.Drawing.Size(1, 16);
             this.audioInTestStandard_textbox.Name = "audioInTestStandard_textbox";
             this.audioInTestStandard_textbox.ShowText = false;
-            this.audioInTestStandard_textbox.Size = new System.Drawing.Size(52, 36);
+            this.audioInTestStandard_textbox.Size = new System.Drawing.Size(178, 36);
             this.audioInTestStandard_textbox.Style = Sunny.UI.UIStyle.Custom;
             this.audioInTestStandard_textbox.TabIndex = 42;
             this.audioInTestStandard_textbox.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
@@ -894,7 +925,7 @@
             // 
             this.uiLabel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.uiLabel4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiLabel4.Location = new System.Drawing.Point(228, 85);
+            this.uiLabel4.Location = new System.Drawing.Point(6, 85);
             this.uiLabel4.Name = "uiLabel4";
             this.uiLabel4.Size = new System.Drawing.Size(192, 29);
             this.uiLabel4.Style = Sunny.UI.UIStyle.Custom;
@@ -907,10 +938,10 @@
             // 
             this.audioIn2_test_button.Enabled = false;
             this.audioIn2_test_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.audioIn2_test_button.Location = new System.Drawing.Point(350, 53);
+            this.audioIn2_test_button.Location = new System.Drawing.Point(283, 53);
             this.audioIn2_test_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.audioIn2_test_button.Name = "audioIn2_test_button";
-            this.audioIn2_test_button.Size = new System.Drawing.Size(111, 24);
+            this.audioIn2_test_button.Size = new System.Drawing.Size(178, 24);
             this.audioIn2_test_button.Style = Sunny.UI.UIStyle.Custom;
             this.audioIn2_test_button.TabIndex = 11;
             this.audioIn2_test_button.Text = "Audio IN 2测试";
@@ -921,10 +952,10 @@
             // 
             this.audioIn1_test_button.Enabled = false;
             this.audioIn1_test_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.audioIn1_test_button.Location = new System.Drawing.Point(350, 23);
+            this.audioIn1_test_button.Location = new System.Drawing.Point(283, 23);
             this.audioIn1_test_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.audioIn1_test_button.Name = "audioIn1_test_button";
-            this.audioIn1_test_button.Size = new System.Drawing.Size(111, 24);
+            this.audioIn1_test_button.Size = new System.Drawing.Size(178, 24);
             this.audioIn1_test_button.Style = Sunny.UI.UIStyle.Custom;
             this.audioIn1_test_button.TabIndex = 10;
             this.audioIn1_test_button.Text = "Audio IN 1测试";
@@ -2358,5 +2389,7 @@
         private Sunny.UI.UIButton beginAudioRecord_button;
         private Sunny.UI.UITextBox recordTime_textbox;
         private Sunny.UI.UILabel uiLabel15;
+        private Sunny.UI.UILabel recordingGif_label;
+        private Sunny.UI.UIButton extractRecordFile_button;
     }
 }

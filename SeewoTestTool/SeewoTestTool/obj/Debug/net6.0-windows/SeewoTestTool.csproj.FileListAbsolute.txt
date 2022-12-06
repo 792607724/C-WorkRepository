@@ -63,3 +63,4 @@ D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SeewoTestTool\SeewoTestTool
 D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SeewoTestTool\SeewoTestTool\bin\Debug\net6.0-windows\SunnyUI.Common.dll
 D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SeewoTestTool\SeewoTestTool\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
 D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SeewoTestTool\SeewoTestTool\bin\Debug\net6.0-windows\Newtonsoft.Json.Bson.dll
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SeewoTestTool\SeewoTestTool\bin\Debug\net6.0-windows\img\recordingFinish.png

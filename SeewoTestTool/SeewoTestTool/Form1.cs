@@ -5,12 +5,15 @@ using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
+using System.Reflection;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using static System.Net.Mime.MediaTypeNames;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using Application = System.Windows.Forms.Application;
+using Image = System.Drawing.Image;
 
 namespace SeewoTestTool
 {
@@ -2772,6 +2775,10 @@ namespace SeewoTestTool
                 output_rich_textbox.ForeColor = Color.Green;
                 output_rich_textbox.SelectionFont = font;
                 output_rich_textbox.AppendText("音频录制完成！\n");
+
+                // 录制完成显示
+                recordingGif_label.Image = Image.FromFile("./img/recordingFinish.png");
+
             }
         }
 
@@ -2782,10 +2789,11 @@ namespace SeewoTestTool
         {
             //if (true)
             duration = recordTime_textbox.Text;
+            recordingGif_label.Image = Image.FromFile("./img/recordingGif.gif");
             if (String.IsNullOrEmpty(duration) || !new Regex("^[0-9]+$").IsMatch(duration))
             {
                 // 用线程去启动，输入的是秒钟，倒计时完成录制，再取出录制的音频
-                现在是先录制再计算，你可以点击一次，就开始录制，再获取音量,修改每一次获取音量后的，先录制再读取，录音加一个进度条
+                // 现在是先录制再计算，你可以点击一次，就开始录制，再获取音量,修改每一次获取音量后的，先录制再读取，录音加一个进度条
                 MessageBox.Show("音频录制时间不能为空！\n或者输入了非数字的内容，请重新输入！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 recordTime_textbox.Text = "";
             }
@@ -2808,8 +2816,10 @@ namespace SeewoTestTool
                     output_rich_textbox.ForeColor = Color.Red;
                     output_rich_textbox.SelectionFont = font;
                     output_rich_textbox.AppendText($"请稍等，正在录制音频中,录制时间【{duration}】秒……！\n");
+                    recordingGif_label.Visible = true;
                     Thread.Sleep(int.Parse(duration) + 1);
                     audioRecord_t = null;
+                    
                 }
                 else
                 {
@@ -2818,6 +2828,127 @@ namespace SeewoTestTool
                     radioButton_8080.Enabled = true;
                     device_status_label.Text = "已断开";
                     output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
+                }
+            }
+        }
+
+        Thread extractAudioFile_t;
+
+        // 导出录制文件
+        private void extractRecordFile_button_Click(object sender, EventArgs e)
+        {
+            string savedFilePath;
+            if (check_device_online())
+            {
+                output_rich_textbox.AppendText("【执行操作】导出录制文件……\n");
+                if (clientSocket != null && clientSocket.Connected)
+                {
+                    SaveFileDialog saveFileDialog = new SaveFileDialog();
+                    saveFileDialog.Title = "请选择保存文件路径";
+                    saveFileDialog.Filter = "音频文件(*.mp3;*.mid;*.wav;)|*.mp3;*.mid;*.wav;\"";
+                    saveFileDialog.OverwritePrompt = true;
+                    saveFileDialog.RestoreDirectory = true;
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        recordingGif_label.Visible = true;
+                        recordingGif_label.Image = Image.FromFile("./img/recordingGif.gif");
+                        LocalSavePath = saveFileDialog.FileName.ToString();
+                        if (extractAudioFile_t != null)
+                        {
+                            MessageBox.Show("当前还未导出完成，请稍等！");
+                        }
+                        else
+                        {
+
+                            extractAudioFile_t = new Thread(DownloadFile);
+                            extractAudioFile_t.IsBackground = true;
+                            extractAudioFile_t.Start();
+                        }
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+                else
+                {
+                    device_ip_textbox.Enabled = true;
+                    radioButton_80.Enabled = true;
+                    radioButton_8080.Enabled = true;
+                    device_status_label.Text = "已断开";
+                    output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
+                }
+            }
+        }
+
+        FtpWebRequest reqFTP;
+        Stream ftpStream;
+        FileStream outputStream;
+        FtpWebResponse response;
+        string LocalSavePath;
+        public void DownloadFile()
+        {
+            try
+            {
+                string ftpPath = "ftp://" + device_ip_textbox.Text + "/audioDumpFile.wav";
+                outputStream = new FileStream(LocalSavePath, FileMode.Create);
+
+                // 根据uri创建FtpWebRequest对象   
+                reqFTP = (FtpWebRequest)FtpWebRequest.Create(new Uri(ftpPath));
+
+                // 指定执行什么命令  
+                reqFTP.Method = WebRequestMethods.Ftp.DownloadFile;
+
+                // 指定数据传输类型  
+                reqFTP.UseBinary = true;
+                reqFTP.UsePassive = false;
+
+                // ftp用户名和密码  
+                //reqFTP.Credentials = new NetworkCredential();
+
+                response = (FtpWebResponse)reqFTP.GetResponse();
+
+                // 把下载的文件写入流
+                ftpStream = response.GetResponseStream();
+
+                long cl = response.ContentLength;
+
+                // 缓冲大小设置为2kb  
+                int bufferSize = 2048;
+                int readCount;
+                byte[] buffer = new byte[bufferSize];
+
+                // 每次读文件流的2kb  
+                readCount = ftpStream.Read(buffer, 0, bufferSize);
+                while (readCount > 0)
+                {
+                    // 把内容从文件流写入   
+                    outputStream.Write(buffer, 0, readCount);
+                    readCount = ftpStream.Read(buffer, 0, bufferSize);
+                }
+                //关闭两个流和ftp连接
+                ftpStream.Close();
+                outputStream.Close();
+                response.Close();
+
+                MessageBox.Show("录制文件导出完成", "温馨提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                recordingGif_label.Image = Image.FromFile("./img/recordingFinish.png");
+                extractAudioFile_t = null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("未找到指定文件，请先录制音频！", "温馨提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (ftpStream != null)
+                {
+                    ftpStream.Close();
+                }
+                if (outputStream != null)
+                {
+                    outputStream.Close();
+                }
+                if (response != null)
+                {
+                    response.Close();
                 }
             }
         }
