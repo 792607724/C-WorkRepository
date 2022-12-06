@@ -520,6 +520,8 @@ namespace SeewoTestTool
                 //if (true)
                 if (clientSocket != null && clientSocket.Connected)
                 {
+                    uiGroupBox1.Enabled = false;
+                    uiGroupBox7.Enabled = false;
                     string filePath = upgrade_firmware_textbox.Text;
                     if (string.IsNullOrEmpty(filePath))
                     {
@@ -1387,6 +1389,8 @@ namespace SeewoTestTool
                     thread_reboot1.Interrupt();
                     device_disconnect_button_Click(null, null);
                     output_rich_textbox.AppendText("设备重启完成！\n");
+                    uiGroupBox1.Enabled = true;
+                    uiGroupBox7.Enabled = true;
                     upgrade_progressbar.Value = 100;
                     check_current_firmware_button.Enabled = false;
                     upgrade_button.Enabled = false;
@@ -1408,6 +1412,8 @@ namespace SeewoTestTool
                     get_poe_mic_info_button.Enabled = false;
                     poe1NetworkTest_button.Enabled = false;
                     poe2NetworkTest_button.Enabled = false;
+                    uiGroupBox1.Enabled = true;
+                    uiGroupBox7.Enabled = true;
 
                     Thread.Sleep(3000);
                     // 这里升级完重启，需要重新连接设备，设备状态那边需要同步更新
@@ -1462,6 +1468,8 @@ namespace SeewoTestTool
                     output_rich_textbox.AppendText("升级中断，无需升级或者升级失败，请检查！\n开始尝试重新连接设备，请稍等连接结果……");
                     device_disconnect_button_Click(null, null);
                     device_connect_button_Click(null, null);
+                    uiGroupBox1.Enabled = true;
+                    uiGroupBox7.Enabled = true;
                 }
             }
             else
@@ -1943,6 +1951,8 @@ namespace SeewoTestTool
                 {
                     if (clientSocket != null && clientSocket.Connected)
                     {
+                        uiGroupBox1.Enabled = false;
+                        uiGroupBox7.Enabled = false;
                         // 重启设备操作
                         string fetchDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"control\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"reboot\\\"}}\"";
                         output_string = executeCMDCommand(fetchDeviceInfoCommand);

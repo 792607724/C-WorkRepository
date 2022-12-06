@@ -320,7 +320,7 @@
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
             this.groupBox7.Radius = 20;
-            this.groupBox7.Size = new System.Drawing.Size(762, 137);
+            this.groupBox7.Size = new System.Drawing.Size(762, 156);
             this.groupBox7.Style = Sunny.UI.UIStyle.Custom;
             this.groupBox7.TabIndex = 27;
             this.groupBox7.Text = "阵列MIC测试";
@@ -348,7 +348,7 @@
             this.recordingGif_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.recordingGif_label.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.recordingGif_label.Image = ((System.Drawing.Image)(resources.GetObject("recordingGif_label.Image")));
-            this.recordingGif_label.Location = new System.Drawing.Point(398, 53);
+            this.recordingGif_label.Location = new System.Drawing.Point(394, 75);
             this.recordingGif_label.Name = "recordingGif_label";
             this.recordingGif_label.Size = new System.Drawing.Size(59, 44);
             this.recordingGif_label.Style = Sunny.UI.UIStyle.Custom;
@@ -410,7 +410,7 @@
             this.standardAudioVolume_textbox.Name = "standardAudioVolume_textbox";
             this.standardAudioVolume_textbox.Radius = 20;
             this.standardAudioVolume_textbox.ShowText = false;
-            this.standardAudioVolume_textbox.Size = new System.Drawing.Size(137, 29);
+            this.standardAudioVolume_textbox.Size = new System.Drawing.Size(52, 36);
             this.standardAudioVolume_textbox.Style = Sunny.UI.UIStyle.Custom;
             this.standardAudioVolume_textbox.TabIndex = 40;
             this.standardAudioVolume_textbox.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
@@ -438,7 +438,7 @@
             this.gain_array_mic_audio_level_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.gain_array_mic_audio_level_button.Name = "gain_array_mic_audio_level_button";
             this.gain_array_mic_audio_level_button.Radius = 20;
-            this.gain_array_mic_audio_level_button.Size = new System.Drawing.Size(277, 29);
+            this.gain_array_mic_audio_level_button.Size = new System.Drawing.Size(277, 36);
             this.gain_array_mic_audio_level_button.Style = Sunny.UI.UIStyle.Custom;
             this.gain_array_mic_audio_level_button.TabIndex = 36;
             this.gain_array_mic_audio_level_button.Text = "获取各路MIC音频音量值";
@@ -623,7 +623,7 @@
             this.groupBox10.Controls.Add(this.currentPCBA_textbox);
             this.groupBox10.Controls.Add(this.label14);
             this.groupBox10.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox10.Location = new System.Drawing.Point(4, 526);
+            this.groupBox10.Location = new System.Drawing.Point(4, 552);
             this.groupBox10.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox10.MinimumSize = new System.Drawing.Size(1, 1);
             this.groupBox10.Name = "groupBox10";
@@ -740,7 +740,7 @@
             this.uiGroupBox2.Controls.Add(this.currentSN_textbox);
             this.uiGroupBox2.Controls.Add(this.label9);
             this.uiGroupBox2.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiGroupBox2.Location = new System.Drawing.Point(483, 526);
+            this.uiGroupBox2.Location = new System.Drawing.Point(483, 552);
             this.uiGroupBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiGroupBox2.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiGroupBox2.Name = "uiGroupBox2";
@@ -852,7 +852,7 @@
             // 
             this.device_reset_button.Enabled = false;
             this.device_reset_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.device_reset_button.Location = new System.Drawing.Point(773, 457);
+            this.device_reset_button.Location = new System.Drawing.Point(774, 478);
             this.device_reset_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.device_reset_button.Name = "device_reset_button";
             this.device_reset_button.Radius = 20;
@@ -1156,7 +1156,7 @@
             // 
             this.rebootDevice_button.Enabled = false;
             this.rebootDevice_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.rebootDevice_button.Location = new System.Drawing.Point(773, 385);
+            this.rebootDevice_button.Location = new System.Drawing.Point(773, 396);
             this.rebootDevice_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.rebootDevice_button.Name = "rebootDevice_button";
             this.rebootDevice_button.Radius = 20;
