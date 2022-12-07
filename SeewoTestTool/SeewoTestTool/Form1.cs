@@ -2778,6 +2778,12 @@ namespace SeewoTestTool
                 output_rich_textbox.AppendText($"当前写入结果为：PASS，当前MAC：{currentMAC_label_text}\n");
                 writeInMacResult_label.Text = "PASS";
                 macAddress_test_label.Text = "PASS";
+
+                // 结果位
+                refreshTestResult_button_Click(null, null);
+                testResults["测试结果"].MacAddressResult = "PASS";
+                writeTestResult();
+
                 device_disconnect_button_Click(null, null);
                 device_connect_button_Click(null, null);
                 writeInMac_button.Enabled = true;
@@ -2788,6 +2794,12 @@ namespace SeewoTestTool
                 writeInMacResult_label.Image = null;
                 writeInMacResult_label.Text = "FAIL";
                 macAddress_test_label.Text = "FAIL";
+
+                // 结果位
+                refreshTestResult_button_Click(null, null);
+                testResults["测试结果"].MacAddressResult = "FAIL";
+                writeTestResult();
+
                 writeInMac_button.Enabled = true;
             }
             if (writeInMac_t != null)
