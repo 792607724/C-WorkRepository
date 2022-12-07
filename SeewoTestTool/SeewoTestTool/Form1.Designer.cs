@@ -34,6 +34,10 @@
             this.backgroundworker_firmwareupgrade = new System.ComponentModel.BackgroundWorker();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.uiGroupBox1 = new Sunny.UI.UIGroupBox();
+            this.uiGroupBox9 = new Sunny.UI.UIGroupBox();
+            this.resetTestClickResult_label = new Sunny.UI.UILabel();
+            this.uiLabel19 = new Sunny.UI.UILabel();
+            this.beginResetTest_button = new Sunny.UI.UIButton();
             this.uiGroupBox8 = new Sunny.UI.UIGroupBox();
             this.poe2NetworkTest_button = new Sunny.UI.UIButton();
             this.poe1NetworkTest_button = new Sunny.UI.UIButton();
@@ -160,19 +164,18 @@
             this.network_test_label = new Sunny.UI.UILabel();
             this.uiLabel3 = new Sunny.UI.UILabel();
             this.uiGroupBox7 = new Sunny.UI.UIGroupBox();
+            this.writeInMacResult_label = new Sunny.UI.UILabel();
+            this.uiLabel17 = new Sunny.UI.UILabel();
             this.uiLabel2 = new Sunny.UI.UILabel();
             this.getCurrentMacAddress_button = new Sunny.UI.UIButton();
-            this.macWriteResult_label = new Sunny.UI.UILabel();
+            this.currentMac_label = new Sunny.UI.UILabel();
             this.uiLabel13 = new Sunny.UI.UILabel();
             this.writeInMac_button = new Sunny.UI.UIButton();
             this.clearInput_button = new Sunny.UI.UIButton();
             this.macInput_textbox = new Sunny.UI.UITextBox();
             this.uiLabel11 = new Sunny.UI.UILabel();
-            this.uiGroupBox9 = new Sunny.UI.UIGroupBox();
-            this.resetTestClickResult_label = new Sunny.UI.UILabel();
-            this.uiLabel19 = new Sunny.UI.UILabel();
-            this.beginResetTest_button = new Sunny.UI.UIButton();
             this.uiGroupBox1.SuspendLayout();
+            this.uiGroupBox9.SuspendLayout();
             this.uiGroupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox10.SuspendLayout();
@@ -186,7 +189,6 @@
             this.uiGroupBox3.SuspendLayout();
             this.uiGroupBox6.SuspendLayout();
             this.uiGroupBox7.SuspendLayout();
-            this.uiGroupBox9.SuspendLayout();
             this.SuspendLayout();
             // 
             // currentVersion_label
@@ -246,6 +248,65 @@
             this.uiGroupBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.uiGroupBox1.ZoomScaleDisabled = true;
             this.uiGroupBox1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // uiGroupBox9
+            // 
+            this.uiGroupBox9.Controls.Add(this.resetTestClickResult_label);
+            this.uiGroupBox9.Controls.Add(this.uiLabel19);
+            this.uiGroupBox9.Controls.Add(this.beginResetTest_button);
+            this.uiGroupBox9.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiGroupBox9.Location = new System.Drawing.Point(4, 624);
+            this.uiGroupBox9.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiGroupBox9.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiGroupBox9.Name = "uiGroupBox9";
+            this.uiGroupBox9.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
+            this.uiGroupBox9.Radius = 20;
+            this.uiGroupBox9.Size = new System.Drawing.Size(953, 75);
+            this.uiGroupBox9.Style = Sunny.UI.UIStyle.Custom;
+            this.uiGroupBox9.TabIndex = 29;
+            this.uiGroupBox9.Text = "Reset按键测试";
+            this.uiGroupBox9.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.uiGroupBox9.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // resetTestClickResult_label
+            // 
+            this.resetTestClickResult_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.resetTestClickResult_label.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.resetTestClickResult_label.Location = new System.Drawing.Point(645, 32);
+            this.resetTestClickResult_label.Name = "resetTestClickResult_label";
+            this.resetTestClickResult_label.Size = new System.Drawing.Size(89, 29);
+            this.resetTestClickResult_label.Style = Sunny.UI.UIStyle.Custom;
+            this.resetTestClickResult_label.TabIndex = 45;
+            this.resetTestClickResult_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.resetTestClickResult_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // uiLabel19
+            // 
+            this.uiLabel19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.uiLabel19.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLabel19.Location = new System.Drawing.Point(9, 32);
+            this.uiLabel19.Name = "uiLabel19";
+            this.uiLabel19.Size = new System.Drawing.Size(598, 29);
+            this.uiLabel19.Style = Sunny.UI.UIStyle.Custom;
+            this.uiLabel19.TabIndex = 44;
+            this.uiLabel19.Text = "点击开始测试后，请手动按下板子的Reset键后松开，系统会自动检测Reset按下状态";
+            this.uiLabel19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiLabel19.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // beginResetTest_button
+            // 
+            this.beginResetTest_button.Enabled = false;
+            this.beginResetTest_button.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.beginResetTest_button.Location = new System.Drawing.Point(815, 28);
+            this.beginResetTest_button.MinimumSize = new System.Drawing.Size(1, 1);
+            this.beginResetTest_button.Name = "beginResetTest_button";
+            this.beginResetTest_button.Radius = 20;
+            this.beginResetTest_button.Size = new System.Drawing.Size(129, 37);
+            this.beginResetTest_button.Style = Sunny.UI.UIStyle.Custom;
+            this.beginResetTest_button.TabIndex = 43;
+            this.beginResetTest_button.Text = "开始测试";
+            this.beginResetTest_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.beginResetTest_button.Click += new System.EventHandler(this.beginResetTest_button_Click);
             // 
             // uiGroupBox8
             // 
@@ -629,7 +690,7 @@
             this.groupBox10.Controls.Add(this.currentPCBA_textbox);
             this.groupBox10.Controls.Add(this.label14);
             this.groupBox10.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox10.Location = new System.Drawing.Point(4, 535);
+            this.groupBox10.Location = new System.Drawing.Point(4, 537);
             this.groupBox10.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox10.MinimumSize = new System.Drawing.Size(1, 1);
             this.groupBox10.Name = "groupBox10";
@@ -647,11 +708,11 @@
             // 
             this.writeInPCBA_button.Enabled = false;
             this.writeInPCBA_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.writeInPCBA_button.Location = new System.Drawing.Point(325, 55);
+            this.writeInPCBA_button.Location = new System.Drawing.Point(325, 52);
             this.writeInPCBA_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.writeInPCBA_button.Name = "writeInPCBA_button";
             this.writeInPCBA_button.Radius = 20;
-            this.writeInPCBA_button.Size = new System.Drawing.Size(146, 24);
+            this.writeInPCBA_button.Size = new System.Drawing.Size(146, 30);
             this.writeInPCBA_button.Style = Sunny.UI.UIStyle.Custom;
             this.writeInPCBA_button.TabIndex = 5;
             this.writeInPCBA_button.Text = "写入PCBA号";
@@ -694,11 +755,11 @@
             // 
             this.getCurrentPCBA_button.Enabled = false;
             this.getCurrentPCBA_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.getCurrentPCBA_button.Location = new System.Drawing.Point(325, 24);
+            this.getCurrentPCBA_button.Location = new System.Drawing.Point(325, 19);
             this.getCurrentPCBA_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.getCurrentPCBA_button.Name = "getCurrentPCBA_button";
             this.getCurrentPCBA_button.Radius = 20;
-            this.getCurrentPCBA_button.Size = new System.Drawing.Size(146, 24);
+            this.getCurrentPCBA_button.Size = new System.Drawing.Size(146, 30);
             this.getCurrentPCBA_button.Style = Sunny.UI.UIStyle.Custom;
             this.getCurrentPCBA_button.TabIndex = 2;
             this.getCurrentPCBA_button.Text = "获取当前设备PCBA号";
@@ -746,7 +807,7 @@
             this.uiGroupBox2.Controls.Add(this.currentSN_textbox);
             this.uiGroupBox2.Controls.Add(this.label9);
             this.uiGroupBox2.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiGroupBox2.Location = new System.Drawing.Point(483, 535);
+            this.uiGroupBox2.Location = new System.Drawing.Point(483, 537);
             this.uiGroupBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiGroupBox2.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiGroupBox2.Name = "uiGroupBox2";
@@ -764,11 +825,11 @@
             // 
             this.writeIn_button.Enabled = false;
             this.writeIn_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.writeIn_button.Location = new System.Drawing.Point(327, 57);
+            this.writeIn_button.Location = new System.Drawing.Point(327, 52);
             this.writeIn_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.writeIn_button.Name = "writeIn_button";
             this.writeIn_button.Radius = 20;
-            this.writeIn_button.Size = new System.Drawing.Size(146, 24);
+            this.writeIn_button.Size = new System.Drawing.Size(146, 30);
             this.writeIn_button.Style = Sunny.UI.UIStyle.Custom;
             this.writeIn_button.TabIndex = 4;
             this.writeIn_button.Text = "写入序列号";
@@ -811,11 +872,11 @@
             // 
             this.getCurrentSN_button.Enabled = false;
             this.getCurrentSN_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.getCurrentSN_button.Location = new System.Drawing.Point(327, 24);
+            this.getCurrentSN_button.Location = new System.Drawing.Point(325, 19);
             this.getCurrentSN_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.getCurrentSN_button.Name = "getCurrentSN_button";
             this.getCurrentSN_button.Radius = 20;
-            this.getCurrentSN_button.Size = new System.Drawing.Size(146, 24);
+            this.getCurrentSN_button.Size = new System.Drawing.Size(146, 30);
             this.getCurrentSN_button.Style = Sunny.UI.UIStyle.Custom;
             this.getCurrentSN_button.TabIndex = 2;
             this.getCurrentSN_button.Text = "获取当前设备序列号";
@@ -858,7 +919,7 @@
             // 
             this.device_reset_button.Enabled = false;
             this.device_reset_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.device_reset_button.Location = new System.Drawing.Point(773, 470);
+            this.device_reset_button.Location = new System.Drawing.Point(778, 463);
             this.device_reset_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.device_reset_button.Name = "device_reset_button";
             this.device_reset_button.Radius = 20;
@@ -956,11 +1017,11 @@
             // 
             this.audioIn2_test_button.Enabled = false;
             this.audioIn2_test_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.audioIn2_test_button.Location = new System.Drawing.Point(283, 61);
+            this.audioIn2_test_button.Location = new System.Drawing.Point(283, 58);
             this.audioIn2_test_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.audioIn2_test_button.Name = "audioIn2_test_button";
             this.audioIn2_test_button.Radius = 20;
-            this.audioIn2_test_button.Size = new System.Drawing.Size(178, 24);
+            this.audioIn2_test_button.Size = new System.Drawing.Size(178, 30);
             this.audioIn2_test_button.Style = Sunny.UI.UIStyle.Custom;
             this.audioIn2_test_button.TabIndex = 11;
             this.audioIn2_test_button.Text = "Audio IN 2测试";
@@ -971,11 +1032,11 @@
             // 
             this.audioIn1_test_button.Enabled = false;
             this.audioIn1_test_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.audioIn1_test_button.Location = new System.Drawing.Point(283, 23);
+            this.audioIn1_test_button.Location = new System.Drawing.Point(283, 22);
             this.audioIn1_test_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.audioIn1_test_button.Name = "audioIn1_test_button";
             this.audioIn1_test_button.Radius = 20;
-            this.audioIn1_test_button.Size = new System.Drawing.Size(178, 24);
+            this.audioIn1_test_button.Size = new System.Drawing.Size(178, 30);
             this.audioIn1_test_button.Style = Sunny.UI.UIStyle.Custom;
             this.audioIn1_test_button.TabIndex = 10;
             this.audioIn1_test_button.Text = "Audio IN 1测试";
@@ -1162,7 +1223,7 @@
             // 
             this.rebootDevice_button.Enabled = false;
             this.rebootDevice_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.rebootDevice_button.Location = new System.Drawing.Point(773, 396);
+            this.rebootDevice_button.Location = new System.Drawing.Point(777, 396);
             this.rebootDevice_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.rebootDevice_button.Name = "rebootDevice_button";
             this.rebootDevice_button.Radius = 20;
@@ -2201,9 +2262,11 @@
             // 
             // uiGroupBox7
             // 
+            this.uiGroupBox7.Controls.Add(this.writeInMacResult_label);
+            this.uiGroupBox7.Controls.Add(this.uiLabel17);
             this.uiGroupBox7.Controls.Add(this.uiLabel2);
             this.uiGroupBox7.Controls.Add(this.getCurrentMacAddress_button);
-            this.uiGroupBox7.Controls.Add(this.macWriteResult_label);
+            this.uiGroupBox7.Controls.Add(this.currentMac_label);
             this.uiGroupBox7.Controls.Add(this.uiLabel13);
             this.uiGroupBox7.Controls.Add(this.writeInMac_button);
             this.uiGroupBox7.Controls.Add(this.clearInput_button);
@@ -2222,12 +2285,36 @@
             this.uiGroupBox7.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.uiGroupBox7.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
+            // writeInMacResult_label
+            // 
+            this.writeInMacResult_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.writeInMacResult_label.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.writeInMacResult_label.Location = new System.Drawing.Point(108, 179);
+            this.writeInMacResult_label.Name = "writeInMacResult_label";
+            this.writeInMacResult_label.Size = new System.Drawing.Size(154, 29);
+            this.writeInMacResult_label.TabIndex = 46;
+            this.writeInMacResult_label.Text = "*";
+            this.writeInMacResult_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.writeInMacResult_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // uiLabel17
+            // 
+            this.uiLabel17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.uiLabel17.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLabel17.Location = new System.Drawing.Point(8, 139);
+            this.uiLabel17.Name = "uiLabel17";
+            this.uiLabel17.Size = new System.Drawing.Size(94, 29);
+            this.uiLabel17.TabIndex = 45;
+            this.uiLabel17.Text = "当前MAC：";
+            this.uiLabel17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiLabel17.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
             // uiLabel2
             // 
             this.uiLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.uiLabel2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.uiLabel2.Image = ((System.Drawing.Image)(resources.GetObject("uiLabel2.Image")));
-            this.uiLabel2.Location = new System.Drawing.Point(8, 310);
+            this.uiLabel2.Location = new System.Drawing.Point(8, 341);
             this.uiLabel2.Name = "uiLabel2";
             this.uiLabel2.Size = new System.Drawing.Size(258, 93);
             this.uiLabel2.TabIndex = 44;
@@ -2238,7 +2325,7 @@
             // 
             this.getCurrentMacAddress_button.Enabled = false;
             this.getCurrentMacAddress_button.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.getCurrentMacAddress_button.Location = new System.Drawing.Point(3, 223);
+            this.getCurrentMacAddress_button.Location = new System.Drawing.Point(3, 271);
             this.getCurrentMacAddress_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.getCurrentMacAddress_button.Name = "getCurrentMacAddress_button";
             this.getCurrentMacAddress_button.Radius = 20;
@@ -2248,24 +2335,25 @@
             this.getCurrentMacAddress_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.getCurrentMacAddress_button.Click += new System.EventHandler(this.getCurrentMacAddress_button_Click);
             // 
-            // macWriteResult_label
+            // currentMac_label
             // 
-            this.macWriteResult_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.macWriteResult_label.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.macWriteResult_label.Location = new System.Drawing.Point(148, 140);
-            this.macWriteResult_label.Name = "macWriteResult_label";
-            this.macWriteResult_label.Size = new System.Drawing.Size(124, 29);
-            this.macWriteResult_label.TabIndex = 42;
-            this.macWriteResult_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.macWriteResult_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.currentMac_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.currentMac_label.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.currentMac_label.Location = new System.Drawing.Point(108, 139);
+            this.currentMac_label.Name = "currentMac_label";
+            this.currentMac_label.Size = new System.Drawing.Size(154, 29);
+            this.currentMac_label.TabIndex = 42;
+            this.currentMac_label.Text = "*";
+            this.currentMac_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.currentMac_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // uiLabel13
             // 
             this.uiLabel13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.uiLabel13.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiLabel13.Location = new System.Drawing.Point(8, 140);
+            this.uiLabel13.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLabel13.Location = new System.Drawing.Point(9, 175);
             this.uiLabel13.Name = "uiLabel13";
-            this.uiLabel13.Size = new System.Drawing.Size(124, 29);
+            this.uiLabel13.Size = new System.Drawing.Size(93, 29);
             this.uiLabel13.TabIndex = 41;
             this.uiLabel13.Text = "烧录结果：";
             this.uiLabel13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -2275,7 +2363,7 @@
             // 
             this.writeInMac_button.Enabled = false;
             this.writeInMac_button.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.writeInMac_button.Location = new System.Drawing.Point(138, 180);
+            this.writeInMac_button.Location = new System.Drawing.Point(138, 228);
             this.writeInMac_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.writeInMac_button.Name = "writeInMac_button";
             this.writeInMac_button.Radius = 20;
@@ -2289,7 +2377,7 @@
             // 
             this.clearInput_button.Enabled = false;
             this.clearInput_button.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.clearInput_button.Location = new System.Drawing.Point(3, 180);
+            this.clearInput_button.Location = new System.Drawing.Point(3, 228);
             this.clearInput_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.clearInput_button.Name = "clearInput_button";
             this.clearInput_button.Radius = 20;
@@ -2327,65 +2415,6 @@
             this.uiLabel11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.uiLabel11.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
-            // uiGroupBox9
-            // 
-            this.uiGroupBox9.Controls.Add(this.resetTestClickResult_label);
-            this.uiGroupBox9.Controls.Add(this.uiLabel19);
-            this.uiGroupBox9.Controls.Add(this.beginResetTest_button);
-            this.uiGroupBox9.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiGroupBox9.Location = new System.Drawing.Point(4, 622);
-            this.uiGroupBox9.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiGroupBox9.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiGroupBox9.Name = "uiGroupBox9";
-            this.uiGroupBox9.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
-            this.uiGroupBox9.Radius = 20;
-            this.uiGroupBox9.Size = new System.Drawing.Size(953, 75);
-            this.uiGroupBox9.Style = Sunny.UI.UIStyle.Custom;
-            this.uiGroupBox9.TabIndex = 29;
-            this.uiGroupBox9.Text = "Reset按键测试";
-            this.uiGroupBox9.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.uiGroupBox9.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // resetTestClickResult_label
-            // 
-            this.resetTestClickResult_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.resetTestClickResult_label.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.resetTestClickResult_label.Location = new System.Drawing.Point(645, 32);
-            this.resetTestClickResult_label.Name = "resetTestClickResult_label";
-            this.resetTestClickResult_label.Size = new System.Drawing.Size(89, 29);
-            this.resetTestClickResult_label.Style = Sunny.UI.UIStyle.Custom;
-            this.resetTestClickResult_label.TabIndex = 45;
-            this.resetTestClickResult_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.resetTestClickResult_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // uiLabel19
-            // 
-            this.uiLabel19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.uiLabel19.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiLabel19.Location = new System.Drawing.Point(9, 32);
-            this.uiLabel19.Name = "uiLabel19";
-            this.uiLabel19.Size = new System.Drawing.Size(598, 29);
-            this.uiLabel19.Style = Sunny.UI.UIStyle.Custom;
-            this.uiLabel19.TabIndex = 44;
-            this.uiLabel19.Text = "点击开始测试后，请手动按下板子的Reset键后松开，系统会自动检测Reset按下状态";
-            this.uiLabel19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiLabel19.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // beginResetTest_button
-            // 
-            this.beginResetTest_button.Enabled = false;
-            this.beginResetTest_button.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.beginResetTest_button.Location = new System.Drawing.Point(815, 28);
-            this.beginResetTest_button.MinimumSize = new System.Drawing.Size(1, 1);
-            this.beginResetTest_button.Name = "beginResetTest_button";
-            this.beginResetTest_button.Radius = 20;
-            this.beginResetTest_button.Size = new System.Drawing.Size(129, 37);
-            this.beginResetTest_button.Style = Sunny.UI.UIStyle.Custom;
-            this.beginResetTest_button.TabIndex = 43;
-            this.beginResetTest_button.Text = "开始测试";
-            this.beginResetTest_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            this.beginResetTest_button.Click += new System.EventHandler(this.beginResetTest_button_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -2404,6 +2433,7 @@
             this.Text = "测试标定工具主面板";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormClosingEvent);
             this.uiGroupBox1.ResumeLayout(false);
+            this.uiGroupBox9.ResumeLayout(false);
             this.uiGroupBox8.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox10.ResumeLayout(false);
@@ -2418,7 +2448,6 @@
             this.uiGroupBox3.ResumeLayout(false);
             this.uiGroupBox6.ResumeLayout(false);
             this.uiGroupBox7.ResumeLayout(false);
-            this.uiGroupBox9.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2554,7 +2583,7 @@
         private Sunny.UI.UITextBox macInput_textbox;
         private Sunny.UI.UIButton writeInMac_button;
         private Sunny.UI.UIButton clearInput_button;
-        private Sunny.UI.UILabel macWriteResult_label;
+        private Sunny.UI.UILabel currentMac_label;
         private Sunny.UI.UILabel uiLabel13;
         private Sunny.UI.UIButton beginAudioRecord_button;
         private Sunny.UI.UITextBox recordTime_textbox;
@@ -2567,5 +2596,7 @@
         private Sunny.UI.UILabel resetTestClickResult_label;
         private Sunny.UI.UILabel uiLabel19;
         private Sunny.UI.UIButton beginResetTest_button;
+        private Sunny.UI.UILabel writeInMacResult_label;
+        private Sunny.UI.UILabel uiLabel17;
     }
 }

@@ -126,7 +126,7 @@ namespace SeewoTestTool
                 string temp_check_ping_ip_exists = executeCMDCommand($"ping {host} -n 1");
                 if (temp_check_ping_ip_exists.Contains("请求超时"))
                 {
-                    MessageBox.Show("设备IP查找失败，请确认设备网口连接情况以及网络环境配置是否正常后重试！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("设备IP查找失败，请确认设备网口连接情况以及网络环境配置是否正常后重试！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
                 else
@@ -1019,6 +1019,8 @@ namespace SeewoTestTool
          */
         private void gain_array_mic_audio_level_button_Click(object sender, EventArgs e)
         {
+            duration = recordTime_textbox.Text;
+            recordingGif_label.Image = Image.FromFile("./img/recordingGif.gif");
             //if (true)
             if (String.IsNullOrEmpty(standardAudioVolume_textbox.Text) || !new Regex("^[0-9]+$").IsMatch(standardAudioVolume_textbox.Text))
             {
@@ -1102,7 +1104,7 @@ namespace SeewoTestTool
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"获取各路MIC音频音量值失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n");
+                        //MessageBox.Show($"获取各路MIC音频音量值失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n{ex.ToString()}");
                         output_rich_textbox.AppendText($"获取各路MIC音频音量值失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n");
                     }
                     finally
@@ -1187,6 +1189,11 @@ namespace SeewoTestTool
             {
                 try
                 {
+                    if (writeInMac_t != null)
+                    {
+                        writeInMac_t.Interrupt();
+                        writeInMac_t = null;
+                    }
                     // 释放掉音频测试的内容
                     stop_array_mic_audio_level_test_button_Click(null, null);
                     clientSocket.Close();
@@ -2284,6 +2291,8 @@ namespace SeewoTestTool
                 {
                     try
                     {
+                        duration = recordTime_textbox.Text;
+                        recordingGif_label.Image = Image.FromFile("./img/recordingGif.gif");
                         // 获取各路MIC音频音量值
                         output_rich_textbox.AppendText(session);
                         string gainDeviceMICVolumeCommand = $"curl -X POST \"http://{ip_users}/testAudioJson_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getAudioVolume\\\"}}\"";
@@ -2346,7 +2355,7 @@ namespace SeewoTestTool
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"Audio IN 1 测试失败失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n");
+                        //MessageBox.Show($"Audio IN 1 测试失败失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n{ex.ToString()}");
                         output_rich_textbox.AppendText($"Audio IN 1 测试失败失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n");
                     }
                     finally
@@ -2387,6 +2396,8 @@ namespace SeewoTestTool
                 {
                     try
                     {
+                        duration = recordTime_textbox.Text;
+                        recordingGif_label.Image = Image.FromFile("./img/recordingGif.gif");
                         // 获取各路MIC音频音量值
                         output_rich_textbox.AppendText(session);
                         string gainDeviceMICVolumeCommand = $"curl -X POST \"http://{ip_users}/testAudioJson_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getAudioVolume\\\"}}\"";
@@ -2449,7 +2460,7 @@ namespace SeewoTestTool
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"Audio IN 2 测试失败失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n");
+                        //MessageBox.Show($"Audio IN 2 测试失败失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n");
                         output_rich_textbox.AppendText($"Audio IN 2 测试失败失败，请检查是否以开启了音频测试未正确关闭！\n可尝试重启机器恢复正常：\n");
                     }
                     finally
@@ -2744,8 +2755,49 @@ namespace SeewoTestTool
         private void clearInput_button_Click(object sender, EventArgs e)
         {
             macInput_textbox.Text = "";
-            macWriteResult_label.Text = "";
+            currentMac_label.Text = "";
         }
+
+
+
+        Thread writeInMac_t;
+        private void writeInMacFunc()
+        {
+            output_rich_textbox.AppendText(session);
+            string writeDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"setParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"EthernetService\\\",\\\"value\\\": {{\\\"Eth0MAC\\\": \\\"{writeInMAC}\\\" , \\\"Eth0Name\\\": \\\"eth0\\\"}}}}\"";
+            output_string = executeCMDCommand(writeDeviceInfoCommand);
+            MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
+            string backCode = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
+
+            // 设置完成后再获取一次MAC，如果是一样的，就PASS
+            getCurrentMacAddress_button_Click(null, null);
+            string currentMAC_label_text = currentMac_label.Text;
+            if (currentMAC_label_text == writeInMAC && Int32.Parse(backCode) == 0)
+            {
+                writeInMacResult_label.Image = null;
+                output_rich_textbox.AppendText($"当前写入结果为：PASS，当前MAC：{currentMAC_label_text}\n");
+                writeInMacResult_label.Text = "PASS";
+                macAddress_test_label.Text = "PASS";
+                device_disconnect_button_Click(null, null);
+                device_connect_button_Click(null, null);
+                writeInMac_button.Enabled = true;
+            }
+            else
+            {
+                output_rich_textbox.AppendText($"当前写入结果为：FAIL，当前MAC：{currentMAC_label_text}\n");
+                writeInMacResult_label.Image = null;
+                writeInMacResult_label.Text = "FAIL";
+                macAddress_test_label.Text = "FAIL";
+                writeInMac_button.Enabled = true;
+            }
+            if (writeInMac_t != null)
+            {
+                writeInMac_t.Interrupt();
+                writeInMac_t = null;
+            }
+        }
+
+        private string writeInMAC;
 
         // 写入MAC地址进设备
         private void writeInMac_button_Click(object sender, EventArgs e)
@@ -2758,23 +2810,29 @@ namespace SeewoTestTool
                     if (clientSocket != null && clientSocket.Connected)
                     {
                         // 写入MAC地址进设备
-                        string writeInMAC = macInput_textbox.Text;
-                        if (string.IsNullOrEmpty(writeInMAC) || !new Regex("^[0-9]+$").IsMatch(writeInMAC))
+                        writeInMAC = macInput_textbox.Text;
+                        if (string.IsNullOrEmpty(writeInMAC) || !new Regex("(.*:.*:.*:.*:.*:.*)").IsMatch(writeInMAC))
                         {
                             MessageBox.Show("请写入正确的MAC地址再进行刷入，只能数字\n", "温馨提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             output_rich_textbox.AppendText("请写入正确的MAC地址再进行刷入，只能数字\n");
-                            macWriteResult_label.Text = "FAIL";
+                            currentMac_label.Text = "写入失败";
+                            macAddress_test_label.Text = "写入失败";
                         }
                         else
                         {
-                            /**
-                            output_rich_textbox.AppendText(session);
-                            string writeDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"setParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"SerialNumber\\\",\\\"value\\\": {{\\\"PCBA\\\": \\\"{writeINPCBA}\\\"}}}}\"";
-                            output_string = executeCMDCommand(writeDeviceInfoCommand);
-                            MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
-                            string backCode = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
-                            */
-
+                            writeInMacResult_label.Text = "";
+                            writeInMac_button.Enabled = false;
+                            writeInMacResult_label.Image = Image.FromFile("./img/recordingGif.gif");
+                            if (writeInMac_t != null)
+                            {
+                                MessageBox.Show("当前MAC正在写入，请稍后！");
+                            }
+                            else
+                            {
+                                writeInMac_t = new Thread(writeInMacFunc);
+                                writeInMac_t.IsBackground = true;
+                                writeInMac_t.Start();
+                            }
                         }
                     }
                     else
@@ -2788,12 +2846,19 @@ namespace SeewoTestTool
                 }
                 catch (Exception ex)
                 {
+                    writeInMac_button.Enabled = true;
+                    writeInMacResult_label.Image = null;
+                    if (writeInMac_t != null)
+                    {
+                        writeInMac_t.Interrupt();
+                        writeInMac_t = null;
+                    }
                     output_rich_textbox.AppendText($"写入MAC地址进设备失败，当前未连接设备：\n{ex.ToString()}\n");
-                    macWriteResult_label.Text = "FAIL";
+                    currentMac_label.Text = "FAIL";
                 }
                 finally
                 {
-
+                    
                 }
             }
         }
@@ -2821,7 +2886,7 @@ namespace SeewoTestTool
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"开始音频录制失败，请检查是否以开启了音频测试未正确关闭！\n或可尝试重启机器恢复正常：\n");
+                //MessageBox.Show($"开始音频录制失败，请检查是否以开启了音频测试未正确关闭！\n或可尝试重启机器恢复正常：\n");
                 output_rich_textbox.AppendText($"开始音频录制失败，请检查是否以开启了音频测试未正确关闭！\n或可尝试重启机器恢复正常：\n");
             }
             finally
@@ -3028,7 +3093,40 @@ namespace SeewoTestTool
         // 获取当前MAC地址
         private void getCurrentMacAddress_button_Click(object sender, EventArgs e)
         {
+            if (check_device_online())
+            {
+                output_rich_textbox.AppendText("【执行操作】获取当前MAC地址……\n");
+                try
+                {
+                    if (clientSocket != null && clientSocket.Connected)
+                    {
+                        // 获取当前MAC地址
+                        string fetchDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"EthernetService\\\"}}\"";
+                        output_string = executeCMDCommand(fetchDeviceInfoCommand);
+                        MatchCollection results_1 = Regex.Matches(output_string, "\"Eth0MAC\" : (.*)");
+                        string currentMac = results_1[0].ToString().ToString().Replace('"', ' ').Replace(" ", "").Replace(",", "").Replace("Eth0MAC:", "");
+                        output_rich_textbox.AppendText("获取当前MAC地址：" + currentMac + "\n");
+                        currentMac_label.Text = currentMac;
+                    }
+                    else
+                    {
+                        device_ip_textbox.Enabled = true;
+                        radioButton_80.Enabled = true;
+                        radioButton_8080.Enabled = true;
+                        device_status_label.Text = "已断开";
+                        output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
+                    }
 
+                }
+                catch (Exception ex)
+                {
+                    output_rich_textbox.AppendText($"获取当前MAC地址失败，当前未连接设备：\n{ex.ToString()}\n");
+                }
+                finally
+                {
+
+                }
+            }
         }
 
         // 开始测试Reset按键
