@@ -1978,7 +1978,6 @@
             this.threeCamera2_test_label.Name = "threeCamera2_test_label";
             this.threeCamera2_test_label.Size = new System.Drawing.Size(125, 29);
             this.threeCamera2_test_label.TabIndex = 24;
-            this.threeCamera2_test_label.Text = "*";
             this.threeCamera2_test_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.threeCamera2_test_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
@@ -2002,7 +2001,6 @@
             this.network2_test_label.Name = "network2_test_label";
             this.network2_test_label.Size = new System.Drawing.Size(125, 29);
             this.network2_test_label.TabIndex = 22;
-            this.network2_test_label.Text = "*";
             this.network2_test_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.network2_test_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
@@ -2026,7 +2024,6 @@
             this.audioIn2_test_label.Name = "audioIn2_test_label";
             this.audioIn2_test_label.Size = new System.Drawing.Size(125, 29);
             this.audioIn2_test_label.TabIndex = 20;
-            this.audioIn2_test_label.Text = "*";
             this.audioIn2_test_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.audioIn2_test_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
@@ -2076,7 +2073,6 @@
             this.macAddress_test_label.Name = "macAddress_test_label";
             this.macAddress_test_label.Size = new System.Drawing.Size(125, 29);
             this.macAddress_test_label.TabIndex = 15;
-            this.macAddress_test_label.Text = "*";
             this.macAddress_test_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.macAddress_test_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
@@ -2100,7 +2096,6 @@
             this.arrayMic_test_label.Name = "arrayMic_test_label";
             this.arrayMic_test_label.Size = new System.Drawing.Size(125, 29);
             this.arrayMic_test_label.TabIndex = 13;
-            this.arrayMic_test_label.Text = "*";
             this.arrayMic_test_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.arrayMic_test_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
@@ -2124,7 +2119,6 @@
             this.audioIn_test_label.Name = "audioIn_test_label";
             this.audioIn_test_label.Size = new System.Drawing.Size(125, 29);
             this.audioIn_test_label.TabIndex = 11;
-            this.audioIn_test_label.Text = "*";
             this.audioIn_test_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.audioIn_test_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
@@ -2148,7 +2142,6 @@
             this.threeCamera_test_label.Name = "threeCamera_test_label";
             this.threeCamera_test_label.Size = new System.Drawing.Size(125, 29);
             this.threeCamera_test_label.TabIndex = 9;
-            this.threeCamera_test_label.Text = "*";
             this.threeCamera_test_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.threeCamera_test_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
@@ -2172,7 +2165,6 @@
             this.resetButton_test_label.Name = "resetButton_test_label";
             this.resetButton_test_label.Size = new System.Drawing.Size(125, 29);
             this.resetButton_test_label.TabIndex = 7;
-            this.resetButton_test_label.Text = "*";
             this.resetButton_test_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.resetButton_test_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
@@ -2196,7 +2188,6 @@
             this.redgreenLED_test_label.Name = "redgreenLED_test_label";
             this.redgreenLED_test_label.Size = new System.Drawing.Size(125, 29);
             this.redgreenLED_test_label.TabIndex = 5;
-            this.redgreenLED_test_label.Text = "*";
             this.redgreenLED_test_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.redgreenLED_test_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
@@ -2220,7 +2211,6 @@
             this.firmwareVerified_test_label.Name = "firmwareVerified_test_label";
             this.firmwareVerified_test_label.Size = new System.Drawing.Size(125, 29);
             this.firmwareVerified_test_label.TabIndex = 3;
-            this.firmwareVerified_test_label.Text = "*";
             this.firmwareVerified_test_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.firmwareVerified_test_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
@@ -2244,7 +2234,6 @@
             this.network_test_label.Name = "network_test_label";
             this.network_test_label.Size = new System.Drawing.Size(125, 29);
             this.network_test_label.TabIndex = 1;
-            this.network_test_label.Text = "*";
             this.network_test_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.network_test_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
@@ -2293,7 +2282,6 @@
             this.writeInMacResult_label.Name = "writeInMacResult_label";
             this.writeInMacResult_label.Size = new System.Drawing.Size(154, 29);
             this.writeInMacResult_label.TabIndex = 46;
-            this.writeInMacResult_label.Text = "*";
             this.writeInMacResult_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.writeInMacResult_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
@@ -2343,7 +2331,6 @@
             this.currentMac_label.Name = "currentMac_label";
             this.currentMac_label.Size = new System.Drawing.Size(154, 29);
             this.currentMac_label.TabIndex = 42;
-            this.currentMac_label.Text = "*";
             this.currentMac_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.currentMac_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 

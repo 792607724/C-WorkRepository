@@ -174,8 +174,9 @@ namespace SeewoTestTool
         }
 
         string ip_users;
+        string host;
         // 保证设备在连接状态 网口通信
-    
+
         /**
          * 连接设备点击事件
          */
@@ -184,7 +185,7 @@ namespace SeewoTestTool
             output_rich_textbox.AppendText("【执行操作】进行设备绑定连接……\n");
             if (check_device_online())
             {
-                string host = device_ip_textbox.Text;
+                host = device_ip_textbox.Text;
                 ip_users = host;
                 string port;
                 if (radioButton_80.Checked)
@@ -3141,10 +3142,105 @@ namespace SeewoTestTool
             }
         }
 
+        Thread resetDevice_t;
+    
+        private void resetDevice_func()
+        {
+            // 测试Reset按键
+            string deleteResultFile = $"curl \"ftp://{host}\" -X \"DELE restore_result\"";
+            executeCMDCommand("del restore_result");
+            output_string = executeCMDCommand(deleteResultFile);
+            string fetchDeviceInfoCommand = $"curl \"ftp://{host}/restore_result\" -o restore_result";
+            int time_limit = 0;
+            while (true)
+            {
+                time_limit += 1;
+                Thread.Sleep(1000);
+                output_string = executeCMDCommand(fetchDeviceInfoCommand);
+                output_rich_textbox.AppendText($"正在获取按键状态中，当前【{time_limit}】秒！\n");
+                if (executeCMDCommand("cat restore_result").Contains("success"))
+                {
+                    resetButton_test_label.Text = "PASS";
+                    resetTestClickResult_label.Text = "PASS";
+                    // 结果位
+                    refreshTestResult_button_Click(null, null);
+                    testResults["测试结果"].ResetButtonResult = "PASS";
+                    writeTestResult();
+                    output_rich_textbox.AppendText("【Reset测试】测试结果：PASS\n");
+                    device_disconnect_button_Click(null, null);
+                    device_connect_button_Click(null, null);
+                    break;
+                }
+                if (time_limit >= 10)
+                {
+                    resetButton_test_label.Text = "FAIL";
+                    resetTestClickResult_label.Text = "FAIL";
+                    // 结果位
+                    refreshTestResult_button_Click(null, null);
+                    testResults["测试结果"].ResetButtonResult = "FAIL";
+                    writeTestResult();
+                    output_rich_textbox.AppendText("【Reset测试】测试结果：FAIL\n");
+                    MessageBox.Show("Reset测试失败或在10s内未检测到Reset键按下，请点击【开始测试】进行重测！", "结果提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    break;
+                }
+            }
+            beginResetTest_button.Enabled = true;
+            if (resetDevice_t != null)
+            {
+                resetDevice_t.Interrupt();
+                resetDevice_t = null;
+            }
+        }
+
         // 开始测试Reset按键
         private void beginResetTest_button_Click(object sender, EventArgs e)
         {
+            if (check_device_online())
+            {
+                output_rich_textbox.AppendText("【执行操作】开始测试Reset按键，请在10s钟之内按下，否则自动判断为失败……\n");
+                resetTestClickResult_label.Text = "";
+                try
+                {
+                    if (clientSocket != null && clientSocket.Connected)
+                    {
+                        beginResetTest_button.Enabled = false;
+                        if (resetDevice_t != null)
+                        {
+                            MessageBox.Show("当前测试Reset按键，请稍后！");
+                        }
+                        else
+                        {
+                            resetDevice_t = new Thread(resetDevice_func);
+                            resetDevice_t.IsBackground = true;
+                            resetDevice_t.Start();
+                        }
 
+                    }
+                    else
+                    {
+                        device_ip_textbox.Enabled = true;
+                        radioButton_80.Enabled = true;
+                        radioButton_8080.Enabled = true;
+                        device_status_label.Text = "已断开";
+                        output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    if (resetDevice_t != null)
+                    {
+                        resetDevice_t.Interrupt();
+                        resetDevice_t = null;
+                    }
+                    beginResetTest_button.Enabled = true;
+                    output_rich_textbox.AppendText($"测试Reset按键失败，当前未连接设备：\n{ex.ToString()}\n");
+                }
+                finally
+                {
+
+                }
+            }
         }
     }
 }

@@ -52,7 +52,7 @@ public class TestResult
         set { threeCamera_test_result = value; }
     }
 
-    public string ThreeCamera2Result
+    public string ThreeCamera2Result    
     {
         get { return threeCamera2_test_result; }
         set { threeCamera2_test_result = value; }
