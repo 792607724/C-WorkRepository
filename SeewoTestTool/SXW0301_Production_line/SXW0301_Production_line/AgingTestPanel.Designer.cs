@@ -45,7 +45,7 @@
             // 
             this.liveVideoPlay_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.liveVideoPlay_button.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.liveVideoPlay_button.Location = new System.Drawing.Point(2, 700);
+            this.liveVideoPlay_button.Location = new System.Drawing.Point(491, 649);
             this.liveVideoPlay_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.liveVideoPlay_button.Name = "liveVideoPlay_button";
             this.liveVideoPlay_button.Radius = 20;
@@ -88,13 +88,13 @@
             // 
             this.ip_textBox.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.ip_textBox.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.ip_textBox.Location = new System.Drawing.Point(232, 644);
+            this.ip_textBox.Location = new System.Drawing.Point(195, 678);
             this.ip_textBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ip_textBox.MinimumSize = new System.Drawing.Size(1, 16);
             this.ip_textBox.Name = "ip_textBox";
             this.ip_textBox.Radius = 20;
             this.ip_textBox.ShowText = false;
-            this.ip_textBox.Size = new System.Drawing.Size(738, 48);
+            this.ip_textBox.Size = new System.Drawing.Size(240, 48);
             this.ip_textBox.TabIndex = 16;
             this.ip_textBox.Text = "219.198.235.11";
             this.ip_textBox.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
@@ -118,7 +118,7 @@
             // uiLabel1
             // 
             this.uiLabel1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel1.Location = new System.Drawing.Point(12, 644);
+            this.uiLabel1.Location = new System.Drawing.Point(12, 678);
             this.uiLabel1.Name = "uiLabel1";
             this.uiLabel1.Size = new System.Drawing.Size(145, 38);
             this.uiLabel1.TabIndex = 17;
@@ -131,11 +131,11 @@
             this.stopAgingTest_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.stopAgingTest_button.Enabled = false;
             this.stopAgingTest_button.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.stopAgingTest_button.Location = new System.Drawing.Point(474, 700);
+            this.stopAgingTest_button.Location = new System.Drawing.Point(491, 700);
             this.stopAgingTest_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.stopAgingTest_button.Name = "stopAgingTest_button";
             this.stopAgingTest_button.Radius = 20;
-            this.stopAgingTest_button.Size = new System.Drawing.Size(496, 43);
+            this.stopAgingTest_button.Size = new System.Drawing.Size(470, 43);
             this.stopAgingTest_button.TabIndex = 18;
             this.stopAgingTest_button.Text = "停止老化测试";
             this.stopAgingTest_button.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -159,7 +159,7 @@
             this.MinimumSize = new System.Drawing.Size(991, 796);
             this.Name = "AgingTestPanel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AgingTestPanel";
+            this.Text = "老化测试面板";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormClosingEvent);
             ((System.ComponentModel.ISupportInitialize)(this.vlcControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vlcControl2)).EndInit();
