@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
@@ -402,27 +403,7 @@ namespace HIDTool
 
         private void GetSNBtn_Click(object sender, EventArgs e)
         {
-            HIDDevice device = OpenHIDDevice(this.comboBoxDevices.SelectedIndex);
 
-            if (device != null)
-            {
-                byte[] requestBuffer = new byte[device.OutputReportByteLength];
-                byte[] responseBuffer = new byte[device.InputReportByteLength];
-
-                Array.Copy(Protocol.COMMAND_REQUEST_TYPE_GET_SN, requestBuffer, Protocol.COMMAND_REQUEST_TYPE_GET_SN.Length);
-
-                device.Send(requestBuffer, 0, requestBuffer.Length);
-                device.Receive(responseBuffer, 0, responseBuffer.Length);
-                device.Close();
-
-                string sn = "";
-                for (int i = 0; i < 16; i++)
-                {
-                    sn += (char)responseBuffer[7 + i];
-                }
-
-                MessageBox.Show("SN号：" + sn);
-            }
         }
 
         private void IsEPTZSupportedBtn_Click(object sender, EventArgs e)
@@ -1167,13 +1148,175 @@ namespace HIDTool
         // 获取当前设备UUID
         private void getCurrentDeviceUUID_button_Click(object sender, EventArgs e)
         {
+            HIDDevice device = OpenHIDDevice();
 
+            if (device != null)
+            {
+                byte[] requestBuffer = new byte[device.OutputReportByteLength];
+                byte[] responseBuffer = new byte[device.InputReportByteLength];
+
+                Array.Copy(Protocol.COMMAND_REQUEST_TYPE_GET_UUID, requestBuffer, Protocol.COMMAND_REQUEST_TYPE_GET_UUID.Length);
+
+                device.Send(requestBuffer, 0, requestBuffer.Length);
+                device.Receive(responseBuffer, 0, responseBuffer.Length);
+                device.Close();
+
+                string uuid = "";
+                int strLen = responseBuffer[5];
+                for (int i = 0; i < strLen; i++)
+                {
+                    uuid += (char)responseBuffer[7 + i];
+                }
+                currentDeviceUUID_label.Text = uuid;
+            }
         }
 
         // 获取当前设备激活状态
         private void getCurrentDeviceActivateStatus_button_Click(object sender, EventArgs e)
         {
 
+        }
+
+        // 激活当前连接的设备
+        private void acticateCurrentDevice_button_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        // 读取整机序列号
+        private void GetSNBtn_Click_1(object sender, EventArgs e)
+        {
+            this.textBox1.Focus();
+            HIDDevice device = OpenHIDDevice();
+
+            if (device != null)
+            {
+                byte[] requestBuffer = new byte[device.OutputReportByteLength];
+                byte[] responseBuffer = new byte[device.InputReportByteLength];
+
+                Array.Copy(Protocol.COMMAND_REQUEST_TYPE_GET_PCBASN, requestBuffer, Protocol.COMMAND_REQUEST_TYPE_GET_PCBASN.Length);
+
+                device.Send(requestBuffer, 0, requestBuffer.Length);
+                device.Receive(responseBuffer, 0, responseBuffer.Length);
+                device.Close();
+
+                string sn = "";
+                for (int i = 0; i < 19; i++)
+                {
+                    sn += (char)responseBuffer[7 + i];
+                }
+                this.textBox1.Text = sn;
+
+                //MessageBox.Show("SN已写入");
+            }
+        }
+
+        // 设置整机序列号
+        private void SetSNBtn_Click(object sender, EventArgs e)
+        {
+            //this.textBox1.Focus();
+            if (this.textBox1.Text.Length < 17)
+            {
+                MessageBox.Show("无效整机序列号长度");
+                return;
+            }
+
+            HIDDevice device = OpenHIDDevice();
+            if (device != null)
+            {
+                byte[] requestBuffer = new byte[device.OutputReportByteLength];
+                byte[] responseBuffer = new byte[device.InputReportByteLength];
+
+                Array.Copy(Protocol.COMMAND_REQUEST_TYPE_SET_SN, requestBuffer, Protocol.COMMAND_REQUEST_TYPE_SET_SN.Length);
+                byte[] sn = System.Text.Encoding.ASCII.GetBytes(this.textBox1.Text);
+                if (sn1.Checked)
+                {
+                    requestBuffer[7] = 0;
+                }
+                else if (sn2.Checked)
+                {
+                    requestBuffer[7] = 1;
+                }
+                else if (sn3.Checked)
+                {
+                    requestBuffer[7] = 2;
+                }
+
+                for (int i = 0; i < 17; i++)
+                {
+                    requestBuffer[8 + i] = sn[i];
+                }
+
+                device.Send(requestBuffer, 0, requestBuffer.Length);
+                device.Receive(responseBuffer, 0, responseBuffer.Length);
+
+                Array.Copy(Protocol.COMMAND_REQUEST_TYPE_GET_SN, requestBuffer, Protocol.COMMAND_REQUEST_TYPE_GET_SN.Length);
+                device.Send(requestBuffer, 0, requestBuffer.Length);
+                device.Receive(responseBuffer, 0, responseBuffer.Length);
+
+                string snStr = "";
+                for (int i = 0; i < 17; i++)
+                {
+                    snStr += (char)responseBuffer[7 + i];
+                }
+
+                device.Close();
+
+                if (snStr == this.textBox1.Text)
+                {
+                    string passString = "成功写入整机序列号";
+                    using (Font font = new Font("Arial", 24))
+                    {
+                        Rectangle region = new Rectangle(50, 200, 816, 100);
+
+                        StringFormat stringFormat = new StringFormat();
+                        stringFormat.Alignment = StringAlignment.Center;
+                        stringFormat.LineAlignment = StringAlignment.Center;
+                    }
+                    MessageBox.Show(passString);
+
+                }
+                else
+                {
+                    string ngString = "写入整机序列号失败";
+                    using (Font font = new Font("Arial", 24))
+                    {
+                        Rectangle region = new Rectangle(50, 200, 816, 100);
+
+                        StringFormat stringFormat = new StringFormat();
+                        stringFormat.Alignment = StringAlignment.Center;
+                        stringFormat.LineAlignment = StringAlignment.Center;
+                    }
+                    MessageBox.Show(ngString);
+                }
+                this.textBox1.Text = "";
+            }
+        }
+
+        private HIDDevice OpenHIDDevice()
+        {
+            HIDDeviceInfo[] deviceInfos = HIDDevice.GetHIDDeviceInfos();
+
+            HIDDeviceInfo targetDeviceInfo = null;
+            for (int ki = 0; ki < deviceInfos.Length; ki++)
+            {
+                if (deviceInfos[ki].VID == TARGET_HID_SEEVISION_VID || (deviceInfos[ki].VID == TARGET_HID_HONGHE_VID))
+                {
+                    targetDeviceInfo = deviceInfos[ki];
+                    break;
+                }
+            }
+            if (targetDeviceInfo != null)
+            {
+                HIDDevice device = HIDDevice.Open(targetDeviceInfo);
+                return device;
+
+            }
+            else
+            {
+                MessageBox.Show("设备未找到！");
+            }
+            return null;
         }
     }
 }

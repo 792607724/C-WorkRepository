@@ -2320,7 +2320,7 @@
             this.uiLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.uiLabel2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.uiLabel2.Image = ((System.Drawing.Image)(resources.GetObject("uiLabel2.Image")));
-            this.uiLabel2.Location = new System.Drawing.Point(8, 341);
+            this.uiLabel2.Location = new System.Drawing.Point(10, 341);
             this.uiLabel2.Name = "uiLabel2";
             this.uiLabel2.Size = new System.Drawing.Size(258, 93);
             this.uiLabel2.TabIndex = 44;
