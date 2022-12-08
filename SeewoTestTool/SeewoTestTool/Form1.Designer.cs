@@ -272,7 +272,7 @@
             // 
             this.resetTestClickResult_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.resetTestClickResult_label.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.resetTestClickResult_label.Location = new System.Drawing.Point(645, 32);
+            this.resetTestClickResult_label.Location = new System.Drawing.Point(702, 32);
             this.resetTestClickResult_label.Name = "resetTestClickResult_label";
             this.resetTestClickResult_label.Size = new System.Drawing.Size(89, 29);
             this.resetTestClickResult_label.Style = Sunny.UI.UIStyle.Custom;
@@ -286,10 +286,10 @@
             this.uiLabel19.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.uiLabel19.Location = new System.Drawing.Point(9, 32);
             this.uiLabel19.Name = "uiLabel19";
-            this.uiLabel19.Size = new System.Drawing.Size(598, 29);
+            this.uiLabel19.Size = new System.Drawing.Size(642, 29);
             this.uiLabel19.Style = Sunny.UI.UIStyle.Custom;
             this.uiLabel19.TabIndex = 44;
-            this.uiLabel19.Text = "点击开始测试后，请手动按下板子的Reset键后松开，系统会自动检测Reset按下状态";
+            this.uiLabel19.Text = "点击开始测试后，请手动按下板子的Reset键后松开，系统会在10秒内自动检测Reset按下状态";
             this.uiLabel19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.uiLabel19.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 

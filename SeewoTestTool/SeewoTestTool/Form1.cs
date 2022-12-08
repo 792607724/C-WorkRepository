@@ -2785,6 +2785,46 @@ namespace SeewoTestTool
                 testResults["测试结果"].MacAddressResult = "PASS";
                 writeTestResult();
 
+                // 判断如果是：219.198.235.11，需要在连接设备前加上ping操作打通路由，如果不是，则不需要ping 219.198.235.11 -t -S 219.198.235.17\
+                if (host == "219.198.235.11")
+                {
+                    string localPCHost = null;
+                    foreach (NetworkInterface netItem in NetworkInterface.GetAllNetworkInterfaces())
+                    {
+                        foreach (UnicastIPAddressInformation ipIntProp in netItem.GetIPProperties().UnicastAddresses.ToArray<UnicastIPAddressInformation>())
+                        {
+                            string inetName = netItem.Name;
+                            string inetAddress = ipIntProp.Address.ToString();
+                            string inetType = ipIntProp.Address.AddressFamily.ToString();
+                            //output_rich_textbox.AppendText($"   接口名：{inetName}，IP：{inetAddress}，IP类型：{inetType}\n");
+                            if (inetName == "以太网" && inetType == "InterNetwork")
+                            {
+                                localPCHost = inetAddress;
+                            }
+                        }
+                    }
+                    if (!string.IsNullOrEmpty(localPCHost))
+                    {
+                        int times = 0;
+                        while (true)
+                        {
+                            times += 1;
+                            string back_temp = executeCMDCommand($"ping {host} -t -S {localPCHost} -n 1");
+                            Thread.Sleep(1000);
+                            output_rich_textbox.AppendText($"【提示】【{times}秒】重建路由器网络中请稍后……\n");
+                            if (back_temp.Contains("TTL"))
+                            {
+                                break;
+                            }
+                            if (times >= 30)
+                            {
+                                output_rich_textbox.AppendText("30秒内路由网络没有更新没有成功，请重启机器！");
+                                break;
+                            }
+                        }
+                    }
+                }
+
                 device_disconnect_button_Click(null, null);
                 device_connect_button_Click(null, null);
                 writeInMac_button.Enabled = true;
