@@ -2285,3 +2285,4 @@ D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SeewoTestTool\SXW0301_Produ
 D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SeewoTestTool\SXW0301_Production_line\SXW0301_Production_line\obj\Debug\SXW0301_Production_line.pdb
 D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SeewoTestTool\SXW0301_Production_line\SXW0301_Production_line\obj\Debug\SXW0301_Production_line.LiveWindow.resources
 D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SeewoTestTool\SXW0301_Production_line\SXW0301_Production_line\obj\Debug\SXW0301_Production_line.MergeWindow.resources
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SeewoTestTool\SXW0301_Production_line\SXW0301_Production_line\obj\Debug\SXW0301_Production_line.AgingTestPanel.resources

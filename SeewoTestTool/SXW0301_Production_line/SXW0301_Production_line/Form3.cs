@@ -176,7 +176,6 @@ namespace SXW0301_Production_line
                 player_1_open.Interrupt();
                 player_1_open=null;
             }
-            vlcControl1 = null;
         }
     }
 }

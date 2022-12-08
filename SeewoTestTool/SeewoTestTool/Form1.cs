@@ -126,7 +126,8 @@ namespace SeewoTestTool
                 string temp_check_ping_ip_exists = executeCMDCommand($"ping {host} -n 1");
                 if (temp_check_ping_ip_exists.Contains("请求超时"))
                 {
-                    MessageBox.Show("设备IP查找失败，请确认设备网口连接情况以及网络环境配置是否正常后重试！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    output_rich_textbox.AppendText("设备IP查找失败，请确认设备网口连接情况以及网络环境配置是否正常后重试！\n");
+                    //MessageBox.Show("设备IP查找失败，请确认设备网口连接情况以及网络环境配置是否正常后重试！\n"); 
                     return false;
                 }
                 else
@@ -167,7 +168,7 @@ namespace SeewoTestTool
             catch (Exception ex)
             {
                 //MessageBox.Show(ex.ToString());
-                output_rich_textbox.AppendText("操作结束");
+                output_rich_textbox.AppendText("【检查设备是否在线】操作结束\n");
                 return true;
             }
             
@@ -183,6 +184,7 @@ namespace SeewoTestTool
         private void device_connect_button_Click(object sender, EventArgs e)
         {
             output_rich_textbox.AppendText("【执行操作】进行设备绑定连接……\n");
+            buildRoute();
             if (check_device_online())
             {
                 host = device_ip_textbox.Text;
@@ -213,7 +215,7 @@ namespace SeewoTestTool
 
                         clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                         clientSocket.BeginConnect(ipe, new AsyncCallback(CallBackMethod), clientSocket);
-                        if (TimeoutObject.WaitOne(2000, false))
+                        if (TimeoutObject.WaitOne(5000, false))
                         {
                             if (clientSocket.Connected)
                             {
@@ -460,6 +462,7 @@ namespace SeewoTestTool
                         redGreenFAIL_button.Enabled = false;
                         getCurrentMacAddress_button.Enabled = false;
                         beginResetTest_button.Enabled = false;
+                        enterAgingMode_button.Enabled = false;
                         login_button.Text = "设备连接后\n可自动登录";
                     }
                     catch (Exception ex)
@@ -1374,6 +1377,50 @@ namespace SeewoTestTool
             output_rich_textbox.AppendText(output_string);
         }
 
+
+        private void buildRoute()
+        {
+            // 判断如果是：219.198.235.11，需要在连接设备前加上ping操作打通路由，如果不是，则不需要ping 219.198.235.11 -t -S 219.198.235.17\
+            if (host == "219.198.235.11")
+            {
+                string localPCHost = null;
+                foreach (NetworkInterface netItem in NetworkInterface.GetAllNetworkInterfaces())
+                {
+                    foreach (UnicastIPAddressInformation ipIntProp in netItem.GetIPProperties().UnicastAddresses.ToArray<UnicastIPAddressInformation>())
+                    {
+                        string inetName = netItem.Name;
+                        string inetAddress = ipIntProp.Address.ToString();
+                        string inetType = ipIntProp.Address.AddressFamily.ToString();
+                        //output_rich_textbox.AppendText($"   接口名：{inetName}，IP：{inetAddress}，IP类型：{inetType}\n");
+                        if (inetName == "以太网" && inetType == "InterNetwork")
+                        {
+                            localPCHost = inetAddress;
+                        }
+                    }
+                }
+                if (!string.IsNullOrEmpty(localPCHost))
+                {
+                    int times = 0;
+                    while (true)
+                    {
+                        times += 1;
+                        string back_temp = executeCMDCommand($"ping {host} -t -S {localPCHost} -n 1");
+                        Thread.Sleep(1000);
+                        output_rich_textbox.AppendText($"【提示】【{times}秒】重建路由器网络中请稍后……\n");
+                        if (back_temp.Contains("TTL"))
+                        {
+                            break;
+                        }
+                        if (times >= 30)
+                        {
+                            output_rich_textbox.AppendText("30秒内路由网络没有更新没有成功，请重启机器！");
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
         int lastValue;
         private void waitForReboot()
         {
@@ -1385,6 +1432,8 @@ namespace SeewoTestTool
                 output_rich_textbox.SelectionFont = font;
                 output_rich_textbox.AppendText("请稍等设备正在重启中……\n");
                 Thread.Sleep(5000);
+                buildRoute();
+                /**
                 string temp_check_ping_ip_exists = executeCMDCommand($"ping {device_ip_textbox.Text} -n 1");
                 if (upgrade_progressbar.Value != 0)
                 {
@@ -1394,8 +1443,9 @@ namespace SeewoTestTool
                         upgrade_progressbar.Value += 10;
                     }
                 }
-
-                if (temp_check_ping_ip_exists.Contains("TTL"))
+                */
+                if(true)
+                //if (temp_check_ping_ip_exists.Contains("TTL"))
                 {
                     Thread.Sleep(8000);
                     thread_reboot1.Interrupt();
@@ -1752,6 +1802,7 @@ namespace SeewoTestTool
                             redGreenFAIL_button.Enabled = true;
                             getCurrentMacAddress_button.Enabled = true;
                             beginResetTest_button.Enabled = true;
+                            enterAgingMode_button.Enabled = true;
                             // 增加记住username和password功能
                             if (rememberCheckBox.Checked == true)
                             {
@@ -3281,6 +3332,46 @@ namespace SeewoTestTool
 
                 }
             }
+        }
+
+        SXW0301_Production_line.AgingTestPanel agingTestPanel;
+        // 进入老化模式面板
+        private void enterAgingMode_button_Click(object sender, EventArgs e)
+        {
+            if (check_device_online())
+            {
+                output_rich_textbox.AppendText("【执行操作】进入老化模式面板……\n");
+                if (clientSocket != null && clientSocket.Connected)
+                {
+                    int rate = 4096;
+                    string updateBitRateCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"setParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"Camera0Chn0\\\",\\\"value\\\": {{\\\"BitRate\\\": {rate}}}}}\"";
+                    output_string = executeCMDCommand(updateBitRateCommand);
+                    if (agingTestPanel == null)
+                    {
+                        agingTestPanel = new SXW0301_Production_line.AgingTestPanel();
+                        agingTestPanel.Show();
+                    }
+                    else if (agingTestPanel.IsDisposed)
+                    {
+                        agingTestPanel = new SXW0301_Production_line.AgingTestPanel();
+                        agingTestPanel.Activate();
+                        agingTestPanel.Show();
+                    }
+                    else
+                    {
+                        output_rich_textbox.AppendText("已进入老化模式面板，请勿重复打开哦\n");
+                    }
+                }
+                else
+                {
+                    device_ip_textbox.Enabled = true;
+                    radioButton_80.Enabled = true;
+                    radioButton_8080.Enabled = true;
+                    device_status_label.Text = "已断开";
+                    output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
+                }
+            }
+
         }
     }
 }

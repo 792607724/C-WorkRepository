@@ -34,6 +34,7 @@
             this.backgroundworker_firmwareupgrade = new System.ComponentModel.BackgroundWorker();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.uiGroupBox1 = new Sunny.UI.UIGroupBox();
+            this.enterAgingMode_button = new Sunny.UI.UIButton();
             this.uiGroupBox9 = new Sunny.UI.UIGroupBox();
             this.resetTestClickResult_label = new Sunny.UI.UILabel();
             this.uiLabel19 = new Sunny.UI.UILabel();
@@ -221,6 +222,7 @@
             // 
             // uiGroupBox1
             // 
+            this.uiGroupBox1.Controls.Add(this.enterAgingMode_button);
             this.uiGroupBox1.Controls.Add(this.uiGroupBox9);
             this.uiGroupBox1.Controls.Add(this.uiGroupBox8);
             this.uiGroupBox1.Controls.Add(this.groupBox7);
@@ -248,6 +250,22 @@
             this.uiGroupBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.uiGroupBox1.ZoomScaleDisabled = true;
             this.uiGroupBox1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // enterAgingMode_button
+            // 
+            this.enterAgingMode_button.Enabled = false;
+            this.enterAgingMode_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.enterAgingMode_button.Location = new System.Drawing.Point(778, 454);
+            this.enterAgingMode_button.MinimumSize = new System.Drawing.Size(1, 1);
+            this.enterAgingMode_button.Name = "enterAgingMode_button";
+            this.enterAgingMode_button.Radius = 20;
+            this.enterAgingMode_button.Size = new System.Drawing.Size(183, 27);
+            this.enterAgingMode_button.Style = Sunny.UI.UIStyle.Custom;
+            this.enterAgingMode_button.TabIndex = 30;
+            this.enterAgingMode_button.Text = "老化模式面板";
+            this.enterAgingMode_button.ZoomScaleDisabled = true;
+            this.enterAgingMode_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.enterAgingMode_button.Click += new System.EventHandler(this.enterAgingMode_button_Click);
             // 
             // uiGroupBox9
             // 
@@ -919,11 +937,11 @@
             // 
             this.device_reset_button.Enabled = false;
             this.device_reset_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.device_reset_button.Location = new System.Drawing.Point(778, 463);
+            this.device_reset_button.Location = new System.Drawing.Point(778, 425);
             this.device_reset_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.device_reset_button.Name = "device_reset_button";
             this.device_reset_button.Radius = 20;
-            this.device_reset_button.Size = new System.Drawing.Size(183, 66);
+            this.device_reset_button.Size = new System.Drawing.Size(183, 27);
             this.device_reset_button.Style = Sunny.UI.UIStyle.Custom;
             this.device_reset_button.TabIndex = 25;
             this.device_reset_button.Text = "恢复出厂设置";
@@ -1227,7 +1245,7 @@
             this.rebootDevice_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.rebootDevice_button.Name = "rebootDevice_button";
             this.rebootDevice_button.Radius = 20;
-            this.rebootDevice_button.Size = new System.Drawing.Size(183, 66);
+            this.rebootDevice_button.Size = new System.Drawing.Size(183, 27);
             this.rebootDevice_button.Style = Sunny.UI.UIStyle.Custom;
             this.rebootDevice_button.TabIndex = 24;
             this.rebootDevice_button.Text = "重启设备";
@@ -2585,5 +2603,6 @@
         private Sunny.UI.UIButton beginResetTest_button;
         private Sunny.UI.UILabel writeInMacResult_label;
         private Sunny.UI.UILabel uiLabel17;
+        private Sunny.UI.UIButton enterAgingMode_button;
     }
 }

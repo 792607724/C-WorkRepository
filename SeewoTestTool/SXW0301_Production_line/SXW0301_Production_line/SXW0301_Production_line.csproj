@@ -96,6 +96,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgingTestPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgingTestPanel.Designer.cs">
+      <DependentUpon>AgingTestPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,6 +134,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AgingTestPanel.resx">
+      <DependentUpon>AgingTestPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

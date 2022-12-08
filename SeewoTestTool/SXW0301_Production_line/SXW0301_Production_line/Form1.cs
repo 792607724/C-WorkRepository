@@ -74,8 +74,6 @@ namespace SXW0301_Production_line
                 player_2_open.Interrupt();
                 player_2_open = null;
             }
-            vlcControl1 = null;
-            vlcControl2= null;
             Application.Exit();
         }
         private unsafe void button1_Click(object sender, EventArgs e)
