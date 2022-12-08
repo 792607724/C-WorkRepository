@@ -2184,7 +2184,7 @@ namespace SeewoTestTool
                         fom1.Show();
                     }
                     else
-                    {
+                    { 
                         output_rich_textbox.AppendText("已打开三摄标定工具，请勿重复打开哦\n");
                     }
                 }
