@@ -123,9 +123,7 @@ namespace SNTool
             {
                 byte[] requestBuffer = new byte[device.OutputReportByteLength];
                 byte[] responseBuffer = new byte[device.InputReportByteLength];
-
                 Array.Copy(Protocol.COMMAND_REQUEST_TYPE_GET_SN, requestBuffer, Protocol.COMMAND_REQUEST_TYPE_GET_SN.Length);
-
                 device.Send(requestBuffer, 0, requestBuffer.Length);
                 device.Receive(responseBuffer, 0, responseBuffer.Length);
                 device.Close();

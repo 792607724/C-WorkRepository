@@ -1398,6 +1398,7 @@ namespace SeewoTestTool
                         }
                     }
                 }
+
                 if (!string.IsNullOrEmpty(localPCHost))
                 {
                     int times = 0;

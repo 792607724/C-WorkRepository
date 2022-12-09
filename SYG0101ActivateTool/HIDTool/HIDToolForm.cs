@@ -1218,7 +1218,7 @@ namespace HIDTool
             //this.textBox1.Focus();
             if (this.textBox1.Text.Length < 17)
             {
-                MessageBox.Show("无效整机序列号长度");
+                MessageBox.Show("无效PCBA号长度");
                 return;
             }
 
@@ -1228,7 +1228,7 @@ namespace HIDTool
                 byte[] requestBuffer = new byte[device.OutputReportByteLength];
                 byte[] responseBuffer = new byte[device.InputReportByteLength];
 
-                Array.Copy(Protocol.COMMAND_REQUEST_TYPE_SET_SN, requestBuffer, Protocol.COMMAND_REQUEST_TYPE_SET_SN.Length);
+                Array.Copy(Protocol.COMMAND_REQUEST_TYPE_SET_PCBASN, requestBuffer, Protocol.COMMAND_REQUEST_TYPE_SET_PCBASN.Length);
                 byte[] sn = System.Text.Encoding.ASCII.GetBytes(this.textBox1.Text);
                 if (sn1.Checked)
                 {
@@ -1251,12 +1251,12 @@ namespace HIDTool
                 device.Send(requestBuffer, 0, requestBuffer.Length);
                 device.Receive(responseBuffer, 0, responseBuffer.Length);
 
-                Array.Copy(Protocol.COMMAND_REQUEST_TYPE_GET_SN, requestBuffer, Protocol.COMMAND_REQUEST_TYPE_GET_SN.Length);
+                Array.Copy(Protocol.COMMAND_REQUEST_TYPE_GET_PCBASN, requestBuffer, Protocol.COMMAND_REQUEST_TYPE_GET_PCBASN.Length);
                 device.Send(requestBuffer, 0, requestBuffer.Length);
                 device.Receive(responseBuffer, 0, responseBuffer.Length);
 
                 string snStr = "";
-                for (int i = 0; i < 17; i++)
+                for (int i = 0; i < 19; i++)
                 {
                     snStr += (char)responseBuffer[7 + i];
                 }
@@ -1265,7 +1265,7 @@ namespace HIDTool
 
                 if (snStr == this.textBox1.Text)
                 {
-                    string passString = "成功写入整机序列号";
+                    string passString = "成功写入PCBA号";
                     using (Font font = new Font("Arial", 24))
                     {
                         Rectangle region = new Rectangle(50, 200, 816, 100);
@@ -1279,7 +1279,7 @@ namespace HIDTool
                 }
                 else
                 {
-                    string ngString = "写入整机序列号失败";
+                    string ngString = "写入PCBA号失败";
                     using (Font font = new Font("Arial", 24))
                     {
                         Rectangle region = new Rectangle(50, 200, 816, 100);

@@ -223,7 +223,7 @@
             this.GetSNBtn.Name = "GetSNBtn";
             this.GetSNBtn.Size = new System.Drawing.Size(413, 31);
             this.GetSNBtn.TabIndex = 85;
-            this.GetSNBtn.Text = "读取整机序列号";
+            this.GetSNBtn.Text = "读取PCBA序列号";
             this.GetSNBtn.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.GetSNBtn.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.GetSNBtn.Click += new System.EventHandler(this.GetSNBtn_Click_1);
@@ -252,7 +252,7 @@
             this.SetSNBtn.Name = "SetSNBtn";
             this.SetSNBtn.Size = new System.Drawing.Size(413, 31);
             this.SetSNBtn.TabIndex = 87;
-            this.SetSNBtn.Text = "写入整机序列号";
+            this.SetSNBtn.Text = "写入PCBA号";
             this.SetSNBtn.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.SetSNBtn.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.SetSNBtn.Click += new System.EventHandler(this.SetSNBtn_Click);
