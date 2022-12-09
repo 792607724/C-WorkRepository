@@ -3263,7 +3263,7 @@ namespace SeewoTestTool
                     device_connect_button_Click(null, null);
                     break;
                 }
-                if (time_limit >= 10)
+                if (time_limit >= 30)
                 {
                     resetButton_test_label.Text = "FAIL";
                     resetTestClickResult_label.Text = "FAIL";
@@ -3272,7 +3272,7 @@ namespace SeewoTestTool
                     testResults["测试结果"].ResetButtonResult = "FAIL";
                     writeTestResult();
                     output_rich_textbox.AppendText("【Reset测试】测试结果：FAIL\n");
-                    MessageBox.Show("Reset测试失败或在10s内未检测到Reset键按下，请点击【开始测试】进行重测！", "结果提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Reset测试失败或在30s内未检测到Reset键按下，请点击【开始测试】进行重测！", "结果提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     break;
                 }
             }
@@ -3289,7 +3289,7 @@ namespace SeewoTestTool
         {
             if (check_device_online())
             {
-                output_rich_textbox.AppendText("【执行操作】开始测试Reset按键，请在10s钟之内按下，否则自动判断为失败……\n");
+                output_rich_textbox.AppendText("【执行操作】开始测试Reset按键，请在30s钟之内按下，否则自动判断为失败……\n");
                 resetTestClickResult_label.Text = "";
                 try
                 {

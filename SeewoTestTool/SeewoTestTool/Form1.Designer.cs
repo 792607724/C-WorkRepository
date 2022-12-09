@@ -307,7 +307,7 @@
             this.uiLabel19.Size = new System.Drawing.Size(642, 29);
             this.uiLabel19.Style = Sunny.UI.UIStyle.Custom;
             this.uiLabel19.TabIndex = 44;
-            this.uiLabel19.Text = "点击开始测试后，请手动按下板子的Reset键后松开，系统会在10秒内自动检测Reset按下状态";
+            this.uiLabel19.Text = "点击开始测试后，请手动按下板子的Reset键后松开，系统会在30秒内自动检测Reset按下状态";
             this.uiLabel19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.uiLabel19.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
