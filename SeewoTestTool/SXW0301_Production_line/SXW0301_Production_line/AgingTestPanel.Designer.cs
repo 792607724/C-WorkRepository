@@ -184,9 +184,11 @@
             // volume5_value_label
             // 
             this.volume5_value_label.Font = new System.Drawing.Font("微软雅黑", 8F);
+            this.volume5_value_label.ForeColor = System.Drawing.Color.Blue;
             this.volume5_value_label.Location = new System.Drawing.Point(78, 590);
             this.volume5_value_label.Name = "volume5_value_label";
             this.volume5_value_label.Size = new System.Drawing.Size(97, 38);
+            this.volume5_value_label.Style = Sunny.UI.UIStyle.Custom;
             this.volume5_value_label.TabIndex = 21;
             this.volume5_value_label.Text = "0";
             this.volume5_value_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -195,9 +197,11 @@
             // volume1_value_label
             // 
             this.volume1_value_label.Font = new System.Drawing.Font("微软雅黑", 8F);
+            this.volume1_value_label.ForeColor = System.Drawing.Color.Blue;
             this.volume1_value_label.Location = new System.Drawing.Point(241, 590);
             this.volume1_value_label.Name = "volume1_value_label";
             this.volume1_value_label.Size = new System.Drawing.Size(88, 38);
+            this.volume1_value_label.Style = Sunny.UI.UIStyle.Custom;
             this.volume1_value_label.TabIndex = 23;
             this.volume1_value_label.Text = "0";
             this.volume1_value_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -217,9 +221,11 @@
             // volume6_value_label
             // 
             this.volume6_value_label.Font = new System.Drawing.Font("微软雅黑", 8F);
+            this.volume6_value_label.ForeColor = System.Drawing.Color.Blue;
             this.volume6_value_label.Location = new System.Drawing.Point(392, 590);
             this.volume6_value_label.Name = "volume6_value_label";
             this.volume6_value_label.Size = new System.Drawing.Size(94, 38);
+            this.volume6_value_label.Style = Sunny.UI.UIStyle.Custom;
             this.volume6_value_label.TabIndex = 25;
             this.volume6_value_label.Text = "0";
             this.volume6_value_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -239,9 +245,11 @@
             // volume4_value_label
             // 
             this.volume4_value_label.Font = new System.Drawing.Font("微软雅黑", 8F);
+            this.volume4_value_label.ForeColor = System.Drawing.Color.Blue;
             this.volume4_value_label.Location = new System.Drawing.Point(867, 590);
             this.volume4_value_label.Name = "volume4_value_label";
             this.volume4_value_label.Size = new System.Drawing.Size(94, 38);
+            this.volume4_value_label.Style = Sunny.UI.UIStyle.Custom;
             this.volume4_value_label.TabIndex = 31;
             this.volume4_value_label.Text = "0";
             this.volume4_value_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -261,9 +269,11 @@
             // volume8_value_label
             // 
             this.volume8_value_label.Font = new System.Drawing.Font("微软雅黑", 8F);
+            this.volume8_value_label.ForeColor = System.Drawing.Color.Blue;
             this.volume8_value_label.Location = new System.Drawing.Point(717, 590);
             this.volume8_value_label.Name = "volume8_value_label";
             this.volume8_value_label.Size = new System.Drawing.Size(89, 38);
+            this.volume8_value_label.Style = Sunny.UI.UIStyle.Custom;
             this.volume8_value_label.TabIndex = 29;
             this.volume8_value_label.Text = "0";
             this.volume8_value_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -283,9 +293,11 @@
             // volume2_value_label
             // 
             this.volume2_value_label.Font = new System.Drawing.Font("微软雅黑", 8F);
+            this.volume2_value_label.ForeColor = System.Drawing.Color.Blue;
             this.volume2_value_label.Location = new System.Drawing.Point(555, 590);
             this.volume2_value_label.Name = "volume2_value_label";
             this.volume2_value_label.Size = new System.Drawing.Size(97, 38);
+            this.volume2_value_label.Style = Sunny.UI.UIStyle.Custom;
             this.volume2_value_label.TabIndex = 27;
             this.volume2_value_label.Text = "0";
             this.volume2_value_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -305,9 +317,11 @@
             // audioIn1_label
             // 
             this.audioIn1_label.Font = new System.Drawing.Font("微软雅黑", 8F);
+            this.audioIn1_label.ForeColor = System.Drawing.Color.Red;
             this.audioIn1_label.Location = new System.Drawing.Point(144, 623);
             this.audioIn1_label.Name = "audioIn1_label";
             this.audioIn1_label.Size = new System.Drawing.Size(80, 38);
+            this.audioIn1_label.Style = Sunny.UI.UIStyle.Custom;
             this.audioIn1_label.TabIndex = 33;
             this.audioIn1_label.Text = "0";
             this.audioIn1_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -327,9 +341,11 @@
             // audioIn2_label
             // 
             this.audioIn2_label.Font = new System.Drawing.Font("微软雅黑", 8F);
+            this.audioIn2_label.ForeColor = System.Drawing.Color.Red;
             this.audioIn2_label.Location = new System.Drawing.Point(458, 628);
             this.audioIn2_label.Name = "audioIn2_label";
             this.audioIn2_label.Size = new System.Drawing.Size(80, 28);
+            this.audioIn2_label.Style = Sunny.UI.UIStyle.Custom;
             this.audioIn2_label.TabIndex = 35;
             this.audioIn2_label.Text = "0";
             this.audioIn2_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -350,7 +366,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(778, 587);
+            this.ClientSize = new System.Drawing.Size(973, 734);
             this.Controls.Add(this.audioIn2_label);
             this.Controls.Add(this.uiLabel16);
             this.Controls.Add(this.audioIn1_label);

@@ -241,6 +241,11 @@ namespace SXW0301_Production_line
         {
             try
             {
+                if (gain8Audio_t != null)
+                {
+                    gain8Audio_t.Interrupt();
+                    gain8Audio_t = null;
+                }
                 // 停止8路AUDIO测试
                 string fetchDeviceInfoCommand = $"curl -X POST \"http://{ip_textBox.Text}/testAudioJson_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"stopAudioTest\\\"}}\"";
                 output_string = executeCMDCommand(fetchDeviceInfoCommand);
@@ -250,11 +255,7 @@ namespace SXW0301_Production_line
                 if (back_code == "0")
                 {
                     result = "成功";
-                    if (gain8Audio_t != null)
-                    {
-                        gain8Audio_t.Interrupt();
-                        gain8Audio_t = null;
-                    }
+                    
                 }
                 else
                 {
