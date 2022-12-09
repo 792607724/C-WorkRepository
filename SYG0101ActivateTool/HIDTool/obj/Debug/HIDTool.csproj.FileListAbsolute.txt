@@ -67,3 +67,5 @@ D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SYG0101ActivateTool\HIDTool
 D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SYG0101ActivateTool\HIDTool\obj\Debug\HIDTool.csproj.CopyComplete
 D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SYG0101ActivateTool\HIDTool\obj\Debug\HIDTool.exe
 D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SYG0101ActivateTool\HIDTool\obj\Debug\HIDTool.pdb
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SYG0101ActivateTool\HIDTool\bin\Debug\SunnyUI.Common.dll
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SYG0101ActivateTool\HIDTool\bin\Debug\SunnyUI.dll

@@ -79,6 +79,7 @@ namespace HIDTool
 
         public HIDToolForm()
         {
+            this.AutoScaleMode = AutoScaleMode.Dpi;
             InitializeComponent();
             btnUpdateDeviceList_Click(null, null);
         }

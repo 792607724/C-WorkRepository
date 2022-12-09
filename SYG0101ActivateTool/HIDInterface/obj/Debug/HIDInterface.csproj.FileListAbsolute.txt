@@ -31,3 +31,6 @@ D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SYG0101ActivateTool\HIDInte
 D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SYG0101ActivateTool\HIDInterface\obj\Debug\HIDInterface.csproj.CoreCompileInputs.cache
 D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SYG0101ActivateTool\HIDInterface\obj\Debug\HIDInterface.dll
 D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SYG0101ActivateTool\HIDInterface\obj\Debug\HIDInterface.pdb
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SYG0101ActivateTool\HIDInterface\bin\Debug\SunnyUI.Common.dll
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SYG0101ActivateTool\HIDInterface\bin\Debug\SunnyUI.dll
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SYG0101ActivateTool\HIDInterface\obj\Debug\HIDInterface.csproj.CopyComplete
