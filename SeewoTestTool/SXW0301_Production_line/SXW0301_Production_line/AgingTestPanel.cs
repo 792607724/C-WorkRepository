@@ -12,8 +12,10 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Forms;
 using Vlc.DotNet.Forms;
+using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace SXW0301_Production_line
 {
@@ -127,42 +129,192 @@ namespace SXW0301_Production_line
                 stopAging_t.Interrupt();
                 stopAging_t = null;
             }
-
             OpenRedGreenFLashing();
+            StartAudioTest();
+        }
+
+        private void gain8audio()
+        {
+            try
+            {
+                while (true)
+                {
+                    Thread.Sleep(1000);
+                    string gainDeviceMICVolumeCommand = $"curl -X POST \"http://{ip_textBox.Text}/testAudioJson_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getAudioVolume\\\"}}\"";
+                    output_string = executeCMDCommand(gainDeviceMICVolumeCommand);
+                    MatchCollection r1 = Regex.Matches(output_string, "\"result\" : (.*)");
+                    string backCode = r1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "").Replace(",", "");
+                    if (Int32.Parse(backCode) == 0)
+                    {
+                        MatchCollection results_2 = Regex.Matches(output_string, "\\\"rmsdb\\\" : \\[\\n(.*),\\n(.*),\\n(.*),\\n(.*),\\n(.*),\\n(.*),\\n(.*),\\n(.*)\\n   ]");
+                        string[] temp = results_2[0].ToString().Replace("\"rmsdb\" : [", "").Replace("]", "").Replace("\"", "").Replace("\n", "").Replace(" ", "").Split(",");
+                        string volume1 = temp[0].ToString();
+                        string volume2 = temp[1].ToString();
+                        string volume3 = temp[2].ToString();
+                        string volume4 = temp[3].ToString();
+                        string volume5 = temp[4].ToString();
+                        string volume6 = temp[5].ToString();
+                        string volume7 = temp[6].ToString();
+                        string volume8 = temp[7].ToString();
+                        volume1_value_label.Text = volume1;
+                        volume2_value_label.Text = volume2;
+                        volume4_value_label.Text = volume4;
+                        volume5_value_label.Text = volume5;
+                        volume6_value_label.Text = volume6;
+                        volume8_value_label.Text = volume8;
+                        audioIn1_label.Text = volume3;
+                        audioIn2_label.Text = volume7;
+                    }
+                    else if (Int32.Parse(backCode) == -1)
+                    {
+                        uiLabel2.Text = $"FAIL，无法获取各路MIC音频音量值，backCode:[{backCode}]";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            
+        }
+
+        Thread gain8Audio_t;
+        // 开启8路AUDIO测试，期间不能进行AUDIO录制
+        private void startAudioRecord_func()
+        { 
+            try
+            {
+
+                // 开启8路AUDIO测试
+                string fetchDeviceInfoCommand = $"curl -X POST \"http://{ip_textBox.Text}/testAudioJson_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"startAudioTest\\\",\\\"format\\\": 0,\\\"soundmode\\\": 8,\\\"samplerate\\\": 16000,\\\"periodsize\\\": 1000,\\\"duration\\\": 0}}\"";
+                output_string = executeCMDCommand(fetchDeviceInfoCommand);
+                MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
+                string back_code = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
+                string result = "开启8路AUDIO测试操作未执行成功";
+                if (back_code == "0")
+                {
+                    result = "成功";
+                    if (gain8Audio_t != null)
+                    {
+
+                    }
+                    else
+                    {
+                        gain8Audio_t = new Thread(gain8audio);
+                        gain8Audio_t.IsBackground = true;
+                        gain8Audio_t.Start();
+                    }
+                }
+                else
+                {
+                    result = "失败";
+                }
+
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+
+            }
+        }
+
+        Thread startAudioTest_t;
+
+        private void StartAudioTest()
+        {
+            if (startAudioTest_t != null)
+            {
+
+            }
+            else
+            {
+                startAudioTest_t = new Thread(startAudioRecord_func);
+                startAudioTest_t.IsBackground = true;
+                startAudioTest_t.Start();
+            }
+        }
+
+
+        // 停止8路AUDIO测试
+        private void StopAudioTest()
+        {
+            try
+            {
+                // 停止8路AUDIO测试
+                string fetchDeviceInfoCommand = $"curl -X POST \"http://{ip_textBox.Text}/testAudioJson_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"stopAudioTest\\\"}}\"";
+                output_string = executeCMDCommand(fetchDeviceInfoCommand);
+                MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
+                string back_code = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
+                string result = "停止8路AUDIO测试操作未执行成功";
+                if (back_code == "0")
+                {
+                    result = "成功";
+                    if (gain8Audio_t != null)
+                    {
+                        gain8Audio_t.Interrupt();
+                        gain8Audio_t = null;
+                    }
+                }
+                else
+                {
+                    result = "失败";
+                }
+
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+
+            }
         }
 
         private void stopAging_func()
         {
-            liveVideoPlay_button.Enabled = true;
-            stopAgingTest_button.Enabled = false;
-            CloseReadGreenFLashing();
-            vlcControl1.Stop();
-            if (player_1_open != null)
+            try
             {
-                player_1_open.Interrupt();
-                player_1_open = null;
-            }
+                liveVideoPlay_button.Enabled = true;
+                stopAgingTest_button.Enabled = false;
+                CloseReadGreenFLashing();
+                StopAudioTest();
+                vlcControl1.Stop();
+                if (player_1_open != null)
+                {
+                    player_1_open.Interrupt();
+                    player_1_open = null;
+                }
 
-            vlcControl2.Stop();
-            if (player_2_open != null)
+                vlcControl2.Stop();
+                if (player_2_open != null)
+                {
+                    player_2_open.Interrupt();
+                    player_2_open = null;
+                }
+
+                vlcControl3.Stop();
+                if (player_3_open != null)
+                {
+                    player_3_open.Interrupt();
+                    player_3_open = null;
+                }
+
+                if (beginAging_t != null)
+                {
+                    beginAging_t.Interrupt();
+                    beginAging_t = null;
+                }
+
+                if (startAudioTest_t != null)
+                {
+                    startAudioTest_t.Interrupt();
+                    startAudioTest_t = null;
+                }
+            }
+            catch (Exception ex)
             {
-                player_2_open.Interrupt();
-                player_2_open = null;
             }
-
-            vlcControl3.Stop();
-            if (player_3_open != null)
-            {
-                player_3_open.Interrupt();
-                player_3_open = null;
-            }
-
-            if (beginAging_t != null)
-            {
-                beginAging_t.Interrupt();
-                beginAging_t = null;
-            }
-
         }
 
         Thread beginAging_t;
@@ -172,7 +324,6 @@ namespace SXW0301_Production_line
         {
             if (beginAging_t != null)
             {
-                //MessageBox.Show("请勿重复开启老化测试哦！");
             }
             else
             {
@@ -238,7 +389,6 @@ namespace SXW0301_Production_line
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"打开红绿灯交替闪烁功能失败：\n{ex.ToString()}\n");
             }
             finally
             {
@@ -269,7 +419,6 @@ namespace SXW0301_Production_line
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"关闭红绿灯交替闪烁功能失败：\n{ex.ToString()}\n");
             }
             finally
             {
@@ -280,16 +429,23 @@ namespace SXW0301_Production_line
         // 停止老化测试
         private void stopAgingTest_button_Click(object sender, EventArgs e)
         {
-            if (stopAging_t != null)
+            try
             {
-                //MessageBox.Show("请勿重复开启老化测试哦！");
+                if (stopAging_t != null)
+                {
+                    //MessageBox.Show("请勿重复开启老化测试哦！");
+                }
+                else
+                {
+                    stopAging_t = new Thread(stopAging_func);
+                    stopAging_t.IsBackground = true;
+                    stopAging_t.Start();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                stopAging_t = new Thread(stopAging_func);
-                stopAging_t.IsBackground = true;
-                stopAging_t.Start();
             }
+            
         }
     }
 }
