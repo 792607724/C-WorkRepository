@@ -1,9 +1,11 @@
 ﻿using HIDInterface;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Threading.Tasks;
@@ -13,6 +15,7 @@ namespace HIDTool
 {
     public partial class HIDToolForm : Form
     {
+        /**
         private static readonly int TARGET_HID_SEEVISION_VID = 9546;
         private static readonly int TARGET_HID_HONGHE_VID = 0x2757;
         private static readonly int TARGET_HID_HONGHE_PID = 0x3007;
@@ -22,6 +25,7 @@ namespace HIDTool
         private static readonly int TARGET_HID_HONGHE04_PID = 0x3014;
         private static readonly int TARGET_HID_HONGHE05_VID = 0x2757;
         private static readonly int TARGET_HID_HONGHE05_PID = 0x3015;
+        */
         private static readonly int VID_1 = 0x2757;
         private static readonly int VID_2 = 0x254a;
         //private static readonly int TARGET_HID_PID = 3074;
@@ -823,6 +827,29 @@ namespace HIDTool
             return devices;
         }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         private HIDDevice OpenHIDDevice(int index)
         {
             List<HIDDeviceInfo> deviceInfos = GetHIDDevices();
@@ -1349,7 +1376,7 @@ namespace HIDTool
             HIDDeviceInfo targetDeviceInfo = null;
             for (int ki = 0; ki < deviceInfos.Length; ki++)
             {
-                if (deviceInfos[ki].VID == TARGET_HID_SEEVISION_VID || (deviceInfos[ki].VID == TARGET_HID_HONGHE_VID))
+                if (deviceInfos[ki].VID == VID_1 || deviceInfos[ki].VID == VID_2)
                 {
                     targetDeviceInfo = deviceInfos[ki];
                     break;
