@@ -1156,7 +1156,7 @@ namespace HIDTool
                 byte[] requestBuffer = new byte[device.OutputReportByteLength];
                 byte[] responseBuffer = new byte[device.InputReportByteLength];
 
-                Array.Copy(Protocol.COMMAND_REQUEST_TYPE_GET_UUID, requestBuffer, Protocol.COMMAND_REQUEST_TYPE_GET_UUID.Length);
+                Array.Copy(Protocol.COMMAND_REQUEST_TYPE_GET_UUID, requestBuffer, Protocol.COMMAND_RESPONSE_TYPE_GET_UUID_ACK.Length);
 
                 device.Send(requestBuffer, 0, requestBuffer.Length);
                 device.Receive(responseBuffer, 0, responseBuffer.Length);
@@ -1169,6 +1169,7 @@ namespace HIDTool
                     uuid += (char)responseBuffer[7 + i];
                 }
                 currentDeviceUUID_label.Text = uuid;
+                MessageBox.Show($"当前设备UUID：{uuid}");
             }
         }
 
@@ -1181,7 +1182,54 @@ namespace HIDTool
         // 激活当前连接的设备
         private void acticateCurrentDevice_button_Click(object sender, EventArgs e)
         {
+            HIDDevice device = OpenHIDDevice(this.comboBoxDevices.SelectedIndex);
 
+            if (device != null)
+            {
+                byte[] requestBuffer = new byte[device.OutputReportByteLength];
+                byte[] responseBuffer = new byte[device.InputReportByteLength];
+
+                Array.Copy(Protocol.COMMAND_REQUEST_TYPE_SET_UUID_CIPHERTEXT, requestBuffer, Protocol.COMMAND_RESPONSE_TYPE_SET_UUID_CIPHERTEXT_ACK.Length);
+
+                string cipher_text = "";
+                requestBuffer[5] = 0;
+
+                device.Send(requestBuffer, 0, requestBuffer.Length);
+                device.Receive(responseBuffer, 0, responseBuffer.Length);
+                device.Close();
+                //getCameraPrivacyStatus();
+                bool isValidCommand = true;
+                
+                for (int i = 0; i < 7; i++)
+                {
+                    if (Protocol.COMMAND_RESPONSE_TYPE_SET_UUID_CIPHERTEXT_ACK[i] != responseBuffer[i])
+                    {
+                        isValidCommand = false;
+                        break;
+                    }
+                }
+                if (isValidCommand)
+                {
+                    MessageBox.Show("激活当前连接的设备");
+                    int back_code = responseBuffer[7];
+                    if (back_code == 0)
+                    {
+                        MessageBox.Show("激活成功！");
+                        MessageBox.Show(back_code.ToString());
+                    }
+                    if (back_code == 1)
+                    {
+                        MessageBox.Show("激活失败！");
+                        MessageBox.Show(back_code.ToString());
+                    }
+                    MessageBox.Show(back_code.ToString());
+                }
+                else
+                {
+                    MessageBox.Show("无效返回值！");
+                    MessageBox.Show("激活失败！");
+                }
+            }
         }
 
         // 读取整机序列号
