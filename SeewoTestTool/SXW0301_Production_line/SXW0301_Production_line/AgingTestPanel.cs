@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using Vlc.DotNet.Forms;
+using Application = System.Windows.Forms.Application;
 using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace SXW0301_Production_line
@@ -168,6 +169,7 @@ namespace SXW0301_Production_line
                     else if (Int32.Parse(backCode) == -1)
                     {
                         uiLabel2.Text = $"FAIL，无法获取各路MIC音频音量值，backCode:[{backCode}]";
+                        break;
                     }
                 }
             }
@@ -315,7 +317,9 @@ namespace SXW0301_Production_line
             }
             catch (Exception ex)
             {
+                
             }
+
         }
 
         Thread beginAging_t;
@@ -325,6 +329,7 @@ namespace SXW0301_Production_line
         {
             if (beginAging_t != null)
             {
+
             }
             else
             {
@@ -332,11 +337,19 @@ namespace SXW0301_Production_line
                 beginAging_t.IsBackground = true;
                 beginAging_t.Start();
             }
-
         }
         private void FormClosingEvent(object sender, FormClosingEventArgs e)
         {
-            stopAgingTest_button_Click(null, null);
+            try
+            {
+                stopAgingTest_button_Click(null, null);
+                MessageBox.Show("点击确认后->请稍等5秒钟->清理资源中……", "小提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Thread.Sleep(5000);
+            }
+            catch (Exception)
+            {
+                
+            }
         }
         private string executeCMDCommand(string command)
         {
@@ -434,7 +447,7 @@ namespace SXW0301_Production_line
             {
                 if (stopAging_t != null)
                 {
-                    //MessageBox.Show("请勿重复开启老化测试哦！");
+
                 }
                 else
                 {

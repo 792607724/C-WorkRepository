@@ -3336,32 +3336,55 @@ namespace SeewoTestTool
         }
 
         SXW0301_Production_line.AgingTestPanel agingTestPanel;
+        Thread agingThread;
+        private void enterAgingMode()
+        {
+            int rate = 4096;
+            string updateBitRateCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"setParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"Camera0Chn0\\\",\\\"value\\\": {{\\\"BitRate\\\": {rate}}}}}\"";
+            output_string = executeCMDCommand(updateBitRateCommand);
+            if (agingTestPanel == null)
+            {
+                agingTestPanel = new SXW0301_Production_line.AgingTestPanel();
+                agingTestPanel.Show();
+                
+                
+            }
+            else if (agingTestPanel.IsDisposed)
+            {
+                agingTestPanel = new SXW0301_Production_line.AgingTestPanel();
+                agingTestPanel.Activate();
+                agingTestPanel.Show();
+                
+            }
+            else
+            {
+                output_rich_textbox.AppendText("已进入老化模式面板，请勿重复打开哦\n");
+            }
+
+        }
+        private void process3()
+        {
+            MethodInvoker MethInvo = new MethodInvoker(enterAgingMode);
+            BeginInvoke(MethInvo);
+        }
+
         // 进入老化模式面板
         private void enterAgingMode_button_Click(object sender, EventArgs e)
         {
+            if (agingThread!=null)
+            {
+                agingThread.Interrupt();
+                agingThread = null;
+            }
             if (check_device_online())
             {
                 output_rich_textbox.AppendText("【执行操作】进入老化模式面板……\n");
                 if (clientSocket != null && clientSocket.Connected)
                 {
-                    int rate = 4096;
-                    string updateBitRateCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"setParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"Camera0Chn0\\\",\\\"value\\\": {{\\\"BitRate\\\": {rate}}}}}\"";
-                    output_string = executeCMDCommand(updateBitRateCommand);
-                    if (agingTestPanel == null)
-                    {
-                        agingTestPanel = new SXW0301_Production_line.AgingTestPanel();
-                        agingTestPanel.Show();
-                    }
-                    else if (agingTestPanel.IsDisposed)
-                    {
-                        agingTestPanel = new SXW0301_Production_line.AgingTestPanel();
-                        agingTestPanel.Activate();
-                        agingTestPanel.Show();
-                    }
-                    else
-                    {
-                        output_rich_textbox.AppendText("已进入老化模式面板，请勿重复打开哦\n");
-                    }
+                    agingThread = new Thread(process3);
+                    agingThread.IsBackground = false;
+                    agingThread.Start();
+                    agingThread.Join();
                 }
                 else
                 {
