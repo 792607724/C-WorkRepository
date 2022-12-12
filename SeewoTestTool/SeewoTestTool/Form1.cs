@@ -2817,6 +2817,10 @@ namespace SeewoTestTool
         private void writeInMacFunc()
         {
             output_rich_textbox.AppendText(session);
+            for (int i = 1; i < 15; i += 3)
+            {
+                writeInMAC = writeInMAC.Insert(i + 1, ":");
+            }
             string writeDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"setParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"EthernetService\\\",\\\"value\\\": {{\\\"Eth0MAC\\\": \\\"{writeInMAC}\\\" , \\\"Eth0Name\\\": \\\"eth0\\\"}}}}\"";
             output_string = executeCMDCommand(writeDeviceInfoCommand);
             MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
@@ -2916,10 +2920,11 @@ namespace SeewoTestTool
                     {
                         // 写入MAC地址进设备
                         writeInMAC = macInput_textbox.Text;
-                        if (string.IsNullOrEmpty(writeInMAC) || !new Regex("(.*:.*:.*:.*:.*:.*)").IsMatch(writeInMAC))
+                        //if (string.IsNullOrEmpty(writeInMAC) || !new Regex("(.*:.*:.*:.*:.*:.*)").IsMatch(writeInMAC))
+                        if (string.IsNullOrEmpty(writeInMAC) || writeInMAC.Length != 12)
                         {
-                            MessageBox.Show("请写入正确的MAC地址再进行刷入，只能数字\n", "温馨提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            output_rich_textbox.AppendText("请写入正确的MAC地址再进行刷入，只能数字\n");
+                            MessageBox.Show("请写入正确的MAC地址再进行刷入，只能数字或者字母\n", "温馨提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            output_rich_textbox.AppendText("请写入正确的MAC地址再进行刷入，只能数字或者字母\n");
                             currentMac_label.Text = "写入失败";
                             macAddress_test_label.Text = "写入失败";
                         }
@@ -3379,6 +3384,7 @@ namespace SeewoTestTool
             if (check_device_online())
             {
                 output_rich_textbox.AppendText("【执行操作】进入老化模式面板……\n");
+                /**
                 if (clientSocket != null && clientSocket.Connected)
                 {
                     agingThread = new Thread(process3);
@@ -3394,6 +3400,8 @@ namespace SeewoTestTool
                     device_status_label.Text = "已断开";
                     output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
                 }
+                **/
+                enterAgingMode();
             }
 
         }
