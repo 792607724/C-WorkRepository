@@ -178,6 +178,7 @@
             this.clearInput_button = new Sunny.UI.UIButton();
             this.macInput_textbox = new Sunny.UI.UITextBox();
             this.uiLabel11 = new Sunny.UI.UILabel();
+            this.bareBoardTest_checkBox = new Sunny.UI.UICheckBox();
             this.uiGroupBox1.SuspendLayout();
             this.uiGroupBox9.SuspendLayout();
             this.uiGroupBox8.SuspendLayout();
@@ -395,6 +396,7 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.bareBoardTest_checkBox);
             this.groupBox7.Controls.Add(this.extractRecordFile_button);
             this.groupBox7.Controls.Add(this.recordingGif_label);
             this.groupBox7.Controls.Add(this.recordTime_textbox);
@@ -2466,6 +2468,20 @@
             this.uiLabel11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.uiLabel11.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
+            // bareBoardTest_checkBox
+            // 
+            this.bareBoardTest_checkBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.bareBoardTest_checkBox.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.bareBoardTest_checkBox.Location = new System.Drawing.Point(189, 105);
+            this.bareBoardTest_checkBox.MinimumSize = new System.Drawing.Size(1, 1);
+            this.bareBoardTest_checkBox.Name = "bareBoardTest_checkBox";
+            this.bareBoardTest_checkBox.Padding = new System.Windows.Forms.Padding(22, 0, 0, 0);
+            this.bareBoardTest_checkBox.Size = new System.Drawing.Size(114, 27);
+            this.bareBoardTest_checkBox.Style = Sunny.UI.UIStyle.Custom;
+            this.bareBoardTest_checkBox.TabIndex = 46;
+            this.bareBoardTest_checkBox.Text = "裸板测试模式";
+            this.bareBoardTest_checkBox.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -2653,5 +2669,6 @@
         private Sunny.UI.UILabel uiLabel20;
         private Sunny.UI.UIButton uiButton1;
         private Sunny.UI.UILabel uiLabel21;
+        private Sunny.UI.UICheckBox bareBoardTest_checkBox;
     }
 }

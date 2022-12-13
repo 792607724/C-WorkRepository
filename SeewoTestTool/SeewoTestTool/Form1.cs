@@ -40,6 +40,7 @@ namespace SeewoTestTool
         {
             this.AutoScaleMode = AutoScaleMode.Dpi;
             InitializeComponent();
+            refreshTestResult_button_Click(null, null);
             uiButton1.FillColor = Color.Red;
             uiButton1.FillHoverColor = Color.MediumVioletRed;
             uiButton1.FillPressColor = Color.DarkRed;
@@ -1027,14 +1028,44 @@ namespace SeewoTestTool
             
         }
 
+        Thread bareBoardTest_t;
+        private void bareBoardTest_func()
+        {
+            Thread.Sleep(5000);
+            refreshTestResult_button_Click(null, null);
+            testResults["测试结果"].ArrayMicResult = "暂未测试";
+            writeTestResult();
+        }
+
         // 获取各路MIC音频音量值
         /**
          * 开启阵列麦克风音量值测试后，对8路麦克风的值进行获取
          */
         private void gain_array_mic_audio_level_button_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (bareBoardTest_t != null && !bareBoardTest_t.IsBackground)
+                {
+                    bareBoardTest_t.Interrupt();
+                    bareBoardTest_t = null;
+                }
+                else if (bareBoardTest_t != null && bareBoardTest_t.IsBackground)
+                {
+                    MessageBox.Show("正在运行请稍后！");
+                    return;
+                }
+            }
+            catch (Exception ex)
+            { 
+                
+            }
             duration = recordTime_textbox.Text;
             recordingGif_label.Image = Image.FromFile("./img/recordingGif.gif");
+            if (bareBoardTest_checkBox.Checked)
+            {
+                standardAudioVolume_textbox.Text = "0";
+            }
             //if (true)
             if (String.IsNullOrEmpty(standardAudioVolume_textbox.Text) || !new Regex("^[0-9]+$").IsMatch(standardAudioVolume_textbox.Text))
             {
@@ -1094,21 +1125,56 @@ namespace SeewoTestTool
                             float[] volumes_f = { volume_1_f, volume_2_f, volume_4_f, volume_5_f, volume_6_f, volume_8_f };
                             float maxINArray = volumes_f.Max();
                             float minINArray = volumes_f.Min();
-                            if (Math.Abs(Math.Abs(standard_volume) - Math.Abs(volume_1_f)) <= 2 && Math.Abs(Math.Abs(standard_volume) - Math.Abs(volume_2_f)) <= 2
-                                && Math.Abs(Math.Abs(standard_volume) - Math.Abs(volume_4_f)) <= 2 && Math.Abs(Math.Abs(standard_volume) - Math.Abs(volume_5_f)) <= 2
-                                && Math.Abs(Math.Abs(standard_volume) - Math.Abs(volume_6_f)) <= 2 && Math.Abs(Math.Abs(standard_volume) - Math.Abs(volume_8_f)) <= 2)
+                            if (bareBoardTest_checkBox.Checked)
                             {
-                                // 结果位
-                                refreshTestResult_button_Click(null, null);
-                                testResults["测试结果"].ArrayMicResult = "PASS";
-                                writeTestResult();
+                                if (Math.Abs(maxINArray - minINArray) <= 5)
+                                {
+                                    // 结果位
+                                    refreshTestResult_button_Click(null, null);
+                                    testResults["测试结果"].ArrayMicResult = "PASS";
+                                    writeTestResult();
+                                }
+                                else
+                                {
+                                    // 结果位
+                                    refreshTestResult_button_Click(null, null);
+                                    testResults["测试结果"].ArrayMicResult = "FAIL";
+                                    writeTestResult();
+                                }
+                                /**
+                                if (bareBoardTest_t != null)
+                                {
+                                    //MessageBox.Show("请稍后！");
+                                }
+                                else
+                                {
+                                    bareBoardTest_t = new Thread(bareBoardTest_func);
+                                    bareBoardTest_t.IsBackground = true;
+                                    bareBoardTest_t.Start();
+                                }
+                                */
+                                bareBoardTest_t = new Thread(bareBoardTest_func);
+                                bareBoardTest_t.IsBackground = true;
+                                bareBoardTest_t.Start();
                             }
                             else
                             {
-                                // 结果位
-                                refreshTestResult_button_Click(null, null);
-                                testResults["测试结果"].ArrayMicResult = "FAIL";
-                                writeTestResult();
+                                if (Math.Abs(Math.Abs(standard_volume) - Math.Abs(volume_1_f)) <= 2 && Math.Abs(Math.Abs(standard_volume) - Math.Abs(volume_2_f)) <= 2
+                                && Math.Abs(Math.Abs(standard_volume) - Math.Abs(volume_4_f)) <= 2 && Math.Abs(Math.Abs(standard_volume) - Math.Abs(volume_5_f)) <= 2
+                                && Math.Abs(Math.Abs(standard_volume) - Math.Abs(volume_6_f)) <= 2 && Math.Abs(Math.Abs(standard_volume) - Math.Abs(volume_8_f)) <= 2)
+                                {
+                                    // 结果位
+                                    refreshTestResult_button_Click(null, null);
+                                    testResults["测试结果"].ArrayMicResult = "PASS";
+                                    writeTestResult();
+                                }
+                                else
+                                {
+                                    // 结果位
+                                    refreshTestResult_button_Click(null, null);
+                                    testResults["测试结果"].ArrayMicResult = "FAIL";
+                                    writeTestResult();
+                                }
                             }
                         }
                         else if (Int32.Parse(backCode) == -1)
