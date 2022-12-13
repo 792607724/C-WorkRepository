@@ -18,6 +18,7 @@ namespace SXW0301_Production_line
         public MergeWindow()
         {
             InitializeComponent();
+            //mergeVideoPlay_button_Click(null, null);
         }
         private void vlcControl1_VlcLibDirectoryNeeded(object sender, Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs e)
         {

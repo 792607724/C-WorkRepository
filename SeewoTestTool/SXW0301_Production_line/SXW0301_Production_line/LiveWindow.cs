@@ -18,6 +18,7 @@ namespace SXW0301_Production_line
         public LiveWindow()
         {
             InitializeComponent();
+            //liveVideoPlay_button_Click(null, null);
         }
 
         private void vlcControl1_VlcLibDirectoryNeeded(object sender, Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs e)
@@ -80,6 +81,16 @@ namespace SXW0301_Production_line
                 player_1_open.Interrupt();
                 player_1_open = null;
             }
+        }
+
+        private void uiButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void uiButton2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -53,11 +53,11 @@
             // 
             this.mergeVideoPlay_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.mergeVideoPlay_button.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.mergeVideoPlay_button.Location = new System.Drawing.Point(495, 565);
+            this.mergeVideoPlay_button.Location = new System.Drawing.Point(554, 565);
             this.mergeVideoPlay_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.mergeVideoPlay_button.Name = "mergeVideoPlay_button";
             this.mergeVideoPlay_button.Radius = 20;
-            this.mergeVideoPlay_button.Size = new System.Drawing.Size(481, 43);
+            this.mergeVideoPlay_button.Size = new System.Drawing.Size(386, 43);
             this.mergeVideoPlay_button.TabIndex = 11;
             this.mergeVideoPlay_button.Text = "播放";
             this.mergeVideoPlay_button.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -77,7 +77,7 @@
             this.textBox1.Size = new System.Drawing.Size(475, 41);
             this.textBox1.TabIndex = 10;
             this.textBox1.Text = "rtsp://219.198.235.11/merge";
-            this.textBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.textBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.textBox1.Watermark = "";
             this.textBox1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 

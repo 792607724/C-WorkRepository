@@ -59,10 +59,10 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Radius = 20;
             this.textBox1.ShowText = false;
-            this.textBox1.Size = new System.Drawing.Size(475, 41);
+            this.textBox1.Size = new System.Drawing.Size(402, 41);
             this.textBox1.TabIndex = 8;
             this.textBox1.Text = "rtsp://219.198.235.11/live";
-            this.textBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.textBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.textBox1.Watermark = "";
             this.textBox1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
@@ -70,7 +70,7 @@
             // 
             this.liveVideoPlay_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.liveVideoPlay_button.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.liveVideoPlay_button.Location = new System.Drawing.Point(486, 561);
+            this.liveVideoPlay_button.Location = new System.Drawing.Point(486, 558);
             this.liveVideoPlay_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.liveVideoPlay_button.Name = "liveVideoPlay_button";
             this.liveVideoPlay_button.Radius = 20;

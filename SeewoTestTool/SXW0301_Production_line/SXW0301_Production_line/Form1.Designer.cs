@@ -88,13 +88,13 @@
             // 
             this.textBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox1.Location = new System.Drawing.Point(4, 633);
+            this.textBox1.Location = new System.Drawing.Point(4, 644);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox1.MinimumSize = new System.Drawing.Size(1, 16);
             this.textBox1.Name = "textBox1";
             this.textBox1.Radius = 20;
             this.textBox1.ShowText = false;
-            this.textBox1.Size = new System.Drawing.Size(299, 60);
+            this.textBox1.Size = new System.Drawing.Size(299, 43);
             this.textBox1.TabIndex = 2;
             this.textBox1.Text = "rtsp://219.198.235.11/sec0";
             this.textBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
@@ -105,11 +105,11 @@
             // 
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button2.Location = new System.Drawing.Point(310, 641);
+            this.button2.Location = new System.Drawing.Point(310, 644);
             this.button2.MinimumSize = new System.Drawing.Size(1, 1);
             this.button2.Name = "button2";
             this.button2.Radius = 20;
-            this.button2.Size = new System.Drawing.Size(91, 48);
+            this.button2.Size = new System.Drawing.Size(91, 45);
             this.button2.TabIndex = 9;
             this.button2.Text = "播放sec0";
             this.button2.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -120,11 +120,11 @@
             // 
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button1.Location = new System.Drawing.Point(644, 641);
+            this.button1.Location = new System.Drawing.Point(644, 644);
             this.button1.MinimumSize = new System.Drawing.Size(1, 1);
             this.button1.Name = "button1";
             this.button1.Radius = 20;
-            this.button1.Size = new System.Drawing.Size(201, 52);
+            this.button1.Size = new System.Drawing.Size(201, 49);
             this.button1.TabIndex = 2;
             this.button1.Text = "标定";
             this.button1.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -135,11 +135,11 @@
             // 
             this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button3.Location = new System.Drawing.Point(1094, 641);
+            this.button3.Location = new System.Drawing.Point(1094, 644);
             this.button3.MinimumSize = new System.Drawing.Size(1, 1);
             this.button3.Name = "button3";
             this.button3.Radius = 20;
-            this.button3.Size = new System.Drawing.Size(90, 48);
+            this.button3.Size = new System.Drawing.Size(90, 49);
             this.button3.TabIndex = 2;
             this.button3.Text = "播放sec1";
             this.button3.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -150,13 +150,13 @@
             // 
             this.textBox2.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textBox2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox2.Location = new System.Drawing.Point(1191, 633);
+            this.textBox2.Location = new System.Drawing.Point(1191, 644);
             this.textBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox2.MinimumSize = new System.Drawing.Size(1, 16);
             this.textBox2.Name = "textBox2";
             this.textBox2.Radius = 20;
             this.textBox2.ShowText = false;
-            this.textBox2.Size = new System.Drawing.Size(294, 60);
+            this.textBox2.Size = new System.Drawing.Size(294, 49);
             this.textBox2.TabIndex = 2;
             this.textBox2.Text = "rtsp://219.198.235.11/sec1";
             this.textBox2.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
@@ -172,7 +172,7 @@
             this.clearCaptureStatus_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.clearCaptureStatus_button.Name = "clearCaptureStatus_button";
             this.clearCaptureStatus_button.Radius = 20;
-            this.clearCaptureStatus_button.Size = new System.Drawing.Size(169, 48);
+            this.clearCaptureStatus_button.Size = new System.Drawing.Size(169, 49);
             this.clearCaptureStatus_button.TabIndex = 10;
             this.clearCaptureStatus_button.Text = "重置拍摄状态";
             this.clearCaptureStatus_button.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -182,9 +182,9 @@
             // uiLabel1
             // 
             this.uiLabel1.Font = new System.Drawing.Font("微软雅黑", 10F);
-            this.uiLabel1.Location = new System.Drawing.Point(407, 641);
+            this.uiLabel1.Location = new System.Drawing.Point(407, 644);
             this.uiLabel1.Name = "uiLabel1";
-            this.uiLabel1.Size = new System.Drawing.Size(131, 48);
+            this.uiLabel1.Size = new System.Drawing.Size(131, 45);
             this.uiLabel1.TabIndex = 2;
             this.uiLabel1.Text = "当前拍摄次数：";
             this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -193,7 +193,7 @@
             // currentCaptureStatus_label
             // 
             this.currentCaptureStatus_label.Font = new System.Drawing.Font("微软雅黑", 15F);
-            this.currentCaptureStatus_label.Location = new System.Drawing.Point(559, 642);
+            this.currentCaptureStatus_label.Location = new System.Drawing.Point(559, 644);
             this.currentCaptureStatus_label.Name = "currentCaptureStatus_label";
             this.currentCaptureStatus_label.Size = new System.Drawing.Size(70, 48);
             this.currentCaptureStatus_label.TabIndex = 11;

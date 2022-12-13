@@ -40,6 +40,7 @@
             this.uiLabel19 = new Sunny.UI.UILabel();
             this.beginResetTest_button = new Sunny.UI.UIButton();
             this.uiGroupBox8 = new Sunny.UI.UIGroupBox();
+            this.uiLabel21 = new Sunny.UI.UILabel();
             this.poe2NetworkTest_button = new Sunny.UI.UIButton();
             this.poe1NetworkTest_button = new Sunny.UI.UIButton();
             this.groupBox7 = new Sunny.UI.UIGroupBox();
@@ -113,6 +114,7 @@
             this.upgrade_firmware_textbox = new Sunny.UI.UITextBox();
             this.label5 = new Sunny.UI.UILabel();
             this.uiGroupBox5 = new Sunny.UI.UIGroupBox();
+            this.uiButton1 = new Sunny.UI.UIButton();
             this.login_button = new Sunny.UI.UIButton();
             this.explainLabel = new Sunny.UI.UILabel();
             this.password_textbox = new Sunny.UI.UITextBox();
@@ -165,6 +167,7 @@
             this.network_test_label = new Sunny.UI.UILabel();
             this.uiLabel3 = new Sunny.UI.UILabel();
             this.uiGroupBox7 = new Sunny.UI.UIGroupBox();
+            this.uiLabel20 = new Sunny.UI.UILabel();
             this.writeInMacResult_label = new Sunny.UI.UILabel();
             this.uiLabel17 = new Sunny.UI.UILabel();
             this.uiLabel2 = new Sunny.UI.UILabel();
@@ -328,6 +331,7 @@
             // 
             // uiGroupBox8
             // 
+            this.uiGroupBox8.Controls.Add(this.uiLabel21);
             this.uiGroupBox8.Controls.Add(this.poe2NetworkTest_button);
             this.uiGroupBox8.Controls.Add(this.poe1NetworkTest_button);
             this.uiGroupBox8.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -337,22 +341,35 @@
             this.uiGroupBox8.Name = "uiGroupBox8";
             this.uiGroupBox8.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
             this.uiGroupBox8.Radius = 20;
-            this.uiGroupBox8.Size = new System.Drawing.Size(212, 60);
+            this.uiGroupBox8.Size = new System.Drawing.Size(252, 86);
             this.uiGroupBox8.Style = Sunny.UI.UIStyle.Custom;
             this.uiGroupBox8.TabIndex = 28;
             this.uiGroupBox8.Text = "网络通信";
             this.uiGroupBox8.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.uiGroupBox8.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
+            // uiLabel21
+            // 
+            this.uiLabel21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.uiLabel21.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLabel21.Location = new System.Drawing.Point(8, 25);
+            this.uiLabel21.Name = "uiLabel21";
+            this.uiLabel21.Size = new System.Drawing.Size(239, 28);
+            this.uiLabel21.Style = Sunny.UI.UIStyle.Custom;
+            this.uiLabel21.TabIndex = 8;
+            this.uiLabel21.Text = "*请将网线插入网口，并点击下面按键";
+            this.uiLabel21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiLabel21.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
             // poe2NetworkTest_button
             // 
             this.poe2NetworkTest_button.Enabled = false;
             this.poe2NetworkTest_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.poe2NetworkTest_button.Location = new System.Drawing.Point(107, 25);
+            this.poe2NetworkTest_button.Location = new System.Drawing.Point(131, 56);
             this.poe2NetworkTest_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.poe2NetworkTest_button.Name = "poe2NetworkTest_button";
             this.poe2NetworkTest_button.Radius = 20;
-            this.poe2NetworkTest_button.Size = new System.Drawing.Size(99, 32);
+            this.poe2NetworkTest_button.Size = new System.Drawing.Size(114, 26);
             this.poe2NetworkTest_button.Style = Sunny.UI.UIStyle.Custom;
             this.poe2NetworkTest_button.TabIndex = 7;
             this.poe2NetworkTest_button.Text = "POE2口测试";
@@ -364,11 +381,11 @@
             // 
             this.poe1NetworkTest_button.Enabled = false;
             this.poe1NetworkTest_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.poe1NetworkTest_button.Location = new System.Drawing.Point(5, 25);
+            this.poe1NetworkTest_button.Location = new System.Drawing.Point(6, 56);
             this.poe1NetworkTest_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.poe1NetworkTest_button.Name = "poe1NetworkTest_button";
             this.poe1NetworkTest_button.Radius = 20;
-            this.poe1NetworkTest_button.Size = new System.Drawing.Size(99, 32);
+            this.poe1NetworkTest_button.Size = new System.Drawing.Size(117, 26);
             this.poe1NetworkTest_button.Style = Sunny.UI.UIStyle.Custom;
             this.poe1NetworkTest_button.TabIndex = 6;
             this.poe1NetworkTest_button.Text = "POE1口测试";
@@ -1100,13 +1117,13 @@
             this.uiGroupBox4.Controls.Add(this.button2);
             this.uiGroupBox4.Controls.Add(this.button1);
             this.uiGroupBox4.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiGroupBox4.Location = new System.Drawing.Point(217, 208);
+            this.uiGroupBox4.Location = new System.Drawing.Point(260, 208);
             this.uiGroupBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiGroupBox4.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiGroupBox4.Name = "uiGroupBox4";
             this.uiGroupBox4.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
             this.uiGroupBox4.Radius = 20;
-            this.uiGroupBox4.Size = new System.Drawing.Size(262, 175);
+            this.uiGroupBox4.Size = new System.Drawing.Size(219, 175);
             this.uiGroupBox4.Style = Sunny.UI.UIStyle.Custom;
             this.uiGroupBox4.TabIndex = 22;
             this.uiGroupBox4.Text = "三摄模组测试标定";
@@ -1117,11 +1134,11 @@
             // 
             this.openMergeCameraFAIL_buttton.Enabled = false;
             this.openMergeCameraFAIL_buttton.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.openMergeCameraFAIL_buttton.Location = new System.Drawing.Point(135, 145);
+            this.openMergeCameraFAIL_buttton.Location = new System.Drawing.Point(111, 145);
             this.openMergeCameraFAIL_buttton.MinimumSize = new System.Drawing.Size(1, 1);
             this.openMergeCameraFAIL_buttton.Name = "openMergeCameraFAIL_buttton";
             this.openMergeCameraFAIL_buttton.Radius = 20;
-            this.openMergeCameraFAIL_buttton.Size = new System.Drawing.Size(120, 25);
+            this.openMergeCameraFAIL_buttton.Size = new System.Drawing.Size(94, 25);
             this.openMergeCameraFAIL_buttton.Style = Sunny.UI.UIStyle.Custom;
             this.openMergeCameraFAIL_buttton.TabIndex = 30;
             this.openMergeCameraFAIL_buttton.Text = "FAIL";
@@ -1132,11 +1149,11 @@
             // 
             this.openMergeCameraPASS_buttton.Enabled = false;
             this.openMergeCameraPASS_buttton.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.openMergeCameraPASS_buttton.Location = new System.Drawing.Point(3, 145);
+            this.openMergeCameraPASS_buttton.Location = new System.Drawing.Point(11, 145);
             this.openMergeCameraPASS_buttton.MinimumSize = new System.Drawing.Size(1, 1);
             this.openMergeCameraPASS_buttton.Name = "openMergeCameraPASS_buttton";
             this.openMergeCameraPASS_buttton.Radius = 20;
-            this.openMergeCameraPASS_buttton.Size = new System.Drawing.Size(120, 25);
+            this.openMergeCameraPASS_buttton.Size = new System.Drawing.Size(94, 25);
             this.openMergeCameraPASS_buttton.Style = Sunny.UI.UIStyle.Custom;
             this.openMergeCameraPASS_buttton.TabIndex = 29;
             this.openMergeCameraPASS_buttton.Text = "PASS";
@@ -1147,11 +1164,11 @@
             // 
             this.openLiveCameraFAIL_buttton.Enabled = false;
             this.openLiveCameraFAIL_buttton.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.openLiveCameraFAIL_buttton.Location = new System.Drawing.Point(135, 89);
+            this.openLiveCameraFAIL_buttton.Location = new System.Drawing.Point(111, 89);
             this.openLiveCameraFAIL_buttton.MinimumSize = new System.Drawing.Size(1, 1);
             this.openLiveCameraFAIL_buttton.Name = "openLiveCameraFAIL_buttton";
             this.openLiveCameraFAIL_buttton.Radius = 20;
-            this.openLiveCameraFAIL_buttton.Size = new System.Drawing.Size(120, 25);
+            this.openLiveCameraFAIL_buttton.Size = new System.Drawing.Size(94, 25);
             this.openLiveCameraFAIL_buttton.Style = Sunny.UI.UIStyle.Custom;
             this.openLiveCameraFAIL_buttton.TabIndex = 28;
             this.openLiveCameraFAIL_buttton.Text = "FAIL";
@@ -1162,11 +1179,11 @@
             // 
             this.openLiveCameraPASS_buttton.Enabled = false;
             this.openLiveCameraPASS_buttton.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.openLiveCameraPASS_buttton.Location = new System.Drawing.Point(3, 89);
+            this.openLiveCameraPASS_buttton.Location = new System.Drawing.Point(11, 89);
             this.openLiveCameraPASS_buttton.MinimumSize = new System.Drawing.Size(1, 1);
             this.openLiveCameraPASS_buttton.Name = "openLiveCameraPASS_buttton";
             this.openLiveCameraPASS_buttton.Radius = 20;
-            this.openLiveCameraPASS_buttton.Size = new System.Drawing.Size(120, 25);
+            this.openLiveCameraPASS_buttton.Size = new System.Drawing.Size(94, 25);
             this.openLiveCameraPASS_buttton.Style = Sunny.UI.UIStyle.Custom;
             this.openLiveCameraPASS_buttton.TabIndex = 27;
             this.openLiveCameraPASS_buttton.Text = "PASS";
@@ -1177,11 +1194,11 @@
             // 
             this.openMergeCamera_buttton.Enabled = false;
             this.openMergeCamera_buttton.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.openMergeCamera_buttton.Location = new System.Drawing.Point(3, 118);
+            this.openMergeCamera_buttton.Location = new System.Drawing.Point(11, 118);
             this.openMergeCamera_buttton.MinimumSize = new System.Drawing.Size(1, 1);
             this.openMergeCamera_buttton.Name = "openMergeCamera_buttton";
             this.openMergeCamera_buttton.Radius = 20;
-            this.openMergeCamera_buttton.Size = new System.Drawing.Size(252, 25);
+            this.openMergeCamera_buttton.Size = new System.Drawing.Size(194, 25);
             this.openMergeCamera_buttton.Style = Sunny.UI.UIStyle.Custom;
             this.openMergeCamera_buttton.TabIndex = 26;
             this.openMergeCamera_buttton.Text = "打开Merge摄像头";
@@ -1193,11 +1210,11 @@
             // 
             this.openLiveCamera_buttton.Enabled = false;
             this.openLiveCamera_buttton.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.openLiveCamera_buttton.Location = new System.Drawing.Point(3, 61);
+            this.openLiveCamera_buttton.Location = new System.Drawing.Point(11, 61);
             this.openLiveCamera_buttton.MinimumSize = new System.Drawing.Size(1, 1);
             this.openLiveCamera_buttton.Name = "openLiveCamera_buttton";
             this.openLiveCamera_buttton.Radius = 20;
-            this.openLiveCamera_buttton.Size = new System.Drawing.Size(252, 25);
+            this.openLiveCamera_buttton.Size = new System.Drawing.Size(194, 25);
             this.openLiveCamera_buttton.Style = Sunny.UI.UIStyle.Custom;
             this.openLiveCamera_buttton.TabIndex = 25;
             this.openLiveCamera_buttton.Text = "打开Live摄像头";
@@ -1209,11 +1226,11 @@
             // 
             this.button2.Enabled = false;
             this.button2.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(135, 25);
+            this.button2.Location = new System.Drawing.Point(111, 25);
             this.button2.MinimumSize = new System.Drawing.Size(1, 1);
             this.button2.Name = "button2";
             this.button2.Radius = 20;
-            this.button2.Size = new System.Drawing.Size(120, 32);
+            this.button2.Size = new System.Drawing.Size(94, 32);
             this.button2.Style = Sunny.UI.UIStyle.Custom;
             this.button2.TabIndex = 24;
             this.button2.Text = "拼接图检测";
@@ -1225,11 +1242,11 @@
             // 
             this.button1.Enabled = false;
             this.button1.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(3, 25);
+            this.button1.Location = new System.Drawing.Point(11, 25);
             this.button1.MinimumSize = new System.Drawing.Size(1, 1);
             this.button1.Name = "button1";
             this.button1.Radius = 20;
-            this.button1.Size = new System.Drawing.Size(120, 32);
+            this.button1.Size = new System.Drawing.Size(94, 32);
             this.button1.Style = Sunny.UI.UIStyle.Custom;
             this.button1.TabIndex = 23;
             this.button1.Text = "标定";
@@ -1260,13 +1277,13 @@
             this.groupBox4.Controls.Add(this.stop_rg_flicker_button);
             this.groupBox4.Controls.Add(this.start_rg_flicker_button);
             this.groupBox4.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox4.Location = new System.Drawing.Point(4, 267);
+            this.groupBox4.Location = new System.Drawing.Point(4, 295);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox4.MinimumSize = new System.Drawing.Size(1, 1);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
             this.groupBox4.Radius = 20;
-            this.groupBox4.Size = new System.Drawing.Size(212, 116);
+            this.groupBox4.Size = new System.Drawing.Size(252, 88);
             this.groupBox4.Style = Sunny.UI.UIStyle.Custom;
             this.groupBox4.TabIndex = 20;
             this.groupBox4.Text = "红绿指示灯控制";
@@ -1277,11 +1294,11 @@
             // 
             this.redGreenFAIL_button.Enabled = false;
             this.redGreenFAIL_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.redGreenFAIL_button.Location = new System.Drawing.Point(107, 78);
+            this.redGreenFAIL_button.Location = new System.Drawing.Point(130, 60);
             this.redGreenFAIL_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.redGreenFAIL_button.Name = "redGreenFAIL_button";
             this.redGreenFAIL_button.Radius = 20;
-            this.redGreenFAIL_button.Size = new System.Drawing.Size(99, 32);
+            this.redGreenFAIL_button.Size = new System.Drawing.Size(114, 24);
             this.redGreenFAIL_button.Style = Sunny.UI.UIStyle.Custom;
             this.redGreenFAIL_button.TabIndex = 5;
             this.redGreenFAIL_button.Text = "FAIL";
@@ -1292,11 +1309,11 @@
             // 
             this.redGreenPASS_button.Enabled = false;
             this.redGreenPASS_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.redGreenPASS_button.Location = new System.Drawing.Point(6, 78);
+            this.redGreenPASS_button.Location = new System.Drawing.Point(6, 61);
             this.redGreenPASS_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.redGreenPASS_button.Name = "redGreenPASS_button";
             this.redGreenPASS_button.Radius = 20;
-            this.redGreenPASS_button.Size = new System.Drawing.Size(99, 32);
+            this.redGreenPASS_button.Size = new System.Drawing.Size(116, 24);
             this.redGreenPASS_button.Style = Sunny.UI.UIStyle.Custom;
             this.redGreenPASS_button.TabIndex = 4;
             this.redGreenPASS_button.Text = "PASS";
@@ -1307,11 +1324,11 @@
             // 
             this.stop_rg_flicker_button.Enabled = false;
             this.stop_rg_flicker_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.stop_rg_flicker_button.Location = new System.Drawing.Point(108, 30);
+            this.stop_rg_flicker_button.Location = new System.Drawing.Point(130, 26);
             this.stop_rg_flicker_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.stop_rg_flicker_button.Name = "stop_rg_flicker_button";
-            this.stop_rg_flicker_button.Radius = 20;
-            this.stop_rg_flicker_button.Size = new System.Drawing.Size(99, 40);
+            this.stop_rg_flicker_button.Radius = 18;
+            this.stop_rg_flicker_button.Size = new System.Drawing.Size(114, 31);
             this.stop_rg_flicker_button.Style = Sunny.UI.UIStyle.Custom;
             this.stop_rg_flicker_button.TabIndex = 3;
             this.stop_rg_flicker_button.Text = "关闭交替闪烁";
@@ -1323,11 +1340,11 @@
             // 
             this.start_rg_flicker_button.Enabled = false;
             this.start_rg_flicker_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.start_rg_flicker_button.Location = new System.Drawing.Point(6, 30);
+            this.start_rg_flicker_button.Location = new System.Drawing.Point(6, 26);
             this.start_rg_flicker_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.start_rg_flicker_button.Name = "start_rg_flicker_button";
-            this.start_rg_flicker_button.Radius = 20;
-            this.start_rg_flicker_button.Size = new System.Drawing.Size(99, 40);
+            this.start_rg_flicker_button.Radius = 18;
+            this.start_rg_flicker_button.Size = new System.Drawing.Size(116, 31);
             this.start_rg_flicker_button.Style = Sunny.UI.UIStyle.Custom;
             this.start_rg_flicker_button.TabIndex = 2;
             this.start_rg_flicker_button.Text = "打开交替闪烁";
@@ -1503,6 +1520,7 @@
             // 
             // uiGroupBox5
             // 
+            this.uiGroupBox5.Controls.Add(this.uiButton1);
             this.uiGroupBox5.Controls.Add(this.login_button);
             this.uiGroupBox5.Controls.Add(this.explainLabel);
             this.uiGroupBox5.Controls.Add(this.password_textbox);
@@ -1535,11 +1553,26 @@
             this.uiGroupBox5.ZoomScaleDisabled = true;
             this.uiGroupBox5.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
+            // uiButton1
+            // 
+            this.uiButton1.Font = new System.Drawing.Font("微软雅黑", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiButton1.Location = new System.Drawing.Point(258, 138);
+            this.uiButton1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiButton1.Name = "uiButton1";
+            this.uiButton1.Radius = 20;
+            this.uiButton1.Size = new System.Drawing.Size(205, 37);
+            this.uiButton1.Style = Sunny.UI.UIStyle.Custom;
+            this.uiButton1.TabIndex = 29;
+            this.uiButton1.Text = "点击连接下一台设备";
+            this.uiButton1.ZoomScaleDisabled = true;
+            this.uiButton1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.uiButton1.Click += new System.EventHandler(this.uiButton1_Click);
+            // 
             // login_button
             // 
             this.login_button.Enabled = false;
             this.login_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.login_button.Location = new System.Drawing.Point(394, 32);
+            this.login_button.Location = new System.Drawing.Point(394, 25);
             this.login_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.login_button.Name = "login_button";
             this.login_button.Radius = 20;
@@ -1555,9 +1588,9 @@
             // 
             this.explainLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.explainLabel.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.explainLabel.Location = new System.Drawing.Point(258, 91);
+            this.explainLabel.Location = new System.Drawing.Point(258, 87);
             this.explainLabel.Name = "explainLabel";
-            this.explainLabel.Size = new System.Drawing.Size(205, 83);
+            this.explainLabel.Size = new System.Drawing.Size(205, 46);
             this.explainLabel.Style = Sunny.UI.UIStyle.Custom;
             this.explainLabel.TabIndex = 27;
             this.explainLabel.Text = "所有的功能使用需要用户名密码与服务器进行通信获取相应信息";
@@ -1571,7 +1604,7 @@
             this.password_textbox.Enabled = false;
             this.password_textbox.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.password_textbox.IntValue = 123456;
-            this.password_textbox.Location = new System.Drawing.Point(330, 64);
+            this.password_textbox.Location = new System.Drawing.Point(330, 55);
             this.password_textbox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.password_textbox.MinimumSize = new System.Drawing.Size(1, 16);
             this.password_textbox.Name = "password_textbox";
@@ -1591,7 +1624,7 @@
             // 
             this.username_textbox.Enabled = false;
             this.username_textbox.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.username_textbox.Location = new System.Drawing.Point(330, 32);
+            this.username_textbox.Location = new System.Drawing.Point(330, 25);
             this.username_textbox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.username_textbox.MinimumSize = new System.Drawing.Size(1, 16);
             this.username_textbox.Name = "username_textbox";
@@ -1610,7 +1643,7 @@
             // 
             this.label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.label12.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label12.Location = new System.Drawing.Point(258, 59);
+            this.label12.Location = new System.Drawing.Point(258, 55);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(65, 21);
             this.label12.Style = Sunny.UI.UIStyle.Custom;
@@ -1624,7 +1657,7 @@
             // 
             this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.label11.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label11.Location = new System.Drawing.Point(258, 31);
+            this.label11.Location = new System.Drawing.Point(258, 26);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(65, 28);
             this.label11.Style = Sunny.UI.UIStyle.Custom;
@@ -2269,6 +2302,7 @@
             // 
             // uiGroupBox7
             // 
+            this.uiGroupBox7.Controls.Add(this.uiLabel20);
             this.uiGroupBox7.Controls.Add(this.writeInMacResult_label);
             this.uiGroupBox7.Controls.Add(this.uiLabel17);
             this.uiGroupBox7.Controls.Add(this.uiLabel2);
@@ -2291,6 +2325,18 @@
             this.uiGroupBox7.Text = "Mac地址烧录";
             this.uiGroupBox7.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.uiGroupBox7.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // uiLabel20
+            // 
+            this.uiLabel20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.uiLabel20.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLabel20.Location = new System.Drawing.Point(10, 417);
+            this.uiLabel20.Name = "uiLabel20";
+            this.uiLabel20.Size = new System.Drawing.Size(252, 29);
+            this.uiLabel20.TabIndex = 47;
+            this.uiLabel20.Text = "工具版本号：V1.4";
+            this.uiLabel20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.uiLabel20.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // writeInMacResult_label
             // 
@@ -2435,7 +2481,7 @@
             this.MinimumSize = new System.Drawing.Size(1271, 983);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "测试标定工具主面板";
+            this.Text = "测试标定工具主面板 - V1.4";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormClosingEvent);
             this.uiGroupBox1.ResumeLayout(false);
             this.uiGroupBox9.ResumeLayout(false);
@@ -2604,5 +2650,8 @@
         private Sunny.UI.UILabel writeInMacResult_label;
         private Sunny.UI.UILabel uiLabel17;
         private Sunny.UI.UIButton enterAgingMode_button;
+        private Sunny.UI.UILabel uiLabel20;
+        private Sunny.UI.UIButton uiButton1;
+        private Sunny.UI.UILabel uiLabel21;
     }
 }

@@ -40,7 +40,12 @@ namespace SeewoTestTool
         {
             this.AutoScaleMode = AutoScaleMode.Dpi;
             InitializeComponent();
+            uiButton1.FillColor = Color.Red;
+            uiButton1.FillHoverColor = Color.MediumVioletRed;
+            uiButton1.FillPressColor = Color.DarkRed;
             output_rich_textbox.AppendText("欢迎使用视熙测试标定软件！\n");
+            uiLabel20.ForeColor = Color.Red;
+            uiLabel21.ForeColor = Color.Red;
             FileStream fs = new FileStream("data.bin", FileMode.OpenOrCreate);
             if (fs.Length > 0)
             {
@@ -464,6 +469,11 @@ namespace SeewoTestTool
                         beginResetTest_button.Enabled = false;
                         enterAgingMode_button.Enabled = false;
                         login_button.Text = "设备连接后\n可自动登录";
+                        if (autoTest_t != null)
+                        {
+                            autoTest_t.Interrupt();
+                            autoTest_t = null;
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -1745,6 +1755,15 @@ namespace SeewoTestTool
                 builder.Clear();
             }
         }
+
+        Thread autoTest_t;
+        private void autoTest_func()
+        {
+            start_rg_flicker_button_Click(null, null);
+            gainCurrentVersion_button_Click(null, null);
+            getCurrentMacAddress_button_Click(null, null);
+        }
+
         string session;
         // 点击登录后进行密码SH256加密转换
         /**
@@ -1804,6 +1823,7 @@ namespace SeewoTestTool
                             getCurrentMacAddress_button.Enabled = true;
                             beginResetTest_button.Enabled = true;
                             enterAgingMode_button.Enabled = true;
+                            uiButton1.Enabled = true;
                             // 增加记住username和password功能
                             if (rememberCheckBox.Checked == true)
                             {
@@ -1820,6 +1840,20 @@ namespace SeewoTestTool
                                 users.Add(user.Username, user); 
                                 binaryFormatter.Serialize(fileStream, users);
                                 fileStream.Close();
+                            }
+
+                            /**
+                             * 软件打开后自动执行执行测试功能
+                             */
+                            if (autoTest_t != null)
+                            {
+                                //MessageBox.Show("当前正在打开测试中……，请稍后！");
+                            }
+                            else
+                            {
+                                autoTest_t = new Thread(autoTest_func);
+                                autoTest_t.IsBackground = true;
+                                autoTest_t.Start();
                             }
                         }
                         catch (Exception ex)
@@ -2218,6 +2252,7 @@ namespace SeewoTestTool
         SXW0301_Production_line.Fom1 fom1;
         private void button1_Click(object sender, EventArgs e)
         {
+            /**
             if (check_device_online())
             {
                 output_rich_textbox.AppendText("【执行操作】打开三摄标定工具操作……\n");
@@ -2248,6 +2283,7 @@ namespace SeewoTestTool
                     output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
                 }
             }
+            */
             
         }
 
@@ -2552,7 +2588,7 @@ namespace SeewoTestTool
                 macAddress_test_label.Text = "暂未测试";
                 
             }
-            MessageBox.Show("测试结果重置完成！", "提示",  MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //MessageBox.Show("测试结果重置完成！", "提示",  MessageBoxButtons.OK, MessageBoxIcon.Information);
             output_rich_textbox.AppendText("测试结果重置完成！\n");
         }
 
@@ -3401,7 +3437,32 @@ namespace SeewoTestTool
                 **/
                 enterAgingMode();
             }
+        }
 
+        // 点击连接下一台设备，断开当前设备同时清除测试结果
+        private void uiButton1_Click(object sender, EventArgs e)
+        {
+            device_disconnect_button_Click(null, null);
+            resetTestResult_button_Click(null, null);
+            currentMac_label.Text = "";
+            writeInMacResult_label.Text = "";
+            currentVersion_label.Text = "";
+            upgrade_progressbar.Value = 0;
+            checked_firmware_textbox.Text = "";
+            audioIn1_label.Text = "";
+            audioIn2_label.Text = "";
+            volume5_value_label.Text = "";
+            volume1_value_label.Text = "";
+            volume6_value_label.Text = "";
+            volume2_value_label.Text = "";
+            volume8_value_label.Text = "";
+            volume4_value_label.Text = "";
+            currentPCBA_textbox.Text = "";
+            writeINPCBA_textbox.Text = "";
+            currentSN_textbox.Text = "";
+            writeInSN_textbox.Text = "";
+            output_rich_textbox.Text = "";
+            output_rich_textbox.AppendText("【执行操作】当前设备已断开，请插入另一台设备后，点击【连接设备】开始测试\n");
         }
     }
 }

@@ -161,8 +161,8 @@ namespace SXW0301_Production_line
                         //MessageBox.Show("标定完成");
 
                         /**
-                            *  陈广涛 -- Add Code 增加写入数据&删除数据的功能
-                            **/
+                         *  陈广涛 -- Add Code 增加写入数据&删除数据的功能
+                        **/
                         string calib_out_json_path = ".\\20221017-plc\\calib_out.json";
                         if (File.Exists(calib_out_json_path))
                         {
@@ -181,12 +181,12 @@ namespace SXW0301_Production_line
                                 result_0 = "失败";
                             }
                             Thread.Sleep(3000);
-                            MessageBox.Show($"标定数据写入操作结果：" + result_0);
+                            MessageBox.Show($"【标定数据写入操作结果】：{result_0}");
                             executeCMDCommand($"del {calib_out_json_path}");
                         }
                         else
                         {
-                            MessageBox.Show($"未找到标定数据：{calib_out_json_path},请检查！");
+                            MessageBox.Show($"未找到标定数据：【{calib_out_json_path}】,请检查！");
                         }
                         clearCaptureStatus_button_Click(null, null);
                         button1.Text = "标定";

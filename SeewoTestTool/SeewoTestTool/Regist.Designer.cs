@@ -130,20 +130,21 @@
             this.software_version_get_uiButton2.Size = new System.Drawing.Size(125, 44);
             this.software_version_get_uiButton2.TabIndex = 8;
             this.software_version_get_uiButton2.Text = "软件版本";
+            this.software_version_get_uiButton2.Visible = false;
             this.software_version_get_uiButton2.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.software_version_get_uiButton2.Click += new System.EventHandler(this.software_version_get_uiButton2_Click);
             // 
             // lastUseTimes_uiLabel1
             // 
-            this.lastUseTimes_uiLabel1.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lastUseTimes_uiLabel1.Font = new System.Drawing.Font("微软雅黑", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lastUseTimes_uiLabel1.ForeColor = System.Drawing.Color.Red;
             this.lastUseTimes_uiLabel1.Location = new System.Drawing.Point(550, 26);
             this.lastUseTimes_uiLabel1.Name = "lastUseTimes_uiLabel1";
-            this.lastUseTimes_uiLabel1.Size = new System.Drawing.Size(233, 29);
+            this.lastUseTimes_uiLabel1.Size = new System.Drawing.Size(223, 29);
             this.lastUseTimes_uiLabel1.Style = Sunny.UI.UIStyle.Custom;
             this.lastUseTimes_uiLabel1.TabIndex = 9;
             this.lastUseTimes_uiLabel1.Text = "软件剩余使用次数：";
-            this.lastUseTimes_uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lastUseTimes_uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lastUseTimes_uiLabel1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // Regist
