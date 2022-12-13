@@ -22,6 +22,7 @@ namespace SXW0301_Production_line
         public Fom1()
         {
             InitializeComponent();
+            getCaptureStatus();
         }
 
         public static void DeleteDir1(string file)
@@ -107,64 +108,93 @@ namespace SXW0301_Production_line
                 if (vlcControl2.IsPlaying && vlcControl1.IsPlaying)
                 {
                     DeleteDir1("20221017-plc//stitch");
-                    DeleteDir1("20221017-plc//extr//pair_0_1");
-                    DeleteDir1("20221017-plc//intr");
                     vlcControl1.Pause();
                     vlcControl2.Pause();
-                    vlcControl1.TakeSnapshot("20221017-plc//stitch//camera0_stitch.jpg");
-                    vlcControl2.TakeSnapshot("20221017-plc//stitch//camera1_stitch.jpg");
-                    vlcControl1.TakeSnapshot("20221017-plc//extr//pair_0_1//camera0_01_1.jpg");
-                    vlcControl2.TakeSnapshot("20221017-plc//extr//pair_0_1//camera1_01_1.jpg");
-                    vlcControl1.TakeSnapshot("20221017-plc//intr//camera0_1.jpg");
-                    vlcControl2.TakeSnapshot("20221017-plc//intr//camera1_1.jpg");
-                    vlcControl1.Play(videoUri1, options1);
-                    vlcControl2.Play(videoUri2, options2);
-                    //执行标定算法,并生成calib_out_json文件
-                    //参数
-                    string argument1 = "\"" + "-t" + "\"";
-                    string argument2 = "\"" + "-m" + "\"";
-                    string argument3 = "\"" + "-l" + "\"";
-                    Process myPro = new Process();
-                    myPro.StartInfo.FileName = "C_production_line_tool.exe";
-                    myPro.StartInfo.Arguments = argument1 + " " + argument2 + " " + argument3;
-                    myPro.StartInfo.UseShellExecute = false;
-                    myPro.StartInfo.RedirectStandardInput = true;
-                    //myPro.StartInfo.RedirectStandardOutput = true;
-                    myPro.StartInfo.RedirectStandardError = true;
-                    myPro.StartInfo.CreateNoWindow = true;
-                    myPro.Start();
-                    myPro.WaitForExit();//本行代码不是必须，但是很关键，限制等待外部程序退出后才能往下执行
-                    myPro.Close();
-                    //MessageBox.Show("标定完成");
-
-                    /**
-                        *  陈广涛 -- Add Code 增加写入数据&删除数据的功能
-                        **/
-                    string calib_out_json_path = ".\\20221017-plc\\calib_out.json";
-                    if (File.Exists(calib_out_json_path))
+                    string capture_status = getCaptureStatus();
+                    if (capture_status == "0")
                     {
-                        MatchCollection result = Regex.Matches(textBox1.Text, @"rtsp:\/\/(.*)\/sec0");
-                        string writeInIP = (result[0].ToString()).Replace("//", "/").Split('/')[1];
-                        //MessageBox.Show($"已找到标定数据，开始写入标定数据……,写入IP：【{writeInIP}】");
-                        string uploadCommand = $"curl -s -X POST --data-binary @{calib_out_json_path} \"http://{writeInIP}/writeLdcCalib_api\" -H \"Content-Type: text/plain\"";
-                        string executeResult = executeCMDCommand(uploadCommand);
-                        string result_0 = "标定数据写入操作未执行成功";
-                        if (executeResult.Contains("OK"))
+                        vlcControl1.TakeSnapshot("20221017-plc//stitch//camera0_stitch.jpg");
+                        vlcControl2.TakeSnapshot("20221017-plc//stitch//camera1_stitch.jpg");
+                        vlcControl1.TakeSnapshot("20221017-plc//extr//pair_0_1//camera0_01_1.jpg");
+                        vlcControl2.TakeSnapshot("20221017-plc//extr//pair_0_1//camera1_01_1.jpg");
+                        vlcControl1.TakeSnapshot("20221017-plc//intr//camera0_1.jpg");
+                        vlcControl2.TakeSnapshot("20221017-plc//intr//camera1_1.jpg");
+                        setCaptureStatus(1);
+                        getCaptureStatus();
+                        vlcControl1.Play(videoUri1, options1);
+                        vlcControl2.Play(videoUri2, options2);
+                    }
+                    else if (capture_status == "1")
+                    {
+                        vlcControl1.TakeSnapshot("20221017-plc//stitch//camera0_stitch.jpg");
+                        vlcControl2.TakeSnapshot("20221017-plc//stitch//camera1_stitch.jpg");
+                        vlcControl1.TakeSnapshot("20221017-plc//extr//pair_0_1//camera0_01_2.jpg");
+                        vlcControl2.TakeSnapshot("20221017-plc//extr//pair_0_1//camera1_01_2.jpg");
+                        vlcControl1.TakeSnapshot("20221017-plc//intr//camera0_2.jpg");
+                        vlcControl2.TakeSnapshot("20221017-plc//intr//camera1_2.jpg");
+                        setCaptureStatus(2);
+                        getCaptureStatus();
+                        vlcControl1.Play(videoUri1, options1);
+                        vlcControl2.Play(videoUri2, options2);
+                        button1.Text = "写入数据";
+                    }
+                    else if (capture_status == "2")
+                    {
+                        vlcControl1.Play(videoUri1, options1);
+                        vlcControl2.Play(videoUri2, options2);
+                        //执行标定算法,并生成calib_out_json文件
+                        //参数
+                        string argument1 = "\"" + "-t" + "\"";
+                        string argument2 = "\"" + "-m" + "\"";
+                        string argument3 = "\"" + "-l" + "\"";
+                        Process myPro = new Process();
+                        myPro.StartInfo.FileName = "C_production_line_tool.exe";
+                        myPro.StartInfo.Arguments = argument1 + " " + argument2 + " " + argument3;
+                        myPro.StartInfo.UseShellExecute = false;
+                        myPro.StartInfo.RedirectStandardInput = true;
+                        //myPro.StartInfo.RedirectStandardOutput = true;
+                        myPro.StartInfo.RedirectStandardError = true;
+                        myPro.StartInfo.CreateNoWindow = true;
+                        myPro.Start();
+                        myPro.WaitForExit();//本行代码不是必须，但是很关键，限制等待外部程序退出后才能往下执行
+                        myPro.Close();
+                        //MessageBox.Show("标定完成");
+
+                        /**
+                            *  陈广涛 -- Add Code 增加写入数据&删除数据的功能
+                            **/
+                        string calib_out_json_path = ".\\20221017-plc\\calib_out.json";
+                        if (File.Exists(calib_out_json_path))
                         {
-                            result_0 = "成功";
+                            MatchCollection result = Regex.Matches(textBox1.Text, @"rtsp:\/\/(.*)\/sec0");
+                            string writeInIP = (result[0].ToString()).Replace("//", "/").Split('/')[1];
+                            //MessageBox.Show($"已找到标定数据，开始写入标定数据……,写入IP：【{writeInIP}】");
+                            string uploadCommand = $"curl -s -X POST --data-binary @{calib_out_json_path} \"http://{writeInIP}/writeLdcCalib_api\" -H \"Content-Type: text/plain\"";
+                            string executeResult = executeCMDCommand(uploadCommand);
+                            string result_0 = "标定数据写入操作未执行成功";
+                            if (executeResult.Contains("OK"))
+                            {
+                                result_0 = "成功";
+                            }
+                            else
+                            {
+                                result_0 = "失败";
+                            }
+                            Thread.Sleep(3000);
+                            MessageBox.Show($"标定数据写入操作结果：" + result_0);
+                            executeCMDCommand($"del {calib_out_json_path}");
                         }
                         else
                         {
-                            result_0 = "失败";
+                            MessageBox.Show($"未找到标定数据：{calib_out_json_path},请检查！");
                         }
-                        Thread.Sleep(3000);
-                        MessageBox.Show($"标定数据写入操作结果：" + result_0);
-                        executeCMDCommand($"del {calib_out_json_path}");
+                        clearCaptureStatus_button_Click(null, null);
+                        button1.Text = "标定";
                     }
-                    else
-                    {
-                        MessageBox.Show($"未找到标定数据：{calib_out_json_path},请检查！");
-                    }
+                    
+                    
+                    
+                    
                 }
                 else
                 {
@@ -342,6 +372,53 @@ namespace SXW0301_Production_line
 
         private void vlcControl2_Click(object sender, EventArgs e)
         {
+
+        }
+
+        // 重置拍摄状态，恢复默认第1次拍摄
+        private void clearCaptureStatus_button_Click(object sender, EventArgs e)
+        {
+            setCaptureStatus(0);
+            getCaptureStatus();
+            DeleteDir1("20221017-plc//stitch");
+            DeleteDir1("20221017-plc//extr//pair_0_1");
+            DeleteDir1("20221017-plc//intr");
+        }
+
+        // 改变当前拍摄状态位
+        string statusPath = "./CaptureStatus.txt";
+        private void setCaptureStatus(int status)
+        {
+            string writeInStatus = status.ToString();
+            if (!System.IO.File.Exists(statusPath))
+            {
+                executeCMDCommand($"type nul > {statusPath}");
+            }
+            StreamWriter sw = new StreamWriter(statusPath);
+            sw.WriteLine(writeInStatus);
+            sw.Flush();
+            sw.Close();
+            sw.Dispose();
+        }
+
+        // 获取当前拍摄状态位
+        private string getCaptureStatus()
+        {
+            if (!System.IO.File.Exists(statusPath))
+            {
+                setCaptureStatus(0);
+                currentCaptureStatus_label.Text = "未拍摄";
+                return "0";
+            }
+            else
+            {
+                StreamReader sr = new StreamReader(statusPath, Encoding.Default);
+                string status_text = sr.ReadLine();
+                sr.Close();
+                sr.Dispose();
+                currentCaptureStatus_label.Text = status_text;
+                return status_text;
+            }
 
         }
     }

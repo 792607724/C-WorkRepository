@@ -2218,7 +2218,6 @@ namespace SeewoTestTool
         SXW0301_Production_line.Fom1 fom1;
         private void button1_Click(object sender, EventArgs e)
         {
-            /**
             if (check_device_online())
             {
                 output_rich_textbox.AppendText("【执行操作】打开三摄标定工具操作……\n");
@@ -2249,7 +2248,6 @@ namespace SeewoTestTool
                     output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
                 }
             }
-            */
             
         }
 
