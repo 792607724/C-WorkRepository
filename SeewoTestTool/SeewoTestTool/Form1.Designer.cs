@@ -44,6 +44,7 @@
             this.poe2NetworkTest_button = new Sunny.UI.UIButton();
             this.poe1NetworkTest_button = new Sunny.UI.UIButton();
             this.groupBox7 = new Sunny.UI.UIGroupBox();
+            this.bareBoardTest_checkBox = new Sunny.UI.UICheckBox();
             this.extractRecordFile_button = new Sunny.UI.UIButton();
             this.recordingGif_label = new Sunny.UI.UILabel();
             this.recordTime_textbox = new Sunny.UI.UITextBox();
@@ -178,7 +179,6 @@
             this.clearInput_button = new Sunny.UI.UIButton();
             this.macInput_textbox = new Sunny.UI.UITextBox();
             this.uiLabel11 = new Sunny.UI.UILabel();
-            this.bareBoardTest_checkBox = new Sunny.UI.UICheckBox();
             this.uiGroupBox1.SuspendLayout();
             this.uiGroupBox9.SuspendLayout();
             this.uiGroupBox8.SuspendLayout();
@@ -318,7 +318,7 @@
             // beginResetTest_button
             // 
             this.beginResetTest_button.Enabled = false;
-            this.beginResetTest_button.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.beginResetTest_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.beginResetTest_button.Location = new System.Drawing.Point(815, 28);
             this.beginResetTest_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.beginResetTest_button.Name = "beginResetTest_button";
@@ -432,10 +432,24 @@
             this.groupBox7.ZoomScaleDisabled = true;
             this.groupBox7.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
+            // bareBoardTest_checkBox
+            // 
+            this.bareBoardTest_checkBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.bareBoardTest_checkBox.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.bareBoardTest_checkBox.Location = new System.Drawing.Point(189, 105);
+            this.bareBoardTest_checkBox.MinimumSize = new System.Drawing.Size(1, 1);
+            this.bareBoardTest_checkBox.Name = "bareBoardTest_checkBox";
+            this.bareBoardTest_checkBox.Padding = new System.Windows.Forms.Padding(22, 0, 0, 0);
+            this.bareBoardTest_checkBox.Size = new System.Drawing.Size(114, 27);
+            this.bareBoardTest_checkBox.Style = Sunny.UI.UIStyle.Custom;
+            this.bareBoardTest_checkBox.TabIndex = 46;
+            this.bareBoardTest_checkBox.Text = "裸板测试模式";
+            this.bareBoardTest_checkBox.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
             // extractRecordFile_button
             // 
             this.extractRecordFile_button.Enabled = false;
-            this.extractRecordFile_button.Font = new System.Drawing.Font("微软雅黑", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.extractRecordFile_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.extractRecordFile_button.Location = new System.Drawing.Point(620, 55);
             this.extractRecordFile_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.extractRecordFile_button.Name = "extractRecordFile_button";
@@ -480,7 +494,7 @@
             // uiLabel15
             // 
             this.uiLabel15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.uiLabel15.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLabel15.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.uiLabel15.Location = new System.Drawing.Point(9, 59);
             this.uiLabel15.Name = "uiLabel15";
             this.uiLabel15.Size = new System.Drawing.Size(315, 29);
@@ -493,7 +507,7 @@
             // beginAudioRecord_button
             // 
             this.beginAudioRecord_button.Enabled = false;
-            this.beginAudioRecord_button.Font = new System.Drawing.Font("微软雅黑", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.beginAudioRecord_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.beginAudioRecord_button.Location = new System.Drawing.Point(475, 55);
             this.beginAudioRecord_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.beginAudioRecord_button.Name = "beginAudioRecord_button";
@@ -524,7 +538,7 @@
             // uiLabel1
             // 
             this.uiLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.uiLabel1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLabel1.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.uiLabel1.Location = new System.Drawing.Point(9, 103);
             this.uiLabel1.Name = "uiLabel1";
             this.uiLabel1.Size = new System.Drawing.Size(192, 29);
@@ -537,7 +551,7 @@
             // gain_array_mic_audio_level_button
             // 
             this.gain_array_mic_audio_level_button.Enabled = false;
-            this.gain_array_mic_audio_level_button.Font = new System.Drawing.Font("微软雅黑", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.gain_array_mic_audio_level_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.gain_array_mic_audio_level_button.Location = new System.Drawing.Point(475, 103);
             this.gain_array_mic_audio_level_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.gain_array_mic_audio_level_button.Name = "gain_array_mic_audio_level_button";
@@ -1557,7 +1571,7 @@
             // 
             // uiButton1
             // 
-            this.uiButton1.Font = new System.Drawing.Font("微软雅黑", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiButton1.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.uiButton1.Location = new System.Drawing.Point(258, 138);
             this.uiButton1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiButton1.Name = "uiButton1";
@@ -2026,7 +2040,7 @@
             // threeCamera2_test_label
             // 
             this.threeCamera2_test_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.threeCamera2_test_label.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.threeCamera2_test_label.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.threeCamera2_test_label.Location = new System.Drawing.Point(149, 224);
             this.threeCamera2_test_label.Name = "threeCamera2_test_label";
             this.threeCamera2_test_label.Size = new System.Drawing.Size(125, 29);
@@ -2037,7 +2051,7 @@
             // uiLabel9
             // 
             this.uiLabel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.uiLabel9.Font = new System.Drawing.Font("微软雅黑", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLabel9.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.uiLabel9.Location = new System.Drawing.Point(8, 224);
             this.uiLabel9.Name = "uiLabel9";
             this.uiLabel9.Size = new System.Drawing.Size(156, 29);
@@ -2049,7 +2063,7 @@
             // network2_test_label
             // 
             this.network2_test_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.network2_test_label.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.network2_test_label.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.network2_test_label.Location = new System.Drawing.Point(149, 64);
             this.network2_test_label.Name = "network2_test_label";
             this.network2_test_label.Size = new System.Drawing.Size(125, 29);
@@ -2060,7 +2074,7 @@
             // uiLabel7
             // 
             this.uiLabel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.uiLabel7.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLabel7.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.uiLabel7.Location = new System.Drawing.Point(8, 64);
             this.uiLabel7.Name = "uiLabel7";
             this.uiLabel7.Size = new System.Drawing.Size(156, 29);
@@ -2072,7 +2086,7 @@
             // audioIn2_test_label
             // 
             this.audioIn2_test_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.audioIn2_test_label.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.audioIn2_test_label.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.audioIn2_test_label.Location = new System.Drawing.Point(148, 287);
             this.audioIn2_test_label.Name = "audioIn2_test_label";
             this.audioIn2_test_label.Size = new System.Drawing.Size(125, 29);
@@ -2083,7 +2097,7 @@
             // uiLabel5
             // 
             this.uiLabel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.uiLabel5.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLabel5.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.uiLabel5.Location = new System.Drawing.Point(8, 287);
             this.uiLabel5.Name = "uiLabel5";
             this.uiLabel5.Size = new System.Drawing.Size(156, 29);
@@ -2094,7 +2108,7 @@
             // 
             // refreshTestResult_button
             // 
-            this.refreshTestResult_button.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.refreshTestResult_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.refreshTestResult_button.Location = new System.Drawing.Point(3, 385);
             this.refreshTestResult_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.refreshTestResult_button.Name = "refreshTestResult_button";
@@ -2107,7 +2121,7 @@
             // 
             // resetTestResult_button
             // 
-            this.resetTestResult_button.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.resetTestResult_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.resetTestResult_button.Location = new System.Drawing.Point(3, 425);
             this.resetTestResult_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.resetTestResult_button.Name = "resetTestResult_button";
@@ -2121,7 +2135,7 @@
             // macAddress_test_label
             // 
             this.macAddress_test_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.macAddress_test_label.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.macAddress_test_label.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.macAddress_test_label.Location = new System.Drawing.Point(149, 350);
             this.macAddress_test_label.Name = "macAddress_test_label";
             this.macAddress_test_label.Size = new System.Drawing.Size(125, 29);
@@ -2132,7 +2146,7 @@
             // uiLabel12
             // 
             this.uiLabel12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.uiLabel12.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLabel12.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.uiLabel12.Location = new System.Drawing.Point(8, 350);
             this.uiLabel12.Name = "uiLabel12";
             this.uiLabel12.Size = new System.Drawing.Size(156, 29);
@@ -2144,7 +2158,7 @@
             // arrayMic_test_label
             // 
             this.arrayMic_test_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.arrayMic_test_label.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.arrayMic_test_label.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.arrayMic_test_label.Location = new System.Drawing.Point(149, 319);
             this.arrayMic_test_label.Name = "arrayMic_test_label";
             this.arrayMic_test_label.Size = new System.Drawing.Size(125, 29);
@@ -2155,7 +2169,7 @@
             // uiLabel14
             // 
             this.uiLabel14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.uiLabel14.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLabel14.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.uiLabel14.Location = new System.Drawing.Point(8, 319);
             this.uiLabel14.Name = "uiLabel14";
             this.uiLabel14.Size = new System.Drawing.Size(156, 29);
@@ -2167,7 +2181,7 @@
             // audioIn_test_label
             // 
             this.audioIn_test_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.audioIn_test_label.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.audioIn_test_label.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.audioIn_test_label.Location = new System.Drawing.Point(149, 255);
             this.audioIn_test_label.Name = "audioIn_test_label";
             this.audioIn_test_label.Size = new System.Drawing.Size(125, 29);
@@ -2178,7 +2192,7 @@
             // uiLabel16
             // 
             this.uiLabel16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.uiLabel16.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLabel16.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.uiLabel16.Location = new System.Drawing.Point(8, 255);
             this.uiLabel16.Name = "uiLabel16";
             this.uiLabel16.Size = new System.Drawing.Size(156, 29);
@@ -2190,7 +2204,7 @@
             // threeCamera_test_label
             // 
             this.threeCamera_test_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.threeCamera_test_label.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.threeCamera_test_label.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.threeCamera_test_label.Location = new System.Drawing.Point(149, 192);
             this.threeCamera_test_label.Name = "threeCamera_test_label";
             this.threeCamera_test_label.Size = new System.Drawing.Size(125, 29);
@@ -2201,7 +2215,7 @@
             // uiLabel18
             // 
             this.uiLabel18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.uiLabel18.Font = new System.Drawing.Font("微软雅黑", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLabel18.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.uiLabel18.Location = new System.Drawing.Point(8, 192);
             this.uiLabel18.Name = "uiLabel18";
             this.uiLabel18.Size = new System.Drawing.Size(156, 29);
@@ -2213,7 +2227,7 @@
             // resetButton_test_label
             // 
             this.resetButton_test_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.resetButton_test_label.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.resetButton_test_label.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.resetButton_test_label.Location = new System.Drawing.Point(149, 161);
             this.resetButton_test_label.Name = "resetButton_test_label";
             this.resetButton_test_label.Size = new System.Drawing.Size(125, 29);
@@ -2224,7 +2238,7 @@
             // uiLabel10
             // 
             this.uiLabel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.uiLabel10.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLabel10.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.uiLabel10.Location = new System.Drawing.Point(8, 161);
             this.uiLabel10.Name = "uiLabel10";
             this.uiLabel10.Size = new System.Drawing.Size(156, 29);
@@ -2236,7 +2250,7 @@
             // redgreenLED_test_label
             // 
             this.redgreenLED_test_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.redgreenLED_test_label.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.redgreenLED_test_label.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.redgreenLED_test_label.Location = new System.Drawing.Point(149, 130);
             this.redgreenLED_test_label.Name = "redgreenLED_test_label";
             this.redgreenLED_test_label.Size = new System.Drawing.Size(125, 29);
@@ -2247,7 +2261,7 @@
             // uiLabel8
             // 
             this.uiLabel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.uiLabel8.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLabel8.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.uiLabel8.Location = new System.Drawing.Point(8, 130);
             this.uiLabel8.Name = "uiLabel8";
             this.uiLabel8.Size = new System.Drawing.Size(156, 29);
@@ -2259,7 +2273,7 @@
             // firmwareVerified_test_label
             // 
             this.firmwareVerified_test_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.firmwareVerified_test_label.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.firmwareVerified_test_label.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.firmwareVerified_test_label.Location = new System.Drawing.Point(149, 96);
             this.firmwareVerified_test_label.Name = "firmwareVerified_test_label";
             this.firmwareVerified_test_label.Size = new System.Drawing.Size(125, 29);
@@ -2270,7 +2284,7 @@
             // uiLabel6
             // 
             this.uiLabel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.uiLabel6.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLabel6.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.uiLabel6.Location = new System.Drawing.Point(8, 96);
             this.uiLabel6.Name = "uiLabel6";
             this.uiLabel6.Size = new System.Drawing.Size(156, 29);
@@ -2282,7 +2296,7 @@
             // network_test_label
             // 
             this.network_test_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.network_test_label.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.network_test_label.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.network_test_label.Location = new System.Drawing.Point(149, 32);
             this.network_test_label.Name = "network_test_label";
             this.network_test_label.Size = new System.Drawing.Size(125, 29);
@@ -2293,7 +2307,7 @@
             // uiLabel3
             // 
             this.uiLabel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.uiLabel3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLabel3.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.uiLabel3.Location = new System.Drawing.Point(8, 32);
             this.uiLabel3.Name = "uiLabel3";
             this.uiLabel3.Size = new System.Drawing.Size(156, 29);
@@ -2315,7 +2329,7 @@
             this.uiGroupBox7.Controls.Add(this.clearInput_button);
             this.uiGroupBox7.Controls.Add(this.macInput_textbox);
             this.uiGroupBox7.Controls.Add(this.uiLabel11);
-            this.uiGroupBox7.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiGroupBox7.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.uiGroupBox7.Location = new System.Drawing.Point(4, 466);
             this.uiGroupBox7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiGroupBox7.MinimumSize = new System.Drawing.Size(1, 1);
@@ -2331,7 +2345,7 @@
             // uiLabel20
             // 
             this.uiLabel20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.uiLabel20.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLabel20.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.uiLabel20.Location = new System.Drawing.Point(10, 417);
             this.uiLabel20.Name = "uiLabel20";
             this.uiLabel20.Size = new System.Drawing.Size(252, 29);
@@ -2378,7 +2392,7 @@
             // getCurrentMacAddress_button
             // 
             this.getCurrentMacAddress_button.Enabled = false;
-            this.getCurrentMacAddress_button.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.getCurrentMacAddress_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.getCurrentMacAddress_button.Location = new System.Drawing.Point(3, 271);
             this.getCurrentMacAddress_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.getCurrentMacAddress_button.Name = "getCurrentMacAddress_button";
@@ -2415,7 +2429,7 @@
             // writeInMac_button
             // 
             this.writeInMac_button.Enabled = false;
-            this.writeInMac_button.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.writeInMac_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.writeInMac_button.Location = new System.Drawing.Point(138, 228);
             this.writeInMac_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.writeInMac_button.Name = "writeInMac_button";
@@ -2429,7 +2443,7 @@
             // clearInput_button
             // 
             this.clearInput_button.Enabled = false;
-            this.clearInput_button.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.clearInput_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.clearInput_button.Location = new System.Drawing.Point(3, 228);
             this.clearInput_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.clearInput_button.Name = "clearInput_button";
@@ -2443,7 +2457,7 @@
             // macInput_textbox
             // 
             this.macInput_textbox.FocusedSelectAll = true;
-            this.macInput_textbox.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.macInput_textbox.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.macInput_textbox.Location = new System.Drawing.Point(9, 93);
             this.macInput_textbox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.macInput_textbox.MinimumSize = new System.Drawing.Size(1, 16);
@@ -2459,7 +2473,7 @@
             // uiLabel11
             // 
             this.uiLabel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.uiLabel11.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLabel11.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.uiLabel11.Location = new System.Drawing.Point(8, 32);
             this.uiLabel11.Name = "uiLabel11";
             this.uiLabel11.Size = new System.Drawing.Size(265, 63);
@@ -2467,20 +2481,6 @@
             this.uiLabel11.Text = "鼠标点击下面的输入框，再使用扫描枪扫描条形码：";
             this.uiLabel11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.uiLabel11.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // bareBoardTest_checkBox
-            // 
-            this.bareBoardTest_checkBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.bareBoardTest_checkBox.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.bareBoardTest_checkBox.Location = new System.Drawing.Point(189, 105);
-            this.bareBoardTest_checkBox.MinimumSize = new System.Drawing.Size(1, 1);
-            this.bareBoardTest_checkBox.Name = "bareBoardTest_checkBox";
-            this.bareBoardTest_checkBox.Padding = new System.Windows.Forms.Padding(22, 0, 0, 0);
-            this.bareBoardTest_checkBox.Size = new System.Drawing.Size(114, 27);
-            this.bareBoardTest_checkBox.Style = Sunny.UI.UIStyle.Custom;
-            this.bareBoardTest_checkBox.TabIndex = 46;
-            this.bareBoardTest_checkBox.Text = "裸板测试模式";
-            this.bareBoardTest_checkBox.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // Form1
             // 
