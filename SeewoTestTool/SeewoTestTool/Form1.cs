@@ -2350,7 +2350,6 @@ namespace SeewoTestTool
                 }
             }
             */
-            
         }
 
         SXW0301_Production_line.Form3 form3;
