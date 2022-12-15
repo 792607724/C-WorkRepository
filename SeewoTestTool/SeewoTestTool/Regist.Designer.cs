@@ -116,7 +116,7 @@
             this.uiButton1.Size = new System.Drawing.Size(522, 421);
             this.uiButton1.Style = Sunny.UI.UIStyle.Custom;
             this.uiButton1.TabIndex = 7;
-            this.uiButton1.Text = "打开软件";
+            this.uiButton1.Text = "打开工具";
             this.uiButton1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.uiButton1.Click += new System.EventHandler(this.registAndActivateSoftware_button_Click);
             // 
@@ -168,7 +168,7 @@
             this.MinimumSize = new System.Drawing.Size(815, 487);
             this.Name = "Regist";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "视熙测试标定软件入口";
+            this.Text = "视熙产线测试工具入口";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormClosingEvent);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

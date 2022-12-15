@@ -1054,7 +1054,7 @@
             // uiLabel4
             // 
             this.uiLabel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.uiLabel4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLabel4.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.uiLabel4.Location = new System.Drawing.Point(6, 99);
             this.uiLabel4.Name = "uiLabel4";
             this.uiLabel4.Size = new System.Drawing.Size(192, 29);
@@ -2350,7 +2350,7 @@
             this.uiLabel20.Name = "uiLabel20";
             this.uiLabel20.Size = new System.Drawing.Size(252, 29);
             this.uiLabel20.TabIndex = 47;
-            this.uiLabel20.Text = "工具版本号：V1.4";
+            this.uiLabel20.Text = "工具版本号：V1.4.1";
             this.uiLabel20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.uiLabel20.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
@@ -2497,7 +2497,7 @@
             this.MinimumSize = new System.Drawing.Size(1271, 983);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "测试标定工具主面板 - V1.4";
+            this.Text = "视熙产线测试工具主面板 - V1.4.1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormClosingEvent);
             this.uiGroupBox1.ResumeLayout(false);
             this.uiGroupBox9.ResumeLayout(false);
