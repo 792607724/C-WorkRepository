@@ -39,15 +39,6 @@
             this.StartRecordLogBtn = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.GetCPUFreqBtn = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.chkBoxCheckAck = new System.Windows.Forms.CheckBox();
-            this.btnSimulateSound = new System.Windows.Forms.Button();
-            this.lblReceiveCnt = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.lblSendCnt = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.combBoxAngles = new System.Windows.Forms.ComboBox();
             this.IsCaptureSupportedBtn = new System.Windows.Forms.Button();
             this.GetAppVersionBtn = new System.Windows.Forms.Button();
             this.RebootBootloaderBtn = new System.Windows.Forms.Button();
@@ -60,13 +51,6 @@
             this.comboBoxDevices = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.GetSNBtn = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.eptz_move_textbox_length = new System.Windows.Forms.TextBox();
-            this.down_narrow = new System.Windows.Forms.Button();
-            this.right_narrow = new System.Windows.Forms.Button();
-            this.left_narrow = new System.Windows.Forms.Button();
-            this.up_narrow = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -75,15 +59,6 @@
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.comboBoxPreviewMode = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.eptz_size_textbox_length = new System.Windows.Forms.TextBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.tabControlEPTZ = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.btnUpdateDeviceList = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
@@ -113,40 +88,59 @@
             this.close_camera_privacy_button = new System.Windows.Forms.Button();
             this.open_camera_privacy_button = new System.Windows.Forms.Button();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
-            this.getFunctionSupport_button = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
-            this.support_function_label = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
+            this.getChipSetTemperature_label_support = new System.Windows.Forms.Label();
+            this.setBlackoutput_label_support = new System.Windows.Forms.Label();
+            this.flipMachine_label_support = new System.Windows.Forms.Label();
+            this.airMachine_label_support = new System.Windows.Forms.Label();
+            this.badFix_label_support = new System.Windows.Forms.Label();
+            this.poeplefollow_label_support = new System.Windows.Forms.Label();
+            this.mainspeaker_label_support = new System.Windows.Forms.Label();
+            this.manual_label_support = new System.Windows.Forms.Label();
+            this.autoframing_label_support = new System.Windows.Forms.Label();
+            this.pip_label_support = new System.Windows.Forms.Label();
+            this.hdr_label_support = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.hdr_label_support = new System.Windows.Forms.Label();
-            this.pip_label_support = new System.Windows.Forms.Label();
-            this.autoframing_label_support = new System.Windows.Forms.Label();
-            this.manual_label_support = new System.Windows.Forms.Label();
-            this.mainspeaker_label_support = new System.Windows.Forms.Label();
-            this.poeplefollow_label_support = new System.Windows.Forms.Label();
-            this.badFix_label_support = new System.Windows.Forms.Label();
-            this.airMachine_label_support = new System.Windows.Forms.Label();
-            this.flipMachine_label_support = new System.Windows.Forms.Label();
-            this.setBlackoutput_label_support = new System.Windows.Forms.Label();
-            this.getChipSetTemperature_label_support = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.support_function_label = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.getFunctionSupport_button = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.combBoxAngles = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblSendCnt = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblReceiveCnt = new System.Windows.Forms.Label();
+            this.btnSimulateSound = new System.Windows.Forms.Button();
+            this.chkBoxCheckAck = new System.Windows.Forms.CheckBox();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.eptz_size_textbox_length = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.up_narrow = new System.Windows.Forms.Button();
+            this.left_narrow = new System.Windows.Forms.Button();
+            this.right_narrow = new System.Windows.Forms.Button();
+            this.down_narrow = new System.Windows.Forms.Button();
+            this.eptz_move_textbox_length = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tabControlEPTZ = new System.Windows.Forms.TabControl();
             this.statusStrip1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.tabControlEPTZ.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.groupBox8.SuspendLayout();
@@ -154,6 +148,12 @@
             this.groupBox11.SuspendLayout();
             this.groupBox12.SuspendLayout();
             this.groupBox13.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.tabControlEPTZ.SuspendLayout();
             this.SuspendLayout();
             // 
             // GetIQVersionBtn
@@ -238,102 +238,6 @@
             this.GetCPUFreqBtn.Text = "获取CPU频率";
             this.GetCPUFreqBtn.UseVisualStyleBackColor = true;
             this.GetCPUFreqBtn.Click += new System.EventHandler(this.GetCPUFreqBtn_Click);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.chkBoxCheckAck);
-            this.groupBox1.Controls.Add(this.btnSimulateSound);
-            this.groupBox1.Controls.Add(this.lblReceiveCnt);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.lblSendCnt);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.combBoxAngles);
-            this.groupBox1.Location = new System.Drawing.Point(13, 14);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(204, 225);
-            this.groupBox1.TabIndex = 47;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "模拟声源角度";
-            // 
-            // chkBoxCheckAck
-            // 
-            this.chkBoxCheckAck.AutoSize = true;
-            this.chkBoxCheckAck.Location = new System.Drawing.Point(93, 76);
-            this.chkBoxCheckAck.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.chkBoxCheckAck.Name = "chkBoxCheckAck";
-            this.chkBoxCheckAck.Size = new System.Drawing.Size(89, 19);
-            this.chkBoxCheckAck.TabIndex = 3;
-            this.chkBoxCheckAck.Text = "检查应答";
-            this.chkBoxCheckAck.UseVisualStyleBackColor = true;
-            // 
-            // btnSimulateSound
-            // 
-            this.btnSimulateSound.Location = new System.Drawing.Point(67, 175);
-            this.btnSimulateSound.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnSimulateSound.Name = "btnSimulateSound";
-            this.btnSimulateSound.Size = new System.Drawing.Size(72, 38);
-            this.btnSimulateSound.TabIndex = 2;
-            this.btnSimulateSound.Text = "开始";
-            this.btnSimulateSound.UseVisualStyleBackColor = true;
-            this.btnSimulateSound.Click += new System.EventHandler(this.btnSimulateSound_Click);
-            // 
-            // lblReceiveCnt
-            // 
-            this.lblReceiveCnt.Location = new System.Drawing.Point(93, 146);
-            this.lblReceiveCnt.Name = "lblReceiveCnt";
-            this.lblReceiveCnt.Size = new System.Drawing.Size(89, 20);
-            this.lblReceiveCnt.TabIndex = 1;
-            this.lblReceiveCnt.Text = "0";
-            this.lblReceiveCnt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label3
-            // 
-            this.label3.Location = new System.Drawing.Point(12, 146);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(75, 20);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "应答次数";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lblSendCnt
-            // 
-            this.lblSendCnt.Location = new System.Drawing.Point(93, 111);
-            this.lblSendCnt.Name = "lblSendCnt";
-            this.lblSendCnt.Size = new System.Drawing.Size(89, 20);
-            this.lblSendCnt.TabIndex = 1;
-            this.lblSendCnt.Text = "0";
-            this.lblSendCnt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label2
-            // 
-            this.label2.Location = new System.Drawing.Point(12, 111);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 20);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "发送次数";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label1
-            // 
-            this.label1.Location = new System.Drawing.Point(12, 36);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 20);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "声源角度";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // combBoxAngles
-            // 
-            this.combBoxAngles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.combBoxAngles.FormattingEnabled = true;
-            this.combBoxAngles.Location = new System.Drawing.Point(93, 36);
-            this.combBoxAngles.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.combBoxAngles.Name = "combBoxAngles";
-            this.combBoxAngles.Size = new System.Drawing.Size(89, 23);
-            this.combBoxAngles.TabIndex = 0;
             // 
             // IsCaptureSupportedBtn
             // 
@@ -465,110 +369,6 @@
             this.GetSNBtn.UseVisualStyleBackColor = true;
             this.GetSNBtn.Click += new System.EventHandler(this.GetSNBtn_Click);
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Controls.Add(this.eptz_move_textbox_length);
-            this.groupBox3.Controls.Add(this.down_narrow);
-            this.groupBox3.Controls.Add(this.right_narrow);
-            this.groupBox3.Controls.Add(this.left_narrow);
-            this.groupBox3.Controls.Add(this.up_narrow);
-            this.groupBox3.Location = new System.Drawing.Point(15, 8);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox3.Size = new System.Drawing.Size(200, 198);
-            this.groupBox3.TabIndex = 58;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "移动控制";
-            // 
-            // label6
-            // 
-            this.label6.Location = new System.Drawing.Point(8, 149);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(96, 41);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "步长（1步32像素 0~255）";
-            // 
-            // eptz_move_textbox_length
-            // 
-            this.eptz_move_textbox_length.Location = new System.Drawing.Point(144, 154);
-            this.eptz_move_textbox_length.Margin = new System.Windows.Forms.Padding(4);
-            this.eptz_move_textbox_length.MaxLength = 3;
-            this.eptz_move_textbox_length.Name = "eptz_move_textbox_length";
-            this.eptz_move_textbox_length.Size = new System.Drawing.Size(49, 25);
-            this.eptz_move_textbox_length.TabIndex = 10;
-            this.eptz_move_textbox_length.Text = "1";
-            // 
-            // down_narrow
-            // 
-            this.down_narrow.BackColor = System.Drawing.Color.Transparent;
-            this.down_narrow.BackgroundImage = global::HIDTool.Properties.Resources.down_narrow;
-            this.down_narrow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.down_narrow.FlatAppearance.BorderSize = 0;
-            this.down_narrow.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.down_narrow.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.down_narrow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.down_narrow.Location = new System.Drawing.Point(75, 99);
-            this.down_narrow.Margin = new System.Windows.Forms.Padding(4);
-            this.down_narrow.Name = "down_narrow";
-            this.down_narrow.Size = new System.Drawing.Size(44, 41);
-            this.down_narrow.TabIndex = 3;
-            this.down_narrow.UseVisualStyleBackColor = false;
-            this.down_narrow.Click += new System.EventHandler(this.EPTZ_MOVE_DOWN_Click);
-            // 
-            // right_narrow
-            // 
-            this.right_narrow.BackColor = System.Drawing.Color.Transparent;
-            this.right_narrow.BackgroundImage = global::HIDTool.Properties.Resources.right_narrow;
-            this.right_narrow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.right_narrow.FlatAppearance.BorderSize = 0;
-            this.right_narrow.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.right_narrow.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.right_narrow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.right_narrow.Location = new System.Drawing.Point(121, 58);
-            this.right_narrow.Margin = new System.Windows.Forms.Padding(4);
-            this.right_narrow.Name = "right_narrow";
-            this.right_narrow.Size = new System.Drawing.Size(44, 41);
-            this.right_narrow.TabIndex = 2;
-            this.right_narrow.UseVisualStyleBackColor = false;
-            this.right_narrow.Click += new System.EventHandler(this.EPTZ_MOVE_RIGHT_Click);
-            // 
-            // left_narrow
-            // 
-            this.left_narrow.BackColor = System.Drawing.Color.Transparent;
-            this.left_narrow.BackgroundImage = global::HIDTool.Properties.Resources.left_narrow;
-            this.left_narrow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.left_narrow.FlatAppearance.BorderSize = 0;
-            this.left_narrow.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.left_narrow.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.left_narrow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.left_narrow.Location = new System.Drawing.Point(31, 58);
-            this.left_narrow.Margin = new System.Windows.Forms.Padding(4);
-            this.left_narrow.Name = "left_narrow";
-            this.left_narrow.Size = new System.Drawing.Size(44, 41);
-            this.left_narrow.TabIndex = 1;
-            this.left_narrow.UseVisualStyleBackColor = false;
-            this.left_narrow.Click += new System.EventHandler(this.EPTZ_MOVE_LEFT_Click);
-            // 
-            // up_narrow
-            // 
-            this.up_narrow.BackColor = System.Drawing.Color.Transparent;
-            this.up_narrow.BackgroundImage = global::HIDTool.Properties.Resources.up_narrow;
-            this.up_narrow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.up_narrow.FlatAppearance.BorderSize = 0;
-            this.up_narrow.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.up_narrow.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.up_narrow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.up_narrow.Location = new System.Drawing.Point(75, 16);
-            this.up_narrow.Margin = new System.Windows.Forms.Padding(4);
-            this.up_narrow.Name = "up_narrow";
-            this.up_narrow.Size = new System.Drawing.Size(44, 41);
-            this.up_narrow.TabIndex = 0;
-            this.up_narrow.UseVisualStyleBackColor = false;
-            this.up_narrow.Click += new System.EventHandler(this.EPTZ_MOVE_UP_Click);
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -666,110 +466,6 @@
             this.label7.TabIndex = 1;
             this.label7.Text = "预览模式";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.eptz_size_textbox_length);
-            this.groupBox2.Controls.Add(this.button4);
-            this.groupBox2.Controls.Add(this.button3);
-            this.groupBox2.Controls.Add(this.button2);
-            this.groupBox2.Location = new System.Drawing.Point(13, 215);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(203, 100);
-            this.groupBox2.TabIndex = 57;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "缩放控制";
-            // 
-            // label5
-            // 
-            this.label5.Location = new System.Drawing.Point(5, 22);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(101, 38);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "步长（1步64像素 0~255）：";
-            // 
-            // eptz_size_textbox_length
-            // 
-            this.eptz_size_textbox_length.Location = new System.Drawing.Point(141, 28);
-            this.eptz_size_textbox_length.Margin = new System.Windows.Forms.Padding(4);
-            this.eptz_size_textbox_length.MaxLength = 3;
-            this.eptz_size_textbox_length.Name = "eptz_size_textbox_length";
-            this.eptz_size_textbox_length.Size = new System.Drawing.Size(49, 25);
-            this.eptz_size_textbox_length.TabIndex = 8;
-            this.eptz_size_textbox_length.Text = "1";
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(133, 62);
-            this.button4.Margin = new System.Windows.Forms.Padding(4);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(67, 29);
-            this.button4.TabIndex = 2;
-            this.button4.Text = "复位";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.EPTZ_ENLARGE_NARROW_RESET_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(67, 62);
-            this.button3.Margin = new System.Windows.Forms.Padding(4);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(67, 29);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "缩小";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.EPTZ_NARROW_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(1, 62);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(67, 29);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "放大";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.EPTZ_ENLARGE_Click);
-            // 
-            // tabControlEPTZ
-            // 
-            this.tabControlEPTZ.Controls.Add(this.tabPage1);
-            this.tabControlEPTZ.Controls.Add(this.tabPage2);
-            this.tabControlEPTZ.Location = new System.Drawing.Point(219, 25);
-            this.tabControlEPTZ.Margin = new System.Windows.Forms.Padding(4);
-            this.tabControlEPTZ.Name = "tabControlEPTZ";
-            this.tabControlEPTZ.SelectedIndex = 0;
-            this.tabControlEPTZ.Size = new System.Drawing.Size(253, 354);
-            this.tabControlEPTZ.TabIndex = 63;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.groupBox3);
-            this.tabPage1.Controls.Add(this.groupBox2);
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage1.Size = new System.Drawing.Size(245, 325);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "手动";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.groupBox1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage2.Size = new System.Drawing.Size(245, 325);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "主讲者模式";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // btnUpdateDeviceList
             // 
@@ -1126,97 +822,102 @@
             this.groupBox13.Text = "获取当前设备能力集";
             this.groupBox13.Enter += new System.EventHandler(this.groupBox13_Enter);
             // 
-            // getFunctionSupport_button
+            // getChipSetTemperature_label_support
             // 
-            this.getFunctionSupport_button.Location = new System.Drawing.Point(6, 135);
-            this.getFunctionSupport_button.Name = "getFunctionSupport_button";
-            this.getFunctionSupport_button.Size = new System.Drawing.Size(867, 39);
-            this.getFunctionSupport_button.TabIndex = 0;
-            this.getFunctionSupport_button.Text = "点击获取能力集";
-            this.getFunctionSupport_button.UseVisualStyleBackColor = true;
-            this.getFunctionSupport_button.Click += new System.EventHandler(this.getFunctionSupport_button_Click);
+            this.getChipSetTemperature_label_support.AutoSize = true;
+            this.getChipSetTemperature_label_support.Location = new System.Drawing.Point(765, 67);
+            this.getChipSetTemperature_label_support.Name = "getChipSetTemperature_label_support";
+            this.getChipSetTemperature_label_support.Size = new System.Drawing.Size(0, 15);
+            this.getChipSetTemperature_label_support.TabIndex = 23;
             // 
-            // label9
+            // setBlackoutput_label_support
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 21);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(157, 15);
-            this.label9.TabIndex = 1;
-            this.label9.Text = "当前设备支持的功能：";
+            this.setBlackoutput_label_support.AutoSize = true;
+            this.setBlackoutput_label_support.Location = new System.Drawing.Point(795, 42);
+            this.setBlackoutput_label_support.Name = "setBlackoutput_label_support";
+            this.setBlackoutput_label_support.Size = new System.Drawing.Size(0, 15);
+            this.setBlackoutput_label_support.TabIndex = 22;
             // 
-            // support_function_label
+            // flipMachine_label_support
             // 
-            this.support_function_label.AutoSize = true;
-            this.support_function_label.Location = new System.Drawing.Point(9, 40);
-            this.support_function_label.Name = "support_function_label";
-            this.support_function_label.Size = new System.Drawing.Size(39, 15);
-            this.support_function_label.TabIndex = 2;
-            this.support_function_label.Text = "HDR:";
-            this.support_function_label.Click += new System.EventHandler(this.support_function_label_Click);
+            this.flipMachine_label_support.AutoSize = true;
+            this.flipMachine_label_support.Location = new System.Drawing.Point(528, 86);
+            this.flipMachine_label_support.Name = "flipMachine_label_support";
+            this.flipMachine_label_support.Size = new System.Drawing.Size(0, 15);
+            this.flipMachine_label_support.TabIndex = 21;
             // 
-            // label10
+            // airMachine_label_support
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(200, 40);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(135, 15);
-            this.label10.TabIndex = 3;
-            this.label10.Text = "手动电子云台控制:";
+            this.airMachine_label_support.AutoSize = true;
+            this.airMachine_label_support.Location = new System.Drawing.Point(530, 63);
+            this.airMachine_label_support.Name = "airMachine_label_support";
+            this.airMachine_label_support.Size = new System.Drawing.Size(0, 15);
+            this.airMachine_label_support.TabIndex = 20;
             // 
-            // label11
+            // badFix_label_support
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(200, 63);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(90, 15);
-            this.label11.TabIndex = 5;
-            this.label11.Text = "主讲者模式:";
+            this.badFix_label_support.AutoSize = true;
+            this.badFix_label_support.Location = new System.Drawing.Point(529, 42);
+            this.badFix_label_support.Name = "badFix_label_support";
+            this.badFix_label_support.Size = new System.Drawing.Size(0, 15);
+            this.badFix_label_support.TabIndex = 19;
             // 
-            // label12
+            // poeplefollow_label_support
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(9, 63);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(39, 15);
-            this.label12.TabIndex = 4;
-            this.label12.Text = "PIP:";
+            this.poeplefollow_label_support.AutoSize = true;
+            this.poeplefollow_label_support.Location = new System.Drawing.Point(279, 86);
+            this.poeplefollow_label_support.Name = "poeplefollow_label_support";
+            this.poeplefollow_label_support.Size = new System.Drawing.Size(0, 15);
+            this.poeplefollow_label_support.TabIndex = 18;
             // 
-            // label13
+            // mainspeaker_label_support
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(200, 86);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(75, 15);
-            this.label13.TabIndex = 7;
-            this.label13.Text = "人像追踪:";
+            this.mainspeaker_label_support.AutoSize = true;
+            this.mainspeaker_label_support.Location = new System.Drawing.Point(293, 63);
+            this.mainspeaker_label_support.Name = "mainspeaker_label_support";
+            this.mainspeaker_label_support.Size = new System.Drawing.Size(0, 15);
+            this.mainspeaker_label_support.TabIndex = 17;
             // 
-            // label14
+            // manual_label_support
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(9, 86);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(103, 15);
-            this.label14.TabIndex = 6;
-            this.label14.Text = "AutoFraming:";
+            this.manual_label_support.AutoSize = true;
+            this.manual_label_support.Location = new System.Drawing.Point(341, 39);
+            this.manual_label_support.Name = "manual_label_support";
+            this.manual_label_support.Size = new System.Drawing.Size(0, 15);
+            this.manual_label_support.TabIndex = 16;
             // 
-            // label15
+            // autoframing_label_support
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(656, 42);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(135, 15);
-            this.label15.TabIndex = 9;
-            this.label15.Text = "设置画面黑屏输出:";
+            this.autoframing_label_support.AutoSize = true;
+            this.autoframing_label_support.Location = new System.Drawing.Point(116, 87);
+            this.autoframing_label_support.Name = "autoframing_label_support";
+            this.autoframing_label_support.Size = new System.Drawing.Size(0, 15);
+            this.autoframing_label_support.TabIndex = 15;
             // 
-            // label16
+            // pip_label_support
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(446, 40);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(75, 15);
-            this.label16.TabIndex = 8;
-            this.label16.Text = "畸变校正:";
+            this.pip_label_support.AutoSize = true;
+            this.pip_label_support.Location = new System.Drawing.Point(61, 63);
+            this.pip_label_support.Name = "pip_label_support";
+            this.pip_label_support.Size = new System.Drawing.Size(0, 15);
+            this.pip_label_support.TabIndex = 14;
+            // 
+            // hdr_label_support
+            // 
+            this.hdr_label_support.AutoSize = true;
+            this.hdr_label_support.Location = new System.Drawing.Point(56, 42);
+            this.hdr_label_support.Name = "hdr_label_support";
+            this.hdr_label_support.Size = new System.Drawing.Size(0, 15);
+            this.hdr_label_support.TabIndex = 13;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(446, 86);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(75, 15);
+            this.label19.TabIndex = 12;
+            this.label19.Text = "翻转电机:";
             // 
             // label17
             // 
@@ -1236,102 +937,401 @@
             this.label18.TabIndex = 10;
             this.label18.Text = "云台电机:";
             // 
-            // label19
+            // label15
             // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(446, 86);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(75, 15);
-            this.label19.TabIndex = 12;
-            this.label19.Text = "翻转电机:";
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(656, 42);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(135, 15);
+            this.label15.TabIndex = 9;
+            this.label15.Text = "设置画面黑屏输出:";
             // 
-            // hdr_label_support
+            // label16
             // 
-            this.hdr_label_support.AutoSize = true;
-            this.hdr_label_support.Location = new System.Drawing.Point(56, 42);
-            this.hdr_label_support.Name = "hdr_label_support";
-            this.hdr_label_support.Size = new System.Drawing.Size(0, 15);
-            this.hdr_label_support.TabIndex = 13;
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(446, 40);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(75, 15);
+            this.label16.TabIndex = 8;
+            this.label16.Text = "畸变校正:";
             // 
-            // pip_label_support
+            // label13
             // 
-            this.pip_label_support.AutoSize = true;
-            this.pip_label_support.Location = new System.Drawing.Point(61, 63);
-            this.pip_label_support.Name = "pip_label_support";
-            this.pip_label_support.Size = new System.Drawing.Size(0, 15);
-            this.pip_label_support.TabIndex = 14;
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(200, 86);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(75, 15);
+            this.label13.TabIndex = 7;
+            this.label13.Text = "人像追踪:";
             // 
-            // autoframing_label_support
+            // label14
             // 
-            this.autoframing_label_support.AutoSize = true;
-            this.autoframing_label_support.Location = new System.Drawing.Point(116, 87);
-            this.autoframing_label_support.Name = "autoframing_label_support";
-            this.autoframing_label_support.Size = new System.Drawing.Size(0, 15);
-            this.autoframing_label_support.TabIndex = 15;
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(9, 86);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(103, 15);
+            this.label14.TabIndex = 6;
+            this.label14.Text = "AutoFraming:";
             // 
-            // manual_label_support
+            // label11
             // 
-            this.manual_label_support.AutoSize = true;
-            this.manual_label_support.Location = new System.Drawing.Point(341, 39);
-            this.manual_label_support.Name = "manual_label_support";
-            this.manual_label_support.Size = new System.Drawing.Size(0, 15);
-            this.manual_label_support.TabIndex = 16;
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(200, 63);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(90, 15);
+            this.label11.TabIndex = 5;
+            this.label11.Text = "主讲者模式:";
             // 
-            // mainspeaker_label_support
+            // label12
             // 
-            this.mainspeaker_label_support.AutoSize = true;
-            this.mainspeaker_label_support.Location = new System.Drawing.Point(293, 63);
-            this.mainspeaker_label_support.Name = "mainspeaker_label_support";
-            this.mainspeaker_label_support.Size = new System.Drawing.Size(0, 15);
-            this.mainspeaker_label_support.TabIndex = 17;
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(9, 63);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(39, 15);
+            this.label12.TabIndex = 4;
+            this.label12.Text = "PIP:";
             // 
-            // poeplefollow_label_support
+            // label10
             // 
-            this.poeplefollow_label_support.AutoSize = true;
-            this.poeplefollow_label_support.Location = new System.Drawing.Point(279, 86);
-            this.poeplefollow_label_support.Name = "poeplefollow_label_support";
-            this.poeplefollow_label_support.Size = new System.Drawing.Size(0, 15);
-            this.poeplefollow_label_support.TabIndex = 18;
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(200, 40);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(135, 15);
+            this.label10.TabIndex = 3;
+            this.label10.Text = "手动电子云台控制:";
             // 
-            // badFix_label_support
+            // support_function_label
             // 
-            this.badFix_label_support.AutoSize = true;
-            this.badFix_label_support.Location = new System.Drawing.Point(529, 42);
-            this.badFix_label_support.Name = "badFix_label_support";
-            this.badFix_label_support.Size = new System.Drawing.Size(0, 15);
-            this.badFix_label_support.TabIndex = 19;
+            this.support_function_label.AutoSize = true;
+            this.support_function_label.Location = new System.Drawing.Point(9, 40);
+            this.support_function_label.Name = "support_function_label";
+            this.support_function_label.Size = new System.Drawing.Size(39, 15);
+            this.support_function_label.TabIndex = 2;
+            this.support_function_label.Text = "HDR:";
+            this.support_function_label.Click += new System.EventHandler(this.support_function_label_Click);
             // 
-            // airMachine_label_support
+            // label9
             // 
-            this.airMachine_label_support.AutoSize = true;
-            this.airMachine_label_support.Location = new System.Drawing.Point(530, 63);
-            this.airMachine_label_support.Name = "airMachine_label_support";
-            this.airMachine_label_support.Size = new System.Drawing.Size(0, 15);
-            this.airMachine_label_support.TabIndex = 20;
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 21);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(157, 15);
+            this.label9.TabIndex = 1;
+            this.label9.Text = "当前设备支持的功能：";
             // 
-            // flipMachine_label_support
+            // getFunctionSupport_button
             // 
-            this.flipMachine_label_support.AutoSize = true;
-            this.flipMachine_label_support.Location = new System.Drawing.Point(528, 86);
-            this.flipMachine_label_support.Name = "flipMachine_label_support";
-            this.flipMachine_label_support.Size = new System.Drawing.Size(0, 15);
-            this.flipMachine_label_support.TabIndex = 21;
+            this.getFunctionSupport_button.Location = new System.Drawing.Point(6, 135);
+            this.getFunctionSupport_button.Name = "getFunctionSupport_button";
+            this.getFunctionSupport_button.Size = new System.Drawing.Size(867, 39);
+            this.getFunctionSupport_button.TabIndex = 0;
+            this.getFunctionSupport_button.Text = "点击获取能力集";
+            this.getFunctionSupport_button.UseVisualStyleBackColor = true;
+            this.getFunctionSupport_button.Click += new System.EventHandler(this.getFunctionSupport_button_Click);
             // 
-            // setBlackoutput_label_support
+            // tabPage2
             // 
-            this.setBlackoutput_label_support.AutoSize = true;
-            this.setBlackoutput_label_support.Location = new System.Drawing.Point(795, 42);
-            this.setBlackoutput_label_support.Name = "setBlackoutput_label_support";
-            this.setBlackoutput_label_support.Size = new System.Drawing.Size(0, 15);
-            this.setBlackoutput_label_support.TabIndex = 22;
+            this.tabPage2.Controls.Add(this.groupBox1);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage2.Size = new System.Drawing.Size(245, 325);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "主讲者模式";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // getChipSetTemperature_label_support
+            // groupBox1
             // 
-            this.getChipSetTemperature_label_support.AutoSize = true;
-            this.getChipSetTemperature_label_support.Location = new System.Drawing.Point(765, 67);
-            this.getChipSetTemperature_label_support.Name = "getChipSetTemperature_label_support";
-            this.getChipSetTemperature_label_support.Size = new System.Drawing.Size(0, 15);
-            this.getChipSetTemperature_label_support.TabIndex = 23;
+            this.groupBox1.Controls.Add(this.chkBoxCheckAck);
+            this.groupBox1.Controls.Add(this.btnSimulateSound);
+            this.groupBox1.Controls.Add(this.lblReceiveCnt);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.lblSendCnt);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.combBoxAngles);
+            this.groupBox1.Location = new System.Drawing.Point(13, 14);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Size = new System.Drawing.Size(204, 225);
+            this.groupBox1.TabIndex = 47;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "模拟声源角度";
+            // 
+            // combBoxAngles
+            // 
+            this.combBoxAngles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combBoxAngles.FormattingEnabled = true;
+            this.combBoxAngles.Location = new System.Drawing.Point(93, 36);
+            this.combBoxAngles.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.combBoxAngles.Name = "combBoxAngles";
+            this.combBoxAngles.Size = new System.Drawing.Size(89, 23);
+            this.combBoxAngles.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(12, 36);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(75, 20);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "声源角度";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(12, 111);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(75, 20);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "发送次数";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblSendCnt
+            // 
+            this.lblSendCnt.Location = new System.Drawing.Point(93, 111);
+            this.lblSendCnt.Name = "lblSendCnt";
+            this.lblSendCnt.Size = new System.Drawing.Size(89, 20);
+            this.lblSendCnt.TabIndex = 1;
+            this.lblSendCnt.Text = "0";
+            this.lblSendCnt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label3
+            // 
+            this.label3.Location = new System.Drawing.Point(12, 146);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(75, 20);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "应答次数";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblReceiveCnt
+            // 
+            this.lblReceiveCnt.Location = new System.Drawing.Point(93, 146);
+            this.lblReceiveCnt.Name = "lblReceiveCnt";
+            this.lblReceiveCnt.Size = new System.Drawing.Size(89, 20);
+            this.lblReceiveCnt.TabIndex = 1;
+            this.lblReceiveCnt.Text = "0";
+            this.lblReceiveCnt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnSimulateSound
+            // 
+            this.btnSimulateSound.Location = new System.Drawing.Point(67, 175);
+            this.btnSimulateSound.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSimulateSound.Name = "btnSimulateSound";
+            this.btnSimulateSound.Size = new System.Drawing.Size(72, 38);
+            this.btnSimulateSound.TabIndex = 2;
+            this.btnSimulateSound.Text = "开始";
+            this.btnSimulateSound.UseVisualStyleBackColor = true;
+            this.btnSimulateSound.Click += new System.EventHandler(this.btnSimulateSound_Click);
+            // 
+            // chkBoxCheckAck
+            // 
+            this.chkBoxCheckAck.AutoSize = true;
+            this.chkBoxCheckAck.Location = new System.Drawing.Point(93, 76);
+            this.chkBoxCheckAck.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.chkBoxCheckAck.Name = "chkBoxCheckAck";
+            this.chkBoxCheckAck.Size = new System.Drawing.Size(89, 19);
+            this.chkBoxCheckAck.TabIndex = 3;
+            this.chkBoxCheckAck.Text = "检查应答";
+            this.chkBoxCheckAck.UseVisualStyleBackColor = true;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.groupBox3);
+            this.tabPage1.Controls.Add(this.groupBox2);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage1.Size = new System.Drawing.Size(245, 325);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "手动";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.eptz_size_textbox_length);
+            this.groupBox2.Controls.Add(this.button4);
+            this.groupBox2.Controls.Add(this.button3);
+            this.groupBox2.Controls.Add(this.button2);
+            this.groupBox2.Location = new System.Drawing.Point(13, 215);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Size = new System.Drawing.Size(203, 100);
+            this.groupBox2.TabIndex = 57;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "缩放控制";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(1, 62);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(67, 29);
+            this.button2.TabIndex = 0;
+            this.button2.Text = "放大";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.EPTZ_ENLARGE_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(67, 62);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(67, 29);
+            this.button3.TabIndex = 1;
+            this.button3.Text = "缩小";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.EPTZ_NARROW_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(133, 62);
+            this.button4.Margin = new System.Windows.Forms.Padding(4);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(67, 29);
+            this.button4.TabIndex = 2;
+            this.button4.Text = "复位";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.EPTZ_ENLARGE_NARROW_RESET_Click);
+            // 
+            // eptz_size_textbox_length
+            // 
+            this.eptz_size_textbox_length.Location = new System.Drawing.Point(141, 28);
+            this.eptz_size_textbox_length.Margin = new System.Windows.Forms.Padding(4);
+            this.eptz_size_textbox_length.MaxLength = 3;
+            this.eptz_size_textbox_length.Name = "eptz_size_textbox_length";
+            this.eptz_size_textbox_length.Size = new System.Drawing.Size(49, 25);
+            this.eptz_size_textbox_length.TabIndex = 8;
+            this.eptz_size_textbox_length.Text = "1";
+            // 
+            // label5
+            // 
+            this.label5.Location = new System.Drawing.Point(5, 22);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(101, 38);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "步长（1步64像素 0~255）：";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.Controls.Add(this.eptz_move_textbox_length);
+            this.groupBox3.Controls.Add(this.down_narrow);
+            this.groupBox3.Controls.Add(this.right_narrow);
+            this.groupBox3.Controls.Add(this.left_narrow);
+            this.groupBox3.Controls.Add(this.up_narrow);
+            this.groupBox3.Location = new System.Drawing.Point(15, 8);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox3.Size = new System.Drawing.Size(200, 198);
+            this.groupBox3.TabIndex = 58;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "移动控制";
+            // 
+            // up_narrow
+            // 
+            this.up_narrow.BackColor = System.Drawing.Color.Transparent;
+            this.up_narrow.BackgroundImage = global::HIDTool.Properties.Resources.up_narrow;
+            this.up_narrow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.up_narrow.FlatAppearance.BorderSize = 0;
+            this.up_narrow.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.up_narrow.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.up_narrow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.up_narrow.Location = new System.Drawing.Point(75, 16);
+            this.up_narrow.Margin = new System.Windows.Forms.Padding(4);
+            this.up_narrow.Name = "up_narrow";
+            this.up_narrow.Size = new System.Drawing.Size(44, 41);
+            this.up_narrow.TabIndex = 0;
+            this.up_narrow.UseVisualStyleBackColor = false;
+            this.up_narrow.Click += new System.EventHandler(this.EPTZ_MOVE_UP_Click);
+            // 
+            // left_narrow
+            // 
+            this.left_narrow.BackColor = System.Drawing.Color.Transparent;
+            this.left_narrow.BackgroundImage = global::HIDTool.Properties.Resources.left_narrow;
+            this.left_narrow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.left_narrow.FlatAppearance.BorderSize = 0;
+            this.left_narrow.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.left_narrow.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.left_narrow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.left_narrow.Location = new System.Drawing.Point(31, 58);
+            this.left_narrow.Margin = new System.Windows.Forms.Padding(4);
+            this.left_narrow.Name = "left_narrow";
+            this.left_narrow.Size = new System.Drawing.Size(44, 41);
+            this.left_narrow.TabIndex = 1;
+            this.left_narrow.UseVisualStyleBackColor = false;
+            this.left_narrow.Click += new System.EventHandler(this.EPTZ_MOVE_LEFT_Click);
+            // 
+            // right_narrow
+            // 
+            this.right_narrow.BackColor = System.Drawing.Color.Transparent;
+            this.right_narrow.BackgroundImage = global::HIDTool.Properties.Resources.right_narrow;
+            this.right_narrow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.right_narrow.FlatAppearance.BorderSize = 0;
+            this.right_narrow.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.right_narrow.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.right_narrow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.right_narrow.Location = new System.Drawing.Point(121, 58);
+            this.right_narrow.Margin = new System.Windows.Forms.Padding(4);
+            this.right_narrow.Name = "right_narrow";
+            this.right_narrow.Size = new System.Drawing.Size(44, 41);
+            this.right_narrow.TabIndex = 2;
+            this.right_narrow.UseVisualStyleBackColor = false;
+            this.right_narrow.Click += new System.EventHandler(this.EPTZ_MOVE_RIGHT_Click);
+            // 
+            // down_narrow
+            // 
+            this.down_narrow.BackColor = System.Drawing.Color.Transparent;
+            this.down_narrow.BackgroundImage = global::HIDTool.Properties.Resources.down_narrow;
+            this.down_narrow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.down_narrow.FlatAppearance.BorderSize = 0;
+            this.down_narrow.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.down_narrow.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.down_narrow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.down_narrow.Location = new System.Drawing.Point(75, 99);
+            this.down_narrow.Margin = new System.Windows.Forms.Padding(4);
+            this.down_narrow.Name = "down_narrow";
+            this.down_narrow.Size = new System.Drawing.Size(44, 41);
+            this.down_narrow.TabIndex = 3;
+            this.down_narrow.UseVisualStyleBackColor = false;
+            this.down_narrow.Click += new System.EventHandler(this.EPTZ_MOVE_DOWN_Click);
+            // 
+            // eptz_move_textbox_length
+            // 
+            this.eptz_move_textbox_length.Location = new System.Drawing.Point(144, 154);
+            this.eptz_move_textbox_length.Margin = new System.Windows.Forms.Padding(4);
+            this.eptz_move_textbox_length.MaxLength = 3;
+            this.eptz_move_textbox_length.Name = "eptz_move_textbox_length";
+            this.eptz_move_textbox_length.Size = new System.Drawing.Size(49, 25);
+            this.eptz_move_textbox_length.TabIndex = 10;
+            this.eptz_move_textbox_length.Text = "1";
+            // 
+            // label6
+            // 
+            this.label6.Location = new System.Drawing.Point(8, 149);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(96, 41);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "步长（1步32像素 0~255）";
+            // 
+            // tabControlEPTZ
+            // 
+            this.tabControlEPTZ.Controls.Add(this.tabPage1);
+            this.tabControlEPTZ.Controls.Add(this.tabPage2);
+            this.tabControlEPTZ.Location = new System.Drawing.Point(219, 25);
+            this.tabControlEPTZ.Margin = new System.Windows.Forms.Padding(4);
+            this.tabControlEPTZ.Name = "tabControlEPTZ";
+            this.tabControlEPTZ.SelectedIndex = 0;
+            this.tabControlEPTZ.Size = new System.Drawing.Size(253, 354);
+            this.tabControlEPTZ.TabIndex = 63;
             // 
             // HIDToolForm
             // 
@@ -1362,18 +1362,9 @@
             this.Load += new System.EventHandler(this.HIDToolForm_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.tabControlEPTZ.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
@@ -1384,6 +1375,15 @@
             this.groupBox12.PerformLayout();
             this.groupBox13.ResumeLayout(false);
             this.groupBox13.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.tabPage1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.tabControlEPTZ.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1401,15 +1401,6 @@
         private System.Windows.Forms.Button StartRecordLogBtn;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button GetCPUFreqBtn;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.CheckBox chkBoxCheckAck;
-        private System.Windows.Forms.Button btnSimulateSound;
-        private System.Windows.Forms.Label lblReceiveCnt;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label lblSendCnt;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox combBoxAngles;
         private System.Windows.Forms.Button IsCaptureSupportedBtn;
         private System.Windows.Forms.Button GetAppVersionBtn;
         private System.Windows.Forms.Button RebootBootloaderBtn;
@@ -1422,28 +1413,12 @@
         private System.Windows.Forms.ComboBox comboBoxDevices;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button GetSNBtn;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button up_narrow;
-        private System.Windows.Forms.Button down_narrow;
-        private System.Windows.Forms.Button right_narrow;
-        private System.Windows.Forms.Button left_narrow;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox eptz_move_textbox_length;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.ComboBox comboBoxPreviewMode;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox eptz_size_textbox_length;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TabControl tabControlEPTZ;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button btnUpdateDeviceList;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.Button GetEPTZEnableBtn;
@@ -1499,5 +1474,30 @@
         private System.Windows.Forms.Label setBlackoutput_label_support;
         private System.Windows.Forms.Label flipMachine_label_support;
         private System.Windows.Forms.Label airMachine_label_support;
+        private System.Windows.Forms.TabControl tabControlEPTZ;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox eptz_move_textbox_length;
+        private System.Windows.Forms.Button down_narrow;
+        private System.Windows.Forms.Button right_narrow;
+        private System.Windows.Forms.Button left_narrow;
+        private System.Windows.Forms.Button up_narrow;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox eptz_size_textbox_length;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.CheckBox chkBoxCheckAck;
+        private System.Windows.Forms.Button btnSimulateSound;
+        private System.Windows.Forms.Label lblReceiveCnt;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblSendCnt;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox combBoxAngles;
     }
 }

@@ -179,6 +179,9 @@
             this.clearInput_button = new Sunny.UI.UIButton();
             this.macInput_textbox = new Sunny.UI.UITextBox();
             this.uiLabel11 = new Sunny.UI.UILabel();
+            this.uiTabControl2 = new Sunny.UI.UITabControl();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
             this.uiGroupBox1.SuspendLayout();
             this.uiGroupBox9.SuspendLayout();
             this.uiGroupBox8.SuspendLayout();
@@ -194,6 +197,7 @@
             this.uiGroupBox3.SuspendLayout();
             this.uiGroupBox6.SuspendLayout();
             this.uiGroupBox7.SuspendLayout();
+            this.uiTabControl2.SuspendLayout();
             this.SuspendLayout();
             // 
             // currentVersion_label
@@ -2482,11 +2486,48 @@
             this.uiLabel11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.uiLabel11.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
+            // uiTabControl2
+            // 
+            this.uiTabControl2.Controls.Add(this.tabPage5);
+            this.uiTabControl2.Controls.Add(this.tabPage6);
+            this.uiTabControl2.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
+            this.uiTabControl2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiTabControl2.Frame = null;
+            this.uiTabControl2.ItemSize = new System.Drawing.Size(150, 40);
+            this.uiTabControl2.Location = new System.Drawing.Point(381, 0);
+            this.uiTabControl2.MainPage = "";
+            this.uiTabControl2.Name = "uiTabControl2";
+            this.uiTabControl2.SelectedIndex = 0;
+            this.uiTabControl2.Size = new System.Drawing.Size(8, 8);
+            this.uiTabControl2.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.uiTabControl2.TabIndex = 14;
+            this.uiTabControl2.TabUnSelectedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.uiTabControl2.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Location = new System.Drawing.Point(0, 40);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(8, 0);
+            this.tabPage5.TabIndex = 0;
+            this.tabPage5.Text = "tabPage5";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.Location = new System.Drawing.Point(0, 40);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Size = new System.Drawing.Size(200, 60);
+            this.tabPage6.TabIndex = 1;
+            this.tabPage6.Text = "tabPage6";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1253, 936);
+            this.Controls.Add(this.uiTabControl2);
             this.Controls.Add(this.uiGroupBox7);
             this.Controls.Add(this.uiGroupBox6);
             this.Controls.Add(this.uiGroupBox3);
@@ -2515,6 +2556,7 @@
             this.uiGroupBox3.ResumeLayout(false);
             this.uiGroupBox6.ResumeLayout(false);
             this.uiGroupBox7.ResumeLayout(false);
+            this.uiTabControl2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2670,5 +2712,8 @@
         private Sunny.UI.UIButton uiButton1;
         private Sunny.UI.UILabel uiLabel21;
         private Sunny.UI.UICheckBox bareBoardTest_checkBox;
+        private Sunny.UI.UITabControl uiTabControl2;
+        private TabPage tabPage5;
+        private TabPage tabPage6;
     }
 }

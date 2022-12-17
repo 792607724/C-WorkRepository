@@ -3182,7 +3182,10 @@ namespace SeewoTestTool
                     extractRecordFile_button.Enabled = false;
                     SaveFileDialog saveFileDialog = new SaveFileDialog();
                     saveFileDialog.Title = "请选择保存文件路径";
-                    saveFileDialog.Filter = "音频文件(*.mp3;*.mid;*.wav;)|*.mp3;*.mid;*.wav;";
+                    //saveFileDialog.Filter = "音频文件(*.mp3;*.mid;*.wav;)|*.mp3;*.mid;*.wav;";
+                    saveFileDialog.Filter = "音频文件(*.wav;)|*.wav;";
+
+                    saveFileDialog.FileName = "audioRecord.wav";
                     saveFileDialog.OverwritePrompt = true;
                     saveFileDialog.RestoreDirectory = true;
                     if (saveFileDialog.ShowDialog() == DialogResult.OK)
