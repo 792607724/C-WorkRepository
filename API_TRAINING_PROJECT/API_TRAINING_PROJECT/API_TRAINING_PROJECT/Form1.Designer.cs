@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.clickToPlayMusic_button = new Sunny.UI.UIButton();
+            this.clickToStopMusic_button = new Sunny.UI.UIButton();
             this.SuspendLayout();
             // 
             // clickToPlayMusic_button
@@ -45,11 +46,26 @@
             this.clickToPlayMusic_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.clickToPlayMusic_button.Click += new System.EventHandler(this.clickToPlayMusic_button_Click);
             // 
+            // clickToStopMusic_button
+            // 
+            this.clickToStopMusic_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.clickToStopMusic_button.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.clickToStopMusic_button.Location = new System.Drawing.Point(159, 12);
+            this.clickToStopMusic_button.MinimumSize = new System.Drawing.Size(1, 1);
+            this.clickToStopMusic_button.Name = "clickToStopMusic_button";
+            this.clickToStopMusic_button.Size = new System.Drawing.Size(141, 65);
+            this.clickToStopMusic_button.TabIndex = 1;
+            this.clickToStopMusic_button.Text = "点击停止音乐";
+            this.clickToStopMusic_button.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.clickToStopMusic_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.clickToStopMusic_button.Click += new System.EventHandler(this.clickToStopMusic_button_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.clickToStopMusic_button);
             this.Controls.Add(this.clickToPlayMusic_button);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -61,6 +77,7 @@
         #endregion
 
         private Sunny.UI.UIButton clickToPlayMusic_button;
+        private Sunny.UI.UIButton clickToStopMusic_button;
     }
 }
 
