@@ -1104,8 +1104,15 @@ namespace SeewoTestTool
                 gain_array_mic_audio_level_button.Enabled = false;
                 // 每次获取MIC音频音量值需要先录制1s后获取
                 recordTime_textbox.Text = "1";
-                beginAudioRecord_button_Click(null, null);
-
+                if (audioRecord_t != null)
+                {
+                    MessageBox.Show("未完成");
+                }
+                else
+                {
+                    beginAudioRecord_button_Click(null, null);
+                    audioRecord_t.Join();
+                }
                 float standard_volume = float.Parse(standardAudioVolume_textbox.Text);
                 output_rich_textbox.AppendText("【执行操作】获取各路MIC音频音量值……\n");
                 if (clientSocket != null && clientSocket.Connected)
@@ -1935,6 +1942,7 @@ namespace SeewoTestTool
                             stopPinkNoise_button.Enabled = true;
                             recordingGif_label.Image = Image.FromFile("./img/recordingFinish.png");
                             uiButton1.Enabled = true;
+                            
                             if (nextDeviceConnect_t != null)
                             {
                                 nextDeviceConnect_t.Interrupt();
@@ -2170,6 +2178,7 @@ namespace SeewoTestTool
                     if (clientSocket != null && clientSocket.Connected)
                     {
                         // 重启设备操作
+                        stop_array_mic_audio_level_test_button_Click(null, null);
                         string fetchDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"control\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"reboot\\\"}}\"";
                         output_string = executeCMDCommand(fetchDeviceInfoCommand);
                         MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
@@ -2786,7 +2795,6 @@ namespace SeewoTestTool
                 output_rich_textbox.AppendText("【当前测试结束】:\n请勿手动删除根目录的文件，请重新打开工具！\n");
                 Application.Exit();
             }
-            
         }
 
         // 红绿指示灯测试PASS
@@ -3148,6 +3156,11 @@ namespace SeewoTestTool
                 gain_array_mic_audio_level_button.Enabled = true;
                 audioIn1_test_button.Enabled = true;
                 audioIn2_test_button.Enabled = true;
+                if (audioRecord_t != null)
+                {
+                    audioRecord_t.Interrupt();
+                    audioRecord_t = null;
+                }
             }
         }
 
@@ -3183,17 +3196,14 @@ namespace SeewoTestTool
                         audioRecord_t = new Thread(recordAudioThread);
                         audioRecord_t.IsBackground = true;
                         audioRecord_t.Start();
+                        
                     }
                     Font font = new Font(FontFamily.GenericMonospace, 15, FontStyle.Bold);
                     output_rich_textbox.ForeColor = Color.Red;
                     output_rich_textbox.SelectionFont = font;
                     output_rich_textbox.AppendText($"请稍等，正在录制音频中,录制时间【{duration}】秒……！\n");
                     recordingGif_label.Visible = true;
-                    Thread.Sleep(int.Parse(duration));
-                    audioRecord_t = null;
                     
-
-
                 }
                 else
                 {
