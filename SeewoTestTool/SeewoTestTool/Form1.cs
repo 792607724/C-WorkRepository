@@ -2512,6 +2512,7 @@ namespace SeewoTestTool
                 // 每次获取MIC音频音量值需要先录制1s后获取
                 recordTime_textbox.Text = "1";
                 beginAudioRecord_button_Click(null, null);
+                audioRecord_t.Join();
                 output_rich_textbox.AppendText("【执行操作】Audio IN 1 测试……\n");
                 if (clientSocket != null && clientSocket.Connected)
                 {
@@ -2618,6 +2619,7 @@ namespace SeewoTestTool
                 // 每次获取MIC音频音量值需要先录制1s后获取
                 recordTime_textbox.Text = "1";
                 beginAudioRecord_button_Click(null, null);
+                audioRecord_t.Join();
                 output_rich_textbox.AppendText("【执行操作】Audio IN 2 测试……\n");
                 if (clientSocket != null && clientSocket.Connected)
                 {
@@ -3619,6 +3621,11 @@ namespace SeewoTestTool
             {
                 mothreBoardTest_checkBox.Checked = false;
             }
+        }
+
+        private void bareBoardTest_checkBox_CheckedChanged_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -467,6 +467,7 @@
             this.bareBoardTest_checkBox.TabIndex = 1;
             this.bareBoardTest_checkBox.Text = "MIC板测试模式";
             this.bareBoardTest_checkBox.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.bareBoardTest_checkBox.CheckedChanged += new System.EventHandler(this.bareBoardTest_checkBox_CheckedChanged_1);
             this.bareBoardTest_checkBox.Click += new System.EventHandler(this.bareBoardTest_checkBox_CheckedChanged);
             // 
             // mothreBoardTest_checkBox
