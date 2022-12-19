@@ -64,8 +64,8 @@ namespace SeevisionTestTool
         [DllImport("winmm.dll")]
         public static extern uint mciSendString(string lpstrCommand, string lpstrReturnString, uint uReturnLength, uint hWndCallback);
 
-        //string musicName = "./粉红噪音15s.mp3";
-        string musicName = "./王靖雯 - 诗中的灯火.mp3";
+        string musicName = "./粉红噪音15s.mp3";
+        //string musicName = "./王靖雯 - 诗中的灯火.mp3";
         public void Play()
         {
             mciSendString(@"close temp_alias", null, 0, 0);
