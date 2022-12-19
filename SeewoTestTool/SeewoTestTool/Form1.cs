@@ -1933,6 +1933,13 @@ namespace SeewoTestTool
                             enterAgingMode_button.Enabled = true;
                             uiButton1.Enabled = true;
                             stopPinkNoise_button.Enabled = true;
+                            recordingGif_label.Image = Image.FromFile("./img/recordingFinish.png");
+                            uiButton1.Enabled = true;
+                            if (nextDeviceConnect_t != null)
+                            {
+                                nextDeviceConnect_t.Interrupt();
+                                nextDeviceConnect_t = null;
+                            }
                             // 增加记住username和password功能
                             if (rememberCheckBox.Checked == true)
                             {
@@ -3538,9 +3545,10 @@ namespace SeewoTestTool
             }
         }
 
-        // 点击连接下一台设备，断开当前设备同时清除测试结果
-        private void uiButton1_Click(object sender, EventArgs e)
+        Thread nextDeviceConnect_t;
+        private void nextDeviceConnect_func()
         {
+            output_rich_textbox.AppendText("【执行操作】当前设备已断开，请插入另一台设备后即可自动连接开始测试\n");
             device_disconnect_button_Click(null, null);
             resetTestResult_button_Click(null, null);
             currentMac_label.Text = "";
@@ -3561,7 +3569,25 @@ namespace SeewoTestTool
             currentSN_textbox.Text = "";
             writeInSN_textbox.Text = "";
             output_rich_textbox.Text = "";
-            output_rich_textbox.AppendText("【执行操作】当前设备已断开，请插入另一台设备后，点击【连接设备】开始测试\n");
+            device_connect_button_Click(null, null);
+        }
+
+        // 点击连接下一台设备，断开当前设备同时清除测试结果
+        private void uiButton1_Click(object sender, EventArgs e)
+        {
+            if (nextDeviceConnect_t != null)
+            {
+                MessageBox.Show("当前正在连接下一台设备，请稍后！");
+            }
+            else
+            {
+                nextDeviceConnect_t = new Thread(nextDeviceConnect_func);
+                nextDeviceConnect_t.IsBackground = true;
+                nextDeviceConnect_t.Start();
+            }
+            uiButton1.Enabled = false;
+            recordingGif_label.Visible = true;
+            recordingGif_label.Image = Image.FromFile("./img/recordingGif.gif");
         }
 
         private void stopPinkNoise_button_Click(object sender, EventArgs e)
