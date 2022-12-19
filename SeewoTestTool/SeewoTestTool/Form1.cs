@@ -1104,15 +1104,8 @@ namespace SeewoTestTool
                 gain_array_mic_audio_level_button.Enabled = false;
                 // 每次获取MIC音频音量值需要先录制1s后获取
                 recordTime_textbox.Text = "1";
-                if (audioRecord_t != null)
-                {
-                    MessageBox.Show("未完成");
-                }
-                else
-                {
-                    beginAudioRecord_button_Click(null, null);
-                    audioRecord_t.Join();
-                }
+                beginAudioRecord_button_Click(null, null);
+                audioRecord_t.Join();
                 float standard_volume = float.Parse(standardAudioVolume_textbox.Text);
                 output_rich_textbox.AppendText("【执行操作】获取各路MIC音频音量值……\n");
                 if (clientSocket != null && clientSocket.Connected)
