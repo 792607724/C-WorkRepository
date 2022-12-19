@@ -1,3 +1,4 @@
+using SeevisionTestTool;
 using Sunny.UI;
 using Sunny.UI.Win32;
 using System.Diagnostics;
@@ -7,6 +8,7 @@ using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Security.Cryptography;
 using System.Text;
@@ -25,6 +27,7 @@ namespace SeewoTestTool
         Dictionary<string, User> users = new Dictionary<string, User>();
         Dictionary<string, TestResult> testResults = new Dictionary<string, TestResult>();
         TestResult testResult_Tester = new TestResult();
+        AudioPlayControl audioPlayControl = new AudioPlayControl();
         /**
          * 窗口构造方法：
          * 在这里进行：
@@ -258,10 +261,19 @@ namespace SeewoTestTool
                                 }
                                 Thread.Sleep(1);
                                 login_button_Click(null, null);
+                                // 结果位
+                                refreshTestResult_button_Click(null, null);
+                                testResults["测试结果"].NetworkTestResult = "PASS";
+                                writeTestResult();
                             }
                         }
                         else
                         {
+                            // 结果位
+                            refreshTestResult_button_Click(null, null);
+                            testResults["测试结果"].NetworkTestResult = "FAIL";
+                            writeTestResult();
+                            output_rich_textbox.AppendText("测试失败，请检查网络连接！\n");
                             MessageBox.Show($"连接超时，请检查！\nIP:{host}， PORT:{port}\n如果多次连接尝试无果，可尝试重启设备后再做连接操作！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
 
@@ -453,7 +465,6 @@ namespace SeewoTestTool
                         audioIn1_test_button.Enabled = false;
                         audioIn2_test_button.Enabled = false;
                         poe1NetworkTest_button.Enabled = false;
-                        poe2NetworkTest_button.Enabled = false;
                         openLiveCamera_buttton.Enabled = false;
                         openMergeCamera_buttton.Enabled = false;
                         clearInput_button.Enabled = false;
@@ -469,6 +480,7 @@ namespace SeewoTestTool
                         getCurrentMacAddress_button.Enabled = false;
                         beginResetTest_button.Enabled = false;
                         enterAgingMode_button.Enabled = false;
+                        stopPinkNoise_button.Enabled = false;
                         login_button.Text = "设备连接后\n可自动登录";
                         if (autoTest_t != null)
                         {
@@ -1062,7 +1074,7 @@ namespace SeewoTestTool
             }
             duration = recordTime_textbox.Text;
             recordingGif_label.Image = Image.FromFile("./img/recordingGif.gif");
-            if (bareBoardTest_checkBox.Checked)
+            if (bareBoardTest_checkBox.Checked || mothreBoardTest_checkBox.Checked)
             {
                 standardAudioVolume_textbox.Text = "0";
             }
@@ -1127,7 +1139,7 @@ namespace SeewoTestTool
                             float minINArray = volumes_f.Min();
                             if (bareBoardTest_checkBox.Checked)
                             {
-                                if (Math.Abs(maxINArray - minINArray) <= 5)
+                                if (Math.Abs(minINArray) >= 15 && Math.Abs(maxINArray) <=65 && Math.Abs(maxINArray - minINArray) <= 5)
                                 {
                                     // 结果位
                                     refreshTestResult_button_Click(null, null);
@@ -1156,6 +1168,23 @@ namespace SeewoTestTool
                                 bareBoardTest_t = new Thread(bareBoardTest_func);
                                 bareBoardTest_t.IsBackground = true;
                                 bareBoardTest_t.Start();
+                            }
+                            else if (mothreBoardTest_checkBox.Checked)
+                            {
+                                if (Math.Abs(minINArray) >= 15 && Math.Abs(maxINArray) <= 65 && Math.Abs(maxINArray - minINArray) <= 5)
+                                {
+                                    // 结果位
+                                    refreshTestResult_button_Click(null, null);
+                                    testResults["测试结果"].ArrayMicResult = "PASS";
+                                    writeTestResult();
+                                }
+                                else
+                                {
+                                    // 结果位
+                                    refreshTestResult_button_Click(null, null);
+                                    testResults["测试结果"].ArrayMicResult = "FAIL";
+                                    writeTestResult();
+                                }
                             }
                             else
                             {
@@ -1551,7 +1580,6 @@ namespace SeewoTestTool
                     button2.Enabled = false;
                     get_poe_mic_info_button.Enabled = false;
                     poe1NetworkTest_button.Enabled = false;
-                    poe2NetworkTest_button.Enabled = false;
                     uiGroupBox1.Enabled = true;
                     uiGroupBox7.Enabled = true;
                     uiGroupBox9.Enabled = true;
@@ -1871,7 +1899,6 @@ namespace SeewoTestTool
                             start_rg_flicker_button.Enabled = true;
                             get_poe_mic_info_button.Enabled = true;
                             poe1NetworkTest_button.Enabled = true;
-                            poe2NetworkTest_button.Enabled = true;
                             openLiveCamera_buttton.Enabled = true;
                             openMergeCamera_buttton.Enabled = true;
                             audioIn1_test_button.Enabled = true;
@@ -1890,6 +1917,7 @@ namespace SeewoTestTool
                             beginResetTest_button.Enabled = true;
                             enterAgingMode_button.Enabled = true;
                             uiButton1.Enabled = true;
+                            stopPinkNoise_button.Enabled = true;
                             // 增加记住username和password功能
                             if (rememberCheckBox.Checked == true)
                             {
@@ -2422,6 +2450,20 @@ namespace SeewoTestTool
 
         }
 
+        // 播放粉红噪音
+        private void playPinkNoise()
+        {
+            audioPlayControl.PlayMusic();
+        }
+
+
+        // 停止播放粉红噪音
+        private void stopPinkNoise()
+        {
+            audioPlayControl.StopMusic();
+        }
+
+
         // Audio IN 1 测试
         private void audioIn1_test_button_Click_1(object sender, EventArgs e)
         {
@@ -2434,6 +2476,7 @@ namespace SeewoTestTool
             //if (true)
             else if (check_device_online())
             {
+                playPinkNoise();
                 audioIn1_test_button.Enabled = false;
                 // 每次获取MIC音频音量值需要先录制1s后获取
                 recordTime_textbox.Text = "1";
@@ -2485,7 +2528,7 @@ namespace SeewoTestTool
 
                             float audioInStandard = float.Parse(audioInTestStandard_textbox.Text);
 
-                            if (Math.Abs(Math.Abs(audioInStandard) - Math.Abs(volume_3_f)) <= 2)
+                            if (Math.Abs(Math.Abs(audioInStandard) - Math.Abs(volume_3_f)) <= 3)
                             {
                                 // 结果位
                                 refreshTestResult_button_Click(null, null);
@@ -2539,6 +2582,7 @@ namespace SeewoTestTool
             //if (true)
             else if (check_device_online())
             {
+                playPinkNoise();
                 audioIn2_test_button.Enabled = false;
                 // 每次获取MIC音频音量值需要先录制1s后获取
                 recordTime_textbox.Text = "1";
@@ -2590,7 +2634,7 @@ namespace SeewoTestTool
 
                             float audioInStandard = float.Parse(audioInTestStandard_textbox.Text);
 
-                            if (Math.Abs(Math.Abs(audioInStandard) - Math.Abs(volume_7_f)) <= 2)
+                            if (Math.Abs(Math.Abs(audioInStandard) - Math.Abs(volume_7_f)) <= 3)
                             {
                                 // 结果位
                                 refreshTestResult_button_Click(null, null);
@@ -2741,57 +2785,29 @@ namespace SeewoTestTool
             writeTestResult();
         }
 
-        // POE1网口测试
+        // 连接SC12-E测试工装网口测试
         private void poe1NetworkTest_button_Click(object sender, EventArgs e)
         {
-            output_rich_textbox.AppendText("【执行操作】POE1网口测试……\n");
-            if (check_device_online())
+            string sc12_E_ip = "219.198.235.13";
+            output_rich_textbox.AppendText("【执行操作】连接SC12-E测试工装网口测试……\n");
+            string temp_check_ping_ip_exists = executeCMDCommand($"ping {sc12_E_ip} -n 1");
+            output_rich_textbox.Text = "";
+            //login_button_Click(null, null);
+            if (temp_check_ping_ip_exists.Contains("TTL"))
             {
-                output_rich_textbox.Text = "";
-                login_button_Click(null, null);
-                if (output_rich_textbox.Text.Contains("成功"))
-                {
-                    // 结果位
-                    refreshTestResult_button_Click(null, null);
-                    testResults["测试结果"].NetworkTestResult = "PASS";
-                    writeTestResult();
-                }
-                else
-                {
-                    // 结果位
-                    refreshTestResult_button_Click(null, null);
-                    testResults["测试结果"].NetworkTestResult = "FAIL";
-                    writeTestResult();
-                    MessageBox.Show("测试失败，请检查网络连接！");
-                    output_rich_textbox.AppendText("测试失败，请检查网络连接！\n");
-                }
+                // 结果位
+                refreshTestResult_button_Click(null, null);
+                testResults["测试结果"].Network2TestResult = "PASS";
+                writeTestResult();
             }
-        }
-
-        // POE2网口测试
-        private void poe2NetworkTest_button_Click(object sender, EventArgs e)
-        {
-            output_rich_textbox.AppendText("【执行操作】POE2网口测试……\n");
-            if (check_device_online())
+            else
             {
-                output_rich_textbox.Text = "";
-                login_button_Click(null, null);
-                if (output_rich_textbox.Text.Contains("成功"))
-                {
-                    // 结果位
-                    refreshTestResult_button_Click(null, null);
-                    testResults["测试结果"].Network2TestResult = "PASS";
-                    writeTestResult();
-                }
-                else
-                {
-                    // 结果位
-                    refreshTestResult_button_Click(null, null);
-                    testResults["测试结果"].Network2TestResult = "FAIL";
-                    writeTestResult();
-                    MessageBox.Show("测试失败，请检查网络连接！");
-                    output_rich_textbox.AppendText("测试失败，请检查网络连接！\n");
-                }
+                // 结果位
+                refreshTestResult_button_Click(null, null);
+                testResults["测试结果"].Network2TestResult = "FAIL";
+                writeTestResult();
+                MessageBox.Show("连接SC12-E测试工装网口测试失败，请检查网络连接！");
+                output_rich_textbox.AppendText("连接SC12-E测试工装网口测试失败，请检查网络连接！\n");
             }
         }
 
@@ -3531,6 +3547,11 @@ namespace SeewoTestTool
             writeInSN_textbox.Text = "";
             output_rich_textbox.Text = "";
             output_rich_textbox.AppendText("【执行操作】当前设备已断开，请插入另一台设备后，点击【连接设备】开始测试\n");
+        }
+
+        private void stopPinkNoise_button_Click(object sender, EventArgs e)
+        {
+            stopPinkNoise();
         }
     }
 }

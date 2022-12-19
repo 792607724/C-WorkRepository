@@ -32,6 +32,7 @@ namespace API_TRAINING_PROJECT
         public void setVolumeToMaximum()
         {
             Process p = Process.GetCurrentProcess();
+            Console.WriteLine(p.ProcessName);
             for (int i = 0; i < 50; i++)
             {
                 SendMessageW(p.Handle, 0x319, p.Handle, (IntPtr)(0x0a0000));//加2
