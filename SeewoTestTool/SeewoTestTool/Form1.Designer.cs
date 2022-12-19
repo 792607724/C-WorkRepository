@@ -42,6 +42,30 @@
             this.uiGroupBox8 = new Sunny.UI.UIGroupBox();
             this.uiLabel21 = new Sunny.UI.UILabel();
             this.poe1NetworkTest_button = new Sunny.UI.UIButton();
+            this.groupBox7 = new Sunny.UI.UIGroupBox();
+            this.recordTime_textbox = new Sunny.UI.UITextBox();
+            this.uiCheckBoxGroup1 = new Sunny.UI.UICheckBoxGroup();
+            this.bareBoardTest_checkBox = new Sunny.UI.UICheckBox();
+            this.mothreBoardTest_checkBox = new Sunny.UI.UICheckBox();
+            this.standardAudioVolume_textbox = new Sunny.UI.UITextBox();
+            this.extractRecordFile_button = new Sunny.UI.UIButton();
+            this.recordingGif_label = new Sunny.UI.UILabel();
+            this.uiLabel15 = new Sunny.UI.UILabel();
+            this.beginAudioRecord_button = new Sunny.UI.UIButton();
+            this.uiLabel1 = new Sunny.UI.UILabel();
+            this.gain_array_mic_audio_level_button = new Sunny.UI.UIButton();
+            this.volume8_value_label = new Sunny.UI.UILabel();
+            this.label23 = new Sunny.UI.UILabel();
+            this.volume4_value_label = new Sunny.UI.UILabel();
+            this.label21 = new Sunny.UI.UILabel();
+            this.volume6_value_label = new Sunny.UI.UILabel();
+            this.label27 = new Sunny.UI.UILabel();
+            this.volume2_value_label = new Sunny.UI.UILabel();
+            this.label17 = new Sunny.UI.UILabel();
+            this.volume5_value_label = new Sunny.UI.UILabel();
+            this.label29 = new Sunny.UI.UILabel();
+            this.volume1_value_label = new Sunny.UI.UILabel();
+            this.label15 = new Sunny.UI.UILabel();
             this.groupBox10 = new Sunny.UI.UIGroupBox();
             this.writeInPCBA_button = new Sunny.UI.UIButton();
             this.writeINPCBA_textbox = new Sunny.UI.UITextBox();
@@ -157,32 +181,13 @@
             this.clearInput_button = new Sunny.UI.UIButton();
             this.macInput_textbox = new Sunny.UI.UITextBox();
             this.uiLabel11 = new Sunny.UI.UILabel();
-            this.label15 = new Sunny.UI.UILabel();
-            this.volume1_value_label = new Sunny.UI.UILabel();
-            this.label29 = new Sunny.UI.UILabel();
-            this.volume5_value_label = new Sunny.UI.UILabel();
-            this.label17 = new Sunny.UI.UILabel();
-            this.volume2_value_label = new Sunny.UI.UILabel();
-            this.label27 = new Sunny.UI.UILabel();
-            this.volume6_value_label = new Sunny.UI.UILabel();
-            this.label21 = new Sunny.UI.UILabel();
-            this.volume4_value_label = new Sunny.UI.UILabel();
-            this.label23 = new Sunny.UI.UILabel();
-            this.volume8_value_label = new Sunny.UI.UILabel();
-            this.gain_array_mic_audio_level_button = new Sunny.UI.UIButton();
-            this.uiLabel1 = new Sunny.UI.UILabel();
-            this.beginAudioRecord_button = new Sunny.UI.UIButton();
-            this.uiLabel15 = new Sunny.UI.UILabel();
-            this.recordingGif_label = new Sunny.UI.UILabel();
-            this.extractRecordFile_button = new Sunny.UI.UIButton();
-            this.mothreBoardTest_checkBox = new Sunny.UI.UIRadioButton();
-            this.bareBoardTest_checkBox = new Sunny.UI.UIRadioButton();
-            this.groupBox7 = new Sunny.UI.UIGroupBox();
-            this.standardAudioVolume_textbox = new Sunny.UI.UITextBox();
-            this.recordTime_textbox = new Sunny.UI.UITextBox();
+            this.zbd = new Sunny.UI.UITextBox();
+            this.zbd2 = new Sunny.UI.UITextBox();
             this.uiGroupBox1.SuspendLayout();
             this.uiGroupBox9.SuspendLayout();
             this.uiGroupBox8.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.uiCheckBoxGroup1.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.uiGroupBox2.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -194,7 +199,6 @@
             this.uiGroupBox3.SuspendLayout();
             this.uiGroupBox6.SuspendLayout();
             this.uiGroupBox7.SuspendLayout();
-            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // currentVersion_label
@@ -377,6 +381,378 @@
             this.poe1NetworkTest_button.ZoomScaleDisabled = true;
             this.poe1NetworkTest_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.poe1NetworkTest_button.Click += new System.EventHandler(this.poe1NetworkTest_button_Click);
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.recordTime_textbox);
+            this.groupBox7.Controls.Add(this.uiCheckBoxGroup1);
+            this.groupBox7.Controls.Add(this.standardAudioVolume_textbox);
+            this.groupBox7.Controls.Add(this.extractRecordFile_button);
+            this.groupBox7.Controls.Add(this.recordingGif_label);
+            this.groupBox7.Controls.Add(this.uiLabel15);
+            this.groupBox7.Controls.Add(this.beginAudioRecord_button);
+            this.groupBox7.Controls.Add(this.uiLabel1);
+            this.groupBox7.Controls.Add(this.gain_array_mic_audio_level_button);
+            this.groupBox7.Controls.Add(this.volume8_value_label);
+            this.groupBox7.Controls.Add(this.label23);
+            this.groupBox7.Controls.Add(this.volume4_value_label);
+            this.groupBox7.Controls.Add(this.label21);
+            this.groupBox7.Controls.Add(this.volume6_value_label);
+            this.groupBox7.Controls.Add(this.label27);
+            this.groupBox7.Controls.Add(this.volume2_value_label);
+            this.groupBox7.Controls.Add(this.label17);
+            this.groupBox7.Controls.Add(this.volume5_value_label);
+            this.groupBox7.Controls.Add(this.label29);
+            this.groupBox7.Controls.Add(this.volume1_value_label);
+            this.groupBox7.Controls.Add(this.label15);
+            this.groupBox7.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBox7.Location = new System.Drawing.Point(4, 383);
+            this.groupBox7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox7.MinimumSize = new System.Drawing.Size(1, 1);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
+            this.groupBox7.Radius = 20;
+            this.groupBox7.Size = new System.Drawing.Size(762, 156);
+            this.groupBox7.Style = Sunny.UI.UIStyle.Custom;
+            this.groupBox7.TabIndex = 27;
+            this.groupBox7.Text = "阵列MIC测试";
+            this.groupBox7.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.groupBox7.ZoomScaleDisabled = true;
+            this.groupBox7.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // recordTime_textbox
+            // 
+            this.recordTime_textbox.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.recordTime_textbox.Location = new System.Drawing.Point(265, 62);
+            this.recordTime_textbox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.recordTime_textbox.MinimumSize = new System.Drawing.Size(1, 16);
+            this.recordTime_textbox.Name = "recordTime_textbox";
+            this.recordTime_textbox.Radius = 20;
+            this.recordTime_textbox.ShowText = false;
+            this.recordTime_textbox.Size = new System.Drawing.Size(55, 36);
+            this.recordTime_textbox.Style = Sunny.UI.UIStyle.Custom;
+            this.recordTime_textbox.TabIndex = 51;
+            this.recordTime_textbox.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.recordTime_textbox.Watermark = "";
+            this.recordTime_textbox.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // uiCheckBoxGroup1
+            // 
+            this.uiCheckBoxGroup1.Controls.Add(this.bareBoardTest_checkBox);
+            this.uiCheckBoxGroup1.Controls.Add(this.mothreBoardTest_checkBox);
+            this.uiCheckBoxGroup1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiCheckBoxGroup1.Location = new System.Drawing.Point(426, 55);
+            this.uiCheckBoxGroup1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiCheckBoxGroup1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiCheckBoxGroup1.Name = "uiCheckBoxGroup1";
+            this.uiCheckBoxGroup1.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
+            this.uiCheckBoxGroup1.SelectedIndexes = ((System.Collections.Generic.List<int>)(resources.GetObject("uiCheckBoxGroup1.SelectedIndexes")));
+            this.uiCheckBoxGroup1.Size = new System.Drawing.Size(142, 92);
+            this.uiCheckBoxGroup1.Style = Sunny.UI.UIStyle.Custom;
+            this.uiCheckBoxGroup1.TabIndex = 50;
+            this.uiCheckBoxGroup1.Text = "测试模式选择";
+            this.uiCheckBoxGroup1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.uiCheckBoxGroup1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // bareBoardTest_checkBox
+            // 
+            this.bareBoardTest_checkBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.bareBoardTest_checkBox.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.bareBoardTest_checkBox.Location = new System.Drawing.Point(4, 60);
+            this.bareBoardTest_checkBox.MinimumSize = new System.Drawing.Size(1, 1);
+            this.bareBoardTest_checkBox.Name = "bareBoardTest_checkBox";
+            this.bareBoardTest_checkBox.Padding = new System.Windows.Forms.Padding(22, 0, 0, 0);
+            this.bareBoardTest_checkBox.Size = new System.Drawing.Size(135, 27);
+            this.bareBoardTest_checkBox.Style = Sunny.UI.UIStyle.Custom;
+            this.bareBoardTest_checkBox.TabIndex = 1;
+            this.bareBoardTest_checkBox.Text = "MIC板测试模式";
+            this.bareBoardTest_checkBox.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.bareBoardTest_checkBox.Click += new System.EventHandler(this.bareBoardTest_checkBox_CheckedChanged);
+            // 
+            // mothreBoardTest_checkBox
+            // 
+            this.mothreBoardTest_checkBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.mothreBoardTest_checkBox.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.mothreBoardTest_checkBox.Location = new System.Drawing.Point(4, 27);
+            this.mothreBoardTest_checkBox.MinimumSize = new System.Drawing.Size(1, 1);
+            this.mothreBoardTest_checkBox.Name = "mothreBoardTest_checkBox";
+            this.mothreBoardTest_checkBox.Padding = new System.Windows.Forms.Padding(22, 0, 0, 0);
+            this.mothreBoardTest_checkBox.Size = new System.Drawing.Size(121, 27);
+            this.mothreBoardTest_checkBox.Style = Sunny.UI.UIStyle.Custom;
+            this.mothreBoardTest_checkBox.TabIndex = 0;
+            this.mothreBoardTest_checkBox.Text = "主板测试模式";
+            this.mothreBoardTest_checkBox.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.mothreBoardTest_checkBox.Click += new System.EventHandler(this.mothreBoardTest_checkBox_CheckedChanged);
+            // 
+            // standardAudioVolume_textbox
+            // 
+            this.standardAudioVolume_textbox.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.standardAudioVolume_textbox.Location = new System.Drawing.Point(265, 106);
+            this.standardAudioVolume_textbox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.standardAudioVolume_textbox.MinimumSize = new System.Drawing.Size(1, 16);
+            this.standardAudioVolume_textbox.Name = "standardAudioVolume_textbox";
+            this.standardAudioVolume_textbox.Radius = 20;
+            this.standardAudioVolume_textbox.ShowText = false;
+            this.standardAudioVolume_textbox.Size = new System.Drawing.Size(55, 36);
+            this.standardAudioVolume_textbox.Style = Sunny.UI.UIStyle.Custom;
+            this.standardAudioVolume_textbox.TabIndex = 49;
+            this.standardAudioVolume_textbox.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.standardAudioVolume_textbox.Watermark = "";
+            this.standardAudioVolume_textbox.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // extractRecordFile_button
+            // 
+            this.extractRecordFile_button.Enabled = false;
+            this.extractRecordFile_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.extractRecordFile_button.Location = new System.Drawing.Point(665, 58);
+            this.extractRecordFile_button.MinimumSize = new System.Drawing.Size(1, 1);
+            this.extractRecordFile_button.Name = "extractRecordFile_button";
+            this.extractRecordFile_button.Radius = 20;
+            this.extractRecordFile_button.Size = new System.Drawing.Size(87, 36);
+            this.extractRecordFile_button.Style = Sunny.UI.UIStyle.Custom;
+            this.extractRecordFile_button.TabIndex = 45;
+            this.extractRecordFile_button.Text = "导出录制文件";
+            this.extractRecordFile_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.extractRecordFile_button.Click += new System.EventHandler(this.extractRecordFile_button_Click);
+            // 
+            // recordingGif_label
+            // 
+            this.recordingGif_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.recordingGif_label.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.recordingGif_label.Image = ((System.Drawing.Image)(resources.GetObject("recordingGif_label.Image")));
+            this.recordingGif_label.Location = new System.Drawing.Point(360, 82);
+            this.recordingGif_label.Name = "recordingGif_label";
+            this.recordingGif_label.Size = new System.Drawing.Size(59, 44);
+            this.recordingGif_label.Style = Sunny.UI.UIStyle.Custom;
+            this.recordingGif_label.TabIndex = 44;
+            this.recordingGif_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.recordingGif_label.Visible = false;
+            this.recordingGif_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // uiLabel15
+            // 
+            this.uiLabel15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.uiLabel15.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLabel15.Location = new System.Drawing.Point(9, 62);
+            this.uiLabel15.Name = "uiLabel15";
+            this.uiLabel15.Size = new System.Drawing.Size(235, 29);
+            this.uiLabel15.Style = Sunny.UI.UIStyle.Custom;
+            this.uiLabel15.TabIndex = 42;
+            this.uiLabel15.Text = "请输入音频录制时间(单位/秒钟)：";
+            this.uiLabel15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiLabel15.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // beginAudioRecord_button
+            // 
+            this.beginAudioRecord_button.Enabled = false;
+            this.beginAudioRecord_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.beginAudioRecord_button.Location = new System.Drawing.Point(580, 58);
+            this.beginAudioRecord_button.MinimumSize = new System.Drawing.Size(1, 1);
+            this.beginAudioRecord_button.Name = "beginAudioRecord_button";
+            this.beginAudioRecord_button.Radius = 20;
+            this.beginAudioRecord_button.Size = new System.Drawing.Size(79, 36);
+            this.beginAudioRecord_button.Style = Sunny.UI.UIStyle.Custom;
+            this.beginAudioRecord_button.TabIndex = 41;
+            this.beginAudioRecord_button.Text = "开始录制";
+            this.beginAudioRecord_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.beginAudioRecord_button.Click += new System.EventHandler(this.beginAudioRecord_button_Click);
+            // 
+            // uiLabel1
+            // 
+            this.uiLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.uiLabel1.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLabel1.Location = new System.Drawing.Point(9, 106);
+            this.uiLabel1.Name = "uiLabel1";
+            this.uiLabel1.Size = new System.Drawing.Size(142, 29);
+            this.uiLabel1.Style = Sunny.UI.UIStyle.Custom;
+            this.uiLabel1.TabIndex = 39;
+            this.uiLabel1.Text = "请输入标定音量值：";
+            this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiLabel1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // gain_array_mic_audio_level_button
+            // 
+            this.gain_array_mic_audio_level_button.Enabled = false;
+            this.gain_array_mic_audio_level_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.gain_array_mic_audio_level_button.Location = new System.Drawing.Point(580, 106);
+            this.gain_array_mic_audio_level_button.MinimumSize = new System.Drawing.Size(1, 1);
+            this.gain_array_mic_audio_level_button.Name = "gain_array_mic_audio_level_button";
+            this.gain_array_mic_audio_level_button.Radius = 20;
+            this.gain_array_mic_audio_level_button.Size = new System.Drawing.Size(172, 36);
+            this.gain_array_mic_audio_level_button.Style = Sunny.UI.UIStyle.Custom;
+            this.gain_array_mic_audio_level_button.TabIndex = 36;
+            this.gain_array_mic_audio_level_button.Text = "获取各路MIC音频音量值";
+            this.gain_array_mic_audio_level_button.ZoomScaleDisabled = true;
+            this.gain_array_mic_audio_level_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.gain_array_mic_audio_level_button.Click += new System.EventHandler(this.gain_array_mic_audio_level_button_Click);
+            // 
+            // volume8_value_label
+            // 
+            this.volume8_value_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.volume8_value_label.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.volume8_value_label.Location = new System.Drawing.Point(545, 27);
+            this.volume8_value_label.Name = "volume8_value_label";
+            this.volume8_value_label.Size = new System.Drawing.Size(64, 20);
+            this.volume8_value_label.Style = Sunny.UI.UIStyle.Custom;
+            this.volume8_value_label.TabIndex = 35;
+            this.volume8_value_label.Text = "0";
+            this.volume8_value_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.volume8_value_label.ZoomScaleDisabled = true;
+            this.volume8_value_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // label23
+            // 
+            this.label23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.label23.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label23.Location = new System.Drawing.Point(498, 23);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(61, 29);
+            this.label23.Style = Sunny.UI.UIStyle.Custom;
+            this.label23.TabIndex = 34;
+            this.label23.Text = "MIC5：";
+            this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label23.ZoomScaleDisabled = true;
+            this.label23.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // volume4_value_label
+            // 
+            this.volume4_value_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.volume4_value_label.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.volume4_value_label.Location = new System.Drawing.Point(692, 27);
+            this.volume4_value_label.Name = "volume4_value_label";
+            this.volume4_value_label.Size = new System.Drawing.Size(67, 20);
+            this.volume4_value_label.Style = Sunny.UI.UIStyle.Custom;
+            this.volume4_value_label.TabIndex = 33;
+            this.volume4_value_label.Text = "0";
+            this.volume4_value_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.volume4_value_label.ZoomScaleDisabled = true;
+            this.volume4_value_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // label21
+            // 
+            this.label21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.label21.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label21.Location = new System.Drawing.Point(645, 23);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(61, 29);
+            this.label21.Style = Sunny.UI.UIStyle.Custom;
+            this.label21.TabIndex = 32;
+            this.label21.Text = "MIC6：";
+            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label21.ZoomScaleDisabled = true;
+            this.label21.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // volume6_value_label
+            // 
+            this.volume6_value_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.volume6_value_label.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.volume6_value_label.Location = new System.Drawing.Point(289, 27);
+            this.volume6_value_label.Name = "volume6_value_label";
+            this.volume6_value_label.Size = new System.Drawing.Size(64, 20);
+            this.volume6_value_label.Style = Sunny.UI.UIStyle.Custom;
+            this.volume6_value_label.TabIndex = 27;
+            this.volume6_value_label.Text = "0";
+            this.volume6_value_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.volume6_value_label.ZoomScaleDisabled = true;
+            this.volume6_value_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // label27
+            // 
+            this.label27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.label27.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label27.Location = new System.Drawing.Point(242, 23);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(61, 29);
+            this.label27.Style = Sunny.UI.UIStyle.Custom;
+            this.label27.TabIndex = 26;
+            this.label27.Text = "MIC3：";
+            this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label27.ZoomScaleDisabled = true;
+            this.label27.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // volume2_value_label
+            // 
+            this.volume2_value_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.volume2_value_label.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.volume2_value_label.Location = new System.Drawing.Point(407, 27);
+            this.volume2_value_label.Name = "volume2_value_label";
+            this.volume2_value_label.Size = new System.Drawing.Size(64, 20);
+            this.volume2_value_label.Style = Sunny.UI.UIStyle.Custom;
+            this.volume2_value_label.TabIndex = 25;
+            this.volume2_value_label.Text = "0";
+            this.volume2_value_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.volume2_value_label.ZoomScaleDisabled = true;
+            this.volume2_value_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // label17
+            // 
+            this.label17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.label17.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label17.Location = new System.Drawing.Point(360, 23);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(61, 29);
+            this.label17.Style = Sunny.UI.UIStyle.Custom;
+            this.label17.TabIndex = 24;
+            this.label17.Text = "MIC4：";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label17.ZoomScaleDisabled = true;
+            this.label17.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // volume5_value_label
+            // 
+            this.volume5_value_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.volume5_value_label.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.volume5_value_label.Location = new System.Drawing.Point(58, 27);
+            this.volume5_value_label.Name = "volume5_value_label";
+            this.volume5_value_label.Size = new System.Drawing.Size(64, 20);
+            this.volume5_value_label.Style = Sunny.UI.UIStyle.Custom;
+            this.volume5_value_label.TabIndex = 23;
+            this.volume5_value_label.Text = "0";
+            this.volume5_value_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.volume5_value_label.ZoomScaleDisabled = true;
+            this.volume5_value_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // label29
+            // 
+            this.label29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.label29.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label29.Location = new System.Drawing.Point(8, 23);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(61, 29);
+            this.label29.Style = Sunny.UI.UIStyle.Custom;
+            this.label29.TabIndex = 22;
+            this.label29.Text = "MIC1：";
+            this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label29.ZoomScaleDisabled = true;
+            this.label29.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // volume1_value_label
+            // 
+            this.volume1_value_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.volume1_value_label.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.volume1_value_label.Location = new System.Drawing.Point(181, 27);
+            this.volume1_value_label.Name = "volume1_value_label";
+            this.volume1_value_label.Size = new System.Drawing.Size(64, 20);
+            this.volume1_value_label.Style = Sunny.UI.UIStyle.Custom;
+            this.volume1_value_label.TabIndex = 21;
+            this.volume1_value_label.Text = "0";
+            this.volume1_value_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.volume1_value_label.ZoomScaleDisabled = true;
+            this.volume1_value_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // label15
+            // 
+            this.label15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.label15.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label15.Location = new System.Drawing.Point(130, 23);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(61, 29);
+            this.label15.Style = Sunny.UI.UIStyle.Custom;
+            this.label15.TabIndex = 20;
+            this.label15.Text = "MIC2：";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label15.ZoomScaleDisabled = true;
+            this.label15.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // groupBox10
             // 
@@ -700,13 +1076,13 @@
             // audioInTestStandard_textbox
             // 
             this.audioInTestStandard_textbox.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.audioInTestStandard_textbox.Location = new System.Drawing.Point(157, 96);
+            this.audioInTestStandard_textbox.Location = new System.Drawing.Point(178, 95);
             this.audioInTestStandard_textbox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.audioInTestStandard_textbox.MinimumSize = new System.Drawing.Size(1, 16);
             this.audioInTestStandard_textbox.Name = "audioInTestStandard_textbox";
             this.audioInTestStandard_textbox.Radius = 20;
             this.audioInTestStandard_textbox.ShowText = false;
-            this.audioInTestStandard_textbox.Size = new System.Drawing.Size(102, 36);
+            this.audioInTestStandard_textbox.Size = new System.Drawing.Size(55, 36);
             this.audioInTestStandard_textbox.Style = Sunny.UI.UIStyle.Custom;
             this.audioInTestStandard_textbox.TabIndex = 42;
             this.audioInTestStandard_textbox.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1116,6 +1492,7 @@
             this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label20.ZoomScaleDisabled = true;
             this.label20.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.label20.Click += new System.EventHandler(this.bareBoardTest_checkBox_CheckedChanged);
             // 
             // check_current_firmware_button
             // 
@@ -2144,356 +2521,38 @@
             this.uiLabel11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.uiLabel11.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
-            // label15
+            // zbd
             // 
-            this.label15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.label15.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label15.Location = new System.Drawing.Point(130, 23);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(61, 29);
-            this.label15.Style = Sunny.UI.UIStyle.Custom;
-            this.label15.TabIndex = 20;
-            this.label15.Text = "MIC2：";
-            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label15.ZoomScaleDisabled = true;
-            this.label15.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.zbd.FillColor = System.Drawing.Color.IndianRed;
+            this.zbd.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.zbd.Location = new System.Drawing.Point(320, 103);
+            this.zbd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.zbd.MinimumSize = new System.Drawing.Size(1, 16);
+            this.zbd.Name = "zbd";
+            this.zbd.Radius = 20;
+            this.zbd.ShowText = false;
+            this.zbd.Size = new System.Drawing.Size(520, 60);
+            this.zbd.Style = Sunny.UI.UIStyle.Custom;
+            this.zbd.TabIndex = 40;
+            this.zbd.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.zbd.Watermark = "";
+            this.zbd.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
-            // volume1_value_label
+            // zbd2
             // 
-            this.volume1_value_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.volume1_value_label.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.volume1_value_label.Location = new System.Drawing.Point(181, 27);
-            this.volume1_value_label.Name = "volume1_value_label";
-            this.volume1_value_label.Size = new System.Drawing.Size(64, 20);
-            this.volume1_value_label.Style = Sunny.UI.UIStyle.Custom;
-            this.volume1_value_label.TabIndex = 21;
-            this.volume1_value_label.Text = "0";
-            this.volume1_value_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.volume1_value_label.ZoomScaleDisabled = true;
-            this.volume1_value_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // label29
-            // 
-            this.label29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.label29.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label29.Location = new System.Drawing.Point(8, 23);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(61, 29);
-            this.label29.Style = Sunny.UI.UIStyle.Custom;
-            this.label29.TabIndex = 22;
-            this.label29.Text = "MIC1：";
-            this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label29.ZoomScaleDisabled = true;
-            this.label29.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // volume5_value_label
-            // 
-            this.volume5_value_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.volume5_value_label.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.volume5_value_label.Location = new System.Drawing.Point(58, 27);
-            this.volume5_value_label.Name = "volume5_value_label";
-            this.volume5_value_label.Size = new System.Drawing.Size(64, 20);
-            this.volume5_value_label.Style = Sunny.UI.UIStyle.Custom;
-            this.volume5_value_label.TabIndex = 23;
-            this.volume5_value_label.Text = "0";
-            this.volume5_value_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.volume5_value_label.ZoomScaleDisabled = true;
-            this.volume5_value_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // label17
-            // 
-            this.label17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.label17.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label17.Location = new System.Drawing.Point(360, 23);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(61, 29);
-            this.label17.Style = Sunny.UI.UIStyle.Custom;
-            this.label17.TabIndex = 24;
-            this.label17.Text = "MIC4：";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label17.ZoomScaleDisabled = true;
-            this.label17.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // volume2_value_label
-            // 
-            this.volume2_value_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.volume2_value_label.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.volume2_value_label.Location = new System.Drawing.Point(407, 27);
-            this.volume2_value_label.Name = "volume2_value_label";
-            this.volume2_value_label.Size = new System.Drawing.Size(64, 20);
-            this.volume2_value_label.Style = Sunny.UI.UIStyle.Custom;
-            this.volume2_value_label.TabIndex = 25;
-            this.volume2_value_label.Text = "0";
-            this.volume2_value_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.volume2_value_label.ZoomScaleDisabled = true;
-            this.volume2_value_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // label27
-            // 
-            this.label27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.label27.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label27.Location = new System.Drawing.Point(242, 23);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(61, 29);
-            this.label27.Style = Sunny.UI.UIStyle.Custom;
-            this.label27.TabIndex = 26;
-            this.label27.Text = "MIC3：";
-            this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label27.ZoomScaleDisabled = true;
-            this.label27.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // volume6_value_label
-            // 
-            this.volume6_value_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.volume6_value_label.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.volume6_value_label.Location = new System.Drawing.Point(289, 27);
-            this.volume6_value_label.Name = "volume6_value_label";
-            this.volume6_value_label.Size = new System.Drawing.Size(64, 20);
-            this.volume6_value_label.Style = Sunny.UI.UIStyle.Custom;
-            this.volume6_value_label.TabIndex = 27;
-            this.volume6_value_label.Text = "0";
-            this.volume6_value_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.volume6_value_label.ZoomScaleDisabled = true;
-            this.volume6_value_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // label21
-            // 
-            this.label21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.label21.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label21.Location = new System.Drawing.Point(645, 23);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(61, 29);
-            this.label21.Style = Sunny.UI.UIStyle.Custom;
-            this.label21.TabIndex = 32;
-            this.label21.Text = "MIC6：";
-            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label21.ZoomScaleDisabled = true;
-            this.label21.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // volume4_value_label
-            // 
-            this.volume4_value_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.volume4_value_label.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.volume4_value_label.Location = new System.Drawing.Point(692, 27);
-            this.volume4_value_label.Name = "volume4_value_label";
-            this.volume4_value_label.Size = new System.Drawing.Size(67, 20);
-            this.volume4_value_label.Style = Sunny.UI.UIStyle.Custom;
-            this.volume4_value_label.TabIndex = 33;
-            this.volume4_value_label.Text = "0";
-            this.volume4_value_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.volume4_value_label.ZoomScaleDisabled = true;
-            this.volume4_value_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // label23
-            // 
-            this.label23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.label23.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label23.Location = new System.Drawing.Point(498, 23);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(61, 29);
-            this.label23.Style = Sunny.UI.UIStyle.Custom;
-            this.label23.TabIndex = 34;
-            this.label23.Text = "MIC5：";
-            this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label23.ZoomScaleDisabled = true;
-            this.label23.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // volume8_value_label
-            // 
-            this.volume8_value_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.volume8_value_label.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.volume8_value_label.Location = new System.Drawing.Point(545, 27);
-            this.volume8_value_label.Name = "volume8_value_label";
-            this.volume8_value_label.Size = new System.Drawing.Size(64, 20);
-            this.volume8_value_label.Style = Sunny.UI.UIStyle.Custom;
-            this.volume8_value_label.TabIndex = 35;
-            this.volume8_value_label.Text = "0";
-            this.volume8_value_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.volume8_value_label.ZoomScaleDisabled = true;
-            this.volume8_value_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // gain_array_mic_audio_level_button
-            // 
-            this.gain_array_mic_audio_level_button.Enabled = false;
-            this.gain_array_mic_audio_level_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.gain_array_mic_audio_level_button.Location = new System.Drawing.Point(475, 103);
-            this.gain_array_mic_audio_level_button.MinimumSize = new System.Drawing.Size(1, 1);
-            this.gain_array_mic_audio_level_button.Name = "gain_array_mic_audio_level_button";
-            this.gain_array_mic_audio_level_button.Radius = 20;
-            this.gain_array_mic_audio_level_button.Size = new System.Drawing.Size(277, 36);
-            this.gain_array_mic_audio_level_button.Style = Sunny.UI.UIStyle.Custom;
-            this.gain_array_mic_audio_level_button.TabIndex = 36;
-            this.gain_array_mic_audio_level_button.Text = "获取各路MIC音频音量值";
-            this.gain_array_mic_audio_level_button.ZoomScaleDisabled = true;
-            this.gain_array_mic_audio_level_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            this.gain_array_mic_audio_level_button.Click += new System.EventHandler(this.gain_array_mic_audio_level_button_Click);
-            // 
-            // uiLabel1
-            // 
-            this.uiLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.uiLabel1.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiLabel1.Location = new System.Drawing.Point(9, 103);
-            this.uiLabel1.Name = "uiLabel1";
-            this.uiLabel1.Size = new System.Drawing.Size(142, 29);
-            this.uiLabel1.Style = Sunny.UI.UIStyle.Custom;
-            this.uiLabel1.TabIndex = 39;
-            this.uiLabel1.Text = "请输入标定音量值：";
-            this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiLabel1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // beginAudioRecord_button
-            // 
-            this.beginAudioRecord_button.Enabled = false;
-            this.beginAudioRecord_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.beginAudioRecord_button.Location = new System.Drawing.Point(475, 55);
-            this.beginAudioRecord_button.MinimumSize = new System.Drawing.Size(1, 1);
-            this.beginAudioRecord_button.Name = "beginAudioRecord_button";
-            this.beginAudioRecord_button.Radius = 20;
-            this.beginAudioRecord_button.Size = new System.Drawing.Size(132, 36);
-            this.beginAudioRecord_button.Style = Sunny.UI.UIStyle.Custom;
-            this.beginAudioRecord_button.TabIndex = 41;
-            this.beginAudioRecord_button.Text = "开始录制";
-            this.beginAudioRecord_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            this.beginAudioRecord_button.Click += new System.EventHandler(this.beginAudioRecord_button_Click);
-            // 
-            // uiLabel15
-            // 
-            this.uiLabel15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.uiLabel15.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiLabel15.Location = new System.Drawing.Point(9, 59);
-            this.uiLabel15.Name = "uiLabel15";
-            this.uiLabel15.Size = new System.Drawing.Size(315, 29);
-            this.uiLabel15.Style = Sunny.UI.UIStyle.Custom;
-            this.uiLabel15.TabIndex = 42;
-            this.uiLabel15.Text = "请输入音频录制时间(单位/秒钟)：";
-            this.uiLabel15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiLabel15.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // recordingGif_label
-            // 
-            this.recordingGif_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.recordingGif_label.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.recordingGif_label.Image = ((System.Drawing.Image)(resources.GetObject("recordingGif_label.Image")));
-            this.recordingGif_label.Location = new System.Drawing.Point(394, 75);
-            this.recordingGif_label.Name = "recordingGif_label";
-            this.recordingGif_label.Size = new System.Drawing.Size(59, 44);
-            this.recordingGif_label.Style = Sunny.UI.UIStyle.Custom;
-            this.recordingGif_label.TabIndex = 44;
-            this.recordingGif_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.recordingGif_label.Visible = false;
-            this.recordingGif_label.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // extractRecordFile_button
-            // 
-            this.extractRecordFile_button.Enabled = false;
-            this.extractRecordFile_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.extractRecordFile_button.Location = new System.Drawing.Point(620, 55);
-            this.extractRecordFile_button.MinimumSize = new System.Drawing.Size(1, 1);
-            this.extractRecordFile_button.Name = "extractRecordFile_button";
-            this.extractRecordFile_button.Radius = 20;
-            this.extractRecordFile_button.Size = new System.Drawing.Size(132, 36);
-            this.extractRecordFile_button.Style = Sunny.UI.UIStyle.Custom;
-            this.extractRecordFile_button.TabIndex = 45;
-            this.extractRecordFile_button.Text = "导出录制文件";
-            this.extractRecordFile_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            this.extractRecordFile_button.Click += new System.EventHandler(this.extractRecordFile_button_Click);
-            // 
-            // mothreBoardTest_checkBox
-            // 
-            this.mothreBoardTest_checkBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.mothreBoardTest_checkBox.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.mothreBoardTest_checkBox.Location = new System.Drawing.Point(164, 93);
-            this.mothreBoardTest_checkBox.MinimumSize = new System.Drawing.Size(1, 1);
-            this.mothreBoardTest_checkBox.Name = "mothreBoardTest_checkBox";
-            this.mothreBoardTest_checkBox.Padding = new System.Windows.Forms.Padding(22, 0, 0, 0);
-            this.mothreBoardTest_checkBox.Size = new System.Drawing.Size(153, 27);
-            this.mothreBoardTest_checkBox.Style = Sunny.UI.UIStyle.Custom;
-            this.mothreBoardTest_checkBox.TabIndex = 6;
-            this.mothreBoardTest_checkBox.Text = "主板测试模式";
-            this.mothreBoardTest_checkBox.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // bareBoardTest_checkBox
-            // 
-            this.bareBoardTest_checkBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.bareBoardTest_checkBox.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.bareBoardTest_checkBox.Location = new System.Drawing.Point(164, 125);
-            this.bareBoardTest_checkBox.MinimumSize = new System.Drawing.Size(1, 1);
-            this.bareBoardTest_checkBox.Name = "bareBoardTest_checkBox";
-            this.bareBoardTest_checkBox.Padding = new System.Windows.Forms.Padding(22, 0, 0, 0);
-            this.bareBoardTest_checkBox.Size = new System.Drawing.Size(153, 27);
-            this.bareBoardTest_checkBox.Style = Sunny.UI.UIStyle.Custom;
-            this.bareBoardTest_checkBox.TabIndex = 48;
-            this.bareBoardTest_checkBox.Text = "MIC板测试模式";
-            this.bareBoardTest_checkBox.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.Controls.Add(this.bareBoardTest_checkBox);
-            this.groupBox7.Controls.Add(this.mothreBoardTest_checkBox);
-            this.groupBox7.Controls.Add(this.extractRecordFile_button);
-            this.groupBox7.Controls.Add(this.recordingGif_label);
-            this.groupBox7.Controls.Add(this.uiLabel15);
-            this.groupBox7.Controls.Add(this.beginAudioRecord_button);
-            this.groupBox7.Controls.Add(this.uiLabel1);
-            this.groupBox7.Controls.Add(this.gain_array_mic_audio_level_button);
-            this.groupBox7.Controls.Add(this.volume8_value_label);
-            this.groupBox7.Controls.Add(this.label23);
-            this.groupBox7.Controls.Add(this.volume4_value_label);
-            this.groupBox7.Controls.Add(this.label21);
-            this.groupBox7.Controls.Add(this.volume6_value_label);
-            this.groupBox7.Controls.Add(this.label27);
-            this.groupBox7.Controls.Add(this.volume2_value_label);
-            this.groupBox7.Controls.Add(this.label17);
-            this.groupBox7.Controls.Add(this.volume5_value_label);
-            this.groupBox7.Controls.Add(this.label29);
-            this.groupBox7.Controls.Add(this.volume1_value_label);
-            this.groupBox7.Controls.Add(this.label15);
-            this.groupBox7.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox7.Location = new System.Drawing.Point(4, 383);
-            this.groupBox7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox7.MinimumSize = new System.Drawing.Size(1, 1);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
-            this.groupBox7.Radius = 20;
-            this.groupBox7.Size = new System.Drawing.Size(762, 156);
-            this.groupBox7.Style = Sunny.UI.UIStyle.Custom;
-            this.groupBox7.TabIndex = 27;
-            this.groupBox7.Text = "阵列MIC测试";
-            this.groupBox7.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.groupBox7.ZoomScaleDisabled = true;
-            this.groupBox7.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // standardAudioVolume_textbox
-            // 
-            this.standardAudioVolume_textbox.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.standardAudioVolume_textbox.Location = new System.Drawing.Point(320, 103);
-            this.standardAudioVolume_textbox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.standardAudioVolume_textbox.MinimumSize = new System.Drawing.Size(1, 16);
-            this.standardAudioVolume_textbox.Name = "standardAudioVolume_textbox";
-            this.standardAudioVolume_textbox.Radius = 20;
-            this.standardAudioVolume_textbox.ShowText = false;
-            this.standardAudioVolume_textbox.Size = new System.Drawing.Size(52, 36);
-            this.standardAudioVolume_textbox.Style = Sunny.UI.UIStyle.Custom;
-            this.standardAudioVolume_textbox.TabIndex = 40;
-            this.standardAudioVolume_textbox.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.standardAudioVolume_textbox.Watermark = "";
-            this.standardAudioVolume_textbox.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // recordTime_textbox
-            // 
-            this.recordTime_textbox.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.recordTime_textbox.Location = new System.Drawing.Point(320, 59);
-            this.recordTime_textbox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.recordTime_textbox.MinimumSize = new System.Drawing.Size(1, 16);
-            this.recordTime_textbox.Name = "recordTime_textbox";
-            this.recordTime_textbox.Radius = 20;
-            this.recordTime_textbox.ShowText = false;
-            this.recordTime_textbox.Size = new System.Drawing.Size(52, 36);
-            this.recordTime_textbox.Style = Sunny.UI.UIStyle.Custom;
-            this.recordTime_textbox.TabIndex = 43;
-            this.recordTime_textbox.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.recordTime_textbox.Watermark = "";
-            this.recordTime_textbox.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.zbd2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.zbd2.Location = new System.Drawing.Point(320, 59);
+            this.zbd2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.zbd2.MinimumSize = new System.Drawing.Size(1, 16);
+            this.zbd2.Name = "zbd2";
+            this.zbd2.Radius = 20;
+            this.zbd2.ShowText = false;
+            this.zbd2.Size = new System.Drawing.Size(52, 36);
+            this.zbd2.Style = Sunny.UI.UIStyle.Custom;
+            this.zbd2.TabIndex = 43;
+            this.zbd2.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.zbd2.Watermark = "";
+            this.zbd2.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // Form1
             // 
@@ -2515,6 +2574,8 @@
             this.uiGroupBox1.ResumeLayout(false);
             this.uiGroupBox9.ResumeLayout(false);
             this.uiGroupBox8.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
+            this.uiCheckBoxGroup1.ResumeLayout(false);
             this.groupBox10.ResumeLayout(false);
             this.uiGroupBox2.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
@@ -2527,7 +2588,6 @@
             this.uiGroupBox3.ResumeLayout(false);
             this.uiGroupBox6.ResumeLayout(false);
             this.uiGroupBox7.ResumeLayout(false);
-            this.groupBox7.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2662,8 +2722,6 @@
         private Sunny.UI.UILabel uiLabel21;
         private Sunny.UI.UIButton stopPinkNoise_button;
         private Sunny.UI.UIGroupBox groupBox7;
-        private Sunny.UI.UIRadioButton bareBoardTest_checkBox;
-        private Sunny.UI.UIRadioButton mothreBoardTest_checkBox;
         private Sunny.UI.UIButton extractRecordFile_button;
         private Sunny.UI.UILabel recordingGif_label;
         private Sunny.UI.UILabel uiLabel15;
@@ -2682,7 +2740,12 @@
         private Sunny.UI.UILabel label29;
         private Sunny.UI.UILabel volume1_value_label;
         private Sunny.UI.UILabel label15;
+        private Sunny.UI.UITextBox zbd;
+        private Sunny.UI.UITextBox zbd2;
         private Sunny.UI.UITextBox standardAudioVolume_textbox;
+        private Sunny.UI.UICheckBoxGroup uiCheckBoxGroup1;
+        private Sunny.UI.UICheckBox bareBoardTest_checkBox;
+        private Sunny.UI.UICheckBox mothreBoardTest_checkBox;
         private Sunny.UI.UITextBox recordTime_textbox;
     }
 }

@@ -1040,6 +1040,21 @@ namespace SeewoTestTool
             
         }
 
+        private void CheckBox_CheckedChanged(object sender, EventArgs e) 
+        {
+            if ((sender as CheckBox).Checked == true) 
+            {
+                foreach (CheckBox chk in (sender as CheckBox).Parent.Controls) 
+                { 
+                    if (chk != sender) 
+                    { 
+                        chk.Checked = false; 
+                    } 
+                } 
+            } 
+        }
+
+
         Thread bareBoardTest_t;
         private void bareBoardTest_func()
         {
@@ -2467,7 +2482,7 @@ namespace SeewoTestTool
         // Audio IN 1 测试
         private void audioIn1_test_button_Click_1(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(audioInTestStandard_textbox.Text) || !new Regex("^[0-9]+$").IsMatch(audioInTestStandard_textbox.Text))
+            if (String.IsNullOrEmpty(audioInTestStandard_textbox.Text) || !new Regex("^[0-9]+$").IsMatch(audioInTestStandard_textbox.Text) || audioInTestStandard_textbox.Text.Equals("0"))
             {
                 MessageBox.Show("标定音量值不能为空！\n或者输入了非数字的内容，请重新输入！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 output_rich_textbox.AppendText("标定音量值不能为空！\n或者输入了非数字的内容，请重新输入！\n");
@@ -2573,7 +2588,7 @@ namespace SeewoTestTool
         // Audio IN 2 测试
         private void audioIn2_test_button_Click_1(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(audioInTestStandard_textbox.Text) || !new Regex("^[0-9]+$").IsMatch(audioInTestStandard_textbox.Text))
+            if (String.IsNullOrEmpty(audioInTestStandard_textbox.Text) || !new Regex("^[0-9]+$").IsMatch(audioInTestStandard_textbox.Text)||audioInTestStandard_textbox.Text.Equals("0"))
             {
                 MessageBox.Show("标定音量值不能为空！\n或者输入了非数字的内容，请重新输入！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 output_rich_textbox.AppendText("标定音量值不能为空！\n或者输入了非数字的内容，请重新输入！\n");
@@ -3137,7 +3152,7 @@ namespace SeewoTestTool
             //if (true)
             duration = recordTime_textbox.Text;
             recordingGif_label.Image = Image.FromFile("./img/recordingGif.gif");
-            if (String.IsNullOrEmpty(duration) || !new Regex("^[0-9]+$").IsMatch(duration))
+            if (String.IsNullOrEmpty(duration) || !new Regex("^[0-9]+$").IsMatch(duration) || duration.Equals("0"))
             {
                 // 用线程去启动，输入的是秒钟，倒计时完成录制，再取出录制的音频
                 // 现在是先录制再计算，你可以点击一次，就开始录制，再获取音量,修改每一次获取音量后的，先录制再读取，录音加一个进度条
@@ -3552,6 +3567,22 @@ namespace SeewoTestTool
         private void stopPinkNoise_button_Click(object sender, EventArgs e)
         {
             stopPinkNoise();
+        }
+
+        private void mothreBoardTest_checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (bareBoardTest_checkBox.Checked)
+            {
+                bareBoardTest_checkBox.Checked = false;
+            }
+        }
+
+        private void bareBoardTest_checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (mothreBoardTest_checkBox.Checked)
+            {
+                mothreBoardTest_checkBox.Checked = false;
+            }
         }
     }
 }
