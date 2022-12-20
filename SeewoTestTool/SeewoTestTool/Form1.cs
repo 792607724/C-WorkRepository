@@ -1062,13 +1062,12 @@ namespace SeewoTestTool
             refreshTestResult_button_Click(null, null);
             testResults["测试结果"].ArrayMicResult = "暂未测试";
             writeTestResult();
+            recordingGif_label.Image = Image.FromFile("./img/recordingFinish.png");
         }
 
-        // 获取各路MIC音频音量值
-        /**
-         * 开启阵列麦克风音量值测试后，对8路麦克风的值进行获取
-         */
-        private void gain_array_mic_audio_level_button_Click(object sender, EventArgs e)
+        Thread gainingArrayMic_t;
+
+        private void gainingArrayMicLevel_func()
         {
             try
             {
@@ -1079,13 +1078,13 @@ namespace SeewoTestTool
                 }
                 else if (bareBoardTest_t != null && bareBoardTest_t.IsBackground)
                 {
-                    MessageBox.Show("正在运行请稍后！");
+                    MessageBox.Show("前一个MIC板测试正在运行，请稍后！");
                     return;
                 }
             }
             catch (Exception ex)
-            { 
-                
+            {
+
             }
             duration = recordTime_textbox.Text;
             recordingGif_label.Image = Image.FromFile("./img/recordingGif.gif");
@@ -1154,7 +1153,7 @@ namespace SeewoTestTool
                             float minINArray = volumes_f.Min();
                             if (bareBoardTest_checkBox.Checked)
                             {
-                                if (Math.Abs(minINArray) >= 15 && Math.Abs(maxINArray) <=65 && Math.Abs(maxINArray - minINArray) <= 5)
+                                if (Math.Abs(minINArray) >= 15 && Math.Abs(maxINArray) <= 65 && Math.Abs(maxINArray - minINArray) <= 5)
                                 {
                                     // 结果位
                                     refreshTestResult_button_Click(null, null);
@@ -1245,7 +1244,25 @@ namespace SeewoTestTool
                     output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
                 }
             }
-            
+        }
+
+        // 获取各路MIC音频音量值
+        /**
+         * 开启阵列麦克风音量值测试后，对8路麦克风的值进行获取
+         */
+        private void gain_array_mic_audio_level_button_Click(object sender, EventArgs e)
+        {
+            if (gainingArrayMic_t != null)
+            {
+                gainingArrayMic_t.Interrupt();
+                gainingArrayMic_t = null;
+                //MessageBox.Show("前一个录制正在进行中……，请稍后再进行点击！");
+            }
+            recordingGif_label.Visible = true;
+            recordingGif_label.Image = Image.FromFile("./img/recordingGif.gif");
+            gainingArrayMic_t = new Thread(gainingArrayMicLevel_func);
+            gainingArrayMic_t.IsBackground = true;
+            gainingArrayMic_t.Start();
         }
 
         // 设备复位
@@ -2487,20 +2504,24 @@ namespace SeewoTestTool
             audioPlayControl.StopMusic();
         }
 
+        Thread audioIn1_t;
 
-        // Audio IN 1 测试
-        private void audioIn1_test_button_Click_1(object sender, EventArgs e)
+        private void audioIn1_func()
         {
             if (String.IsNullOrEmpty(audioInTestStandard_textbox.Text) || !new Regex("^[0-9]+$").IsMatch(audioInTestStandard_textbox.Text) || audioInTestStandard_textbox.Text.Equals("0"))
             {
                 MessageBox.Show("标定音量值不能为空！\n或者输入了非数字的内容，请重新输入！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 output_rich_textbox.AppendText("标定音量值不能为空！\n或者输入了非数字的内容，请重新输入！\n");
                 audioInTestStandard_textbox.Text = "";
+                if (audioIn1_t != null)
+                {
+                    audioIn1_t.Interrupt();
+                    audioIn1_t = null;
+                }
             }
             //if (true)
             else if (check_device_online())
             {
-                playPinkNoise();
                 audioIn1_test_button.Enabled = false;
                 // 每次获取MIC音频音量值需要先录制1s后获取
                 recordTime_textbox.Text = "1";
@@ -2512,7 +2533,6 @@ namespace SeewoTestTool
                     try
                     {
                         duration = recordTime_textbox.Text;
-                        recordingGif_label.Image = Image.FromFile("./img/recordingGif.gif");
                         // 获取各路MIC音频音量值
                         output_rich_textbox.AppendText(session);
                         string gainDeviceMICVolumeCommand = $"curl -X POST \"http://{ip_users}/testAudioJson_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getAudioVolume\\\"}}\"";
@@ -2580,7 +2600,11 @@ namespace SeewoTestTool
                     }
                     finally
                     {
-
+                        if (audioIn1_t != null)
+                        {
+                            audioIn1_t.Interrupt();
+                            audioIn1_t = null;
+                        }
                     }
                 }
                 else
@@ -2592,22 +2616,44 @@ namespace SeewoTestTool
                     output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
                 }
             }
-            
         }
 
-        // Audio IN 2 测试
-        private void audioIn2_test_button_Click_1(object sender, EventArgs e)
+        // Audio IN 1 测试
+        private void audioIn1_test_button_Click_1(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(audioInTestStandard_textbox.Text) || !new Regex("^[0-9]+$").IsMatch(audioInTestStandard_textbox.Text)||audioInTestStandard_textbox.Text.Equals("0"))
+            if (audioIn1_t != null)
+            {
+                MessageBox.Show("前一个Audio IN 1正在进行中……，请稍后再进行点击！");
+            }
+            else
+            {
+                playPinkNoise();
+                recordingGif_label.Visible = true;
+                recordingGif_label.Image = Image.FromFile("./img/recordingGif.gif");
+                audioIn1_t = new Thread(audioIn1_func);
+                audioIn1_t.IsBackground = true;
+                audioIn1_t.Start();
+            }
+
+        }
+
+        Thread audioIn2_t;
+        private void audioIn2_func()
+        {
+            if (String.IsNullOrEmpty(audioInTestStandard_textbox.Text) || !new Regex("^[0-9]+$").IsMatch(audioInTestStandard_textbox.Text) || audioInTestStandard_textbox.Text.Equals("0"))
             {
                 MessageBox.Show("标定音量值不能为空！\n或者输入了非数字的内容，请重新输入！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 output_rich_textbox.AppendText("标定音量值不能为空！\n或者输入了非数字的内容，请重新输入！\n");
                 audioInTestStandard_textbox.Text = "";
+                if (audioIn2_t != null)
+                {
+                    audioIn2_t.Interrupt();
+                    audioIn2_t = null;
+                }
             }
             //if (true)
             else if (check_device_online())
             {
-                playPinkNoise();
                 audioIn2_test_button.Enabled = false;
                 // 每次获取MIC音频音量值需要先录制1s后获取
                 recordTime_textbox.Text = "1";
@@ -2687,7 +2733,11 @@ namespace SeewoTestTool
                     }
                     finally
                     {
-
+                        if (audioIn2_t != null)
+                        {
+                            audioIn2_t.Interrupt();
+                            audioIn2_t = null;
+                        }
                     }
                 }
                 else
@@ -2699,7 +2749,25 @@ namespace SeewoTestTool
                     output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
                 }
             }
-            
+        }
+
+        // Audio IN 2 测试
+        private void audioIn2_test_button_Click_1(object sender, EventArgs e)
+        {
+
+            if (audioIn2_t != null)
+            {
+                MessageBox.Show("前一个Audio IN 2正在进行中……，请稍后再进行点击！");
+            }
+            else
+            {
+                playPinkNoise();
+                recordingGif_label.Visible = true;
+                recordingGif_label.Image = Image.FromFile("./img/recordingGif.gif");
+                audioIn2_t = new Thread(audioIn2_func);
+                audioIn2_t.IsBackground = true;
+                audioIn2_t.Start();
+            }
         }
 
         string fileName_testResult = "TestResult.txt";
@@ -2786,9 +2854,9 @@ namespace SeewoTestTool
             }
             catch (Exception ex)
             {
-                MessageBox.Show("【当前测试结束】:\n请勿手动删除根目录的文件，请重新打开工具！", "【温馨提示】", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                output_rich_textbox.AppendText("【当前测试结束】:\n请勿手动删除根目录的文件，请重新打开工具！\n");
-                Application.Exit();
+                MessageBox.Show("【异常操作】【当前测试结束】:\n请勿手动删除根目录的文件或者同时进行多次录制操作\n如果结果保存出现异常请重新打开工具！", "【温馨提示】", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                output_rich_textbox.AppendText("【异常操作】【当前测试结束】:\n请勿手动删除根目录的文件或者同时进行多次录制操作\n如果结果保存出现异常请重新打开工具！\n");
+                //Application.Exit();
             }
         }
 
