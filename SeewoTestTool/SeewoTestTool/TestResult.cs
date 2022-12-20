@@ -14,6 +14,8 @@ public class TestResult
     private string audioIn2_test_result;
     private string arrayMic_test_result;
     private string macAddress_test_result;
+    private string bareboradMachineFlash_test_result;
+    private string completeMachineFlash_test_result;
 
     // get set简化写法，直接通过xxx.xxx返回或设置值
     public string NetworkTestResult
@@ -81,4 +83,15 @@ public class TestResult
         set { macAddress_test_result = value; }
     }
 
+    public string BareBoradMachineFlashResult
+    {
+        get { return bareboradMachineFlash_test_result; }
+        set { bareboradMachineFlash_test_result = value; }
+    }
+
+    public string CompleteMachineFlashResult
+    {
+        get { return completeMachineFlash_test_result; }
+        set { completeMachineFlash_test_result = value; }
+    }
 }

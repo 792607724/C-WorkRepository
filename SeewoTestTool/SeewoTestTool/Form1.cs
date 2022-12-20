@@ -50,6 +50,13 @@ namespace SeewoTestTool
             output_rich_textbox.AppendText("欢迎使用视熙测试标定软件！\n");
             uiLabel20.ForeColor = Color.Red;
             uiLabel21.ForeColor = Color.Red;
+            uiLabel23.ForeColor = Color.Red;
+            uiLabel26.ForeColor = Color.Red;
+            seewoProductPN_label.ForeColor = Color.Blue;
+            seewoProductSN_label.ForeColor = Color.Blue;
+            seewoWorkOrder_label.ForeColor = Color.Blue;
+            seewoCustomerPN_label.ForeColor = Color.Blue;
+            currentMac_label.ForeColor = Color.Blue;
             FileStream fs = new FileStream("data.bin", FileMode.OpenOrCreate);
             if (fs.Length > 0)
             {
@@ -80,8 +87,8 @@ namespace SeewoTestTool
                     }
                 }
 
-                
-                
+
+
             }
             // 账号密码存储读取
             FileStream fs1 = new FileStream("data1.bin", FileMode.OpenOrCreate);
@@ -122,7 +129,7 @@ namespace SeewoTestTool
         {
             //使阻塞的线程继续 
             TimeoutObject.Set();
-            
+
         }
 
         // 检查设备是否在线
@@ -180,7 +187,7 @@ namespace SeewoTestTool
                 output_rich_textbox.AppendText("【检查设备是否在线】操作结束\n");
                 return true;
             }
-            
+
         }
 
         string ip_users;
@@ -292,7 +299,7 @@ namespace SeewoTestTool
                     }
                 }
             }
-            
+
         }
 
         // 在cmd中执行命令操作
@@ -467,7 +474,6 @@ namespace SeewoTestTool
                         poe1NetworkTest_button.Enabled = false;
                         openLiveCamera_buttton.Enabled = false;
                         openMergeCamera_buttton.Enabled = false;
-                        clearInput_button.Enabled = false;
                         writeInMac_button.Enabled = false;
                         beginAudioRecord_button.Enabled = false;
                         extractRecordFile_button.Enabled = false;
@@ -594,7 +600,7 @@ namespace SeewoTestTool
                     output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
                 }
             }
-            
+
         }
 
         // 校验当前固件
@@ -698,7 +704,7 @@ namespace SeewoTestTool
                     output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
                 }
             }
-            
+
         }
 
 
@@ -753,7 +759,7 @@ namespace SeewoTestTool
                     output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
                 }
             }
-            
+
         }
 
         // 关闭红绿灯交替闪烁
@@ -807,7 +813,7 @@ namespace SeewoTestTool
                     output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
                 }
             }
-            
+
         }
 
         // 获取吊麦信息
@@ -816,7 +822,7 @@ namespace SeewoTestTool
          */
         private void get_poe_mic_info_button_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("该功能目前未实现，预留位后续有需求再实现！","提示", MessageBoxButtons.OK,MessageBoxIcon.Information);
+            MessageBox.Show("该功能目前未实现，预留位后续有需求再实现！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             //if (true)
             output_rich_textbox.AppendText("【执行操作】获取吊麦信息……\n");
             if (clientSocket != null && clientSocket.Connected)
@@ -833,7 +839,7 @@ namespace SeewoTestTool
                     {
                         result = "成功";
                         MatchCollection results_2 = Regex.Matches(output_string, "\"micHardwareVersion\" : (.*)");
-                        string micHardwareVersion = results_2[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "").Replace(",","");
+                        string micHardwareVersion = results_2[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "").Replace(",", "");
                         MatchCollection results_3 = Regex.Matches(output_string, "\"micSoftwareVersion\" : (.*)");
                         string micSoftwareVersion = results_3[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "").Replace(",", "");
                         poe_mic_hardware_info_label.Text = micHardwareVersion;
@@ -982,7 +988,7 @@ namespace SeewoTestTool
                     output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
                 }
             }
-            
+
         }
 
         // 停止阵列MIC音量值测试
@@ -1037,21 +1043,21 @@ namespace SeewoTestTool
                     output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
                 }
             }
-            
+
         }
 
-        private void CheckBox_CheckedChanged(object sender, EventArgs e) 
+        private void CheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            if ((sender as CheckBox).Checked == true) 
+            if ((sender as CheckBox).Checked == true)
             {
-                foreach (CheckBox chk in (sender as CheckBox).Parent.Controls) 
-                { 
-                    if (chk != sender) 
-                    { 
-                        chk.Checked = false; 
-                    } 
-                } 
-            } 
+                foreach (CheckBox chk in (sender as CheckBox).Parent.Controls)
+                {
+                    if (chk != sender)
+                    {
+                        chk.Checked = false;
+                    }
+                }
+            }
         }
 
 
@@ -1315,7 +1321,7 @@ namespace SeewoTestTool
 
                 }
             }
-            
+
         }
 
         // 窗体关闭事件，将设备socket连接释放掉
@@ -1498,7 +1504,7 @@ namespace SeewoTestTool
                 output_string = $"升级操作异常，异常报错Log如下：\n{ex.ToString()}\n";
                 device_disconnect_button_Click(null, null);
             }
-            
+
         }
 
         /**
@@ -1582,7 +1588,7 @@ namespace SeewoTestTool
                     }
                 }
                 */
-                if(true)
+                if (true)
                 //if (temp_check_ping_ip_exists.Contains("TTL"))
                 {
                     Thread.Sleep(8000);
@@ -1632,7 +1638,7 @@ namespace SeewoTestTool
          */
         private void backgroundworker_firmwareupgrade_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
-            if (e.Error!=null)
+            if (e.Error != null)
             {
                 output_rich_textbox.AppendText(e.Error.ToString());
                 return;
@@ -1679,7 +1685,7 @@ namespace SeewoTestTool
                 output_rich_textbox.AppendText("升级终止！\n");
             }
         }
-        
+
         // 获取当前电脑连接的所有设备的网口并筛选出Seewo的设备
         /**
          *  刷新网口点击事件，获取当前设备所关联的所有IP地址
@@ -1744,8 +1750,8 @@ namespace SeewoTestTool
                         // 获取SN号
                         string fetchDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"SerialNumber\\\"}}\"";
                         output_string = executeCMDCommand(fetchDeviceInfoCommand);
-                        MatchCollection results_1 = Regex.Matches(output_string, "\"SN\" : (.*)");
-                        string currentSN = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
+                        MatchCollection results_1 = Regex.Matches(output_string, "\"SeewoProductSN\" : (.*)");
+                        string currentSN = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "").Replace(",", "");
                         output_rich_textbox.AppendText("当前设备的SN号为：" + currentSN + "\n");
                         currentSN_textbox.Text = currentSN;
                     }
@@ -1767,7 +1773,7 @@ namespace SeewoTestTool
 
                 }
             }
-            
+
         }
 
 
@@ -1797,7 +1803,7 @@ namespace SeewoTestTool
                         else
                         {
                             output_rich_textbox.AppendText(session);
-                            string writeDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"setParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"SerialNumber\\\",\\\"value\\\": {{\\\"SN\\\": \\\"{writeINSN}\\\"}}}}\"";
+                            string writeDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"setParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"SerialNumber\\\",\\\"value\\\": {{\\\"SeewoProductSN\\\": \\\"{writeINSN}\\\"}}}}\"";
                             output_string = executeCMDCommand(writeDeviceInfoCommand);
                             MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
                             string backCode = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
@@ -1805,7 +1811,7 @@ namespace SeewoTestTool
                             // 获取SN号
                             string fetchDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"SerialNumber\\\"}}\"";
                             output_string = executeCMDCommand(fetchDeviceInfoCommand);
-                            MatchCollection results_2 = Regex.Matches(output_string, "\"SN\" : (.*)");
+                            MatchCollection results_2 = Regex.Matches(output_string, "\"SeewoProductSN\" : (.*)");
                             string currentSN = results_2[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
                             output_rich_textbox.AppendText("获取当前设备的SN号：" + currentSN + "\n");
                             if (currentSN == writeINSN && Int32.Parse(backCode) == 0)
@@ -1838,7 +1844,7 @@ namespace SeewoTestTool
 
                 }
             }
-            
+
         }
 
         // 密码转换为SHA256加密字符串 
@@ -1888,6 +1894,7 @@ namespace SeewoTestTool
             start_rg_flicker_button_Click(null, null);
             gainCurrentVersion_button_Click(null, null);
             getCurrentMacAddress_button_Click(null, null);
+            getCompleteAndBareBoardInfo_func();
         }
 
         string session;
@@ -1935,7 +1942,6 @@ namespace SeewoTestTool
                             openMergeCamera_buttton.Enabled = true;
                             audioIn1_test_button.Enabled = true;
                             audioIn2_test_button.Enabled = true;
-                            clearInput_button.Enabled = true;
                             writeInMac_button.Enabled = true;
                             beginAudioRecord_button.Enabled = true;
                             extractRecordFile_button.Enabled = true;
@@ -1952,7 +1958,7 @@ namespace SeewoTestTool
                             stopPinkNoise_button.Enabled = true;
                             recordingGif_label.Image = Image.FromFile("./img/recordingFinish.png");
                             uiButton1.Enabled = true;
-                            
+
                             if (nextDeviceConnect_t != null)
                             {
                                 nextDeviceConnect_t.Interrupt();
@@ -1971,7 +1977,7 @@ namespace SeewoTestTool
                                     // 如果存在就清除掉
                                     users.Clear();
                                 }
-                                users.Add(user.Username, user); 
+                                users.Add(user.Username, user);
                                 binaryFormatter.Serialize(fileStream, users);
                                 fileStream.Close();
                             }
@@ -2013,7 +2019,7 @@ namespace SeewoTestTool
                     output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
                 }
             }
-            
+
         }
 
         // 获取当前设备PCBA号
@@ -2057,7 +2063,7 @@ namespace SeewoTestTool
 
                 }
             }
-            
+
         }
 
         // 写入指定PCBA号
@@ -2126,7 +2132,7 @@ namespace SeewoTestTool
 
                 }
             }
-            
+
         }
 
         // 获取当前设备版本
@@ -2170,7 +2176,7 @@ namespace SeewoTestTool
                     output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
                 }
             }
-            
+
         }
 
         // 重启设备操作
@@ -2233,7 +2239,7 @@ namespace SeewoTestTool
 
                 }
             }
-            
+
         }
         public static byte[] ConvertToBinary(string Path)
         {
@@ -2269,7 +2275,7 @@ namespace SeewoTestTool
                         output_rich_textbox.AppendText("请等待一段时间写入完成，此间工具无法使用\n");
                         output_string = executeCMDCommand(fetchDeviceInfoCommand);
                         output_rich_textbox.AppendText($"【{fetchDeviceInfoCommand}】标定数据写入操作结果：" + output_string + "\n");
-                        
+
                         string result = "标定数据写入操作未执行成功";
                         if (output_string.Contains("OK"))
                         {
@@ -2280,7 +2286,7 @@ namespace SeewoTestTool
                             result = "失败";
                         }
                         output_rich_textbox.AppendText("标定数据写入操作结果：" + result + "\n");
-                        
+
                     }
                     else
                     {
@@ -2304,7 +2310,7 @@ namespace SeewoTestTool
             {
 
             }
-        }   
+        }
 
         private void openByCMD_CameraProcess()
         {
@@ -2350,7 +2356,7 @@ namespace SeewoTestTool
         {
             //if (true)
             try
-            {   
+            {
                 if (thread == null)
                 {
                     thread = new Thread(openByCMD_CameraProcess);
@@ -2371,7 +2377,7 @@ namespace SeewoTestTool
                         thread.IsBackground = true;
                         thread.Start();
                     }
-                    
+
                 }
             }
             catch (Exception ex)
@@ -2478,7 +2484,7 @@ namespace SeewoTestTool
                     output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
                 }
             }
-            
+
         }
 
         private void label6_Click(object sender, EventArgs e)
@@ -2520,7 +2526,7 @@ namespace SeewoTestTool
                 }
             }
             //if (true)
-            else if(check_device_online())
+            else if (check_device_online())
             {
                 audioIn1_test_button.Enabled = false;
                 // 每次获取MIC音频音量值需要先录制1s后获取
@@ -2616,6 +2622,7 @@ namespace SeewoTestTool
                     output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
                 }
             }
+            recordingGif_label.Image = Image.FromFile("./img/recordingFinish.png");
         }
 
         // Audio IN 1 测试
@@ -2749,6 +2756,7 @@ namespace SeewoTestTool
                     output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
                 }
             }
+            recordingGif_label.Image = Image.FromFile("./img/recordingFinish.png");
         }
 
         // Audio IN 2 测试
@@ -2789,7 +2797,9 @@ namespace SeewoTestTool
                 audioIn2_test_label.Text = "暂未测试";
                 arrayMic_test_label.Text = "暂未测试";
                 macAddress_test_label.Text = "暂未测试";
-                
+                bareboardInfoFlash_test_label.Text = "暂未测试";
+                completeMachineInfoFlash_test_label.Text = "暂未测试";
+
             }
             //MessageBox.Show("测试结果重置完成！", "提示",  MessageBoxButtons.OK, MessageBoxIcon.Information);
             output_rich_textbox.AppendText("测试结果重置完成！\n");
@@ -2826,13 +2836,15 @@ namespace SeewoTestTool
                     testResult.AudioIn2Result = "暂未测试";
                     testResult.ArrayMicResult = "暂未测试";
                     testResult.MacAddressResult = "暂未测试";
+                    testResult.BareBoradMachineFlashResult = "暂未测试";
+                    testResult.CompleteMachineFlashResult = "暂未测试";
 
                     testResults.Add("测试结果", testResult);
                     binaryFormatter.Serialize(fs2, testResults);
                     fs2.Close();
 
                 }
-                else if (fs2.Length > 0)    
+                else if (fs2.Length > 0)
                 {
                     BinaryFormatter bf = new BinaryFormatter();
                     TestResult testResult = new TestResult();
@@ -2849,6 +2861,8 @@ namespace SeewoTestTool
                     audioIn2_test_label.Text = testresult_item.AudioIn2Result;
                     arrayMic_test_label.Text = testresult_item.ArrayMicResult;
                     macAddress_test_label.Text = testresult_item.MacAddressResult;
+                    bareboardInfoFlash_test_label.Text = testresult_item.BareBoradMachineFlashResult;
+                    completeMachineInfoFlash_test_label.Text = testresult_item.CompleteMachineFlashResult;
                 }
                 fs2.Close();
             }
@@ -3012,12 +3026,6 @@ namespace SeewoTestTool
             writeTestResult();
         }
 
-        // 清空MAC输入框
-        private void clearInput_button_Click(object sender, EventArgs e)
-        {
-            macInput_textbox.Text = "";
-            currentMac_label.Text = "";
-        }
 
 
 
@@ -3039,9 +3047,7 @@ namespace SeewoTestTool
             string currentMAC_label_text = currentMac_label.Text;
             if (currentMAC_label_text == writeInMAC && Int32.Parse(backCode) == 0)
             {
-                writeInMacResult_label.Image = null;
                 output_rich_textbox.AppendText($"当前写入结果为：PASS，当前MAC：{currentMAC_label_text}\n");
-                writeInMacResult_label.Text = "PASS";
                 macAddress_test_label.Text = "PASS";
 
                 // 结果位
@@ -3096,8 +3102,6 @@ namespace SeewoTestTool
             else
             {
                 output_rich_textbox.AppendText($"当前写入结果为：FAIL，当前MAC：{currentMAC_label_text}\n");
-                writeInMacResult_label.Image = null;
-                writeInMacResult_label.Text = "FAIL";
                 macAddress_test_label.Text = "FAIL";
 
                 // 结果位
@@ -3112,6 +3116,7 @@ namespace SeewoTestTool
                 writeInMac_t.Interrupt();
                 writeInMac_t = null;
             }
+            recordingGif_label.Image = Image.FromFile("./img/recordingFinish.png");
         }
 
         private string writeInMAC;
@@ -3126,9 +3131,8 @@ namespace SeewoTestTool
                 {
                     if (clientSocket != null && clientSocket.Connected)
                     {
-                        // 写入MAC地址进设备
-                        writeInMAC = macInput_textbox.Text;
-                        //if (string.IsNullOrEmpty(writeInMAC) || !new Regex("(.*:.*:.*:.*:.*:.*)").IsMatch(writeInMAC))
+                        // 写入MAC地址进设备 -- 等待传入
+                        writeInMAC = MAC;
                         if (string.IsNullOrEmpty(writeInMAC) || writeInMAC.Length != 12)
                         {
                             MessageBox.Show("请写入正确的MAC地址再进行刷入，只能数字或者字母\n", "温馨提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -3138,9 +3142,7 @@ namespace SeewoTestTool
                         }
                         else
                         {
-                            writeInMacResult_label.Text = "";
                             writeInMac_button.Enabled = false;
-                            writeInMacResult_label.Image = Image.FromFile("./img/recordingGif.gif");
                             if (writeInMac_t != null)
                             {
                                 MessageBox.Show("当前MAC正在写入，请稍后！");
@@ -3165,7 +3167,6 @@ namespace SeewoTestTool
                 catch (Exception ex)
                 {
                     writeInMac_button.Enabled = true;
-                    writeInMacResult_label.Image = null;
                     if (writeInMac_t != null)
                     {
                         writeInMac_t.Interrupt();
@@ -3176,7 +3177,7 @@ namespace SeewoTestTool
                 }
                 finally
                 {
-                    
+
                 }
             }
         }
@@ -3259,14 +3260,14 @@ namespace SeewoTestTool
                         audioRecord_t = new Thread(recordAudioThread);
                         audioRecord_t.IsBackground = true;
                         audioRecord_t.Start();
-                        
+
                     }
                     Font font = new Font(FontFamily.GenericMonospace, 15, FontStyle.Bold);
                     output_rich_textbox.ForeColor = Color.Red;
                     output_rich_textbox.SelectionFont = font;
                     output_rich_textbox.AppendText($"请稍等，正在录制音频中,录制时间【{duration}】秒……！\n");
                     recordingGif_label.Visible = true;
-                    
+
                 }
                 else
                 {
@@ -3453,7 +3454,7 @@ namespace SeewoTestTool
         }
 
         Thread resetDevice_t;
-    
+
         private void resetDevice_func()
         {
             // 测试Reset按键
@@ -3564,15 +3565,15 @@ namespace SeewoTestTool
             {
                 agingTestPanel = new SXW0301_Production_line.AgingTestPanel();
                 agingTestPanel.Show();
-                
-                
+
+
             }
             else if (agingTestPanel.IsDisposed)
             {
                 agingTestPanel = new SXW0301_Production_line.AgingTestPanel();
                 agingTestPanel.Activate();
                 agingTestPanel.Show();
-                
+
             }
             else
             {
@@ -3589,7 +3590,7 @@ namespace SeewoTestTool
         // 进入老化模式面板
         private void enterAgingMode_button_Click(object sender, EventArgs e)
         {
-            if (agingThread!=null)
+            if (agingThread != null)
             {
                 agingThread.Interrupt();
                 agingThread = null;
@@ -3625,7 +3626,6 @@ namespace SeewoTestTool
             device_disconnect_button_Click(null, null);
             resetTestResult_button_Click(null, null);
             currentMac_label.Text = "";
-            writeInMacResult_label.Text = "";
             currentVersion_label.Text = "";
             upgrade_progressbar.Value = 0;
             checked_firmware_textbox.Text = "";
@@ -3642,6 +3642,14 @@ namespace SeewoTestTool
             currentSN_textbox.Text = "";
             writeInSN_textbox.Text = "";
             output_rich_textbox.Text = "";
+            seewoProductPN_label.Text = "";
+            seewoProductSN_label.Text = "";
+            seewoWorkOrder_label.Text = "";
+            seewoCustomerPN_label.Text = "";
+            currentMac_label.Text = "";
+                
+            
+
             device_connect_button_Click(null, null);
         }
 
@@ -3654,6 +3662,8 @@ namespace SeewoTestTool
             }
             else
             {
+                completeMachine_textbox.Text = "";
+                boardMachine_textbox.Text = "";
                 nextDeviceConnect_t = new Thread(nextDeviceConnect_func);
                 nextDeviceConnect_t.IsBackground = true;
                 nextDeviceConnect_t.Start();
@@ -3684,7 +3694,266 @@ namespace SeewoTestTool
             }
         }
 
-        private void bareBoardTest_checkBox_CheckedChanged_1(object sender, EventArgs e)
+        // 写入整机信息func
+        private void writeInCompleteMachineInfo_func()
+        {
+            output_rich_textbox.AppendText(session);
+            string writeInCompleteMachineInfoCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"setParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"SerialNumber\\\",\\\"value\\\": {{\\\"SeewoProductPN\\\": \\\"{SeewoProductPN}\\\", \\\"SeewoProductSN\\\": \\\"{SeewoProductSN}\\\"}}}}\"";
+            output_string = executeCMDCommand(writeInCompleteMachineInfoCommand);
+            MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
+            string backCode = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
+
+            string[] infos = getCompleteAndBareBoardInfo_func();
+            if (infos.Length > 0)
+            {
+                string result_temp_now = "";
+                if ((infos[2] == SeewoProductPN) && (infos[3] == SeewoProductSN) && (Int32.Parse(backCode) == 0))
+                {
+                    output_rich_textbox.AppendText("当前写入整机信息结果为：PASS\n");
+                    result_temp_now = "PASS";
+                }
+                else
+                {
+                    output_rich_textbox.AppendText($"当前写入整机信息结果为：FAIL\n");
+                    result_temp_now = "FAIL";
+                }
+                // 结果位
+                refreshTestResult_button_Click(null, null);
+                testResults["测试结果"].CompleteMachineFlashResult = result_temp_now;
+                writeTestResult();
+                //MessageBox.Show($"【操作结束】整机信息烧录完成！\n烧录结果：【{result_temp_now}】", "【通知】", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        // 写入板卡信息func
+        private void writeInBareboardMachineInfo_func()
+        {
+            output_rich_textbox.AppendText(session);
+            string writeInBareBoradMachineInfoCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"setParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"SerialNumber\\\",\\\"value\\\": {{\\\"SeewoWorkOrder\\\": \\\"{SeewoWorkOrder}\\\", \\\"SeewoCustomerPN\\\": \\\"{SeewoCustomerPN}\\\"}}}}\"";
+            output_string = executeCMDCommand(writeInBareBoradMachineInfoCommand);
+            MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
+            string backCode = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
+
+            string[] infos = getCompleteAndBareBoardInfo_func();
+            if (infos.Length > 0)
+            {
+                string result_temp_now = "";
+                if ((infos[4] == SeewoWorkOrder) && (infos[1] == SeewoCustomerPN) && (Int32.Parse(backCode) == 0))
+                {
+                    output_rich_textbox.AppendText("当前写入板卡信息结果为：PASS\n");
+                    result_temp_now = "PASS";
+                }
+                else
+                {
+                    output_rich_textbox.AppendText($"当前写入板卡信息结果为：FAIL\n");
+                    result_temp_now = "FAIL";
+                }
+                // 结果位
+                refreshTestResult_button_Click(null, null);
+                testResults["测试结果"].BareBoradMachineFlashResult = result_temp_now;
+                writeTestResult();
+                //MessageBox.Show($"【操作结束】板卡信息烧录完成！\n烧录结果：【{result_temp_now}】", "【通知】", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        // 获取整机&板卡信息func
+        private string[] getCompleteAndBareBoardInfo_func()
+        {
+            string[] infos = new string[5];
+            try
+            {
+                // 获取整机信息烧录过程监听输入内容Enter
+                string fetchDeviceInfoCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"SerialNumber\\\"}}\"";
+                output_string = executeCMDCommand(fetchDeviceInfoCommand);
+                MatchCollection results_2 = Regex.Matches(output_string, "\"PCBA\" : (.*)");
+                string currentPCBA = results_2[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "").Replace(",", "");
+                output_rich_textbox.AppendText("获取当前设备的PCBA号：" + currentPCBA + "\n");
+
+                MatchCollection results_3 = Regex.Matches(output_string, "\"SeewoCustomerPN\" : (.*)");
+                string currentSeewoCustomerPN = results_3[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "").Replace(",", "");
+                output_rich_textbox.AppendText("获取当前设备的SeewoCustomerPN号：" + currentSeewoCustomerPN + "\n");
+
+                MatchCollection results_4 = Regex.Matches(output_string, "\"SeewoProductPN\" : (.*)");
+                string currentSeewoProductPN = results_4[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "").Replace(",", "");
+                output_rich_textbox.AppendText("获取当前设备的SeewoProductPN号：" + currentSeewoProductPN + "\n");
+
+                MatchCollection results_5 = Regex.Matches(output_string, "\"SeewoProductSN\" : (.*)");
+                string currentSeewoProductSN = results_5[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "").Replace(",", "");
+                output_rich_textbox.AppendText("获取当前设备的SeewoProductSN号：" + currentSeewoProductSN + "\n");
+
+                MatchCollection results_6 = Regex.Matches(output_string, "\"SeewoWorkOrder\" : (.*)");
+                string currentSeewoWorkOrder = results_6[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "").Replace(",", "");
+                output_rich_textbox.AppendText("获取当前设备的SeewoWorkOrder号：" + currentSeewoWorkOrder + "\n");
+
+                try
+                {
+                    if (currentPCBA.IsNullOrEmpty())
+                    {
+                        currentPCBA = "null";
+                    }
+                    if (currentSeewoCustomerPN.IsNullOrEmpty())
+                    {
+                        currentSeewoCustomerPN = "null";
+                    }
+                    if (currentSeewoProductPN.IsNullOrEmpty())
+                    {
+                        currentSeewoProductPN = "null";
+                    }
+                    if (currentSeewoProductSN.IsNullOrEmpty())
+                    {
+                        currentSeewoProductSN = "null";
+                    }
+                    if (currentSeewoWorkOrder.IsNullOrEmpty())
+                    {
+                        currentSeewoWorkOrder = "null";
+                    }
+                    infos[0] = currentPCBA;
+                    infos[1] = currentSeewoCustomerPN;
+                    infos[2] = currentSeewoProductPN;
+                    infos[3] = currentSeewoProductSN;
+                    infos[4] = currentSeewoWorkOrder;
+
+                    seewoProductPN_label.Text = currentSeewoProductPN;
+                    seewoProductSN_label.Text = currentSeewoProductSN;
+                    seewoWorkOrder_label.Text = currentSeewoWorkOrder;
+                    seewoCustomerPN_label.Text = currentSeewoCustomerPN;
+                    getCurrentMacAddress_button_Click(null, null);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return infos;
+        }
+
+        // 整机信息
+        string SeewoProductPN;
+        string SeewoProductSN;
+
+        // 板卡信息
+        string SeewoWorkOrder;
+        string SeewoCustomerPN;
+        string MAC;
+
+
+        // 整机信息烧录过程监听输入内容Enter
+        private void completeMachine_textbox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                if (check_device_online())
+                {
+                    output_rich_textbox.AppendText("【执行操作】整机信息烧录过程监听输入内容Enter……\n");
+                    try
+                    {
+                        if (clientSocket != null && clientSocket.Connected)
+                        {
+                            // 写入整机信息烧录过程监听输入内容Enter
+                            string completeMachineInfo = completeMachine_textbox.Text;
+                            if (string.IsNullOrEmpty(completeMachineInfo) || completeMachineInfo.Length != 38)
+                            {
+                                completeMachine_textbox.Text = "";
+                                output_rich_textbox.AppendText($"请写入正确的整机信息再进行刷入,当前输入的信息长度{completeMachineInfo.Length.ToString()}\n");
+                            }
+                            else
+                            {
+                                // 开始拆分信息并写入
+                                string[] temp = completeMachineInfo.Split("@");
+                                SeewoProductPN = temp[0];
+                                SeewoProductSN = temp[1];
+                                writeInCompleteMachineInfo_func();
+                            }
+                        }
+                        else
+                        {
+                            device_ip_textbox.Enabled = true;
+                            radioButton_80.Enabled = true;
+                            radioButton_8080.Enabled = true;
+                            device_status_label.Text = "已断开";
+                            output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        output_rich_textbox.AppendText($"整机信息烧录过程监听输入内容Enter失败，当前未连接设备：\n{ex.ToString()}\n");
+                    }
+                    finally
+                    {
+
+                    }
+                }
+            }
+        }
+
+        // 板卡信息烧录过程监听输入内容Enter
+        private void boardMachine_textbox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                if (check_device_online())
+                {
+                    output_rich_textbox.AppendText("【执行操作】板卡信息烧录过程监听输入内容Enter……\n");
+                    try
+                    {
+                        if (clientSocket != null && clientSocket.Connected)
+                        {
+                            // 写入板卡信息烧录过程监听输入内容Enter    
+                            string bareboradMachineInfo = boardMachine_textbox.Text;
+                            if (string.IsNullOrEmpty(bareboradMachineInfo) || bareboradMachineInfo.Length != 46)
+                            {
+                                boardMachine_textbox.Text = "";
+                                output_rich_textbox.AppendText($"请写入正确的板卡信息再进行刷入,当前输入的信息长度{bareboradMachineInfo.Length.ToString()}\n");
+                            }
+                            else
+                            {
+                                // 开始拆分信息并写入
+                                string[] temp = bareboradMachineInfo.Split("$");
+                                SeewoWorkOrder = temp[0];
+                                SeewoCustomerPN = temp[1];
+                                MAC = temp[2];
+                                writeInBareboardMachineInfo_func();
+                                recordingGif_label.Visible = true;
+                                recordingGif_label.Image = Image.FromFile("./img/recordingGif.gif");
+                                writeInMac_button_Click(null, null);
+                            }
+                        }
+                        else
+                        {
+                            device_ip_textbox.Enabled = true;
+                            radioButton_80.Enabled = true;
+                            radioButton_8080.Enabled = true;
+                            device_status_label.Text = "已断开";
+                            output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        output_rich_textbox.AppendText($"板卡信息烧录过程监听输入内容Enter失败，当前未连接设备：\n{ex.ToString()}\n");
+                    }
+                    finally
+                    {
+
+                    }
+                }
+            }
+        }
+
+        private void uiButton3_Click(object sender, EventArgs e)
+        {
+            completeMachine_textbox.Text = "";
+        }
+
+        private void uiButton2_Click(object sender, EventArgs e)
+        {
+            boardMachine_textbox.Text = "";
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
         {
 
         }
