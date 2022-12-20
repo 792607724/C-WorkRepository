@@ -1050,7 +1050,7 @@
             // 
             this.audioIn2_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.audioIn2_label.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.audioIn2_label.Location = new System.Drawing.Point(195, 63);
+            this.audioIn2_label.Location = new System.Drawing.Point(195, 35);
             this.audioIn2_label.Name = "audioIn2_label";
             this.audioIn2_label.Size = new System.Drawing.Size(64, 20);
             this.audioIn2_label.Style = Sunny.UI.UIStyle.Custom;
@@ -1064,7 +1064,7 @@
             // 
             this.audioIn1_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.audioIn1_label.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.audioIn1_label.Location = new System.Drawing.Point(195, 27);
+            this.audioIn1_label.Location = new System.Drawing.Point(195, 68);
             this.audioIn1_label.Name = "audioIn1_label";
             this.audioIn1_label.Size = new System.Drawing.Size(64, 20);
             this.audioIn1_label.Style = Sunny.UI.UIStyle.Custom;
@@ -1107,14 +1107,14 @@
             // 
             this.audioIn2_test_button.Enabled = false;
             this.audioIn2_test_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.audioIn2_test_button.Location = new System.Drawing.Point(283, 58);
+            this.audioIn2_test_button.Location = new System.Drawing.Point(283, 30);
             this.audioIn2_test_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.audioIn2_test_button.Name = "audioIn2_test_button";
             this.audioIn2_test_button.Radius = 20;
             this.audioIn2_test_button.Size = new System.Drawing.Size(178, 30);
             this.audioIn2_test_button.Style = Sunny.UI.UIStyle.Custom;
             this.audioIn2_test_button.TabIndex = 11;
-            this.audioIn2_test_button.Text = "Audio IN 2测试";
+            this.audioIn2_test_button.Text = "Audio IN 1测试";
             this.audioIn2_test_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.audioIn2_test_button.Click += new System.EventHandler(this.audioIn2_test_button_Click_1);
             // 
@@ -1122,14 +1122,14 @@
             // 
             this.audioIn1_test_button.Enabled = false;
             this.audioIn1_test_button.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.audioIn1_test_button.Location = new System.Drawing.Point(283, 22);
+            this.audioIn1_test_button.Location = new System.Drawing.Point(283, 63);
             this.audioIn1_test_button.MinimumSize = new System.Drawing.Size(1, 1);
             this.audioIn1_test_button.Name = "audioIn1_test_button";
             this.audioIn1_test_button.Radius = 20;
             this.audioIn1_test_button.Size = new System.Drawing.Size(178, 30);
             this.audioIn1_test_button.Style = Sunny.UI.UIStyle.Custom;
             this.audioIn1_test_button.TabIndex = 10;
-            this.audioIn1_test_button.Text = "Audio IN 1测试";
+            this.audioIn1_test_button.Text = "Audio IN 2测试";
             this.audioIn1_test_button.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.audioIn1_test_button.Click += new System.EventHandler(this.audioIn1_test_button_Click_1);
             // 
@@ -1137,12 +1137,12 @@
             // 
             this.label18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.label18.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label18.Location = new System.Drawing.Point(3, 64);
+            this.label18.Location = new System.Drawing.Point(3, 36);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(165, 19);
             this.label18.Style = Sunny.UI.UIStyle.Custom;
             this.label18.TabIndex = 8;
-            this.label18.Text = "AUDIO IN 2音量值：";
+            this.label18.Text = "AUDIO IN 1音量值：";
             this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label18.ZoomScaleDisabled = true;
             this.label18.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
@@ -1151,12 +1151,12 @@
             // 
             this.label16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.label16.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label16.Location = new System.Drawing.Point(3, 27);
+            this.label16.Location = new System.Drawing.Point(3, 68);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(165, 22);
             this.label16.Style = Sunny.UI.UIStyle.Custom;
             this.label16.TabIndex = 6;
-            this.label16.Text = "AUDIO IN 1音量值：";
+            this.label16.Text = "AUDIO IN 2音量值：";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label16.ZoomScaleDisabled = true;
             this.label16.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
@@ -2127,7 +2127,7 @@
             // 
             this.audioIn2_test_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.audioIn2_test_label.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.audioIn2_test_label.Location = new System.Drawing.Point(148, 287);
+            this.audioIn2_test_label.Location = new System.Drawing.Point(148, 256);
             this.audioIn2_test_label.Name = "audioIn2_test_label";
             this.audioIn2_test_label.Size = new System.Drawing.Size(125, 29);
             this.audioIn2_test_label.TabIndex = 20;
@@ -2138,11 +2138,11 @@
             // 
             this.uiLabel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.uiLabel5.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiLabel5.Location = new System.Drawing.Point(8, 287);
+            this.uiLabel5.Location = new System.Drawing.Point(8, 256);
             this.uiLabel5.Name = "uiLabel5";
             this.uiLabel5.Size = new System.Drawing.Size(156, 29);
             this.uiLabel5.TabIndex = 19;
-            this.uiLabel5.Text = "Audio in2：";
+            this.uiLabel5.Text = "Audio in1：";
             this.uiLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.uiLabel5.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
@@ -2222,7 +2222,7 @@
             // 
             this.audioIn_test_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.audioIn_test_label.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.audioIn_test_label.Location = new System.Drawing.Point(149, 255);
+            this.audioIn_test_label.Location = new System.Drawing.Point(149, 288);
             this.audioIn_test_label.Name = "audioIn_test_label";
             this.audioIn_test_label.Size = new System.Drawing.Size(125, 29);
             this.audioIn_test_label.TabIndex = 11;
@@ -2233,11 +2233,11 @@
             // 
             this.uiLabel16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.uiLabel16.Font = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiLabel16.Location = new System.Drawing.Point(8, 255);
+            this.uiLabel16.Location = new System.Drawing.Point(8, 288);
             this.uiLabel16.Name = "uiLabel16";
             this.uiLabel16.Size = new System.Drawing.Size(156, 29);
             this.uiLabel16.TabIndex = 10;
-            this.uiLabel16.Text = "Audio in1：";
+            this.uiLabel16.Text = "Audio in2：";
             this.uiLabel16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.uiLabel16.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 

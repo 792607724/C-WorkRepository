@@ -2508,7 +2508,7 @@ namespace SeewoTestTool
 
         private void audioIn1_func()
         {
-            if (String.IsNullOrEmpty(audioInTestStandard_textbox.Text) || !new Regex("^[0-9]+$").IsMatch(audioInTestStandard_textbox.Text) || audioInTestStandard_textbox.Text.Equals("0"))
+            if (String.IsNullOrEmpty(audioInTestStandard_textbox.Text) || !new Regex("^[0-9]+$").IsMatch(audioInTestStandard_textbox.Text))
             {
                 MessageBox.Show("标定音量值不能为空！\n或者输入了非数字的内容，请重新输入！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 output_rich_textbox.AppendText("标定音量值不能为空！\n或者输入了非数字的内容，请重新输入！\n");
@@ -2520,7 +2520,7 @@ namespace SeewoTestTool
                 }
             }
             //if (true)
-            else if (check_device_online())
+            else if(check_device_online())
             {
                 audioIn1_test_button.Enabled = false;
                 // 每次获取MIC音频音量值需要先录制1s后获取
@@ -2640,7 +2640,7 @@ namespace SeewoTestTool
         Thread audioIn2_t;
         private void audioIn2_func()
         {
-            if (String.IsNullOrEmpty(audioInTestStandard_textbox.Text) || !new Regex("^[0-9]+$").IsMatch(audioInTestStandard_textbox.Text) || audioInTestStandard_textbox.Text.Equals("0"))
+            if (String.IsNullOrEmpty(audioInTestStandard_textbox.Text) || !new Regex("^[0-9]+$").IsMatch(audioInTestStandard_textbox.Text))
             {
                 MessageBox.Show("标定音量值不能为空！\n或者输入了非数字的内容，请重新输入！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 output_rich_textbox.AppendText("标定音量值不能为空！\n或者输入了非数字的内容，请重新输入！\n");
