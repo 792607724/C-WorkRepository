@@ -3565,8 +3565,6 @@ namespace SeewoTestTool
             {
                 agingTestPanel = new SXW0301_Production_line.AgingTestPanel();
                 agingTestPanel.Show();
-
-
             }
             else if (agingTestPanel.IsDisposed)
             {
