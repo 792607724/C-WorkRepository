@@ -43,6 +43,8 @@ namespace SeewoTestTool
         {
             this.AutoScaleMode = AutoScaleMode.Dpi;
             InitializeComponent();
+            // 禁用tabPage1 - 视熙SN和PCBA刷写的功能，只给视熙内部开放使用
+            this.tabPage1.SetDisabled();
             refreshTestResult_button_Click(null, null);
             uiButton1.FillColor = Color.Red;
             uiButton1.FillHoverColor = Color.MediumVioletRed;
@@ -2393,7 +2395,7 @@ namespace SeewoTestTool
         SXW0301_Production_line.Fom1 fom1;
         private void button1_Click(object sender, EventArgs e)
         {
-            /**
+            /*
             if (check_device_online())
             {
                 output_rich_textbox.AppendText("【执行操作】打开三摄标定工具操作……\n");
@@ -2428,6 +2430,55 @@ namespace SeewoTestTool
         }
 
         SXW0301_Production_line.Form3 form3;
+        Thread form3_t;
+        private void process4()
+        {
+            MethodInvoker MethInvo = new MethodInvoker(enterForm3);
+            BeginInvoke(MethInvo);
+        }
+        private void enterForm3()
+        {
+            // 打开拼接图码流前将 Merge码率 curl 修改码流至61440
+            output_rich_textbox.AppendText("【正在修改视频流码率，请稍等会自动打开界面……】\n");
+            int rate = 35000;
+            string updateBitRateCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"setParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"Camera0Chn0\\\",\\\"value\\\": {{\\\"BitRate\\\": {rate}}}}}\"";
+            output_string = executeCMDCommand(updateBitRateCommand);
+            MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
+            string backCode = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
+            if (backCode == "0")
+            {
+                string getBitRateCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"Camera0Chn0\\\"}}\"";
+                output_string = executeCMDCommand(getBitRateCommand);
+                if (output_string.Contains(rate.ToString()))
+                {
+                    output_rich_textbox.AppendText($"当前拼接流视频码率为：【{rate}】\n");
+                    if (form3 == null)
+                    {
+                        form3 = new SXW0301_Production_line.Form3();
+                        form3.Show();
+                    }
+                    else if (form3.IsDisposed)
+                    {
+                        form3 = new SXW0301_Production_line.Form3();
+                        form3.Activate();
+                        form3.Show();
+                    }
+                    else
+                    {
+                        output_rich_textbox.AppendText("已打开三摄拼接图检测工具，请勿重复打开哦\n");
+                    }
+                }
+                else
+                {
+                    output_rich_textbox.AppendText($"拼接流码率【{rate}】设置失败,返回值\n{output_string}\n，请检查！\n");
+                }
+            }
+            else
+            {
+                output_rich_textbox.AppendText($"拼接流码率【{rate}】设置失败,返回值【{backCode}】，请检查！");
+            }
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
             if (check_device_online())
@@ -2435,45 +2486,14 @@ namespace SeewoTestTool
                 output_rich_textbox.AppendText("【执行操作】打开三摄拼接图检测工具操作……\n");
                 if (clientSocket != null && clientSocket.Connected)
                 {
-                    // 打开拼接图码流前将 Merge码率 curl 修改码流至61440
-                    int rate = 35000;
-                    string updateBitRateCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"setParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"Camera0Chn0\\\",\\\"value\\\": {{\\\"BitRate\\\": {rate}}}}}\"";
-                    output_string = executeCMDCommand(updateBitRateCommand);
-                    MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
-                    string backCode = results_1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "");
-                    if (backCode == "0")
+                    if (form3_t != null)
                     {
-                        string getBitRateCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"Camera0Chn0\\\"}}\"";
-                        output_string = executeCMDCommand(getBitRateCommand);
-                        if (output_string.Contains(rate.ToString()))
-                        {
-                            output_rich_textbox.AppendText($"当前拼接流视频码率为：【{rate}】\n");
-                            if (form3 == null)
-                            {
-                                form3 = new SXW0301_Production_line.Form3();
-                                form3.Show();
-                            }
-                            else if (form3.IsDisposed)
-                            {
-                                form3 = new SXW0301_Production_line.Form3();
-                                form3.Activate();
-                                form3.Show();
-                            }
-                            else
-                            {
-                                output_rich_textbox.AppendText("已打开三摄拼接图检测工具，请勿重复打开哦\n");
-                            }
-                        }
-                        else
-                        {
-                            output_rich_textbox.AppendText($"拼接流码率【{rate}】设置失败,返回值\n{output_string}\n，请检查！\n");
-                        }
+                        form3_t.Interrupt();
+                        form3_t = null;
                     }
-                    else
-                    {
-                        output_rich_textbox.AppendText($"拼接流码率【{rate}】设置失败,返回值【{backCode}】，请检查！");
-                    }
-
+                    form3_t = new Thread(process4);
+                    form3_t.IsBackground = false;
+                    form3_t.Start();
                 }
                 else
                 {
@@ -2886,7 +2906,7 @@ namespace SeewoTestTool
         // 红绿指示灯测试FAIL
         private void redGreenFAIL_button_Click(object sender, EventArgs e)
         {
-            // 结果位
+            // 结果位  
             refreshTestResult_button_Click(null, null);
             testResults["测试结果"].RedGreenLEDResult = "FAIL";
             writeTestResult();
@@ -2906,6 +2926,7 @@ namespace SeewoTestTool
                 refreshTestResult_button_Click(null, null);
                 testResults["测试结果"].Network2TestResult = "PASS";
                 writeTestResult();
+                output_rich_textbox.AppendText("测试PASS，连接SC12-E测试工装成功！\n");
             }
             else
             {
@@ -2919,6 +2940,32 @@ namespace SeewoTestTool
         }
 
         SXW0301_Production_line.LiveWindow liveWindow;
+        Thread liveWindow_t;
+        private void enterLiveCameraTest()
+        {
+            if (liveWindow == null)
+            {
+                liveWindow = new SXW0301_Production_line.LiveWindow();
+                liveWindow.Show();
+            }
+            else if (liveWindow.IsDisposed)
+            {
+                liveWindow = new SXW0301_Production_line.LiveWindow();
+                liveWindow.Activate();
+                liveWindow.Show();
+            }
+            else
+            {
+                output_rich_textbox.AppendText("已打开Live摄像头，请勿重复打开哦\n");
+            }
+        }
+
+        private void process5()
+        {
+            MethodInvoker MethInvo = new MethodInvoker(enterLiveCameraTest);
+            BeginInvoke(MethInvo);
+        }
+
         // 打开Live摄像头
         private void openLiveCamera_buttton_Click(object sender, EventArgs e)
         {
@@ -2927,21 +2974,14 @@ namespace SeewoTestTool
                 output_rich_textbox.AppendText("【执行操作】打开Live摄像头……\n");
                 if (clientSocket != null && clientSocket.Connected)
                 {
-                    if (liveWindow == null)
+                    if (liveWindow_t != null)
                     {
-                        liveWindow = new SXW0301_Production_line.LiveWindow();
-                        liveWindow.Show();
+                        liveWindow_t.Interrupt();
+                        liveWindow_t = null;
                     }
-                    else if (liveWindow.IsDisposed)
-                    {
-                        liveWindow = new SXW0301_Production_line.LiveWindow();
-                        liveWindow.Activate();
-                        liveWindow.Show();
-                    }
-                    else
-                    {
-                        output_rich_textbox.AppendText("已打开Live摄像头，请勿重复打开哦\n");
-                    }
+                    liveWindow_t = new Thread(process5);
+                    liveWindow_t.IsBackground = false;
+                    liveWindow_t.Start();
                 }
                 else
                 {
@@ -2973,6 +3013,32 @@ namespace SeewoTestTool
         }
 
         SXW0301_Production_line.MergeWindow mergeWindow;
+        Thread mergeWindow_t;
+        private void enterMergeWindowTest()
+        {
+            if (mergeWindow == null)
+            {
+                mergeWindow = new SXW0301_Production_line.MergeWindow();
+                mergeWindow.Show();
+            }
+            else if (mergeWindow.IsDisposed)
+            {
+                mergeWindow = new SXW0301_Production_line.MergeWindow();
+                mergeWindow.Activate();
+                mergeWindow.Show();
+            }
+            else
+            {
+                output_rich_textbox.AppendText("已打开Merge摄像头，请勿重复打开哦\n");
+            }
+        }
+
+        private void process6()
+        {
+            MethodInvoker MethInvo = new MethodInvoker(enterMergeWindowTest);
+            BeginInvoke(MethInvo);
+        }
+
         // 打开Merge摄像头
         private void openMergeCamera_buttton_Click(object sender, EventArgs e)
         {
@@ -2981,21 +3047,14 @@ namespace SeewoTestTool
                 output_rich_textbox.AppendText("【执行操作】打开Merge摄像头……\n");
                 if (clientSocket != null && clientSocket.Connected)
                 {
-                    if (mergeWindow == null)
+                    if (mergeWindow_t != null)
                     {
-                        mergeWindow = new SXW0301_Production_line.MergeWindow();
-                        mergeWindow.Show();
+                        mergeWindow_t.Interrupt();
+                        mergeWindow_t = null;
                     }
-                    else if (mergeWindow.IsDisposed)
-                    {
-                        mergeWindow = new SXW0301_Production_line.MergeWindow();
-                        mergeWindow.Activate();
-                        mergeWindow.Show();
-                    }
-                    else
-                    {
-                        output_rich_textbox.AppendText("已打开Merge摄像头，请勿重复打开哦\n");
-                    }
+                    mergeWindow_t = new Thread(process6);
+                    mergeWindow_t.IsBackground = false;
+                    mergeWindow_t.Start();
                 }
                 else
                 {
@@ -3469,7 +3528,7 @@ namespace SeewoTestTool
                 Thread.Sleep(1000);
                 output_string = executeCMDCommand(fetchDeviceInfoCommand);
                 output_rich_textbox.AppendText($"正在获取按键状态中，当前【{time_limit}】秒！\n");
-                if (executeCMDCommand("cat restore_result").Contains("success"))
+                if (executeCMDCommand("type restore_result").Contains("success"))
                 {
                     resetButton_test_label.Text = "PASS";
                     resetTestClickResult_label.Text = "PASS";
@@ -3596,13 +3655,12 @@ namespace SeewoTestTool
             if (check_device_online())
             {
                 output_rich_textbox.AppendText("【执行操作】进入老化模式面板……\n");
-                /**
                 if (clientSocket != null && clientSocket.Connected)
                 {
                     agingThread = new Thread(process3);
                     agingThread.IsBackground = false;
                     agingThread.Start();
-                    agingThread.Join();
+                    //agingThread.Join();
                 }
                 else
                 {
@@ -3612,8 +3670,7 @@ namespace SeewoTestTool
                     device_status_label.Text = "已断开";
                     output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
                 }
-                **/
-                enterAgingMode();
+                //enterAgingMode();
             }
         }
 

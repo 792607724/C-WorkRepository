@@ -166,7 +166,7 @@
             this.uiLabel2.Name = "uiLabel2";
             this.uiLabel2.Size = new System.Drawing.Size(465, 30);
             this.uiLabel2.TabIndex = 19;
-            this.uiLabel2.Text = "提示：在进行老化测试时，请勿进行录音测试";
+            this.uiLabel2.Text = "提示：在进行老化测试时，请勿进行录音等其它测试项哦";
             this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.uiLabel2.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 

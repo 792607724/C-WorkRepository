@@ -1,4 +1,6 @@
-﻿namespace SeewoTestTool
+﻿using Sunny.UI;
+
+namespace SeewoTestTool
 {
     partial class Form1
     {
@@ -440,9 +442,9 @@
             // 
             this.tabPage1.Controls.Add(this.groupBox10);
             this.tabPage1.Controls.Add(this.uiGroupBox2);
-            this.tabPage1.Location = new System.Drawing.Point(0, 40);
+            this.tabPage1.Location = new System.Drawing.Point(0, 20);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(200, 60);
+            this.tabPage1.Size = new System.Drawing.Size(960, 91);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "视熙SN/PCBA";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -2763,12 +2765,12 @@
             // uiLabel20
             // 
             this.uiLabel20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.uiLabel20.Font = new System.Drawing.Font("微软雅黑", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiLabel20.Location = new System.Drawing.Point(10, 417);
+            this.uiLabel20.Font = new System.Drawing.Font("微软雅黑", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLabel20.Location = new System.Drawing.Point(10, 426);
             this.uiLabel20.Name = "uiLabel20";
             this.uiLabel20.Size = new System.Drawing.Size(252, 29);
             this.uiLabel20.TabIndex = 47;
-            this.uiLabel20.Text = "工具版本号：V1.0.0-20221215_152543";
+            this.uiLabel20.Text = "V1.0.1-20221221_104237";
             this.uiLabel20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.uiLabel20.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
@@ -2867,7 +2869,7 @@
             this.MinimumSize = new System.Drawing.Size(1271, 983);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "视熙产线测试工具主面板 - V1.0.0-20221215_152543";
+            this.Text = "视熙产线测试工具主面板 - V1.0.1-20221221_104237";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormClosingEvent);
             this.uiGroupBox1.ResumeLayout(false);
             this.uiTabControl1.ResumeLayout(false);

@@ -25,6 +25,7 @@ namespace SXW0301_Production_line
         public AgingTestPanel()
         {
             InitializeComponent();
+            uiLabel2.ForeColor = Color.Red;
         }
         private void vlcControl1_VlcLibDirectoryNeeded(object sender, Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs e)
         {

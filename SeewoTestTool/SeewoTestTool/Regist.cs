@@ -14,21 +14,29 @@ namespace SeewoTestTool
             HidePrivateFiles();
             int useTimes = 0;
             // 获取本地隐藏文件中的使用次数
-            using (FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+            try
             {
-                /**
-                using (StreamReader sr = new StreamReader(fs, Encoding.GetEncoding("gb2312")))
+                using (FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
                 {
-                    useTimes = int.Parse(sr.ReadToEnd().ToString());
-                    sr.Close();
+                    /**
+                    using (StreamReader sr = new StreamReader(fs, Encoding.GetEncoding("gb2312")))
+                    {
+                        useTimes = int.Parse(sr.ReadToEnd().ToString());
+                        sr.Close();
+                    }
+                    */
+                    BinaryFormatter formatter = new BinaryFormatter();
+                    useTimes = (int)formatter.Deserialize(fs);
+                    //MessageBox.Show(useTimes.ToString());
+                    fs.Close();
+                    lastUseTimes_uiLabel1.Text = $"软件剩余使用次数：{useTimes}";
                 }
-                */
-                BinaryFormatter formatter = new BinaryFormatter();
-                useTimes = (int)formatter.Deserialize(fs);
-                //MessageBox.Show(useTimes.ToString());
-                fs.Close();
-                lastUseTimes_uiLabel1.Text = $"软件剩余使用次数：{useTimes}";
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"【缺少关键性文件，请联系视熙相关人员修复！】\n\n {ex.ToString()}");
+            }
+            
 
         }
 

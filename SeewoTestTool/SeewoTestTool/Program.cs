@@ -43,6 +43,7 @@ namespace SeewoTestTool
                 }
                 catch (Exception ex)
                 {
+                    MessageBox.Show(ex.ToString());
                     MessageBox.Show("请检查是否网线松动或者重启试试……");
                 }
                 
