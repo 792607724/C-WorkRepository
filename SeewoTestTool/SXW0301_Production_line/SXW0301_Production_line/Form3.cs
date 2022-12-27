@@ -96,7 +96,6 @@ namespace SXW0301_Production_line
         {
             if (vlcControl1.IsPlaying)
             {
-                MessageBox.Show("1");
                 //删除图片
                 DeleteDir("20221017-plc//splicing");
                 //拍照
@@ -104,9 +103,7 @@ namespace SXW0301_Production_line
                 {
                     Directory.CreateDirectory("20221017-plc//splicing");
                 }
-                MessageBox.Show("2");
                 vlcControl1.TakeSnapshot("20221017-plc//splicing//splicing_cam1.jpg");
-                MessageBox.Show("3");
                 //检测拼接图正确性
                 string argument1 = "\"" + "-t" + "\"";
                 string argument2 = "\"" + "-m" + "\"";
