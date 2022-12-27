@@ -96,10 +96,17 @@ namespace SXW0301_Production_line
         {
             if (vlcControl1.IsPlaying)
             {
+                MessageBox.Show("1");
                 //删除图片
                 DeleteDir("20221017-plc//splicing");
                 //拍照
+                if (!System.IO.Directory.Exists("20221017-plc//splicing"))
+                {
+                    Directory.CreateDirectory("20221017-plc//splicing");
+                }
+                MessageBox.Show("2");
                 vlcControl1.TakeSnapshot("20221017-plc//splicing//splicing_cam1.jpg");
+                MessageBox.Show("3");
                 //检测拼接图正确性
                 string argument1 = "\"" + "-t" + "\"";
                 string argument2 = "\"" + "-m" + "\"";
@@ -157,7 +164,7 @@ namespace SXW0301_Production_line
             else
             {
                 player_1_open = new Thread(player_1_open_func);
-                player_1_open.IsBackground = true;
+                player_1_open.IsBackground = false;
                 player_1_open.Start();
             }
 

@@ -276,7 +276,7 @@ namespace SeewoTestTool
             this.uiGroupBox1.Name = "uiGroupBox1";
             this.uiGroupBox1.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
             this.uiGroupBox1.Radius = 20;
-            this.uiGroupBox1.Size = new System.Drawing.Size(964, 725);
+            this.uiGroupBox1.Size = new System.Drawing.Size(967, 725);
             this.uiGroupBox1.Style = Sunny.UI.UIStyle.Custom;
             this.uiGroupBox1.TabIndex = 11;
             this.uiGroupBox1.Text = "工具菜单";
@@ -442,9 +442,9 @@ namespace SeewoTestTool
             // 
             this.tabPage1.Controls.Add(this.groupBox10);
             this.tabPage1.Controls.Add(this.uiGroupBox2);
-            this.tabPage1.Location = new System.Drawing.Point(0, 20);
+            this.tabPage1.Location = new System.Drawing.Point(0, 40);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(960, 91);
+            this.tabPage1.Size = new System.Drawing.Size(200, 60);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "视熙SN/PCBA";
             this.tabPage1.UseVisualStyleBackColor = true;
