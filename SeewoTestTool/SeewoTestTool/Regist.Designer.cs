@@ -146,6 +146,7 @@
             this.lastUseTimes_uiLabel1.TabIndex = 9;
             this.lastUseTimes_uiLabel1.Text = "软件剩余使用次数：";
             this.lastUseTimes_uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lastUseTimes_uiLabel1.Visible = false;
             this.lastUseTimes_uiLabel1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // Regist
