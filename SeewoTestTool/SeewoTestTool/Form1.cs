@@ -3675,31 +3675,39 @@ namespace SeewoTestTool
         Thread nextDeviceConnect_t;
         private void nextDeviceConnect_func()
         {
-            output_rich_textbox.AppendText("【执行操作】当前设备已断开，请插入另一台设备后即可自动连接开始测试\n");
-            device_disconnect_button_Click(null, null);
-            resetTestResult_button_Click(null, null);
-            currentMac_label.Text = "";
-            currentVersion_label.Text = "";
-            upgrade_progressbar.Value = 0;
-            checked_firmware_textbox.Text = "";
-            audioIn1_label.Text = "";
-            audioIn2_label.Text = "";
-            volume5_value_label.Text = "";
-            volume1_value_label.Text = "";
-            volume6_value_label.Text = "";
-            volume2_value_label.Text = "";
-            volume8_value_label.Text = "";
-            volume4_value_label.Text = "";
-            currentPCBA_textbox.Text = "";
-            writeINPCBA_textbox.Text = "";
-            currentSN_textbox.Text = "";
-            writeInSN_textbox.Text = "";
-            output_rich_textbox.Text = "";
-            seewoProductPN_label.Text = "";
-            seewoProductSN_label.Text = "";
-            seewoWorkOrder_label.Text = "";
-            seewoCustomerPN_label.Text = "";
-            currentMac_label.Text = "";
+            try
+            {
+                output_rich_textbox.AppendText("【执行操作】当前设备已断开，请插入另一台设备后即可自动连接开始测试\n");
+                device_disconnect_button_Click(null, null);
+                resetTestResult_button_Click(null, null);
+                currentMac_label.Text = "";
+                currentVersion_label.Text = "";
+                upgrade_progressbar.Value = 0;
+                checked_firmware_textbox.Text = "";
+                audioIn1_label.Text = "";
+                audioIn2_label.Text = "";
+                volume5_value_label.Text = "";
+                volume1_value_label.Text = "";
+                volume6_value_label.Text = "";
+                volume2_value_label.Text = "";
+                volume8_value_label.Text = "";
+                volume4_value_label.Text = "";
+                currentPCBA_textbox.Text = "";
+                writeINPCBA_textbox.Text = "";
+                currentSN_textbox.Text = "";
+                writeInSN_textbox.Text = "";
+                output_rich_textbox.Text = "";
+                seewoProductPN_label.Text = "";
+                seewoProductSN_label.Text = "";
+                seewoWorkOrder_label.Text = "";
+                seewoCustomerPN_label.Text = "";
+                currentMac_label.Text = "";
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(ex.ToString());
+            }
+            
                 
             
 
@@ -3724,6 +3732,8 @@ namespace SeewoTestTool
             uiButton1.Enabled = false;
             recordingGif_label.Visible = true;
             recordingGif_label.Image = Image.FromFile("./img/recordingGif.gif");
+            
+            
         }
 
         private void stopPinkNoise_button_Click(object sender, EventArgs e)
@@ -3764,16 +3774,19 @@ namespace SeewoTestTool
                 {
                     output_rich_textbox.AppendText("当前写入整机信息结果为：PASS\n");
                     result_temp_now = "PASS";
+                    completeMachine_textbox.Text = "";
                 }
                 else
                 {
                     output_rich_textbox.AppendText($"当前写入整机信息结果为：FAIL\n");
                     result_temp_now = "FAIL";
+                    completeMachine_textbox.Text = "烧录失败，请确认整机信息是否正常！";
                 }
                 // 结果位
                 refreshTestResult_button_Click(null, null);
                 testResults["测试结果"].CompleteMachineFlashResult = result_temp_now;
                 writeTestResult();
+                
                 //MessageBox.Show($"【操作结束】整机信息烧录完成！\n烧录结果：【{result_temp_now}】", "【通知】", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -3795,16 +3808,19 @@ namespace SeewoTestTool
                 {
                     output_rich_textbox.AppendText("当前写入板卡信息结果为：PASS\n");
                     result_temp_now = "PASS";
+                    boardMachine_textbox.Text = "";
                 }
                 else
                 {
                     output_rich_textbox.AppendText($"当前写入板卡信息结果为：FAIL\n");
                     result_temp_now = "FAIL";
+                    boardMachine_textbox.Text = "烧录失败，请确认板卡信息是否正常！";
                 }
                 // 结果位
                 refreshTestResult_button_Click(null, null);
                 testResults["测试结果"].BareBoradMachineFlashResult = result_temp_now;
                 writeTestResult();
+                
                 //MessageBox.Show($"【操作结束】板卡信息烧录完成！\n烧录结果：【{result_temp_now}】", "【通知】", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -3912,6 +3928,7 @@ namespace SeewoTestTool
                             {
                                 completeMachine_textbox.Text = "";
                                 output_rich_textbox.AppendText($"请写入正确的整机信息再进行刷入,当前输入的信息长度{completeMachineInfo.Length.ToString()}\n");
+                                completeMachine_textbox.Text = "烧录失败，请确认整机信息是否正常！";
                             }
                             else
                             {
@@ -3961,6 +3978,7 @@ namespace SeewoTestTool
                             {
                                 boardMachine_textbox.Text = "";
                                 output_rich_textbox.AppendText($"请写入正确的板卡信息再进行刷入,当前输入的信息长度{bareboradMachineInfo.Length.ToString()}\n");
+                                boardMachine_textbox.Text = "烧录失败，请确认板卡信息是否正常！";
                             }
                             else
                             {
