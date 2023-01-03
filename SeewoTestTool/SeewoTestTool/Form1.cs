@@ -1,6 +1,7 @@
 using SeevisionTestTool;
 using Sunny.UI;
 using Sunny.UI.Win32;
+using SXW0301_Production_line;
 using System.Diagnostics;
 using System.IO.Compression;
 using System.Linq;
@@ -2393,6 +2394,31 @@ namespace SeewoTestTool
         }
 
         SXW0301_Production_line.Fom1 fom1;
+        Thread form1_t;
+        private void process_calibration_func()
+        {
+            MethodInvoker MethInvo = new MethodInvoker(enterCalibration);
+            BeginInvoke(MethInvo);
+        }
+        private void enterCalibration()
+        {
+            if (fom1 == null)
+            {
+                fom1 = new SXW0301_Production_line.Fom1();
+                fom1.Show();
+            }
+            else if (fom1.IsDisposed)
+            {
+                fom1 = new SXW0301_Production_line.Fom1();
+                fom1.Activate();
+                fom1.Show();
+            }
+            else
+            {
+                output_rich_textbox.AppendText("已打开三摄标定工具，请勿重复打开哦\n");
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             if (check_device_online())
@@ -2400,21 +2426,14 @@ namespace SeewoTestTool
                 output_rich_textbox.AppendText("【执行操作】打开三摄标定工具操作……\n");
                 if (clientSocket != null && clientSocket.Connected)
                 {
-                    if (fom1 == null)
+                    if (form1_t != null)
                     {
-                        fom1 = new SXW0301_Production_line.Fom1();
-                        fom1.Show();
+                        form1_t.Interrupt();
+                        form1_t = null;
                     }
-                    else if (fom1.IsDisposed)
-                    {
-                        fom1 = new SXW0301_Production_line.Fom1();
-                        fom1.Activate();
-                        fom1.Show();
-                    }
-                    else
-                    { 
-                        output_rich_textbox.AppendText("已打开三摄标定工具，请勿重复打开哦\n");
-                    }
+                    form1_t = new Thread(process_calibration_func);
+                    form1_t.IsBackground = false;
+                    form1_t.Start();
                 }
                 else
                 {
