@@ -2460,7 +2460,7 @@ namespace SeewoTestTool
         {
             // 打开拼接图码流前将 Merge码率 curl 修改码流至61440
             output_rich_textbox.AppendText("【正在修改视频流码率，请稍等会自动打开界面……】\n");
-            int rate = 35000;
+            int rate = 30000;
             string updateBitRateCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"setParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"Camera0Chn0\\\",\\\"value\\\": {{\\\"BitRate\\\": {rate}}}}}\"";
             output_string = executeCMDCommand(updateBitRateCommand);
             MatchCollection results_1 = Regex.Matches(output_string, "\"result\" : (.*)");
