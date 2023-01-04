@@ -153,7 +153,6 @@ namespace SeewoTestTool
                 {
                     return true;
                 }
-
                 // 判断如果是：219.198.235.11，需要在连接设备前加上ping操作打通路由，如果不是，则不需要ping 219.198.235.11 -t -S 219.198.235.17
                 if (host == "219.198.235.11")
                 {
@@ -234,7 +233,7 @@ namespace SeewoTestTool
 
                         clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                         clientSocket.BeginConnect(ipe, new AsyncCallback(CallBackMethod), clientSocket);
-                        if (TimeoutObject.WaitOne(5000, false))
+                        if (TimeoutObject.WaitOne(3000, false))
                         {
                             if (clientSocket.Connected)
                             {
@@ -1556,6 +1555,10 @@ namespace SeewoTestTool
                         output_rich_textbox.AppendText($"【提示】【{times}秒】重建路由器网络中请稍后……\n");
                         if (back_temp.Contains("TTL"))
                         {
+                            /**
+                             * 此处需要斟酌是否增加此连接设备上电后延时等待
+                             */
+                            Thread.Sleep(5000);
                             break;
                         }
                         if (times >= 30)
@@ -3726,9 +3729,6 @@ namespace SeewoTestTool
             {
                 //MessageBox.Show(ex.ToString());
             }
-            
-                
-            
 
             device_connect_button_Click(null, null);
         }

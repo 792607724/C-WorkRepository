@@ -58,6 +58,7 @@
             this.vlcControl1.VlcLibDirectory = null;
             this.vlcControl1.VlcMediaplayerOptions = null;
             this.vlcControl1.VlcLibDirectoryNeeded += new System.EventHandler<Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs>(this.vlcControl1_VlcLibDirectoryNeeded);
+            this.vlcControl1.Click += new System.EventHandler(this.vlcControl1_Click);
             // 
             // panel1
             // 

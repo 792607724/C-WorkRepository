@@ -422,5 +422,9 @@ namespace SXW0301_Production_line
 
         }
 
+        private void vlcControl1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

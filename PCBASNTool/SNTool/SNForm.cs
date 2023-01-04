@@ -15,6 +15,8 @@ namespace SNTool
     {
         private static readonly int TARGET_HID_SEEVISION_VID = 9546;
         private static readonly int TARGET_HID_HONGHE_VID = 0x2757;
+        private static readonly int TARGET_HID_SYTJ0105_VID = 0x302E;
+
         private static readonly int TARGET_HID_HONGHE_PID = 0x3007;
         private static readonly int TARGET_REPORT_BUFFER_SIZE = 64;
         private Graphics m_Canvas;
@@ -147,7 +149,7 @@ namespace SNTool
             HIDDeviceInfo targetDeviceInfo = null;
             for (int ki = 0; ki < deviceInfos.Length; ki++)
             {
-                if (deviceInfos[ki].VID == TARGET_HID_SEEVISION_VID || (deviceInfos[ki].VID == TARGET_HID_HONGHE_VID))
+                if (deviceInfos[ki].VID == TARGET_HID_SEEVISION_VID || (deviceInfos[ki].VID == TARGET_HID_HONGHE_VID) || (deviceInfos[ki].VID == TARGET_HID_SYTJ0105_VID))
                 {
                     targetDeviceInfo = deviceInfos[ki];
                     break;
