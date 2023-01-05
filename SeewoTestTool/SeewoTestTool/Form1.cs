@@ -1558,12 +1558,13 @@ namespace SeewoTestTool
                             /**
                              * 此处需要斟酌是否增加此连接设备上电后延时等待
                              */
+                            output_rich_textbox.AppendText("等待5秒钟，设备正常启动，谢谢！\n");
                             Thread.Sleep(5000);
                             break;
                         }
                         if (times >= 30)
                         {
-                            output_rich_textbox.AppendText("30秒内路由网络没有更新没有成功，请重启机器！");
+                            output_rich_textbox.AppendText("30秒内路由网络没有更新没有成功，请重启机器！\n");
                             break;
                         }
                     }

@@ -2770,7 +2770,7 @@ namespace SeewoTestTool
             this.uiLabel20.Name = "uiLabel20";
             this.uiLabel20.Size = new System.Drawing.Size(252, 29);
             this.uiLabel20.TabIndex = 47;
-            this.uiLabel20.Text = "V1.0.1-20221221_104237";
+            this.uiLabel20.Text = "V1.0.2-20230105_114713";
             this.uiLabel20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.uiLabel20.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
@@ -2869,7 +2869,7 @@ namespace SeewoTestTool
             this.MinimumSize = new System.Drawing.Size(1271, 983);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "视熙产线测试工具主面板 - V1.0.1-20221221_104237";
+            this.Text = "视熙产线测试工具主面板 - V1.0.2-20230105_114713";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormClosingEvent);
             this.uiGroupBox1.ResumeLayout(false);
             this.uiTabControl1.ResumeLayout(false);
