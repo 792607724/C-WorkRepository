@@ -14,6 +14,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
+using Vlc.DotNet.Core;
 using Vlc.DotNet.Forms;
 using Application = System.Windows.Forms.Application;
 using MessageBox = System.Windows.Forms.MessageBox;
@@ -59,7 +60,7 @@ namespace SXW0301_Production_line
         {
             //播放
             string live_ip = "rtsp://" + ip_textBox.Text + "/live";
-            string[] options = { ":network-caching=1000", ":rtsp-frame-buffer-size=100000", ":rtsp-tcp", ":no-audio" };// { ":network-caching=100", ":rtsp -tcp", ":no-audio" }; //  --avcodec-hw={any,d3d11va,dxva2,none} 
+            string[] options = { ":network-caching=1000", ":rtsp-frame-buffer-size=100000", ":rtsp-tcp", ":no-audio" ,":avcodec-hw=any" };// { ":network-caching=100", ":rtsp -tcp", ":no-audio" }; //  --avcodec-hw={any,d3d11va,dxva2,none} 
             var videoUri = new Uri(live_ip);
 
             vlcControl1.Play(videoUri, options);
@@ -70,9 +71,8 @@ namespace SXW0301_Production_line
         {
             //播放
             string live1_ip = "rtsp://" + ip_textBox.Text + "/live1";
-            string[] options = { ":network-caching=1000", ":rtsp-frame-buffer-size=100000", ":rtsp-tcp", ":no-audio" };// { ":network-caching=100", ":rtsp -tcp", ":no-audio" }; //  --avcodec-hw={any,d3d11va,dxva2,none} 
+            string[] options = { ":network-caching=1000", ":rtsp-frame-buffer-size=100000", ":rtsp-tcp", ":no-audio", ":avcodec-hw=any" };// { ":network-caching=100", ":rtsp -tcp", ":no-audio" }; //  --avcodec-hw={any,d3d11va,dxva2,none} 
             var videoUri = new Uri(live1_ip);
-
             vlcControl2.Play(videoUri, options);
 
         }
@@ -82,7 +82,7 @@ namespace SXW0301_Production_line
         {
             //播放
             string merge_ip = "rtsp://" + ip_textBox.Text + "/merge";
-            string[] options = { ":network-caching=1000", ":rtsp-frame-buffer-size=100000", ":rtsp-tcp", ":no-audio" };// { ":network-caching=100", ":rtsp -tcp", ":no-audio" }; //  --avcodec-hw={any,d3d11va,dxva2,none} 
+            string[] options = { ":network-caching=1000", ":rtsp-frame-buffer-size=100000", ":rtsp-tcp", ":no-audio", ":avcodec-hw=any" };// { ":network-caching=100", ":rtsp -tcp", ":no-audio" }; //  --avcodec-hw={any,d3d11va,dxva2,none} 
             var videoUri = new Uri(merge_ip);
 
             vlcControl3.Play(videoUri, options);

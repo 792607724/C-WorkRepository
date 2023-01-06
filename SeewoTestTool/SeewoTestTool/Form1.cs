@@ -2425,6 +2425,7 @@ namespace SeewoTestTool
 
         private void button1_Click(object sender, EventArgs e)
         {
+            /**
             if (check_device_online())
             {
                 output_rich_textbox.AppendText("【执行操作】打开三摄标定工具操作……\n");
@@ -2448,6 +2449,7 @@ namespace SeewoTestTool
                     output_rich_textbox.AppendText("设备连接已断开，请先连接设备！\n");
                 }
             }
+            */
         }
 
         SXW0301_Production_line.Form3 form3;
@@ -3641,6 +3643,7 @@ namespace SeewoTestTool
             int rate = 4096;
             string updateBitRateCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"setParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"Camera0Chn0\\\",\\\"value\\\": {{\\\"BitRate\\\": {rate}}}}}\"";
             output_string = executeCMDCommand(updateBitRateCommand);
+            /**
             if (agingTestPanel == null)
             {
                 agingTestPanel = new SXW0301_Production_line.AgingTestPanel();
@@ -3657,6 +3660,10 @@ namespace SeewoTestTool
             {
                 output_rich_textbox.AppendText("已进入老化模式面板，请勿重复打开哦\n");
             }
+            */
+            agingTestPanel = new SXW0301_Production_line.AgingTestPanel();
+            agingTestPanel.Activate();
+            agingTestPanel.Show();
 
         }
         private void process3()
@@ -3668,11 +3675,12 @@ namespace SeewoTestTool
         // 进入老化模式面板
         private void enterAgingMode_button_Click(object sender, EventArgs e)
         {
+            /**
             if (agingThread != null)
             {
                 agingThread.Interrupt();
                 agingThread = null;
-            }
+            }*/
             if (check_device_online())
             {
                 output_rich_textbox.AppendText("【执行操作】进入老化模式面板……\n");
