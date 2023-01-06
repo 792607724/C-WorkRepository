@@ -63,7 +63,6 @@ namespace SXW0301_Production_line
             var videoUri = new Uri(live_ip);
 
             vlcControl1.Play(videoUri, options);
-
         }
 
         Thread player_2_open;
