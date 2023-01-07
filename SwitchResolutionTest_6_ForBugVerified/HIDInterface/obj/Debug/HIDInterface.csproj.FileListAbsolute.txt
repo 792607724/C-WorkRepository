@@ -26,3 +26,9 @@ D:\TempTools\SwitchResolutionTest\HIDInterface\bin\Debug\HIDInterface.pdb
 D:\TempTools\SwitchResolutionTest\HIDInterface\obj\Debug\HIDInterface.csproj.CoreCompileInputs.cache
 D:\TempTools\SwitchResolutionTest\HIDInterface\obj\Debug\HIDInterface.dll
 D:\TempTools\SwitchResolutionTest\HIDInterface\obj\Debug\HIDInterface.pdb
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SwitchResolutionTest_6_ForBugVerified\HIDInterface\bin\Debug\HIDInterface.dll
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SwitchResolutionTest_6_ForBugVerified\HIDInterface\bin\Debug\HIDInterface.pdb
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SwitchResolutionTest_6_ForBugVerified\HIDInterface\obj\Debug\HIDInterface.csproj.AssemblyReference.cache
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SwitchResolutionTest_6_ForBugVerified\HIDInterface\obj\Debug\HIDInterface.csproj.CoreCompileInputs.cache
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SwitchResolutionTest_6_ForBugVerified\HIDInterface\obj\Debug\HIDInterface.dll
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SwitchResolutionTest_6_ForBugVerified\HIDInterface\obj\Debug\HIDInterface.pdb

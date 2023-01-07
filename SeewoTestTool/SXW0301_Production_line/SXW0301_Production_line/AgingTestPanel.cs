@@ -458,6 +458,7 @@ namespace SXW0301_Production_line
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.Message);
             }
             
         }

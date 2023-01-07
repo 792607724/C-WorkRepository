@@ -69,3 +69,12 @@ D:\C#version\SwitchResolutionTest\VideoCapture\obj\Debug\VideoCapture.csproj.Cor
 D:\C#version\SwitchResolutionTest\VideoCapture\obj\Debug\VideoCapture.csproj.CopyComplete
 D:\C#version\SwitchResolutionTest\VideoCapture\obj\Debug\VideoCapture.dll
 D:\C#version\SwitchResolutionTest\VideoCapture\obj\Debug\VideoCapture.pdb
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SwitchResolutionTest\VideoCapture\bin\Debug\VideoCapture.dll
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SwitchResolutionTest\VideoCapture\bin\Debug\VideoCapture.pdb
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SwitchResolutionTest\VideoCapture\bin\Debug\DirectShow.dll
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SwitchResolutionTest\VideoCapture\bin\Debug\DirectShow.pdb
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SwitchResolutionTest\VideoCapture\obj\Debug\VideoCapture.csproj.AssemblyReference.cache
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SwitchResolutionTest\VideoCapture\obj\Debug\VideoCapture.csproj.CoreCompileInputs.cache
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SwitchResolutionTest\VideoCapture\obj\Debug\VideoCapture.csproj.CopyComplete
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SwitchResolutionTest\VideoCapture\obj\Debug\VideoCapture.dll
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SwitchResolutionTest\VideoCapture\obj\Debug\VideoCapture.pdb

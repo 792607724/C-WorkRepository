@@ -34,3 +34,9 @@ D:\C#version\SwitchResolutionTest\DirectShow\bin\Debug\DirectShow.pdb
 D:\C#version\SwitchResolutionTest\DirectShow\obj\Debug\DirectShow.csproj.CoreCompileInputs.cache
 D:\C#version\SwitchResolutionTest\DirectShow\obj\Debug\DirectShow.dll
 D:\C#version\SwitchResolutionTest\DirectShow\obj\Debug\DirectShow.pdb
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SwitchResolutionTest\DirectShow\bin\Debug\DirectShow.dll
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SwitchResolutionTest\DirectShow\bin\Debug\DirectShow.pdb
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SwitchResolutionTest\DirectShow\obj\Debug\DirectShow.csproj.AssemblyReference.cache
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SwitchResolutionTest\DirectShow\obj\Debug\DirectShow.csproj.CoreCompileInputs.cache
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SwitchResolutionTest\DirectShow\obj\Debug\DirectShow.dll
+D:\MicrosoftVisualStudio\GithubSync\C-WorkRepository\SwitchResolutionTest\DirectShow\obj\Debug\DirectShow.pdb

@@ -9,6 +9,7 @@ namespace SwitchResolutionTest
     {
         private const int MAX_CAMERA_COUNT = 6;
         private static readonly string TARGET_CAMERA = "Smart Camera";
+        private static readonly string TARGET_CAMERA_SYTJ0105 = "USB StreamCamera";
         // --Guangtao Modified
         private static readonly PreviewSize[] m_PreviewSizes = new PreviewSize[] {
             new PreviewSize(1920, 1080),
@@ -291,7 +292,7 @@ namespace SwitchResolutionTest
             List<CameraInfo> cameraInfos = VideoCapturer.GetCameraInfos();
             for (int i = 0; i < cameraInfos.Count; i++)
             {
-                if (cameraInfos[i].Name == TARGET_CAMERA)
+                if (cameraInfos[i].Name == TARGET_CAMERA|| cameraInfos[i].Name == TARGET_CAMERA_SYTJ0105)
                 {
                     cameras.Add(cameraInfos[i]);
                 }
