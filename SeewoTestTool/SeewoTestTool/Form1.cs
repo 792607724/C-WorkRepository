@@ -3640,9 +3640,11 @@ namespace SeewoTestTool
         Thread agingThread;
         private void enterAgingMode()
         {
+            /**
             int rate = 4096;
             string updateBitRateCommand = $"curl -X POST \"http://{ip_users}/json_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"setParam\\\",\\\"session\\\": \\\"{session}\\\",\\\"name\\\": \\\"Camera0Chn0\\\",\\\"value\\\": {{\\\"BitRate\\\": {rate}}}}}\"";
             output_string = executeCMDCommand(updateBitRateCommand);
+            */
             /**
             if (agingTestPanel == null)
             {
@@ -3654,7 +3656,6 @@ namespace SeewoTestTool
                 agingTestPanel = new SXW0301_Production_line.AgingTestPanel();
                 agingTestPanel.Activate();
                 agingTestPanel.Show();
-
             }
             else
             {
@@ -3664,8 +3665,8 @@ namespace SeewoTestTool
             agingTestPanel = new SXW0301_Production_line.AgingTestPanel();
             agingTestPanel.Activate();
             agingTestPanel.Show();
-
         }
+
         private void process3()
         {
             MethodInvoker MethInvo = new MethodInvoker(enterAgingMode);
@@ -3687,7 +3688,7 @@ namespace SeewoTestTool
                 if (clientSocket != null && clientSocket.Connected)
                 {
                     agingThread = new Thread(process3);
-                    agingThread.IsBackground = false;
+                    agingThread.IsBackground = true;
                     agingThread.Start();
                     //agingThread.Join();
                 }

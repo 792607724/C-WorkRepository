@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Threading;
+using Sunny.UI;
 
 namespace SXW0301_Production_line
 {
@@ -91,11 +92,42 @@ namespace SXW0301_Production_line
                 Console.WriteLine(ex.Message.ToString());// 异常信息
             }
         }
+        private string executeCMDCommand(string command)
+        {
+            Process process_cmd = new Process();
+            string output_string = null;
+            try
+            {
+                process_cmd.StartInfo.FileName = "cmd.exe";
+                process_cmd.StartInfo.RedirectStandardInput = true;
+                process_cmd.StartInfo.RedirectStandardOutput = true;
+                process_cmd.StartInfo.CreateNoWindow = true;
+                process_cmd.StartInfo.UseShellExecute = false;
+                process_cmd.Start();
+                process_cmd.StandardInput.WriteLine(command + "&exit");
+                process_cmd.StandardInput.AutoFlush = true;
+                output_string = process_cmd.StandardOutput.ReadToEnd();
+            }
+            catch (Exception ex)
+            {
+                output_string = ex.ToString();
+            }
+            finally
+            {
+                process_cmd.WaitForExit();
+                process_cmd.Close();
+            }
+            return output_string;
 
+        }
         private void button2_Click(object sender, EventArgs e)
         {
             if (vlcControl1.IsPlaying)
             {
+                if (System.IO.File.Exists("config_threshold.txt"))
+                {
+                    executeCMDCommand("del ./config_threshold.txt");
+                }
                 //删除图片
                 DeleteDir("20221017-plc//splicing");
                 //拍照
@@ -129,6 +161,17 @@ namespace SXW0301_Production_line
                 {
                     label1.ForeColor = Color.Red;
                     label1.Text = "FAIL";
+                }
+                if (!System.IO.File.Exists("config_threshold.txt"))
+                {
+                    MessageBox.Show("拼接图测试失败，请重新检测试试！");
+                }
+                else
+                {
+                    string output_string = executeCMDCommand("type config_threshold.txt");
+                    string[] data_ex = output_string.Split("exit")[1].Split("\n");
+                    currentValueLabel.Text = data_ex[1].Replace(" ","").Replace("\n", "").Replace("\r", "");
+                    standardValueLabel.Text = data_ex[2].Replace(" ", "").Replace("\n", "").Replace("\r", "");
                 }
             }
             else

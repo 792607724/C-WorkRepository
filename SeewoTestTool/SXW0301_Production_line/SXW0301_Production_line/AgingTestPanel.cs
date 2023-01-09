@@ -140,43 +140,50 @@ namespace SXW0301_Production_line
             {
                 while (true)
                 {
-                    Thread.Sleep(1000);
-                    string gainDeviceMICVolumeCommand = $"curl -X POST \"http://{ip_textBox.Text}/testAudioJson_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getAudioVolume\\\"}}\"";
-                    output_string = executeCMDCommand(gainDeviceMICVolumeCommand);
-                    MatchCollection r1 = Regex.Matches(output_string, "\"result\" : (.*)");
-                    string backCode = r1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "").Replace(",", "");
-                    if (Int32.Parse(backCode) == 0)
+                    try
                     {
-                        MatchCollection results_2 = Regex.Matches(output_string, "\\\"rmsdb\\\" : \\[\\n(.*),\\n(.*),\\n(.*),\\n(.*),\\n(.*),\\n(.*),\\n(.*),\\n(.*)\\n   ]");
-                        string[] temp = results_2[0].ToString().Replace("\"rmsdb\" : [", "").Replace("]", "").Replace("\"", "").Replace("\n", "").Replace(" ", "").Split(",");
-                        string volume1 = temp[0].ToString();
-                        string volume2 = temp[1].ToString();
-                        string volume3 = temp[2].ToString();
-                        string volume4 = temp[3].ToString();
-                        string volume5 = temp[4].ToString();
-                        string volume6 = temp[5].ToString();
-                        string volume7 = temp[6].ToString();
-                        string volume8 = temp[7].ToString();
-                        volume1_value_label.Text = volume1;
-                        volume2_value_label.Text = volume2;
-                        volume4_value_label.Text = volume4;
-                        volume5_value_label.Text = volume5;
-                        volume6_value_label.Text = volume6;
-                        volume8_value_label.Text = volume8;
-                        audioIn1_label.Text = volume3;
-                        audioIn2_label.Text = volume7;
+                        Thread.Sleep(1000);
+                        string gainDeviceMICVolumeCommand = $"curl -X POST \"http://{ip_textBox.Text}/testAudioJson_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"getAudioVolume\\\"}}\"";
+                        output_string = executeCMDCommand(gainDeviceMICVolumeCommand);
+                        MatchCollection r1 = Regex.Matches(output_string, "\"result\" : (.*)");
+                        string backCode = r1[0].ToString().Split(":")[1].ToString().Replace('"', ' ').Replace(" ", "").Replace(",", "");
+                        if (Int32.Parse(backCode) == 0)
+                        {
+                            MatchCollection results_2 = Regex.Matches(output_string, "\\\"rmsdb\\\" : \\[\\n(.*),\\n(.*),\\n(.*),\\n(.*),\\n(.*),\\n(.*),\\n(.*),\\n(.*)\\n   ]");
+                            string[] temp = results_2[0].ToString().Replace("\"rmsdb\" : [", "").Replace("]", "").Replace("\"", "").Replace("\n", "").Replace(" ", "").Split(",");
+                            string volume1 = temp[0].ToString();
+                            string volume2 = temp[1].ToString();
+                            string volume3 = temp[2].ToString();
+                            string volume4 = temp[3].ToString();
+                            string volume5 = temp[4].ToString();
+                            string volume6 = temp[5].ToString();
+                            string volume7 = temp[6].ToString();
+                            string volume8 = temp[7].ToString();
+                            volume1_value_label.Text = volume1;
+                            volume2_value_label.Text = volume2;
+                            volume4_value_label.Text = volume4;
+                            volume5_value_label.Text = volume5;
+                            volume6_value_label.Text = volume6;
+                            volume8_value_label.Text = volume8;
+                            audioIn1_label.Text = volume3;
+                            audioIn2_label.Text = volume7;
+                        }
+                        else if (Int32.Parse(backCode) == -1)
+                        {
+                            uiLabel2.Text = $"FAIL，无法获取各路MIC音频音量值，backCode:[{backCode}]";
+                            break;
+                        }
                     }
-                    else if (Int32.Parse(backCode) == -1)
+                    catch (Exception ex)
                     {
-                        uiLabel2.Text = $"FAIL，无法获取各路MIC音频音量值，backCode:[{backCode}]";
-                        break;
+                        //MessageBox.Show(ex.ToString());
                     }
                 }
             }
             catch (Exception ex)
             {
+                //MessageBox.Show(ex.ToString());
             }
-            
         }
 
         Thread gain8Audio_t;
@@ -185,7 +192,6 @@ namespace SXW0301_Production_line
         { 
             try
             {
-
                 // 开启8路AUDIO测试
                 string fetchDeviceInfoCommand = $"curl -X POST \"http://{ip_textBox.Text}/testAudioJson_api\" -H \"Content-Type: application/json\" -d \"{{\\\"method\\\": \\\"startAudioTest\\\",\\\"format\\\": 0,\\\"soundmode\\\": 8,\\\"samplerate\\\": 16000,\\\"periodsize\\\": 1000,\\\"duration\\\": 0}}\"";
                 output_string = executeCMDCommand(fetchDeviceInfoCommand);
@@ -338,6 +344,7 @@ namespace SXW0301_Production_line
                 beginAging_t.Start();
             }
         }
+
         private void FormClosingEvent(object sender, FormClosingEventArgs e)
         {
             try
@@ -458,7 +465,7 @@ namespace SXW0301_Production_line
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                //MessageBox.Show(ex.Message);
             }
             
         }

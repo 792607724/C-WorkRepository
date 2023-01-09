@@ -11,7 +11,7 @@ namespace SeewoTestTool
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             InitializeComponent();
             //DisplayPrivateFiles();
-            HidePrivateFiles();
+            //HidePrivateFiles();
             int useTimes = 0;
             // 获取本地隐藏文件中的使用次数
             try
