@@ -124,10 +124,12 @@ namespace SXW0301_Production_line
         {
             if (vlcControl1.IsPlaying)
             {
+                /**
                 if (System.IO.File.Exists("config_threshold.txt"))
                 {
-                    executeCMDCommand("del ./config_threshold.txt");
+                    executeCMDCommand("del config_threshold.txt");
                 }
+                */
                 //删除图片
                 DeleteDir("20221017-plc//splicing");
                 //拍照
@@ -136,6 +138,7 @@ namespace SXW0301_Production_line
                     Directory.CreateDirectory("20221017-plc//splicing");
                 }
                 vlcControl1.TakeSnapshot("20221017-plc//splicing//splicing_cam1.jpg");
+
                 //检测拼接图正确性
                 string argument1 = "\"" + "-t" + "\"";
                 string argument2 = "\"" + "-m" + "\"";
@@ -151,7 +154,6 @@ namespace SXW0301_Production_line
                 myPro.Start();
                 myPro.WaitForExit();
                 //myPro.Close();
-
                 if (myPro.ExitCode == 0)
                 {
                     label1.ForeColor = Color.Green;
@@ -169,9 +171,24 @@ namespace SXW0301_Production_line
                 else
                 {
                     string output_string = executeCMDCommand("type config_threshold.txt");
-                    string[] data_ex = output_string.Split("exit")[1].Split("\n");
-                    currentValueLabel.Text = data_ex[1].Replace(" ","").Replace("\n", "").Replace("\r", "");
-                    standardValueLabel.Text = data_ex[2].Replace(" ", "").Replace("\n", "").Replace("\r", "");
+                    if (output_string != null)
+                    {
+                        try
+                        {
+                            string[] data_ex = output_string.Split("exit")[1].Split("\n");
+                            currentValueLabel.Text = data_ex[1].Replace(" ", "").Replace("\n", "").Replace("\r", "");
+                            standardValueLabel.Text = data_ex[2].Replace(" ", "").Replace("\n", "").Replace("\r", "");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("当前拍摄拼接图异常，请重新调整后拍摄！" + ex.ToString() + "\n" + "返回内容：\n" + output_string);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("当前拍摄拼接图异常内容为空！");
+                    }
+                    
                 }
             }
             else

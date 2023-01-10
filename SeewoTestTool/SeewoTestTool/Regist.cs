@@ -70,7 +70,11 @@ namespace SeewoTestTool
             string[] files = Directory.GetFiles(".");
             foreach(string file in files)
             {
-                if (file.Contains("bin") || file.Contains("dll") || file.Contains("json") || file.Contains("pdb") || file.Contains("config") || file.Contains("C_production_line_tool.exe") || file.Contains("Splicing_test.exe") || file.Contains("SXW0301_Production_line.exe"))
+                if (file.Contains("config_threshold.txt"))
+                {
+                    continue;
+                }
+                else if (file.Contains("bin") || file.Contains("dll") || file.Contains("json") || file.Contains("pdb") || file.Contains("config") || file.Contains("C_production_line_tool.exe") || file.Contains("Splicing_test.exe") || file.Contains("SXW0301_Production_line.exe"))
                 {
                     File.SetAttributes(file, FileAttributes.System | FileAttributes.Hidden);
                 }
